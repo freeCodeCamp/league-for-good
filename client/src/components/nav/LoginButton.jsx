@@ -3,7 +3,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Avatar from 'material-ui/Avatar';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {initAuthState ,logOut} from '../actions/index';
+import {initAuthState ,logOut} from '../../actions/index';
 
 class LogInButton extends Component{
 

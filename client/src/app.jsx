@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from './components/nav.jsx';
+import NavBar from './components/nav/index.jsx';
 import Content from './components/Content.jsx'
 
 const App = props => (
