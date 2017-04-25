@@ -3,26 +3,25 @@ import Paper from 'material-ui/Paper';
 import { connect } from 'react-redux';
 
 const style = {
-
+	width:'90%',
+	margin:'40px auto',
   height: 400,
-  width: "60%",
-  marginTop: '50px',
-  marginLeft: '20%',
   textAlign: 'center',
-  display: 'inline-block',
-  background:'#37474F',
-  color:"#00B0FF"		
+  background:'#ECEFF1',
+  color:"#37474F",
+  border:'1px solid #607D8B',
+  textShadow:'1px 0px 2px #607D8B'		
 }
 
 class Content extends Component{
 
 	render(){
-		const {userName} = this.props;
+		const {userName, menuOpen} = this.props;
 		return(
-			<div>
+			<div className={menuOpen? 'content-wrapper': 'content-wrapper-expanded'}>
 				{userName && 
 					<Paper style={style} zDepth={3}>
-						<h1>{`Welcome ${userName}!`}</h1>
+						<h1>{`Hello ${userName}!`}</h1>
 					</Paper>
 				}
 			</div>
@@ -31,10 +30,10 @@ class Content extends Component{
 }
 
 function mapStateToProps(state){
-	const {auth} = state;
+	const {auth,menu} = state;
 	const userName = auth.user? auth.user.name : null
 
-	return {userName}
+	return {userName, menuOpen:menu.open}
 }
 
 export default connect(mapStateToProps)(Content)

@@ -8,13 +8,15 @@ import {initAuthState ,logOut} from '../../actions/index';
 class LogInButton extends Component{
 
 	renderDefault(){
-		return <a href='/auth/google'>
-			<RaisedButton label="Log In" backgroundColor='#F5F5F5' />
+		return (
+			<a href='/auth/google'>
+				<RaisedButton label="Log In" backgroundColor='#F5F5F5' />
 			</a>
+			)
 	}
 	renderAvatar(){
 		return <div style={{cursor:'pointer'}} 
-				 onClick = {()=> this.props.logOut()}>
+				 		 onClick = {()=> this.props.logOut()}>
 				 <Avatar src={this.props.user.avatar}/>
 			   </div>
 	}
@@ -23,7 +25,7 @@ class LogInButton extends Component{
 	}
 
 	render(){
-		if(!this.props.isAuthenticated){
+		if(!this.props.loggedIn){
 			return this.renderDefault()
 		}else{
 			return this.renderAvatar()
