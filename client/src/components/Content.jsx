@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import Paper from 'material-ui/Paper';
 import { connect } from 'react-redux';
+import Spinner from './LoadingPage.jsx';
 
 const style = {
 	width:'90%',
@@ -15,7 +16,7 @@ const style = {
 
 class Content extends Component {
 	render() {
-		const {userName, menuOpen} = this.props;
+		const {userName, menuOpen, loading} = this.props;
 		return (
 			<div className={menuOpen? 'content-wrapper': 'content-wrapper-expanded'}>
 				{userName && 
@@ -32,7 +33,7 @@ function mapStateToProps(state) {
 	const {auth, menu} = state;
 	const userName = auth.user? auth.user.name : null;
 
-	return {userName, menuOpen:menu.open};
+	return { userName, menuOpen:menu.open };
 }
 
 export default connect(mapStateToProps)(Content);

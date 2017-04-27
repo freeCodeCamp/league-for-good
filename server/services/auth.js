@@ -32,7 +32,6 @@ passport.use(new GoogleStrategy({
 				name:profile.displayName,
 				googleId: profile.id,
 				avatar:profile.photos[0].value,
-				token,
 				email:profile.emails[0].value
 			})
 			
@@ -41,9 +40,6 @@ passport.use(new GoogleStrategy({
 			return cb(null, newUser);
 		}
 		else {
-			user.token = token;
-			user.save();
-			console.log("updated user token", token);
 			return cb(null, user);
 		}
 		});
