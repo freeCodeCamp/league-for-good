@@ -6,45 +6,47 @@ const User = require('../models/user');
 
 
 passport.serializeUser((user, done) => {
-  done(null, user);
+	done(null, user);
 });
 
 passport.deserializeUser((id, done) => {
-  done(null,id)
+	done(null,id);
 });
 
 passport.use(new GoogleStrategy({
-    clientID: process.env.Google_ClientId,
-    clientSecret: process.env.Google_ClientSecret,
-    callbackURL: "http://localhost:4000/auth/google/callback"
-  },
-  (token, refreshToken, profile, cb) => {
+		clientID: process.env.GOOGLE_CLIENT_ID,
+		clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+		callbackURL: process.env.CALLBACK_URL
+	},
+	(token, refreshToken, profile, cb) => {
     
-    if(!profile) return cb("Invalid credentials")
+		if (!profile) return cb("Invalid credentials");
     
-    User.findOne({ googleId: profile.id }, (err, user) => {
+		User.findOne({ googleId: profile.id }, (err, user) => {
       
-      if(err) return cb(err)
+			if (err) return cb(err);
 
-      if(!user){
+			if (!user) {
 
-        const newUser = new User({
-          name:profile.displayName,
-          googleId: profile.id,
-          avatar:profile.photos[0].value,
-          token,
-          email:profile.emails[0].value
-        })
-        newUser.save()
-        console.log("New user created", newUser)
-        return cb(null, newUser)
-      }else{
-        user.token = token;
-        user.save();
-        console.log("updated user token", token)
-        return cb(null, user);
-      }
-    });
-  }
+				const newUser = new User({
+				name:profile.displayName,
+				googleId: profile.id,
+				avatar:profile.photos[0].value,
+				token,
+				email:profile.emails[0].value
+			})
+			
+			newUser.save();
+			console.log("New user created", newUser);
+			return cb(null, newUser);
+		}
+		else {
+			user.token = token;
+			user.save();
+			console.log("updated user token", token);
+			return cb(null, user);
+		}
+		});
+	}
 ));
 

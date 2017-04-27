@@ -1,12 +1,17 @@
 
-export default function(state = {loggedIn:false}, action){
+export default function(state = {loggedIn:false}, action) {
 	switch(action.type){
 		case 'InitAuthState':
-			return action.payload
+			return action.payload;
 		case 'Logged In':
-			return {loggedIn:true, user: action.payload}
+			return {
+				loggedIn:true,
+				user: action.payload
+			};
 		case 'Log Out':
-			return {loggedIn:false}	
+			return {
+				loggedIn:false
+			};
 	}
-	return state
+	return state;
 }

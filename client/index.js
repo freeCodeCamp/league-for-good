@@ -8,10 +8,9 @@ import thunk from 'redux-thunk';
 
 import reducers from './src/reducers/index';
 
-
 import App from './src/app.jsx';
 
-injectTapEventPlugin()
+injectTapEventPlugin();
 
 const Root = () => {
 	return(
@@ -20,7 +19,7 @@ const Root = () => {
 		    <App />
 		  </Provider>
 		</MuiThemeProvider>
-	)
+	);
 }
 
-ReactDOM.render(<Root/>, document.getElementById('root'))
+ReactDOM.render(<Root/>, document.getElementById('root'));
