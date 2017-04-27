@@ -9,12 +9,12 @@ In the .env file, place the following:
 - GOOGLE_CLIENT_ID
 - GOOGLE_CLIENT_SECRET
 - SESSION_SECRET
-- CALLBACK_URL
+- GOOGLE_CALLBACK_URL
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### npm run dev
+### `npm run dev`
 
 Builds the app for development. It is watched by webpack for any changes in the front end.
