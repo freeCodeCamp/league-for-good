@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import Paper from 'material-ui/Paper';
 import { connect } from 'react-redux';
 import Spinner from './LoadingPage.jsx';
+import CreateLeagueCard from './create-league/index.jsx';
 
 const style = {
 	width:'90%',
@@ -24,6 +25,7 @@ class Content extends Component {
 						<h1>{`Hello ${userName}!`}</h1>
 					</Paper>
 				}
+				<CreateLeagueCard />
 			</div>
 		);	
 	}

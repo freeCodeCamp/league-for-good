@@ -1,0 +1,6 @@
+# TODO List
+1. Encrypt tokens and make authentication secure
+2. Add a modal for the login
+3. Make the home page
+4. Bundle a css file into webpack
+5. Redo the file structure for the server side

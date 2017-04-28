@@ -4,7 +4,6 @@ This is a free, open-source web application designed to help sports leagues trac
 
 In order for the authorization component of this app to work, it needs to be registered with Google. Here is a helpful walkthrough of that process: (https://developers.google.com/identity/sign-in/web/devconsole-project)
 
-
 In the root directory, create a .env file and place the following: 
 - MONGO_URI = *Your database uri* 
 - GOOGLE_CLIENT_ID = *Client id assigned by Google* 
