@@ -1,7 +1,7 @@
 import React from 'react';
 import {Card, CardActions, CardHeader, CardText, CardTitle} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
-import sportIcon from 'svg-url-loader!../../assets/images/sports_icons/baseball.svg';
+import sportIcon from 'url-loader?limit=10000!../../assets/images/sports_icons/baseball.svg';
 
 const sports = [
 	{name: "Football", link: "/create/football"},

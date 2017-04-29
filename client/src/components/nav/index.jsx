@@ -12,7 +12,8 @@ class NavBar extends Component {
 	render() {
 		return (
 			<div>
-				<AppBar title="League For Good"
+				<AppBar 
+						title="League For Good"
 						style={{zIndex:2000}}
 						iconElementRight={<LogInButton {...this.props}/>}
 						onLeftIconButtonTouchTap={()=>this.props.toggleMenu()}/>
