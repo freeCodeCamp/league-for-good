@@ -9,7 +9,6 @@ import Spinner from '../LoadingPage.jsx';
 import Menu from './Menu.jsx';
 
 class NavBar extends Component {
-
 	render() {
 		return (
 			<div>

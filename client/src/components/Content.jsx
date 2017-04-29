@@ -2,10 +2,14 @@ import React,{Component} from 'react';
 import Paper from 'material-ui/Paper';
 import { connect } from 'react-redux';
 import Spinner from './LoadingPage.jsx';
+<<<<<<< cf8cc3049cc5944df85261949834b240d4a8d20e
 import CreateLeagueCard from './create-league/index.jsx';
 import CreateLeagueCardForm from './create-league/CreateLeagueCardForm.jsx';
 import { bindActionCreators } from 'redux';
 import { createLeague } from '../actions/index.js';
+=======
+import Nav from './nav/index.jsx';
+>>>>>>> image loader
 
 const style = {
 	width:'90%',

@@ -1,12 +1,21 @@
 import React from 'react';
-import NavBar from './components/nav/index.jsx';
+import {
+  BrowserRouter as Router,
+  Route,  
+  Redirect,
+  withRouter
+} from 'react-router-dom';
+
 import Content from './components/Content.jsx';
 
+
+
 const App = props => (
-	<div>
-		<NavBar/>
-		<Content/>
-	</div>
+	<Router>
+		<div>
+			<Route path='/' component={Content}/>		
+		</div>
+	</Router>
 );
 
 export default App;

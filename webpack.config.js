@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 module.exports = {
   entry: './client/index.js',
@@ -14,21 +15,10 @@ module.exports = {
         test: /\.js$|\.jsx$/,
         exclude: /node_modules/
       },
-	  {
-		  test: /\.svg/,
-		  use: {
-			loader: 'svg-url-loader',
-			options: {}
-		  }
-      }
-    ],
-	loaders: [
       {
-        test: /\.(gif|png|jpe?g|svg)$/i,
-        loaders: [
-          'file-loader?name=/client/src/assets/images/sports_icons/[name].[ext]',
-          'image-webpack-loader'
-        ]
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        include : path.join(__dirname, 'images'),
+        loader  : 'url-loader?limit=30000&name=images/[name].[ext]'
       }
     ]
   },
