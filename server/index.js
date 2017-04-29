@@ -26,13 +26,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(session({
-  resave: true,
-  saveUninitialized: true,
-  secret: process.env.SESSION_SECRET,
-  store: new MongoStore({
-    url: MONGO_URI,
-    autoReconnect: true
-  })
+	resave: true,
+	saveUninitialized: true,
+	secret: process.env.SESSION_SECRET,
+	store: new MongoStore({
+		url: MONGO_URI,
+		autoReconnect: true
+	})
 }));
 
 app.use(webpackMiddleware);

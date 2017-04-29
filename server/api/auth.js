@@ -9,12 +9,12 @@ const logInUser = (req,res) => {
     if(err) throw err;
     res.redirect('/')
   })
-}
+};
 
 const logOutUser = (req, res) =>{
   req.logout();
   res.status(200).send("User logged out");
-}
+};
 
 
 Router.route("/google")

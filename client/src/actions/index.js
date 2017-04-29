@@ -25,3 +25,7 @@ export function toggleMenu(){
 	return {type:"Toggle Menu"};
 }
 
+export function createLeague(sportType) {
+	return {type: "Create League", payload: sportType};
+}
+

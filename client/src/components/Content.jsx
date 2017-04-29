@@ -3,39 +3,50 @@ import Paper from 'material-ui/Paper';
 import { connect } from 'react-redux';
 import Spinner from './LoadingPage.jsx';
 import CreateLeagueCard from './create-league/index.jsx';
+import CreateLeagueCardForm from './create-league/CreateLeagueCardForm.jsx';
+import { bindActionCreators } from 'redux';
+import { createLeague } from '../actions/index.js';
 
 const style = {
 	width:'90%',
 	margin:'40px auto',
-	height: 400,
+	height: 'auto',
 	textAlign: 'center',
-	background:'#ECEFF1',
+	background:'#f4f6f7',
 	color:"#37474F",
-	border:'1px solid #607D8B',
-	textShadow:'1px 0px 2px #607D8B'		
+	border:'1px solid #607D8B'		
 };
 
 class Content extends Component {
+	onClick(sport) {
+		this.props.createLeague(sport);
+	}
+	
 	render() {
 		const {userName, menuOpen, loading} = this.props;
+
 		return (
 			<div className={menuOpen? 'content-wrapper': 'content-wrapper-expanded'}>
 				{userName && 
 					<Paper style={style} zDepth={3}>
-						<h1>{`Hello ${userName}!`}</h1>
+						<CreateLeagueCard onClick={this.onClick.bind(this)} />
+						<CreateLeagueCardForm sportType={this.props.league.sportType} />
 					</Paper>
 				}
-				<CreateLeagueCard />
 			</div>
 		);	
 	}
 }
 
 function mapStateToProps(state) {
-	const {auth, menu} = state;
+	const {auth, menu, createLeague} = state;
 	const userName = auth.user? auth.user.name : null;
 
-	return { userName, menuOpen:menu.open };
+	return { userName, menuOpen: menu.open, league: createLeague };
 }
 
-export default connect(mapStateToProps)(Content);
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators({createLeague}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Content);
