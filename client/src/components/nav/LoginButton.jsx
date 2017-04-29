@@ -21,12 +21,10 @@ class LogInButton extends Component {
 			</div>
 		);
 	}
-	componentDidMount() {
-		this.props.initAuthState();
-	}
+
 
 	render() {
-		if(!this.props.loggedIn) {
+		if(!this.props.user) {
 			return this.renderDefault();
 		}
 		else {
@@ -36,7 +34,7 @@ class LogInButton extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({initAuthState, logOut}, dispatch);
+	return bindActionCreators({logOut}, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(LogInButton);

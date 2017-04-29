@@ -1,23 +1,23 @@
-import React from 'react'
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect,
-  withRouter
-} from 'react-router-dom'
+import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Redirect } from 'react-router-dom';
 
-const PrivateRoute = ({component: Component, ...rest }) => (
-  <Route {...rest} render={props => (
-    loggedIn ? (
-      <Component {...props}/>
-    ) : (
-      <Redirect to={{
-        pathname: '/login',
-        state: { from: props.location }
-      }}/>
-    )
-  )}/>
-)
+import { initAuthState } from '../actions/index';
 
-export default PrivateRoute;
+export default function(ComposedComponent){
+
+  return class extends Component{
+    render(){
+      const { loggedIn } = this.props;
+
+      if(loggedIn){
+        return <ComposedComponent/>
+      }else{
+        return <Redirect to="/login"/>
+      }
+    }
+  }
+}
+
+

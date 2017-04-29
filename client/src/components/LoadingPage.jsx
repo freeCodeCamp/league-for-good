@@ -14,14 +14,10 @@ const style = {
 	alignItems:'center'
 };
 
-const Loading = props => {
-	if(!props.loading) return <noScript/>;
-
-	return (
-		<div style={style}>
-			<CircularProgress size={80} thickness={3.5}/>
-		</div>
-	)
-}
+const Loading = () => (
+	<div style={style}>
+		<CircularProgress size={80} thickness={3.5}/>
+	</div>
+)
 
 export default Loading;

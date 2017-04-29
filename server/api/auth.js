@@ -16,7 +16,6 @@ const logOutUser = (req, res) =>{
   res.status(200).send("User logged out");
 };
 
-
 Router.route("/google")
   .get(passport.authenticate('google',{scope:['profile','email']}));
 
