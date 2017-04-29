@@ -1,15 +1,13 @@
 import React,{Component} from 'react';
 import Paper from 'material-ui/Paper';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Spinner from './LoadingPage.jsx';
-<<<<<<< cf8cc3049cc5944df85261949834b240d4a8d20e
+
 import CreateLeagueCard from './create-league/index.jsx';
 import CreateLeagueCardForm from './create-league/CreateLeagueCardForm.jsx';
-import { bindActionCreators } from 'redux';
-import { createLeague } from '../actions/index.js';
-=======
-import Nav from './nav/index.jsx';
->>>>>>> image loader
+import { createLeague, initAuthState } from '../actions/index.js';
+
 
 const style = {
 	width:'90%',
@@ -22,21 +20,22 @@ const style = {
 };
 
 class Content extends Component {
+
 	onClick(sport) {
 		this.props.createLeague(sport);
 	}
-	
+	// componentDidMount(){
+	// 	this.props.initAuthState()
+	// }
 	render() {
-		const {userName, menuOpen, loading} = this.props;
+		const {userName, menuOpen, loading, league} = this.props;
 
 		return (
 			<div className={menuOpen? 'content-wrapper': 'content-wrapper-expanded'}>
-				{userName && 
 					<Paper style={style} zDepth={3}>
 						<CreateLeagueCard onClick={this.onClick.bind(this)} />
-						<CreateLeagueCardForm sportType={this.props.league.sportType} />
+						<CreateLeagueCardForm sportType={league.sportType} />
 					</Paper>
-				}
 			</div>
 		);	
 	}
@@ -50,7 +49,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({createLeague}, dispatch);
+	return bindActionCreators({createLeague, initAuthState}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Content);
