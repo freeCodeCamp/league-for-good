@@ -24,6 +24,7 @@ const CreateLeagueCard = (props) => (
 			subtitle="Choose a sport"
 		/>
 		<CardActions>
+			<img src={sportIcon} style={{width:30,height:30}}/>
 			{sports.map((sport, i) => {
 				return <CreateLeagueButton
 							key={i}

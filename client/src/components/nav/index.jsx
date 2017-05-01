@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {toggleMenu} from '../../actions/index';
+import {toggleMenu, logOut} from '../../actions/index';
 import AppBar from 'material-ui/AppBar';
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 import LogInButton from './LogInButton.jsx';
-import Spinner from '../LoadingPage.jsx';
 import Menu from './Menu.jsx';
 
 class NavBar extends Component {
@@ -13,29 +11,26 @@ class NavBar extends Component {
 		return (
 			<div>
 				<AppBar 
-						title="League For Good"
-						style={{zIndex:2000}}
-						iconElementRight={<LogInButton {...this.props}/>}
-						onLeftIconButtonTouchTap={()=>this.props.toggleMenu()}/>
-				<Menu open = {this.props.open}
-						  loggedIn = {this.props.loggedIn}/>        
+					title="League For Good"
+					style={{zIndex:2000}}
+					onLeftIconButtonTouchTap={()=>this.props.toggleMenu()}
+				/>
+				<Menu 
+					open={this.props.open} 
+					logOut={this.props.logOut}
+				/>        
 			</div>			
 		);
 	}
 }
 
-function mapStateToProps(state) {
-	const {auth, menu} = state;
-	return {
-		loggedIn: auth.loggedIn,
-		user: auth.user,
-		open: menu.open,
-		loading: auth.loading
-	};
+function mapStateToProps({menu}) {
+	const {open} = menu;
+	return {open};
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ toggleMenu }, dispatch);
+	return bindActionCreators({ toggleMenu, logOut }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
