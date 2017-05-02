@@ -30,7 +30,7 @@ const CreateLeagueCard = (props) => (
 							label={sport.name}
 							icon={sport.icon}
 							onClick={props.onClick}
-						/>;
+						/>; 
 			})}
 		</CardActions>
 	</Card>
