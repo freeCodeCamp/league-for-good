@@ -24,13 +24,12 @@ const CreateLeagueCard = (props) => (
 			subtitle="Choose a sport"
 		/>
 		<CardActions>
-			<img src={baseballIcon} style={{width:30,height:30}}/>
 			{sports.map((sport, i) => {
 				return <CreateLeagueButton
 							key={i}
 							label={sport.name}
 							icon={sport.icon}
-							onClick={props.onClick(sport.name)}
+							onClick={props.onClick}
 						/>;
 			})}
 		</CardActions>

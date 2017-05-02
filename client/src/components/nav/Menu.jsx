@@ -10,9 +10,9 @@ import Divider from 'material-ui/Divider';
 import AccoutBox from 'material-ui/svg-icons/action/account-box';
 import Subheader from 'material-ui/Subheader';
 import Avatar from 'material-ui/Avatar';
-
+import LogOutModal from './logOut.jsx';
 const Menu = props => {
-    const {logOut, open } = props;
+    const { open, logOut } = props;
  
     return (
     <Drawer open={open}>
@@ -22,11 +22,7 @@ const Menu = props => {
 				<ListItem primaryText="Sent mail" leftIcon={<ContentSend />} />
 				<ListItem primaryText="Drafts" leftIcon={<ContentDrafts />} />
 				<ListItem primaryText="Inbox" leftIcon={<ContentInbox />} />
-				<ListItem 
-					onTouchTap={()=> logOut()}
-					primaryText="Log Out"
-					leftIcon={<AccoutBox />}
-				/>
+				<LogOutModal logOut={logOut}/>
       </List>
     </Drawer>
 	);

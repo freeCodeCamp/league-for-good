@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {toggleMenu, logOut} from '../../actions/index';
 import AppBar from 'material-ui/AppBar';
-import LogInButton from './LogInButton.jsx';
 import Menu from './Menu.jsx';
 
 class NavBar extends Component {

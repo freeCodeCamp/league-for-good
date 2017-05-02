@@ -9,11 +9,12 @@ const buttonStyle = {
 // League Button with icon for create league form
 const CreateLeagueButton = (props) => (
 	<div>
-		<FlatButton label={props.label}
+		<FlatButton 
+			label={props.label}
 			backgroundColor="lightblue"
 			style={buttonStyle}
-			onTouchTap={() => props.onClick}
-		/>;
+			onTouchTap={() => props.onClick(props.label)}
+		/>
 	</div>
 );
 
