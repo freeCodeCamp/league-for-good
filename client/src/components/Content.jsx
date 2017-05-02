@@ -9,7 +9,7 @@ import CreateLeagueCardForm from './create-league/CreateLeagueCardForm.jsx';
 import { createLeague, initAuthState } from '../actions/index.js';
 import NavBar from './nav/index.jsx';
 
-const style = {
+const paperStyle = {
 	width:'90%',
 	margin:'40px auto',
 	height: 'auto',
@@ -32,7 +32,7 @@ class Content extends Component {
 			<div>
 				<NavBar/>
 					<div className={menuOpen? 'content-wrapper': 'content-wrapper-expanded'}>
-							<Paper style={style} zDepth={3}>
+							<Paper style={paperStyle} zDepth={3}>
 								<CreateLeagueCard onClick={this.onClick.bind(this)} />
 								<CreateLeagueCardForm sportType={league.sportType} />
 							</Paper>
