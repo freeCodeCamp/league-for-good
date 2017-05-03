@@ -14,6 +14,10 @@ const LeagueSchema = new Schema({
 		ref: 'user',
 		required: true
 	},
+	sport_type: {
+		type: String,
+		required: true
+	},
 	active_teams: {
 		type: [{
 			type: Schema.Types.ObjectId,

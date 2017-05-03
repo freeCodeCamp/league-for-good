@@ -13,7 +13,7 @@ const TeamSchema = new Schema({
 		type: [{
 			playerId: Schema.Types.ObjectId,
 			ref: 'player'
-		]},
+		}],
 		required: true
 	},
 	seasons: {
@@ -31,10 +31,6 @@ const TeamSchema = new Schema({
 			type: Schema.Types.ObjectId,
 			ref: 'league'
 		}]
-	},
-	sport_type: {
-		type: String,
-		required: true
 	},
 	staff: {
 		type: [{

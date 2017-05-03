@@ -19,7 +19,16 @@ module.exports = {
         test: /\.(jpe?g|png|gif|svg)$/i,
         include : path.join(__dirname, 'images'),
         loader  : 'url-loader?limit=30000&name=images/[name].[ext]'
-      }
+      },
+	  {
+		test: /\.js$/,
+		enforce: 'pre',
+
+		loader: 'eslint-loader',
+		options: {
+			emitWarning: true,
+		},
+		},
     ]
   },
   plugins: [
