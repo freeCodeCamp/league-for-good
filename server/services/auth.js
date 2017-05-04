@@ -36,7 +36,6 @@ passport.use(new GoogleStrategy({
 			})
 			
 			newUser.save();
-			console.log("New user created", newUser);
 			return cb(null, newUser);
 		}
 		else {

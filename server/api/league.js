@@ -23,6 +23,14 @@ const createLeague = (req, res) => {
 		});
 };
 
+const getLeagues = (req, res) => {
+	League.find({owner: req.user._id})
+		.exec()
+		.then(leagues => res.send(leagues))
+		.catch(err => res.send(err));
+};
+
+Router.route('/fetchLeagues').get(getLeagues);
 Router.route('/create').post(createLeague);
 
 module.exports = Router;  

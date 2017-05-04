@@ -28,3 +28,11 @@ export function createLeague(sportType) {
 	return {type: 'Create League', payload: sportType};
 }
 
+export function fetchLeagues(){
+	return function(dispatch){
+		axios.get('/league/fetchLeagues')
+			.then(({data}) => { 
+				dispatch({type:'FETCH_LEAGUES',payload:data});
+		});
+	}
+}

@@ -9,7 +9,6 @@ const TeamSchema = new Schema({
 		type: String,
 		required: true
 	},
-<<<<<<< HEAD
 	players: [{type: Schema.Types.ObjectId, ref: 'player'}],
 	seasons: [{type: Schema.Types.ObjectId, ref: 'season'}],
 	currently_active: {

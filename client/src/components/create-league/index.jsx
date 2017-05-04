@@ -25,41 +25,13 @@ const sports = [
 ];
 
 class CreateLeagueCard extends Component {
-	constructor(props) {
-		super(props);
-		
-		this.state = {
-			leagueName: ''
-		};
-	}
-	
+
 	onClick(sport) {
 		this.props.createLeague(sport);
 	}
-	
-	handleChange(event) {
-		this.setState({
-			leagueName: event.target.value
-		});
-	}
-	
-	onSubmit() {
-		const name = this.state.leagueName;
-		const sportType = this.props.league.sportType;
-		
-		const body = {
-			name, sportType
-		};
-		
-		axios.post('/league/create', body)
-			.then((response) => {
-				console.log(response.data);
-			}).catch(() => {
-				console.log('error client side');
-			});
-	}
 
 	render() {
+		const {sportType} = this.props.league;
 		return (
 			<div>
 				<Card>
@@ -71,6 +43,7 @@ class CreateLeagueCard extends Component {
 						{sports.map((sport, i) => {
 							return <CreateLeagueButton
 										key={i}
+										active={sportType == sport.name}
 										label={sport.name}
 										icon={sport.icon}
 										onClick={this.onClick.bind(this)}
@@ -78,12 +51,7 @@ class CreateLeagueCard extends Component {
 						})}
 					</CardActions>
 				</Card>
-				<CreateLeagueCardForm 
-					sportType={this.props.league.sportType}
-					leagueName={this.state.leagueName}
-					onChange={this.handleChange.bind(this)}
-					onSubmit={this.onSubmit.bind(this)}
-				/>
+				<CreateLeagueCardForm />
 			</div>
 		);
 	}

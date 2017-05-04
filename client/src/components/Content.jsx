@@ -8,6 +8,7 @@ import { Route } from 'react-router-dom';
 import CreateLeagueCard from './create-league/index.jsx';
 import { createLeague, initAuthState } from '../actions/index.js';
 import NavBar from './nav/index.jsx';
+import Dashboard from './dashboard/index.jsx';
 
 const paperStyle = {
 	width:'90%',
@@ -20,6 +21,8 @@ const paperStyle = {
 	border:'1px solid #607D8B',
 };
 
+const Home = () => <h2>Home Page</h2>;
+
 class Content extends Component {
 	render() {
 		const {menuOpen, league} = this.props;
@@ -29,6 +32,7 @@ class Content extends Component {
 				<NavBar/>
 					<div className={menuOpen ? 'content-wrapper': 'content-wrapper-expanded'}>
 							<Paper style={paperStyle} zDepth={3}>
+								<Route path="/" component={Dashboard}/>
 								<Route path="/create" component={CreateLeagueCard} />
 							</Paper>
 					</div>

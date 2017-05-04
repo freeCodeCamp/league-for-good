@@ -26,7 +26,9 @@ const iconStyle = {
 const CreateLeagueButton = (props) => (
 	<FlatButton 
 		label={props.label}
-		backgroundColor="lightblue"
+		backgroundColor={props.active?"orange" : "lightblue"}
+		hoverColor="#FFCC80"
+		disableTouchRipple={true}
 		style={buttonStyle}
 		onTouchTap={() => props.onClick(props.label)}
 		icon={<CreateLeagueIcon icon={props.icon} />}
