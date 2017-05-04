@@ -2,10 +2,10 @@ import React,{Component} from 'react';
 import Paper from 'material-ui/Paper';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
 
 
 import CreateLeagueCard from './create-league/index.jsx';
-import CreateLeagueCardForm from './create-league/CreateLeagueCardForm.jsx';
 import { createLeague, initAuthState } from '../actions/index.js';
 import NavBar from './nav/index.jsx';
 
@@ -13,6 +13,7 @@ const paperStyle = {
 	width:'90%',
 	margin:'40px auto',
 	height: 'auto',
+	minHeight: '400px',
 	textAlign: 'center',
 	background:'#f4f6f7',
 	color:"#37474F",
@@ -20,21 +21,15 @@ const paperStyle = {
 };
 
 class Content extends Component {
-
-	onClick(sport) {
-		this.props.createLeague(sport);
-	}
-
 	render() {
 		const {menuOpen, league} = this.props;
 
 		return (
 			<div>
 				<NavBar/>
-					<div className={menuOpen? 'content-wrapper': 'content-wrapper-expanded'}>
+					<div className={menuOpen ? 'content-wrapper': 'content-wrapper-expanded'}>
 							<Paper style={paperStyle} zDepth={3}>
-								<CreateLeagueCard onClick={this.onClick.bind(this)} />
-								<CreateLeagueCardForm sportType={league.sportType} />
+								<Route path="/create" component={CreateLeagueCard} />
 							</Paper>
 					</div>
 			</div>

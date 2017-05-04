@@ -6,7 +6,7 @@ import createLeagueReducer from './createleague';
 const rootReducer = combineReducers({
 	auth: authReducer,
 	menu: menuReducer,
-	createLeague: createLeagueReducer
+	createLeague: createLeagueReducer,
 });
 
 export default rootReducer;

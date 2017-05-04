@@ -11,27 +11,23 @@ const TeamSchema = new Schema({
 	},
 	players: {
 		type: [{
-			playerId: Schema.Types.ObjectId,
+			type: Schema.Types.ObjectId,
 			ref: 'player'
 		}],
 		required: true
 	},
-	seasons: {
-		type: [{
+	seasons: [{
 			type: Schema.Types.ObjectId,
 			ref: 'season'
-		}]
-	},
+	}],
 	currently_active: {
 		type: Boolean,
 		default: false
 	},
-	league_id: {
-		type: [{
-			type: Schema.Types.ObjectId,
-			ref: 'league'
-		}]
-	},
+	league_id: [{
+		type: Schema.Types.ObjectId,
+		ref: 'league'
+	}],
 	staff: {
 		type: [{
 			role: String,

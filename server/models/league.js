@@ -18,12 +18,10 @@ const LeagueSchema = new Schema({
 		type: String,
 		required: true
 	},
-	active_teams: {
-		type: [{
-			type: Schema.Types.ObjectId,
-			ref: 'team'
-		}]
-	},
+	active_teams: [{
+		type: Schema.Types.ObjectId,
+		ref: 'team'
+	}],
 	archived_teams: [{
 		type: Schema.Types.ObjectId,
 		ref: 'team'
