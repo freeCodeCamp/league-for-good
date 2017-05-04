@@ -41,8 +41,9 @@ app.use(passport.session());
 
 //define all routes here
 app.use('/auth', Routes.auth);
+app.use('/league', Routes.league)
 
-app.get('/login', (req, res) => res.redirect('/'));
+app.get('*', (req, res) => res.redirect('/'));
 //Temporary fix for syncing up with react-routers urls
 //avoids causing a server-side error when refreshing browser on the /login page
 

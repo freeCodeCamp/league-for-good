@@ -42,12 +42,10 @@ const GameSchema = new Schema({
 	home: {
 		type: Boolean
 	},
-	roster: {
-		type: [{
-			type: Schema.Types.ObjectId,
-			ref: 'player'
-		}]
-	}},
+	roster: [{
+		type: Schema.Types.ObjectId,
+		ref: 'player'
+	}]},
 	{
 		collection: 'games'
 	}

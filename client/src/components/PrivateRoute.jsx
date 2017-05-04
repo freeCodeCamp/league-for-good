@@ -5,19 +5,21 @@ import { Redirect } from 'react-router-dom';
 
 import { initAuthState } from '../actions/index';
 
-export default function(ComposedComponent){
+export default function(ComposedComponent) {
 
-  return class extends Component{
-    render(){
-      const { loggedIn } = this.props;
+	return class extends Component {
+		render() {
+			const { loggedIn, history, location, match } = this.props;
+			const routerProps = {location, history, match};
 
-      if(loggedIn){
-        return <ComposedComponent/>
-      }else{
-        return <Redirect to="/login"/>
-      }
-    }
-  }
+			if (loggedIn) {
+				return <ComposedComponent {...routerProps} />
+			}
+			else {
+				return <Redirect to="/login"/>
+			}
+		}
+	}
 }
 
 

@@ -40,13 +40,11 @@ const PlayerSchema = new Schema({
 	country: {
 		type: String
 	},
-	teams: {
-		type: [{
+	teams: [{
 			teamId: Schema.Types.ObjectId,
 			position: String,
 			jersey_num: Number
-		}]
-	}},
+	}]},
 	{
 		collection: 'players'
 	}

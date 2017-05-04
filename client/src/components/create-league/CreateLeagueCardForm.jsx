@@ -13,7 +13,10 @@ const textFieldStyle = {
 const CreateLeagueCardForm = (props) => (
 	<div>
 		{props.sportType ? 
-			<CreateLeagueForm sportType={props.sportType} /> :
+			<CreateLeagueForm 
+				sportType={props.sportType}
+				{...props}
+			/> :
 			<noScript />
 		}
 	</div>
@@ -22,8 +25,17 @@ const CreateLeagueCardForm = (props) => (
 const CreateLeagueForm = (props) => (
 	<div style={formStyle}>
 		<h2>{props.sportType} League</h2>
-		<TextField hintText="League Name" style={textFieldStyle} />
-		<RaisedButton label="Create" primary={true} />
+		<TextField 
+			floatingLabelText="League Name"
+			style={textFieldStyle}
+			onChange={props.onChange}
+			value={props.leagueName}
+		/>
+		<RaisedButton
+			label="Create"
+			primary={true}
+			onTouchTap={props.onSubmit}
+		/>
 	</div>
 );
 

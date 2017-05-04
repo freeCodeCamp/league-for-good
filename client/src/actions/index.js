@@ -5,18 +5,19 @@ export function initAuthState(){
 	return function(dispatch){
 		axios.post('/auth/authenticate')
 			.then(({data}) => {
-				dispatch({type:'InitAuthState', payload:{...date, loading:false}});
+				const payload = Object.assign({loading:false}, data);
+				dispatch({type:'InitAuthState', payload });
 			});
 	};
-};
+}
 
 export function logOut(){
 	return function(dispatch){
 		axios.post('/auth/logout')
-			.then((data) => { 
+			.then((data) => {
 				dispatch({type:'Log Out'});
-			})	
-	}
+			});	
+	};
 }
 
 export function toggleMenu(){

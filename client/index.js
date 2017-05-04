@@ -15,10 +15,11 @@ injectTapEventPlugin();
 const Root = () => {
 	return(
 		<MuiThemeProvider>
-		  <Provider store={createStore(reducers, applyMiddleware(thunk))}>
-		    <App />
-		  </Provider>
+			<Provider store={createStore(reducers, applyMiddleware(thunk))}>
+				<App />
+			</Provider>
 		</MuiThemeProvider>
 	);
 };
+
 ReactDOM.render(<Root/>, document.getElementById('root'));
