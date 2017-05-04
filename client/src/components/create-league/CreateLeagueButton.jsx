@@ -15,7 +15,12 @@ const iconStyle = {
 	width: '30px',
 	height: '30px',
 	verticalAlign: 'middle'
+marginRight: '10px',
+marginBottom: '10px',
+width:160,
+textAlign:'center'
 };
+
 
 // League Button with icon for create league form
 const CreateLeagueButton = (props) => (
@@ -31,6 +36,7 @@ const CreateLeagueButton = (props) => (
 // Icon Component for the button
 const CreateLeagueIcon = (props) => (
 	<img src={props.icon} style={iconStyle} />
+
 );
 
 export default CreateLeagueButton;
