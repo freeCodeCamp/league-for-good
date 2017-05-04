@@ -11,13 +11,13 @@ const style = {
 	zIndex:2001,
 	display:'flex',
 	justifyContent: 'center',
-	alignItems:'center'
+	alignItems:'center',
 };
 
 const Loading = () => (
 	<div style={style}>
 		<CircularProgress size={80} thickness={3.5}/>
 	</div>
-)
+);
 
 export default Loading;

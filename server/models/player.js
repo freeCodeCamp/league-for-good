@@ -30,7 +30,7 @@ const PlayerSchema = new Schema({
 	},
 	address: {
 		type: String
-	}
+	},
 	city: {
 		type: String
 	},

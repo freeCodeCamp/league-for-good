@@ -9,13 +9,7 @@ const TeamSchema = new Schema({
 		type: String,
 		required: true
 	},
-	players: {
-		type: [{
-			playerId: Schema.Types.ObjectId,
-			ref: 'player'
-		}],
-		required: true
-	},
+	players: [{type: Schema.Types.ObjectId,ref: 'player'}],
 	seasons: {
 		type: [{
 			type: Schema.Types.ObjectId,

@@ -3,7 +3,6 @@
 */
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
 const LeagueSchema = new Schema({
 	name: {
 		type: String,
@@ -18,16 +17,15 @@ const LeagueSchema = new Schema({
 		type: String,
 		required: true
 	},
-	active_teams: {
-		type: [{
+	active_teams: [{
 			type: Schema.Types.ObjectId,
 			ref: 'team'
-		}]
-	},
+	}],
 	archived_teams: [{
-		type: Schema.Types.ObjectId,
-		ref: 'team'
-	}]},
+			type: Schema.Types.ObjectId,
+			ref: 'team'
+	}]
+	},
 	{
 		collection: 'leagues'
 	}

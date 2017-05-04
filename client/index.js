@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import injectTapEventPlugin from "react-tap-event-plugin";
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
@@ -20,6 +20,5 @@ const Root = () => {
 		  </Provider>
 		</MuiThemeProvider>
 	);
-}
-
+};
 ReactDOM.render(<Root/>, document.getElementById('root'));

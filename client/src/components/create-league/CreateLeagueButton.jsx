@@ -14,11 +14,11 @@ const buttonStyle = {
 const iconStyle = {
 	width: '30px',
 	height: '30px',
-	verticalAlign: 'middle'
-marginRight: '10px',
-marginBottom: '10px',
-width:160,
-textAlign:'center'
+	verticalAlign: 'middle',
+	marginRight: '10px',
+	marginBottom: '10px',
+	width:160,
+	textAlign:'center'
 };
 
 

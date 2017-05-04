@@ -20,20 +20,16 @@ module.exports = {
         include : path.join(__dirname, 'images'),
         loader  : 'url-loader?limit=30000&name=images/[name].[ext]'
       },
-	  {
-		test: /\.js$/,
-		enforce: 'pre',
-
-		loader: 'eslint-loader',
-		options: {
-			emitWarning: true,
-		},
-		},
-    ]
+	    {
+		    test: /\.js$/,
+		    enforce: 'pre',
+		    loader: 'eslint-loader',
+		    options: { emitWarning: true }
+		}]
   },
   plugins: [
-	new HtmlWebpackPlugin({
-		template: 'client/index.html'
-	})
+	  new HtmlWebpackPlugin({
+		  template: 'client/index.html'
+	  })
   ]
 };
