@@ -5,8 +5,7 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 
 
-import CreateLeagueCard from './create-league/index.jsx';
-import { createLeague, initAuthState } from '../actions/index.js';
+import CreateLeagueCard from './create-league/CreateLeagueCardForm.jsx';
 import NavBar from './nav/index.jsx';
 import Dashboard from './dashboard/index.jsx';
 
@@ -32,7 +31,7 @@ class Content extends Component {
 				<NavBar/>
 					<div className={menuOpen ? 'content-wrapper': 'content-wrapper-expanded'}>
 							<Paper style={paperStyle} zDepth={3}>
-								<Route path="/" component={Dashboard}/>
+								<Route exact path="/" component={Dashboard}/>
 								<Route path="/create" component={CreateLeagueCard} />
 							</Paper>
 					</div>
@@ -42,14 +41,10 @@ class Content extends Component {
 }
 
 function mapStateToProps(state) {
-	const { menu, createLeague} = state;
+	const { menu} = state;
 	
 
-	return { menuOpen: menu.open, league: createLeague };
+	return { menuOpen: menu.open};
 }
 
-function mapDispatchToProps(dispatch) {
-	return bindActionCreators({createLeague}, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Content);
+export default connect(mapStateToProps)(Content);

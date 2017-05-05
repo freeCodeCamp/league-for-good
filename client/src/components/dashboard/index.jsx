@@ -19,6 +19,7 @@ class Dashboard extends Component{
 }
 
 function mapStateToProps(state){
+	console.log(state.league.list);
 	return {leagues: state.league.list};
 }
 

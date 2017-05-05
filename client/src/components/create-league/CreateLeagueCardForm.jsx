@@ -1,74 +1,96 @@
 import React, {Component} from 'react';
-import {TextField} from 'redux-form-material-ui';
+import { withRouter } from 'react-router-dom';
+import { TextField } from 'redux-form-material-ui';
 import RaisedButton from 'material-ui/RaisedButton';
-import {Field, reduxForm} from 'redux-form';
+import { Field, reduxForm, formValueSelector } from 'redux-form';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import axios from 'axios';
+
 import validate from './validate';
+import SportTypeSelector from './CreateLeagueButton.jsx';
+import {createLeague} from '../../actions/index';
 
 const formStyle = {
 	width:'80%',
 	margin:'40px auto 30px'
 };
 
-const textFieldStyle = {
-	marginRight: '10%'
-};
+const textFieldStyle = { marginRight: '10%' };
 
-const buttonStyle = {
-	marginTop:'30px'
-};
-
+const buttonStyle = { marginTop:'30px' };
 
 
 class CreateLeagueForm extends Component{
 
-	onSubmit = data => {
-		const {sportType} = this.props.league;
-		const body = {...data, sportType};
-		
-		axios.post('/league/create', body)
-			.then((response) => {
-				console.log('successful post', response.data);
-			}).catch(() => {
-				console.log('error client side');
-			});		
+	onSubmit = formBody => {
+		const {createLeague, history} = this.props;
+		const redirectMethod = () => history.push('/');
+
+		//call the createLeague action and pass in the validated form fields
+		//and a callback function to redirect the url.
+		//I cant figure out another way to trigger the redirect after a successful form submission
+		//than by accessing react-routers built in method from inside the component
+		createLeague(formBody, redirectMethod);	
 	}
 
 	render(){
-		const {error, handleSubmit} = this.props;
+		const {error, handleSubmit, change, SelectedSportType} = this.props;
 
-		if(!this.props.league.sportType) return <noScript/>;
-
-		return(	 
-			<form style={formStyle}>
-				<h2>{this.props.league.sportType} League</h2>
-				<Field
-					name="name" 
-					component={TextField}
-					floatingLabelText="League Name"
-					fullWidth={true}
-					style={textFieldStyle}
+		return(
+			<div>
+				<SportTypeSelector 
+					onSelect={(sport)=> change('sportType', sport)}
+					selectedSport = {SelectedSportType}
 				/>
-				<RaisedButton
-					label="Create"
-					style={buttonStyle}
-					primary={true}
-					onTouchTap={ handleSubmit(this.onSubmit)}
-				/>
-			</form>
+				{SelectedSportType &&	 
+				<form 
+					onSubmit={ handleSubmit(this.onSubmit)}
+					style={formStyle}
+				>
+					<Field 
+						name="sportType"
+						type="hidden"
+						component="input"
+					/>
+					<Field
+						name="name" 
+						component={TextField}
+						floatingLabelText={`${SelectedSportType} League Name`}
+						fullWidth={true}
+						style={textFieldStyle}
+					/>
+					<RaisedButton
+						label="Create"
+						style={buttonStyle}
+						primary={true}
+						type="submit"
+					/>
+				</form>
+				}
+			</div>
 		);
 	}
 }
 
-function mapStateToProps(state){
-	const { createLeague } = state;
+//redux-form method to access form field values
+const selector = formValueSelector('CreateLeagueForm');
 
-	return { league: createLeague };
+//Decorate component with redux-form
+CreateLeagueForm = reduxForm({form:'CreateLeagueForm',validate})(CreateLeagueForm)
+
+// Callback function passed to the connect function to access the form state
+function mapFormStateToProps(state){
+	return {SelectedSportType: selector(state, 'sportType')}
 }
 
-CreateLeagueForm = connect(mapStateToProps)(CreateLeagueForm);
+function mapDispatchToProps(dispatch){
+	return bindActionCreators({createLeague}, dispatch);
+}
 
-export default reduxForm(
-	{form:'CreateLeagueForm',validate})(CreateLeagueForm)
+//Decorate component with redux bindings
+CreateLeagueForm = connect(mapFormStateToProps, mapDispatchToProps)(CreateLeagueForm);
+
+//Decorate component one last time with react-router bindings in order to redirect user
+//after a successful form submission
+export default withRouter(CreateLeagueForm);
+

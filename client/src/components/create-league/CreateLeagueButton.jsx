@@ -1,5 +1,22 @@
 import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
+import {Card, CardActions, CardHeader, CardText, CardTitle} from 'material-ui/Card';
+
+//sports icons
+import baseballIcon from 'url-loader?limit=10000!../../assets/images/sports_icons/baseball.svg';
+import footballIcon from 'url-loader?limit=10000!../../assets/images/sports_icons/football.svg';
+import hockeyIcon from 'url-loader?limit=10000!../../assets/images/sports_icons/puck.svg';
+import soccerIcon from 'url-loader?limit=10000!../../assets/images/sports_icons/soccer.svg';
+import basketballIcon from 'url-loader?limit=10000!../../assets/images/sports_icons/basketball.svg';
+
+// mapping 
+const sports = [
+	{name: "Football", link: "/create/football", icon: footballIcon},
+	{name: "Basketball", link: "/create/basketball", icon: basketballIcon},
+	{name: "Soccer", link: "/create/soccer", icon: soccerIcon},
+	{name: "Baseball", link: "/create/baseball", icon: baseballIcon},
+	{name: "Hockey", link: "/create/hockey", icon: hockeyIcon}
+];
 
 // CSS for a button
 const buttonStyle = {
@@ -21,6 +38,11 @@ const iconStyle = {
 	textAlign:'center'
 };
 
+// Icon Component for the button
+const CreateLeagueIcon = (props) => (
+	<img src={props.icon} style={iconStyle} />
+);
+
 
 // League Button with icon for create league form
 const CreateLeagueButton = (props) => (
@@ -35,10 +57,31 @@ const CreateLeagueButton = (props) => (
 	/>
 );
 
-// Icon Component for the button
-const CreateLeagueIcon = (props) => (
-	<img src={props.icon} style={iconStyle} />
 
-);
+// Creates list of different buttons for each sport type
+const SportTypeSelector = ({onSelect, selectedSport})=> (
+	<Card>
+		<CardTitle 
+			title="Create League"
+			subtitle="Choose a sport"
+		/>
+		<CardActions>
+			{sports.map((sport, i) => {
+				return (
+					<CreateLeagueButton
+						key={i}
+						active={selectedSport == sport.name}
+						label={sport.name}
+						icon={sport.icon}
+						onClick={onSelect}
+					/> 
+				);
+			})
+		}
+		</CardActions>
+	</Card>
+)
 
-export default CreateLeagueButton;
+
+
+export default SportTypeSelector;
