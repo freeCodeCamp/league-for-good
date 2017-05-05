@@ -22,7 +22,7 @@ module.exports = {
 		'jsx-quotes': ['error', 'prefer-double'],
 		'quotes': ['error', 'single'],
 		'semi': ['error', 'always'],
-		'no-unused-vars': ['warn'],
+		'no-unused-vars': ['off'],
 		'no-console': ['warn'],
 	},
 };

@@ -5,7 +5,7 @@ const passport = require('passport');
 const bodyParser = require('body-parser');
 const webpackMiddleware = require('../webpack.dev.middleware');
 
-require("dotenv").config();
+require('dotenv').config();
 
 const models = require('./models/index');
 const Routes = require('./api/index');
@@ -31,8 +31,8 @@ app.use(session({
 	secret: process.env.SESSION_SECRET,
 	store: new MongoStore({
 		url: MONGO_URI,
-		autoReconnect: true
-	})
+		autoReconnect: true,
+	}),
 }));
 
 app.use(webpackMiddleware);
@@ -41,7 +41,7 @@ app.use(passport.session());
 
 //define all routes here
 app.use('/auth', Routes.auth);
-app.use('/league', Routes.league)
+app.use('/league', Routes.league);
 
 app.get('*', (req, res) => res.redirect('/'));
 //Temporary fix for syncing up with react-routers urls

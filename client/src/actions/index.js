@@ -29,10 +29,10 @@ export function createLeague(sportType) {
 }
 
 export function fetchLeagues(){
-	return function(dispatch){
+	return function(dispatch) {
 		axios.get('/league/fetchLeagues')
 			.then(({data}) => { 
-				dispatch({type:'FETCH_LEAGUES',payload:data});
-		});
-	}
+				dispatch({type: 'FETCH_LEAGUES', payload: data});
+			});
+	};
 }

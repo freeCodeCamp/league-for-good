@@ -15,6 +15,10 @@ In the root directory, create a .env file and place the following:
 
 In the project directory, you can run:
 
+### `npm install`
+
+Installs all the dependencies
+
 ### `npm run dev`
 
 Builds the app for development. It is watched by webpack for any changes in the front end.

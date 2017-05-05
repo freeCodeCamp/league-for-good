@@ -7,7 +7,8 @@ const buttonStyle = {
 	marginBottom: '10px',
 	width: '160px',
 	height: 'auto',
-	textAlign: 'center'
+	textAlign: 'center',
+	padding: '5px'
 };
 
 // CSS for the icon

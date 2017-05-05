@@ -6,28 +6,28 @@ const Schema = mongoose.Schema;
 const LeagueSchema = new Schema({
 	name: {
 		type: String,
-		required: true
+		required: true,
 	},
 	owner: {
 		type: Schema.Types.ObjectId,
 		ref: 'user',
-		required: true
+		required: true,
 	},
 	sport_type: {
 		type: String,
-		required: true
+		required: true,
 	},
 	active_teams: [{
-			type: Schema.Types.ObjectId,
-			ref: 'team'
+		type: Schema.Types.ObjectId,
+		ref: 'team',
 	}],
 	archived_teams: [{
-			type: Schema.Types.ObjectId,
-			ref: 'team'
-	}]
-	},
+		type: Schema.Types.ObjectId,
+		ref: 'team',
+	}],
+},
 	{
-		collection: 'leagues'
+		collection: 'leagues',
 	}
 );
 

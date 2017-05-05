@@ -7,28 +7,28 @@ const Schema = mongoose.Schema;
 const TeamSchema = new Schema({
 	name: {
 		type: String,
-		required: true
+		required: true,
 	},
 	players: [{type: Schema.Types.ObjectId, ref: 'player'}],
 	seasons: [{type: Schema.Types.ObjectId, ref: 'season'}],
 	currently_active: {
 		type: Boolean,
-		default: false
+		default: false,
 	},
 	league_id: [{
 		type: Schema.Types.ObjectId,
-		ref: 'league'
+		ref: 'league',
 	}],
 	staff: {
 		type: [{
 			role: String,
 			name: String,
 			email: String,
-			phone_num: String
-		}]
+			phone_num: String,
+		}],
 	}},
 	{
-		collection: 'teams'
+		collection: 'teams',
 	}
 );
 

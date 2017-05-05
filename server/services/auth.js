@@ -14,13 +14,13 @@ passport.deserializeUser((id, done) => {
 });
 
 passport.use(new GoogleStrategy({
-		clientID: process.env.GOOGLE_CLIENT_ID,
-		clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-		callbackURL: process.env.GOOGLE_CALLBACK_URL
-	},
+	clientID: process.env.GOOGLE_CLIENT_ID,
+	clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+	callbackURL: process.env.GOOGLE_CALLBACK_URL,
+},
 	(token, refreshToken, profile, cb) => {
     
-		if (!profile) return cb("Invalid credentials");
+		if (!profile) return cb('Invalid credentials');
     
 		User.findOne({ googleId: profile.id }, (err, user) => {
       
@@ -29,18 +29,18 @@ passport.use(new GoogleStrategy({
 			if (!user) {
 
 				const newUser = new User({
-				name:profile.displayName,
-				googleId: profile.id,
-				avatar:profile.photos[0].value,
-				email:profile.emails[0].value
-			})
+					name:profile.displayName,
+					googleId: profile.id,
+					avatar:profile.photos[0].value,
+					email:profile.emails[0].value,
+				});
 			
-			newUser.save();
-			return cb(null, newUser);
-		}
-		else {
-			return cb(null, user);
-		}
+				newUser.save();
+				return cb(null, newUser);
+			}
+			else {
+				return cb(null, user);
+			}
 		});
 	}
 ));

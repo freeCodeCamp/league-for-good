@@ -20,8 +20,6 @@ const buttonStyle = {
 	marginTop:'30px'
 };
 
-
-
 class CreateLeagueForm extends Component{
 
 	onSubmit = data => {

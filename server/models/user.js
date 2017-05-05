@@ -5,21 +5,21 @@ const UserSchema = new Schema({
 	name: {
 		type: String,
 		required: true,
-		index: { unique: true }
+		index: { unique: true },
 	},
 	email: {
 		type: String,
-		required: true
+		required: true,
 	},
 	avatar: {
 		type: String,
-		required: true
+		required: true,
 	},
 	googleId: {
-		type: String
+		type: String,
 	}},
 	{
-		collection: 'users'
+		collection: 'users',
 	}
 );
 

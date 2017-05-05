@@ -7,31 +7,31 @@ const Schema = mongoose.Schema;
 const SeasonSchema = new Schema({
 	start_date: {
 		type: Date,
-		required: true
+		required: true,
 	},
 	end_date: {
 		type: Date,
-		required: true
+		required: true,
 	},
 	quarter: {
 		type: String,
-		enum: ["Fall", "Winter", "Spring", "Summer"],
-		required: true
+		enum: ['Fall', 'Winter', 'Spring', 'Summer'],
+		required: true,
 	},
 	year: {
 		type: Number,
-		required: true
+		required: true,
 	},
 	active: {
 		type: Boolean,
-		default: false
+		default: false,
 	},
 	league_id: {
 		type: Schema.Types.ObjectId,
-		ref: 'league'
+		ref: 'league',
 	}},
 	{
-		collection: 'seasons'
+		collection: 'seasons',
 	}
 );
 

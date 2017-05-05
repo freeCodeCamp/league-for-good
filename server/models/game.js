@@ -7,47 +7,47 @@ const Schema = mongoose.Schema;
 const GameSchema = new Schema({
 	team_id: {
 		type: Schema.Types.ObjectId,
-		ref: 'team'
+		ref: 'team',
 	},
 	season_id: {
 		type: Schema.Types.ObjectId,
-		ref: 'season'
+		ref: 'season',
 	},
 	win: {
 		type: String,
-		default: "Win"
+		default: 'Win',
 	},
 	score: {
 		type: Number,
 		default: 0,
-		min: 0
+		min: 0,
 	},
 	opponent_id: {
 		type: Schema.Types.ObjectId,
-		ref: 'team'
+		ref: 'team',
 	},
 	opponent_score: {
 		type: Number,
 		default: 0,
-		min: 0
+		min: 0,
 	},
 	date_played: {
 		type: Date,
-		required: true
+		required: true,
 	},
 	venue: {
-		type: String
+		type: String,
 	},
 	// home field advantage
 	home: {
-		type: Boolean
+		type: Boolean,
 	},
 	roster: [{
 		type: Schema.Types.ObjectId,
-		ref: 'player'
+		ref: 'player',
 	}]},
 	{
-		collection: 'games'
+		collection: 'games',
 	}
 );
 
