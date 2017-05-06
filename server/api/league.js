@@ -33,4 +33,4 @@ const getLeagues = (req, res) => {
 Router.route('/fetchLeagues').get(getLeagues);
 Router.route('/create').post(createLeague);
 
-module.exports = Router;  
+module.exports = Router;

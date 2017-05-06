@@ -9,14 +9,7 @@ import { connect } from 'react-redux';
 import validate from './validate';
 import SportTypeSelector from './CreateLeagueButton.jsx';
 import {createLeague} from '../../actions/index';
-
-const formStyle = {
-	width:'80%',
-	margin:'40px auto 30px'
-};
-
-const textFieldStyle = { marginRight: '10%' };
-const buttonStyle = { marginTop:'30px' };
+import {createLeagueFormStyle, createLeagueTextFieldStyle, createLeagueButtonStyle} from './createLeagueCSS.js';
 
 
 class CreateLeagueForm extends Component{
@@ -44,7 +37,7 @@ class CreateLeagueForm extends Component{
 				{SelectedSportType &&	 
 				<form 
 					onSubmit={ handleSubmit(this.onSubmit)}
-					style={formStyle}
+					style={createLeagueFormStyle}
 				>
 					<Field 
 						name="sportType"
@@ -56,11 +49,11 @@ class CreateLeagueForm extends Component{
 						component={TextField}
 						floatingLabelText={`${SelectedSportType} League Name`}
 						fullWidth={true}
-						style={textFieldStyle}
+						style={createLeagueTextFieldStyle}
 					/>
 					<RaisedButton
 						label="Create"
-						style={buttonStyle}
+						style={createLeagueButtonStyle}
 						primary={true}
 						type="submit"
 					/>
