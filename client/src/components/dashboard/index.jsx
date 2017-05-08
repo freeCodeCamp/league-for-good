@@ -12,7 +12,6 @@ class Dashboard extends Component{
 		return(
 			<div>
 				<h2>Leagues:</h2>
-
 			</div>
 		)
 	}
