@@ -15,10 +15,10 @@ class NavBar extends Component {
 					onLeftIconButtonTouchTap={()=>this.props.toggleMenu()}
 				/>
 				<Menu 
-					open={this.props.open} 
+					open={this.props.open}
 					logOut={this.props.logOut}
-				/>        
-			</div>			
+				/>
+			</div>
 		);
 	}
 }
