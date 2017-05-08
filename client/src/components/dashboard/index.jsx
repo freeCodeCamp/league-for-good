@@ -2,24 +2,27 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchLeagues} from '../../actions/index';
+import Toolbar from './toolbar.jsx';
 
 class Dashboard extends Component{
-	componentDidMount(){
-		this.props.fetchLeagues()
-	}
+
 	render(){
-		const {leagues} = this.props;
+		const {league} = this.props;
 		return(
 			<div>
-				<h2>Leagues:</h2>
+				{league &&
+				<div>	
+					<h2>{league.name}</h2>
+					<h3>{`${league.sport_type} League`}</h3>
+				</div>	
+				}
 			</div>
 		)
 	}
 }
 
 function mapStateToProps(state){
-	console.log(state.league.list);
-	return {leagues: state.league.list};
+	return {league: state.league.selected};
 }
 
 function mapDispatchToProps(dispatch){

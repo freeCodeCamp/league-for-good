@@ -3,8 +3,8 @@ export default function(values){
 	if(!values.name){
 		errors.name = 'This field is required';
 	}
-	if(values.name && values.name.length < 3){
-		errors.name = 'League names must be greater than 2 characters';
+	if(values.name && values.name.length <= 2){
+		errors.name = 'League names must be at least 2 characters';
 	}
 	return errors;
 }
