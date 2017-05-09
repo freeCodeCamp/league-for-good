@@ -30,6 +30,7 @@ class Content extends Component {
 					<div className={menuOpen ? 'content-wrapper': 'content-wrapper-expanded'}>
 							<Paper style={paperStyle} zDepth={3}>
 								<Route exact path="/" component={Dashboard}/>
+								<Route path="/dashboard" component={Dashboard}/>
 								<Route path="/create" component={CreateLeagueCard} />
 							</Paper>
 					</div>

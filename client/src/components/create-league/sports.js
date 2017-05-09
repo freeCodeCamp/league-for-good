@@ -14,4 +14,12 @@ const sports = [
 	{name: 'Hockey', icon: hockeyIcon},
 ];
 
+export const SportsIcons = {
+	Football: footballIcon,
+	Baseball: baseballIcon,
+	Soccer: soccerIcon,
+	Basketball: basketballIcon,
+	Hockey: hockeyIcon
+};
+
 export default sports;

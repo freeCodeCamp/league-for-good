@@ -25,3 +25,7 @@ export function fetchLeagues(){
 			});
 	};
 }
+
+export function selectLeague(league){
+	return {type:'SELECT_LEAGUE', payload:league};
+}

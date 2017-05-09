@@ -9,6 +9,8 @@ export default function(state = defaultState, action) {
 			return {...state, list: [...state.list, action.payload]};	
 		case FETCH_LEAGUES:
 			return {...state, list: action.payload};
+		case 'SELECT_LEAGUE':
+			return {...state, selected: action.payload};	
 	}
 	return state;
 }

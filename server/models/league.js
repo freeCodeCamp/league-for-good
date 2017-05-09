@@ -7,6 +7,7 @@ const LeagueSchema = new Schema({
 	name: {
 		type: String,
 		required: true,
+		trim: true
 	},
 	owner: {
 		type: Schema.Types.ObjectId,

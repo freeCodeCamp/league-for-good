@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Redirect } from 'react-router-dom';
 
-import { initAuthState } from '../actions/index';
-
 export default function(ComposedComponent) {
 
 	return class extends Component {
