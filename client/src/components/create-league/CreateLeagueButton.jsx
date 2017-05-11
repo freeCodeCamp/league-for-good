@@ -2,8 +2,8 @@ import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import {Card, CardActions, CardHeader, CardText, CardTitle} from 'material-ui/Card';
 
-import sports from './sports.js';
-import {sportButtonStyle, sportIconStyle} from './createLeagueCSS.js';
+import { sports } from '../sports.js';
+import { sportButtonStyle, sportIconStyle } from './createLeagueCSS.js';
 
 
 // Icon Component for the button

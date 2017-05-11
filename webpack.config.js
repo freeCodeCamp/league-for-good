@@ -21,7 +21,7 @@ module.exports = {
 				loader  : 'url-loader?limit=30000&name=images/[name].[ext]',
 			},
 			{
-				test: /\.js$/,
+				test: /\.(js|jsx)$/,
 				enforce: 'pre',
 				loader: 'eslint-loader',
 				options: {

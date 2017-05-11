@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 import Drawer from 'material-ui/Drawer';
 import {List, ListItem} from 'material-ui/List';
 import AddCircle from 'material-ui/svg-icons/content/add-circle';
+import Help from 'material-ui/svg-icons/action/help';
 import Avatar from 'material-ui/Avatar';
 
-import {SportsIcons} from '../create-league/sports';
+import {SportsIcons} from '../sports';
 import LogOutModal from './logOut.jsx';
 
 const Menu = props => {
@@ -14,7 +15,7 @@ const Menu = props => {
  
     return (
     <Drawer open={open}>
-		<List style={{marginTop:70}}>
+		<List style={{marginTop: '70px'}}>
 			{
 				leagues.map((league,i) => (
 					<ListItem 
@@ -25,7 +26,7 @@ const Menu = props => {
 						leftIcon={<Avatar  
 							backgroundColor='none'
 							src={SportsIcons[league.sport_type]}/>}
-					/>
+						/>
 					)
 				)
 			}
@@ -33,6 +34,10 @@ const Menu = props => {
 				primaryText="Create League"
 				leftIcon={<AddCircle />}
 				containerElement={<Link to="/create" />}
+			/>
+			<ListItem
+				primaryText="Help"
+				leftIcon={<Help />}
 			/>
 			<LogOutModal logOut={logOut} />
       </List>

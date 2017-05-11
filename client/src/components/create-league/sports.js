@@ -19,7 +19,7 @@ export const SportsIcons = {
 	Baseball: baseballIcon,
 	Soccer: soccerIcon,
 	Basketball: basketballIcon,
-	Hockey: hockeyIcon
+	Hockey: hockeyIcon,
 };
 
 export default sports;

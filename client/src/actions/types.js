@@ -12,3 +12,6 @@ export const LOG_OUT = 'log out';
 //League action types
 export const FETCH_LEAGUES = 'fetch leagues';
 export const CREATE_LEAGUE = 'create league';
+
+// Team action types
+export const TEAM_MANAGE_VIEW = 'team manage view';

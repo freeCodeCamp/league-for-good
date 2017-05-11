@@ -4,16 +4,14 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 
-
-import CreateLeagueCard from './create-league/CreateLeagueCardForm.jsx';
+import CreateLeagueForm from './create-league/CreateLeagueForm.jsx';
 import NavBar from './nav/index.jsx';
-import Dashboard from './dashboard/index.jsx';
+import Dashboard from './dashboard/dashboard.jsx';
 
 const paperStyle = {
 	width:'90%',
 	margin:'40px auto',
 	height: 'auto',
-	minHeight: '400px',
 	textAlign: 'center',
 	background:'#f4f6f7',
 	color:'#37474F',
@@ -31,7 +29,7 @@ class Content extends Component {
 							<Paper style={paperStyle} zDepth={3}>
 								<Route exact path="/" component={Dashboard}/>
 								<Route path="/dashboard" component={Dashboard}/>
-								<Route path="/create" component={CreateLeagueCard} />
+								<Route path="/create" component={CreateLeagueForm} />
 							</Paper>
 					</div>
 			</div>
