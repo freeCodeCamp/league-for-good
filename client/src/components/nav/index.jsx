@@ -32,6 +32,7 @@ class NavBar extends Component {
 
 function mapStateToProps({menu, league}) {
 	const {open} = menu;
+	console.log(league);
 	return {open, leagues:league.list};
 }
 

@@ -42,6 +42,7 @@ app.use(passport.session());
 //define all routes here
 app.use('/auth', Routes.auth);
 app.use('/league', Routes.league);
+app.use('/team', Routes.team);
 
 app.get('*', (req, res) => res.redirect('/'));
 //Temporary fix for syncing up with react-routers urls

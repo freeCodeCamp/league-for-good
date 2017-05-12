@@ -1,4 +1,4 @@
-import {FETCH_LEAGUES, CREATE_LEAGUE } from '../actions/types';
+import {FETCH_LEAGUES, CREATE_LEAGUE, SELECT_LEAGUE } from '../actions/types';
 
 const defaultState = {list:[], selected:null };
 
@@ -9,7 +9,7 @@ export default function(state = defaultState, action) {
 			return {...state, list: [...state.list, action.payload]};	
 		case FETCH_LEAGUES:
 			return {...state, list: action.payload};
-		case 'SELECT_LEAGUE':
+		case SELECT_LEAGUE:
 			return {...state, selected: action.payload};	
 	}
 	return state;

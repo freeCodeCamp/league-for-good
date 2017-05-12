@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_LEAGUES, CREATE_LEAGUE } from './types';
+import { FETCH_LEAGUES, CREATE_LEAGUE, SELECT_LEAGUE } from './types';
 
 const rootURL = 'http://localhost:4000';
 //Post createLeague form to the server
@@ -27,5 +27,5 @@ export function fetchLeagues(){
 }
 
 export function selectLeague(league){
-	return {type:'SELECT_LEAGUE', payload:league};
+	return {type:SELECT_LEAGUE, payload:league};
 }

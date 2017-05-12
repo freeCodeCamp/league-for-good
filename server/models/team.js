@@ -15,10 +15,10 @@ const TeamSchema = new Schema({
 		type: Boolean,
 		default: false,
 	},
-	league_id: [{
+	league_id: {
 		type: Schema.Types.ObjectId,
 		ref: 'league',
-	}],
+	},
 	staff: {
 		type: [{
 			role: String,

@@ -6,9 +6,10 @@ import AddTeamForm from './addTeamForm.jsx';
 class TeamViewWrapper extends Component {
 
 	render() {
+		const {view, league} = this.props;
 		switch (this.props.view) {
 			case 'Add':
-				return <AddTeamForm />;
+				return <AddTeamForm league={league}/>;
 			default:
 				return <noScript />;
 		};
@@ -17,7 +18,7 @@ class TeamViewWrapper extends Component {
 
 // Callback function passed to the connect function to access the form state
 function mapStateToProps(state){
-	return { view: state.teams.view };
+	return { view: state.teams.view, league:state.league.selected };
 }
 
 //Decorate component one last time with react-router bindings in order to redirect user
