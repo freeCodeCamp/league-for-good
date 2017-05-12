@@ -32,5 +32,5 @@ export const tabs = [
 	{ name: 'Teams', component: <TeamViewWrapper />, links: teamLinks },
 	{ name: 'Players', component: <noScript />, links: [] },
 	{ name: 'Seasons', component: <noScript />, links: [] },
-	{ name: 'League', component: <noScript />, links: [] },
+	{ name: 'Settings', component: <noScript />, links: [] },
 ];

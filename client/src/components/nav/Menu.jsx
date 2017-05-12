@@ -38,6 +38,7 @@ const Menu = props => {
 			<ListItem
 				primaryText="Help"
 				leftIcon={<Help />}
+				containerElement={<Link to="/help" />}
 			/>
 			<LogOutModal logOut={logOut} />
       </List>

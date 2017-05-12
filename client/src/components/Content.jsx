@@ -7,6 +7,7 @@ import { Route } from 'react-router-dom';
 import CreateLeagueForm from './create-league/CreateLeagueForm.jsx';
 import NavBar from './nav/index.jsx';
 import Dashboard from './dashboard/dashboard.jsx';
+import Help from './help/help.jsx';
 
 const paperStyle = {
 	width:'90%',
@@ -30,6 +31,7 @@ class Content extends Component {
 								<Route exact path="/" component={Dashboard}/>
 								<Route path="/dashboard" component={Dashboard}/>
 								<Route path="/create" component={CreateLeagueForm} />
+								<Route path="/help" component={Help} />
 							</Paper>
 					</div>
 			</div>
