@@ -1,16 +1,16 @@
 import React from 'react';
-import CardTemplate from './cardLinkTemplate.jsx';
+import LinkTemplate from './linkTemplate.jsx';
 
-// Generate the card links from
+// Generate the links for the nav bar
 // @param: links
 //		Links contains an array of objects describing what
 //		each info each card link will have
-// @return: an array of <CardTemplate /> components
-export function generateCardLinks(links) {
+// @return: an array of <LinkTemplate /> components
+export function generateLinks(links) {
 	return (
 		links.map((link, i) => {
 			return (
-				<CardTemplate
+				<LinkTemplate
 					key={i}
 					title={link.title}
 					description={link.description}

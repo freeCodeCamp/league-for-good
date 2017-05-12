@@ -1,12 +1,12 @@
 // Store all the information for the links for each tab
 import React from 'react';
-import { generateCardLinks } from './helper/generateCardLinks.jsx';
+import TeamViewWrapper from './teams/teamViewWrapper.jsx';
 import AddIcon from 'material-ui/svg-icons/content/add';
 import EditIcon from 'material-ui/svg-icons/image/edit';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
 
 // Links that the user can access to modify teams
-export const teamSections = [
+const teamLinks = [
 	{
 		title: 'Add Teams',
 		description: 'Add new teams to your league.',
@@ -29,8 +29,8 @@ export const teamSections = [
 
 // Tabs that hold the operations that can be performed
 export const tabs = [
-	{ name: 'Teams', component: generateCardLinks(teamSections) },
-	{ name: 'Players', component: <noScript /> },
-	{ name: 'Seasons', component: <noScript /> },
-	{ name: 'Leagues', component: <noScript /> },
+	{ name: 'Teams', component: <TeamViewWrapper />, links: teamLinks },
+	{ name: 'Players', component: <noScript />, links: [] },
+	{ name: 'Seasons', component: <noScript />, links: [] },
+	{ name: 'League', component: <noScript />, links: [] },
 ];

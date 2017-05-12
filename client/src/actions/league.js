@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { FETCH_LEAGUES, CREATE_LEAGUE, SELECT_LEAGUE } from './types';
+import { rootURL } from '../../globals';
 
-const rootURL = 'http://localhost:4000';
 //Post createLeague form to the server
 //Send the response object to a reducer that will append it to a list of user's leagues
 //Redirect the user

@@ -1,8 +1,7 @@
 // User actions to add, edit, and delete teams in the league
 import axios from 'axios';
 import { TEAM_MANAGE_VIEW, CREATE_TEAM } from './types';
-
-const rootURL = 'http://localhost:4000';
+import { rootURL } from '../../globals';
 
 export function changeTeamManageView(view) {
 	return { type: TEAM_MANAGE_VIEW, payload: view };

@@ -6,6 +6,8 @@ import { Field, reduxForm } from 'redux-form';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {createTeam} from '../../../actions/index';
+import { containerCSS, formCSS, formButtonCSS, titleCSS } from '../dashboardCSS';
+
 
 class AddTeamForm extends Component {
 	onSubmit = ({name}) => {
@@ -16,10 +18,12 @@ class AddTeamForm extends Component {
 	render() {
 		const {handleSubmit} = this.props;
 
-		return ( 
+		return (
+			<div style={containerCSS}>
+				<h1 style={titleCSS}>Add Team</h1>
 				<form 
 					onSubmit={ handleSubmit(this.onSubmit)}
-					style={{width:"80%", margin:"20px auto"}}
+					style={formCSS}
 				>
 					<Field
 						name="name" 
@@ -32,8 +36,10 @@ class AddTeamForm extends Component {
 						label="Create Team"
 						primary={true}
 						type="submit"
+						style={formButtonCSS}
 					/>
 				</form>
+			</div>
 		);
 	}
 }
