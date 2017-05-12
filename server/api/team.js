@@ -4,10 +4,15 @@ const mongoose = require('mongoose');
 const Team = mongoose.model('team');
 const League = mongoose.model('league');
 
-// Create a new league for the user
+
+// Create a new team for a selected league
+//after the team is saved, push the mongo generated _id into the 'archived_teams' array with that league
+//Send the newly created team back to the client 
 const createTeam = (req, res) => {
 	let teamObject;
 	const league = req.body.league;
+	const query = { _id: league };
+
 	const newTeam = new Team({
 		name: req.body.name,
 		league_id: league
@@ -16,12 +21,11 @@ const createTeam = (req, res) => {
 	newTeam.save()
 		.then( team => {
 			teamObject = team;
-			return League
-				.update({_id:league}, {$push:{archived_teams:team}})
+			return League.update(query, { $push: {archived_teams: team} })
 				.exec(); 
 		})
 		.then(() => res.send(teamObject))
-		.catch(error => res.send({error}));
+		.catch(error => res.send({ error }));
 };
 
 Router.route('/create').post(createTeam);

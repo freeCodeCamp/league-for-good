@@ -11,7 +11,7 @@ export function createTeam(body) {
 	return function(dispatch){
 		axios.post(`${rootURL}/team/create`, body)
 			.then(({data}) => {
-				return dispatch({type:CREATE_TEAM });
+				dispatch({ type: CREATE_TEAM, payload: data })
 			})
 			.catch( err => console.log(err))
 	};

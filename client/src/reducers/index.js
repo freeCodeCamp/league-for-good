@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import {reducer as formReducer} from 'redux-form';
 
+import snackbarReducer from './snackbar';
 import authReducer from './auth';
 import menuReducer from './menu';
 import leagueReducer from './league';
@@ -10,6 +11,7 @@ import teamReducer from './teams';
 //Redux uses a 'single source of truth' for an application's 'store'
 
 const rootReducer = combineReducers({
+	snackbar:snackbarReducer,
 	auth: authReducer,
 	menu: menuReducer,
 	form: formReducer,

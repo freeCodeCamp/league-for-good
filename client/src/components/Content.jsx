@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 
+import SnackBar from './snackbar.jsx';
 import CreateLeagueForm from './create-league/CreateLeagueForm.jsx';
 import NavBar from './nav/index.jsx';
 import Dashboard from './dashboard/dashboard.jsx';
@@ -34,6 +35,7 @@ class Content extends Component {
 								<Route path="/help" component={Help} />
 							</Paper>
 					</div>
+					<SnackBar/>
 			</div>
 		);	
 	}

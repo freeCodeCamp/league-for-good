@@ -14,6 +14,10 @@ const LeagueSchema = new Schema({
 		ref: 'user',
 		required: true,
 	},
+	staff: [{
+		type: Schema.Types.ObjectId,
+		ref: 'user'		
+	}],
 	sport_type: {
 		type: String,
 		required: true,

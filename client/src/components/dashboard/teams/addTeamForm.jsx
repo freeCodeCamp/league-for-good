@@ -2,11 +2,19 @@ import React, {Component} from 'react';
 import { withRouter } from 'react-router-dom';
 import { TextField } from 'redux-form-material-ui';
 import RaisedButton from 'material-ui/RaisedButton';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, reset as resetForm } from 'redux-form';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {createTeam} from '../../../actions/index';
+import { createTeam, openSnackbar } from '../../../actions/index';
 import { containerCSS, formCSS, formButtonCSS, titleCSS } from '../dashboardCSS';
+
+// const onSuccess = (_, dispatch) => {
+// 	const message = 'Your team was successfully added.';
+// 	dispatch({ type: 'OPEN_SNACKBAR', payload: message})
+// 	dispatch(resetForm('AddTeamForm'));
+// };	
+
+
 
 
 class AddTeamForm extends Component {
@@ -44,12 +52,23 @@ class AddTeamForm extends Component {
 	}
 }
 
-AddTeamForm = withRouter(AddTeamForm);
+//Object to send to onSubmitSuccess to get a custom message and reset the form;
+//We should eventual move this to it's own file
+const onSubmitConfig = { 
+	message: 'Your team was successfully added.',
+	formName: 'AddTeamForm'
+};
 
-AddTeamForm = reduxForm({form:"AddTeamForm"})(AddTeamForm);
 
-function mapDispatchToProps(dispatch){
-	return bindActionCreators({createTeam}, dispatch);
+AddTeamForm = withRouter( AddTeamForm );
+
+AddTeamForm = reduxForm({
+	form: "AddTeamForm",
+	onSubmitSuccess: openSnackbar.bind( onSubmitConfig )
+})( AddTeamForm );
+
+function mapDispatchToProps( dispatch ){
+	return bindActionCreators({ createTeam }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(AddTeamForm);
