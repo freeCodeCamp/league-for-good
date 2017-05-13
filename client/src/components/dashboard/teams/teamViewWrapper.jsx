@@ -9,7 +9,7 @@ class TeamViewWrapper extends Component {
 		const {view, league} = this.props;
 		switch (this.props.view) {
 			case 'Add':
-				return <AddTeamForm league={league} />;
+				return <AddTeamForm league={league}/>;
 			default:
 				return <noScript />;
 		};

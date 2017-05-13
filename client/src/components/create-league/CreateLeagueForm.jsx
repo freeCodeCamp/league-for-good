@@ -8,14 +8,18 @@ import { connect } from 'react-redux';
 
 import validate from './validate';
 import SportTypeSelector from './CreateLeagueButton.jsx';
-import {createLeague} from '../../actions/index';
-import {createLeagueFormStyle, createLeagueTextFieldStyle, createLeagueButtonStyle} from './createLeagueCSS.js';
+import { createLeague } from '../../actions/index';
+import { 
+	createLeagueFormStyle, 
+	createLeagueTextFieldStyle, 
+	createLeagueButtonStyle
+} from './createLeagueCSS.js';
 
 
 class CreateLeagueForm extends Component {
 
 	onSubmit = formBody => {
-		const {createLeague, history} = this.props;
+		const {createLeague} = this.props;
 		const redirectMethod = () => history.push('/');
 
 		//call the createLeague action and pass in the validated form fields
@@ -68,7 +72,7 @@ class CreateLeagueForm extends Component {
 const selector = formValueSelector('CreateLeagueForm');
 
 //Decorate component with redux-form
-CreateLeagueForm = reduxForm({form: 'CreateLeagueForm', validate})(CreateLeagueForm)
+CreateLeagueForm = reduxForm({ form: 'CreateLeagueForm', validate })(CreateLeagueForm)
 
 // Callback function passed to the connect function to access the form state
 function mapFormStateToProps(state){
@@ -76,7 +80,7 @@ function mapFormStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-	return bindActionCreators({createLeague}, dispatch);
+	return bindActionCreators({ createLeague }, dispatch);
 }
 
 //Decorate component with redux bindings

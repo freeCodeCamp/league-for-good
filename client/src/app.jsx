@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import requireAuth from './components/PrivateRoute.jsx';
-import getAuthState from './components/getAuthState.jsx';
+import requireAuth from './hoc/PrivateRoute.jsx';
+import handleLoading from './hoc/handleLoading.jsx';
 //higher order components used to bootstrap authentications and loading state
 
 import Nav from './components/nav/index.jsx';
@@ -13,8 +13,8 @@ import Login from './components/Login.jsx';
 const App = props => (
 	<Router>
 		<div>
-			<Route to="/" component={getAuthState(requireAuth(Content))}/>
-			<Route to="/login" component={getAuthState(Login)}/>
+			<Route path="/" component={handleLoading(requireAuth(Content))}/>
+			<Route path="/login" component={handleLoading(Login)}/>
 		</div>
 	</Router>
 );

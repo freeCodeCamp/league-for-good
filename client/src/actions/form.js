@@ -1,13 +1,16 @@
 import { reset } from 'redux-form';
 
-//Action to trigger the snackbar component once a form submits successfully
+//a mapping of success messages. Will be moved to it's own file
 
-export function openSnackbar( results, dispatch ){
-
-	const { formName, message } = this;
-	
-	dispatch({ type: 'OPEN_SNACKBAR', payload: message });
-	
-	dispatch( reset(formName));
-	
+const messages = {
+	AddTeamForm: 'A new team was successfully added to your league.',
 };
+
+
+//Action to trigger the snackbar component once a form submits successfully
+export function openSnackbar(results, dispatch, props){
+	const form = props.form;
+	dispatch({ type: 'OPEN_SNACKBAR', payload: messages[form] });
+	dispatch(reset(form));
+	
+}

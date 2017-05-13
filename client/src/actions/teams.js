@@ -5,14 +5,16 @@ import { rootURL } from '../../globals';
 
 export function changeTeamManageView(view) {
 	return { type: TEAM_MANAGE_VIEW, payload: view };
-};
+}
 
 export function createTeam(body) {
 	return function(dispatch){
 		axios.post(`${rootURL}/team/create`, body)
 			.then(({data}) => {
-				dispatch({ type: CREATE_TEAM, payload: data })
+				dispatch({ type: CREATE_TEAM, payload: data });
 			})
-			.catch( err => console.log(err))
+			.catch( err => {
+				throw new Error(err);
+			});
 	};
-};
+}
