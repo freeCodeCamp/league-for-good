@@ -16,8 +16,8 @@ const CreateLeagueIcon = (props) => (
 const CreateLeagueButton = (props) => (
 	<FlatButton 
 		label={props.label}
-		backgroundColor={props.active ? "orange" : "lightblue"}
-		hoverColor={props.active ? "orange" : "#FFCC80"}
+		backgroundColor={props.active ? 'orange' : 'lightblue'}
+		hoverColor={props.active ? 'orange' : '#FFCC80'}
 		disableTouchRipple={true}
 		style={sportButtonStyle}
 		onTouchTap={() => props.onClick(props.label)}
@@ -48,7 +48,7 @@ const SportTypeSelector = ({onSelect, selectedSport})=> (
 		}
 		</CardActions>
 	</Card>
-)
+);
 
 
 

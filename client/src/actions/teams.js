@@ -11,9 +11,11 @@ export function changeTeamManageView(view) {
 export function createTeam(body) {
 	return function(dispatch){
 		axios.post(`${rootURL}/team/create`, body)
-			.then(({ data }) => {
+			.then(({data}) => {
 				dispatch({ type: CREATE_TEAM, payload: data });
 			})
-			.catch( err => console.log(err));
+			.catch( err => {
+				throw new Error(err);
+			});
 	};
 }
