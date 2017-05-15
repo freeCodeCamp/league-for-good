@@ -27,8 +27,4 @@ function mapDispatchToProps(dispatch){
   return { handleClose: ()=> dispatch(action) };
 }
 
-<<<<<<< HEAD
-export default connect( mapStateToProps, mapDispatchToProps )( FormSubmissionSnackbar );
-=======
 export default connect(mapStateToProps, mapDispatchToProps)(FormSubmissionSnackbar);
->>>>>>> fb27227327704431ad55d7b34bbe59c9ca314d1e
