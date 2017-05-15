@@ -20,7 +20,7 @@ import { containerCSS, formCSS, formButtonCSS, titleCSS } from '../dashboardCSS'
 class AddTeamForm extends Component {
 	onSubmit = ({name}) => {
 		const { league:{_id}, createTeam } = this.props;
-		createTeam({name, league:_id})
+		createTeam({name, league:_id});
 	};
 
 	render() {

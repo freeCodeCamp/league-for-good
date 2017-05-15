@@ -4,6 +4,7 @@
 export const containerCSS = {
 	borderTop: '1px solid lightgrey',
 	paddingBottom: '30px',
+	backgroundColor: '#fff',
 };
 
 // Titles for sections

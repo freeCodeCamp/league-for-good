@@ -21,7 +21,7 @@ export function fetchLeagues(){
 	return function(dispatch){
 		axios.get(`${rootURL}/league/fetchLeagues`)
 			.then(({data}) => { 
-				dispatch({type:FETCH_LEAGUES, payload:data});
+				dispatch({ type: FETCH_LEAGUES, payload: data });
 			});
 	};
 }

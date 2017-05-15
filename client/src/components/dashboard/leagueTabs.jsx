@@ -4,8 +4,8 @@ import { Tabs, Tab } from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 
 import { generateLinks } from './helper/generateLinks.jsx';
-import { tabs } from './leagueTabLinks';
-import TeamViewWrapper from './teams/teamViewWrapper.jsx';
+import { tabs } from './leagueTabData';
+import PanelViewWrapper from './PanelViewWrapper.jsx';
 
 // CSS for the tabs
 const style = {
@@ -38,7 +38,7 @@ class LeagueTabs extends React.Component {
 	        				>
 	        					<div>
 	        						{generateLinks(tab.links)}
-	        						{tab.component}
+									<PanelViewWrapper />
 	        					</div>
 	        				</Tab>
 	        			);

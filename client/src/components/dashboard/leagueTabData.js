@@ -1,8 +1,8 @@
 // Store all the information for the links for each tab
 import React from 'react';
-import TeamViewWrapper from './teams/teamViewWrapper.jsx';
 import AddIcon from 'material-ui/svg-icons/content/add';
 import EditIcon from 'material-ui/svg-icons/image/edit';
+import ArchiveIcon from 'material-ui/svg-icons/content/archive';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
 
 // Links that the user can access to modify teams
@@ -10,27 +10,33 @@ const teamLinks = [
 	{
 		title: 'Add Teams',
 		description: 'Add new teams to your league.',
-		label: 'Add',
+		label: 'AddTeam',
 		icon: <AddIcon />,
 	},
 	{
-		title: 'Edit Teams',
-		description: 'Manage teams in your league.',
-		label: 'Edit',
+		title: 'Edit Active Teams',
+		description: 'Manage active teams in your league.',
+		label: 'EditActiveTeam',
 		icon: <EditIcon />,
+	},
+	{
+		title: 'Edit Archived Teams',
+		description: 'Manage archived teams in your league.',
+		label: 'EditArchivedTeam',
+		icon: <ArchiveIcon />,
 	},
 	{
 		title: 'Delete Teams',
 		description: 'Delete teams from your league.',
-		label: 'Delete',
+		label: 'DeleteTeam',
 		icon: <DeleteIcon />,
 	},
 ];
 
 // Tabs that hold the operations that can be performed
 export const tabs = [
-	{ name: 'Teams', component: <TeamViewWrapper />, links: teamLinks },
-	{ name: 'Players', component: <noScript />, links: [] },
-	{ name: 'Seasons', component: <noScript />, links: [] },
-	{ name: 'Settings', component: <noScript />, links: [] },
+	{ name: 'Teams', links: teamLinks },
+	{ name: 'Players', links: [] },
+	{ name: 'Seasons', links: [] },
+	{ name: 'Settings', links: [] },
 ];

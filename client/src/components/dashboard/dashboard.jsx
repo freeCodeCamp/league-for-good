@@ -10,6 +10,7 @@ class Dashboard extends Component {
 
 	render() {
 		const { league } = this.props;
+		
 		return (
 			<div style={{height: 'auto'}}>
 				{league &&
