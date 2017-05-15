@@ -22,7 +22,7 @@ const style = {
 	},
 };
 
-// Table that lists all the teams and the ability to edit each team
+// Table that lists all the teams and the ability to edit or delete each team
 class TeamTable extends Component {
 	render() {
 		const teamAction = this.props.action;
