@@ -43,18 +43,17 @@ class TeamTable extends Component {
 
 	// Get the value for the cell
 	getCellValue(team, prop, action) {
-		console.log(team[prop]);
 		if (prop === 'currently_active') {
 			return team[prop] ? "Active" : "Not Active";
 		}
 		if (prop === 'icon') {
 			return this.getIcon(action);
 		}
-		// Parse for extra properties
 		if (prop.split('.').length > 1) {
 			return prop.split('.').reduce((o, i) => o[i], team);
 		}
-		return team[prop];
+			return team[prop];
+		}			
 	}
 
 	// Get proper icon
