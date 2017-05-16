@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint:js": "eslint server/ webpack.*.js --cache",
+    "lintServer:js": "eslint server/ webpack.*.js --cache",
+    "lintClient:js": "eslint client/ webpack.*.js --cache",
     "dev": "nodemon index.js --ignore client"
   },
   "author": "",
