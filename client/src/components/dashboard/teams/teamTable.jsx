@@ -7,7 +7,9 @@ import {
 	TableRow,
 	TableRowColumn,
 } from 'material-ui/Table';
+import TeamFilter from './teamTableSearch.jsx';
 import TextField from 'material-ui/TextField';
+import AutoComplete from 'material-ui/AutoComplete';
 import EditIcon from 'material-ui/svg-icons/image/edit';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import SearchIcon from 'material-ui/svg-icons/action/search';
@@ -53,6 +55,7 @@ class TeamTable extends Component {
 			sortDirection: 'none',
 		};
 	}
+
 	
 	// Change state of teams based on panel rendered
 	componentWillReceiveProps(nextProps) {
@@ -63,15 +66,15 @@ class TeamTable extends Component {
 		}
 	}
 	
-	// Search for teams
-	onSearch(event, newValue) {
-		let teamName = '';
-		this.setState({
-			teams: this.props.teams.filter((team) => {
-				teamName = team.name.toLowerCase();
-				return teamName.indexOf(newValue.toLowerCase()) === 0;
-			})
-		});
+	//Select a single team with the dropdown (renders a single table row) or show all teams
+	handleChange = (value) => {
+		if(value == 'All'){
+			this.setState({teams: this.props.teams})
+		}
+		else{
+			const teams = this.props.teams.filter(team => team._id == value);
+			this.setState({teams});
+		};
 	}
 	
 	// Sort when clicked
@@ -141,14 +144,11 @@ class TeamTable extends Component {
 							'Delete Teams'
 					}
 				</h1>
-				<TextField 
-					hintText={<SearchIcon />}
-      				underlineFocusStyle={style.searchUnderline}
-      				style={style.search}
-      				floatingLabelText="Search"
-      				floatingLabelFixed={true}
-      				onChange={this.onSearch.bind(this)}
-    			/>
+				<TeamFilter 
+					teams={this.props.teams} 
+					handleChange={this.handleChange}
+					value={this.state.value}
+				/>
 				<Table>
 					<TableHeader 
 						adjustForCheckbox={false}
