@@ -102,6 +102,7 @@ class TeamTable extends Component {
 	}
 	
 	// sort column based on a direction
+	// @direction: direction in which to sort the column
 	sortColumn(direction) {
 		if (direction === 'asc') {
 			return function(a, b) {
