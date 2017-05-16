@@ -34,16 +34,36 @@ const style = {
 	},
 };
 
+const ColumnHeaderChild = (props) => {
+	return (
+		<div onClick={props.onClick}>
+			{props.colTitle}
+		</div>
+	);
+};
+
 // Table that lists all the teams and the ability to edit or delete each team
 class TeamTable extends Component {
 	constructor(props) {
 		super(props);
 		
 		this.state = {
-			teams: this.props.teams
+			teams: Array.from(this.props.teams),
+			sortColumn: '',
+			sortDirection: 'none',
 		};
 	}
 	
+	// Change state of teams based on panel rendered
+	componentWillReceiveProps(nextProps) {
+		if (this.props.teams !== nextProps.teams) {
+			this.setState({
+				teams: Array.from(nextProps.teams)
+			});
+		}
+	}
+	
+	// Search for teams
 	onSearch(event, newValue) {
 		let teamName = '';
 		this.setState({
@@ -52,6 +72,60 @@ class TeamTable extends Component {
 				return teamName.indexOf(newValue.toLowerCase()) === 0;
 			})
 		});
+	}
+	
+	// Sort when clicked
+	onSort() {
+		let sortDirection = this.sortMap[this.state.sortDirection];
+		let sortedTeams;
+		
+		if (sortDirection !== 'none') {
+			sortedTeams = this.state.teams.sort(
+				this.sortColumn(sortDirection)
+			);
+		}
+		else {
+			sortedTeams = Array.from(this.props.teams);
+		}
+	
+		this.setState({
+			teams: sortedTeams,
+			sortColumn: 'name',
+			sortDirection: sortDirection,
+		});
+	}
+	
+	sortMap = {
+		'none': 'asc',
+		'asc': 'desc',
+		'desc': 'none',
+	}
+	
+	// sort column based on a direction
+	sortColumn(direction) {
+		if (direction === 'asc') {
+			return function(a, b) {
+				if (a.name < b.name) {
+					return -1;
+				}
+				if (a.name > b.name) {
+					return 1;
+				}
+				return 0;
+			}
+		}
+		if (direction === 'desc') {
+			return function(a, b) {
+				if (b.name < a.name) {
+					return -1;
+				}
+				if (b.name > a.name) {
+					return 1;
+				}
+				return 0;
+			}
+		}
+		return 'none';
 	}
 	
 	render() {
@@ -82,7 +156,10 @@ class TeamTable extends Component {
 					>
 						<TableRow>
 							<TableHeaderColumn style={style.nameCol}>
-								Name
+								<ColumnHeaderChild 
+									colTitle="Name" 
+									onClick={this.onSort.bind(this)}
+								/>
 							</TableHeaderColumn>
 							<TableHeaderColumn style={style.defaultCol}>
 								Roster Size
