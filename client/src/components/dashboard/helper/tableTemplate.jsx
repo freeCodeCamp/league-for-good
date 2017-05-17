@@ -55,9 +55,10 @@ const Headers = (props) => {
 	return (
 		<TableRow>
 			{
-				props.headers.map(function(header) {
+				props.headers.map(function(header,i) {
 					return (
 						<TableHeaderColumn 
+							key = {i}
 							style={header.style || style.defaultCol}>
 							<ColumnHeaderChild
 								colTitle={header.label}
@@ -71,10 +72,11 @@ const Headers = (props) => {
 	);
 };
 
-// Body contains the rows of the table
-const Body = (props) => {
+// renders the TableRow components that will appear inside the TableBody 
+//Not a functional component.. This returns an array rather than a single JSX component
+const renderBody = (rows) => {
 	return (
-			props.rows.map(function(row, i) {
+			rows.map(function(row, i) {
 				return (
 					<TableRow 
 						key={i} 
@@ -87,7 +89,9 @@ const Body = (props) => {
 										style={rowData.style || style.defaultCol}
 										key={i}
 									>
-										{rowData.value}
+										{ i === 0 ?  <strong>{rowData.value}</strong> 
+												: <span>{rowData.value}</span> 
+										}
 									</TableRowColumn>
 								);
 							})
@@ -95,7 +99,6 @@ const Body = (props) => {
 					</TableRow>
 				);
 			})
-		
 	);
 }
 
@@ -203,8 +206,6 @@ class TableTemplate extends Component {
 	}
 	
 	render() {
-		console.log('table template', this.props);
-		
 		return (
 			<div style={containerCSS}>
 				<TableTitle title={this.props.title} />
@@ -224,7 +225,7 @@ class TableTemplate extends Component {
 						displayRowCheckbox={false}
 						showRowHover={true}
 					>
-						{Body(this.props)}
+						{renderBody(this.props.rows)}
 					</TableBody>
 				</Table>
 			</div>
