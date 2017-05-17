@@ -17,29 +17,19 @@ const style = {
 		width: '10%',
 		textAlign: 'right',
 	},
-	search: {
-		marginLeft: '20px',
-	},
-	searchUnderline: {
-		borderColor: '#2196F3',
-	},
-	sortIcon: {
-		display: 'inline',
-		cursor: 'pointer',
-	},
 };
 
 	// Column headers and data
 export const colData = [
-		{ label: 'Name', style: style.nameCol, cellProp: 'name' },
-		{ label: 'Roster Size', style: style.defaultCol, cellProp: 'players.length' },
-		{ label: 'Seasons Played', style: style.defaultCol, cellProp: 'seasons.length' },
+		{ label: 'Name', style: style.nameCol, cellProp: 'name', sortable: true, searchable: false },
+		{ label: 'Roster Size', style: style.defaultCol, cellProp: 'players.length', sortable: true },
+		{ label: 'Seasons Played', style: style.defaultCol, cellProp: 'seasons.length', sortable: true },
 		{ label: 'Status', style: style.defaultCol, cellProp: 'currently_active' },
 		{ label: '', style: style.iconCol, cellProp: 'icon' },
 ];
 
 	// Get the value for the cell
-function	getCellValue(team, prop, action) {
+function getCellValue(team, prop, action) {
 	if (prop === 'currently_active') {
 		return team[prop] ? 'Active' : 'Not Active';
 	}

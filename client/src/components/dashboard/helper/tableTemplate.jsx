@@ -9,9 +9,10 @@ import {
 } from 'material-ui/Table';
 import TextField from 'material-ui/TextField';
 import AutoComplete from 'material-ui/AutoComplete';
+import FlatButton from 'material-ui/FlatButton';
 import SearchIcon from 'material-ui/svg-icons/action/search';
-import ArrowUp from 'material-ui/svg-icons/hardware/keyboard-arrow-up';
-import ArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
+import ArrowUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
+import ArrowDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
 import { containerCSS, titleCSS } from '../dashboardCSS';
 
 const style = {
@@ -63,6 +64,7 @@ const Headers = (props) => {
 							<ColumnHeaderChild
 								colTitle={header.label}
 								onClick={props.onSort}
+								sortable={header.sortable}
 							/>
 						</TableHeaderColumn>
 					);
@@ -105,13 +107,16 @@ const renderBody = (rows) => {
 // column header with sorting icons
 const ColumnHeaderChild = (props) => {
 	return (
-		<div>
-			{props.colTitle}
-			<div onClick={props.onClick} style={style.sortIcon}>
-				<ArrowUp />
-				<ArrowDown color="lightgrey" />
-			</div>
-		</div>
+		<FlatButton 
+			label={props.colTitle}
+			icon={!!props.sortable ? <ArrowDown /> : null}
+			hoverColor="#fff"
+			labelStyle={{color: '#000', textTransform: 'none', padding: '0px', margin: '0px'}}
+			style={{padding: '0px', margin: '0px', textAlign: 'left'}}
+			labelPosition="before"
+			disabled={!props.sortable}
+			disableLabelColor="#000"
+		/>
 	);
 };
 
@@ -132,7 +137,7 @@ class TableTemplate extends Component {
 		if (this.props.rows !== nextProps.rows) {
 			this.setState({
 				teams: Array.from(nextProps.rows),
-				sortDirection: 'none'
+				sortDirection: 'none',
 			});
 		}
 	}
