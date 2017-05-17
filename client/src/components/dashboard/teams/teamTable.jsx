@@ -17,16 +17,6 @@ const style = {
 		width: '10%',
 		textAlign: 'right',
 	},
-	search: {
-		marginLeft: '20px',
-	},
-	searchUnderline: {
-		borderColor: '#2196F3',
-	},
-	sortIcon: {
-		display: 'inline',
-		cursor: 'pointer',
-	},
 };
 
 // Table that lists all the teams and the ability to edit or delete each team

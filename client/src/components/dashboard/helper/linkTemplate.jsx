@@ -10,13 +10,18 @@ const style = {
 	icon: {
 		margin: '10px',
 	},
+	iconActive: {
+		borderBottom: '4px solid #03A9F4',
+		paddingBottom: '5px',
+	},
 	iconHover: {
-		backgroundColor: "#03A9F4",
+		color: '#000',
+		backgroundColor: '#03A9F4',
 		borderRadius: '25px',
 	},
 };
 
-class CardTemplate extends Component {
+class LinkTemplate extends Component {
 	
 	render() {
 		return (
@@ -26,6 +31,8 @@ class CardTemplate extends Component {
 				touch={true}
 				onTouchTap={() => this.props.changeTeamManageView(this.props.label)}
 				style={style.icon}
+				iconStyle={this.props.view === this.props.label ?
+					style.iconActive : {}}
 				hoveredStyle={style.iconHover}
 			>
 				{this.props.icon}
@@ -34,8 +41,12 @@ class CardTemplate extends Component {
 	}
 };
 
+function mapStateToProps(state){
+	return { view: state.teams.view };
+}
+
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ changeTeamManageView }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(CardTemplate);
+export default connect(mapStateToProps, mapDispatchToProps)(LinkTemplate);

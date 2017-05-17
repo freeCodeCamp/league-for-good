@@ -30,7 +30,7 @@ class PanelViewWrapper extends Component {
 }
 
 // Callback function passed to the connect function to access the form state
-function mapStateToProps(state){
+function mapStateToProps(state) {
 	return { view: state.teams.view, league: state.league.selected };
 }
 

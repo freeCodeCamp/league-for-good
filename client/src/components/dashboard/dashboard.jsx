@@ -26,7 +26,7 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps(state){
-	return {league: state.league.selected};
+	return { league: state.league.selected, view: state.teams.view };
 }
 
 function mapDispatchToProps(dispatch){
