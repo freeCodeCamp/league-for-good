@@ -25,6 +25,7 @@ const style = {
 class LeagueTabs extends React.Component {
 
 	render() {
+		
 		return (
       	<div>
         	<Tabs inkBarStyle={style.inkBar}>
@@ -38,7 +39,7 @@ class LeagueTabs extends React.Component {
 	        				>
 	        					<div>
 	        						{generateLinks(tab.links)}
-									<PanelViewWrapper />
+									<PanelViewWrapper {...this.props}/>
 	        					</div>
 	        				</Tab>
 	        			);

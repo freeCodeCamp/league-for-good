@@ -13,7 +13,7 @@ import Modal from './modal/main.jsx';
 
 const paperStyle = {
 	width:'90%',
-	margin:'40px auto',
+	margin:'85px auto',
 	height: 'auto',
 	textAlign: 'center',
 	background:'#f4f6f7',

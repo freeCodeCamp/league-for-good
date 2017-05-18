@@ -19,3 +19,10 @@ export function createTeam(body) {
 			});
 	};
 }
+
+// export function removeTeam(teamId){
+// 	return function(dispatch){
+// 		axios.delete(`${rootURL}/team/delete/${teamId}`)
+// 			.then()
+// 	}
+// }

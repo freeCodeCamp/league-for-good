@@ -28,6 +28,16 @@ const createTeam = (req, res) => {
 		.catch(error => res.send({ error }));
 };
 
+const deleteTeam = (req, res) => {
+	const query = { _id: req.params.teamId };
+
+	Team.remove(query)
+		.exec()
+		.then(() => res.send('Successfully removed team.'))
+		.catch(error => res.send({msg:'An error occured while removing team', error}));
+};
+
 Router.route('/create').post(createTeam);
+Router.route('/remove/:teamId').delete(deleteTeam);
 
 module.exports = Router;

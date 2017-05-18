@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { toggleMenu, selectLeague, fetchLeagues, openModal } from '../../actions/index';
+import { toggleMenu, selectLeague, openModal } from '../../actions/index';
 import AppBar from 'material-ui/AppBar';
 import Menu from './Menu.jsx';
 
 class NavBar extends Component {
-	componentWillMount(){
-		if(!this.props.leagues.length){
-			this.props.fetchLeagues()
-		}
-	}
+
 	render() {
 		const {dispatch} = this.props;
 		return (
 			<div>
 				<AppBar 
 					title="League For Good"
-					style={{zIndex:2000}}
+					style={{zIndex:2000, position:'fixed' }}
 					onLeftIconButtonTouchTap={()=> this.props.toggleMenu()}
 				/>
 				<Menu 
@@ -40,7 +36,6 @@ function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ 
 		toggleMenu,  
 		selectLeague, 
-		fetchLeagues, 
 		openModal
 	}, dispatch);
 }
