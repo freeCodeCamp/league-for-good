@@ -2,6 +2,6 @@
 //any action function to be called from this location
 export * from './auth';
 export * from './league';
-export * from './menu';
+export * from './UI';
 export * from './teams';
 export * from './form';

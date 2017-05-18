@@ -9,6 +9,7 @@ import CreateLeagueForm from './create-league/CreateLeagueForm.jsx';
 import NavBar from './nav/index.jsx';
 import Dashboard from './dashboard/dashboard.jsx';
 import Help from './help/help.jsx';
+import Modal from './modal/main.jsx';
 
 const paperStyle = {
 	width:'90%',
@@ -35,6 +36,7 @@ class Content extends Component {
 								<Route path="/help" component={Help} />
 							</Paper>
 					</div>
+					<Modal/>
 					<SnackBar/>
 			</div>
 		);	
@@ -42,7 +44,7 @@ class Content extends Component {
 }
 
 function mapStateToProps(state) {
-	const { menu} = state;
+	const { menu } = state;
 	
 
 	return { menuOpen: menu.open};

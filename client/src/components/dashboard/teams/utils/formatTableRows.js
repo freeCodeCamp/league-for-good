@@ -31,7 +31,7 @@ export const colData = [
 	// Get the value for the cell
 function getCellValue(team, prop, action) {
 	if (prop === 'currently_active') {
-		return team[prop] ? 'Active' : 'Not Active';
+		return team.currently_active ? 'Active' : 'Not Active';
 	}
 	if (prop === 'icon') {
 		return getIcon({action});

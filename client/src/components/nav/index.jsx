@@ -1,28 +1,29 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {toggleMenu, logOut, selectLeague, fetchLeagues} from '../../actions/index';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { toggleMenu, selectLeague, fetchLeagues, openModal } from '../../actions/index';
 import AppBar from 'material-ui/AppBar';
 import Menu from './Menu.jsx';
 
 class NavBar extends Component {
-	componentDidMount(){
+	componentWillMount(){
 		if(!this.props.leagues.length){
 			this.props.fetchLeagues()
 		}
 	}
 	render() {
+		const {dispatch} = this.props;
 		return (
 			<div>
 				<AppBar 
 					title="League For Good"
 					style={{zIndex:2000}}
-					onLeftIconButtonTouchTap={()=>this.props.toggleMenu()}
+					onLeftIconButtonTouchTap={()=> this.props.toggleMenu()}
 				/>
 				<Menu 
 					leagues={this.props.leagues}
 					open={this.props.open} 
-					logOut={this.props.logOut}
+					openModal={this.props.openModal}
 					selectLeague={this.props.selectLeague}
 				/>        
 			</div>
@@ -32,11 +33,16 @@ class NavBar extends Component {
 
 function mapStateToProps({menu, league}) {
 	const { open } = menu;
-	return { open, leagues:league.list };
+	return {open, leagues:league.list};
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ toggleMenu, logOut, selectLeague, fetchLeagues }, dispatch);
+	return bindActionCreators({ 
+		toggleMenu,  
+		selectLeague, 
+		fetchLeagues, 
+		openModal
+	}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

@@ -1,8 +1,9 @@
 //All 'action types' are stored here and exported as variables in order to avoid bugs 
 //caused by typos when creating actions and reducers
 
-//Menu action types used in ./menu.js
+//UI related action types 
 export const TOGGLE_MENU = 'Toggle Menu';
+export const OPEN_MODAL = 'OPEN_MODAL';
 
 //Authentication action types 
 export const INIT_AUTH_STATE = 'InitAuthState';
