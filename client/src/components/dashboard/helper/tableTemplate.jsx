@@ -109,13 +109,12 @@ const ColumnHeaderChild = (props) => {
 	return (
 		<FlatButton 
 			label={props.colTitle}
-			icon={!!props.sortable ? <ArrowDown /> : null}
+			icon={!!props.sortable ? <ArrowDown /> : <noScript/>}
 			hoverColor="#fff"
 			labelStyle={{color: '#000', textTransform: 'none', padding: '0px', margin: '0px'}}
 			style={{padding: '0px', margin: '0px', textAlign: 'left'}}
 			labelPosition="before"
 			disabled={!props.sortable}
-			disableLabelColor="#000"
 		/>
 	);
 };
@@ -227,6 +226,7 @@ class TableTemplate extends Component {
 						/>
 					</TableHeader>
 					<TableBody
+						preScanRows={false}
 						displayRowCheckbox={false}
 						showRowHover={true}
 					>

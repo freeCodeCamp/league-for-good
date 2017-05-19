@@ -14,7 +14,7 @@ class Dashboard extends Component {
 		
 		return (
 			<div style={{height: 'auto'}}>
-				{league &&
+				{league.name &&
 				<div>
 					<LeagueTabsHeader league={league}/>
 					<LeagueTabs league={league} view={view}/>
@@ -26,7 +26,11 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps({ league, teams }){
-	return { league: league.selected, view: teams.view };
+	const { selected } = league;
+	const { active_teams, archived_teams } = teams;
+	const leagueObj = { ...selected, active_teams, archived_teams };
+	
+	return { league: leagueObj, view: teams.view };
 }
 
 

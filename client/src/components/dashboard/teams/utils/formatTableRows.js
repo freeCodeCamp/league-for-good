@@ -1,4 +1,5 @@
-import getIcon from './getIcon.jsx';
+import React from 'react';
+import Icon from './getIcon.jsx';
 import { containerCSS, titleCSS } from '../../dashboardCSS';
 
 //All team data passed from the reducers is reformatted here so it contains the correct
@@ -34,7 +35,8 @@ function getCellValue(team, prop, action) {
 		return team.currently_active ? 'Active' : 'Not Active';
 	}
 	if (prop === 'icon') {
-		return getIcon({action});
+		const iconProps = { action, team }
+		return <Icon {...iconProps}/>
 	}
 	if (prop.split('.').length > 1) {
 		return prop.split('.').reduce((o, i) => o[i], team);

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_LEAGUES, CREATE_LEAGUE, SELECT_LEAGUE } from './types';
+import {  CREATE_LEAGUE, SELECT_LEAGUE } from './types';
 import { rootURL } from '../../globals';
 
 //Post createLeague form to the server
@@ -16,15 +16,6 @@ export function createLeague(body, redirectCallback) {
 	};
 }
 
-//Get list of leagues associated with user when homepage loads, and user has been authenticated
-export function fetchLeagues(){
-	return function(dispatch){
-		axios.get(`${rootURL}/league/fetchLeagues`)
-			.then(({data}) => { 
-				dispatch({ type: FETCH_LEAGUES, payload: data });
-			});
-	};
-}
 
 export function selectLeague(league){
 	return {type:SELECT_LEAGUE, payload:league};
