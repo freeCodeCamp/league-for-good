@@ -16,7 +16,7 @@ const paperStyle = {
 	margin:'40px auto',
 	height: 'auto',
 	textAlign: 'center',
-	background:'#f4f6f7',
+	background:'#fff',
 	color:'#37474F',
 	border:'1px solid #607D8B',
 };

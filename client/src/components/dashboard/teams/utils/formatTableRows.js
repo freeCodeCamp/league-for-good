@@ -36,6 +36,7 @@ function getCellValue(team, prop, action) {
 	if (prop === 'icon') {
 		return getIcon({action});
 	}
+	// Split properties if cell property is nested
 	if (prop.split('.').length > 1) {
 		return prop.split('.').reduce((o, i) => o[i], team);
 	}

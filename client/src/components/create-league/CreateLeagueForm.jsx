@@ -38,7 +38,7 @@ class CreateLeagueForm extends Component {
 					onSelect={(sport) => change('sportType', sport)}
 					selectedSport = {SelectedSportType}
 				/>
-				{SelectedSportType &&	 
+				{SelectedSportType &&
 				<form 
 					onSubmit={ handleSubmit(this.onSubmit)}
 					style={createLeagueFormStyle}

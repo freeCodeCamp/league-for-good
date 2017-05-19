@@ -42,7 +42,7 @@ const PlayerSchema = new Schema({
 	},
 	teams: [{
 		teamId: Schema.Types.ObjectId,
-		position: String,
+		position: [String],
 		jersey_num: Number,
 	}]},
 	{

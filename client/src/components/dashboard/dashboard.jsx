@@ -14,8 +14,8 @@ class Dashboard extends Component {
 		return (
 			<div style={{height: 'auto'}}>
 				{league &&
-				<div>
-					<h2>{ league.name }</h2>
+				<div style={{backgroundColor: '#f4f6f7'}}>
+					<h2 style={{paddingTop: '20px', margin: '0px'}}>{ league.name }</h2>
 					<h3>{ `${league.sport_type} League` }</h3>
 					<LeagueTabs />
 				</div>

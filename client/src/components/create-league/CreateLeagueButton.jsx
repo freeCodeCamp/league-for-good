@@ -28,7 +28,7 @@ const CreateLeagueButton = (props) => (
 
 // Creates a list of different buttons for selecting a sport type for the new league
 const SportTypeSelector = ({onSelect, selectedSport})=> (
-	<Card >
+	<Card style={{backgroundColor: '#f4f6f7'}}>
 		<CardTitle 
 			title="Create a New League"
 			subtitle="Choose a sport"

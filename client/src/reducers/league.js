@@ -14,7 +14,7 @@ export default function(state = defaultState, action) {
 		case CREATE_TEAM:
 			const {archived_teams} = state.selected;
 			const update = [...archived_teams, action.payload];
-			return {...state, selected:{...state.selected, archived_teams:update}}		
+			return {...state, selected: { ...state.selected, archived_teams: update }}		
 	}
 	return state;
 }

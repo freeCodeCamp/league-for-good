@@ -8,7 +8,7 @@ const style = {
 		color: '#000',
 		backgroundColor: '#03A9F4',
 		borderRadius: '25px',
-	}
+	},
 };
 
 //Returns an icon for the table 

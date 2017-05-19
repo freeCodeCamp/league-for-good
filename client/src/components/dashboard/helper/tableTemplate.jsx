@@ -30,6 +30,19 @@ const style = {
 		display: 'inline',
 		cursor: 'pointer',
 	},
+	colHeaderButtonLabel: {
+		color: '#000',
+		textTransform: 'none',
+		padding: '0px',
+		margin: '0px'
+	},
+	colHeaderStyle: {
+		padding: '0px',
+		margin: '0px',
+		textAlign: 'left',
+	},
+	sortArrowActiveColor: 'black',
+	sortArrowInactiveColor: 'lightgrey',
 };
 
 // Title for the table
@@ -59,12 +72,15 @@ const Headers = (props) => {
 				props.headers.map(function(header,i) {
 					return (
 						<TableHeaderColumn 
-							key = {i}
+							key={i}
 							style={header.style || style.defaultCol}>
 							<ColumnHeaderChild
-								colTitle={header.label}
+								label={header.label}
 								onClick={props.onSort}
 								sortable={header.sortable}
+								colIndex={i}
+								sortDirection={props.sortDirection}
+								sortColumnIndex={props.sortColumnIndex}
 							/>
 						</TableHeaderColumn>
 					);
@@ -106,16 +122,42 @@ const renderBody = (rows) => {
 
 // column header with sorting icons
 const ColumnHeaderChild = (props) => {
+	let arrowIcon = <noScript />;
+
+	// If the column is sortable, determine appropriate icon
+	if (!!props.sortable) {
+		let columnSorted = props.colIndex === props.sortColumnIndex;
+		let iconColor = columnSorted ?
+			style.sortArrowActiveColor :
+			style.sortArrowInactiveColor;
+			
+		if (props.sortDirection === 'asc') {
+			if (columnSorted) {
+				arrowIcon = <ArrowDown color={iconColor} />;
+			}
+			else {
+				arrowIcon = <ArrowUp color={iconColor} />;
+			}
+		}
+		else if (props.sortDirection === 'desc') {
+			arrowIcon = <ArrowUp color={iconColor} />;
+		}
+		else {
+			arrowIcon = <ArrowUp color={iconColor} />;
+		}
+	}
+
 	return (
 		<FlatButton 
-			label={props.colTitle}
-			icon={!!props.sortable ? <ArrowDown /> : null}
+			label={props.label}
+			icon={arrowIcon}
 			hoverColor="#fff"
-			labelStyle={{color: '#000', textTransform: 'none', padding: '0px', margin: '0px'}}
-			style={{padding: '0px', margin: '0px', textAlign: 'left'}}
+			labelStyle={style.colHeaderButtonLabel}
+			style={style.colHeaderStyle}
 			labelPosition="before"
 			disabled={!props.sortable}
-			disableLabelColor="#000"
+			disableTouchRipple={true}
+			onTouchTap={() => { props.onClick(props.colIndex) }}
 		/>
 	);
 };
@@ -124,10 +166,21 @@ const ColumnHeaderChild = (props) => {
 class TableTemplate extends Component {
 	constructor(props) {
 		super(props);
+		let searchableIndex = 0;
+		
+		this.props.headers.forEach((header, i) => {
+			if (!!header.searchable) {
+				searchableColumnIndex = i;
+			}
+		});
 		
 		this.state = {
-			teams: Array.from(this.props.rows),
+			rows: Array.from(this.props.rows),
 			sortDirection: 'none',
+			searchableColumnIndex: searchableIndex,
+			sortColumnIndex: null,
+			searchTerm: '',
+			searchRows: [],
 		};
 	}
 
@@ -135,43 +188,81 @@ class TableTemplate extends Component {
 	// Change state of teams based on panel rendered
 	componentWillReceiveProps(nextProps) {
 		if (this.props.rows !== nextProps.rows) {
+			let searchableIndex = 0;
+			
+			this.props.headers.forEach((header, i) => {
+				if (!!header.searchable) {
+					searchableColumnIndex = i;
+				}
+			});
+			
 			this.setState({
-				teams: Array.from(nextProps.rows),
+				rows: Array.from(nextProps.rows),
 				sortDirection: 'none',
+				searchableColumnIndex: searchableIndex,
+				sortColumnIndex: null,
 			});
 		}
 	}
 	
-	// Search for teams
+	// Search for rows passed in to the table as a searchable column
+	// Only one column is currently allowed to be searchable
 	onSearch(event, newValue) {
-		let teamName = '';
+		newValue = newValue.trim();
+		let rowValue = '';
+		let searchRows = this.props.rows.filter((row) => {
+				rowValue = row[this.state.searchableColumnIndex].value.toLowerCase();
+				return rowValue.indexOf(newValue.toLowerCase()) === 0;
+			}, this);
+		
 		this.setState({
-			teams: this.props.teams.filter((team) => {
-				teamName = team.name.toLowerCase();
-				return teamName.indexOf(newValue.toLowerCase()) === 0;
-			})
+			searchTerm: newValue,
+			searchRows: Array.from(searchRows),
+			rows: searchRows,
 		});
 	}
 	
 	// Sort when clicked
 	// @colProp: which column to sort by
-	onSort(colProp) {
+	onSort(colIndex) {
 		// Add sort state for each column
-		let sortDirection = this.sortMap[this.state.sortDirection];
+		// Sort state should only update if the column selected is the same
+		let sortDirection = colIndex === this.state.sortColumnIndex ?
+			this.sortMap[this.state.sortDirection] :
+			'asc';
 		let sortedRows;
 		
-		if (sortDirection !== 'none') {
-			sortedRows = this.state.rows.sort(
-				this.sortColumn(sortDirection, colProp)
-			);
+		// Changing sort from asc to desc or desc to none
+		// or the user is sorting a different column
+		if (sortDirection !== 'none' || colIndex !== this.state.sortColumnIndex) {
+			// If the same column is being sorted (i.e. asc -> desc)
+			if (colIndex === this.state.sortColumnIndex) {
+				sortedRows = this.state.rows.sort(
+					this.sortColumn(sortDirection, colIndex)
+				);
+			}
+			// else, a different column has been sorted, so sort to default(asc)
+			else {
+				sortedRows = this.state.rows.sort(
+					this.sortColumn('asc', colIndex)
+				);
+			}
 		}
+		// else, the sorting has been reset to the original state
 		else {
-			sortedRows = Array.from(this.props.rows);
+			if (!!this.state.searchTerm) {
+				sortedRows = Array.from(this.state.searchRows);
+			}
+			else {
+				sortedRows = Array.from(this.props.rows);
+			}
+			colIndex = null;
 		}
 	
 		this.setState({
-			teams: sortedTeams,
+			rows: sortedRows,
 			sortDirection: sortDirection,
+			sortColumnIndex: colIndex,
 		});
 	}
 	
@@ -184,13 +275,13 @@ class TableTemplate extends Component {
 	// sort column based on a direction
 	// @direction: direction in which to sort the column
 	// @colProp: which column to sort
-	sortColumn(direction, colProp) {
+	sortColumn(direction, colIndex) {
 		if (direction === 'asc') {
 			return function(a, b) {
-				if (a[colProp] < b[colProp]) {
+				if (a[colIndex].value < b[colIndex].value) {
 					return -1;
 				}
-				if (a[colProp] > b[colProp]) {
+				if (a[colIndex].value > b[colIndex].value) {
 					return 1;
 				}
 				return 0;
@@ -198,10 +289,10 @@ class TableTemplate extends Component {
 		}
 		if (direction === 'desc') {
 			return function(a, b) {
-				if (b[colProp] < a[colProp]) {
+				if (b[colIndex].value < a[colIndex].value) {
 					return -1;
 				}
-				if (b[colProp] > a[colProp]) {
+				if (b[colIndex].value > a[colIndex].value) {
 					return 1;
 				}
 				return 0;
@@ -224,13 +315,15 @@ class TableTemplate extends Component {
 						<Headers 
 							headers={this.props.headers}
 							onSort={this.onSort.bind(this)}
+							sortDirection={this.state.sortDirection}
+							sortColumnIndex={this.state.sortColumnIndex}
 						/>
 					</TableHeader>
 					<TableBody
 						displayRowCheckbox={false}
 						showRowHover={true}
 					>
-						{renderBody(this.props.rows)}
+						{renderBody(this.state.rows)}
 					</TableBody>
 				</Table>
 			</div>
