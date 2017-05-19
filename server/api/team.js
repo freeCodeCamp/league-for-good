@@ -37,6 +37,22 @@ const deleteTeam = (req, res) => {
 		.catch(error => res.send({msg:'An error occured while removing team', error}));
 };
 
+Router.route('/add-staff/:name')
+	.get((req, res) => {
+		Team.findOne({name:'Raptors'})
+			.exec()
+			.then( team => {
+				team.staff.push({
+					name: req.params.name,
+					role:'Janitor',
+					email: req.params.name+Math.random()+'@gmail.com',
+					phone_num: '123-456-7899'
+				})
+				return team.save()
+			})
+			.then(team => res.send(team))
+	})
+
 Router.route('/create').post(createTeam);
 Router.route('/remove/:teamId').delete(deleteTeam);
 

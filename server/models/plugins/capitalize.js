@@ -1,0 +1,34 @@
+//Returns a capitalized string with the proper padding
+function capitalizeWord(acc, val, index){
+	const padding = index > 0 ? ' ': '';
+	return acc + padding + val.charAt(0).toUpperCase() + val.slice(1);
+};
+
+
+//Capitalize the first letter in each word of a string
+String.prototype.toTitleCase = function(){
+	const words = this.split(' ');
+	
+	return words.reduce(capitalizeWord , '');
+};
+
+// Custom mongoose plugin that will use the above string method to format various fields
+// to a schema before it is saved to the database
+
+//NOTE : this function will not work on embedded fields
+
+module.exports = function(schema, {fields}){
+	
+	schema.pre('save', function(next) {
+		const self = this;
+		
+		fields.forEach( field => {
+			
+			if( self[field] ){
+				self[field] = self[field].toTitleCase();
+			}; 
+		});
+
+		return next();
+	});
+};

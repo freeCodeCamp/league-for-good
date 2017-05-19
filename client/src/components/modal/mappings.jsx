@@ -37,9 +37,14 @@ const mappings = {
 	
 	logout: {
 		title: 'Are you sure you want to log out?',
-		ModalChildren: null,          
+		children: null,          
 		onSubmit: 'logOut',
 	},
+	removeTeam: {
+		title: 'Are you sure you want to permanently delete this team?',
+		children: null,
+		onSubmit: 'removeTeam'
+	}
 };
 
 export default mappings;

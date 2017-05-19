@@ -4,6 +4,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const capitalize = require('./plugins/capitalize');
+
 const PlayerSchema = new Schema({
 	first_name: {
 		type: String,
@@ -53,5 +55,18 @@ const PlayerSchema = new Schema({
 		collection: 'players',
 	}
 );
+
+
+const fields = [
+	'first_name', 
+	'last_name', 
+	'city', 
+	'country', 
+	'state', 
+	'address',
+	'emergency_contact.name'
+];
+
+PlayerSchema.plugin(capitalize, { fields });
 
 module.exports = mongoose.model('player', PlayerSchema);

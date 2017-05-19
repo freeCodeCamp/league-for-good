@@ -4,7 +4,7 @@ import EditIcon from 'material-ui/svg-icons/image/edit';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { removeTeam } from '../../../../actions/index';
+import { openModal } from '../../../../actions/index';
 
 const style = {
 	iconHover: {
@@ -23,7 +23,7 @@ class Icon extends React.Component {
 			return console.log('EDIT CLICKED');
 		}
 		else {
-			this.props.removeTeam(team);
+			this.props.openModal('removeTeam', team);
 		}
 	}
 	render(){
@@ -43,7 +43,7 @@ class Icon extends React.Component {
 };
 
 function mapDispatchToProps(dispatch){
-	return bindActionCreators({removeTeam}, dispatch);
+	return bindActionCreators({openModal}, dispatch);
 };
 
 export default connect(null, mapDispatchToProps)(Icon);

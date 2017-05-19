@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { withRouter } from 'react-router-dom';
 import { TextField } from 'redux-form-material-ui';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Field, reduxForm, reset as resetForm } from 'redux-form';
@@ -7,6 +6,19 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { createTeam, openSnackbar } from '../../../actions/index';
 import { containerCSS, formCSS, formButtonCSS, titleCSS } from '../dashboardCSS';
+
+
+//prevent user from submitting a team name that is blank or too short
+const validate = val => {
+	const errors = {};
+	if(!val.name){
+		errors.name = 'Please provide a team name';
+	}
+	else if(val.name.length < 3){
+		errors.name = 'Team names must be at least 3 characters in length';
+	}
+	return errors;
+}
 
 class AddTeamForm extends Component {
 	onSubmit = ({ name }) => {
@@ -44,11 +56,10 @@ class AddTeamForm extends Component {
 }
 
 
-AddTeamForm = withRouter( AddTeamForm );
-
 AddTeamForm = reduxForm({
 	form: "AddTeamForm",
-	onSubmitSuccess: openSnackbar
+	onSubmitSuccess: openSnackbar,
+	validate
 })( AddTeamForm );
 
 function mapDispatchToProps( dispatch ){

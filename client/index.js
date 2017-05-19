@@ -10,7 +10,9 @@ import reducers from './src/reducers/index';
 
 import App from './src/app.jsx';
 
+// This must be invoked in order for the Material-UI theme provider to work
 injectTapEventPlugin();
+
 
 const Root = () => {
 	return(
