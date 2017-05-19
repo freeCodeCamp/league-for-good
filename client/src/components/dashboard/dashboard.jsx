@@ -5,19 +5,19 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchLeagues} from '../../actions/index';
 import LeagueTabs from './leagueTabs.jsx';
+import LeagueTabsHeader from './dashboardHeader.jsx';
 
 class Dashboard extends Component {
 
 	render() {
-		const { league } = this.props;
+		const { league, view } = this.props;
 		
 		return (
 			<div style={{height: 'auto'}}>
-				{league &&
+				{league.name &&
 				<div style={{backgroundColor: '#f4f6f7'}}>
-					<h2 style={{paddingTop: '20px', margin: '0px'}}>{ league.name }</h2>
-					<h3>{ `${league.sport_type} League` }</h3>
-					<LeagueTabs />
+					<LeagueTabsHeader league={league}/>
+					<LeagueTabs league={league} view={view}/>
 				</div>
 				}
 			</div>
@@ -25,12 +25,13 @@ class Dashboard extends Component {
 	}
 }
 
-function mapStateToProps(state){
-	return { league: state.league.selected, view: state.teams.view };
+function mapStateToProps({ league, teams }){
+	const { selected } = league;
+	const { active_teams, archived_teams } = teams;
+	const leagueObj = { ...selected, active_teams, archived_teams };
+	
+	return { league: leagueObj, view: teams.view };
 }
 
-function mapDispatchToProps(dispatch){
-	return bindActionCreators({ fetchLeagues }, dispatch);
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps)(Dashboard);

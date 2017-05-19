@@ -320,6 +320,7 @@ class TableTemplate extends Component {
 						/>
 					</TableHeader>
 					<TableBody
+						preScanRows={false}
 						displayRowCheckbox={false}
 						showRowHover={true}
 					>

@@ -5,6 +5,7 @@ export function toggleMenu(){
 	return { type: TOGGLE_MENU };
 }
 
+//Mark the modals state as opened and specify a view
 export function openModal(view){
 	return { type: OPEN_MODAL, payload: view };
 }

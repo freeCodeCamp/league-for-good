@@ -40,6 +40,10 @@ const PlayerSchema = new Schema({
 	country: {
 		type: String,
 	},
+	leagues: [{
+		type: Schema.Types.ObjectId,
+		ref: 'league',
+	}],
 	teams: [{
 		teamId: Schema.Types.ObjectId,
 		position: [String],

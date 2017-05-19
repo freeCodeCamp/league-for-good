@@ -18,3 +18,4 @@ export const SELECT_LEAGUE = 'select league';
 // Team action types
 export const TEAM_MANAGE_VIEW = 'team manage view';
 export const CREATE_TEAM = 'create team';
+export const REMOVE_TEAM = 'REMOVE_TEAM';

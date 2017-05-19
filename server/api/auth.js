@@ -3,17 +3,36 @@ const Router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
 
-const logInUser = (req,res) => {
+const Leagues = mongoose.model('league');
+
+function logInUser(req,res){
 	req.logIn(req.user, err => {
 		if(err) throw err;
 		res.redirect('/');
 	});
 };
 
-const logOutUser = (req, res) =>{
+function logOutUser(req, res){
 	req.logout();
 	res.status(200).send('User logged out');
 };
+
+function fetchUserAndLeagues(req, res, next){
+	const { user } = req;
+	
+	if(!user) return next();
+
+	return Leagues.find({ owner: user._id })
+		.populate('archived_teams active_teams')
+		.exec()
+		.then(leagueInfo => { 
+			res.send({user, leagueInfo, loggedIn: true })
+		});
+};
+
+function handleAuthFailure(req,res){
+	return res.send({user: null, loggedIn: false});
+}
 
 Router.route('/google')
   .get(passport.authenticate('google',{scope:['profile','email']}));
@@ -26,12 +45,6 @@ Router.route('/logout')
   .post(logOutUser);
 
 Router.route('/authenticate')
-  .post((req,res) => { 
-	if(req.user){
-		res.send({user:req.user, loggedIn:true});
-	}else{
-		res.send({user:null, loggedIn:false});
-	} 
-});
+  .post(fetchUserAndLeagues, handleAuthFailure);
 
 module.exports = Router;  

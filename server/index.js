@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
-const webpackMiddleware = require('../webpack.dev.middleware');
 
 require('dotenv').config();
 
@@ -35,7 +34,17 @@ app.use(session({
 	}),
 }));
 
-app.use(webpackMiddleware);
+//Disable webpack build if debugging backend functionality
+
+if(process.env.NODE_ENV !== 'backend-dev'){
+	const webpackMiddleware = require('../webpack.dev.middleware');
+	app.use(webpackMiddleware);
+}
+else{
+	app.get('/', (req,res) => res.send(req.session.passport))
+}
+
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -43,6 +52,7 @@ app.use(passport.session());
 app.use('/auth', Routes.auth);
 app.use('/league', Routes.league);
 app.use('/team', Routes.team);
+app.use('/player', Routes.player);
 
 app.get('*', (req, res) => res.redirect('/'));
 //Temporary fix for syncing up with react-routers urls
