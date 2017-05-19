@@ -19,10 +19,10 @@ const style = {
 //In a seperate file from to keep all jsx seperate from the rest of the util functions
 class Icon extends React.Component {
 	onClick = (team, action) => {
-		if(action === 'edit'){
+		if(action === 'edit') {
 			return console.log('EDIT CLICKED');
 		}
-		else{
+		else {
 			this.props.removeTeam(team);
 		}
 	}

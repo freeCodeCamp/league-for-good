@@ -35,8 +35,8 @@ function getCellValue(team, prop, action) {
 		return team.currently_active ? 'Active' : 'Not Active';
 	}
 	if (prop === 'icon') {
-		const iconProps = { action, team }
-		return <Icon {...iconProps}/>
+		const iconProps = { action, team };
+		return <Icon {...iconProps}/>;
 	}
 	// Split properties if cell property is nested
 	if (prop.split('.').length > 1) {

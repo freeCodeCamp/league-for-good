@@ -7,6 +7,7 @@ const Schema = mongoose.Schema;
 const TeamSchema = new Schema({
 	name: {
 		type: String,
+		trim: true,
 		required: true,
 	},
 	players: [{type: Schema.Types.ObjectId, ref: 'player'}],
@@ -31,5 +32,11 @@ const TeamSchema = new Schema({
 		collection: 'teams',
 	}
 );
+
+TeamSchema.pre('save', function (next) {
+  	// capitalize
+	this.name = this.name.charAt(0).toUpperCase() + this.name.slice(1);
+  	next();
+});
 
 module.exports = mongoose.model('team', TeamSchema);
