@@ -18,13 +18,13 @@ const validate = val => {
 		errors.name = 'Team names must be at least 3 characters in length';
 	}
 	return errors;
-}
+};
 
 class AddTeamForm extends Component {
-	onSubmit = ({ name }) => {
+	onSubmit({ name }){
 		const { league: { _id }, createTeam } = this.props;
-		createTeam({name, league:_id})
-	};
+		createTeam({name, league:_id});
+	}
 
 	render() {
 		const {handleSubmit} = this.props;
@@ -33,7 +33,7 @@ class AddTeamForm extends Component {
 			<div style={containerCSS}>
 				<h1 style={titleCSS}>Add Team</h1>
 				<form 
-					onSubmit={ handleSubmit(this.onSubmit)}
+					onSubmit={ handleSubmit(this.onSubmit.bind(this))}
 					style={formCSS}
 				>
 					<Field
@@ -56,15 +56,15 @@ class AddTeamForm extends Component {
 }
 
 
-AddTeamForm = reduxForm({
-	form: "AddTeamForm",
+const TeamAddForm = reduxForm({
+	form: 'AddTeamForm',
 	onSubmitSuccess: openSnackbar,
-	validate
+	validate,
 })( AddTeamForm );
 
 function mapDispatchToProps( dispatch ){
 	return bindActionCreators({ createTeam }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(AddTeamForm);
+export default connect(null, mapDispatchToProps)(TeamAddForm);
 

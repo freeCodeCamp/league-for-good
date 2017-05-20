@@ -11,23 +11,24 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				use: 'babel-loader',
+				test: /\.js$/,
+				enforce: 'pre',
+				loader: 'eslint-loader',
+				options: {
+					emitWarning: true,
+				},
+			},		
+			{
 				test: /\.js$|\.jsx$/,
 				exclude: /node_modules/,
+				loader: 'babel-loader',
 			},
 			{
 				test: /\.(jpe?g|png|gif|svg)$/i,
 				include : path.join(__dirname, 'images'),
 				loader  : 'url-loader?limit=30000&name=images/[name].[ext]',
 			},
-			{
-				test: /\.(js|jsx)$/,
-				enforce: 'pre',
-				loader: 'eslint-loader',
-				options: {
-					emitWarning: true,
-				},
-			}],
+		],
 	},
 	plugins: [
 		new HtmlWebpackPlugin({

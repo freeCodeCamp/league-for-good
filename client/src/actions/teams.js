@@ -34,12 +34,14 @@ export function removeTeam(team){
 		
 		axios.delete(`${rootURL}/team/remove/${_id}`)
 			.then((data) => {
-				dispatch({ type: REMOVE_TEAM, list, payload: _id }) 
-				return dispatch({ type: 'CLOSE_MODAL'})
+				dispatch({ type: REMOVE_TEAM, list, payload: _id }); 
+				return dispatch({ type: 'CLOSE_MODAL'});
 			})
 			.then(() => {
-				dispatch({ type: 'OPEN_SNACKBAR', 
-					payload: `The ${teamName} have been deleted from your league`})
-			})
-	}
+				dispatch({ 
+					type: 'OPEN_SNACKBAR', 
+					payload: `The ${teamName} have been deleted from your league`,
+				});
+			});
+	};
 }

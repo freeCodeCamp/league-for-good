@@ -43,8 +43,8 @@ const mappings = {
 	removeTeam: {
 		title: 'Are you sure you want to permanently delete this team?',
 		children: null,
-		onSubmit: 'removeTeam'
-	}
+		onSubmit: 'removeTeam',
+	},
 };
 
 export default mappings;

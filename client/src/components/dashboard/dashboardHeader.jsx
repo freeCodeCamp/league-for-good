@@ -7,7 +7,7 @@ const style = {
 	h2: {
 		paddingTop: '20px',
 		margin: '0px',
-	}
+	},
 };
 
 const Header = ({league}) => (

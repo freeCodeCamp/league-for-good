@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import IconButton from 'material-ui/IconButton';
 import EditIcon from 'material-ui/svg-icons/image/edit';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
@@ -17,10 +17,16 @@ const style = {
 
 //Returns an icon for the table 
 //In a seperate file from to keep all jsx seperate from the rest of the util functions
-class Icon extends React.Component {
-	onClick = (team, action) => {
+class Icon extends Component {
+	
+	constructor(props){
+		super(props);
+		this.onClick = this.onClick.bind(this);
+	}
+
+	onClick(team, action){
 		if(action === 'edit') {
-			return console.log('EDIT CLICKED');
+			return;
 		}
 		else {
 			this.props.openModal('removeTeam', team);
@@ -31,7 +37,7 @@ class Icon extends React.Component {
 
 		return (
 			<IconButton 
-				onTouchTap={()=>this.onClick(team, action) }
+				onTouchTap={()=> this.onClick(team, action) }
 				hoveredStyle={style.iconHover}
 			>
 				{action === 'delete' ?
@@ -40,10 +46,10 @@ class Icon extends React.Component {
 			</IconButton>
 		);
 	}
-};
+}
 
 function mapDispatchToProps(dispatch){
 	return bindActionCreators({openModal}, dispatch);
-};
+}
 
 export default connect(null, mapDispatchToProps)(Icon);

@@ -7,6 +7,7 @@ module.exports = {
 		mongo: true,
 	},
 	extends: 'eslint:recommended',
+	parser: 'babel-eslint',
 	parserOptions: {
 		sourceType: 'module',
 		ecmaFeatures: {
