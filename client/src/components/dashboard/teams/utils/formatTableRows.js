@@ -22,7 +22,7 @@ const style = {
 
 	// Column headers and data
 export const colData = [
-		{ label: 'Name', style: style.nameCol, cellProp: 'name', sortable: true, searchable: false },
+		{ label: 'Name', style: style.nameCol, cellProp: 'name', sortable: true, searchable: true },
 		{ label: 'Roster Size', style: style.defaultCol, cellProp: 'players.length', sortable: true },
 		{ label: 'Seasons Played', style: style.defaultCol, cellProp: 'seasons.length', sortable: true },
 		{ label: 'Status', style: style.defaultCol, cellProp: 'currently_active' },
@@ -43,9 +43,9 @@ function getCellValue(team, prop, action) {
 		return prop.split('.').reduce((o, i) => o[i], team);
 	}
 	return team[prop];
-}			
+}
 	
-	
+
 	// Massage the data for the table body
 const getTableData = ({teams, action}) => {
 	//map each row

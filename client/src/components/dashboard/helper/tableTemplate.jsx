@@ -17,7 +17,6 @@ import { containerCSS, titleCSS } from '../dashboardCSS';
 
 const style = {
 	defaultCol: {
-		width: '20%',
 		textAlign: 'left',
 	},
 	search: {
@@ -64,7 +63,7 @@ const SearchTable = (props) => {
 	);
 };
 
-// Header row for the table
+// Header row for the table containing column names
 const Headers = (props) => {
 	return (
 		<TableRow>
@@ -91,7 +90,7 @@ const Headers = (props) => {
 };
 
 // renders the TableRow components that will appear inside the TableBody 
-//Not a functional component.. This returns an array rather than a single JSX component
+// Not a functional component.. This returns an array rather than a single JSX component
 const renderBody = (rows) => {
 	return (
 			rows.map(function(row, i) {
@@ -142,6 +141,7 @@ const ColumnHeaderChild = (props) => {
 		else if (props.sortDirection === 'desc') {
 			arrowIcon = <ArrowUp color={iconColor} />;
 		}
+		// else, no sorting
 		else {
 			arrowIcon = <ArrowUp color={iconColor} />;
 		}
@@ -167,10 +167,12 @@ class TableTemplate extends Component {
 	constructor(props) {
 		super(props);
 		let searchableIndex = 0;
+		// set width of default columns in table
+		style.defaultCol.width = (100 / this.props.rows.length) + '%';
 		
 		this.props.headers.forEach((header, i) => {
 			if (!!header.searchable) {
-				searchableColumnIndex = i;
+				searchableIndex = i;
 			}
 		});
 		
@@ -233,23 +235,28 @@ class TableTemplate extends Component {
 		let sortedRows;
 		
 		// Changing sort from asc to desc or desc to none
-		// or the user is sorting a different column
-		if (sortDirection !== 'none' || colIndex !== this.state.sortColumnIndex) {
-			// If the same column is being sorted (i.e. asc -> desc)
-			if (colIndex === this.state.sortColumnIndex) {
+		// if a different column has been sorted, sort to default(asc)
+		if (colIndex !== this.state.sortColumnIndex) {
+			sortedRows = this.state.rows.sort(
+				this.sortColumn(colIndex)
+			);
+		}
+		// If the same column is being sorted (i.e. asc -> desc)
+		else if (sortDirection !== 'none') {
+			// if sorting using asc
+			if (sortDirection === 'asc') {
 				sortedRows = this.state.rows.sort(
-					this.sortColumn(sortDirection, colIndex)
+					this.sortColumn(colIndex)
 				);
 			}
-			// else, a different column has been sorted, so sort to default(asc)
+			// else, it is switching to desc and can just reverse current state of rows
 			else {
-				sortedRows = this.state.rows.sort(
-					this.sortColumn('asc', colIndex)
-				);
+				sortedRows = this.state.rows.reverse();
 			}
 		}
 		// else, the sorting has been reset to the original state
 		else {
+			// if the user is searching, return to the original state of searched rows
 			if (!!this.state.searchTerm) {
 				sortedRows = Array.from(this.state.searchRows);
 			}
@@ -274,10 +281,30 @@ class TableTemplate extends Component {
 	
 	// sort column based on a direction
 	// @direction: direction in which to sort the column
-	// @colProp: which column to sort
-	sortColumn(direction, colIndex) {
-		if (direction === 'asc') {
-			return function(a, b) {
+	// @colIndex: column index of the table
+	sortColumn(colIndex) {
+		// check if the sorting is using strings
+		const comparingStrings = (a, b, colIndex) => {
+			if (typeof a[colIndex].value === 'string' ||
+				typeof b[colIndex].value === 'string') {
+				return true;
+			}
+			return false;
+		};
+
+		return function(a, b) {
+			if (comparingStrings(a, b, colIndex)) {
+				if (String(a[colIndex].value).toLowerCase() <
+					String(b[colIndex].value).toLowerCase()) {
+					return -1;
+				}
+				if (String(a[colIndex].value).toLowerCase() > 
+					String(b[colIndex].value).toLowerCase()) {
+					return 1;
+				}
+				return 0;
+			}
+			else {
 				if (a[colIndex].value < b[colIndex].value) {
 					return -1;
 				}
@@ -286,19 +313,7 @@ class TableTemplate extends Component {
 				}
 				return 0;
 			}
-		}
-		if (direction === 'desc') {
-			return function(a, b) {
-				if (b[colIndex].value < a[colIndex].value) {
-					return -1;
-				}
-				if (b[colIndex].value > a[colIndex].value) {
-					return 1;
-				}
-				return 0;
-			}
-		}
-		return 'none';
+		};
 	}
 	
 	render() {
