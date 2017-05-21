@@ -20,8 +20,7 @@ var styles = {
     width: '90%',
     maxWidth: 800,
   },
-  dialogBody: {
-    
+  dialogBody: {  
     paddingBottom: 0,
   },
   title: {
@@ -49,9 +48,10 @@ class Modal extends Component {
   };
 
   render() {
-    const { view, open } = this.props;
-    const { title, ModalChildren } = modalMapping[view];
-
+    const { view, open, data } = this.props;
+    
+    const { title, children } = modalMapping[view];
+    
     const handleSubmit = this.getAction().handleSubmit;
 
     const actions = [
@@ -64,7 +64,7 @@ class Modal extends Component {
         label="Submit"
         primary={true}
         keyboardFocused={true}
-        onTouchTap={()=> handleSubmit()}
+        onTouchTap={()=> handleSubmit(data)}
       />,
     ];
 
@@ -81,20 +81,17 @@ class Modal extends Component {
           onRequestClose={this.handleClose}
         >
 
-          {ModalChildren}
+          {children}
         </Dialog>
       </div>
     );
   }
 }
 
-function mapStateToProps(state){
-  return {open: state.modal.open, view: state.modal.view };
+function mapStateToProps({modal}){
+  const { open, view, data } = modal; 
+  return { open, view, data };
 }
-
-// function mapDispatchToProps(dispatch){
-//   const handleSubmit = 
-// }
 
 
 export default connect(mapStateToProps)(Modal);

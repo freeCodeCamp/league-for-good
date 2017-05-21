@@ -15,6 +15,8 @@ import ArrowUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
 import ArrowDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
 import { containerCSS, titleCSS } from '../dashboardCSS';
 
+import { orderBy } from 'lodash';
+
 const style = {
 	defaultCol: {
 		textAlign: 'left',
@@ -54,11 +56,11 @@ const SearchTable = (props) => {
 	return (
 		<TextField 
 			hintText={<SearchIcon />}
-    		underlineFocusStyle={style.searchUnderline}
-    		style={style.search}
-    		floatingLabelText="Search"
-    		floatingLabelFixed={true}
-    		onChange={props.onSearch}
+    	underlineFocusStyle={style.searchUnderline}
+    	style={style.search}
+    	floatingLabelText="Search"
+    	floatingLabelFixed={true}
+    	onChange={props.onSearch}
 		/>
 	);
 };

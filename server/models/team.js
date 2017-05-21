@@ -4,6 +4,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const capitalize = require('./plugins/capitalize');
+
 const TeamSchema = new Schema({
 	name: {
 		type: String,
@@ -20,23 +22,19 @@ const TeamSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'league',
 	},
-	staff: {
-		type: [{
+	staff: [
+	 	{
 			role: String,
 			name: String,
 			email: String,
 			phone_num: String,
-		}],
-	}},
-	{
-		collection: 'teams',
-	}
-);
-
-TeamSchema.pre('save', function (next) {
-  	// capitalize
-	this.name = this.name.charAt(0).toUpperCase() + this.name.slice(1);
-  	next();
+		}
+	],
+},
+{ 
+	collection: 'teams',
 });
+
+TeamSchema.plugin(capitalize, {fields: ['name']});
 
 module.exports = mongoose.model('team', TeamSchema);

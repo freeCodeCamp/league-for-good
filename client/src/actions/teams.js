@@ -26,12 +26,22 @@ export function selectTeams(teams){
 
 //Delete a team from a league
 export function removeTeam(team){
-	const {_id, currently_active } = team;
+	const {_id, currently_active, name } = team;
 	const list = currently_active? 'active_teams' : 'archived_teams';
-	return function(dispatch){
+	const teamName = name.replace(/^The/, '');
+	
+	return function( dispatch ){
+		
 		axios.delete(`${rootURL}/team/remove/${_id}`)
 			.then((data) => {
-				dispatch({ type: REMOVE_TEAM, list, payload: _id }) 
+				dispatch({ type: REMOVE_TEAM, list, payload: _id }); 
+				return dispatch({ type: 'CLOSE_MODAL'});
 			})
-	}
+			.then(() => {
+				dispatch({ 
+					type: 'OPEN_SNACKBAR', 
+					payload: `The ${teamName} have been deleted from your league`,
+				});
+			});
+	};
 }

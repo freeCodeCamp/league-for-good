@@ -39,7 +39,7 @@ class LinkTemplate extends Component {
 			</IconButton>
 		);
 	}
-};
+}
 
 function mapStateToProps(state){
 	return { view: state.teams.view };

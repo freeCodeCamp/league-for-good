@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import { Tabs, Tab } from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
@@ -13,7 +13,7 @@ const style = {
 		height: 'auto',
 	},
 	tab: {
-		backgroundColor: "#0288D1",
+		backgroundColor: '#0288D1',
 	},
 	inkBar: {
 		backgroundColor: '#91dcff',
@@ -22,33 +22,27 @@ const style = {
 };
 
 // Tabs for each section the user can manage
-class LeagueTabs extends React.Component {
+const LeagueTabs = props => (
+	<div>
+		<Tabs inkBarStyle={style.inkBar}>
+      {
+				tabs.map((tab, i) => (
+					<Tab 
+						label={tab.name}
+						key={i}
+						style={style.tab}
+					>
+						<div>
+							{generateLinks(tab.links)}
+							<PanelViewWrapper {...props}/>
+						</div>
+					</Tab>
+					)
+				)
+			}
+		</Tabs>
+	</div>
+);
 
-	render() {
-		
-		return (
-      	<div>
-        	<Tabs inkBarStyle={style.inkBar}>
-        		{
-        			tabs.map((tab, i) => {
-        				return (
-        					<Tab 
-	        					label={tab.name}
-	        					key={i}
-	        					style={style.tab}
-	        				>
-	        					<div>
-	        						{generateLinks(tab.links)}
-									<PanelViewWrapper {...this.props}/>
-	        					</div>
-	        				</Tab>
-	        			);
-        			})
-        		}
-        	</Tabs>
-      </div>
-    );
-  }
-}
 
 export default LeagueTabs;

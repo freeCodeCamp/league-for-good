@@ -15,8 +15,8 @@ export function initAuthState(){
 
 				//send user's leagues to reducer
 				if(leagueInfo){
-					dispatch({ type:FETCH_LEAGUES, payload: leagueInfo})
-				};
+					dispatch({ type:FETCH_LEAGUES, payload: leagueInfo});
+				}
 			});
 	};
 }
