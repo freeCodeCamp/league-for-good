@@ -25,12 +25,12 @@ class Dashboard extends Component {
 	}
 }
 
-function mapStateToProps({ league, teams }){
+function mapStateToProps({ league, teams, manage }){
 	const { selected } = league;
 	const { active_teams, archived_teams } = teams;
 	const leagueObj = { ...selected, active_teams, archived_teams };
 	
-	return { league: leagueObj, view: teams.view };
+	return { league: leagueObj, view: manage.view };
 }
 
 

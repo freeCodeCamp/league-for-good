@@ -1,4 +1,4 @@
-import { TOGGLE_MENU, OPEN_MODAL } from './types';
+import { TOGGLE_MENU, OPEN_MODAL, CHANGE_MANAGE_VIEW } from './types';
 
 //Triggers the menuReducer to switch it's 'open' state  
 export function toggleMenu(){
@@ -9,5 +9,3 @@ export function toggleMenu(){
 export function openModal(view, data = null){
 	return { type: OPEN_MODAL, payload: { view, data } };
 }
-
-

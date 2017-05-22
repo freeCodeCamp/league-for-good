@@ -5,12 +5,13 @@ export const containerCSS = {
 	borderTop: '1px solid lightgrey',
 	paddingBottom: '30px',
 	backgroundColor: '#fff',
+	textAlign: 'center',
 };
 
 // Titles for sections
 export const titleCSS = {
 	textAlign: 'center',
-	marginTop: '30px',
+	marginTop: '40px',
 	padding: '0px',
 };
 
@@ -24,5 +25,10 @@ export const formCSS = {
 // Buttons at the end of a form
 export const formButtonCSS = {
 	marginTop: '30px',
+};
+
+// Required fields in a form
+export const formRequiredCSS = {
+	color: 'red',
 };
 

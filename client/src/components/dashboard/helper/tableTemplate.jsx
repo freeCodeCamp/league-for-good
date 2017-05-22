@@ -145,6 +145,7 @@ const renderBody = (rows) => {
 }
 
 // column header with sorting icons
+// when clicked will sort columns with asc, desc, or no order
 const ColumnHeaderChild = (props) => {
 	let arrowIcon = <noScript />;
 

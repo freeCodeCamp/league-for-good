@@ -5,7 +5,7 @@ import { Field, reduxForm, reset as resetForm } from 'redux-form';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { createTeam, openSnackbar } from '../../../actions/index';
-import { containerCSS, formCSS, formButtonCSS, titleCSS } from '../dashboardCSS';
+import { containerCSS, formCSS, formButtonCSS, titleCSS, formRequiredCSS } from '../dashboardCSS';
 
 
 //prevent user from submitting a team name that is blank or too short
@@ -13,9 +13,6 @@ const validate = val => {
 	const errors = {};
 	if(!val.name){
 		errors.name = 'Please provide a team name';
-	}
-	else if(val.name.length < 3){
-		errors.name = 'Team names must be at least 3 characters in length';
 	}
 	return errors;
 };
@@ -32,6 +29,7 @@ class AddTeamForm extends Component {
 		return (
 			<div style={containerCSS}>
 				<h1 style={titleCSS}>Add Team</h1>
+				<h6 style={formRequiredCSS}>* = Required</h6>
 				<form 
 					onSubmit={ handleSubmit(this.onSubmit.bind(this))}
 					style={formCSS}
@@ -39,8 +37,9 @@ class AddTeamForm extends Component {
 					<Field
 						name="name" 
 						component={TextField}
-						hintText="Select a team name"
-						floatingLabelText="Team name"
+						hintText="Team name"
+						floatingLabelText="Team name*"
+						floatingLabelStyle={formRequiredCSS}
 						fullWidth={true}
 					/>
 					<RaisedButton

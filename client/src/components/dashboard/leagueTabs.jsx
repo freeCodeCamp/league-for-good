@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { changeManageView } from '../../actions/index';
 
 import { Tabs, Tab } from 'material-ui/Tabs';
-import SwipeableViews from 'react-swipeable-views';
 
 import { generateLinks } from './helper/generateLinks.jsx';
 import { tabs } from './leagueTabData';
@@ -23,26 +25,6 @@ const style = {
 
 // Tabs for each section the user can manage
 class LeagueTabs extends Component {
-	constructor(props) {
-		super(props);
-		console.log(this.props.view);
-		
-		this.state = {
-			view: this.props.view
-		};
-	}
-	
-	componentWillReceiveProps(nextProps) {
-		/*this.setState({
-			view: null
-		});*/
-	}
-	
-	changeTab(tabName) {
-		this.setState({
-			view: tabName
-		});
-	}
 
 	render() {
 		return (
@@ -54,7 +36,7 @@ class LeagueTabs extends Component {
 								label={tab.name}
 								key={i}
 								style={style.tab}
-								onClick={this.changeTab.bind(this, tab.name)}
+								onActive={() => this.props.changeManageView(null)}
 							>
 								<div>
 									{generateLinks(tab.links)}
@@ -70,5 +52,8 @@ class LeagueTabs extends Component {
 	}
 }
 
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators({ changeManageView }, dispatch);
+}
 
-export default LeagueTabs;
+export default connect(null, mapDispatchToProps)(LeagueTabs);

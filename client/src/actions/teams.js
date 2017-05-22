@@ -1,11 +1,7 @@
 // User actions to add, edit, and delete teams in the league
 import axios from 'axios';
-import { TEAM_MANAGE_VIEW, CREATE_TEAM, REMOVE_TEAM } from './types';
+import { CREATE_TEAM, REMOVE_TEAM, SELECT_TEAMS } from './types';
 import { rootURL } from '../../globals';
-
-export function changeTeamManageView(view) {
-	return { type: TEAM_MANAGE_VIEW, payload: view };
-}
 
 // create a team
 export function createTeam(body) {
@@ -21,7 +17,7 @@ export function createTeam(body) {
 }
 //Select teams to display from league
 export function selectTeams(teams){
-	return { type: 'SELECT_TEAMS', payload: teams };
+	return { type: SELECT_TEAMS, payload: teams };
 }
 
 //Delete a team from a league

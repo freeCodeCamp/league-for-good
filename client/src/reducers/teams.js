@@ -1,4 +1,4 @@
-import { TEAM_MANAGE_VIEW, CREATE_TEAM, REMOVE_TEAM } from '../actions/types';
+import { TEAM_MANAGE_VIEW, CREATE_TEAM, REMOVE_TEAM, SELECT_TEAMS } from '../actions/types';
 
 const defaultState = { view: null, archived_teams: [], active_teams:[] };
 
@@ -12,14 +12,12 @@ export default function(state = defaultState, action) {
 	const { payload, list, type } = action;
 
 	switch(action.type) {
-	case TEAM_MANAGE_VIEW:
-		return { ...state, view: action.payload };
-	case 'SELECT_TEAMS':
-		return { ...state, ...action.payload };	
-	case CREATE_TEAM:
-		return { ...state, archived_teams: [payload, ...state.archived_teams] };
-	case REMOVE_TEAM:
-		return { ...state, [list]: state[list].filter( removeId(payload)) };		
+		case SELECT_TEAMS:
+			return { ...state, ...action.payload };
+		case CREATE_TEAM:
+			return { ...state, archived_teams: [payload, ...state.archived_teams] };
+		case REMOVE_TEAM:
+			return { ...state, [list]: state[list].filter( removeId(payload)) };
 	}
 	return state;
 }

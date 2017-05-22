@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { changeTeamManageView } from '../../../actions/index';
+import { changeManageView } from '../../../actions/index';
 import IconButton from 'material-ui/IconButton';
 
 // CSS for the links
@@ -29,7 +29,7 @@ class LinkTemplate extends Component {
 				tooltipPosition="bottom-right"
 				tooltip={this.props.description}
 				touch={true}
-				onTouchTap={() => this.props.changeTeamManageView(this.props.label)}
+				onTouchTap={() => this.props.changeManageView(this.props.label)}
 				style={style.icon}
 				iconStyle={this.props.view === this.props.label ?
 					style.iconActive : {}}
@@ -41,12 +41,12 @@ class LinkTemplate extends Component {
 	}
 }
 
-function mapStateToProps(state){
-	return { view: state.teams.view };
+function mapStateToProps(state) {
+	return { view: state.manage.view };
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ changeTeamManageView }, dispatch);
+	return bindActionCreators({ changeManageView }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LinkTemplate);
