@@ -17,8 +17,8 @@ const paperStyle = {
 	height: 'auto',
 	textAlign: 'center',
 	background:'#fff',
-	color:'#37474F',
-	border:'1px solid #607D8B',
+	color:'#37474f',
+	border:'1px solid lightgrey',
 };
 
 class Content extends Component {

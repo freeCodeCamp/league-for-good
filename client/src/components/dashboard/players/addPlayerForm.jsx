@@ -7,15 +7,22 @@ import { connect } from 'react-redux';
 import { createTeam, openSnackbar } from '../../../actions/index';
 import { containerCSS, formCSS, formButtonCSS, titleCSS, formRequiredCSS } from '../dashboardCSS';
 
+const emailRegex = new RegExp('^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$');
 
-//prevent user from submitting a player name that is blank or too short
+//prevent user from submitting incorrect player info
 const validate = val => {
 	const errors = {};
-	if(!val.name){
-		errors.name = 'Please provide a team name';
+	if(!val.first_name){
+		errors.first_name = 'Please provide a first name';
 	}
-	else if(val.name.length < 3){
-		errors.name = 'Team names must be at least 3 characters in length';
+	else if (!val.last_name) {
+		errors.last_name = 'Please provide a last name';
+	}
+	else if (!val.email) {
+		errors.email = 'Please provide an email address';
+	}
+	else if (!emailRegex.test(val.email)) {
+		errors.email = 'Email is not in correct format';
 	}
 	return errors;
 };
@@ -23,7 +30,8 @@ const validate = val => {
 class AddPlayerForm extends Component {
 	onSubmit({ name }){
 		const { league: { _id }, createTeam } = this.props;
-		createTeam({name, league:_id});
+		//createTeam({name, league:_id});
+		console.log('submitted');
 	}
 
 	render() {
@@ -56,7 +64,6 @@ class AddPlayerForm extends Component {
 					<Field
 						name="email" 
 						component={TextField}
-						type="email"
 						hintText="Email"
 						floatingLabelText="Email*"
 						floatingLabelStyle={formRequiredCSS}
@@ -65,7 +72,6 @@ class AddPlayerForm extends Component {
 					<Field
 						name="phone_num" 
 						component={TextField}
-						type="tel"
 						hintText="Phone number"
 						floatingLabelText="Phone number"
 						fullWidth={true}
@@ -99,7 +105,7 @@ class AddPlayerForm extends Component {
 						fullWidth={true}
 					/>
 					<RaisedButton
-						label="Create Team"
+						label="Create Player"
 						primary={true}
 						type="submit"
 						style={formButtonCSS}

@@ -80,7 +80,6 @@ class Modal extends Component {
           open={this.props.open}
           onRequestClose={this.handleClose}
         >
-
           {children}
         </Dialog>
       </div>
