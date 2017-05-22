@@ -6,8 +6,9 @@ import Headers from './TableHeaders.jsx';
 import SearchTable from './Search.jsx';
 
 import { containerCSS, titleCSS } from '../../dashboardCSS';
-import { orderBy } from 'lodash';
 
+import { orderBy } from 'lodash';
+//This component is built around this sort function
 
 // Table that lists all the teams and the ability to edit or delete each team
 class TableTemplate extends Component {
