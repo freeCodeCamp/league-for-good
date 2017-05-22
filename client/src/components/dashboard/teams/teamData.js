@@ -1,6 +1,6 @@
 import React from 'react';
-import Icon from './getIcon.jsx';
-import { containerCSS, titleCSS } from '../../dashboardCSS';
+import Icon from './utils/getIcon.jsx';
+import { containerCSS, titleCSS } from '../dashboardCSS';
 
 //All team data passed from the reducers is reformatted here so it contains the correct
 //values for the TableTemplate component
@@ -20,7 +20,7 @@ const style = {
 	},
 };
 
-	// Column headers and data
+// Column headers and data
 export const colData = [
 		{ label: 'Name', style: style.nameCol, cellProp: 'name', sortable: true, searchable: true },
 		{ label: 'Roster Size', style: style.defaultCol, cellProp: 'players.length', sortable: true },
@@ -29,7 +29,7 @@ export const colData = [
 		{ label: '', style: style.iconCol, cellProp: 'icon' },
 ];
 
-	// Get the value for the cell
+// Get the value for the cell
 function getCellValue(team, prop, action) {
 	if (prop === 'currently_active') {
 		return team.currently_active ? 'Active' : 'Not Active';
@@ -46,8 +46,8 @@ function getCellValue(team, prop, action) {
 }
 	
 
-	// Massage the data for the table body
-const getTableData = ({teams, action}) => {
+// Massage the data for the table body
+const getTeamTableData = ({teams, action}) => {
 	//map each row
 	return teams.map( team => {
 		//map each cell
@@ -60,4 +60,4 @@ const getTableData = ({teams, action}) => {
 	});
 };
 
-export default getTableData;
+export default getTeamTableData;

@@ -1,5 +1,5 @@
 import React from 'react';
-import getRowData, { colData } from './utils/formatTableRows';
+import getRowData, { colData } from './teamData';
 import TableTemplate from '../../dashboard/templates/table/index.jsx';
 
 // Table that lists all the teams and the ability to edit or delete each team

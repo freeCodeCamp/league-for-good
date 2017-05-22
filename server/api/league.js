@@ -28,7 +28,10 @@ const getLeagues = (req, res) => {
 	const query = { owner: _id };
 	// $or:{ owner: _id, staff:{$in: [_id]}}};  
 	League.find(query)
-		.populate('archived_teams active_teams')
+		.populate('archived_teams active_teams')//{
+			//path: 'archived_teams active_teams',
+			//populate: { path: 'players' }
+		//})
 		.exec()
 		.then(leagues => res.send(leagues))
 		.catch(err => res.send(err));

@@ -8,15 +8,38 @@ import {
 	TableRowColumn
 } from 'material-ui/Table';
 import TextField from 'material-ui/TextField';
-import AutoComplete from 'material-ui/AutoComplete';
 import FlatButton from 'material-ui/FlatButton';
 import SearchIcon from 'material-ui/svg-icons/action/search';
 import ArrowUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
 import ArrowDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
 import { containerCSS, titleCSS } from '../dashboardCSS';
 
-import { orderBy } from 'lodash';
+// A table template to easily render a table in the management panel
+// Also allows the styling of each column to be specified or uses a default
+// styling component, where each column is an equal width
+//
+// Table template component takes in three props
+//
+// @title - String: The title of the table at the top of the panel
+//
+// @headers - [Object]: An array of objects
+//		Each object requires the following fields:
+//			label(String) - Column name
+//			style(Object) - a css object to style the column(optional)
+//			sortable(Boolean) - true if column is sortable; false otherwise
+//			searchable(Boolean) - true if column is searchable
+//								  currently only allowed on one column
+//
+// @rows - [[Object]]: An array of an array of objects
+//		The rows array is an array containing each row in the table
+//		Each row will map to the headers prop, so the arrays must be the same length
+//		Each row is an array of objects with each object being a cell value
+//		Each row is passed in with the following values in the objects in the row array
+//			value - Value that will be displayed in the cell
+//			style(Object) - a css object to style the cell(optional)
 
+
+// styles for the table
 const style = {
 	defaultCol: {
 		textAlign: 'left',
@@ -286,6 +309,7 @@ class TableTemplate extends Component {
 	// @colIndex: column index of the table
 	sortColumn(colIndex) {
 		// check if the sorting is using strings
+		// and if true, we can normalize the string
 		const comparingStrings = (a, b, colIndex) => {
 			if (typeof a[colIndex].value === 'string' ||
 				typeof b[colIndex].value === 'string') {

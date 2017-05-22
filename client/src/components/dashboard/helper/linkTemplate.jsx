@@ -1,11 +1,11 @@
-// A template helper class to generate new cards for sections under tabs
+// A template helper class to generate new links for panels under tabs
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { changeTeamManageView } from '../../../actions/index';
 import IconButton from 'material-ui/IconButton';
 
-// CSS for the cards
+// CSS for the links
 const style = {
 	icon: {
 		margin: '10px',

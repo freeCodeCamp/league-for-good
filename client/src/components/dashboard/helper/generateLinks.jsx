@@ -12,7 +12,6 @@ export function generateLinks(links) {
 			return (
 				<LinkTemplate
 					key={i}
-					title={link.title}
 					description={link.description}
 					label={link.label}
 					icon={link.icon}

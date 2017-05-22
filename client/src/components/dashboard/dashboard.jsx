@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchLeagues} from '../../actions/index';
 import LeagueTabs from './leagueTabs.jsx';
-import LeagueTabsHeader from './dashboardHeader.jsx';
+import LeagueTabsHeader from './leagueTabsHeader.jsx';
 
 class Dashboard extends Component {
 
