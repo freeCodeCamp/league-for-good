@@ -220,7 +220,7 @@ class TableTemplate extends Component {
 			
 			this.props.headers.forEach((header, i) => {
 				if (!!header.searchable) {
-					searchableColumnIndex = i;
+					searchableIndex = i;
 				}
 			});
 			

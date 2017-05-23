@@ -8,11 +8,11 @@ import Menu from './Menu.jsx';
 class NavBar extends Component {
 
 	selectLeague = league => {
-		const { active_teams, archived_teams, ...rest } = league;
+		const { teams, ...rest } = league;
 
 		this.props.resetDashboard();
 		this.props.selectLeague(rest);
-		this.props.selectTeams({archived_teams, active_teams});
+		this.props.selectTeams(teams);
 
 	};
 

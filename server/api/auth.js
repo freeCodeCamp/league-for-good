@@ -25,7 +25,8 @@ function fetchUserAndLeagues(req, res, next){
 	if(!user) return next();
 
 	return Leagues.find({ owner: user._id })
-		.populate('archived_teams active_teams')
+		.select('-archived_teams -active_teams')
+		.populate('teams')
 		.exec()
 		.then(leagueInfo => { 
 			res.send({user, leagueInfo, loggedIn: true })

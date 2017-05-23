@@ -24,36 +24,32 @@ const style = {
 };
 
 // Tabs for each section the user can manage
-class LeagueTabs extends Component {
 
-	render() {
-		return (
-			<div>
-				<Tabs inkBarStyle={style.inkBar}>
-					{
-						tabs.map((tab, i) => (
-							<Tab 
-								label={tab.name}
-								key={i}
-								style={style.tab}
-								onActive={() => this.props.changeManageView(null)}
-							>
-								<div>
-									{generateLinks(tab.links)}
-									<PanelViewWrapper {...this.props} />
-								</div>
-							</Tab>
-							)
+
+const LeagueTabs = props => {
+	return (
+		<div>
+			<Tabs inkBarStyle={style.inkBar}>
+				{
+					tabs.map((tab, i) => (
+						<Tab 
+							label={tab.name}
+							key={i}
+							style={style.tab}
+							onActive={() => props.changeManageView(null)}
+						>
+							<div>
+								{generateLinks(tab.links)}
+								<PanelViewWrapper {...props} />
+							</div>
+						</Tab>
 						)
-					}
-				</Tabs>
-			</div>
-		);
-	}
+					)
+				}
+			</Tabs>
+		</div>
+	);
 }
 
-function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ changeManageView }, dispatch);
-}
 
-export default connect(null, mapDispatchToProps)(LeagueTabs);
+export default LeagueTabs;

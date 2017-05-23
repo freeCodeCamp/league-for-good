@@ -21,7 +21,7 @@ const createTeam = (req, res) => {
 	newTeam.save()
 		.then( team => {
 			teamObject = team;
-			return League.update(query, { $push: {archived_teams: team} })
+			return League.update(query, { $push: { teams: team} })
 				.exec(); 
 		})
 		.then(() => res.send(teamObject))

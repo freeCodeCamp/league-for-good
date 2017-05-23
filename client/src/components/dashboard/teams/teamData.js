@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from './utils/getIcon.jsx';
+import Icon from './tableIcon.jsx';
 import { containerCSS, titleCSS } from '../dashboardCSS';
 
 //All team data passed from the reducers is reformatted here so it contains the correct
@@ -31,6 +31,7 @@ export const colData = [
 
 // Get the value for the cell
 function getCellValue(team, prop, action) {
+
 	if (prop === 'currently_active') {
 		return team.currently_active ? 'Active' : 'Not Active';
 	}

@@ -4,7 +4,7 @@ import EditIcon from 'material-ui/svg-icons/image/edit';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { openModal } from '../../../../actions/index';
+import { openModal } from '../../../actions/index';
 
 const style = {
 	iconHover: {

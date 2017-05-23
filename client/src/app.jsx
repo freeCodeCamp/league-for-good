@@ -5,7 +5,6 @@ import requireAuth from './hoc/PrivateRoute.jsx';
 import handleLoading from './hoc/handleLoading.jsx';
 //higher order components used to bootstrap authentications and loading state
 
-import Nav from './components/nav/index.jsx';
 import Content from './components/Content.jsx';
 import Login from './components/Login.jsx';
 

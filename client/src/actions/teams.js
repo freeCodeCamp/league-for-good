@@ -1,6 +1,6 @@
 // User actions to add, edit, and delete teams in the league
 import axios from 'axios';
-import { CREATE_TEAM, REMOVE_TEAM, SELECT_TEAMS, OPEN_SNACKBAR, CLOSE_MODAL } from './types';
+import { CREATE_TEAM, REMOVE_TEAM, SELECT_TEAMS, UPDATE_TEAM, OPEN_SNACKBAR, CLOSE_MODAL } from './types';
 import { rootURL } from '../../globals';
 
 ////////////////////////////////////////////////////////////
@@ -51,7 +51,8 @@ export function updateTeam(formVals, dispatch, props){
 	
 	axios.put(`${rootURL}/team/update/${_id}`, body)
 		.then((data) => {
-			dispatch({type: 'reducer_not_ready'});
+
+			dispatch({type: UPDATE_TEAM, payload: {...formVals, name }});
 			dispatch({ type: CLOSE_MODAL });
 		})
 		.catch( error => {
