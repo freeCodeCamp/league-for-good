@@ -12,12 +12,13 @@ export default function(state = defaultState, action) {
 	const { payload, list, type } = action;
 
 	switch(action.type) {
-		case SELECT_TEAMS:
-			return { ...state, ...action.payload };
-		case CREATE_TEAM:
-			return { ...state, archived_teams: [payload, ...state.archived_teams] };
-		case REMOVE_TEAM:
-			return { ...state, [list]: state[list].filter( removeId(payload)) };
+	
+	case SELECT_TEAMS:
+		return { ...state, ...action.payload };
+	case CREATE_TEAM:
+		return { ...state, archived_teams: [payload, ...state.archived_teams] };
+	case REMOVE_TEAM:
+		return { ...state, [list]: state[list].filter( removeId(payload)) };
 	}
 	return state;
 }

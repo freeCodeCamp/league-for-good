@@ -19,7 +19,7 @@ import {
 class CreateLeagueForm extends Component {
 
 	onSubmit = formBody => {
-		const {createLeague} = this.props;
+		const {createLeague, history} = this.props;
 		const redirectMethod = () => history.push('/');
 
 		//call the createLeague action and pass in the validated form fields

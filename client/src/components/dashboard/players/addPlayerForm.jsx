@@ -28,11 +28,12 @@ const validate = val => {
 };
 
 class AddPlayerForm extends Component {
-	onSubmit({ name }){
-		const { league: { _id }, createTeam } = this.props;
+	onSubmit(team){
+		
 		//createTeam({name, league:_id});
-		console.log('submitted');
+		console.log(team);
 	}
+
 
 	render() {
 		const {handleSubmit} = this.props;

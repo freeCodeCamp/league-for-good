@@ -5,11 +5,13 @@ import { INIT_AUTH_STATE, LOG_OUT, FETCH_LEAGUES } from './types';
 //checks whether the user is currently logged in with the server and
 //dispatched the resolved response to the 'authReducer' 
 export function initAuthState(){
+	
 	return function(dispatch){
+
 		axios.post('/auth/authenticate')
 			.then(({data}) => {
 				const { leagueInfo, ...userData } = data;
-
+	
 				//send users info to reducer	
 				dispatch({ type:INIT_AUTH_STATE, payload:{loading:false, ...userData}});
 
@@ -17,7 +19,8 @@ export function initAuthState(){
 				if(leagueInfo){
 					dispatch({ type:FETCH_LEAGUES, payload: leagueInfo});
 				}
-			});
+			})
+			.catch(err => console.error(err));
 	};
 }
 

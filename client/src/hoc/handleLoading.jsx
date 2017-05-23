@@ -41,10 +41,12 @@ export default function(ComposedComponent){
     }
 
     componentWillMount(){
+      
       this.props.initAuthState();
     }
 
     render(){
+  
       const { initAuthState, ...props } = this.props;
 
       if(props.loading){
@@ -58,6 +60,7 @@ export default function(ComposedComponent){
   };
   
   function mapStateToProps({ auth }){
+
     const { loggedIn, loading } = auth;
     return { loggedIn, loading };
   }

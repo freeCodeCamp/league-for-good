@@ -1,10 +1,10 @@
-// import { TOGGLE_MENU } from '../actions/types';
+import { OPEN_SNACKBAR } from '../actions/types';
 
 export default function(state = { open: false, message: '' }, action){
 	switch(action.type){
 	
-	case 'OPEN_SNACKBAR':
-		return { open: true, message: action.payload };
+	case OPEN_SNACKBAR:
+		return { open: true, message: action.message };
 	case 'CLOSE_SNACKBAR':
 		return  {open: false, message: '' };		
 	}

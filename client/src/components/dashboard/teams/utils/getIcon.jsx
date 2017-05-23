@@ -26,7 +26,7 @@ class Icon extends Component {
 
 	onClick(team, action){
 		if(action === 'edit') {
-			return;
+			this.props.openModal('editTeam', {initialValues: {...team}});
 		}
 		else {
 			this.props.openModal('removeTeam', team);

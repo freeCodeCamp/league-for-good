@@ -37,23 +37,36 @@ const deleteTeam = (req, res) => {
 		.catch(error => res.send({msg:'An error occured while removing team', error}));
 };
 
-Router.route('/add-staff/:name')
-	.get((req, res) => {
-		Team.findOne({name:'Raptors'})
-			.exec()
-			.then( team => {
-				team.staff.push({
-					name: req.params.name,
-					role:'Janitor',
-					email: req.params.name+Math.random()+'@gmail.com',
-					phone_num: '123-456-7899'
-				})
-				return team.save()
-			})
-			.then(team => res.send(team))
-	})
+const updateTeam = (req, res) => {
+	const query = { _id: req.params.teamId };
+	const { league_id } = req.body;
+
+	Team.update(query, req.body, {new:true, upsert:true})
+		.exec()
+		.then(() => res.send(req.body))
+		.catch(error => res.status(500).json({ error: error}))
+}
+
+// Router.route('/add-staff/:name')
+// 	.get((req, res) => {
+// 		Team.findOne({name:'Raptors'})
+// 			.exec()
+// 			.then( team => {
+// 				team.staff.push({
+// 					name: req.params.name,
+// 					role:'Janitor',
+// 					email: req.params.name+Math.random()+'@gmail.com',
+// 					phone_num: '123-456-7899'
+// 				})
+// 				return team.save()
+// 			})
+// 			.then(team => res.send(team))
+// 	})
+
+
 
 Router.route('/create').post(createTeam);
 Router.route('/remove/:teamId').delete(deleteTeam);
+Router.route('/update/:teamId').put(updateTeam);
 
 module.exports = Router;
