@@ -21,33 +21,23 @@ const paperStyle = {
 	border:'1px solid lightgrey',
 };
 
-class Content extends Component {
-	render() {
-		const {menuOpen, league} = this.props;
-
-		return (
-			<div>
-				<NavBar/>
-					<div className={menuOpen ? 'content-wrapper': 'content-wrapper-expanded'}>
-							<Paper style={paperStyle} zDepth={3}>
-								<Route exact path="/" component={Dashboard}/>
-								<Route path="/dashboard" component={Dashboard}/>
-								<Route path="/create" component={CreateLeagueForm} />
-								<Route path="/help" component={Help} />
-							</Paper>
-					</div>
-					<Modal/>
-					<SnackBar/>
-			</div>
-		);	
-	}
+const Content = props => {
+	return (
+		<div>
+			<NavBar/>
+				<div className={props.menuOpen ? 'content-wrapper': 'content-wrapper-expanded'}>
+						<Paper style={paperStyle} zDepth={3}>
+							<Route exact path="/" component={Dashboard}/>
+							<Route path="/dashboard" component={Dashboard}/>
+							<Route path="/create" component={CreateLeagueForm} />
+							<Route path="/help" component={Help} />
+						</Paper>
+				</div>
+				<Modal/>
+				<SnackBar/>
+		</div>
+	);	
 }
 
-function mapStateToProps(state) {
-	const { menu } = state;
-	
 
-	return { menuOpen: menu.open};
-}
-
-export default connect(mapStateToProps)(Content);
+export default Content;

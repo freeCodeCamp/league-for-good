@@ -8,7 +8,7 @@ export const CLOSE_MODAL = 'CLOSE_MODAL';
 export const CHANGE_MANAGE_VIEW = 'change manage view';
 export const RESET_DASHBOARD = 'RESET_DASHBOARD';
 export const OPEN_SNACKBAR = 'OPEN_SNACKBAR';
-
+export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR';
 //Authentication action types 
 export const INIT_AUTH_STATE = 'InitAuthState';
 export const LOG_OUT = 'log out';

@@ -1,11 +1,4 @@
-import { 
-	TEAM_MANAGE_VIEW, 
-	CREATE_TEAM, 
-	REMOVE_TEAM, 
-	UPDATE_TEAM,
-	SELECT_TEAMS,
-} from '../actions/types';
-
+import { TEAM_MANAGE_VIEW, CREATE_TEAM, REMOVE_TEAM, UPDATE_TEAM, SELECT_TEAMS } from '../actions/types';
 import { findIndex } from 'lodash';
 
 //Callback passed to the filter function to remove a team
@@ -23,6 +16,9 @@ function replaceTeam(currTeams, updatedTeam){
 	return [...head, updatedTeam, ...tail];
 }
 
+
+	//Team State - returns an Array of Objects 
+		
 export default function(state = [], action) {
 	const { payload, list, type } = action;
 
