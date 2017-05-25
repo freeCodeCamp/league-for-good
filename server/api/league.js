@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const User = mongoose.model('user');
 const League = mongoose.model('league');
 
+const sendEmail = require('../services/nodemailer');
+
 // Create a new league for the user
 const createLeague = (req, res) => {
 	const newLeague = new League({
@@ -23,21 +25,45 @@ const createLeague = (req, res) => {
 		});
 };
 
-const getLeagues = (req, res) => {
-	const _id = req.user._id;
-	const query = { owner: _id };
-	// $or:{ owner: _id, staff:{$in: [_id]}}};  
-	League.find(query)
-		.populate('archived_teams active_teams')//{
-			//path: 'archived_teams active_teams',
-			//populate: { path: 'players' }
-		//})
-		.exec()
-		.then(leagues => res.send(leagues))
-		.catch(err => res.send(err));
-};
+//Add a new staff member to the league
+// const addStaff = (req, res) => {
 
-Router.route('/fetchLeagues').get(getLeagues);
+// 	const _id = req.params.leagueId;
+
+// 	const newStaff = new User( req.body );
+
+// 	newStaff.save()
+// 		.then(user => {
+// 			League.findByIdAndUpdate( _id, {$push: { staff: user }})
+// 				.exec()
+// 				.then(() => user);
+// 		})
+// 		.then(user => res.send(user))
+// 		.catch(error => {
+// 			res.status(500);
+// 			res.send(error);
+// 		})
+// }
+
+const addStaff = (req, res) => {
+
+	const {name, email} = req.params
+
+	sendEmail({
+		organization:'NAACP',
+		recipients:`<adamhs7843521@gmail.com>`,
+		message: 'why is this not working',
+		subject: "no subject",
+	},
+		function(err, info){
+			res.send({err, info})
+		}
+	)
+}
+
+
+// Router.route('/fetchLeagues').get(getLeagues);
 Router.route('/create').post(createLeague);
+Router.route('/add-staff/:name/:email').get(addStaff);
 
 module.exports = Router;

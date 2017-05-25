@@ -3,7 +3,7 @@ import { OPEN_SNACKBAR, CLOSE_SNACKBAR } from '../actions/types';
 /*
 	SnackBar State (popup at the bottom of the screen)
 	
-	open    : [Boolean]
+	open    : [Boolean] - snackBar open state
 	message : [String] - any text to be rendered inside SnackBar
 */
 export default function(state = { open: false, message: '' }, action){

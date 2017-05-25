@@ -57,10 +57,19 @@ const playerLinks = [
 	},
 ];
 
+// Links for managing general league settings
+const settingsLinks = [
+	{
+		description: 'Add a new staff member to log into the dashboard.',
+		label: 'AddStaff',
+		icon: <AddPersonIcon />,
+	},
+];
+
 // Tabs that hold the operations that can be performed
 export const tabs = [
 	{ name: 'Teams', links: teamLinks },
 	{ name: 'Players', links: playerLinks },
 	{ name: 'Seasons', links: [] },
-	{ name: 'Settings', links: [] },
+	{ name: 'Settings', links: settingsLinks },
 ];

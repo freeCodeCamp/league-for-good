@@ -19,7 +19,6 @@ class FormSubmissionSnackbar extends Component {
 
 function mapStateToProps(state){
 	const { snackbar : { open, message } } = state;
-	console.log(state)
 	return { open, message };
 }
 

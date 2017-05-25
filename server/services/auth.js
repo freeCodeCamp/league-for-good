@@ -19,29 +19,30 @@ passport.use(new GoogleStrategy({
 	callbackURL: process.env.GOOGLE_CALLBACK_URL,
 },
 	(token, refreshToken, profile, cb) => {
-    
+    console.log(token, refreshToken, profile);
 		if (!profile) return cb('Invalid credentials');
     
-		User.findOne({ googleId: profile.id }, (err, user) => {
-      
-			if (err) return cb(err);
-
-			if (!user) {
-
-				const newUser = new User({
-					name:profile.displayName,
-					googleId: profile.id,
-					avatar:profile.photos[0].value,
-					email:profile.emails[0].value,
-				});
+		User.findOne({ googleId: profile.id })
+			.exec() 
+      .then(user => {
 			
-				newUser.save();
-				return cb(null, newUser);
-			}
-			else {
-				return cb(null, user);
-			}
-		});
-	}
-));
+				if (!user) {
+					const newUser = new User({
+						name:profile.displayName,
+						googleId: profile.id,
+						avatar:profile.photos[0].value,
+						email:profile.emails[0].value,
+					});
+				
+					newUser.save();
+					return cb(null, newUser);
+				}
+				else {
+					return cb(null, user);
+				}
+			})
+			.catch(err => cb(err))
+	})
+)
+
 

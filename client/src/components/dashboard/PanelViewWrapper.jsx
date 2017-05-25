@@ -6,6 +6,8 @@ import TeamTable from './teams/teamTable.jsx';
 
 import AddPlayerForm from './players/addPlayerForm.jsx';
 
+import AddStaffForm from './settings/main.jsx';
+
 // Panel view wrapper determines which view is currently active
 // and renders the appropriate panel in response
 export default class PanelViewWrapper extends Component {
@@ -42,6 +44,8 @@ export default class PanelViewWrapper extends Component {
 				);
 			case 'AddPlayer':
 				return <AddPlayerForm league={league} />;
+			case 'AddStaff':
+				return <AddStaffForm league={league}/>;		
 			default:
 				return <noScript />;
 			}

@@ -49,7 +49,10 @@ const PlayerSchema = new Schema({
 	teams: [{
 		teamId: Schema.Types.ObjectId,
 		position: [String],
-		jersey_num: Number,
+		jersey_num: {
+			type: Number,
+			default:-1,
+		},
 	}]},
 	{
 		collection: 'players',

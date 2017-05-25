@@ -3,7 +3,7 @@ import { OPEN_MODAL, CLOSE_MODAL } from '../actions/types';
 /*
 	Modal State
 
-	open : Boolean  
+	open : [Boolean]- modal open state 
 	view : [String] - modal's inner content
 	data : [Object] - any props to be passed into the modal
 

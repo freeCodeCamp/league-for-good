@@ -3,22 +3,6 @@ import axios from 'axios';
 import { CREATE_TEAM, REMOVE_TEAM, SELECT_TEAMS, UPDATE_TEAM, OPEN_SNACKBAR, CLOSE_MODAL } from './types';
 import { rootURL } from '../../globals';
 
-////////////////////////////////////////////////////////////
-//TEMPORARY, This logic will be handled on the backend
-function capitalizeWord(acc, val, index){
-	const padding = index > 0 ? ' ' : '';
-	return acc + padding + val.charAt(0).toUpperCase() + val.slice(1);
-}
-
-
-//Capitalize the first letter in each word of a string
-const toTitleCase = function(str){
-	const words = str.split(' ');
-	
-	return words.reduce(capitalizeWord , '');
-};
-///////////////////////////////////////////////////////////////
-
 
 // create a team
 export function createTeam( formVals, dispatch, { league } ) {
@@ -45,8 +29,8 @@ export function selectTeams(teams){
 
 //Edit a team's name and active status
 export function updateTeam(formVals, dispatch, props){
-	const name = toTitleCase(formVals.name);
-	const { _id, currently_active } = formVals;
+	
+	const { _id, currently_active, name } = formVals;
 	const body = { name, currently_active };
 	
 	axios.put(`${rootURL}/team/update/${_id}`, body)

@@ -38,6 +38,12 @@ function handleAuthFailure(req,res){
 	return res.send({user: null, loggedIn: false});
 }
 
+
+
+
+
+
+
 Router.route('/google')
   .get(passport.authenticate('google',{scope:['profile','email']}));
 

@@ -3,39 +3,31 @@
 */
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const LeagueSchema = new Schema({
-	name: {
-		type: String,
-		required: true,
-		trim: true
+const LeagueSchema = new Schema(
+	{
+		name: {
+			type: String,
+			required: true,
+			trim: true
+		},
+		owner: {
+			type: Schema.Types.ObjectId,
+			ref: 'user',
+			required: true,
+		},
+		staff: [{
+			type: Schema.Types.ObjectId,
+			ref: 'user'		
+		}],
+		sport_type: {
+			type: String,
+			required: true,
+		},
+		teams: [{
+			type: Schema.Types.ObjectId,
+			ref: 'team',
+		}],
 	},
-	owner: {
-		type: Schema.Types.ObjectId,
-		ref: 'user',
-		required: true,
-	},
-	staff: [{
-		type: Schema.Types.ObjectId,
-		ref: 'user'		
-	}],
-	sport_type: {
-		type: String,
-		required: true,
-	},
-// 	active_teams: [{
-// 		type: Schema.Types.ObjectId,
-// 		ref: 'team',
-// 	}],
-// 	archived_teams: [{
-// 		type: Schema.Types.ObjectId,
-// 		ref: 'team',
-// 	}],
-// },
-	teams: [{
-		type: Schema.Types.ObjectId,
-		ref: 'team',
-	}],
-},
 	{
 		collection: 'leagues',
 	}

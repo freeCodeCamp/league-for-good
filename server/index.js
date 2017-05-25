@@ -34,16 +34,6 @@ app.use(session({
 	}),
 }));
 
-//Disable webpack build if debugging backend functionality
-
-if(process.env.NODE_ENV !== 'backend-dev'){
-	const webpackMiddleware = require('../webpack.dev.middleware');
-	app.use(webpackMiddleware);
-}
-else{
-	app.get('/', (req,res) => res.send(req.session.passport))
-}
-
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -53,6 +43,23 @@ app.use('/auth', Routes.auth);
 app.use('/league', Routes.league);
 app.use('/team', Routes.team);
 app.use('/player', Routes.player);
+
+//Disable webpack build if debugging backend functionality
+
+if(process.env.NODE_ENV !== 'backend-dev'){
+	const webpackMiddleware = require('../webpack.dev.middleware');
+	app.use(webpackMiddleware);
+}
+else{
+	app.get('/', (req,res) => {
+
+		res.json({user:req.user});
+	})
+		app.get('/logout', (req,res) => {
+		req.logOut()
+		res.redirect('/');
+	})
+}
 
 app.get('*', (req, res) => res.redirect('/'));
 //Temporary fix for syncing up with react-routers urls

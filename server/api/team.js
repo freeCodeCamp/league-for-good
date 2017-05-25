@@ -6,12 +6,10 @@ const League = mongoose.model('league');
 
 
 // Create a new team for a selected league
-//after the team is saved, push the mongo generated _id into the 'archived_teams' array with that league
+//after the team is saved, push the mongo generated _id into the 'teams' array with that league
 //Send the newly created team back to the client 
 const createTeam = (req, res) => {
-	let teamObject;
 	const league = req.body.league;
-	const query = { _id: league };
 
 	const newTeam = new Team({
 		name: req.body.name,
@@ -20,11 +18,11 @@ const createTeam = (req, res) => {
 
 	newTeam.save()
 		.then( team => {
-			teamObject = team;
-			return League.update(query, { $push: { teams: team} })
-				.exec(); 
+			return League.findByIdAndUpdate(league, { $push: { teams: team} })
+				.exec()
+				.then(() => team); 
 		})
-		.then(() => res.send(teamObject))
+		.then(team => res.send(team))
 		.catch(error => res.send({ error }));
 };
 
@@ -46,24 +44,6 @@ const updateTeam = (req, res) => {
 		.then(() => res.send(req.body))
 		.catch(error => res.status(500).json({ error: error}))
 }
-
-// Router.route('/add-staff/:name')
-// 	.get((req, res) => {
-// 		Team.findOne({name:'Raptors'})
-// 			.exec()
-// 			.then( team => {
-// 				team.staff.push({
-// 					name: req.params.name,
-// 					role:'Janitor',
-// 					email: req.params.name+Math.random()+'@gmail.com',
-// 					phone_num: '123-456-7899'
-// 				})
-// 				return team.save()
-// 			})
-// 			.then(team => res.send(team))
-// 	})
-
-
 
 Router.route('/create').post(createTeam);
 Router.route('/remove/:teamId').delete(deleteTeam);

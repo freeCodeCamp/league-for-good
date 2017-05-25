@@ -16,6 +16,9 @@ export function createLeague(body, redirectCallback) {
 	};
 }
 
+export function addStaffMember(body){
+	console.log(body);
+}
 
 export function selectLeague(league){
 	return {type:SELECT_LEAGUE, payload:league};
