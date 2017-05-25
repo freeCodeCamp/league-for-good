@@ -45,6 +45,17 @@ const updateTeam = (req, res) => {
 		.catch(error => res.status(500).json({ error: error}))
 }
 
+const showRoster = (req, res) => {
+	//TODO - add search params 
+	Team.findOne({})
+		.select('name players')
+		.populate('players')
+		.exec()
+		.then(team => res.send(team))
+}
+
+Router.route('/roster').get(showRoster);
+
 Router.route('/create').post(createTeam);
 Router.route('/remove/:teamId').delete(deleteTeam);
 Router.route('/update/:teamId').put(updateTeam);

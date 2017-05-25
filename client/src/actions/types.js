@@ -9,6 +9,7 @@ export const CHANGE_MANAGE_VIEW = 'change manage view';
 export const RESET_DASHBOARD = 'RESET_DASHBOARD';
 export const OPEN_SNACKBAR = 'OPEN_SNACKBAR';
 export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR';
+
 //Authentication action types 
 export const INIT_AUTH_STATE = 'InitAuthState';
 export const LOG_OUT = 'log out';
@@ -25,3 +26,6 @@ export const CREATE_TEAM = 'create team';
 export const REMOVE_TEAM = 'REMOVE_TEAM';
 export const SELECT_TEAMS = 'select teams';
 export const UPDATE_TEAM = 'UPDATE_TEAM';
+
+// Player action types
+export const ADD_PLAYER = 'ADD_PLAYER';

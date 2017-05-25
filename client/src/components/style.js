@@ -210,7 +210,7 @@ export const css_dashboard = {
 			color: theme.primaryFont,
 			textTransform: 'none',
 			padding: '0px',
-			margin: '0px'
+			margin: '0px',
 		},
 		colHeaderStyle: {
 			padding: '0px',
@@ -282,9 +282,9 @@ export const css_modal = {
 		paddingTop: 0,
 	},
 	dialogContent: {
-	    position: 'relative',
-	    width: '90%',
-	    maxWidth: 800,
+		position: 'relative',
+		width: '90%',
+		maxWidth: 800,
 	},
 	dialogBody: {  
 		paddingBottom: 0,

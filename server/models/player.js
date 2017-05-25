@@ -22,7 +22,7 @@ const PlayerSchema = new Schema({
 	},
 	phone_num: {
 		type: String,
-		unique: true,
+		// unique: true,
 	},
 	emergency_contact: {
 		name: String,
@@ -48,11 +48,9 @@ const PlayerSchema = new Schema({
 	}],
 	teams: [{
 		teamId: Schema.Types.ObjectId,
+		seasonId: Schema.Types.ObjectId,
 		position: [String],
-		jersey_num: {
-			type: Number,
-			default:-1,
-		},
+		jersey_num: Number,
 	}]},
 	{
 		collection: 'players',

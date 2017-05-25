@@ -6,21 +6,22 @@ const faker = require('faker');
 
 const Player = mongoose.model('player');
 const Leagues = mongoose.model('league');
-const Team = mongoose.model('team');
+const Teams = mongoose.model('team');
 
+//Add a player into the database 
 const addPlayerToLeague = (req, res) => {
 	const { league, player } = req.body;
 	const teamId = player.team;
-  player.teams = [{teamId}];
+  player.teams = [{ teamId }];
+  player.leagues = [ league ]
 
 	Player.create( player )
 		.then(newPlayer => {
-			Team.findByIdAndUpdate(teamId, {$push:{ players: newPlayer }})
+			Teams.findByIdAndUpdate(teamId, {$push: { players: newPlayer }})
 				.exec()
-				.then(() => res.send({newPlayer}))
-				.catch(e => res.send({error:e}))
+				.then(() => res.send( newPlayer ))
+				.catch(e => res.send({ error: e }))
 		})
-
 }
 
 Router.route('/add').post(addPlayerToLeague);

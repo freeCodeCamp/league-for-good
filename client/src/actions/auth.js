@@ -20,8 +20,8 @@ export function initAuthState(){
 					dispatch({ type:FETCH_LEAGUES, payload: leagueInfo});
 				}
 			})
-			.catch(err => console.error(err));
-	};
+			.catch(err => dispatch({type:'AUTH_ERROR'}));
+	};		//TO-DO build auth-error action
 }
 
 //updates the user's state as logged out after 

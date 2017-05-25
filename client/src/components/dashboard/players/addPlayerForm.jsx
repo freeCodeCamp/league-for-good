@@ -2,9 +2,7 @@ import React, {Component} from 'react';
 import { TextField, AutoComplete } from 'redux-form-material-ui';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
-import { Field, reduxForm, reset as resetForm } from 'redux-form';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
 
 import { createPlayer, openSnackbar } from '../../../actions/index';
 import { css_content, css_dashboard } from '../../style';
@@ -32,7 +30,7 @@ const validate = val => {
 
 
 const AddPlayerForm = props => {
-	const { handleSubmit, league: { active_teams } } = props;
+	const { handleSubmit, change, league: { active_teams } } = props;
 
 	return (
 		<div style={css_content.body}>
@@ -57,17 +55,7 @@ const AddPlayerForm = props => {
 					floatingLabelText="Last name*"
 					floatingLabelStyle={css_dashboard.formRequired}
 					fullWidth={true}
-				/>
-				<Field 
-					name="team"
-					component={AutoComplete}
-					hintText="Select a team to place player"
-					floatingLabelText="Team"
-					dataSource={active_teams}
-					dataSourceConfig={{text:"name", value:"_id"}}
-					fullWidth={true}
-					maxSearchResults={5}
-				/>				
+				/>			
 				<Field
 					name="email" 
 					component={TextField}
@@ -75,6 +63,22 @@ const AddPlayerForm = props => {
 					floatingLabelText="Email*"
 					floatingLabelStyle={css_dashboard.formRequired}
 					fullWidth={true}
+				/>
+				<Field 
+					name="team"
+					onNewRequest={ team => change("teamIndex", team) }
+					component={AutoComplete}
+					filter={AutoComplete.caseInsensitiveFilter}
+					floatingLabelText="Team"
+					dataSource={active_teams}
+					dataSourceConfig={{text:"name", value:"_id"}}
+					fullWidth={true}
+					maxSearchResults={5}
+				/>
+				<Field 
+					name="teamIndex"
+					type="hidden"
+					component="input"
 				/>
 				<Field
 					name="phone_num" 
@@ -131,4 +135,9 @@ export default reduxForm({
 	validate,
 })( AddPlayerForm );
 
-
+/* 
+		---------------------ISSUE----------------------------------  
+		AutoComplete doesnt reset after submitting form
+		https://github.com/erikras/redux-form-material-ui/issues/122
+		-------------------------------------------------------------
+*/

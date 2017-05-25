@@ -4,8 +4,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { Field, reduxForm } from 'redux-form';
 
 import { addStaffMember, openSnackbar } from '../../../actions/index';
-import { containerCSS, formCSS, formButtonCSS, titleCSS, formRequiredCSS } from '../dashboardCSS';
 
+import { css_content, css_dashboard } from '../../style';
 
 const AddStaffForm = props => {	
 		const {handleSubmit} = props;
@@ -28,7 +28,8 @@ const AddStaffForm = props => {
 						label="Grant Access"
 						primary={true}
 						type="submit"
-						style={formButtonCSS}
+						labelStyle={css_dashboard.raisedButton.label}
+						backgroundColor={css_dashboard.raisedButton.backgroundColor}
 					/>
 				</form>
 			</div>

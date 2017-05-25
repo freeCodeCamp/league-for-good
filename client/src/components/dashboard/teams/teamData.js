@@ -7,15 +7,35 @@ import Icon from './tableIcon.jsx';
 
 // Column headers and data
 export const colData = [
-		{ label: 'Name', style: css_dashboard.table.teams.nameCol,
-		  cellProp: 'name', sortable: true, searchable: true },
-		{ label: 'Roster Size', style: css_dashboard.table.teams.defaultCol,
-		  cellProp: 'players.length', sortable: true },
-		{ label: 'Seasons Played', style: css_dashboard.table.teams.defaultCol,
-		  cellProp: 'seasons.length', sortable: true },
-		{ label: 'Status', style: css_dashboard.table.teams.defaultCol,
-		  cellProp: 'currently_active' },
-		{ label: '', style: css_dashboard.table.teams.iconCol, cellProp: 'icon' },
+	{ 
+		label: 'Name',
+		style: css_dashboard.table.teams.nameCol,
+		cellProp: 'name', 
+		sortable: true, 
+		searchable: true, 
+	},
+	{ 
+		label: 'Roster Size', 
+		style: css_dashboard.table.teams.defaultCol,
+		cellProp: 'players.length', 
+		sortable: true, 
+	},
+	{ 
+		label: 'Seasons Played', 
+		style: css_dashboard.table.teams.defaultCol,
+		cellProp: 'seasons.length', 
+		sortable: true,
+	},
+	{ 
+		label: 'Status', 
+		style: css_dashboard.table.teams.defaultCol,
+		cellProp: 'currently_active', 
+	},
+	{ 
+		label: '', 
+		style: css_dashboard.table.teams.iconCol, 
+		cellProp: 'icon', 
+	},
 ];
 
 // Get the value for the cell
