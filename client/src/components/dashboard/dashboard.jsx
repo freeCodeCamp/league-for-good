@@ -6,6 +6,7 @@ import {bindActionCreators} from 'redux';
 import {fetchLeagues} from '../../actions/index';
 import LeagueTabs from './leagueTabs.jsx';
 import LeagueTabsHeader from './leagueTabsHeader.jsx';
+import { css_content } from '../style';
 
 class Dashboard extends Component {
 
@@ -13,9 +14,9 @@ class Dashboard extends Component {
 		const { league, view } = this.props;
 		
 		return (
-			<div style={{height: 'auto'}}>
+			<div>
 				{league.name &&
-				<div style={{backgroundColor: '#f4f6f7'}}>
+				<div style={css_content.header}>
 					<LeagueTabsHeader league={league}/>
 					<LeagueTabs league={league} view={view}/>
 				</div>

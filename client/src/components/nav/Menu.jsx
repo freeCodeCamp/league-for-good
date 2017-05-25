@@ -10,14 +10,15 @@ import LogOutIcon from 'material-ui/svg-icons/action/exit-to-app';
 import Avatar from 'material-ui/Avatar';
 
 import {SportsIcons} from '../sports';
+import { css_menu } from '../style';
 
 
 const Menu = props => {
     const { open, leagues, selectLeague, openModal } = props;
  
     return (
-    <Drawer open={open}>
-			<List style={{marginTop: '70px'}}>
+    	<Drawer open={open}>
+			<List style={css_menu.drawer.list}>
 				{
 					leagues.map((league,i) => (
 						<ListItem 
@@ -26,7 +27,7 @@ const Menu = props => {
 							onClick={() => selectLeague(league)}
 							containerElement={<Link to="/dashboard"/>}
 							leftIcon={<Avatar  
-								backgroundColor='none'
+								backgroundColor={css_menu.avatar.backgroundColor}
 								src={SportsIcons[league.sport_type]}/>}
 							/>
 						)
@@ -46,7 +47,7 @@ const Menu = props => {
 	        primaryText="Log out"
 	        onTouchTap={()=> openModal('logout')}
 	        leftIcon={<LogOutIcon/>}
-	      />			
+	      />
 	    </List>
     </Drawer>
 	);

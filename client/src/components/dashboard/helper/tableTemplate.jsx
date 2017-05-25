@@ -12,7 +12,7 @@ import FlatButton from 'material-ui/FlatButton';
 import SearchIcon from 'material-ui/svg-icons/action/search';
 import ArrowUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
 import ArrowDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
-import { containerCSS, titleCSS } from '../dashboardCSS';
+import { css_dashboard } from '../../style';
 
 // A table template to easily render a table in the management panel
 // Also allows the styling of each column to be specified or uses a default
@@ -39,39 +39,9 @@ import { containerCSS, titleCSS } from '../dashboardCSS';
 //			style(Object) - a css object to style the cell(optional)
 
 
-// styles for the table
-const style = {
-	defaultCol: {
-		textAlign: 'left',
-	},
-	search: {
-		marginLeft: '20px',
-	},
-	searchUnderline: {
-		borderColor: '#2196F3',
-	},
-	sortIcon: {
-		display: 'inline',
-		cursor: 'pointer',
-	},
-	colHeaderButtonLabel: {
-		color: '#000',
-		textTransform: 'none',
-		padding: '0px',
-		margin: '0px'
-	},
-	colHeaderStyle: {
-		padding: '0px',
-		margin: '0px',
-		textAlign: 'left',
-	},
-	sortArrowActiveColor: 'black',
-	sortArrowInactiveColor: 'lightgrey',
-};
-
 // Title for the table
 const TableTitle = (props) => {
-	return <h1 style={titleCSS}>{props.title}</h1>;
+	return <h1 style={css_dashboard.title}>{props.title}</h1>;
 };
 
 // Search the table
@@ -79,11 +49,11 @@ const SearchTable = (props) => {
 	return (
 		<TextField 
 			hintText={<SearchIcon />}
-    	underlineFocusStyle={style.searchUnderline}
-    	style={style.search}
-    	floatingLabelText="Search"
-    	floatingLabelFixed={true}
-    	onChange={props.onSearch}
+			underlineFocusStyle={css_dashboard.table.searchUnderline}
+			style={css_dashboard.table.search}
+			floatingLabelText="Search"
+			floatingLabelFixed={true}
+			onChange={props.onSearch}
 		/>
 	);
 };
@@ -97,7 +67,8 @@ const Headers = (props) => {
 					return (
 						<TableHeaderColumn 
 							key={i}
-							style={header.style || style.defaultCol}>
+							style={header.style ||
+								css_dashboard.table.defaultCol}>
 							<ColumnHeaderChild
 								label={header.label}
 								onClick={props.onSort}
@@ -128,7 +99,8 @@ const renderBody = (rows) => {
 							row.map(function(rowData, i) {
 								return (
 									<TableRowColumn 
-										style={rowData.style || style.defaultCol}
+										style={rowData.style || 
+											css_dashboard.table.defaultCol}
 										key={i}
 									>
 										{ i === 0 ?  <strong>{rowData.value}</strong> 
@@ -153,8 +125,8 @@ const ColumnHeaderChild = (props) => {
 	if (!!props.sortable) {
 		let columnSorted = props.colIndex === props.sortColumnIndex;
 		let iconColor = columnSorted ?
-			style.sortArrowActiveColor :
-			style.sortArrowInactiveColor;
+			css_dashboard.table.sortArrowActiveColor :
+			css_dashboard.table.sortArrowInactiveColor;
 			
 		if (props.sortDirection === 'asc') {
 			if (columnSorted) {
@@ -177,9 +149,9 @@ const ColumnHeaderChild = (props) => {
 		<FlatButton 
 			label={props.label}
 			icon={arrowIcon}
-			hoverColor="#fff"
-			labelStyle={style.colHeaderButtonLabel}
-			style={style.colHeaderStyle}
+			hoverColor={css_dashboard.table.colHeaderHover}
+			labelStyle={css_dashboard.table.colHeaderButtonLabel}
+			style={css_dashboard.table.colHeaderStyle}
 			labelPosition="before"
 			disabled={!props.sortable}
 			disableTouchRipple={true}
@@ -194,7 +166,7 @@ class TableTemplate extends Component {
 		super(props);
 		let searchableIndex = 0;
 		// set width of default columns in table
-		style.defaultCol.width = (100 / this.props.rows.length) + '%';
+		css_dashboard.table.defaultCol.width = (100 / this.props.rows.length) + '%';
 		
 		this.props.headers.forEach((header, i) => {
 			if (!!header.searchable) {
@@ -220,7 +192,7 @@ class TableTemplate extends Component {
 			
 			this.props.headers.forEach((header, i) => {
 				if (!!header.searchable) {
-					searchableColumnIndex = i;
+					searchableIndex = i;
 				}
 			});
 			
@@ -345,7 +317,7 @@ class TableTemplate extends Component {
 	
 	render() {
 		return (
-			<div style={containerCSS}>
+			<div>
 				<TableTitle title={this.props.title} />
 				<SearchTable onSearch={this.onSearch.bind(this)} />
 				<Table>

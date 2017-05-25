@@ -7,19 +7,15 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import validate from './validate';
-import SportTypeSelector from './CreateLeagueButton.jsx';
+import CreateLeagueSelector from './CreateLeagueSelector.jsx';
 import { createLeague } from '../../actions/index';
-import { 
-	createLeagueFormStyle, 
-	createLeagueTextFieldStyle, 
-	createLeagueButtonStyle
-} from './createLeagueCSS.js';
+import { css_content, css_createLeague } from '../style';
 
 
 class CreateLeagueForm extends Component {
 
 	onSubmit = formBody => {
-		const {createLeague} = this.props;
+		const { createLeague, history } = this.props;
 		const redirectMethod = () => history.push('/');
 
 		//call the createLeague action and pass in the validated form fields
@@ -32,36 +28,38 @@ class CreateLeagueForm extends Component {
 	render(){
 		const {error, handleSubmit, change, SelectedSportType} = this.props;
 
-		return(
-			<div>
-				<SportTypeSelector 
+		return (
+			<div style={css_content.header}>
+				<CreateLeagueSelector 
 					onSelect={(sport) => change('sportType', sport)}
-					selectedSport = {SelectedSportType}
+					selectedSport={SelectedSportType}
 				/>
-				{SelectedSportType &&
-				<form 
-					onSubmit={ handleSubmit(this.onSubmit)}
-					style={createLeagueFormStyle}
-				>
-					<Field 
-						name="sportType"
-						type="hidden"
-						component="input"
-					/>
-					<Field
-						name="name" 
-						component={TextField}
-						floatingLabelText={`${SelectedSportType} League Name`}
-						fullWidth={true}
-						style={createLeagueTextFieldStyle}
-					/>
-					<RaisedButton
-						label="Create"
-						style={createLeagueButtonStyle}
-						primary={true}
-						type="submit"
-					/>
-				</form>
+				{
+					SelectedSportType &&
+					<div style={css_content.body}> 
+						<form 
+							onSubmit={ handleSubmit(this.onSubmit)}
+							style={css_createLeague.form}
+						>
+							<Field 
+								name="sportType"
+								type="hidden"
+								component="input"
+							/>
+							<Field
+								name="name" 
+								component={TextField}
+								floatingLabelText={`${SelectedSportType} League Name`}
+								fullWidth={true}
+							/>
+							<RaisedButton
+								label="Create"
+								labelStyle={css_createLeague.raisedButton.labelStyle}
+								backgroundColor={css_createLeague.raisedButton.backgroundColor}
+								type="submit"
+							/>
+						</form>
+					</div>
 				}
 			</div>
 		);

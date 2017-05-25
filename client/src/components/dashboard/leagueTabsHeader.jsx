@@ -1,19 +1,10 @@
 import React from 'react';
-
-const style = {
-	center: {
-		textAlign:'center',
-	},
-	h2: {
-		paddingTop: '20px',
-		margin: '0px',
-	},
-};
+import { css_dashboard } from '../style';
 
 const Header = ({league}) => (
-	<div style={style.center}>
-		<h2 style={style.h2}>{ league.name }</h2>
-		<h5>{ `${league.sport_type} League` }</h5>
+	<div>
+		<h2 style={css_dashboard.title}>{ league.name }</h2>
+		<h5 style={css_dashboard.subtitle}>{ `${league.sport_type} League` }</h5>
 	</div>
 );
 

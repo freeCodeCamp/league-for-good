@@ -5,7 +5,7 @@ import { Field, reduxForm, reset as resetForm } from 'redux-form';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { createTeam, openSnackbar } from '../../../actions/index';
-import { containerCSS, formCSS, formButtonCSS, titleCSS, formRequiredCSS } from '../dashboardCSS';
+import { css_content, css_dashboard } from '../../style';
 
 
 //prevent user from submitting a team name that is blank or too short
@@ -27,26 +27,26 @@ class AddTeamForm extends Component {
 		const {handleSubmit} = this.props;
 
 		return (
-			<div style={containerCSS}>
-				<h1 style={titleCSS}>Add Team</h1>
-				<h6 style={formRequiredCSS}>* = Required</h6>
+			<div style={css_content.body}>
+				<h1 style={css_dashboard.title}>Add Team</h1>
+				<h6 style={css_dashboard.warning}>* = Required</h6>
 				<form 
 					onSubmit={ handleSubmit(this.onSubmit.bind(this))}
-					style={formCSS}
+					style={css_dashboard.form}
 				>
 					<Field
 						name="name" 
 						component={TextField}
 						hintText="Team name"
 						floatingLabelText="Team name*"
-						floatingLabelStyle={formRequiredCSS}
+						floatingLabelStyle={css_dashboard.formRequired}
 						fullWidth={true}
 					/>
 					<RaisedButton
 						label="Create Team"
-						primary={true}
+						labelStyle={css_dashboard.raisedButton.label}
+						backgroundColor={css_dashboard.raisedButton.backgroundColor}
 						type="submit"
-						style={formButtonCSS}
 					/>
 				</form>
 			</div>

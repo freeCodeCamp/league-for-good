@@ -8,28 +8,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import modalMapping from './mappings.jsx';
 import * as submitActions from '../../actions/index';
 
-var styles = {
-  dialogRoot: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: 0,
-  },
-  dialogContent: {
-    position: 'relative',
-    width: '90%',
-    maxWidth: 800,
-  },
-  dialogBody: {  
-    paddingBottom: 0,
-  },
-  title: {
-    textAlign:'center',
-    background:'#FF5722',
-    color:'#212121',
-  },
-};
-
+import { css_modal } from '../style';
 
 class Modal extends Component {
 
@@ -71,10 +50,10 @@ class Modal extends Component {
     return (
       <div>
         <Dialog
-          contentStyle={styles.dialogContent}
-          bodyStyle={styles.dialogBody}
+          contentStyle={css_modal.dialogContent}
+          bodyStyle={css_modal.dialogBody}
           title={title}
-          titleStyle={styles.title}
+          titleStyle={css_modal.title}
           actions={actions}
           modal={false}
           open={this.props.open}

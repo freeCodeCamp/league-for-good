@@ -5,14 +5,7 @@ import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { openModal } from '../../../../actions/index';
-
-const style = {
-	iconHover: {
-		color: '#000',
-		backgroundColor: '#03A9F4',
-		borderRadius: '25px',
-	},
-};
+import { css_dashboard } from '../../../style';
 
 
 //Returns an icon for the table 
@@ -38,7 +31,7 @@ class Icon extends Component {
 		return (
 			<IconButton 
 				onTouchTap={()=> this.onClick(team, action) }
-				hoveredStyle={style.iconHover}
+				hoveredStyle={css_dashboard.table.iconHover}
 			>
 				{action === 'delete' ?
 					<DeleteIcon /> :

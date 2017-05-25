@@ -5,7 +5,7 @@ import { Field, reduxForm, reset as resetForm } from 'redux-form';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { createTeam, openSnackbar } from '../../../actions/index';
-import { containerCSS, formCSS, formButtonCSS, titleCSS, formRequiredCSS } from '../dashboardCSS';
+import { css_content, css_dashboard } from '../../style';
 
 const emailRegex = new RegExp('^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$');
 
@@ -38,19 +38,19 @@ class AddPlayerForm extends Component {
 		const {handleSubmit} = this.props;
 
 		return (
-			<div style={containerCSS}>
-				<h1 style={titleCSS}>Add Player</h1>
-				<h6 style={formRequiredCSS}>* = Required</h6>
+			<div style={css_content.body}>
+				<h1 style={css_dashboard.title}>Add Player</h1>
+				<h6 style={css_dashboard.warning}>* = Required</h6>
 				<form 
 					onSubmit={ handleSubmit(this.onSubmit.bind(this))}
-					style={formCSS}
+					style={css_dashboard.form}
 				>
 					<Field
 						name="first_name" 
 						component={TextField}
 						hintText="First name"
 						floatingLabelText="First name*"
-						floatingLabelStyle={formRequiredCSS}
+						floatingLabelStyle={css_dashboard.formRequired}
 						fullWidth={true}
 					/>
 					<Field
@@ -58,7 +58,7 @@ class AddPlayerForm extends Component {
 						component={TextField}
 						hintText="Last name"
 						floatingLabelText="Last name*"
-						floatingLabelStyle={formRequiredCSS}
+						floatingLabelStyle={css_dashboard.formRequired}
 						fullWidth={true}
 					/>
 					<Field
@@ -66,7 +66,7 @@ class AddPlayerForm extends Component {
 						component={TextField}
 						hintText="Email"
 						floatingLabelText="Email*"
-						floatingLabelStyle={formRequiredCSS}
+						floatingLabelStyle={css_dashboard.formRequired}
 						fullWidth={true}
 					/>
 					<Field
@@ -106,9 +106,9 @@ class AddPlayerForm extends Component {
 					/>
 					<RaisedButton
 						label="Create Player"
-						primary={true}
+						labelStyle={css_dashboard.raisedButton.label}
+						backgroundColor={css_dashboard.raisedButton.backgroundColor}
 						type="submit"
-						style={formButtonCSS}
 					/>
 				</form>
 			</div>

@@ -10,16 +10,8 @@ import NavBar from './nav/index.jsx';
 import Dashboard from './dashboard/dashboard.jsx';
 import Help from './help/help.jsx';
 import Modal from './modal/main.jsx';
+import { css_content } from './style';
 
-const paperStyle = {
-	width:'90%',
-	margin:'85px auto',
-	height: 'auto',
-	textAlign: 'center',
-	background:'#fff',
-	color:'#37474f',
-	border:'1px solid lightgrey',
-};
 
 class Content extends Component {
 	render() {
@@ -29,7 +21,7 @@ class Content extends Component {
 			<div>
 				<NavBar/>
 					<div className={menuOpen ? 'content-wrapper': 'content-wrapper-expanded'}>
-							<Paper style={paperStyle} zDepth={3}>
+							<Paper style={css_content.paper} zDepth={3}>
 								<Route exact path="/" component={Dashboard}/>
 								<Route path="/dashboard" component={Dashboard}/>
 								<Route path="/create" component={CreateLeagueForm} />

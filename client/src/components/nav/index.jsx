@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux';
 import { toggleMenu, selectLeague, openModal, selectTeams } from '../../actions/index';
 import AppBar from 'material-ui/AppBar';
 import Menu from './Menu.jsx';
+import { css_appBar } from '../style';
+
 
 class NavBar extends Component {
 
@@ -21,7 +23,7 @@ class NavBar extends Component {
 			<div>
 				<AppBar 
 					title="League For Good"
-					style={{ zIndex:2000, position:'fixed' }}
+					style={css_appBar}
 					onLeftIconButtonTouchTap={()=> this.props.toggleMenu()}
 				/>
 				<Menu 
@@ -37,7 +39,7 @@ class NavBar extends Component {
 
 function mapStateToProps({menu, league}) {
 	const { open } = menu;
-	return {open, leagues:league.list};
+	return { open, leagues:league.list };
 }
 
 function mapDispatchToProps(dispatch) {

@@ -1,32 +1,21 @@
 import React from 'react';
 import Icon from './utils/getIcon.jsx';
-import { containerCSS, titleCSS } from '../dashboardCSS';
+import { css_dashboard } from '../../style';
 
 //All team data passed from the reducers is reformatted here so it contains the correct
 //values for the TableTemplate component
 
-const style = {
-	nameCol: {
-		width: '30%',
-		textAlign: 'left',
-	},
-	defaultCol: {
-		width: '20%',
-		textAlign: 'left',
-	},
-	iconCol: {
-		width: '10%',
-		textAlign: 'right',
-	},
-};
-
 // Column headers and data
 export const colData = [
-		{ label: 'Name', style: style.nameCol, cellProp: 'name', sortable: true, searchable: true },
-		{ label: 'Roster Size', style: style.defaultCol, cellProp: 'players.length', sortable: true },
-		{ label: 'Seasons Played', style: style.defaultCol, cellProp: 'seasons.length', sortable: true },
-		{ label: 'Status', style: style.defaultCol, cellProp: 'currently_active' },
-		{ label: '', style: style.iconCol, cellProp: 'icon' },
+		{ label: 'Name', style: css_dashboard.table.teams.nameCol,
+		  cellProp: 'name', sortable: true, searchable: true },
+		{ label: 'Roster Size', style: css_dashboard.table.teams.defaultCol,
+		  cellProp: 'players.length', sortable: true },
+		{ label: 'Seasons Played', style: css_dashboard.table.teams.defaultCol,
+		  cellProp: 'seasons.length', sortable: true },
+		{ label: 'Status', style: css_dashboard.table.teams.defaultCol,
+		  cellProp: 'currently_active' },
+		{ label: '', style: css_dashboard.table.teams.iconCol, cellProp: 'icon' },
 ];
 
 // Get the value for the cell

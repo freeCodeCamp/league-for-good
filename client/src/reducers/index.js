@@ -12,7 +12,7 @@ import manageReducer from './manage';
 //Redux uses a 'single source of truth' for an application's 'store'
 
 const rootReducer = combineReducers({
-	snackbar:snackbarReducer,
+	snackbar: snackbarReducer,
 	modal: modalReducer,
 	auth: authReducer,
 	menu: menuReducer,
