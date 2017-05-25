@@ -10,18 +10,7 @@ import { submit } from 'redux-form';
 import modalMapping from './mappings.jsx';
 import * as submitActions from '../../actions/index';
 
-<<<<<<< HEAD
 import { css_modal } from '../style';
-=======
-var styles = {
-  title: {
-    textAlign:'center',
-    background:'#FF5722',
-    color:'#212121',
-  },
-};
-
->>>>>>> e9bd77092164153f9c5237eb86b0fd550f3a90aa
 
 class Modal extends Component {
 
@@ -70,11 +59,8 @@ class Modal extends Component {
     return (
       <div>
         <Dialog
-<<<<<<< HEAD
           contentStyle={css_modal.dialogContent}
           bodyStyle={css_modal.dialogBody}
-=======
->>>>>>> e9bd77092164153f9c5237eb86b0fd550f3a90aa
           title={title}
           titleStyle={css_modal.title}
           actions={actions}
