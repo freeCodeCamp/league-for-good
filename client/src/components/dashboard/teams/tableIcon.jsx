@@ -4,8 +4,16 @@ import EditIcon from 'material-ui/svg-icons/image/edit';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { openModal } from '../../../../actions/index';
 import { css_dashboard } from '../../../style';
+import { openModal } from '../../../actions/index';
+
+const style = {
+	iconHover: {
+		color: '#000',
+		backgroundColor: '#03A9F4',
+		borderRadius: '25px',
+	},
+};
 
 
 //Returns an icon for the table 
@@ -19,7 +27,7 @@ class Icon extends Component {
 
 	onClick(team, action){
 		if(action === 'edit') {
-			return;
+			this.props.openModal('editTeam', {initialValues: {...team}});
 		}
 		else {
 			this.props.openModal('removeTeam', team);

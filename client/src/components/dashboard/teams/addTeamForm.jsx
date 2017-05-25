@@ -1,37 +1,24 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { TextField } from 'redux-form-material-ui';
 import RaisedButton from 'material-ui/RaisedButton';
-import { Field, reduxForm, reset as resetForm } from 'redux-form';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
+
 import { createTeam, openSnackbar } from '../../../actions/index';
 import { css_content, css_dashboard } from '../../style';
 
 
-//prevent user from submitting a team name that is blank or too short
-const validate = val => {
-	const errors = {};
-	if(!val.name){
-		errors.name = 'Please provide a team name';
-	}
-	return errors;
-};
+import validate from './validation';
 
-class AddTeamForm extends Component {
-	onSubmit({ name }){
-		const { league: { _id }, createTeam } = this.props;
-		createTeam({name, league:_id});
-	}
 
-	render() {
-		const {handleSubmit} = this.props;
+const AddTeamForm = props => {	
+		const {handleSubmit} = props;
 
 		return (
 			<div style={css_content.body}>
 				<h1 style={css_dashboard.title}>Add Team</h1>
 				<h6 style={css_dashboard.warning}>* = Required</h6>
 				<form 
-					onSubmit={ handleSubmit(this.onSubmit.bind(this))}
+					onSubmit={ handleSubmit }
 					style={css_dashboard.form}
 				>
 					<Field
@@ -52,18 +39,14 @@ class AddTeamForm extends Component {
 			</div>
 		);
 	}
-}
 
 
-const TeamAddForm = reduxForm({
+
+export default reduxForm({
 	form: 'AddTeamForm',
+	onSubmit: createTeam,
 	onSubmitSuccess: openSnackbar,
 	validate,
 })( AddTeamForm );
 
-function mapDispatchToProps( dispatch ){
-	return bindActionCreators({ createTeam }, dispatch);
-}
-
-export default connect(null, mapDispatchToProps)(TeamAddForm);
 

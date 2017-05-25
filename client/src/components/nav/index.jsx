@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { toggleMenu, selectLeague, openModal, selectTeams } from '../../actions/index';
+import { toggleMenu, resetDashboard, selectLeague, openModal, selectTeams } from '../../actions/index';
 import AppBar from 'material-ui/AppBar';
 import Menu from './Menu.jsx';
 import { css_appBar } from '../style';
@@ -10,10 +10,11 @@ import { css_appBar } from '../style';
 class NavBar extends Component {
 
 	selectLeague = league => {
-		const { active_teams, archived_teams, ...rest } = league;
+		const { teams, ...rest } = league;
 
+		this.props.resetDashboard();
 		this.props.selectLeague(rest);
-		this.props.selectTeams({archived_teams, active_teams});
+		this.props.selectTeams(teams);
 
 	};
 
@@ -46,7 +47,8 @@ function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ 
 		toggleMenu,  
 		selectLeague,
-		selectTeams, 
+		selectTeams,
+		resetDashboard, 
 		openModal
 	}, dispatch);
 }

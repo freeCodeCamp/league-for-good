@@ -6,8 +6,8 @@ function capitalizeWord(acc, val, index){
 
 
 //Capitalize the first letter in each word of a string
-const toTitleCase = function(){
-	const words = this.split(' ');
+const toTitleCase = function(str){
+	const words = str.split(' ');
 	
 	return words.reduce(capitalizeWord , '');
 };
@@ -16,6 +16,8 @@ const toTitleCase = function(){
 // to a schema before it is saved to the database
 
 //NOTE : this function will not work on embedded fields
+
+exports.toTitleCase = toTitleCase;
 
 module.exports = function(schema, {fields}){
 	

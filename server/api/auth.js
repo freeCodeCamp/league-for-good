@@ -17,17 +17,21 @@ function logOutUser(req, res){
 	res.status(200).send('User logged out');
 };
 
+//This is called when the user loads up the page to get 
+//all of their teams and leagues if they have an authenticated session
 function fetchUserAndLeagues(req, res, next){
 	const { user } = req;
 	
 	if(!user) return next();
 
 	return Leagues.find({ owner: user._id })
-		.populate('archived_teams active_teams')
+		.select('-archived_teams -active_teams')
+		.populate('teams')
 		.exec()
 		.then(leagueInfo => { 
 			res.send({user, leagueInfo, loggedIn: true })
-		});
+		})
+		.catch((err) => res.send(err));
 };
 
 function handleAuthFailure(req,res){

@@ -1,7 +1,7 @@
 import React from 'react';
 import getRowData, { colData } from './teamData';
-import TableTemplate from '../../dashboard/helper/tableTemplate.jsx';
 import { css_content } from '../../style';
+import TableTemplate from '../helper/tableTemplate.jsx';
 
 // Table that lists all the teams and the ability to edit or delete each team
 const TeamTable = props => (

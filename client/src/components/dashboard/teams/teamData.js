@@ -1,6 +1,6 @@
 import React from 'react';
-import Icon from './utils/getIcon.jsx';
 import { css_dashboard } from '../../style';
+import Icon from './tableIcon.jsx';
 
 //All team data passed from the reducers is reformatted here so it contains the correct
 //values for the TableTemplate component
@@ -20,6 +20,7 @@ export const colData = [
 
 // Get the value for the cell
 function getCellValue(team, prop, action) {
+
 	if (prop === 'currently_active') {
 		return team.currently_active ? 'Active' : 'Not Active';
 	}
