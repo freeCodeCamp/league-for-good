@@ -48,11 +48,10 @@ export function createPlayer(formbody, dispatch, props){
 export function findRoster({ team }, dispatch){
 		
 	const url = `${rootURL}/team/roster/${team._id}`;
-
 	axios.get(url)
 		.then(({data}) => {
 			const payload = { ...team, players: data };
-			
+	
 			dispatch({type: FETCH_ROSTER, payload });
 		});
 }

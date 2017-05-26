@@ -7,7 +7,10 @@ import {
 	TableRow,
 	TableRowColumn
 } from 'material-ui/Table';
-import TextField from 'material-ui/TextField';
+
+
+import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+
 import FlatButton from 'material-ui/FlatButton';
 import SearchIcon from 'material-ui/svg-icons/action/search';
 import ArrowUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
@@ -58,6 +61,8 @@ const SearchTable = (props) => {
 		/>
 	);
 };
+
+
 
 // Header row for the table containing column names
 const Headers = (props) => {
@@ -160,6 +165,7 @@ const ColumnHeaderChild = (props) => {
 		/>
 	);
 };
+
 
 // Table that lists all the teams and the ability to edit or delete each team
 class TableTemplate extends Component {
@@ -316,14 +322,10 @@ class TableTemplate extends Component {
 		};
 	}
 	
+
 	render() {
 		return (
-			<div>
-				<TableTitle title={this.props.title} />
-				{ 
-					!this.props.hideSearchInput && 
-						<SearchTable onSearch={this.onSearch} />	
-				}
+			
 				<Table>
 					<TableHeader 
 						adjustForCheckbox={false}
@@ -345,9 +347,13 @@ class TableTemplate extends Component {
 						{renderBody(this.state.rows)}
 					</TableBody>
 				</Table>
-			</div>
 		);
 	}
 }
 
 export default TableTemplate;
+
+				// { 
+				// 	!this.props.hideSearchInput && 
+				// 		<SearchTable onSearch={this.onSearch} />	
+				// }

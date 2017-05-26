@@ -61,7 +61,8 @@ const PrimaryDark = '#005b9f';
 
 const BLACK = '#000';
 const WHITE = '#fff';	
-
+// bluegrey - orange
+//teal - pink
 
 //Color Tool - https://material.io/color/#!/?view.left=0&view.right=1&primary.color=0071aa
 
@@ -102,7 +103,7 @@ export const css_appBar = {
 	},
 	icon:{
 		color:BLACK,
-	},
+	}
 
 };
 
@@ -255,7 +256,12 @@ export const css_dashboard = {
 		color: WHITE,
 		marginLeft:8,
 	},
-
+	title: {
+		textAlign: 'center',
+		marginTop: 0,
+		paddingTop: 0,
+		color: theme.primaryFont,
+	},
 	warning: {
 		textAlign: 'center',
 		color: theme.error,

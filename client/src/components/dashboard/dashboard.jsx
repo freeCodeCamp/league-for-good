@@ -37,14 +37,13 @@ class Dashboard extends Component {
 
 
 function mapStateToProps({ league, manage, teams, roster }){
-	const { selected } = league;
-	
-	const teamArrays = partition(teams, 'currently_active');
-	let [active_teams, archived_teams] = teamArrays;
-	
-	const leagueObj = { ...selected, archived_teams, active_teams};
 
-	return { league: leagueObj, view: manage.view, teams, roster };
+	return { 
+		league: {...league.selected}, 
+		view: manage.view, 
+		teams, 
+		roster, 
+	};
 }
 
 function mapDispatchToProps(dispatch){

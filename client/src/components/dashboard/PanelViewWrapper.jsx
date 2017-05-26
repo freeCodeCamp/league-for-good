@@ -21,31 +21,11 @@ export default class PanelViewWrapper extends Component {
 		switch (view) {
 			case 'AddTeam':
 				return <AddTeamForm league={league} />;
-			case 'EditActiveTeam':
+			
+			case 'ViewTeamsList':
 				return (
-					<TeamTable
-						action="edit" 
-						teams={league.active_teams} 
-						title="Active Teams"
-					/>
+					<TeamTable teams={teams} title="Teams"/>
 				);
-			case 'EditArchivedTeam':
-				return (
-					<TeamTable 
-						action="edit" 
-						teams={league.archived_teams} 
-						title="Archived Teams"
-					/>
-				);
-			case 'DeleteTeam':
-				return (
-					<TeamTable 
-						action="delete"
-						title="Delete Teams" 
-						teams={teams}
-					/>
-				);
-
 			case 'AddStaff':
 				return <AddStaffForm league={league}/>;	
 

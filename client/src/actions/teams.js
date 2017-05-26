@@ -34,10 +34,16 @@ export function updateTeam(formVals, dispatch, props){
 	const body = { name, currently_active };
 	dispatch({ type: CLOSE_MODAL });
 	
+	dispatch({ type: CLOSE_MODAL });
+
 	axios.put(`${rootURL}/team/update/${_id}`, body)
 		.then((data) => {
 
 			dispatch({type: UPDATE_TEAM, payload: {...formVals, name }});
+<<<<<<< 018eaf5ea71c02973b357a4901dcf5be50b3eb5d
+=======
+			
+>>>>>>> merged team tables
 		})
 		.catch( error => {
 			throw new Error(error);
@@ -51,13 +57,13 @@ export function removeTeam(team){
 	const teamName = name.replace(/^The/, '');
 	dispatch({ type: CLOSE_MODAL });
 	
+
 	return function( dispatch ){
-		
+		dispatch({ type: CLOSE_MODAL });
+
 		axios.delete(`${rootURL}/team/remove/${_id}`)
-			.then((data) => {
-				dispatch({ type: REMOVE_TEAM, list, payload: _id }); 
-				return;
-			})
+			
+			.then((data) => dispatch({ type: REMOVE_TEAM, list, payload: _id }))
 			.then(() => {
 				dispatch({ 
 					type: OPEN_SNACKBAR, 
