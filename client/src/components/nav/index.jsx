@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { toggleMenu, resetDashboard, selectLeague, openModal, selectTeams } from '../../actions/index';
 import AppBar from 'material-ui/AppBar';
 import Menu from './Menu.jsx';
-import { css_appBar } from '../style';
+import { css_appBar as css } from '../style';
 
 
 class NavBar extends Component {
@@ -24,7 +24,9 @@ class NavBar extends Component {
 			<div>
 				<AppBar 
 					title="League For Good"
-					style={css_appBar}
+					iconStyleLeft={css.text}
+					titleStyle={css.text}
+					style={css.main}
 					onLeftIconButtonTouchTap={()=> this.props.toggleMenu()}
 				/>
 				<Menu 

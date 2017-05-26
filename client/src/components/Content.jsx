@@ -17,13 +17,13 @@ const Content = props => {
 	return (
 		<div>
 			<NavBar/>
-				<div className={props.menuOpen ? 'content-wrapper': 'content-wrapper-expanded'}>
-						<Paper style={css_content.paper} zDepth={3}>
-							<Route exact path="/" component={Dashboard}/>
-							<Route path="/dashboard" component={Dashboard}/>
-							<Route path="/create" component={CreateLeagueForm} />
-							<Route path="/help" component={Help} />
-						</Paper>
+			<div className={props.menuOpen ? 'content-wrapper': 'content-wrapper-expanded'}>
+				<Paper style={css_content.paper} zDepth={3}>
+					<Route exact path="/" component={Dashboard}/>
+					<Route path="/dashboard" component={Dashboard}/>
+					<Route path="/create" component={CreateLeagueForm} />
+					<Route path="/help" component={Help} />
+				</Paper>
 				</div>
 				<Modal/>
 				<SnackBar/>

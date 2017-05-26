@@ -18,6 +18,23 @@ const theme = {
 };
 
 
+//*************************************************************************************
+//****************************** Theme Colors *****************************************
+//*************************************************************************************
+	
+const PrimaryMain	= '#0288D1';
+const PrimaryLight = '#5eb8ff';
+const PrimaryDark = '#005b9f';
+
+const BLACK = '#000';
+const WHITE = '#fff';	
+
+
+//Color Tool - https://material.io/color/#!/?view.left=0&view.right=1&primary.color=0071aa
+
+
+
+
 // common css that will be reused among components
 export const common = {
 	raisedButton: {
@@ -37,9 +54,20 @@ export const common = {
 
 // app bar component on top of window
 export const css_appBar = {
-	zIndex: 2000,
-	position: 'fixed',
-	backgroundColor: theme.primary,
+	main:{
+		zIndex: 2000,
+		position: 'fixed',
+		backgroundColor: PrimaryMain,
+	},
+	text:{
+		color:WHITE,
+		letterSpacing:2,
+		textShadow: '-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000, 1px 1px 0 #000',
+	},
+	icon:{
+		color:BLACK,
+	},
+
 };
 
 
@@ -84,7 +112,7 @@ export const css_content = {
 	header: {
 		width: '100%',
 		height: 'auto',
-		paddingTop: '10px',
+		// paddingTop: '10px',
 		backgroundColor: theme.secondaryBackground,
 	},
 	// navbar designed for use with icons
@@ -171,16 +199,20 @@ export const css_dashboard = {
 			zIndex: 999,
 		},
 	},
-	title: {
-		textAlign: 'center',
-		margin: '0px',
-		paddingTop: '0px',
-		color: theme.primaryFont,
+	toolbar: {
+		backgroundColor: PrimaryDark,
 	},
-	subtitle: {
-		marginTop: '15px',
-		color: theme.secondaryFont,
+	toolbarTitle: {
+		color: WHITE,
+		letterSpacing:1.5,
+		fontWeight: 'bolder',
+		fontSize: '2em',
 	},
+	toolbarSubtitle: {
+		color: WHITE,
+		marginLeft:8,
+	},
+
 	warning: {
 		textAlign: 'center',
 		color: theme.error,

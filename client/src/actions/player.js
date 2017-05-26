@@ -10,7 +10,7 @@ export function createPlayer(formbody, dispatch, props){
 	const roster = props.roster;
 	const team = formbody.team;
    
-  body.player.teams = [{teamId: team}];
+	body.player.teams = [{teamId: team}];
 
 	const rosterShouldUpdate = roster && team && roster._id === team._id;
 
@@ -38,7 +38,7 @@ export function createPlayer(formbody, dispatch, props){
 					phone_num,
 					position,
 					jersey_num,
-				} 
+				}; 
 				dispatch({ type: ADD_PLAYER_TO_ROSTER, payload: newPlayer });
 			}	
 		});

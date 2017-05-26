@@ -14,26 +14,24 @@ import { css_content, css_dashboard } from '../style';
 // Tabs for each section the user can manage
 const LeagueTabs = props => {
 	return (
-		<div>
-			<Tabs inkBarStyle={css_dashboard.tabs.inkBar}>
-				{
-					tabs.map((tab, i) => (
-						<Tab 
-							label={tab.name}
-							key={i}
-							style={css_dashboard.tabs.tab}
-							onActive={() => props.changeManageView(null)}
-						>
-							<div>
-								{generateLinks(tab.links)}
-								<PanelViewWrapper {...props} />
-							</div>
-						</Tab>
-						)
+		<Tabs inkBarStyle={css_dashboard.tabs.inkBar}>
+			{
+				tabs.map((tab, i) => (
+					<Tab 
+						label={tab.name}
+						key={i}
+						style={css_dashboard.tabs.tab}
+						onActive={() => props.changeManageView(null)}
+					>
+						<div>
+							{generateLinks(tab.links)}
+							<PanelViewWrapper {...props} />
+						</div>
+					</Tab>
 					)
-				}
-			</Tabs>
-		</div>
+				)
+			}
+		</Tabs>
 	);
 }
 

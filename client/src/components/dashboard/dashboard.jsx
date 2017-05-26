@@ -21,7 +21,7 @@ class Dashboard extends Component {
 			<div>
 				{league.name &&
 				<div style={css_content.header}>
-					<LeagueTabsHeader league={league}/>
+					<LeagueTabsHeader league={league}/>	
 					<LeagueTabs {...tabProps} />
 				</div>
 				}
