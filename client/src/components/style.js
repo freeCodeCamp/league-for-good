@@ -21,6 +21,39 @@ const theme = {
 //*************************************************************************************
 //****************************** Theme Colors *****************************************
 //*************************************************************************************
+
+const theme_teal_pink = {
+	darkPrimaryColor: '#00796B',
+	defaultPrimaryColor: '#009688',
+	lightPrimaryColor: '#B2DFDB',
+	textPrimaryColor: '#FFFFFF',
+	accentColor: '#FF4081',
+	primaryTextColor: '#212121',
+	secondaryTextColor: '#757575',
+	dividerColor: '#BDBDBD',
+};
+
+const theme_purple_amber = {
+	darkPrimaryColor: '#512DA8',
+	defaultPrimaryColor: '#673AB7',
+	lightPrimaryColor: '#D1C4E9',
+	textPrimaryColor: '#FFFFFF',
+	accentColor: '#FFC107',
+	primary-textColor: '#212121',
+	secondary-textColor: '#757575',
+	dividerColor: '#BDBDBD',
+};
+
+const theme_bluegrey_indigo = {
+	darkPrimaryColor: '#455A64',
+	defaultPrimaryColor: '#607D8B',
+	lightPrimaryColor: '#CFD8DC',
+	textPrimaryColor: '#FFFFFF',
+	accentColor: '#536DFE',
+	primary-textColor: '#212121',
+	secondary-textColor: '#757575',
+	dividerColor: '#BDBDBD',
+};
 	
 const PrimaryMain	= '#0288D1';
 const PrimaryLight = '#5eb8ff';
@@ -41,6 +74,9 @@ export const common = {
 		label: {
 			color: theme.buttonFont,
 			fontWeight: 500,
+		},
+		style: {
+			marginTop: '30px',
 		},
 		backgroundColor: theme.secondary,
 	},
@@ -76,6 +112,8 @@ export const css_login = {
 	raisedButton: common.raisedButton,
 	dialog: {
 		title: {
+			backgroundColor: theme.primary,
+			borderBottom: '1px solid ' + theme.border,
 			textAlign: 'center',
 			color: theme.primaryFont,
 		},
@@ -152,7 +190,6 @@ export const css_createLeague = {
 	raisedButton: common.raisedButton,
 	card: {
 		style: {
-			marginTop: '-10px',		// compensate for header since this is material ui
 			boxShadow: 'none',
 			backgroundColor: theme.secondaryBackground,
 		},
@@ -199,12 +236,18 @@ export const css_dashboard = {
 			zIndex: 999,
 		},
 	},
+	title: {
+		textAlign: 'center',
+		margin: 0,
+		padding: 0,
+		color: theme.primaryFont,
+	},
 	toolbar: {
 		backgroundColor: PrimaryDark,
 	},
 	toolbarTitle: {
 		color: WHITE,
-		letterSpacing:1.5,
+		letterSpacing: 1.5,
 		fontWeight: 'bolder',
 		fontSize: '2em',
 	},
@@ -323,7 +366,7 @@ export const css_modal = {
 	},
 	title: {
 		textAlign: 'center',
-		background: theme.primaryBackground,
+		backgroundColor: theme.primary,
 		color: theme.primaryFont,
 	},
 };

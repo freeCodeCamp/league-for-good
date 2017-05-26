@@ -33,6 +33,7 @@ const AddTeamForm = props => {
 						label="Create Team"
 						labelStyle={css_dashboard.raisedButton.label}
 						backgroundColor={css_dashboard.raisedButton.backgroundColor}
+						style={css_dashboard.raisedButton.style}
 						type="submit"
 					/>
 				</form>

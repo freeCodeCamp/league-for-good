@@ -54,8 +54,9 @@ class CreateLeagueForm extends Component {
 							/>
 							<RaisedButton
 								label="Create"
-								labelStyle={css_createLeague.raisedButton.labelStyle}
+								labelStyle={css_createLeague.raisedButton.label}
 								backgroundColor={css_createLeague.raisedButton.backgroundColor}
+								style={css_createLeague.raisedButton.style}
 								type="submit"
 							/>
 						</form>

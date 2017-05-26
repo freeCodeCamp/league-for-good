@@ -32,12 +32,12 @@ export function updateTeam(formVals, dispatch, props){
 	
 	const { _id, currently_active, name } = formVals;
 	const body = { name, currently_active };
+	dispatch({ type: CLOSE_MODAL });
 	
 	axios.put(`${rootURL}/team/update/${_id}`, body)
 		.then((data) => {
 
 			dispatch({type: UPDATE_TEAM, payload: {...formVals, name }});
-			dispatch({ type: CLOSE_MODAL });
 		})
 		.catch( error => {
 			throw new Error(error);
@@ -49,13 +49,14 @@ export function removeTeam(team){
 	const {_id, currently_active, name } = team;
 	const list = currently_active? 'active_teams' : 'archived_teams';
 	const teamName = name.replace(/^The/, '');
+	dispatch({ type: CLOSE_MODAL });
 	
 	return function( dispatch ){
 		
 		axios.delete(`${rootURL}/team/remove/${_id}`)
 			.then((data) => {
 				dispatch({ type: REMOVE_TEAM, list, payload: _id }); 
-				return dispatch({ type: CLOSE_MODAL });
+				return;
 			})
 			.then(() => {
 				dispatch({ 

@@ -9,6 +9,7 @@ const Button = () => (
 		href="/auth/google"
 		labelStyle={css_login.raisedButton.label} 
 		backgroundColor={css_login.raisedButton.backgroundColor}
+		style={css_login.raisedButton.style}
 	/>
 );
 
