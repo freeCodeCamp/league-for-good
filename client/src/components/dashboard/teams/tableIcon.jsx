@@ -26,7 +26,7 @@ class Icon extends Component {
 	}
 	render(){
 		const { team, action } = this.props;
-
+		
 		return (
 			<IconButton 
 				onTouchTap={()=> this.onClick(team, action) }

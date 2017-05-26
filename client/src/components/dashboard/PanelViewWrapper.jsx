@@ -13,31 +13,32 @@ import AddStaffForm from './settings/main.jsx';
 
 // Panel view wrapper determines which view is currently active
 // and renders the appropriate panel in response
-export default class PanelViewWrapper extends Component {
+const PanelViewWrapper = props => {
+	const { view, league, roster , teams } = props;
 
-	render() {
-		const { view, league, roster, teams } = this.props;
-		
 		switch (view) {
-			case 'AddTeam':
-				return <AddTeamForm league={league} />;
-			
-			case 'ViewTeamsList':
-				return (
-					<TeamTable teams={teams} title="Teams"/>
-				);
-			case 'AddStaff':
-				return <AddStaffForm league={league}/>;	
-
-			case 'AddPlayer':
-				return <AddPlayerForm league={league} roster={roster} />;
 		
-			case 'ViewRoster':
-				return <TeamRoster teams={teams} roster={roster} />		
-			default:
-				return <noScript />;
-			}
+		case 'AddTeam':
+			return <AddTeamForm league={league} />;
+				
+		case 'ViewTeamsList':
+			return <TeamTable teams={teams}/>;
+		
+		case 'AddStaff':
+			return <AddStaffForm league={league}/>;	
+		
+		case 'AddPlayer':
+			return <AddPlayerForm league={league} roster={roster} />;
+			
+		case 'ViewRoster':
+			return <TeamRoster teams={teams} roster={roster} />		
+		
+		default:
+			return <noScript />;
 		}
-}
+};
+
+
+export default PanelViewWrapper;
 
 

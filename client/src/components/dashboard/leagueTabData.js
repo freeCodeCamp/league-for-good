@@ -32,7 +32,7 @@ const playerLinks = [
 		icon: <ListIcon />,
 	},
 	{
-		description: 'Add a new player to your league.',
+		description: 'Manually add a new player to your league.',
 		label: 'AddPlayer',
 		icon: <AddPersonIcon />,
 	},

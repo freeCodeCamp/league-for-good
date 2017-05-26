@@ -39,8 +39,8 @@ const theme_purple_amber = {
 	lightPrimaryColor: '#D1C4E9',
 	textPrimaryColor: '#FFFFFF',
 	accentColor: '#FFC107',
-	primary-textColor: '#212121',
-	secondary-textColor: '#757575',
+	primaryTextColor: '#212121',
+	secondaryTextColor: '#757575',
 	dividerColor: '#BDBDBD',
 };
 
@@ -50,8 +50,8 @@ const theme_bluegrey_indigo = {
 	lightPrimaryColor: '#CFD8DC',
 	textPrimaryColor: '#FFFFFF',
 	accentColor: '#536DFE',
-	primary-textColor: '#212121',
-	secondary-textColor: '#757575',
+	primaryTextColor: '#212121',
+	secondaryTextColor: '#757575',
 	dividerColor: '#BDBDBD',
 };
 	

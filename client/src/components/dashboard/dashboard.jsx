@@ -18,6 +18,7 @@ class Dashboard extends Component {
 		const tabProps = { league, view, changeManageView, teams, roster };
 		
 		return (
+			
 			<div>
 				{league.name &&
 				<div style={css_content.header}>

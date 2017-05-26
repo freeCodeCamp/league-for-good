@@ -7,9 +7,8 @@ import DropDownMenu from 'material-ui/DropDownMenu';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import SearchIcon from 'material-ui/svg-icons/action/search';
-import getRowData, { colData } from './teamData';
 
-
+import getRowData,{colData} from './teamData';
 
 // Table that lists all the teams and the ability to edit or delete each team
   export default class TeamTable extends Component{
@@ -78,6 +77,7 @@ import getRowData, { colData } from './teamData';
   	}
 
   	render(){
+     
 	    return (
 	    <div>	
 	      <Toolbar style={css_content.header}>
