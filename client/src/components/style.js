@@ -19,7 +19,7 @@ const theme = {
 
 
 // common css that will be reused among components
-const common = {
+export const common = {
 	raisedButton: {
 		label: {
 			color: theme.buttonFont,
@@ -29,7 +29,7 @@ const common = {
 	},
 	form: {
 		width: '80%',
-		margin: '0px auto',
+		margin: '0px auto 5px',
 		textAlign: 'center',
 	},
 };

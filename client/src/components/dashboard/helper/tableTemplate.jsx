@@ -29,6 +29,7 @@ import { css_dashboard } from '../../style';
 //			sortable(Boolean) - true if column is sortable; false otherwise
 //			searchable(Boolean) - true if column is searchable
 //								  currently only allowed on one column
+//			hideSearchInput(Boolean) - whether or not to render the search input, defaults to false	
 //
 // @rows - [[Object]]: An array of an array of objects
 //		The rows array is an array containing each row in the table
@@ -207,7 +208,7 @@ class TableTemplate extends Component {
 	
 	// Search for rows passed in to the table as a searchable column
 	// Only one column is currently allowed to be searchable
-	onSearch(event, newValue) {
+	onSearch = (event, newValue) => {
 		newValue = newValue.trim();
 		let rowValue = '';
 		let searchRows = this.props.rows.filter((row) => {
@@ -319,7 +320,10 @@ class TableTemplate extends Component {
 		return (
 			<div>
 				<TableTitle title={this.props.title} />
-				<SearchTable onSearch={this.onSearch.bind(this)} />
+				{ 
+					!this.props.hideSearchInput && 
+						<SearchTable onSearch={this.onSearch} />	
+				}
 				<Table>
 					<TableHeader 
 						adjustForCheckbox={false}

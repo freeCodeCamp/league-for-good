@@ -8,6 +8,7 @@ import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import EmailIcon from 'material-ui/svg-icons/communication/email';
 import AssignmentIcon from 'material-ui/svg-icons/action/assignment';
 import UpdateIcon from 'material-ui/svg-icons/action/update';
+import ListIcon from 'material-ui/svg-icons/action/view-list';
 
 // Links that the user can access to modify teams
 const teamLinks = [
@@ -35,6 +36,11 @@ const teamLinks = [
 
 // Links that the user can access to modify players
 const playerLinks = [
+	{
+		description: 'View a team\'s roster',
+		label: 'ViewRoster',
+		icon: <ListIcon />,
+	},
 	{
 		description: 'Add a new player to your league.',
 		label: 'AddPlayer',

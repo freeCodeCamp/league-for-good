@@ -54,7 +54,7 @@ export default function(ComposedComponent){
     render(){
   
       const { initAuthState, loggedIn, ...props } = this.props;
-
+     
       if(props.loading){
         return this.renderSpinner();
       }

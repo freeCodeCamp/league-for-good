@@ -14,8 +14,8 @@ import { partition } from 'lodash';
 class Dashboard extends Component {
 
 	render() {
-		const { league, view, changeManageView } = this.props;
-		const tabProps = { league, view, changeManageView};
+		const { league, view, changeManageView, teams, roster } = this.props;
+		const tabProps = { league, view, changeManageView, teams, roster };
 		
 		return (
 			<div>
@@ -36,7 +36,7 @@ class Dashboard extends Component {
 // ----https://lodash.com/docs/4.17.4#partition
 
 
-function mapStateToProps({ league, manage, teams }){
+function mapStateToProps({ league, manage, teams, roster }){
 	const { selected } = league;
 	
 	const teamArrays = partition(teams, 'currently_active');
@@ -44,7 +44,7 @@ function mapStateToProps({ league, manage, teams }){
 	
 	const leagueObj = { ...selected, archived_teams, active_teams};
 
-	return { league: leagueObj, view: manage.view };
+	return { league: leagueObj, view: manage.view, teams, roster };
 }
 
 function mapDispatchToProps(dispatch){

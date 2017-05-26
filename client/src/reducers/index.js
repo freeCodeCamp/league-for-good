@@ -7,7 +7,7 @@ import menuReducer from './menu';
 import leagueReducer from './league';
 import teamReducer from './teams';
 import manageReducer from './manage';
-
+import rosterReducer from './roster';
 //Create a single 'reducer' that stores all other various slices of state that were defined in the other reducers
 //Redux uses a 'single source of truth' for an application's 'store'
 
@@ -20,6 +20,7 @@ const rootReducer = combineReducers({
 	league: leagueReducer,
 	teams: teamReducer,
 	manage: manageReducer,
+	roster: rosterReducer,
 });
 
 export default rootReducer;

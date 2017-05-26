@@ -11,13 +11,13 @@ const Teams = mongoose.model('team');
 //Add a player into the database 
 const addPlayerToLeague = (req, res) => {
 	const { league, player } = req.body;
-	const teamId = player.team;
-  player.teams = [{ teamId }];
+	const team = player.team;
+  player.teams = [{ team }];
   player.leagues = [ league ]
 
 	Player.create( player )
 		.then(newPlayer => {
-			Teams.findByIdAndUpdate(teamId, {$push: { players: newPlayer }})
+			Teams.findByIdAndUpdate(team._id, {$push: { players: newPlayer }})
 				.exec()
 				.then(() => res.send( newPlayer ))
 				.catch(e => res.send({ error: e }))

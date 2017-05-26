@@ -30,7 +30,7 @@ const validate = val => {
 
 
 const AddPlayerForm = props => {
-	const { handleSubmit, change, league: { active_teams } } = props;
+	const { handleSubmit, change, league: { active_teams }, roster } = props;
 
 	return (
 		<div style={css_content.body}>
@@ -66,7 +66,7 @@ const AddPlayerForm = props => {
 				/>
 				<Field 
 					name="team"
-					onNewRequest={ team => change("teamIndex", team) }
+					onNewRequest={ team => change("team", team) }
 					component={AutoComplete}
 					filter={AutoComplete.caseInsensitiveFilter}
 					floatingLabelText="Team"
@@ -74,11 +74,6 @@ const AddPlayerForm = props => {
 					dataSourceConfig={{text:"name", value:"_id"}}
 					fullWidth={true}
 					maxSearchResults={5}
-				/>
-				<Field 
-					name="teamIndex"
-					type="hidden"
-					component="input"
 				/>
 				<Field
 					name="phone_num" 

@@ -3,7 +3,7 @@ const Router = express.Router();
 const mongoose = require('mongoose');
 const Team = mongoose.model('team');
 const League = mongoose.model('league');
-
+const buildRoster = require('./aggregation/buildRoster');
 
 // Create a new team for a selected league
 //after the team is saved, push the mongo generated _id into the 'teams' array with that league
@@ -46,15 +46,17 @@ const updateTeam = (req, res) => {
 }
 
 const showRoster = (req, res) => {
-	//TODO - add search params 
-	Team.findOne({})
-		.select('name players')
-		.populate('players')
+	//TODO - add search params for seasonId
+	const { teamId } = req.params;
+	
+	Team.findById(teamId)
 		.exec()
-		.then(team => res.send(team))
+		.then(buildRoster)
+		.then(data => res.send(data))
+		.catch(err => res.send(String(err)))
 }
 
-Router.route('/roster').get(showRoster);
+Router.route('/roster/:teamId').get(showRoster);
 
 Router.route('/create').post(createTeam);
 Router.route('/remove/:teamId').delete(deleteTeam);
