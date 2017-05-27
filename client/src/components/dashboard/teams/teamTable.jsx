@@ -16,68 +16,42 @@ import getRowData,{colData} from './teamData';
   	state = {
   		filterValue: 1,
   		searchText: '',
-  		teams: [...this.props.teams],
-  	}
-
-  	// Return a new array filters by team's
-  	filterByStatus = ({filterValue}) => {
-  		const { teams } = this.props;
-  		
-  		switch( filterValue ) {
-
-  		case 1:
-  			return teams;
-  		case 2:
-  			return teams.filter(row => row.currently_active);
-  		case 3:
-  			return teams.filter(row => !row.currently_active);		
-  		}
   	}
 
   	handleChange = (e, i, filterValue) => {
-  		
-  		const teams = this.filterByStatus({filterValue});
-
-  		this.setState({ teams, filterValue })
+  		this.setState({ filterValue })
   	}
 
-  	//filter by team name and active status
   	onSearch = e => {
-  		const searchText = e.target.value;
-  		const regex = new RegExp(searchText, 'i');
-  		const { filterValue } = this.state;
-
-  		let teams;
-  		
-
-  		if( searchText.trim().length ){
-  			
-  			teams = this.props.teams.filter(team => {
-  				let flag;
-  				if(filterValue === 1) {
-  					flag = true;
-  				}
-  				else if(filterValue === 2) {
-  					flag = team.currently_active;
-  				}
-  				else{
-  					flag = !team.currently_active;
-  				}
-
-  				return regex.test(team.name) && flag;
-  			});
-
-  		}
-  		else{
-  			teams = this.filterByStatus(this.state);
-  		}
-
-  		this.setState({ searchText, teams });
-
+      this.setState({ searchText: e.target.value });
   	}
+
+    // Filter the team list array with params in state
+    formatTeams(){
+      const { filterValue, searchText } = this.state;
+      let { teams } = this.props;
+      const regex = new RegExp(searchText, 'i');
+      
+        return teams.filter(team => {
+          let filterFlag;
+          let searchFlag = searchText.length? regex.test(team.name) : true ;
+
+          if(filterValue === 1) {
+            filterFlag = true;
+          }
+          else if(filterValue === 2) {
+            filterFlag = team.currently_active;
+          }
+          else{
+            filterFlag = !team.currently_active;
+          }
+
+          return searchFlag && filterFlag;
+        });     
+    }
 
   	render(){
-     
+     const teams = this.formatTeams();
 	    return (
 	    <div>	
 	      <Toolbar style={css_content.header}>
@@ -104,7 +78,7 @@ import getRowData,{colData} from './teamData';
 	      <div style={css_content.body}>
 					<TableTemplate 
 						headers={colData}
-						rows={getRowData(this.state)}
+						rows={getRowData({teams})}
 					/>
 				</div>
 	    </div>  

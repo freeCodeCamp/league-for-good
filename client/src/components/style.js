@@ -103,7 +103,7 @@ export const css_appBar = {
 	},
 	icon:{
 		color:BLACK,
-	}
+	},
 
 };
 
@@ -256,12 +256,6 @@ export const css_dashboard = {
 		color: WHITE,
 		marginLeft:8,
 	},
-	title: {
-		textAlign: 'center',
-		marginTop: 0,
-		paddingTop: 0,
-		color: theme.primaryFont,
-	},
 	warning: {
 		textAlign: 'center',
 		color: theme.error,
@@ -376,4 +370,3 @@ export const css_modal = {
 		color: theme.primaryFont,
 	},
 };
-

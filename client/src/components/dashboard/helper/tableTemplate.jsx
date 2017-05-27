@@ -173,7 +173,7 @@ class TableTemplate extends Component {
 		super(props);
 		let searchableIndex = 0;
 		// set width of default columns in table
-		css_dashboard.table.defaultCol.width = (100 / this.props.rows.length) + '%';
+		css_dashboard.table.defaultCol.width = 90;
 		
 		this.props.headers.forEach((header, i) => {
 			if (!!header.searchable) {

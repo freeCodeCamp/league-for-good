@@ -33,13 +33,11 @@ export function updateTeam(formVals, dispatch, props){
 	const { _id, currently_active, name } = formVals;
 	const body = { name, currently_active };
 	dispatch({ type: CLOSE_MODAL });
-	
-	dispatch({ type: CLOSE_MODAL });
 
 	axios.put(`${rootURL}/team/update/${_id}`, body)
 		.then((data) => {
-
-			dispatch({type: UPDATE_TEAM, payload: {...formVals, name }});
+		
+			return dispatch({type: UPDATE_TEAM, payload: {...formVals, ...body }});
 
 		})
 		.catch( error => {
