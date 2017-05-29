@@ -12,8 +12,6 @@ import Help from './help/help.jsx';
 import Modal from './modal/main.jsx';
 import { css_content } from './style';
 
-import TeamTable from './dashboard/teams/teamTable.jsx';
-
 const Content = props => {
 	return (
 		<div>

@@ -218,7 +218,7 @@ export const css_dashboard = {
 			marginLeft: '20px',
 		},
 		searchUnderline: {
-			borderColor: theme.lightPrimaryColor,
+			borderColor: theme.accentColor,
 		},
 		sortIcon: {
 			display: 'inline',
@@ -309,8 +309,11 @@ export const css_modal = {
 		paddingBottom: 0,
 	},
 	title: {
-		textAlign: 'center',
+		textAlign: 'left',
 		backgroundColor: theme.defaultPrimaryColor,
 		color: theme.textPrimaryColor,
+		letterSpacing: '2px',
+		fontWeight: 400,
 	},
+	raisedButton: common.raisedButton,
 };

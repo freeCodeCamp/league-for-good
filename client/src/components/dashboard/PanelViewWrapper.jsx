@@ -21,7 +21,7 @@ const PanelViewWrapper = props => {
 		case 'AddTeam':
 			return <AddTeamForm league={league} />;
 				
-		case 'ViewTeamsList':
+		case 'ViewTeams':
 			return <TeamTable teams={teams}/>;
 		
 		case 'AddStaff':
@@ -30,7 +30,7 @@ const PanelViewWrapper = props => {
 		case 'AddPlayer':
 			return <AddPlayerForm league={league} roster={roster} />;
 			
-		case 'ViewRoster':
+		case 'ViewPlayers':
 			return <TeamRoster teams={teams} roster={roster} />		
 		
 		default:

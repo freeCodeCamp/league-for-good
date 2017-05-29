@@ -4,7 +4,7 @@ import { reduxForm } from 'redux-form';
 /* Map all the components and/or props to be used inside the main modal component
 	Required:
 		title -    (STRING) The modals title prop;
-		children - (function/null) Any components to be rendered inside the modal;
+		Children - (function/null) Any components to be rendered inside the modal;
 		onSubmit - (STRING) The name of the action that will be dispatched
 	
 	ex- 
@@ -39,20 +39,23 @@ const mappings = {
 	},
 	
 	logout: {
-		title: 'Are you sure you want to log out?',
+		title: 'Logout',
 		Children: null,          
 		onSubmit: 'logOut',
+		actionLabel: 'Logout',
 	},
 	removeTeam: {
-		title: 'Are you sure you want to permanently delete this team?',
+		title: 'Delete Team',
 		Children: null,
 		onSubmit: 'removeTeam',
+		actionLabel: 'Delete Team',
 	},
 	editTeam:{
 		title: 'Edit Team',
-		Children:EditTeamForm,
+		Children: EditTeamForm,
 		onSubmit: null,
-		reduxFormName:'EditTeamForm'
+		reduxFormName:'EditTeamForm',
+		actionLabel: 'Edit Team',
 	},
 };
 

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import { submit } from 'redux-form';
@@ -38,22 +37,25 @@ class Modal extends Component {
    
     const { view, open, data } = this.props;
   
-    const { title, Children } = modalMapping[view];
+    const { title, Children, actionLabel } = modalMapping[view];
     
     const handleSubmit = this.getAction().handleSubmit;
 
     const actions = [
-      <FlatButton
-        label="Cancel"
-        primary={true}
-        onTouchTap={this.handleClose}
-      />,
-      <FlatButton
-        label="Submit"
-        primary={true}
-        keyboardFocused={true}
+      <RaisedButton
+        label={actionLabel || "Submit"}
+        labelStyle={css_modal.raisedButton.label} 
+		backgroundColor={css_modal.raisedButton.backgroundColor}
+		style={css_modal.raisedButton.style}
         onTouchTap={()=> handleSubmit(data)}
       />,
+      <RaisedButton
+        label="Cancel"
+        labelStyle={css_modal.raisedButton.label} 
+		backgroundColor={css_modal.raisedButton.backgroundColor}
+		style={css_modal.raisedButton.style}
+        onTouchTap={this.handleClose}
+      />
     ];
 
     return (
@@ -68,7 +70,7 @@ class Modal extends Component {
           open={this.props.open}
           onRequestClose={this.handleClose}
         >
-          {Children? <Children {...data}/> : null}
+          {!!Children ? <Children {...data} /> : null}
         </Dialog>
       </div>
     );

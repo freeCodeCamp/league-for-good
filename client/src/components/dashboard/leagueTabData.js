@@ -13,8 +13,8 @@ import ListIcon from 'material-ui/svg-icons/action/view-list';
 // Links that the user can access to modify teams
 const teamLinks = [
 	{
-		description: 'Your current teams',
-		label: 'ViewTeamsList',
+		description: 'View your current teams.',
+		label: 'ViewTeams',
 		icon: <ListIcon />,
 	},
 	{
@@ -28,7 +28,7 @@ const teamLinks = [
 const playerLinks = [
 	{
 		description: 'View a team\'s roster',
-		label: 'ViewRoster',
+		label: 'ViewPlayers',
 		icon: <ListIcon />,
 	},
 	{
