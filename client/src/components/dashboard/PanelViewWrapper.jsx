@@ -17,6 +17,12 @@ export default class PanelViewWrapper extends Component {
 
 	render() {
 		const { view, league, roster, teams } = this.props;
+		// since each panel view wrapper has its own set of links, we must
+		// check if the panels links match the current view being rendered
+		// this will prevent unnecessary rendering
+		if (!this.props.tab.links.some((link) => link.label === view)) {
+			return <noScript />;
+		}
 		
 		switch (view) {
 			case 'AddTeam':

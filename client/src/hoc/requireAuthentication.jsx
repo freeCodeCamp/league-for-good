@@ -27,9 +27,12 @@ const style = {
   to hide any state changes while an authentication call to the server is being resolved 
 
   Can be applied during other Async calls  
+  
+  @composedComponent - 
+  @userProps([Functions]) - extra user defined props to pass to composed component
 */
 
-export default function(ComposedComponent){
+export default function(ComposedComponent, changeTheme){
 
   class loadState extends Component{
     
@@ -64,7 +67,7 @@ export default function(ComposedComponent){
       }
       //Render the desired content
       else{
-        return <ComposedComponent {...props}/>;
+        return <ComposedComponent {...props} changeTheme={changeTheme} />;
       }
     }
   };

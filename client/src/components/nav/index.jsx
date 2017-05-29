@@ -4,10 +4,17 @@ import { bindActionCreators } from 'redux';
 import { toggleMenu, resetDashboard, selectLeague, openModal, selectTeams } from '../../actions/index';
 import AppBar from 'material-ui/AppBar';
 import Menu from './Menu.jsx';
-import { css_appBar as css } from '../style';
+import Bar from './Bar.jsx';
 
 
 class NavBar extends Component {
+	constructor(props) {
+		super(props);
+		
+		this.state = {
+			themeMenuOpen: false,
+		};
+	}
 
 	selectLeague = league => {
 		const { teams, ...rest } = league;
@@ -15,26 +22,31 @@ class NavBar extends Component {
 		this.props.resetDashboard();
 		this.props.selectLeague(rest);
 		this.props.selectTeams(teams);
-
-	};
+	}
+	
+	themeMenuToggle = () => {
+		this.setState({
+			themeMenuOpen: !this.state.themeMenuOpen,
+		});
+	}
 
 	render() {
 		const {dispatch} = this.props;
+		
 		return (
 			<div>
-				<AppBar 
-					title="League For Good"
-					iconStyleLeft={css.text}
-					titleStyle={css.text}
-					style={css.main}
-					onLeftIconButtonTouchTap={()=> this.props.toggleMenu()}
+				<Bar 
+					toggleMenu={this.props.toggleMenu}
+					themeMenuToggle={this.themeMenuToggle}
+					themeMenuOpen={this.state.themeMenuOpen}
+					changeTheme={this.props.changeTheme}
 				/>
 				<Menu 
 					leagues={this.props.leagues}
 					open={this.props.open} 
 					openModal={this.props.openModal}
 					selectLeague={this.selectLeague}
-				/>        
+				/>
 			</div>
 		);
 	}
@@ -42,12 +54,12 @@ class NavBar extends Component {
 
 function mapStateToProps({menu, league}) {
 	const { open } = menu;
-	return { open, leagues:league.list };
+	return { open, leagues: league.list };
 }
 
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ 
-		toggleMenu,  
+		toggleMenu,
 		selectLeague,
 		selectTeams,
 		resetDashboard, 

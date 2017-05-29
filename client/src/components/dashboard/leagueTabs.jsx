@@ -25,7 +25,7 @@ const LeagueTabs = props => {
 					>
 						<div>
 							{generateLinks(tab.links)}
-							<PanelViewWrapper {...props} />
+							<PanelViewWrapper {...props} tab={tab} />
 						</div>
 					</Tab>
 					)

@@ -9,8 +9,8 @@ import { OPEN_MODAL, CLOSE_MODAL } from '../actions/types';
 
 */
 
-export default function(state = { open: false, view: 'default' }, action){
-	switch(action.type){
+export default function(state = { open: false, view: 'default' }, action) {
+	switch (action.type) {
 	
 	case OPEN_MODAL:
 		return { open: true, ...action.payload };

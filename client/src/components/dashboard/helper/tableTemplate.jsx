@@ -184,7 +184,6 @@ class TableTemplate extends Component {
 			searchRows: [],
 		};
 	}
-
 	
 	// Change state of teams based on panel rendered
 	componentWillReceiveProps(nextProps) {

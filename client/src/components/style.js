@@ -1,84 +1,22 @@
 // Contains all the css for the components
+import themes from './themes';
 
-// Theme colors to be used
-const theme = {
-	primaryBackground: '#fff',
-	secondaryBackground: '#f4f6f7',
-	border: '#607d8b',
-	buttonActive: 'orange',
-	buttonInactive: 'lightblue',
-	buttonHover: '#FFCC80',
-	primary: '#0288D1',
-	secondary: '#14b4fc',
-	accent: '#60ccfd',
-	error: 'red',
-	primaryFont: '#131516',
-	secondaryFont: '#707c80',
-	buttonFont: '#fff',
+let theme = themes.getCurrentThemeProps();
+export function changeTheme() {
+	theme = themes.getCurrentThemeProps();
 };
-
-
-//*************************************************************************************
-//****************************** Theme Colors *****************************************
-//*************************************************************************************
-
-const theme_teal_pink = {
-	darkPrimaryColor: '#00796B',
-	defaultPrimaryColor: '#009688',
-	lightPrimaryColor: '#B2DFDB',
-	textPrimaryColor: '#FFFFFF',
-	accentColor: '#FF4081',
-	primaryTextColor: '#212121',
-	secondaryTextColor: '#757575',
-	dividerColor: '#BDBDBD',
-};
-
-const theme_purple_amber = {
-	darkPrimaryColor: '#512DA8',
-	defaultPrimaryColor: '#673AB7',
-	lightPrimaryColor: '#D1C4E9',
-	textPrimaryColor: '#FFFFFF',
-	accentColor: '#FFC107',
-	primary-textColor: '#212121',
-	secondary-textColor: '#757575',
-	dividerColor: '#BDBDBD',
-};
-
-const theme_bluegrey_indigo = {
-	darkPrimaryColor: '#455A64',
-	defaultPrimaryColor: '#607D8B',
-	lightPrimaryColor: '#CFD8DC',
-	textPrimaryColor: '#FFFFFF',
-	accentColor: '#536DFE',
-	primary-textColor: '#212121',
-	secondary-textColor: '#757575',
-	dividerColor: '#BDBDBD',
-};
-	
-const PrimaryMain	= '#0288D1';
-const PrimaryLight = '#5eb8ff';
-const PrimaryDark = '#005b9f';
-
-const BLACK = '#000';
-const WHITE = '#fff';	
-
-
-//Color Tool - https://material.io/color/#!/?view.left=0&view.right=1&primary.color=0071aa
-
-
-
 
 // common css that will be reused among components
 export const common = {
 	raisedButton: {
 		label: {
-			color: theme.buttonFont,
+			color: theme.textPrimaryColor,
 			fontWeight: 500,
 		},
 		style: {
 			marginTop: '30px',
 		},
-		backgroundColor: theme.secondary,
+		backgroundColor: theme.defaultPrimaryColor,
 	},
 	form: {
 		width: '80%',
@@ -93,17 +31,25 @@ export const css_appBar = {
 	main:{
 		zIndex: 2000,
 		position: 'fixed',
-		backgroundColor: PrimaryMain,
+		backgroundColor: theme.darkPrimaryColor,
+		borderBottom: '1px solid ' + theme.dividerColor,
 	},
 	text:{
-		color:WHITE,
-		letterSpacing:2,
-		textShadow: '-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000, 1px 1px 0 #000',
+		color: theme.textPrimaryColor,
+		letterSpacing: 2,
 	},
-	icon:{
-		color:BLACK,
+	iconStyle: {
+		color: theme.textPrimaryColor,
 	},
-
+	themeMenuItem: {
+		display: 'inline-block',
+		borderRadius: '50%',
+		width: '25px',
+		height: '25px',
+		marginRight: '5px',
+		cursor: 'pointer',
+		boxSizing: 'border-box',
+	},
 };
 
 
@@ -112,10 +58,10 @@ export const css_login = {
 	raisedButton: common.raisedButton,
 	dialog: {
 		title: {
-			backgroundColor: theme.primary,
-			borderBottom: '1px solid ' + theme.border,
+			backgroundColor: theme.defaultPrimaryColor,
+			borderBottom: '1px solid ' + theme.dividerColor,
 			textAlign: 'center',
-			color: theme.primaryFont,
+			color: theme.textPrimaryColor,
 		},
 	},
 };
@@ -143,15 +89,14 @@ export const css_content = {
 		margin:'85px auto',
 		height: 'auto',
 		textAlign: 'center',
-		background: theme.primaryBackground,
-		color: theme.primaryFont,
-		border:'1px solid ' + theme.border,
+		background: theme.textPrimaryColor,
+		color: theme.primaryTextColor,
+		border:'1px solid ' + theme.dividerColor,
 	},
 	header: {
 		width: '100%',
 		height: 'auto',
-		// paddingTop: '10px',
-		backgroundColor: theme.secondaryBackground,
+		backgroundColor: theme.lightPrimaryColor,
 	},
 	// navbar designed for use with icons
 	iconNavbar: {
@@ -160,12 +105,11 @@ export const css_content = {
 				margin: '10px',
 			},
 			iconStyle: {
-				borderBottom: '4px solid ' + theme.secondary,
-				paddingBottom: '5px',
+				borderBottom: '4px solid ' + theme.accentColor,
+				paddingBottom: '5px',			
 			},
 			hoveredStyle: {
-				color: theme.primaryFont,
-				backgroundColor: theme.secondary,
+				backgroundColor: theme.accentColor,
 				borderRadius: '25px',
 			},
 		},
@@ -173,10 +117,10 @@ export const css_content = {
 	body: {
 		width: '100%',
 		height: 'auto',
-		borderTop: '1px solid ' + theme.border,
+		borderTop: '1px solid ' + theme.dividerColor,
 		paddingTop: '40px',
 		paddingBottom: '40px',
-		backgroundColor: theme.primaryBackground,
+		backgroundColor: theme.textPrimaryColor,
 		textAlign: 'left',
 	},
 };
@@ -191,11 +135,11 @@ export const css_createLeague = {
 	card: {
 		style: {
 			boxShadow: 'none',
-			backgroundColor: theme.secondaryBackground,
+			backgroundColor: theme.lightPrimaryColor,
 		},
 		title: {
-			titleColor: theme.primaryFont,
-			subtitleColor: theme.secondaryFont,
+			titleColor: theme.primaryTextColor,
+			subtitleColor: theme.secondaryTextColor,
 		},
 	},
 	sportButton: {
@@ -207,9 +151,9 @@ export const css_createLeague = {
 			textAlign: 'center',
 			padding: '5px',
 		},
-		active: theme.buttonActive,
-		inactive: theme.secondary,
-		hover: theme.buttonHover,
+		active: theme.accentColor,
+		inactive: theme.defaultPrimaryColor,
+		hover: theme.accentColor,
 	},
 	sportIcon: {
 		height: '30px',
@@ -229,10 +173,10 @@ export const css_dashboard = {
 	// tabs are used to display sections to the user
 	tabs: {
 		tab: {
-			backgroundColor: theme.primary,
+			backgroundColor: theme.defaultPrimaryColor,
 		},
 		inkBar: {
-			backgroundColor: theme.accent,
+			backgroundColor: theme.accentColor,
 			zIndex: 999,
 		},
 	},
@@ -240,29 +184,28 @@ export const css_dashboard = {
 		textAlign: 'center',
 		margin: 0,
 		padding: 0,
-		color: theme.primaryFont,
+		color: theme.primaryTextColor,
 	},
 	toolbar: {
-		backgroundColor: PrimaryDark,
+		backgroundColor: theme.darkPrimaryColor,
 	},
 	toolbarTitle: {
-		color: WHITE,
+		color: theme.textPrimaryColor,
 		letterSpacing: 1.5,
 		fontWeight: 'bolder',
 		fontSize: '2em',
 	},
 	toolbarSubtitle: {
-		color: WHITE,
-		marginLeft:8,
+		color: theme.lightPrimaryColor,
+		marginLeft: 8,
 	},
-
 	warning: {
 		textAlign: 'center',
-		color: theme.error,
+		color: theme.warning,
 	},
 	form: common.form,
 	formRequired: {
-		color: theme.error,
+		color: theme.warning,
 	},
 	raisedButton: common.raisedButton,
 	// table contains the styling for the table template
@@ -274,15 +217,15 @@ export const css_dashboard = {
 			marginLeft: '20px',
 		},
 		searchUnderline: {
-			borderColor: theme.accent,
+			borderColor: theme.lightPrimaryColor,
 		},
 		sortIcon: {
 			display: 'inline',
 			cursor: 'pointer',
 		},
-		colHeaderHover: theme.primaryBackground,
+		colHeaderHover: theme.textPrimaryColor,
 		colHeaderButtonLabel: {
-			color: theme.primaryFont,
+			color: theme.primaryTextColor,
 			textTransform: 'none',
 			padding: '0px',
 			margin: '0px',
@@ -292,14 +235,13 @@ export const css_dashboard = {
 			margin: '0px',
 			textAlign: 'left',
 		},
-		sortArrowActiveColor: theme.primaryFont,
-		sortArrowInactiveColor: theme.secondaryFont,
+		sortArrowActiveColor: theme.primaryTextColor,
+		sortArrowInactiveColor: theme.secondaryTextColor,
 		iconHover: {		// for icons rendered inside the table
-			color: theme.primaryFont,
-			backgroundColor: theme.secondary,
+			backgroundColor: theme.accentColor,
 			borderRadius: '25px',
 		},
-		// how to render the data in the teams table
+		// how to render the columns in the teams table
 		teams: {
 			nameCol: {
 				width: '30%',
@@ -340,8 +282,9 @@ export const css_help = {
 		padding: '20px',
 		margin: '0px auto',
 		marginBottom: '40px',
-		backgroundColor: theme.secondaryBackground,
-		border: '2px dotted ' + theme.border,
+		color: theme.textPrimaryColor,
+		backgroundColor: theme.lightPrimaryColor,
+		border: '2px dotted ' + theme.dividerColor,
 	},
 	li: {
 		marginLeft: '20px',
@@ -366,8 +309,8 @@ export const css_modal = {
 	},
 	title: {
 		textAlign: 'center',
-		backgroundColor: theme.primary,
-		color: theme.primaryFont,
+		backgroundColor: theme.defaultPrimaryColor,
+		color: theme.textPrimaryColor,
 	},
 };
 
