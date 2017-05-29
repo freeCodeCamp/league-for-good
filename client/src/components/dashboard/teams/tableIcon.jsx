@@ -8,8 +8,7 @@ import { css_dashboard } from '../../style';
 import { openModal } from '../../../actions/index';
 
 
-//Returns an icon for the table 
-//In a seperate file from to keep all jsx seperate from the rest of the util functions
+//Returns an icon for the table - either for deleting or editing a team
 class Icon extends Component {
 	
 	constructor(props){
@@ -27,7 +26,7 @@ class Icon extends Component {
 	}
 	render(){
 		const { team, action } = this.props;
-
+		
 		return (
 			<IconButton 
 				onTouchTap={()=> this.onClick(team, action) }
@@ -42,7 +41,7 @@ class Icon extends Component {
 }
 
 function mapDispatchToProps(dispatch){
-	return bindActionCreators({openModal}, dispatch);
+	return bindActionCreators({ openModal }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(Icon);

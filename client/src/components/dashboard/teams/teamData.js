@@ -29,13 +29,21 @@ export const colData = [
 	{ 
 		label: 'Status', 
 		style: css_dashboard.table.teams.defaultCol,
-		cellProp: 'currently_active', 
+		cellProp: 'currently_active',
+		sortable: true, 
 	},
 	{ 
-		label: '', 
-		style: css_dashboard.table.teams.iconCol, 
+		label: 'Edit', 
+		style: css_dashboard.table.teams.iconCol,
+		action: 'edit', 
 		cellProp: 'icon', 
 	},
+	{ 
+		label: 'Delete', 
+		style: css_dashboard.table.teams.iconCol,
+		action: 'delete', 
+		cellProp: 'icon', 
+	},	
 ];
 
 // Get the value for the cell
@@ -57,13 +65,13 @@ function getCellValue(team, prop, action) {
 	
 
 // Massage the data for the table body
-const getTeamTableData = ({teams, action}) => {
+const getTeamTableData = ({ teams }) => {
 	//map each row
 	return teams.map( team => {
 		//map each cell
 		return colData.map( col => (
 			{
-				value: getCellValue(team, col.cellProp, action),
+				value: getCellValue(team, col.cellProp, col.action),
 				style: col.style,
 			}
 		));

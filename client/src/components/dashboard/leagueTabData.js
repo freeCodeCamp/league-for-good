@@ -13,24 +13,14 @@ import ListIcon from 'material-ui/svg-icons/action/view-list';
 // Links that the user can access to modify teams
 const teamLinks = [
 	{
+		description: 'Your current teams',
+		label: 'ViewTeamsList',
+		icon: <ListIcon />,
+	},
+	{
 		description: 'Add new teams to your league.',
 		label: 'AddTeam',
 		icon: <AddIcon />,
-	},
-	{
-		description: 'Manage active teams in your league.',
-		label: 'EditActiveTeam',
-		icon: <EditIcon />,
-	},
-	{
-		description: 'Manage archived teams in your league.',
-		label: 'EditArchivedTeam',
-		icon: <ArchiveIcon />,
-	},
-	{
-		description: 'Delete teams from your league.',
-		label: 'DeleteTeam',
-		icon: <DeleteIcon />,
 	},
 ];
 
@@ -42,7 +32,7 @@ const playerLinks = [
 		icon: <ListIcon />,
 	},
 	{
-		description: 'Add a new player to your league.',
+		description: 'Manually add a new player to your league.',
 		label: 'AddPlayer',
 		icon: <AddPersonIcon />,
 	},

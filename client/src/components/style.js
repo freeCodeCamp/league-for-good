@@ -6,6 +6,7 @@ export function changeTheme() {
 	theme = themes.getCurrentThemeProps();
 };
 
+
 // common css that will be reused among components
 export const common = {
 	raisedButton: {
@@ -313,4 +314,3 @@ export const css_modal = {
 		color: theme.textPrimaryColor,
 	},
 };
-

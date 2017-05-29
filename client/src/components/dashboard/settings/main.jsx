@@ -10,12 +10,12 @@ import { css_content, css_dashboard } from '../../style';
 const AddStaffForm = props => {	
 		const {handleSubmit} = props;
 		return (
-			<div style={containerCSS}>
-				<h1 style={titleCSS}>Grant login access to a staff member</h1>
-				<h6 style={formRequiredCSS}>Requires a Gmail Account</h6>
+			<div >
+				<h1 >Grant login access to a staff member</h1>
+				<h6 >Requires a Gmail Account</h6>
 				<form 
 					onSubmit={ handleSubmit }
-					style={formCSS}
+					
 				>
 					<Field
 						name="email" 

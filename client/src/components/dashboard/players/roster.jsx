@@ -7,6 +7,7 @@ import parseRowData, { colData } from './playerData';
 const Roster = props => {
 	const { teams, roster } = props;
 	const title = roster? roster.name : 'Search';
+
 	return(
 		<div>
 			<Search 

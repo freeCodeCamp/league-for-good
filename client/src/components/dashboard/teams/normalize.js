@@ -19,7 +19,7 @@ export default function(value, prevVal){
 	}
 	//Capitalize first character after a space or hyphen (as long as the user isnt hitting backspace)
 	else if( /\W\w$/.test(value) && length > prevVal.length){
-		return prevVal + value.charAt(length).toUpperCase(); 
+		return prevVal + value.charAt(length-1).toUpperCase(); 
 	}
 	return value;
 }

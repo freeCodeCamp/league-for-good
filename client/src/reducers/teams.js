@@ -18,7 +18,8 @@ function replaceTeam(currTeams, updatedTeam){
 
 
 	//Team State - returns an Array of Objects 
-		
+	
+
 export default function(state = [], action) {
 	const { payload, list, type } = action;
 

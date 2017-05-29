@@ -10,9 +10,18 @@ import { tabs } from './leagueTabData';
 import PanelViewWrapper from './PanelViewWrapper.jsx';
 import { css_content, css_dashboard } from '../style';
 
+import { findIndex } from 'lodash';
 
 // Tabs for each section the user can manage
 const LeagueTabs = props => {
+
+	const { view } = props;
+	
+	//Index of tab that should render inner content
+	const selectedTabIndex = findIndex(tabs, tab => {
+		return tab.links.some(link => link.label === view);
+	}) 
+
 	return (
 		<Tabs inkBarStyle={css_dashboard.tabs.inkBar}>
 			{
@@ -25,7 +34,9 @@ const LeagueTabs = props => {
 					>
 						<div>
 							{generateLinks(tab.links)}
-							<PanelViewWrapper {...props} tab={tab} />
+							{
+								selectedTabIndex === i && <PanelViewWrapper {...props} />
+							}
 						</div>
 					</Tab>
 					)
