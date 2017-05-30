@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { toggleMenu, resetDashboard, selectLeague, openModal, selectTeams } from '../../actions/index';
+import { toggleMenu, resetDashboard, selectLeague, openModal, selectTeams, changeTheme } from '../../actions/index';
 import AppBar from 'material-ui/AppBar';
 import Menu from './Menu.jsx';
 import Bar from './Bar.jsx';
@@ -63,7 +63,8 @@ function mapDispatchToProps(dispatch) {
 		selectLeague,
 		selectTeams,
 		resetDashboard, 
-		openModal
+		openModal,
+		changeTheme
 	}, dispatch);
 }
 

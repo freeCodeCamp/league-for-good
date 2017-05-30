@@ -40,7 +40,11 @@ const ThemeMenu = (props) => {
 				generateThemeIcons(
 					themes.getThemeList(), themes.getThemeNames(), props.changeTheme)
 			}
-			<IconButton iconStyle={css.iconStyle} onClick={props.themeMenuToggle}>
+			<IconButton 
+				iconStyle={css.iconStyle} 
+				onClick={props.themeMenuToggle}
+				disableTouchRipple={true}
+			>
 				<Brush />
 			</IconButton>
 		</div>

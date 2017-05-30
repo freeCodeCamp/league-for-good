@@ -24,7 +24,7 @@ class App extends Component {
 			localStorage.setItem('userTheme', themes.getCurrentThemeName());
 		}
 		
-		currentTheme = themes.getCurrentThemeProps;
+		currentTheme = themes.getCurrentThemeProps();
 		
 		this.state = {
 			theme: currentTheme,
@@ -46,8 +46,7 @@ class App extends Component {
 		return (
 			<Router>
 				<div>
-					<Route path="/" 
-						component={requireAuth(Content, this.changeTheme.bind(this))}
+					<Route path="/" component={requireAuth(Content)}
 					/>
 					<Route path="/login" component={Login} />
 				</div>

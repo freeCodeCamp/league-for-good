@@ -1,7 +1,17 @@
 // Contains all the css for the components
 import themes from './themes';
 
-let theme = themes.getCurrentThemeProps();
+//let theme = themes.getCurrentThemeProps();
+let theme = {
+		darkPrimaryColor: '#00796B',
+		defaultPrimaryColor: '#009688',
+		lightPrimaryColor: '#B2DFDB',
+		textPrimaryColor: '#FFFFFF',
+		accentColor: '#FF4081',
+		primaryTextColor: '#212121',
+		secondaryTextColor: '#757575',
+		dividerColor: '#BDBDBD',
+	};
 export function changeTheme() {
 	theme = themes.getCurrentThemeProps();
 };
@@ -312,7 +322,6 @@ export const css_modal = {
 		textAlign: 'left',
 		backgroundColor: theme.defaultPrimaryColor,
 		color: theme.textPrimaryColor,
-		letterSpacing: '2px',
 		fontWeight: 400,
 	},
 	raisedButton: common.raisedButton,

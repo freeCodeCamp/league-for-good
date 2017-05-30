@@ -7,3 +7,4 @@ export * from './teams';
 export * from './form';
 export * from './player';
 export * from './manage.js';
+export * from './theme.js';

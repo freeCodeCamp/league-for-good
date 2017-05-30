@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { getState, subscribe } from 'redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { Provider } from 'react-redux';
@@ -13,14 +14,33 @@ import App from './src/app.jsx';
 // This must be invoked in order for the Material-UI theme provider to work
 injectTapEventPlugin();
 
+const store = createStore(reducers, applyMiddleware(thunk));
+
+function select(state) {
+	return state.theme.theme;
+}
+
+let currentTheme;
+function handleThemeChange() {
+	console.log(store.getState());
+	let previousTheme = currentTheme;
+	currentTheme = select(store.getState());
+
+	if (previousTheme !== currentTheme) {
+		console.log('Some deep nested property changed from', previousTheme, 'to', currentTheme);
+	}
+}
+
+store.subscribe(handleThemeChange);
+
 
 const Root = () => {
 	return(
-		<MuiThemeProvider>
-			<Provider store={createStore(reducers, applyMiddleware(thunk))}>
+		<Provider store={store}>
+			<MuiThemeProvider>
 				<App />
-			</Provider>
-		</MuiThemeProvider>
+			</MuiThemeProvider>
+		</Provider>
 	);
 };
 

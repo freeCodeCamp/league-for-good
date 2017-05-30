@@ -27,6 +27,11 @@ import { reduxForm } from 'redux-form';
 		
 		The modal component will update itself by calling: mappings[this.props.modal.view]
 		 (see the main.jsx file)
+		 
+*************
+	Note: The Children key in the object must be capitalized for the modal to render
+		  correctly with Material UI
+*************
 */
 
 

@@ -32,7 +32,7 @@ const style = {
   @userProps([Functions]) - extra user defined props to pass to composed component
 */
 
-export default function(ComposedComponent, changeTheme){
+export default function(ComposedComponent){
 
   class loadState extends Component{
     
@@ -67,7 +67,7 @@ export default function(ComposedComponent, changeTheme){
       }
       //Render the desired content
       else{
-        return <ComposedComponent {...props} changeTheme={changeTheme} />;
+        return <ComposedComponent {...props} />;
       }
     }
   };
