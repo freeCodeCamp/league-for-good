@@ -1,13 +1,14 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { css_content, css_dashboard } from '../../style';
 import TableTemplate from '../helper/tableTemplate.jsx';
+
 import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar';
 import MenuItem from 'material-ui/MenuItem';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import TextField from 'material-ui/TextField';
 import SearchIcon from 'material-ui/svg-icons/action/search';
 
-import getRowData,{colData} from './teamData';
+import getRowData,{ colData } from './teamData';
 
 // Table that lists all the teams and the ability to edit or delete each team
   export default class TeamTable extends Component{
