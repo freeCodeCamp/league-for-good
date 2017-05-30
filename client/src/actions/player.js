@@ -4,40 +4,39 @@ import { rootURL } from '../../globals';
 import { random } from 'lodash';
 
 //Add player to DB, 
-export function createPlayer(formbody, dispatch, props){
+export function createPlayer( form, dispatch, props ){
 	
-	const body  = { player: formbody, league: props.league._id };
+	const { team, leagueId, ...player} = form;
+	console.log(form);
+	// format the request body to match the format of player model
+	const reqBody = { ...player, leagues: [leagueId], teams: [team] };
+
 	const roster = props.roster;
-	const team = formbody.team;
-   
-	body.player.teams = [{teamId: team}];
+	
+	
+	//Flag for updating the currently loaded roster to show the added player
+	const rosterShouldUpdate = roster && team && roster._id === team.teamId;
 
-	const rosterShouldUpdate = roster && team && roster._id === team._id;
-
-	axios.post(`${rootURL}/player/add`, body)
+	axios.post(`${rootURL}/player/add`, reqBody)
 		.then(({data}) => {
 			
 			//TO-DO build reducer to update player state
 			// dispatch({ type: ADD_PLAYER });
-			
-			
+					
 			//send newly created player to team if team was selected
-			if( team ){
-				team.players.push(data);
-				dispatch({ type: UPDATE_TEAM, payload: team}); 	
+			if ( team && team.teamId ) {
+				dispatch({ type: 'ADD_PLAYER_TO_TEAM', 
+					payload: { teamId: team.teamId, player: data }, 
+				}); 	
 			}
+			//Update the roster being displayed if the new player was added to that team
 			if(rosterShouldUpdate){
-				const { _id, first_name, last_name, teams, email, phone_num } = data;
-				const { position = 'N/A', jersey_num = random(1,99) } = teams;
+				
 				const newPlayer = {
-					_id,
-					full_name:`${last_name}, ${first_name}`,
-					first_name,
-					last_name,
-					email,
-					phone_num,
-					position,
-					jersey_num,
+					...data,
+					full_name:`${data.last_name}, ${data.first_name}`,
+					position: team.position,
+					jersey_num: team.jersey_num,
 				}; 
 				dispatch({ type: ADD_PLAYER_TO_ROSTER, payload: newPlayer });
 			}	

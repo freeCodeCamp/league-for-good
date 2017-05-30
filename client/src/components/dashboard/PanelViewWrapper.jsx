@@ -28,8 +28,13 @@ const PanelViewWrapper = props => {
 			return <AddStaffForm league={league}/>;	
 		
 		case 'AddPlayer':
-			return <AddPlayerForm league={league} roster={roster} />;
-			
+			return ( 
+				<AddPlayerForm 
+					teams={teams} 
+					roster={roster}
+					initialValues={{ leagueId: league._id }} 
+				/>
+			);
 		case 'ViewPlayers':
 			return <TeamRoster teams={teams} roster={roster} />		
 		

@@ -16,10 +16,21 @@ function replaceTeam(currTeams, updatedTeam){
 	return [...head, updatedTeam, ...tail];
 }
 
+//Replace the team from state whose index matches payload._id; used for updating team list
+function addPlayerToTeam(teams, {player, teamId}){
+	const index = findIndex(teams, v => v._id === teamId);
+	const head = teams.slice(0, index);
+	const tail = teams.slice( index + 1);
 
-	//Team State - returns an Array of Objects 
+	let updatedTeam = teams[index];
+	updatedTeam.players.push(player); 
 	
+	return [...head, updatedTeam, ...tail];
+}
 
+
+//Team State - returns an Array of Objects 
+	
 export default function(state = [], action) {
 	const { payload, list, type } = action;
 
@@ -33,6 +44,9 @@ export default function(state = [], action) {
 	
 	case UPDATE_TEAM:
 		return replaceTeam(state, payload);
+
+	case 'ADD_PLAYER_TO_TEAM':
+		return addPlayerToTeam( state, payload );	
 	
 	case REMOVE_TEAM:
 		return state.filter( removeId(payload));
