@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { getState, subscribe } from 'redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -25,34 +25,52 @@ function select(state) {
 	return state.theme;
 }
 
-let currentTheme = themes.getCurrentThemeName();
-let muiTheme = getMuiTheme({
-	palette: themes.getThemeList()[themes.getCurrentThemeName()],
-});
 
-function handleThemeChange() {
-	let previousTheme = currentTheme;
-	currentTheme = select(store.getState());
+class Root extends Component {
+	constructor(props) {
+		super(props);
+		
+		this.state = {
+			currentTheme: themes.getCurrentThemeName(),
+			muiTheme: getMuiTheme({
+						palette: themes.getThemeList()[themes.getCurrentThemeName()],
+					  }),
+		};
+	}
+	
+	componentDidMount() {
+		const select = state => {
+			return state.theme;
+		}
+	
+		const handleThemeChange = () => {
+			let previousTheme = this.state.currentTheme;
+			this.setState({
+				currentTheme: select(store.getState())
+			});
 
-	if (previousTheme !== currentTheme) {
-		muiTheme = getMuiTheme({
-			palette: themes.getThemeList()[currentTheme],
-		});
+			if (previousTheme !== this.state.currentTheme) {
+				this.setState({
+					muiTheme: getMuiTheme({
+								palette: themes.getThemeList()[currentTheme],
+							  })
+				});
+			}
+		}
+
+		store.subscribe(handleThemeChange);
+	}
+	
+
+	render() {
+		return (
+			<Provider store={store}>
+				<MuiThemeProvider muiTheme={this.state.muiTheme}>
+					<App />
+				</MuiThemeProvider>
+			</Provider>
+		);
 	}
 }
-console.log('muitheme', muiTheme);
 
-store.subscribe(handleThemeChange);
-
-
-const Root = () => {
-	return(
-		<Provider store={store}>
-			<MuiThemeProvider muiTheme={muiTheme}>
-				<App />
-			</MuiThemeProvider>
-		</Provider>
-	);
-};
-
-ReactDOM.render(<Root/>, document.getElementById('root'));
+ReactDOM.render(<Root />, document.getElementById('root'));
