@@ -1,10 +1,9 @@
-import { changeTheme } from './style';
 //*************************************************************************************
 //****************************** Theme Colors *****************************************
 //*************************************************************************************
 
 const themeValues = {
-	tealPink: {
+	/*tealPink: {
 		darkPrimaryColor: '#00796B',
 		defaultPrimaryColor: '#009688',
 		lightPrimaryColor: '#B2DFDB',
@@ -13,6 +12,24 @@ const themeValues = {
 		primaryTextColor: '#212121',
 		secondaryTextColor: '#757575',
 		dividerColor: '#BDBDBD',
+	},*/
+	tealPink: {
+		palette: {
+			primary1Color: '#009688',	// default
+			primary2Color: '#00675b',	// dark
+			primary3Color: '#52c7b8',	// light
+			accent1Color: '#ff4081',
+			accent2Color: '#c60055',
+			accent3Color: '#ff79b0',
+			textColor: '#000000',
+			alternateTextColor: '#ffffff',
+			canvasColor: white,
+			borderColor: '#bdbdbd',
+			disabledColor: fade(darkBlack, 0.3),
+			pickerHeaderColor: '#009688',	// should be same as primary1Color
+			clockCircleColor: fade(darkBlack, 0.07),
+			shadowColor: fullBlack,
+		},
 	},
 
 	purpleAmber: {
@@ -60,7 +77,6 @@ const themes = (function(themeValues, defaultTheme, ...mixins) {
 		setCurrentTheme: function(newTheme) {
 			currentThemeName = newTheme;
 			currentTheme = themeValues[newTheme];
-			changeTheme();
 		},
 		// Retrieves the name of the currently active theme
 		getCurrentThemeName: function() {

@@ -22,7 +22,6 @@ function select(state) {
 
 let currentTheme;
 function handleThemeChange() {
-	console.log(store.getState());
 	let previousTheme = currentTheme;
 	currentTheme = select(store.getState());
 

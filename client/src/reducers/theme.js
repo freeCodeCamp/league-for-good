@@ -8,7 +8,6 @@ export default function(state = defaultState, action) {
 	switch(action.type) {
 	
 	case CHANGE_THEME:
-		console.log(action.payload);
 		return { theme: action.payload };
 	}
 	
