@@ -19,7 +19,6 @@ passport.use(new GoogleStrategy({
 	callbackURL: process.env.GOOGLE_CALLBACK_URL,
 },
 	(token, refreshToken, profile, cb) => {
-    console.log(token, refreshToken, profile);
 		if (!profile) return cb('Invalid credentials');
     
 		User.findOne({ googleId: profile.id })

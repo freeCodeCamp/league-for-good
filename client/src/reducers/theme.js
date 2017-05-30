@@ -3,15 +3,17 @@ import themes from '../components/themes';
 
 const storedTheme = localStorage.getItem("theme");
 
-const defaultState = storedTheme ? storedTheme : themes.getCurrentThemeName();
+const defaultState = storedTheme? storedTheme : themes.getCurrentThemeName();
 
 export default function(state = defaultState, action) {
 
 	switch(action.type) {
 	
-	case CHANGE_THEME:
+	case CHANGE_THEME:		
+		localStorage.setItem("theme", action.payload);
 		return action.payload;
 	}
+
 	return state;
 }
 
