@@ -1,17 +1,17 @@
 import { CHANGE_THEME } from '../actions/types';
-import themes from '../components/themes';
+import { defaultTheme } from '../components/themes';
 
-const defaultState = { theme: themes.getCurrentThemeName() };
+const storedTheme = localStorage.getItem("theme");
+
+const defaultState = storedTheme? storedTheme : defaultTheme;
 
 export default function(state = defaultState, action) {
 
 	switch(action.type) {
 	
 	case CHANGE_THEME:
-		console.log(action.payload);
-		return { theme: action.payload };
+		return action.payload;
 	}
-	
 	return state;
 }
 

@@ -38,6 +38,8 @@ const themeValues = {
 	},
 };
 
+export const defaultTheme = "bluegreyIndigo";
+
 // mixin for warning color to the user
 const warningMixin = {
 	warning: 'red',
@@ -57,21 +59,21 @@ const themes = (function(themeValues, defaultTheme, ...mixins) {
 	return {
 		// set theme properties to a different theme
 		// @newTheme(String) - new theme to set to
-		setCurrentTheme: function(newTheme) {
+		setCurrentTheme(newTheme) {
 			currentThemeName = newTheme;
 			currentTheme = themeValues[newTheme];
 			changeTheme();
 		},
 		// Retrieves the name of the currently active theme
-		getCurrentThemeName: function() {
+		getCurrentThemeName() {
 			return currentThemeName;
 		},
 		// Retrieves the property of the currently active theme
-		getCurrentThemeProps: function() {
+		getCurrentThemeProps() {
 			return currentTheme;
 		},
 		// Retrieves a list of all theme names
-		getThemeNames: function() {
+		getThemeNames() {
 			return Object.keys(themeValues);
 		},
 		// Retrieves a list of all theme properties
