@@ -42,7 +42,7 @@ export const css_appBar = {
 	main:{
 		zIndex: 2000,
 		position: 'fixed',
-		backgroundColor: theme.darkPrimaryColor,
+		//backgroundColor: theme.darkPrimaryColor,
 		borderBottom: '1px solid ' + theme.dividerColor,
 	},
 	text:{

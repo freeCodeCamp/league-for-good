@@ -14,6 +14,7 @@ import App from './src/app.jsx';
 
 import themes from './src/components/themes';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 
 // This must be invoked in order for the Material-UI theme provider to work
 injectTapEventPlugin();
@@ -24,18 +25,22 @@ function select(state) {
 	return state.theme;
 }
 
-let muiTheme;
-let currentTheme;
+let currentTheme = themes.getCurrentThemeName();
+let muiTheme = getMuiTheme({
+	palette: themes.getThemeList()[themes.getCurrentThemeName()],
+});
+
 function handleThemeChange() {
 	let previousTheme = currentTheme;
 	currentTheme = select(store.getState());
 
 	if (previousTheme !== currentTheme) {
 		muiTheme = getMuiTheme({
-			palette: themes[currentTheme],
-		})
+			palette: themes.getThemeList()[currentTheme],
+		});
 	}
 }
+console.log('muitheme', muiTheme);
 
 store.subscribe(handleThemeChange);
 

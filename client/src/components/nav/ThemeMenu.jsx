@@ -18,8 +18,8 @@ function generateThemeIcons(themeList, themeNames, changeTheme) {
 					{},
 					css.themeMenuItem,
 					{
-						backgroundColor: themeList[themeName].defaultPrimaryColor,
-						border: '2px solid ' + themeList[themeName].accentColor
+						backgroundColor: themeList[themeName].primary1Color,
+						border: '2px solid ' + themeList[themeName].accent1Color
 					})
 				}
 				key={i}

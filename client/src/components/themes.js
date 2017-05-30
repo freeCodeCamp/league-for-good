@@ -1,3 +1,7 @@
+import { white, darkBlack, fullBlack } from 'material-ui/styles/colors';
+import {fade} from 'material-ui/utils/colorManipulator';
+import spacing from 'material-ui/styles/spacing';
+
 //*************************************************************************************
 //****************************** Theme Colors *****************************************
 //*************************************************************************************
@@ -14,25 +18,23 @@ const themeValues = {
 		dividerColor: '#BDBDBD',
 	},*/
 	tealPink: {
-		palette: {
-			primary1Color: '#009688',	// default
-			primary2Color: '#00675b',	// dark
-			primary3Color: '#52c7b8',	// light
-			accent1Color: '#ff4081',
-			accent2Color: '#c60055',
-			accent3Color: '#ff79b0',
-			textColor: '#000000',
-			alternateTextColor: '#ffffff',
-			canvasColor: white,
-			borderColor: '#bdbdbd',
-			disabledColor: fade(darkBlack, 0.3),
-			pickerHeaderColor: '#009688',	// should be same as primary1Color
-			clockCircleColor: fade(darkBlack, 0.07),
-			shadowColor: fullBlack,
-		},
+		primary1Color: '#009688',	// default
+		primary2Color: '#00675b',	// dark
+		primary3Color: '#52c7b8',	// light
+		accent1Color: '#ff4081',
+		accent2Color: '#c60055',
+		accent3Color: '#ff79b0',
+		textColor: '#000000',
+		alternateTextColor: '#ffffff',
+		canvasColor: white,
+		borderColor: '#bdbdbd',
+		disabledColor: fade(darkBlack, 0.3),
+		pickerHeaderColor: '#009688',	// should be same as primary1Color
+		clockCircleColor: fade(darkBlack, 0.07),
+		shadowColor: fullBlack,
 	},
 
-	purpleAmber: {
+	/*purpleAmber: {
 		darkPrimaryColor: '#512DA8',
 		defaultPrimaryColor: '#673AB7',
 		lightPrimaryColor: '#D1C4E9',
@@ -41,6 +43,22 @@ const themeValues = {
 		primaryTextColor: '#212121',
 		secondaryTextColor: '#757575',
 		dividerColor: '#BDBDBD',
+	},*/
+	purpleAmber: {
+		primary1Color: '#673AB7',	// default
+		primary2Color: '#512DA8',	// dark
+		primary3Color: '#D1C4E9',	// light
+		accent1Color: '#FFC107',
+		accent2Color: '#c79100',
+		accent3Color: '#fff350',
+		textColor: '#000000',
+		alternateTextColor: '#ffffff',
+		canvasColor: white,
+		borderColor: '#bdbdbd',
+		disabledColor: fade(darkBlack, 0.3),
+		pickerHeaderColor: '#673AB7',	// should be same as primary1Color
+		clockCircleColor: fade(darkBlack, 0.07),
+		shadowColor: fullBlack,
 	},
 
 	bluegreyIndigo: {
@@ -55,7 +73,7 @@ const themeValues = {
 	},
 };
 
-export const defaultTheme = "bluegreyIndigo";
+const defaultTheme = 'tealPink';
 
 // mixin for warning color to the user
 const warningMixin = {
@@ -97,6 +115,6 @@ const themes = (function(themeValues, defaultTheme, ...mixins) {
 			return themeValues;
 		}
 	};
-})(themeValues, 'bluegreyIndigo', warningMixin);
+})(themeValues, defaultTheme, warningMixin);
 
 export default themes;
