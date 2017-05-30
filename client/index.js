@@ -32,7 +32,9 @@ function handleThemeChange() {
 	currentTheme = select(store.getState());
 
 	if (previousTheme !== currentTheme) {
-		muiTheme = { palette: themes[currentTheme]}
+		muiTheme = getMuiTheme({
+			palette: themes[currentTheme],
+		})
 	}
 }
 
