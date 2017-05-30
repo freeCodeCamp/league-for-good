@@ -122,7 +122,6 @@ const AddPlayerForm = props => {
 						name="team.jersey_num"
 						floatingLabelText="Jersey Number"
 						type="number"
-						style={{width:150}}
 						component={TextField}
 					/>
 					<Field 
