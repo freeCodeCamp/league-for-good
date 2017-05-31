@@ -6,12 +6,6 @@ import spacing from 'material-ui/styles/spacing';
 //****************************** Theme Colors *****************************************
 //*************************************************************************************
 
-const themePrototype = {
-	warning: 'red',
-};
-
-const themeList = Object.create(themePrototype);
-
 const themeValues = {
 	/*tealPink: {
 		darkPrimaryColor: '#00796B',

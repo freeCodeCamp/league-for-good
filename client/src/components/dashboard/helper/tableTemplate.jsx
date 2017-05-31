@@ -8,9 +8,7 @@ import {
 	TableRowColumn
 } from 'material-ui/Table';
 
-
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
-
+import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 import SearchIcon from 'material-ui/svg-icons/action/search';
 import ArrowUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
@@ -171,20 +169,20 @@ const ColumnHeaderChild = (props) => {
 class TableTemplate extends Component {
 	constructor(props) {
 		super(props);
-		let searchableIndex = 0;
+		let searchableColumnIndex = -1;
 		// set width of default columns in table
 		css_dashboard.table.defaultCol.width = 90;
 		
 		this.props.headers.forEach((header, i) => {
 			if (!!header.searchable) {
-				searchableIndex = i;
+				searchableColumnIndex = i;
 			}
 		});
 		
 		this.state = {
 			rows: Array.from(this.props.rows),
 			sortDirection: 'none',
-			searchableColumnIndex: searchableIndex,
+			searchableColumnIndex: searchableColumnIndex,
 			sortColumnIndex: null,
 			searchTerm: '',
 			searchRows: [],
@@ -194,18 +192,18 @@ class TableTemplate extends Component {
 	// Change state of teams based on panel rendered
 	componentWillReceiveProps(nextProps) {
 		if (this.props.rows !== nextProps.rows) {
-			let searchableIndex = 0;
+			let searchableColumnIndex = 0;
 			
 			this.props.headers.forEach((header, i) => {
 				if (!!header.searchable) {
-					searchableIndex = i;
+					searchableColumnIndex = i;
 				}
 			});
 			
 			this.setState({
 				rows: Array.from(nextProps.rows),
 				sortDirection: 'none',
-				searchableColumnIndex: searchableIndex,
+				searchableColumnIndex: searchableColumnIndex,
 				sortColumnIndex: null,
 			});
 		}
@@ -324,7 +322,17 @@ class TableTemplate extends Component {
 
 	render() {
 		return (
-			
+			<div>
+				{
+					!!this.props.title ? 
+					<TableTitle title={props.title} /> :
+					""
+				}
+				{
+					this.state.searchableColumnIndex !== -1 ?				
+					<SearchTable onSearch={this.onSearch.bind(this)} /> :
+					""
+				}
 				<Table>
 					<TableHeader 
 						adjustForCheckbox={false}
@@ -341,18 +349,13 @@ class TableTemplate extends Component {
 					<TableBody
 						preScanRows={false}
 						displayRowCheckbox={false}
-						showRowHover={true}
 					>
 						{renderBody(this.state.rows)}
 					</TableBody>
 				</Table>
+			</div>
 		);
 	}
 }
 
 export default TableTemplate;
-
-				// { 
-				// 	!this.props.hideSearchInput && 
-				// 		<SearchTable onSearch={this.onSearch} />	
-				// }

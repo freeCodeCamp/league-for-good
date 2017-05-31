@@ -240,7 +240,7 @@ export const css_dashboard = {
 			display: 'inline',
 			cursor: 'pointer',
 		},
-		// colHeaderHover: theme.textPrimaryColor,
+		colHeaderHover: theme.textPrimaryColor,
 		colHeaderButtonLabel: {
 			color: theme.primaryTextColor,
 			textTransform: 'none',
@@ -258,8 +258,14 @@ export const css_dashboard = {
 			backgroundColor: theme.accentColor,
 			borderRadius: '25px',
 		},
-		// how to render the columns in the teams table
 		teams: {
+			// toolbar used on top of table
+			toolbar: {
+				float: 'right',
+				padding: '0px',
+				margin: '0px',
+			},
+			// how to render the columns in the teams table
 			nameCol: {
 				width: '30%',
 				textAlign: 'left',
@@ -272,7 +278,18 @@ export const css_dashboard = {
 				width: '10%',
 				textAlign: 'right',
 			},
-		},	
+		},
+		// render columns in the team roster table
+		roster: {
+			nameCol: {
+				width: '30%',
+				textAlign: 'left',
+			},
+			defaultCol: {
+				width: (70 / 3) + '%',
+				textAlign: 'left',
+			},
+		},
 	},
 };
 

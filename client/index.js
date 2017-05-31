@@ -48,6 +48,5 @@ const Root = () => {
 		</Provider>
 	);
 };
->>>>>>> ec16c3dd851c9911dde7639ba7ebdf0eea7282b0
 
 ReactDOM.render(<Root />, document.getElementById('root'));

@@ -1,29 +1,22 @@
 import React from 'react';
-import Table from '../helper/tableTemplate.jsx';
+import TableTemplate from '../helper/tableTemplate.jsx';
 import Search from './rosterSearch.jsx';
 
-import parseRowData, { colData } from './playerData';
+import getRowData, { colData } from './playerData';
 
 const Roster = props => {
 	const { teams, roster } = props;
 	const title = roster? roster.name : 'Search';
+				console.log('teams', teams, 'roster', roster);
 
-	return(
+	return (
 		<div>
-			<Search 
-				title={title}
-				teams={teams}
+			<TableTemplate 
+				headers={colData}
+				rows={getRowData({teams})}
 			/>
-			{
-				roster && 
-					<Table 
-						hideSearchInput={true}
-						headers={colData}
-						rows={parseRowData(roster.players)}
-					/>
-			}
 		</div>
-	)
+	);
 }
 
 export default Roster;
