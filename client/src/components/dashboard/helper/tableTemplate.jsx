@@ -30,7 +30,7 @@ import { css_dashboard } from '../../style';
 //			sortable(Boolean) - true if column is sortable; false otherwise
 //			searchable(Boolean) - true if column is searchable
 //								  currently only allowed on one column
-//			hideSearchInput(Boolean) - whether or not to render the search input, defaults to false	
+//								  if no searchable column is found, search will not render
 //
 // @rows - [[Object]]: An array of an array of objects
 //		The rows array is an array containing each row in the table
@@ -41,12 +41,12 @@ import { css_dashboard } from '../../style';
 //			style(Object) - a css object to style the cell(optional)
 
 
-// Title for the table
+// Optional title for the table
 const TableTitle = (props) => {
 	return <h1 style={css_dashboard.title}>{props.title}</h1>;
 };
 
-// Search the table
+// Optional search for the table
 const SearchTable = (props) => {
 	return (
 		<TextField 
@@ -285,38 +285,15 @@ class TableTemplate extends Component {
 	// @direction: direction in which to sort the column
 	// @colIndex: column index of the table
 	sortColumn(colIndex) {
-		// check if the sorting is using strings
-		// and if true, we can normalize the string
-		const comparingStrings = (a, b, colIndex) => {
-			if (typeof a[colIndex].value === 'string' ||
-				typeof b[colIndex].value === 'string') {
-				return true;
-			}
-			return false;
-		};
-
 		return function(a, b) {
-			if (comparingStrings(a, b, colIndex)) {
-				if (String(a[colIndex].value).toLowerCase() <
-					String(b[colIndex].value).toLowerCase()) {
-					return -1;
-				}
-				if (String(a[colIndex].value).toLowerCase() > 
-					String(b[colIndex].value).toLowerCase()) {
-					return 1;
-				}
-				return 0;
+			if (a[colIndex].value < b[colIndex].value) {
+				return -1;
 			}
-			else {
-				if (a[colIndex].value < b[colIndex].value) {
-					return -1;
-				}
-				if (a[colIndex].value > b[colIndex].value) {
-					return 1;
-				}
-				return 0;
+			if (a[colIndex].value > b[colIndex].value) {
+				return 1;
 			}
-		};
+			return 0;
+		}
 	}
 	
 

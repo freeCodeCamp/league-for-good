@@ -234,7 +234,7 @@ export const css_dashboard = {
 			marginLeft: '20px',
 		},
 		searchUnderline: {
-			borderColor: theme.accentColor,
+			//borderColor: theme.accentColor,
 		},
 		sortIcon: {
 			display: 'inline',
