@@ -22,7 +22,7 @@ const rootReducer = combineReducers({
 	teams: teamReducer,
 	manage: manageReducer,
 	roster: rosterReducer,
-	theme: themeReducer
+	theme: themeReducer,
 });
 
 export default rootReducer;

@@ -8,20 +8,25 @@ const Player = mongoose.model('player');
 const Leagues = mongoose.model('league');
 const Teams = mongoose.model('team');
 
+
 //Add a player into the database 
 const addPlayerToLeague = (req, res) => {
-	const { league, player } = req.body;
-	const team = player.team;
-  player.teams = [{ team }];
-  player.leagues = [ league ]
+	const { teams } = req.body;
+	const teamId = teams[0] ? teams[0].teamId : null;
 
-	Player.create( player )
+	Player.create( req.body )
 		.then(newPlayer => {
-			Teams.findByIdAndUpdate(team._id, {$push: { players: newPlayer }})
-				.exec()
-				.then(() => res.send( newPlayer ))
-				.catch(e => res.send({ error: e }))
+			if (teamId){
+				Teams.findByIdAndUpdate(teamId, {$push: { players: newPlayer }})
+					.exec()
+					.then(() => res.send( newPlayer ))
+					.catch(e => res.send({ error: e }))
+			}
+			else{
+				res.send(newPlayer);
+			}
 		})
+		.catch(error => { throw error; });
 }
 
 Router.route('/add').post(addPlayerToLeague);

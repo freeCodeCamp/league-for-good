@@ -119,7 +119,7 @@ const themes = (function(themeValues, defaultTheme, ...mixins) {
 		// Retrieves a list of all theme properties
 		getThemeList: function() {
 			return themeValues;
-		}
+		},
 	};
 })(themeValues, defaultTheme, warningMixin);
 

@@ -3,18 +3,19 @@ import themes from './themes';
 
 //let theme = themes.getCurrentThemeProps();
 let theme = {
-		darkPrimaryColor: '#00796B',
-		defaultPrimaryColor: '#009688',
-		lightPrimaryColor: '#B2DFDB',
-		textPrimaryColor: '#FFFFFF',
-		accentColor: '#FF4081',
-		primaryTextColor: '#212121',
-		secondaryTextColor: '#757575',
-		dividerColor: '#BDBDBD',
-	};
+	darkPrimaryColor: '#00796B',
+	defaultPrimaryColor: '#009688',
+	lightPrimaryColor: '#B2DFDB',
+	textPrimaryColor: '#FFFFFF',
+	accentColor: '#FF4081',
+	primaryTextColor: '#212121',
+	secondaryTextColor: '#757575',
+	dividerColor: '#BDBDBD',
+};
+
 export function changeTheme() {
 	theme = themes.getCurrentThemeProps();
-};
+}
 
 
 // common css that will be reused among components
@@ -34,6 +35,10 @@ export const common = {
 		margin: '0px auto 5px',
 		textAlign: 'center',
 	},
+	formRow:{
+  	display:'flex',
+  	justifyContent:'space-around',
+  },
 };
 
 
@@ -184,10 +189,10 @@ export const css_dashboard = {
 	// tabs are used to display sections to the user
 	tabs: {
 		tab: {
-			backgroundColor: theme.defaultPrimaryColor,
+			// backgroundColor: theme.defaultPrimaryColor,
 		},
 		inkBar: {
-			backgroundColor: theme.accentColor,
+			// backgroundColor: theme.accentColor,
 			zIndex: 999,
 		},
 	},
@@ -198,16 +203,16 @@ export const css_dashboard = {
 		color: theme.primaryTextColor,
 	},
 	toolbar: {
-		backgroundColor: theme.darkPrimaryColor,
+		// backgroundColor: theme.darkPrimaryColor,
 	},
 	toolbarTitle: {
-		color: theme.textPrimaryColor,
+		// color: theme.textPrimaryColor,
 		letterSpacing: 1.5,
 		fontWeight: 'bolder',
 		fontSize: '2em',
 	},
 	toolbarSubtitle: {
-		color: theme.lightPrimaryColor,
+		// color: theme.lightPrimaryColor,
 		marginLeft: 8,
 	},
 	warning: {
@@ -215,6 +220,7 @@ export const css_dashboard = {
 		color: theme.warning,
 	},
 	form: common.form,
+	formRow: common.formRow,
 	formRequired: {
 		color: theme.warning,
 	},
@@ -234,7 +240,7 @@ export const css_dashboard = {
 			display: 'inline',
 			cursor: 'pointer',
 		},
-		colHeaderHover: theme.textPrimaryColor,
+		// colHeaderHover: theme.textPrimaryColor,
 		colHeaderButtonLabel: {
 			color: theme.primaryTextColor,
 			textTransform: 'none',
