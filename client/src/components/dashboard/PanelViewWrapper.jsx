@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 
 import AddTeamForm from './teams/addTeamForm.jsx';
 import TeamTable from './teams/teamTable.jsx';
@@ -9,12 +8,13 @@ import TeamRoster from './players/roster.jsx';
 
 import AddStaffForm from './settings/main.jsx';
 
+import { Route } from 'react-router-dom';
 
 
 // Panel view wrapper determines which view is currently active
 // and renders the appropriate panel in response
 const PanelViewWrapper = props => {
-	const { view, league, roster , teams } = props;
+	const { view, league } = props;
 
 		switch (view) {
 		
@@ -22,7 +22,12 @@ const PanelViewWrapper = props => {
 			return <AddTeamForm league={league} />;
 				
 		case 'ViewTeams':
-			return <TeamTable teams={teams}/>;
+			return (
+				<div>
+					<Route exact path="/dashboard" component={TeamTable}/>
+					<Route path="/dashboard/roster/:teamId" component={TeamRoster}/>
+				</div>
+			)
 		
 		case 'AddStaff':
 			return <AddStaffForm league={league}/>;	
@@ -35,9 +40,7 @@ const PanelViewWrapper = props => {
 					initialValues={{ leagueId: league._id }} 
 				/>
 			);
-		case 'ViewPlayers':
-			return <TeamRoster teams={teams} roster={roster} />		
-		
+			
 		default:
 			return <noScript />;
 		}

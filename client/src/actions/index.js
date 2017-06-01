@@ -5,6 +5,7 @@ export * from './league';
 export * from './modal';
 export * from './teams';
 export * from './form';
-export * from './player';
+export * from './players/index';
 export * from './manage.js';
 export * from './theme.js';
+

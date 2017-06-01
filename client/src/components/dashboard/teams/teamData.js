@@ -1,6 +1,7 @@
 import React from 'react';
 import { css_dashboard } from '../../style';
 import Icon from './tableIcon.jsx';
+import Link from './tableLink.jsx';
 
 //All team data passed from the reducers is reformatted here so it contains the correct
 //values for the TableTemplate component
@@ -32,6 +33,11 @@ export const colData = [
 		cellProp: 'currently_active',
 		sortable: true, 
 	},
+	{
+		label: 'Roster',
+		style: css_dashboard.table.teams.iconCol,
+		cellProp: 'link'
+	},	
 	{ 
 		label: 'Edit', 
 		style: css_dashboard.table.teams.iconCol,
@@ -55,6 +61,9 @@ function getCellValue(team, prop, action) {
 	if (prop === 'icon') {
 		const iconProps = { action, team };
 		return <Icon {...iconProps}/>;
+	}
+	if (prop === 'link'){
+		return <Link {...team}/>
 	}
 	// Split properties if cell property is nested
 	if (prop.split('.').length > 1) {

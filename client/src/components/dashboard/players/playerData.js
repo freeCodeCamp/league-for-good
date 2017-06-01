@@ -1,63 +1,49 @@
 import React from 'react';
 import { css_dashboard } from '../../style';
 
-//All team data passed from the reducers is reformatted here so it contains the correct
+//All player data passed from the reducers is reformatted here so it contains the correct
 //values for the TableTemplate component
 
 // Column headers and data
 export const colData = [
 	{ 
 		label: 'Name',
-		style: css_dashboard.table.roster.nameCol,
-		cellProp: 'name', 
+		cellProp: 'full_name', 
+		sortable: true,  
+	},	
+	{ 
+		label: '#', 
+		cellProp: 'jersey_num', 
 		sortable: true, 
 	},
 	{ 
-		label: 'Roster Size', 
-		style: css_dashboard.table.roster.defaultCol,
-		cellProp: 'players.length', 
-		sortable: true, 
-	},
-	{ 
-		label: 'Seasons Played', 
-		style: css_dashboard.table.roster.defaultCol,
-		cellProp: 'seasons.length', 
+		label: 'Position', 
+		cellProp: 'position', 
 		sortable: true,
 	},
 	{ 
-		label: 'Status', 
-		style: css_dashboard.table.roster.defaultCol,
-		cellProp: 'currently_active',
-		sortable: true, 
+		label: 'Email', 
+		cellProp: 'email', 
+	},
+	{ 
+		label: 'Phone', 
+		cellProp: 'phone_num', 
 	},
 ];
 
-// Get the value for the cell
-function getCellValue(team, prop, action) {
-
-	if (prop === 'currently_active') {
-		return team.currently_active ? 'Active' : 'Not Active';
-	}
-	// Split properties if cell property is nested
-	if (prop.split('.').length > 1) {
-		return prop.split('.').reduce((o, i) => o[i], team);
-	}
-	return team[prop];
-}
-	
 
 // Massage the data for the table body
-const getTeamRosterTableData = ({ teams }) => {
+const getPlayerTableData = (players) => {
 	//map each row
-	return teams.map( team => {
+	return players.map( player => {
 		//map each cell
-		return colData.map( col => (
+		return colData.map( ({cellProp, ...col}) => (
 			{
-				value: getCellValue(team, col.cellProp, col.action),
-				style: col.style,
+				value: player[cellProp],
+				
 			}
 		));
 	});
 };
 
-export default getTeamRosterTableData;
+export default getPlayerTableData;

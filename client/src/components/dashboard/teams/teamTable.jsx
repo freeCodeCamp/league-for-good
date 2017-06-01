@@ -10,8 +10,10 @@ import SearchIcon from 'material-ui/svg-icons/action/search';
 
 import getRowData,{ colData } from './teamData';
 
+import { connect } from 'react-redux';
+
 // Table that lists all the teams and the ability to edit or delete each team
-export default class TeamTable extends Component {
+class TeamTable extends Component {
 	constructor(props) {
 		super(props);
 
@@ -48,6 +50,7 @@ export default class TeamTable extends Component {
 
 	render() {
 		const teams = this.formatTeams();
+		
 		return (
 			<div style={css_content.body}>	
 				<Toolbar style={css_dashboard.table.teams.toolbar}>
@@ -71,6 +74,10 @@ export default class TeamTable extends Component {
 	}
 }
 
+function mapStateToProps(state){
+	return { teams: state.teams };
+}
 
+export default connect(mapStateToProps)(TeamTable);
 
 

@@ -14,8 +14,8 @@ import { partition } from 'lodash';
 class Dashboard extends Component {
 
 	render() {
-		const { league, view, changeManageView, teams, roster } = this.props;
-		const tabProps = { league, view, changeManageView, teams, roster };
+		const { league, view, changeManageView } = this.props;
+		const tabProps = { league, view, changeManageView };
 		
 		return (
 			
@@ -37,13 +37,11 @@ class Dashboard extends Component {
 // ----https://lodash.com/docs/4.17.4#partition
 
 
-function mapStateToProps({ league, manage, teams, roster }){
+function mapStateToProps({ league, manage }){
 
 	return { 
 		league: {...league.selected}, 
 		view: manage.view, 
-		teams, 
-		roster, 
 	};
 }
 
