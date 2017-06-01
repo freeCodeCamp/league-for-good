@@ -38,7 +38,7 @@ export function createPlayer( form, dispatch, props ){
 					position: team.position,
 					jersey_num: team.jersey_num,
 				}; 
-				dispatch({ type: ADD_PLAYER_TO_ROSTER, payload: newPlayer });
+				dispatch({ type: ADD_PLAYER_TO_ROSTER, newPlayer: newPlayer });
 			}	
 		});
 }
@@ -49,8 +49,8 @@ export function findRoster({ team }, dispatch){
 	const url = `${rootURL}/team/roster/${team._id}`;
 	axios.get(url)
 		.then(({data}) => {
-			const payload = { ...team, players: data };
+			const rosterData = { ...team, players: data };
 	
-			dispatch({type: FETCH_ROSTER, payload });
+			dispatch({type: FETCH_ROSTER, rosterData });
 		});
 }

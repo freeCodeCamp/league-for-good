@@ -1,6 +1,6 @@
 import React from 'react';
 import { css_dashboard } from '../../style';
-import Icon from './tableIcon.jsx';
+import TableIcon from '../helper/tableIcon.jsx';
 
 //All team data passed from the reducers is reformatted here so it contains the correct
 //values for the TableTemplate component
@@ -35,13 +35,13 @@ export const colData = [
 	{ 
 		label: 'Edit', 
 		style: css_dashboard.table.teams.iconCol,
-		action: 'edit', 
+		action: 'editTeam', 
 		cellProp: 'icon', 
 	},
 	{ 
 		label: 'Delete', 
 		style: css_dashboard.table.teams.iconCol,
-		action: 'delete', 
+		action: 'deleteTeam', 
 		cellProp: 'icon', 
 	},	
 ];
@@ -50,11 +50,11 @@ export const colData = [
 function getCellValue(team, prop, action) {
 
 	if (prop === 'currently_active') {
-		return team.currently_active ? 'Active' : 'Not Active';
+		return team.currently_active ? 'Active' : 'Archived';
 	}
 	if (prop === 'icon') {
 		const iconProps = { action, team };
-		return <Icon {...iconProps}/>;
+		return <TableIcon {...iconProps} />;
 	}
 	// Split properties if cell property is nested
 	if (prop.split('.').length > 1) {

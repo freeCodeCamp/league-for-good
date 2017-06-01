@@ -8,7 +8,7 @@ export default function(state = defaultState, action) {
 	switch (action.type) {
 	
 	case CHANGE_MANAGE_VIEW:
-		return { view: action.payload };
+		return { view: action.view };
 	
 	case RESET_DASHBOARD:
 		return { view: null };	

@@ -15,7 +15,7 @@ export function createTeam( formVals, dispatch, { league } ) {
 	axios.post(`${rootURL}/team/create`, body)
 		.then(({data}) => {
 			
-			return dispatch({ type: CREATE_TEAM, payload: data });
+			return dispatch({ type: CREATE_TEAM, newTeam: data });
 		})
 		.catch( err => {
 			throw new Error(err);
@@ -24,7 +24,7 @@ export function createTeam( formVals, dispatch, { league } ) {
 
 //Select teams to display from league
 export function selectTeams(teams){
-	return { type: SELECT_TEAMS, payload: teams };
+	return { type: SELECT_TEAMS, teams: teams };
 }
 
 //Edit a team's name and active status
@@ -37,7 +37,7 @@ export function updateTeam(formVals, dispatch, props){
 	axios.put(`${rootURL}/team/update/${_id}`, body)
 		.then((data) => {
 		
-			return dispatch({type: UPDATE_TEAM, payload: {...formVals, ...body }});
+			return dispatch({type: UPDATE_TEAM, updatedTeam: {...formVals, ...body }});
 
 		})
 		.catch( error => {
@@ -57,7 +57,7 @@ export function removeTeam(team){
 
 		axios.delete(`${rootURL}/team/remove/${_id}`)
 			
-			.then((data) => dispatch({ type: REMOVE_TEAM, list, payload: _id }))
+			.then((data) => dispatch({ type: REMOVE_TEAM, list, removedTeam: _id }))
 			.then(() => {
 				dispatch({ 
 					type: OPEN_SNACKBAR, 

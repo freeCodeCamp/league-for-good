@@ -10,7 +10,7 @@ export function createLeague(body, redirectCallback) {
 	return function(dispatch){
 		axios.post(`${rootURL}/league/create`, body)
 			.then(({data}) => {
-				return dispatch({type:CREATE_LEAGUE, payload: data});
+				return dispatch({type: CREATE_LEAGUE, newLeague: data});
 			})
 			.then(()=> redirectCallback());
 	};
@@ -21,5 +21,5 @@ export function addStaffMember(body){
 }
 
 export function selectLeague(league){
-	return {type:SELECT_LEAGUE, payload:league};
+	return {type: SELECT_LEAGUE, leagueData: league};
 }

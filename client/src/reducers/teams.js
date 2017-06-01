@@ -32,24 +32,24 @@ function addPlayerToTeam(teams, {player, teamId}){
 //Team State - returns an Array of Objects 
 	
 export default function(state = [], action) {
-	const { payload, list, type } = action;
+	const { list, type } = action;
 
 	switch(action.type) {
 	
 	case SELECT_TEAMS:
-		return payload;
+		return action.teams;
 	
 	case CREATE_TEAM:
-		return [payload, ...state];
+		return [action.newTeam, ...state];
 	
 	case UPDATE_TEAM:
-		return replaceTeam(state, payload);
+		return replaceTeam(state, action.updatedTeam);
 
 	case 'ADD_PLAYER_TO_TEAM':
 		return addPlayerToTeam( state, payload );	
 	
 	case REMOVE_TEAM:
-		return state.filter( removeId(payload));
+		return state.filter( removeId(action.removedTeam));
 	}
 	return state;
 }

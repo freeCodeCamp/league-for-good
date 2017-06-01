@@ -14,13 +14,13 @@ export default function(state = defaultState, action) {
 	switch(action.type) {
 	
 	case CREATE_LEAGUE:
-		return {...state, list: [...state.list, action.payload]};	
+		return {...state, list: [...state.list, action.newLeague]};	
 	
 	case FETCH_LEAGUES:
 		return {...state, list: action.payload};
 	
 	case SELECT_LEAGUE:
-		return {...state, selected: action.payload};
+		return {...state, selected: action.leagueData};
 	}
 	return state;
 }

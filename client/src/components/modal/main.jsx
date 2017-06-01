@@ -43,11 +43,11 @@ class Modal extends Component {
 
     const actions = [
       <RaisedButton
-        label={actionLabel || "Submit"}
+      	label={actionLabel || "Submit"}
         labelStyle={css_modal.raisedButton.label} 
 		backgroundColor={css_modal.raisedButton.backgroundColor}
 		style={css_modal.raisedButton.style}
-        onTouchTap={()=> handleSubmit(data)}
+        onTouchTap={() => handleSubmit(data)}
       />,
       <RaisedButton
         label="Cancel"
@@ -77,9 +77,9 @@ class Modal extends Component {
   }
 }
 
-function mapStateToProps({modal}){
-  const { open, view, data } = modal; 
-  return { open, view, data };
+function mapStateToProps({modal}) {
+	const { open, view, data } = modal; 
+	return { open, view, data };
 }
 
 

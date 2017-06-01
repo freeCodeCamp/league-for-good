@@ -11,10 +11,12 @@ let theme = {
 	primaryTextColor: '#212121',
 	secondaryTextColor: '#757575',
 	dividerColor: '#BDBDBD',
+	primary1Color: '#009688',	// default
 };
 
 export function changeTheme() {
 	theme = themes.getCurrentThemeProps();
+	console.log(theme);
 }
 
 
@@ -112,7 +114,7 @@ export const css_content = {
 	header: {
 		width: '100%',
 		height: 'auto',
-		backgroundColor: theme.lightPrimaryColor,
+		backgroundColor: theme.primary1Color,
 	},
 	// navbar designed for use with icons
 	iconNavbar: {
@@ -271,7 +273,7 @@ export const css_dashboard = {
 				textAlign: 'left',
 			},
 			defaultCol: {
-				width: '20%',
+				width: 50 / 3 + '%',
 				textAlign: 'left',
 			},
 			iconCol: {
@@ -286,8 +288,12 @@ export const css_dashboard = {
 				textAlign: 'left',
 			},
 			defaultCol: {
-				width: (70 / 3) + '%',
+				width: '20%',
 				textAlign: 'left',
+			},
+			iconCol: {
+				width: '10%',
+				textAlign: 'right',
 			},
 		},
 	},

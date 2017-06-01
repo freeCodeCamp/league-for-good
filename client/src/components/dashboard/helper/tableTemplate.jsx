@@ -21,7 +21,7 @@ import { css_dashboard } from '../../style';
 //
 // Table template component takes in three props
 //
-// @title - String: The title of the table at the top of the panel
+// @title(optional) - String: The title of the table at the top of the panel
 //
 // @headers - [Object]: An array of objects
 //		Each object requires the following fields:
