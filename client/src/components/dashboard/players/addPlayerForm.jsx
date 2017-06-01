@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { TextField, AutoComplete } from 'redux-form-material-ui';
 import MenuItem from 'material-ui/MenuItem';
-import Divider from 'material-ui/Divider';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Field, reduxForm } from 'redux-form';
 
@@ -26,8 +25,7 @@ const validate = val => {
 	else if (!emailRegex.test(val.email)) {
 		errors.email = 'Email is not in correct format';
 	}
-	else if (val.team && val.team.jersey_num && parseInt(val.team.jersey_num) > 99){
-		
+	else if (val.team && val.team.jersey_num && parseInt(val.team.jersey_num) > 99){	
 		errors.team.jersey_num = 'A jersey number should be between 0 and 99';
 	}
 	return errors;
