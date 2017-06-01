@@ -2,35 +2,33 @@ import React from 'react';
 import { css_dashboard } from '../../style';
 import TableIcon from '../helper/tableIcon.jsx';
 
-//All team data passed from the reducers is reformatted here so it contains the correct
+//All player data passed from the reducers is reformatted here so it contains the correct
 //values for the TableTemplate component
 
 // Column headers and data
 export const colData = [
 	{ 
 		label: 'Name',
-		style: css_dashboard.table.roster.nameCol,
-		cellProp: 'name', 
-		sortable: true, 
-		searchable: true,
-	},
+		cellProp: 'full_name', 
+		sortable: true,  
+	},	
 	{ 
-		label: 'Roster Size', 
-		style: css_dashboard.table.roster.defaultCol,
-		cellProp: 'players.length', 
+		label: '#', 
+		cellProp: 'jersey_num', 
 		sortable: true, 
 	},
 	{ 
-		label: 'Seasons Played', 
-		style: css_dashboard.table.roster.defaultCol,
-		cellProp: 'seasons.length', 
+		label: 'Position', 
+		cellProp: 'position', 
 		sortable: true,
 	},
 	{ 
-		label: 'Status', 
-		style: css_dashboard.table.roster.defaultCol,
-		cellProp: 'currently_active',
-		sortable: true, 
+		label: 'Email', 
+		cellProp: 'email', 
+	},
+	{ 
+		label: 'Phone', 
+		cellProp: 'phone_num', 
 	},
 	{
 		label: 'View',
@@ -40,6 +38,7 @@ export const colData = [
 	},
 ];
 
+<<<<<<< HEAD
 // Get the value for the cell
 function getCellValue(team, prop, action) {
 	if (prop === 'currently_active') {
@@ -56,19 +55,21 @@ function getCellValue(team, prop, action) {
 	return team[prop];
 }
 	
+=======
+>>>>>>> 5ef34d1feda2f07bc9a84686734717b7648aef99
 
 // Massage the data for the table body
-const getTeamRosterTableData = ({ teams }) => {
+const getPlayerTableData = (players) => {
 	//map each row
-	return teams.map( team => {
+	return players.map( player => {
 		//map each cell
-		return colData.map( col => (
+		return colData.map( ({cellProp, ...col}) => (
 			{
-				value: getCellValue(team, col.cellProp, col.action),
-				style: col.style,
+				value: player[cellProp],
+				
 			}
 		));
 	});
 };
 
-export default getTeamRosterTableData;
+export default getPlayerTableData;

@@ -302,7 +302,7 @@ class TableTemplate extends Component {
 			<div>
 				{
 					!!this.props.title ? 
-					<TableTitle title={props.title} /> :
+					<TableTitle title={this.props.title} /> :
 					""
 				}
 				{
