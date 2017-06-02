@@ -43,7 +43,7 @@ const Player = props => {
 }
 
 function mapStateToProps({ roster }){
-	console.log('roster', roster);
+	
 	return { roster };
 }
 

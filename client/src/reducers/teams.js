@@ -34,7 +34,7 @@ function addPlayerToTeam(teams, {player, teamId}){
 export default function(state = [], action) {
 	const { list, type } = action;
 
-	switch(action.type) {
+	switch(type) {
 	
 	case SELECT_TEAMS:
 		return action.teams;
@@ -46,7 +46,7 @@ export default function(state = [], action) {
 		return replaceTeam(state, action.updatedTeam);
 
 	case 'ADD_PLAYER_TO_TEAM':
-		return addPlayerToTeam( state, payload );	
+		return addPlayerToTeam( state, action.player );	
 	
 	case REMOVE_TEAM:
 		return state.filter( removeId(action.removedTeam));

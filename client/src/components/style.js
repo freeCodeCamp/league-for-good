@@ -16,7 +16,7 @@ let theme = {
 
 export function changeTheme() {
 	theme = themes.getCurrentThemeProps();
-	console.log(theme);
+	// console.log(theme);
 }
 
 
@@ -32,15 +32,15 @@ export const common = {
 		},
 		backgroundColor: theme.defaultPrimaryColor,
 	},
+	formRow: {
+ 		display: 'flex',
+  	justifyContent: 'space-around',
+	},	
 	form: {
 		width: '80%',
 		margin: '0px auto 5px',
 		textAlign: 'center',
 	},
-	formRow:{
-  		display: 'flex',
-  		justifyContent: 'space-around',
-  	},
 };
 
 

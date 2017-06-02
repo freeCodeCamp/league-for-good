@@ -38,15 +38,25 @@ const getPlayer = (req, res) => {
 		.catch(err => res.send(String(err)));
 };
 
-const getAllPlayers = (req, res) => {
-	Player.find({})
-		.exec()
-		.then(data => res.send(data))
-		.catch(err => res.send(String(err)));
-};
+// const getAllPlayers = (req, res) => {
+// 	Player.find({})
+// 		.exec()
+// 		.then(data => res.send(data))
+// 		.catch(err => res.send(String(err)));
+// };
 
+const fetchList = (req, res) => {
+	const { leagueId } = req.params;
+
+	Player.find({ leagues: { $in: [leagueId] }})
+		// .limit(30)
+		.exec()
+		.then(players => res.send(players))
+}
+
+Router.route('/list/:leagueId').get(fetchList);
 Router.route('/add').post(addPlayerToLeague);
-Router.route('/getAllPlayers').get(getAllPlayers);
+// Router.route('/getAllPlayers').get(getAllPlayers);
 Router.route('/getPlayer/:playerId').get(getPlayer);
 
 module.exports = Router;

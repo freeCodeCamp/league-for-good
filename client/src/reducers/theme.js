@@ -4,7 +4,7 @@ import { changeTheme } from '../components/style';
 
 const storedTheme = localStorage.getItem('theme');
 
-const defaultState = !!storedTheme ? storedTheme : themes.getCurrentThemeName();
+const defaultState = storedTheme ? storedTheme : themes.getCurrentThemeName();
 
 export default function(state = defaultState, action) {
 

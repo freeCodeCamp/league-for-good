@@ -36,7 +36,7 @@ export const colData = [
 	{
 		label: 'Roster',
 		style: css_dashboard.table.teams.iconCol,
-		cellProp: 'link'
+		cellProp: 'link',
 	},	
 	{ 
 		label: 'Edit', 

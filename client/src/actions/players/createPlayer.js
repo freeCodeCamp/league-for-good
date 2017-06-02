@@ -4,7 +4,7 @@ import {
 	UPDATE_TEAM, 
 	FETCH_ROSTER,
 	ADD_PLAYER_TO_ROSTER,
-	ADD_PLAYER_TO_TEAM 
+	ADD_PLAYER_TO_TEAM, 
 } from '../types';
 
 import { rootURL } from '../../../globals';

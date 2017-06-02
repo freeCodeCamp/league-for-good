@@ -15,7 +15,7 @@ export function fetchRoster(team){
 				
 				const rosterData = { ...team, players: data };
 				dispatch({type: FETCH_ROSTER, rosterData });
-		});
-	}
-
+			});
+	};
 }
+

@@ -1,35 +1,31 @@
 import axios from 'axios';
-import { FETCH_PLAYER } from '../types';
+import { FETCH_PLAYER, FETCH_ALL_PLAYERS } from '../types';
 import { rootURL } from '../../../globals';
 
 
 
 // Get a players info
-export function fetchPlayer() {
+export function fetchPlayer(player) {
 		
 	const url = `${rootURL}/player/${player._id}`;
 	
 	return dispatch => {
 		axios.get(url)
 			.then(({data}) => {
-				console.log('fetch player', data);
-				
-				const playerData = { ...data };
-				dispatch({type: FETCH_PLAYER, playerData });
-		});
+				dispatch({type: FETCH_PLAYER, playerData: data });
+			});
 	};
 }
 
 // Retrieve all players
-export function fetchAllPlayers() {
-	const url = `${rootURL}/getAllPlayers`;
+export function fetchPlayerList(leagueId){
+	
+	const url = `${rootURL}/player/list/${leagueId}`;
 	
 	return dispatch => {
 		axios.get(url)
-			.then(({data}) => {
-				
-				const playersData = { ...data };
-				dispatch({ type: FETCH_ALL_PLAYERS, playersData });
-		});
+			.then(({data}) => 
+				dispatch({type: FETCH_ALL_PLAYERS, playersList: data })
+		);
 	};
 }
