@@ -19,27 +19,14 @@ export const colData = [
 		sortable: true,
 	},
 	{ 
-		label: 'Jersey #', 
-		cellProp: 'jersey_num', 
+		label: '# of Teams', 
+		cellProp: 'teams.length', 
 		sortable: true, 
-	},
-	{ 
-		label: 'Position', 
-		cellProp: 'position', 
-		sortable: true,
-	},
-	{ 
-		label: 'Email', 
-		cellProp: 'email', 
-	},
-	{ 
-		label: 'Phone', 
-		cellProp: 'phone_num', 
 	},
 	{
 		label: 'View',
 		style: css_dashboard.table.roster.iconCol,
-		action: 'viewRoster',
+		action: 'viewPlayer',
 		cellProp: 'link',
 	},
 ];

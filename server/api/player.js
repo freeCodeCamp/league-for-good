@@ -35,10 +35,18 @@ const getPlayer = (req, res) => {
 	Player.findById(playerId)
 		.exec()
 		.then(data => res.send(data))
-		.catch(err => res.send(String(err)))
+		.catch(err => res.send(String(err)));
+};
+
+const getAllPlayers = (req, res) => {
+	Player.find({})
+		.exec()
+		.then(data => res.send(data))
+		.catch(err => res.send(String(err)));
 };
 
 Router.route('/add').post(addPlayerToLeague);
+Router.route('/getAllPlayers').get(getAllPlayers);
 Router.route('/getPlayer/:playerId').get(getPlayer);
 
 module.exports = Router;

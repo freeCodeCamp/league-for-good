@@ -1,4 +1,4 @@
-import { FETCH_PLAYER }  from '../actions/types';
+import { FETCH_PLAYER, FETCH_ALL_PLAYERS }  from '../actions/types';
 
 
 
@@ -10,6 +10,8 @@ export default function(state = null, action) {
 	
 	case FETCH_PLAYER:
 		return action.playerData;
+	case FETCH_ALL_PLAYERS:
+		return action.playersData;
 	}
 	
 	return state;

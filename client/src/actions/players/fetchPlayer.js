@@ -4,8 +4,8 @@ import { rootURL } from '../../../globals';
 
 
 
-// Get formatted team roster from the server
-export function fetchPlayer(team){
+// Get a players info
+export function fetchPlayer() {
 		
 	const url = `${rootURL}/player/${player._id}`;
 	
@@ -17,6 +17,19 @@ export function fetchPlayer(team){
 				const playerData = { ...data };
 				dispatch({type: FETCH_PLAYER, playerData });
 		});
-	}
+	};
+}
 
+// Retrieve all players
+export function fetchAllPlayers() {
+	const url = `${rootURL}/getAllPlayers`;
+	
+	return dispatch => {
+		axios.get(url)
+			.then(({data}) => {
+				
+				const playersData = { ...data };
+				dispatch({ type: FETCH_ALL_PLAYERS, playersData });
+		});
+	};
 }

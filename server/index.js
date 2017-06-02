@@ -46,19 +46,19 @@ app.use('/player', Routes.player);
 
 //Disable webpack build if debugging backend functionality
 
-if(process.env.NODE_ENV !== 'backend-dev'){
+if (process.env.NODE_ENV !== 'backend-dev') {
 	const webpackMiddleware = require('../webpack.dev.middleware');
 	app.use(webpackMiddleware);
 }
-else{
+else {
 	app.get('/', (req,res) => {
 
 		res.json({user:req.user});
-	})
-		app.get('/logout', (req,res) => {
+	});
+	app.get('/logout', (req,res) => {
 		req.logOut()
 		res.redirect('/');
-	})
+	});
 }
 
 app.get('*', (req, res) => res.redirect('/'));
