@@ -4,18 +4,17 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { changeManageView } from '../../actions/index';
-import LeagueTabs from './leagueTabs.jsx';
-import LeagueTabsHeader from './leagueTabsHeader.jsx';
+import LeagueTabs from './leagueTabs/leagueTabs.jsx';
+import LeagueTabsHeader from './leagueTabs/leagueTabsHeader.jsx';
 import { css_content } from '../style';
 
-import { partition } from 'lodash';
 //import { createSelector } from 'reselect';
 
 class Dashboard extends Component {
 
 	render() {
-		const { league, view, changeManageView } = this.props;
-		const tabProps = { league, view, changeManageView };
+		const { league, view, changeManageView, teams, roster } = this.props;
+		const tabProps = { league, view, changeManageView, teams, roster };
 		
 		return (
 			
@@ -37,11 +36,13 @@ class Dashboard extends Component {
 // ----https://lodash.com/docs/4.17.4#partition
 
 
-function mapStateToProps({ league, manage }){
+function mapStateToProps({ league, manage, teams, roster }){
 
 	return { 
 		league: {...league.selected}, 
-		view: manage.view, 
+		view: manage.view,
+		teams,
+		roster
 	};
 }
 

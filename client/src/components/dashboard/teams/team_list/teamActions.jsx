@@ -5,13 +5,12 @@ import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import ViewRosterIcon from 'material-ui/svg-icons/social/people';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { css_dashboard } from '../../style';
-import { openModal } from '../../../actions/index';
+import { css_dashboard } from '../../../style';
+import { openModal } from '../../../../actions/index';
 
 const actionIcons = {
 	'editTeam': <EditIcon />,
 	'deleteTeam': <DeleteIcon />,
-	'viewRoster': <ViewRosterIcon />,
 };
 
 
@@ -33,9 +32,6 @@ class Icon extends Component {
 			break;
 		case 'deleteTeam':
 			this.props.openModal('removeTeam', team);
-			break;
-		case 'viewRoster':
-			this.props.openModal('viewRoster', team);
 			break;
 		}
 	}

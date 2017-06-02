@@ -2,9 +2,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { changeManageView } from '../../../actions/index';
+import { changeManageView } from '../../../../actions/index';
 import IconButton from 'material-ui/IconButton';
-import { css_content } from '../../style';
+import { css_content } from '../../../style';
 
 
 class LinkTemplate extends Component {
@@ -18,7 +18,7 @@ class LinkTemplate extends Component {
 				onTouchTap={() => this.props.changeManageView(this.props.label)}
 				style={css_content.iconNavbar.iconButton.style}
 				iconStyle={this.props.view === this.props.label ?
-					css_content.iconNavbar.iconButton.iconStyle : {}}
+					css_content.iconNavbar.iconButton.iconStyle : {iconHoverColor: "#fff"}}
 				hoveredStyle={css_content.iconNavbar.iconButton.hoveredStyle}
 			>
 				{this.props.icon}

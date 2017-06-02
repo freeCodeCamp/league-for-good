@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchRoster } from '../../../actions/index';
+import { fetchRoster } from '../../../../actions/index';
 
 import IconButton from 'material-ui/IconButton';
 import ListIcon from 'material-ui/svg-icons/action/list';
@@ -14,7 +14,7 @@ const RosterLink = props => {
 	return(
 		<Link to={`/dashboard/roster/${team._id}`}>
 			<IconButton onTouchTap={() => fetchRoster(team)}>
-				<ListIcon/>
+				<ListIcon />
 			</IconButton>
 		</Link>
 	);

@@ -3,11 +3,11 @@ import { TextField } from 'redux-form-material-ui';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Field, reduxForm } from 'redux-form';
 
-import { createTeam, openSnackbar } from '../../../actions/index';
-import { css_content, css_dashboard } from '../../style';
+import { createTeam, openSnackbar } from '../../../../actions/index';
+import { css_content, css_dashboard } from '../../../style';
 
 
-import validate from './validation';
+import validate from './validation/validation';
 
 
 const AddTeamForm = props => {	

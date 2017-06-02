@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { css_content, css_dashboard } from '../../style';
-import TableTemplate from '../helper/tableTemplate.jsx';
+import { css_content, css_dashboard } from '../../../style';
+import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
 
-import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar';
 import MenuItem from 'material-ui/MenuItem';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import TextField from 'material-ui/TextField';
@@ -53,18 +52,15 @@ class TeamTable extends Component {
 		
 		return (
 			<div style={css_content.body}>	
-				<Toolbar style={css_dashboard.table.teams.toolbar}>
-					<ToolbarGroup firstChild={true}>
-					 	<DropDownMenu 
-					 		value={this.state.filterValue} 
-					 		onChange={this.handleChange}
-					 	>
-					    	<MenuItem value="all" primaryText="All Teams" />
-					    	<MenuItem value="active" primaryText="Active Teams" />
-					    	<MenuItem value="archived" primaryText="Archived Teams" />
-					  	</DropDownMenu>
-			    	</ToolbarGroup>
-				</Toolbar>
+				<DropDownMenu 
+					value={this.state.filterValue} 
+					onChange={this.handleChange}
+					style={css_dashboard.table.teams.dropdown}
+				>
+					<MenuItem value="all" primaryText="All Teams" />
+				   	<MenuItem value="active" primaryText="Active Teams" />
+				   	<MenuItem value="archived" primaryText="Archived Teams" />
+				</DropDownMenu>
 				<TableTemplate 
 					headers={colData}
 					rows={getRowData({teams})}

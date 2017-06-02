@@ -1,12 +1,12 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
-import { createPlayer, openSnackbar } from '../../../actions/index';
-import { css_content, css_dashboard } from '../../style';
+import { createPlayer, openSnackbar } from '../../../../actions/index';
+import { css_content, css_dashboard } from '../../../style';
 
-import PlayerFormTemplate from '../helper/playerFormTemplate.jsx';
+import PlayerFormTemplate from './playerFormTemplate.jsx';
 
-import validate from './playerFormValidation';
+import validate from './validation/playerFormValidation';
 
 
 const AddPlayerForm = props => {

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { changeManageView } from '../../actions/index';
+import { changeManageView } from '../../../actions/index';
 
 import { Tabs, Tab } from 'material-ui/Tabs';
 
-import { generateLinks } from './helper/generateLinks.jsx';
+import { generateLinks } from './tab_navbar/generateLinks.jsx';
 import { tabs } from './leagueTabData';
 import PanelViewWrapper from './PanelViewWrapper.jsx';
-import { css_content, css_dashboard } from '../style';
+import { css_content, css_dashboard } from '../../style';
 
 import { findIndex } from 'lodash';
 

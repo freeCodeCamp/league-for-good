@@ -1,6 +1,6 @@
 import React from 'react';
-import { css_dashboard } from '../../style';
-import TableIcon from '../helper/tableIcon.jsx';
+import { css_dashboard } from '../../../style';
+import Link from '../../players/player_list/playerLink.jsx';
 
 //All player data passed from the reducers is reformatted here so it contains the correct
 //values for the TableTemplate component
@@ -34,38 +34,26 @@ export const colData = [
 		label: 'View',
 		style: css_dashboard.table.roster.iconCol,
 		action: 'viewRoster',
-		cellProp: 'icon',
+		cellProp: 'link',
 	},
 ];
 
-<<<<<<< HEAD
 // Get the value for the cell
-function getCellValue(team, prop, action) {
-	if (prop === 'currently_active') {
-		return team.currently_active ? 'Active' : 'Archived';
+function getCellValue(player, prop, action) {
+	if (prop === 'link') {
+		return <Link {...player} />;
 	}
-	if (prop === 'icon') {
-		const iconProps = { action, team };
-		return <TableIcon {...iconProps} />;
-	}
-	// Split properties if cell property is nested
-	if (prop.split('.').length > 1) {
-		return prop.split('.').reduce((o, i) => o[i], team);
-	}
-	return team[prop];
+	return player[prop];
 }
-	
-=======
->>>>>>> 5ef34d1feda2f07bc9a84686734717b7648aef99
 
 // Massage the data for the table body
 const getPlayerTableData = (players) => {
 	//map each row
 	return players.map( player => {
 		//map each cell
-		return colData.map( ({cellProp, ...col}) => (
+		return colData.map( ({cellProp, action, ...col}) => (
 			{
-				value: player[cellProp],
+				value: getCellValue(player, cellProp, action),
 				
 			}
 		));

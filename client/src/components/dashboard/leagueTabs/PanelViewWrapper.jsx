@@ -1,12 +1,13 @@
 import React from 'react';
 
-import AddTeamForm from './teams/addTeamForm.jsx';
-import TeamTable from './teams/teamTable.jsx';
+import AddTeamForm from '../teams/forms/addTeamForm.jsx';
+import TeamTable from '../teams/team_list/teamList.jsx';
 
-import AddPlayerForm from './players/addPlayerForm.jsx';
-import TeamRoster from './players/roster.jsx';
+import AddPlayerForm from '../players/forms/addPlayerForm.jsx';
+import TeamRoster from '../teams/team_roster_list/rosterList.jsx';
+import Player from '../players/player_list/playerDetails.jsx';
 
-import AddStaffForm from './settings/main.jsx';
+import AddStaffForm from '../settings/forms/addStaffForm.jsx';
 
 import { Route } from 'react-router-dom';
 
@@ -14,7 +15,7 @@ import { Route } from 'react-router-dom';
 // Panel view wrapper determines which view is currently active
 // and renders the appropriate panel in response
 const PanelViewWrapper = props => {
-	const { view, league } = props;
+	const { view, league, teams, roster } = props;
 
 		switch (view) {
 		
@@ -25,7 +26,8 @@ const PanelViewWrapper = props => {
 			return (
 				<div>
 					<Route exact path="/dashboard" component={TeamTable}/>
-					<Route path="/dashboard/roster/:teamId" component={TeamRoster}/>
+					<Route path="/dashboard/roster/:teamId" component={TeamRoster} />
+					<Route path="/dashboard/player/:playerId" component={Player} />
 				</div>
 			)
 		

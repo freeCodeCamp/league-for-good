@@ -3,9 +3,9 @@ import { TextField } from 'redux-form-material-ui';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Field, reduxForm } from 'redux-form';
 
-import { addStaffMember, openSnackbar } from '../../../actions/index';
+import { addStaffMember, openSnackbar } from '../../../../actions/index';
 
-import { css_content, css_dashboard } from '../../style';
+import { css_content, css_dashboard } from '../../../style';
 
 const AddStaffForm = props => {	
 		const {handleSubmit} = props;

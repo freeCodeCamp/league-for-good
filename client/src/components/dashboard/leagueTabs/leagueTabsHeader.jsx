@@ -1,6 +1,6 @@
 import React from 'react';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
-import { css_dashboard as css} from '../style';
+import { css_dashboard as css} from '../../style';
 
 
 const Header = ({league}) => (

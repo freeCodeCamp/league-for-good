@@ -27,8 +27,18 @@ const addPlayerToLeague = (req, res) => {
 			}
 		})
 		.catch(error => { throw error; });
-}
+};
+
+const getPlayer = (req, res) => {
+	const { playerId } = req.params;
+	
+	Player.findById(playerId)
+		.exec()
+		.then(data => res.send(data))
+		.catch(err => res.send(String(err)))
+};
 
 Router.route('/add').post(addPlayerToLeague);
+Router.route('/getPlayer/:playerId').get(getPlayer);
 
 module.exports = Router;

@@ -1,9 +1,9 @@
 import React from 'react';
-import TableTemplate from '../helper/tableTemplate.jsx';
+import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
 import Search from './rosterSearch.jsx';
-import { css_content } from '../../style';
+import { css_content } from '../../../style';
 
-import getRowData, { colData } from './playerData';
+import getRowData, { colData } from './rosterData';
 
 import { connect } from 'react-redux';
 
@@ -12,9 +12,10 @@ import BackArrow from 'material-ui/svg-icons/navigation/arrow-back';
 
 const Roster = props => {
 	const { teams, roster } = props;
-	const title = roster? roster.name : 'Search';
+	const title = roster ? roster.name : 'Search';
+	console.log('roster123123213', roster);
 
-	if(!roster){
+	if (!roster){
 		return <h2>LOADING....</h2>
 	}
 

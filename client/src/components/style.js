@@ -38,9 +38,9 @@ export const common = {
 		textAlign: 'center',
 	},
 	formRow:{
-  	display:'flex',
-  	justifyContent:'space-around',
-  },
+  		display: 'flex',
+  		justifyContent: 'space-around',
+  	},
 };
 
 
@@ -262,7 +262,7 @@ export const css_dashboard = {
 		},
 		teams: {
 			// toolbar used on top of table
-			toolbar: {
+			dropdown: {
 				float: 'right',
 				padding: '0px',
 				margin: '0px',

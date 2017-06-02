@@ -1,5 +1,5 @@
 import React from 'react';
-import EditTeamForm from '../dashboard/teams/editTeamForm.jsx';
+import EditTeamForm from '../dashboard/teams/forms/editTeamForm.jsx';
 import { reduxForm } from 'redux-form';
 /* Map all the components and/or props to be used inside the main modal component
 	Required:

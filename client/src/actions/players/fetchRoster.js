@@ -13,8 +13,8 @@ export function fetchRoster(team){
 		axios.get(url)
 			.then(({data}) => {
 				
-				const payload = { ...team, players: data };
-				dispatch({type: FETCH_ROSTER, payload });
+				const rosterData = { ...team, players: data };
+				dispatch({type: FETCH_ROSTER, rosterData });
 		});
 	}
 

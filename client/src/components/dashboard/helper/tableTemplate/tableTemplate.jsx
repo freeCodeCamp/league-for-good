@@ -13,7 +13,7 @@ import FlatButton from 'material-ui/FlatButton';
 import SearchIcon from 'material-ui/svg-icons/action/search';
 import ArrowUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
 import ArrowDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
-import { css_dashboard } from '../../style';
+import { css_dashboard } from '../../../style';
 
 // A table template to easily render a table in the management panel
 // Also allows the styling of each column to be specified or uses a default
@@ -310,11 +310,12 @@ class TableTemplate extends Component {
 					<SearchTable onSearch={this.onSearch.bind(this)} /> :
 					""
 				}
-				<Table>
+				<Table style={{overflow: 'hidden'}}>
 					<TableHeader 
 						adjustForCheckbox={false}
 						displaySelectAll={false} 
 						selectable={false}
+						style={{overflow: 'hidden'}}
 					>
 						<Headers 
 							headers={this.props.headers}
@@ -324,8 +325,8 @@ class TableTemplate extends Component {
 						/>
 					</TableHeader>
 					<TableBody
-						preScanRows={false}
 						displayRowCheckbox={false}
+						style={{overflow: 'hidden'}}
 					>
 						{renderBody(this.state.rows)}
 					</TableBody>
