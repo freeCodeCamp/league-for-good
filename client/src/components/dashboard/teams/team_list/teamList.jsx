@@ -12,6 +12,7 @@ import getRowData,{ colData } from './teamData';
 import { connect } from 'react-redux';
 
 // Table that lists all the teams and the ability to edit or delete each team
+// Can also view the roster of each team
 class TeamTable extends Component {
 	constructor(props) {
 		super(props);

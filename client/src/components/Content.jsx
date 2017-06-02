@@ -9,7 +9,7 @@ import CreateLeagueForm from './create-league/CreateLeagueForm.jsx';
 import NavBar from './nav/index.jsx';
 import Dashboard from './dashboard/dashboard.jsx';
 import Help from './help/help.jsx';
-import Modal from './modal/main.jsx';
+import Modal from './modal/modal.jsx';
 import { css_content } from './style';
 
 const Content = props => {

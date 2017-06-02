@@ -8,6 +8,12 @@ import { bindActionCreators } from 'redux';
 import { css_dashboard } from '../../../style';
 import { openModal } from '../../../../actions/index';
 
+/*
+* This file contains the modal actions in the teams list table. 
+* An icon is rendered inside the table and each modal that the
+* icon opens corresponds to a mapping in the ../modal/mappings folder
+*/
+
 const actionIcons = {
 	'editTeam': <EditIcon />,
 	'deleteTeam': <DeleteIcon />,

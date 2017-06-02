@@ -200,8 +200,8 @@ export const css_dashboard = {
 	},
 	title: {
 		textAlign: 'center',
-		margin: 0,
-		padding: 0,
+		margin: '0px 0px 0px 20px',
+		padding: '0px',
 		color: theme.primaryTextColor,
 	},
 	toolbar: {
@@ -215,7 +215,7 @@ export const css_dashboard = {
 	},
 	toolbarSubtitle: {
 		// color: theme.lightPrimaryColor,
-		marginLeft: 8,
+		marginLeft: '10px',
 	},
 	warning: {
 		textAlign: 'center',
@@ -234,6 +234,7 @@ export const css_dashboard = {
 		},
 		search: {
 			marginLeft: '20px',
+			marginBottom: '10px',
 		},
 		searchUnderline: {
 			//borderColor: theme.accentColor,
@@ -295,6 +296,17 @@ export const css_dashboard = {
 				width: '10%',
 				textAlign: 'right',
 			},
+		},
+	},
+	players: {
+		title: {
+			textAlign: 'center',
+			margin: '0px 0px 0px 20px',
+			padding: '0px',
+			color: theme.primaryTextColor,
+		},
+		ul: {
+			listStyleType: 'none',
 		},
 	},
 };

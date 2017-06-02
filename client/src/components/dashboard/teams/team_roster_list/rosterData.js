@@ -8,10 +8,16 @@ import Link from '../../players/player_list/playerLink.jsx';
 // Column headers and data
 export const colData = [
 	{ 
-		label: 'Name',
-		cellProp: 'full_name', 
-		sortable: true,  
-	},	
+		label: 'Last Name',
+		cellProp: 'last_name', 
+		sortable: true,
+		searchable: true,
+	},
+	{
+		label: 'First Name',
+		cellProp: 'first_name',
+		sortable: true,
+	},
 	{ 
 		label: '#', 
 		cellProp: 'jersey_num', 

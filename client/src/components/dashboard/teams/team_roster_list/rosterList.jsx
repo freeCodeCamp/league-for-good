@@ -13,14 +13,17 @@ import BackArrow from 'material-ui/svg-icons/navigation/arrow-back';
 const Roster = props => {
 	const { teams, roster } = props;
 	const title = roster ? roster.name : 'Search';
-	console.log('roster123123213', roster);
 
 	if (!roster){
-		return <h2>LOADING....</h2>
+		return (
+			<div style={css_content.body}>
+				Loading...
+			</div>
+		);
 	}
 
 	return (
-		<div>
+		<div style={css_content.body}>
 			<IconButton 
 				onTouchTap={() => props.history.goBack()}
 				tooltip="Back to teams list"

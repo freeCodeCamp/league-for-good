@@ -28,8 +28,7 @@ const EditTeamForm = props => (
 			/>
 		</div>
 	</form>
-
-)
+);
 
 export default reduxForm({
 	form:'EditTeamForm',

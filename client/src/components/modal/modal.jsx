@@ -6,7 +6,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import { submit } from 'redux-form';
 
-import modalMapping from './mappings.jsx';
+import modalMapping from './modalMappings.jsx';
 import * as submitActions from '../../actions/index';
 
 import { css_modal } from '../style';

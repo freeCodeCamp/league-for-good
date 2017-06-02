@@ -53,7 +53,7 @@ const SearchTable = (props) => {
 			hintText={<SearchIcon />}
 			underlineFocusStyle={css_dashboard.table.searchUnderline}
 			style={css_dashboard.table.search}
-			floatingLabelText="Search"
+			floatingLabelText={"Search " + props.searchLabel}
 			floatingLabelFixed={true}
 			onChange={props.onSearch}
 		/>
@@ -170,12 +170,14 @@ class TableTemplate extends Component {
 	constructor(props) {
 		super(props);
 		let searchableColumnIndex = -1;
+		let searchableColumnLabel = '';
 		// set width of default columns in table
 		css_dashboard.table.defaultCol.width = 90;
 		
 		this.props.headers.forEach((header, i) => {
 			if (!!header.searchable) {
 				searchableColumnIndex = i;
+				searchableColumnLabel = header.label;
 			}
 		});
 		
@@ -183,6 +185,7 @@ class TableTemplate extends Component {
 			rows: Array.from(this.props.rows),
 			sortDirection: 'none',
 			searchableColumnIndex: searchableColumnIndex,
+			searchableColumnLabel: searchableColumnLabel,
 			sortColumnIndex: null,
 			searchTerm: '',
 			searchRows: [],
@@ -192,11 +195,13 @@ class TableTemplate extends Component {
 	// Change state of teams based on panel rendered
 	componentWillReceiveProps(nextProps) {
 		if (this.props.rows !== nextProps.rows) {
-			let searchableColumnIndex = 0;
+			let searchableColumnIndex = -1;
+			let searchableColumnLabel = '';
 			
 			this.props.headers.forEach((header, i) => {
 				if (!!header.searchable) {
 					searchableColumnIndex = i;
+					searchableColumnLabel = header.label;
 				}
 			});
 			
@@ -204,6 +209,7 @@ class TableTemplate extends Component {
 				rows: Array.from(nextProps.rows),
 				sortDirection: 'none',
 				searchableColumnIndex: searchableColumnIndex,
+				searchableColumnLabel: searchableColumnLabel,
 				sortColumnIndex: null,
 			});
 		}
@@ -307,15 +313,16 @@ class TableTemplate extends Component {
 				}
 				{
 					this.state.searchableColumnIndex !== -1 ?				
-					<SearchTable onSearch={this.onSearch.bind(this)} /> :
-					""
+					<SearchTable 
+						onSearch={this.onSearch.bind(this)}
+						searchLabel={this.state.searchableColumnLabel}
+					/> : ""
 				}
-				<Table style={{overflow: 'hidden'}}>
+				<Table>
 					<TableHeader 
 						adjustForCheckbox={false}
 						displaySelectAll={false} 
 						selectable={false}
-						style={{overflow: 'hidden'}}
 					>
 						<Headers 
 							headers={this.props.headers}
@@ -326,7 +333,6 @@ class TableTemplate extends Component {
 					</TableHeader>
 					<TableBody
 						displayRowCheckbox={false}
-						style={{overflow: 'hidden'}}
 					>
 						{renderBody(this.state.rows)}
 					</TableBody>
