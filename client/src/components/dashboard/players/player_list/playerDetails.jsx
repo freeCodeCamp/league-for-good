@@ -7,44 +7,48 @@ import { connect } from 'react-redux';
 import IconButton from 'material-ui/IconButton';
 import BackArrow from 'material-ui/svg-icons/navigation/arrow-back';
 
-const Player = props => {
-	const { roster } = props;
-	console.log('roster in player.jsx', roster);
-	//const title = player ? player.name : 'Search';
-	
-	const url = props.match.params;
-	const player = roster.players.find(player => {
-		return player._id === url.playerId;
-	});
-	
-	console.log('player', player);
+const Player = ({ player, history }) => {
+
+	if (!player) return(
+			<h2>...Loading</h2>
+	);
 
 	return (
 		<div style={css_content.body}>
 			<IconButton 
-				onTouchTap={() => props.history.goBack()}
+				onTouchTap={() => history.goBack()}
 				tooltip="Back to team roster"
 			>
 				<BackArrow />
 			</IconButton>
-			<h1 style={css_dashboard.players.title}>{player.full_name}</h1>
+			<h1 style={css_dashboard.players.title}>
+				{player.first_name + ' ' + player.last_name}
+			</h1>
 			<h4>Email: {player.email}</h4>
-			<h4>Jersey Number: {player.jersey_num}</h4>
-			<h4>Positions:</h4>
-			<ul style={css_dashboard.players.ul}>
-				{
-					player.position.map((position, i) => {
-						return <li key={i}>{position}</li>;
-					})
-				}
-			</ul>
+			<h4>Phone: {player.phone_num}</h4>
+
+			<hr/>
+			<h3 style={css_dashboard.players.title}>Teams:</h3>
+			{
+				player.teams.map(team => (
+					<div key={team.teamId}>
+						<h4>Team Id: {team.teamId}</h4>
+						<h4>Season Id: {team.seasonId}</h4>
+						<h4>Jersey Number: {team.jersey_num}</h4>
+						<h4>Positions: {team.position.join(', ')}</h4>
+					</div>
+					//TO DO
+					//Populate teams in players teams on server so the team name can be rendered in place of teamId
+					//Seed Season data into db so same can be done with season
+				))
+			}
 		</div>
 	);
 }
 
-function mapStateToProps({ roster }){
+function mapStateToProps({ players }){
 	
-	return { roster };
+	return { player: players.selected };
 }
 
 export default connect(mapStateToProps)(Player);

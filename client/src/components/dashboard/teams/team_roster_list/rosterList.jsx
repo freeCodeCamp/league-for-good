@@ -1,8 +1,7 @@
 import React from 'react';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
-import Search from './rosterSearch.jsx';
-import { css_content } from '../../../style';
 
+import { css_content } from '../../../style';
 import getRowData, { colData } from './rosterData';
 
 import { connect } from 'react-redux';
@@ -10,9 +9,9 @@ import { connect } from 'react-redux';
 import IconButton from 'material-ui/IconButton';
 import BackArrow from 'material-ui/svg-icons/navigation/arrow-back';
 
-const Roster = props => {
-	const { teams, roster } = props;
-	const title = roster ? roster.name : 'Search';
+const Roster = ({roster, history}) => {
+	
+	const title = roster ? roster.name : '';
 
 	if (!roster){
 		return (
@@ -25,7 +24,7 @@ const Roster = props => {
 	return (
 		<div style={css_content.body}>
 			<IconButton 
-				onTouchTap={() => props.history.goBack()}
+				onTouchTap={() => history.goBack()}
 				tooltip="Back to teams list"
 			>
 				<BackArrow/>

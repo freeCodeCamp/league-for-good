@@ -6,15 +6,14 @@ import LinkTemplate from './linkTemplate.jsx';
 //		Links contains an array of objects describing what
 //		each info each card link will have
 // @return: an array of <LinkTemplate /> components
-export function generateLinks(links) {
+export function generateLinks(links, leagueId) {
 	return (
-		links.map((link, i) => {
+		links.map((linkProps, i) => {
 			return (
 				<LinkTemplate
 					key={i}
-					description={link.description}
-					label={link.label}
-					icon={link.icon}
+					leagueId={leagueId}
+					{...linkProps}
 				/>
 			);
 		})

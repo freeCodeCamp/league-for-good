@@ -3,8 +3,8 @@ import { TextField, Toggle } from 'redux-form-material-ui';
 import {Field, reduxForm } from 'redux-form';
 import { updateTeam, openSnackbar } from '../../../../actions/index';
 
-import validate from './validation/validation';
-import normalize from './validation/normalize';
+import validate from './utils/validation';
+import normalize from './utils/normalize';
 
 const formStyle = {margin:'0 auto', width:'50%'};
 const toggleStyle = {maxWidth:150, float:'right'};

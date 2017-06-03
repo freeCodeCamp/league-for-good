@@ -19,8 +19,8 @@ export const colData = [
 		sortable: true,
 	},
 	{ 
-		label: '# of Teams', 
-		cellProp: 'teams.length', 
+		label: 'Email', 
+		cellProp: 'email', 
 		sortable: true, 
 	},
 	{

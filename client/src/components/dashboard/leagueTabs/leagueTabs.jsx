@@ -1,27 +1,24 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { changeManageView } from '../../../actions/index';
 
 import { Tabs, Tab } from 'material-ui/Tabs';
-
 import { generateLinks } from './tab_navbar/generateLinks.jsx';
 import { tabs } from './leagueTabData';
-import PanelViewWrapper from './PanelViewWrapper.jsx';
 import { css_content, css_dashboard } from '../../style';
 
-import { findIndex } from 'lodash';
+import TeamRoutes from '../teams/routes.jsx';
+import PlayerRoutes from '../players/routes.jsx';
+
+// Routes for each tab tab. Any possible view associated with a tab
+const routes = {
+	Teams: <TeamRoutes/>,
+	Players: <PlayerRoutes/>,
+	Seasons: <div></div>,
+	Settings: <div></div>,
+}
 
 // Tabs for each section the user can manage
 const LeagueTabs = props => {
-
-	const { view } = props;
 	
-	//Index of tab that should render inner content
-	const selectedTabIndex = findIndex(tabs, tab => {
-		return tab.links.some(link => link.label === view);
-	}) 
-
 	return (
 		<Tabs inkBarStyle={css_dashboard.tabs.inkBar}>
 			{
@@ -30,14 +27,9 @@ const LeagueTabs = props => {
 						label={tab.name}
 						key={i}
 						style={css_dashboard.tabs.tab}
-						onActive={() => props.changeManageView(null)}
 					>
-						<div>
-							{generateLinks(tab.links)}
-							{
-								selectedTabIndex === i && <PanelViewWrapper {...props} />
-							}
-						</div>
+						{generateLinks(tab.links, props.leagueId)}
+						{routes[tab.name]}	
 					</Tab>
 					)
 				)

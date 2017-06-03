@@ -5,34 +5,33 @@ import { bindActionCreators } from 'redux';
 import { changeManageView } from '../../../../actions/index';
 import IconButton from 'material-ui/IconButton';
 import { css_content } from '../../../style';
+import { Link, withRouter } from 'react-router-dom';
 
-
-class LinkTemplate extends Component {
+const LinkTemplate = props => {
 	
-	render() {
-		return (
+		const { description, url, leagueId, icon, location: {pathname}} = props;
+		
+		const { iconNavbar: { iconButton }} = css_content
+		
+		const linkIsActive = url && pathname.match(url) && pathname !== '/dashboard'; 
+		//In progress..... Checks if icon should be highlighted
+
+	return (
+		<Link to={{ pathname:url, state: {leagueId} }}>
 			<IconButton
 				tooltipPosition="bottom-right"
-				tooltip={this.props.description}
+				tooltip={description}
 				touch={true}
-				onTouchTap={() => this.props.changeManageView(this.props.label)}
-				style={css_content.iconNavbar.iconButton.style}
-				iconStyle={this.props.view === this.props.label ?
-					css_content.iconNavbar.iconButton.iconStyle : {iconHoverColor: "#fff"}}
-				hoveredStyle={css_content.iconNavbar.iconButton.hoveredStyle}
+				style={iconButton.style}
+				iconStyle={ linkIsActive ? iconButton.iconStyle : {iconHoverColor: "#fff"}}
+				hoveredStyle={iconButton.hoveredStyle}
 			>
-				{this.props.icon}
+				{icon}
 			</IconButton>
-		);
-	}
+		</Link>
+	);
 }
 
-function mapStateToProps(state) {
-	return { view: state.manage.view };
-}
+export default withRouter(LinkTemplate);
 
-function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ changeManageView }, dispatch);
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(LinkTemplate);

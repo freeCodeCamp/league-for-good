@@ -6,7 +6,7 @@ import { css_content, css_dashboard } from '../../../style';
 
 import PlayerFormTemplate from './playerFormTemplate.jsx';
 
-import validate from './validation/playerFormValidation';
+import validate from './utils/playerFormValidation';
 
 
 const AddPlayerForm = props => {

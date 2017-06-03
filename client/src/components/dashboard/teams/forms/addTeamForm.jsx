@@ -7,12 +7,11 @@ import { createTeam, openSnackbar } from '../../../../actions/index';
 import { css_content, css_dashboard } from '../../../style';
 
 
-import validate from './validation/validation';
+import validate from './utils/validation';
 
 
 const AddTeamForm = props => {	
-		const {handleSubmit} = props;
-
+		const { handleSubmit } = props;
 		return (
 			<div style={css_content.body}>
 				<h1 style={css_dashboard.title}>Add Team</h1>

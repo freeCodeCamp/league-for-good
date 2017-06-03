@@ -57,6 +57,6 @@ const fetchList = (req, res) => {
 Router.route('/list/:leagueId').get(fetchList);
 Router.route('/add').post(addPlayerToLeague);
 // Router.route('/getAllPlayers').get(getAllPlayers);
-Router.route('/getPlayer/:playerId').get(getPlayer);
+Router.route('/details/:playerId').get(getPlayer);
 
 module.exports = Router;

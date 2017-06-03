@@ -49,6 +49,7 @@ class TeamTable extends Component {
     }
 
 	render() {
+		
 		const teams = this.formatTeams();
 		
 		return (
@@ -59,8 +60,8 @@ class TeamTable extends Component {
 					style={css_dashboard.table.teams.dropdown}
 				>
 					<MenuItem value="all" primaryText="All Teams" />
-				   	<MenuItem value="active" primaryText="Active Teams" />
-				   	<MenuItem value="archived" primaryText="Archived Teams" />
+					<MenuItem value="active" primaryText="Active Teams" />
+				  <MenuItem value="archived" primaryText="Archived Teams" />
 				</DropDownMenu>
 				<TableTemplate 
 					headers={colData}

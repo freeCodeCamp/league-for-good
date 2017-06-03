@@ -27,9 +27,13 @@ class NavBar extends Component {
 	selectLeague = league => {
 		const { teams, ...leagueData } = league;
 
+		//Clear dashboard of all data from the previously selected league 
 		this.props.resetDashboard();
+		//Mark new league as 'Selected'
 		this.props.selectLeague(leagueData);
+		//Fetch players from league from the server
 		this.props.fetchPlayerList(leagueData._id);
+		//Dispatch teams in the league to the teams reducer
 		this.props.selectTeams(teams);
 	}
 	

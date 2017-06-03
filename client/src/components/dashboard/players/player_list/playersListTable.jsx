@@ -1,6 +1,5 @@
 import React from 'react';
-import TableTemplate from '../helper/tableTemplate.jsx';
-import Search from './rosterSearch.jsx';
+import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
 
 import getRowData, { colData } from './playerData';
 
@@ -9,32 +8,31 @@ import { connect } from 'react-redux';
 import IconButton from 'material-ui/IconButton';
 import BackArrow from 'material-ui/svg-icons/navigation/arrow-back';
 
-const Roster = props => {
-	const { teams, roster } = props;
-	const title = roster? roster.name : 'Search';
-
-	if(!roster){
-		return <h2>LOADING....</h2>
-	}
+const PlayerList = props => {
 
 	return (
 		<div>
 			<IconButton 
 				onTouchTap={() => props.history.goBack()}
-				tooltip="Back to teams list"
 			>
 				<BackArrow/>
 			</IconButton>
 			<TableTemplate 
 				headers={colData}
-				rows={getRowData( players )}
+				rows={getRowData( props.players )}
 			/>
 		</div>
 	);
 }
 
 function mapStateToProps({ players }){
-	return { players };
+	/*
+		Until theres paginating functionality we will 
+		only work with a subset of the players list array to avoid long render times
+	*/
+	const playerList = players.list.slice(0, 25);
+
+	return { players: playerList };
 }
 
-export default connect(mapStateToProps)(Roster);
+export default connect(mapStateToProps)(PlayerList);

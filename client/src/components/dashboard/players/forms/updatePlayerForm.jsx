@@ -1,12 +1,8 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
 import { updatePlayer, openSnackbar } from '../../../../actions/index';
-
 import PlayerFormTemplate from './playerFormTemplate.jsx';
-
-import validate from './validation/playerFormValidation';
-
-import { createPlayer, openSnackbar } from '../../../../actions/index';
+import validate from './utils/playerFormValidation';
 import { css_content, css_dashboard } from '../../../style';
 
 const UpdatePlayerForm = props => {

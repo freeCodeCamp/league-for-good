@@ -41,13 +41,13 @@ export const colData = [
 	{ 
 		label: 'Edit', 
 		style: css_dashboard.table.teams.iconCol,
-		action: 'editTeam', 
+		action: 'edit', 
 		cellProp: 'icon', 
 	},
 	{ 
 		label: 'Delete', 
 		style: css_dashboard.table.teams.iconCol,
-		action: 'deleteTeam', 
+		action: 'delete', 
 		cellProp: 'icon', 
 	},	
 ];

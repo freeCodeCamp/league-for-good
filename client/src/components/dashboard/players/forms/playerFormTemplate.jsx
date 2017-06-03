@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Field } from 'redux-form';
 import { TextField, AutoComplete } from 'redux-form-material-ui';
 import MenuItem from 'material-ui/MenuItem';
@@ -114,4 +115,6 @@ const PlayerFormTemplate = ({handleSubmit, teams}) => {
 	)
 }
 
-export default PlayerFormTemplate;
+const mapState = state => ({teams : state.teams});
+
+export default connect(mapState)(PlayerFormTemplate);

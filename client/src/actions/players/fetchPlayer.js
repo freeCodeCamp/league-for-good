@@ -7,12 +7,13 @@ import { rootURL } from '../../../globals';
 // Get a players info
 export function fetchPlayer(player) {
 		
-	const url = `${rootURL}/player/${player._id}`;
+	const url = `${rootURL}/player/details/${player._id}`;
 	
 	return dispatch => {
 		axios.get(url)
 			.then(({data}) => {
-				dispatch({type: FETCH_PLAYER, playerData: data });
+				
+				dispatch({type: FETCH_PLAYER, playerDetails: data });
 			});
 	};
 }

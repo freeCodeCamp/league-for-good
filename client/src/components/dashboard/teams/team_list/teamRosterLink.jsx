@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { TEAM_ROSTER, makeLinkDynamic } from '../../../routes';
+
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchRoster } from '../../../../actions/index';
@@ -13,9 +15,9 @@ import { css_dashboard } from '../../../style';
 // that contains the roster inside the same panel from PanelViewWrapper
 const RosterLink = props => {
 	const { fetchRoster, ...team } = props;
-
+	const url = makeLinkDynamic( TEAM_ROSTER, team._id );
 	return(
-		<Link to={`/dashboard/roster/${team._id}`}>
+		<Link to={url}>
 			<IconButton 
 				onTouchTap={() => fetchRoster(team)}
 				hoveredStyle={css_dashboard.table.iconHover}

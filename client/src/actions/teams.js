@@ -5,11 +5,11 @@ import { rootURL } from '../../globals';
 
 
 // create a team
-export function createTeam( formVals, dispatch, { league } ) {
+export function createTeam( formVals, dispatch, { location } ) {
 	
 	const body = { 
 		name: formVals.name, 
-		league: league._id, 
+		league: location.state.leagueId, 
 	};
 
 	axios.post(`${rootURL}/team/create`, body)
@@ -47,22 +47,19 @@ export function updateTeam(formVals, dispatch, props){
 
 //Delete a team from a league
 export function removeTeam(team){
-	const {_id, currently_active, name } = team;
-	const list = currently_active? 'active_teams' : 'archived_teams';
+	const { _id, name } = team;
+
 	const teamName = name.replace(/^The/, '');
-	
+	const message = `The ${teamName} have been deleted from your league`;
+
 	return function( dispatch ){
 		
 		dispatch({ type: CLOSE_MODAL });
 
 		axios.delete(`${rootURL}/team/remove/${_id}`)
-			
-			.then((data) => dispatch({ type: REMOVE_TEAM, list, removedTeam: _id }))
-			.then(() => {
-				dispatch({ 
-					type: OPEN_SNACKBAR, 
-					message: `The ${teamName} have been deleted from your league`,
-				});
-			});
+			.then((data) => dispatch({ type: REMOVE_TEAM, removedTeam: _id }))
+			.then(() => 
+				dispatch({ type: OPEN_SNACKBAR, message })
+			);
 	};
 }
