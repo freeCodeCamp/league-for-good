@@ -11,6 +11,7 @@ const getGessage = ({values, form}) => {
 		AddTeamForm: 'A new team was successfully added to your league.',
 		AddPlayerForm: `${first_name} ${last_name} has been successfully added to your league`,
 		AddStaffForm:'Congrats',
+		AssignPlayerForm: 'Successfully assigned a new player',
 	};
 
 	return messages[form];

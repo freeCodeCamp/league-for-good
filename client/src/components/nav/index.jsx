@@ -5,8 +5,7 @@ import AppBar from 'material-ui/AppBar';
 import Menu from './Menu.jsx';
 import Bar from './Bar.jsx';
 import { 
-	toggleMenu, 
-	resetDashboard, 
+	toggleMenu,  
 	selectLeague, 
 	openModal, 
 	selectTeams, 
@@ -27,8 +26,6 @@ class NavBar extends Component {
 	selectLeague = league => {
 		const { teams, ...leagueData } = league;
 
-		//Clear dashboard of all data from the previously selected league 
-		this.props.resetDashboard();
 		//Mark new league as 'Selected'
 		this.props.selectLeague(leagueData);
 		//Fetch players from league from the server
@@ -75,7 +72,6 @@ function mapDispatchToProps(dispatch) {
 		toggleMenu,
 		selectLeague,
 		selectTeams,
-		resetDashboard, 
 		openModal,
 		changeTheme,
 		fetchPlayerList,

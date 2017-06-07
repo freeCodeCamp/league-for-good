@@ -333,6 +333,7 @@ class TableTemplate extends Component {
 					</TableHeader>
 					<TableBody
 						displayRowCheckbox={false}
+						preScanRows={false}
 					>
 						{renderBody(this.state.rows)}
 					</TableBody>

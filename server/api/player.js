@@ -54,9 +54,25 @@ const fetchList = (req, res) => {
 		.then(players => res.send(players))
 }
 
+const addPlayerToTeam = (req, res) => {
+	const { playerId, team } = req.body;
+
+	Player.findByIdAndUpdate(playerId, {$push: { teams: team }})
+		.exec()
+		.then(() => {
+			Teams.findByIdAndUpdate(team.teamId, { $push: { players: playerId }})
+			.exec()
+			.then(() => res.send("Successfully assigned player to team."))
+			.catch( err => { throw err })
+		})
+		.catch(err => res.send(String(err)))
+
+}
+
 Router.route('/list/:leagueId').get(fetchList);
 Router.route('/add').post(addPlayerToLeague);
 // Router.route('/getAllPlayers').get(getAllPlayers);
 Router.route('/details/:playerId').get(getPlayer);
+Router.route('/assign').put(addPlayerToTeam);
 
 module.exports = Router;

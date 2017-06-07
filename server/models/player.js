@@ -54,6 +54,8 @@ const PlayerSchema = new Schema({
 	}]},
 	{
 		collection: 'players',
+		toObject: { virtuals: true },
+    toJSON: { virtuals: true },
 	}
 );
 
@@ -67,6 +69,11 @@ const fields = [
 	'address',
 	'emergency_contact.name'
 ];
+
+PlayerSchema.virtual('full_name').get(function () {
+  return `${this.first_name} ${this.last_name}`;
+});
+
 
 PlayerSchema.plugin(capitalize, { fields });
 
