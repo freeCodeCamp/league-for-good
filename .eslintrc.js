@@ -19,7 +19,7 @@ module.exports = {
 		'no-cond-assign': ['warn'],
 		'comma-dangle': ['error', 'always-multiline'],
 		'indent': ['error', 'tab'],
-		'linebreak-style': ['error', 'windows'],
+		'linebreak-style': ['error', 'unix'],
 		'jsx-quotes': ['error', 'prefer-double'],
 		'quotes': ['error', 'single'],
 		'semi': ['error', 'always'],
