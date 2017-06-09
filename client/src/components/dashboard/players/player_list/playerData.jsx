@@ -12,28 +12,31 @@ export const colData = [
 	{ 
 		label: 'Last Name',
 		cellProp: 'last_name', 
+		style: css_dashboard.table.columns.secondary,
 		sortable: true,
 		searchable: true,
 	},
 	{
 		label: 'First Name',
+		style: css_dashboard.table.columns.secondary,
 		cellProp: 'first_name',
 		sortable: true,
 	},
 	{ 
 		label: 'Email', 
+		style: css_dashboard.table.columns.secondary,
 		cellProp: 'email', 
 		sortable: true, 
 	},
 	{
 		label: 'Edit',
-		style: css_dashboard.table.roster.iconCol,
+		style: css_dashboard.table.columns.icon,
 		cellProp: 'link',
 		action: 'editPlayer',
 	},	
 	{
 		label: 'View',
-		style: css_dashboard.table.roster.iconCol,
+		style: css_dashboard.table.columns.icon,
 		action: 'viewPlayer',
 		cellProp: 'link',
 	},
@@ -64,10 +67,10 @@ const getPlayerTableData = (players) => {
 	//map each row
 	return players.map( player => {
 		//map each cell
-		return colData.map( ({cellProp, action, ...col}) => (
+		return colData.map( ({cellProp, action, style, ...col}) => (
 			{
 				value: getCellValue(player, cellProp, action),
-				
+				style: style,
 			}
 		));
 	});

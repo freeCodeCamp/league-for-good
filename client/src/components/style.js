@@ -2,17 +2,7 @@
 import themes from './themes';
 
 //let theme = themes.getCurrentThemeProps();
-let theme = {
-	darkPrimaryColor: '#00796B',
-	defaultPrimaryColor: '#009688',
-	lightPrimaryColor: '#B2DFDB',
-	textPrimaryColor: '#FFFFFF',
-	accentColor: '#FF4081',
-	primaryTextColor: '#212121',
-	secondaryTextColor: '#757575',
-	dividerColor: '#BDBDBD',
-	primary1Color: '#009688',	// default
-};
+let theme = themes.getCurrentThemeProps();
 
 export function changeTheme() {
 	theme = themes.getCurrentThemeProps();
@@ -259,6 +249,18 @@ export const css_dashboard = {
 			backgroundColor: theme.accentColor,
 			borderRadius: '25px',
 		},
+		columns: {
+			primary: {
+				textAlign: 'left',
+			},
+			secondary: {
+				textAlign: 'left',
+			},
+			icon: {
+				textAlign: 'left',
+				width: '10%',
+			},
+		},
 		teams: {
 			// toolbar used on top of table
 			dropdown: {
@@ -277,7 +279,7 @@ export const css_dashboard = {
 			},
 			iconCol: {
 				width: '10%',
-				textAlign: 'right',
+				textAlign: 'left',
 			},
 		},
 		// render columns in the team roster table
