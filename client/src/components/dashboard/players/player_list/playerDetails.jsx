@@ -24,7 +24,7 @@ const Player = ({ player, history }) => {
 				<BackArrow />
 			</IconButton>
 			<h1 style={css_dashboard.players.title}>
-				{player.first_name + ' ' + player.last_name}
+				{player.full_name}
 			</h1>
 			<h4>Email: {player.email}</h4>
 			<h4>Phone: {player.phone_num}</h4>

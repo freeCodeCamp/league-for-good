@@ -17,7 +17,7 @@ const routes = {
 }
 
 // Tabs for each section the user can manage
-const LeagueTabs = props => {
+const LeagueTabs = ({history, leagueId}) => {
 	
 	return (
 		<Tabs inkBarStyle={css_dashboard.tabs.inkBar}>
@@ -27,8 +27,9 @@ const LeagueTabs = props => {
 						label={tab.name}
 						key={i}
 						style={css_dashboard.tabs.tab}
+						onActive={()=> history.push(`/dashboard`)}
 					>
-						{generateLinks(tab.links, props.leagueId)}
+						{generateLinks(tab.links, leagueId)}
 						{routes[tab.name]}	
 					</Tab>
 					)

@@ -11,8 +11,8 @@ import { css_content } from '../style';
 class Dashboard extends Component {
 
 	render() {
-		const { league } = this.props;
-		const tabProps = { league, leagueId: league._id };
+		const { league, history } = this.props;
+		const tabProps = { league, history, leagueId: league._id };
 		
 		return (
 			
@@ -28,12 +28,9 @@ class Dashboard extends Component {
 	}
 }
 
-function mapStateToProps({ league }){
+function mapStateToProps({ league: {selected} }){
 
-	return { 
-		league: {...league.selected}, 
-		
-	};
+	return { league: selected };
 }
 
 

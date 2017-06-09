@@ -27,14 +27,12 @@ export const common = {
 			color: theme.textPrimaryColor,
 			fontWeight: 500,
 		},
-		style: {
-			marginTop: '30px',
-		},
+		style: { marginTop: '30px' },
 		backgroundColor: theme.defaultPrimaryColor,
 	},
 	formRow: {
- 		display: 'flex',
-  	justifyContent: 'space-around',
+ 		display:'flex',
+  	justifyContent:'space-around',
 	},	
 	form: {
 		width: '80%',
@@ -107,14 +105,14 @@ export const css_content = {
 		margin:'85px auto',
 		height: 'auto',
 		textAlign: 'center',
-		background: theme.textPrimaryColor,
+		//background: theme.textPrimaryColor,
 		color: theme.primaryTextColor,
 		border:'1px solid ' + theme.dividerColor,
 	},
 	header: {
 		width: '100%',
 		height: 'auto',
-		backgroundColor: theme.primary1Color,
+		//backgroundColor: theme.primary1Color,
 	},
 	// navbar designed for use with icons
 	iconNavbar: {

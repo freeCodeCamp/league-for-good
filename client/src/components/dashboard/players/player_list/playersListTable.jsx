@@ -1,7 +1,7 @@
 import React from 'react';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
 
-import getRowData, { colData } from './playerData';
+import getRowData, { colData } from './playerData.jsx';
 
 import { connect } from 'react-redux';
 
@@ -31,7 +31,7 @@ function mapStateToProps({ players }){
 		only work with a subset of the players list array to avoid long render times
 	*/
 	const playerList = players.list.slice(0, 25);
-
+	
 	return { players: playerList };
 }
 

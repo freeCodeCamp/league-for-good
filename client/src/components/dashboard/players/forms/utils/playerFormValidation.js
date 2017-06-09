@@ -1,5 +1,5 @@
 const emailRegex = new RegExp('^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$');
-
+const jerseyRegex = /^\d{1,2}$/;
 //prevent user from submitting incorrect player info
 const validate = val => {
 	const errors = { team :{} };
@@ -15,7 +15,7 @@ const validate = val => {
 	else if (!emailRegex.test(val.email)) {
 		errors.email = 'Email is not in correct format';
 	}
-	else if (val.team && val.team.jersey_num && parseInt(val.team.jersey_num) > 99){	
+	else if (val.team && val.team.jersey_num && !jerseyRegex.test(val.team.jersey_num)) {	
 		errors.team.jersey_num = 'A jersey number should be between 0 and 99';
 	}
 	return errors;
