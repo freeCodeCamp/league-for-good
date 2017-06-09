@@ -10,26 +10,22 @@ import Link from './teamRosterLink.jsx';
 export const colData = [
 	{ 
 		label: 'Name',
-		style: css_dashboard.table.columns.primary,
 		cellProp: 'name', 
 		sortable: true, 
 		searchable: true, 
 	},
 	{ 
 		label: 'Roster Size', 
-		style: css_dashboard.table.columns.secondary,
 		cellProp: 'players.length', 
 		sortable: true, 
 	},
 	{ 
 		label: 'Seasons Played', 
-		style: css_dashboard.table.columns.secondary,
 		cellProp: 'seasons.length', 
 		sortable: true,
 	},
 	{ 
 		label: 'Status', 
-		style: css_dashboard.table.columns.secondary,
 		cellProp: 'currently_active',
 		sortable: true, 
 	},

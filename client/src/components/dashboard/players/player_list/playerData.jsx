@@ -12,19 +12,16 @@ export const colData = [
 	{ 
 		label: 'Last Name',
 		cellProp: 'last_name', 
-		style: css_dashboard.table.columns.secondary,
 		sortable: true,
 		searchable: true,
 	},
 	{
 		label: 'First Name',
-		style: css_dashboard.table.columns.secondary,
 		cellProp: 'first_name',
 		sortable: true,
 	},
 	{ 
 		label: 'Email', 
-		style: css_dashboard.table.columns.secondary,
 		cellProp: 'email', 
 		sortable: true, 
 	},

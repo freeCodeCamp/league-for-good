@@ -250,12 +250,6 @@ export const css_dashboard = {
 			borderRadius: '25px',
 		},
 		columns: {
-			primary: {
-				textAlign: 'left',
-			},
-			secondary: {
-				textAlign: 'left',
-			},
 			icon: {
 				textAlign: 'left',
 				width: '10%',
@@ -267,34 +261,6 @@ export const css_dashboard = {
 				float: 'right',
 				padding: '0px',
 				margin: '0px',
-			},
-			// how to render the columns in the teams table
-			nameCol: {
-				width: '30%',
-				textAlign: 'left',
-			},
-			defaultCol: {
-				width: 50 / 3 + '%',
-				textAlign: 'left',
-			},
-			iconCol: {
-				width: '10%',
-				textAlign: 'left',
-			},
-		},
-		// render columns in the team roster table
-		roster: {
-			nameCol: {
-				width: '30%',
-				textAlign: 'left',
-			},
-			defaultCol: {
-				width: '20%',
-				textAlign: 'left',
-			},
-			iconCol: {
-				width: '10%',
-				textAlign: 'right',
 			},
 		},
 	},
