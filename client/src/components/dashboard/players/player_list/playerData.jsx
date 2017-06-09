@@ -1,7 +1,9 @@
 import React from 'react';
 import { css_dashboard } from '../../../style';
-import Link from '../../players/player_list/playerLink.jsx';
+import DetailsLink from './links/playerDetailsLink.jsx';
+import EditLink from './links/playerEditLink.jsx';
 
+import { get as getObjProp } from 'lodash';
 //All player data passed from the reducers is reformatted here so it contains the correct
 //values for the TableTemplate component
 
@@ -24,6 +26,12 @@ export const colData = [
 		sortable: true, 
 	},
 	{
+		label: 'Edit',
+		style: css_dashboard.table.roster.iconCol,
+		cellProp: 'link',
+		action: 'editPlayer',
+	},	
+	{
 		label: 'View',
 		style: css_dashboard.table.roster.iconCol,
 		action: 'viewPlayer',
@@ -31,12 +39,24 @@ export const colData = [
 	},
 ];
 
+const Link = ({action , player}) => {
+	if (action === 'editPlayer') {
+		return <EditLink player={player}/>;
+	}
+	else {
+		return <DetailsLink {...player}/>;
+	}
+}
+
 // Get the value for the cell
 function getCellValue(player, prop, action) {
-	if (prop === 'link') {
-		return <Link {...player} />;
+	if (prop !== 'link') {
+		return getObjProp(player, prop);
 	}
-	return player[prop];
+	else {
+		const linkProps = { player, action };
+		return <Link {...linkProps} />;
+	}
 }
 
 // Massage the data for the table body

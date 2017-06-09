@@ -49,14 +49,8 @@ const playerLinks = [
 	},
 	{
 		description: 'Assign a player to a team.',
-		label: 'AssignPlayer',
+		url: LINK.PLAYER_ASSIGN_FORM,
 		icon: <AssignmentIcon />,
-	},
-	{
-		description: 'Update a players contact information.',
-		label: 'UpdatePlayer',
-		icon: <UpdateIcon />,
-		url: LINK.PLAYER_UPDATE_FORM,
 	},
 ];
 

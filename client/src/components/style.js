@@ -27,14 +27,12 @@ export const common = {
 			color: theme.textPrimaryColor,
 			fontWeight: 500,
 		},
-		style: {
-			marginTop: '30px',
-		},
+		style: { marginTop: '30px' },
 		backgroundColor: theme.defaultPrimaryColor,
 	},
 	formRow: {
- 		display: 'flex',
-  	justifyContent: 'space-around',
+ 		display:'flex',
+  	justifyContent:'space-around',
 	},	
 	form: {
 		width: '80%',

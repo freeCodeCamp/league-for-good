@@ -12,7 +12,7 @@ const Teams = mongoose.model('team');
 //Add a player into the database 
 const addPlayerToLeague = (req, res) => {
 	const { teams } = req.body;
-	const teamId = teams[0] ? teams[0].teamId : null;
+	const teamId = teams[0] && teams[0].teamId ? teams[0].teamId : null;
 
 	Player.create( req.body )
 		.then(newPlayer => {
@@ -47,16 +47,32 @@ const getPlayer = (req, res) => {
 
 const fetchList = (req, res) => {
 	const { leagueId } = req.params;
-
-	Player.find({ leagues: { $in: [leagueId] }})
-		// .limit(30)
+	const query = { leagues: { $in: [leagueId] }};
+	const select = {} 
+	Player.find(query)
 		.exec()
 		.then(players => res.send(players))
+}
+
+const addPlayerToTeam = (req, res) => {
+	const { playerId, team } = req.body;
+
+	Player.findByIdAndUpdate(playerId, {$push: { teams: team }})
+		.exec()
+		.then(() => {
+			Teams.findByIdAndUpdate(team.teamId, { $addToSet: { players: playerId }})
+				.exec()
+				.then(() => res.send("Successfully assigned player to team."))
+				.catch( err => { throw err })
+		})
+		.catch(err => res.send(String(err)))
+
 }
 
 Router.route('/list/:leagueId').get(fetchList);
 Router.route('/add').post(addPlayerToLeague);
 // Router.route('/getAllPlayers').get(getAllPlayers);
 Router.route('/details/:playerId').get(getPlayer);
+Router.route('/assign').put(addPlayerToTeam);
 
 module.exports = Router;
