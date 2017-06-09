@@ -9,9 +9,11 @@ import BackArrow from 'material-ui/svg-icons/navigation/arrow-back';
 
 const Player = ({ player, history }) => {
 
-	if (!player) return(
+	if (!player) {
+		return (
 			<h2>...Loading</h2>
-	);
+		);
+	}
 
 	return (
 		<div style={css_content.body}>
