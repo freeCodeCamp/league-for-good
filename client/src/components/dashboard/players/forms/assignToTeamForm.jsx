@@ -7,6 +7,9 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { assignPlayer, openSnackbar } from '../../../../actions/index';
 import { css_content, css_dashboard } from '../../../style';
 
+import { normalizeJerseyNum } from './utils/normalize';
+import validate  from './utils/assignPlayerValidation';
+
 let AssignPlayerForm = props => {
 	const {teams, players, handleSubmit } = props;
 	return (
@@ -18,7 +21,7 @@ let AssignPlayerForm = props => {
 			>	
 				<div style={css_dashboard.formRow}>	
 					<Field 
-						name="team.teamId"
+						name="teamId"
 						component={AutoComplete}
 						filter={AutoComplete.caseInsensitiveFilter}
 						floatingLabelText="Team"
@@ -41,12 +44,13 @@ let AssignPlayerForm = props => {
 						component={TextField}
 						type="number"
 						floatingLabelText="Jersey Number"
-						name="team.jersey_num"
+						name="jersey_num"
+						normalize={normalizeJerseyNum}
 					/>
 					<Field
 						component={TextField}
 						floatingLabelText="Position(s)"
-						name="team.position"
+						name="position"
 					/>
 				</div>
 				
@@ -72,4 +76,5 @@ export default reduxForm({
 	form: 'AssignPlayerForm',
 	onSubmit: assignPlayer, 
 	onSubmitSuccess: openSnackbar, 
+	validate,
 })(AssignPlayerForm)

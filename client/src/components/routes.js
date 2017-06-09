@@ -4,7 +4,7 @@
 export const PLAYER_LIST = '/dashboard/players';
 export const PLAYER_DETAIL ='/dashboard/players/profile/:playerId';
 export const PLAYER_ADD_FORM = '/dashboard/players/create';
-export const PLAYER_UPDATE_FORM = '/dashboard/players/update';
+export const PLAYER_UPDATE_FORM = '/dashboard/players/update/:playerId';
 export const PLAYER_ASSIGN_FORM = '/dashboard/players/assign';
 
 //Team Routes

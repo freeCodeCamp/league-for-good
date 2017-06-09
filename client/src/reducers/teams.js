@@ -1,4 +1,11 @@
-import { TEAM_MANAGE_VIEW, CREATE_TEAM, REMOVE_TEAM, UPDATE_TEAM, SELECT_TEAMS } from '../actions/types';
+import { 
+	ADD_PLAYER_TO_TEAM, 
+	CREATE_TEAM, 
+	REMOVE_TEAM, 
+	UPDATE_TEAM, 
+	SELECT_TEAMS, 
+} from '../actions/types';
+
 import { findIndex } from 'lodash';
 
 //Callback passed to the filter function to remove a team
@@ -32,7 +39,7 @@ function addPlayerToTeam(teams, {player, teamId}){
 //Team State - returns an Array of Objects 
 	
 export default function(state = [], action) {
-	const { list, type } = action;
+	const { payload, type } = action;
 
 	switch(type) {
 	
@@ -45,8 +52,8 @@ export default function(state = [], action) {
 	case UPDATE_TEAM:
 		return replaceTeam(state, action.updatedTeam);
 
-	case 'ADD_PLAYER_TO_TEAM':
-		return addPlayerToTeam( state, action.player );	
+	case ADD_PLAYER_TO_TEAM:
+		return addPlayerToTeam(state, payload);	
 	
 	case REMOVE_TEAM:
 		return state.filter( removeId(action.removedTeam));

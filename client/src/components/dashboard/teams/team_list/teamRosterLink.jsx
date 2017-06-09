@@ -19,7 +19,7 @@ const RosterLink = props => {
 	return(
 		<Link to={url}>
 			<IconButton 
-				onTouchTap={() => fetchRoster(team)}
+				// onTouchTap={() => fetchRoster(team)}
 				hoveredStyle={css_dashboard.table.iconHover}
 			>
 				<ListIcon />

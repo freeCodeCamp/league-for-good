@@ -1,6 +1,6 @@
 import React from 'react';
 import { css_dashboard } from '../../../style';
-
+import { get as getObjProp } from 'lodash';
 //All player data passed from the reducers is reformatted here so it contains the correct
 //values for the TableTemplate component
 
@@ -13,12 +13,12 @@ export const colData = [
 	},	
 	{ 
 		label: '#', 
-		cellProp: 'jersey_num', 
+		cellProp: 'team.jersey_num', 
 		sortable: true, 
 	},
 	{ 
 		label: 'Position', 
-		cellProp: 'position', 
+		cellProp: 'team.position', 
 		sortable: true,
 	},
 	{ 
@@ -43,8 +43,7 @@ const getPlayerTableData = (players) => {
 		//map each cell
 		return colData.map( ({cellProp, ...col}) => (
 			{
-				value: player[cellProp],
-				
+				value: getObjProp(player, cellProp),
 			}
 		));
 	});

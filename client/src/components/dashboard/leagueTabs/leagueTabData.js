@@ -52,12 +52,6 @@ const playerLinks = [
 		url: LINK.PLAYER_ASSIGN_FORM,
 		icon: <AssignmentIcon />,
 	},
-	{
-		description: 'Update a players contact information.',
-		label: 'UpdatePlayer',
-		icon: <UpdateIcon />,
-		url: LINK.PLAYER_UPDATE_FORM,
-	},
 ];
 
 // Links for managing general league settings

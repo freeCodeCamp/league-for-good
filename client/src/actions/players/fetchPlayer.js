@@ -4,7 +4,7 @@ import { rootURL } from '../../../globals';
 
 
 
-// Get a players info
+// Get more detailed player info including stats
 export function fetchPlayer(player) {
 		
 	const url = `${rootURL}/player/details/${player._id}`;

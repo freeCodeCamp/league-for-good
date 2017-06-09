@@ -1,23 +1,20 @@
 import axios from 'axios';
-import { 
-	UPDATE_TEAM, 
-	
-	ADD_PLAYER_TO_ROSTER,
-	ADD_PLAYER_TO_TEAM, 
-} from '../types';
-
+import { ADD_PLAYER_TO_TEAM } from '../types';
 import { rootURL } from '../../../globals';
-
-//Flag for updating the currently loaded roster to show the added player
-function rosterShouldUpdate( team, roster ){
-	return roster && roster._id === team.teamId;
-}
 
 export function assignPlayer( form, dispatch, props ) {
 
-	axios.put(`${rootURL}/player/assign`, form)
+	const { playerId, ...team } = form;
+	const { teamId } = team;
+	const reqBody = { playerId, team };
+
+	if (!playerId || !teamId ) return;
+
+	axios.put(`${rootURL}/player/assign`, reqBody)
 		.then(({data}) => {
-			console.log(data)
-		})
-		.catch(err => console.error(err))
+			dispatch({ 
+				type: ADD_PLAYER_TO_TEAM, 
+				payload: { player: playerId, teamId },
+			});
+		});
 }

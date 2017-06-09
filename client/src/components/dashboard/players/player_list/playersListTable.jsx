@@ -1,7 +1,7 @@
 import React from 'react';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
 
-import getRowData, { colData } from './playerData';
+import getRowData, { colData } from './playerData.jsx';
 
 import { connect } from 'react-redux';
 

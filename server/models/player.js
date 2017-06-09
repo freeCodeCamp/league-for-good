@@ -74,6 +74,11 @@ PlayerSchema.virtual('full_name').get(function () {
   return `${this.first_name} ${this.last_name}`;
 });
 
+//TODO -- virtual should return team config relative to league and season
+PlayerSchema.virtual('team').get(function () {
+  return this.teams[0];
+});
+
 
 PlayerSchema.plugin(capitalize, { fields });
 
