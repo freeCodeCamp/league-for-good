@@ -17,9 +17,9 @@ import { Route } from 'react-router-dom';
 // and renders the appropriate panel in response
 const PanelViewWrapper = props => {
 	const { view, league, teams, roster } = props;
-	return(
-		<noScript/>
-	)
+	return (
+		<noScript/>;
+	);
 		// switch (view) {
 							
 		// case 'AddStaff':

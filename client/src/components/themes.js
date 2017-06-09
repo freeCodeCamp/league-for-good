@@ -17,21 +17,15 @@ const themeValues = {
 		secondaryTextColor: '#757575',
 		dividerColor: '#BDBDBD',
 	},*/
-	tealPink: {
-		primary1Color: '#009688',	// default
-		primary2Color: '#00675b',	// dark
-		primary3Color: '#52c7b8',	// light
-		accent1Color: '#ff4081',
-		accent2Color: '#c60055',
-		accent3Color: '#ff79b0',
-		textColor: '#000000',
-		alternateTextColor: '#ffffff',
-		canvasColor: white,
-		borderColor: '#bdbdbd',
-		disabledColor: fade(darkBlack, 0.3),
-		pickerHeaderColor: '#009688',	// should be same as primary1Color
-		clockCircleColor: fade(darkBlack, 0.07),
-		shadowColor: fullBlack,
+	teal: {
+		primary1Color: '#9fa8da',	// default
+		primary2Color: '#6f79a8',	// dark
+		primary3Color: '#d1d9ff',	// light
+		accent1Color: '#bdbdbd',	// default
+		accent2Color: '#8d8d8d',	// dark
+		accent3Color: '#efefef',	// light
+		pickerHeaderColor: '#9fa8da',	// should be same as primary1Color
+		canvasColor: '#d1d9ff',
 	},
 
 	/*purpleAmber: {
@@ -44,21 +38,11 @@ const themeValues = {
 		secondaryTextColor: '#757575',
 		dividerColor: '#BDBDBD',
 	},*/
-	purpleAmber: {
+	purple: {
 		primary1Color: '#673AB7',	// default
 		primary2Color: '#512DA8',	// dark
 		primary3Color: '#D1C4E9',	// light
-		accent1Color: '#FFC107',
-		accent2Color: '#c79100',
-		accent3Color: '#fff350',
-		textColor: '#000000',
-		alternateTextColor: '#ffffff',
-		canvasColor: white,
-		borderColor: '#bdbdbd',
-		disabledColor: fade(darkBlack, 0.3),
 		pickerHeaderColor: '#673AB7',	// should be same as primary1Color
-		clockCircleColor: fade(darkBlack, 0.07),
-		shadowColor: fullBlack,
 	},
 
 	bluegreyIndigo: {
@@ -73,7 +57,21 @@ const themeValues = {
 	},
 };
 
-const defaultTheme = 'tealPink';
+const defaultTheme = 'teal';
+
+const textMixin = {
+	textColor: '#000000',
+	alternateTextColor: '#ffffff',
+};
+
+// extra colors required for the palette
+const miscMixin = {
+	//canvasColor: white,
+	borderColor: '#bdbdbd',
+	disabledColor: fade(darkBlack, 0.3),
+	clockCircleColor: fade(darkBlack, 0.07),
+	shadowColor: fullBlack,
+};
 
 // mixin for warning color to the user
 const warningMixin = {
@@ -115,6 +113,6 @@ const themes = (function(themeValues, defaultTheme, ...mixins) {
 			return themeValues;
 		},
 	};
-})(themeValues, defaultTheme, warningMixin);
+})(themeValues, defaultTheme, textMixin, miscMixin, warningMixin);
 
 export default themes;
