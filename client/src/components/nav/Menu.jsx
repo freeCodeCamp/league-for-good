@@ -17,7 +17,7 @@ const Menu = props => {
     const { open, leagues, selectLeague, openModal } = props;
  
     return (
-    	<Drawer open={open}>
+    	<Drawer open={open} width={"15%"}>
 			<List style={css_menu.drawer.list}>
 				{
 					leagues.map((league,i) => (
