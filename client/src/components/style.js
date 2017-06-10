@@ -322,7 +322,7 @@ export const css_modal = {
 		width: '90%',
 		maxWidth: 800,
 	},
-	dialogBody: {  
+	dialogBody: {
 		paddingBottom: 0,
 	},
 	title: {
@@ -331,5 +331,9 @@ export const css_modal = {
 		color: theme.textPrimaryColor,
 		fontWeight: 400,
 	},
-	raisedButton: common.raisedButton,
+	raisedButton: {
+		style: Object.assign({}, common.raisedButton.style, { marginRight: '10px', marginBottom: '10px' }),
+		label: common.raisedButton.label,
+		backgroundColor: common.raisedButton.backgroundColor,
+	},
 };
