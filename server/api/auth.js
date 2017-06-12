@@ -10,12 +10,12 @@ function logInUser(req,res){
 		if(err) throw err;
 		res.redirect('/');
 	});
-};
+}
 
 function logOutUser(req, res){
 	req.logout();
 	res.status(200).send('User logged out');
-};
+}
 
 //This is called when the user loads up the page to get 
 //all of their teams and leagues if they have an authenticated session
@@ -29,10 +29,10 @@ function fetchUserAndLeagues(req, res, next){
 		.populate('teams')
 		.exec()
 		.then(leagueInfo => { 
-			res.send({user, leagueInfo, loggedIn: true })
+			res.send({user, leagueInfo, loggedIn: true });
 		})
 		.catch((err) => res.send(err));
-};
+}
 
 function handleAuthFailure(req,res){
 	return res.send({user: null, loggedIn: false});

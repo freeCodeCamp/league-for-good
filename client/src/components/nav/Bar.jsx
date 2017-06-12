@@ -12,8 +12,8 @@ const ThemeIcon = props => {
 			themeMenuOpen={props.themeMenuOpen} 
 			changeTheme={props.changeTheme}
 		/>
-	)
-}
+	);
+};
 
 const Bar = props => {
 	const { toggleMenu, ...iconProps } = props;

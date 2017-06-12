@@ -71,11 +71,11 @@ class CreateLeagueForm extends Component {
 const selector = formValueSelector('CreateLeagueForm');
 
 //Decorate component with redux-form
-CreateLeagueForm = reduxForm({ form: 'CreateLeagueForm', validate })(CreateLeagueForm)
+CreateLeagueForm = reduxForm({ form: 'CreateLeagueForm', validate })(CreateLeagueForm);
 
 // Callback function passed to the connect function to access the form state
 function mapFormStateToProps(state){
-	return {SelectedSportType: selector(state, 'sportType')}
+	return {SelectedSportType: selector(state, 'sportType')};
 }
 
 function mapDispatchToProps(dispatch){

@@ -18,35 +18,35 @@ class TeamTable extends Component {
 		super(props);
 
 		this.state = {
-  			filterValue: "all",
-  		}
-  	}
+			filterValue: 'all',
+		};
+	}
 
-  	handleChange = (e, i, filterValue) => {
-  		this.setState({ filterValue });
-  	}
+	handleChange = (e, i, filterValue) => {
+		this.setState({ filterValue });
+	}
 
     // Filter the team list array with params in state
-    formatTeams() {
-    	const { filterValue } = this.state;
-    	let { teams } = this.props;
-      
-    	return teams.filter(team => {
-    		let filterFlag;
+	formatTeams() {
+		const { filterValue } = this.state;
+		let { teams } = this.props;
+		
+		return teams.filter(team => {
+			let filterFlag;
 
-    		if (filterValue === 'all') {
-    			filterFlag = true;
-    		}
-    		else if (filterValue === 'active') {
-    			filterFlag = team.currently_active;
-    		}
-    		else {
-    			filterFlag = !team.currently_active;
-    		}
+			if (filterValue === 'all') {
+				filterFlag = true;
+			}
+			else if (filterValue === 'active') {
+				filterFlag = team.currently_active;
+			}
+			else {
+				filterFlag = !team.currently_active;
+			}
 
-    		return filterFlag;
-    	});     
-    }
+			return filterFlag;
+		});     
+	}
 
 	render() {
 		
@@ -61,7 +61,7 @@ class TeamTable extends Component {
 				>
 					<MenuItem value="all" primaryText="All Teams" />
 					<MenuItem value="active" primaryText="Active Teams" />
-				  <MenuItem value="archived" primaryText="Archived Teams" />
+					<MenuItem value="archived" primaryText="Archived Teams" />
 				</DropDownMenu>
 				<TableTemplate 
 					headers={colData}

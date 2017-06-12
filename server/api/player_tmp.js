@@ -22,20 +22,20 @@ const createPlayers = teams => {
 				first_name : faker.name.firstName(),
 				last_name : faker.name.lastName(),
 				email : faker.internet.email(),
-			  phone_num : faker.phone.phoneNumber(),
+				phone_num : faker.phone.phoneNumber(),
 				leagues: [team.leagueId],
 				teams : [{
 					teamId: team._id,
 					position: ['Goalie'],
-					jersey_num: random(1, 99)
-				}]
+					jersey_num: random(1, 99),
+				}],
 			})
 			.then(player => Teams.update({_id:team._id}, {$push: {players: player}}))
-			.catch(err => { throw err})
+			.catch(err => { throw err;});
 		}		
-	})
-	Promise.resolve("Great job");
-}
+	});
+	Promise.resolve('Great job');
+};
 
 
 Router.route('/seed')
@@ -45,13 +45,13 @@ Router.route('/seed')
 			.exec()
 			.then(createPlayers)
 			.then(data => res.redirect('/player/seed1'))
-			.catch(err => res.send({err}))
-})
+			.catch(err => res.send({err}));
+	});
 Router.route('/seed1')
 	.get((req,res) => {
 	
 		Player.find({})
 			.exec()
 			.then(data => res.send(data))
-			.catch(err => res.send({err}))
-})	
+			.catch(err => res.send({err}));
+	});	

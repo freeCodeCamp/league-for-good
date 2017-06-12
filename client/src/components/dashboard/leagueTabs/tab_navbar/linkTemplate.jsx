@@ -9,11 +9,11 @@ import { Link, withRouter } from 'react-router-dom';
 
 const LinkTemplate = props => {
 	
-		const { description, url, leagueId, icon, location: {pathname}} = props;
+	const { description, url, leagueId, icon, location: {pathname}} = props;
 		
-		const { iconNavbar: { iconButton }} = css_content
+	const { iconNavbar: { iconButton }} = css_content;
 		
-		const linkIsActive = url && pathname.match(url) && pathname !== '/dashboard'; 
+	const linkIsActive = url && pathname.match(url) && pathname !== '/dashboard'; 
 		//In progress..... Checks if icon should be highlighted
 
 	return (
@@ -30,7 +30,7 @@ const LinkTemplate = props => {
 			</IconButton>
 		</Link>
 	);
-}
+};
 
 export default withRouter(LinkTemplate);
 

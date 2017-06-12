@@ -51,6 +51,6 @@ const ThemeMenu = (props) => {
 			</IconButton>
 		</div>
 	);
-}
+};
 
 export default ThemeMenu;

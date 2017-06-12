@@ -46,7 +46,7 @@ const Link = ({action , player}) => {
 	else {
 		return <DetailsLink {...player}/>;
 	}
-}
+};
 
 // Get the value for the cell
 function getCellValue(player, prop, action) {
