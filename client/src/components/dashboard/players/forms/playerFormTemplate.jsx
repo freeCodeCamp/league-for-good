@@ -106,9 +106,9 @@ let PlayerFormTemplate = ({handleSubmit, teams, title, initialValues}) => {
 					/>
 				</div>
 				<RaisedButton
-					label="Submit"
-					fullWidth={true}
-					primary={true}
+					label="Add Player"
+					labelStyle={css_dashboard.raisedButton.label}
+					backgroundColor={css_dashboard.raisedButton.backgroundColor}
 					style={css_dashboard.raisedButton.style}
 					type="submit"
 				/>

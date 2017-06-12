@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 
 import  * as Links  from '../../routes';
 
-import PlayerList from './player_list/playersListTable.jsx';
+import PlayerList from './player_list/playerList.jsx';
 import PlayerDetails from '../players/player_list/playerDetails.jsx';
 import PlayerForm from './forms/playerFormTemplate.jsx';
 import AssignPlayer from './forms/assignToTeamForm.jsx';

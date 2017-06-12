@@ -12,23 +12,25 @@ import { css_appBar as css } from '../style';
 //
 // return: an array of components representing each theme as an icon
 function generateThemeIcons(themeList, themeNames, changeTheme) {
-	const themeIcons = themeNames.map((themeName, i) => {
-		return (
-			<i style={Object.assign(
-					{},
-					css.themeMenuItem,
-					{
-						backgroundColor: themeList[themeName].primary1Color,
-						border: '2px solid ' + themeList[themeName].accent1Color
-					})
-				}
-				key={i}
-				onClick={changeTheme.bind(null, themeName)}
-			/>
-		);
+	const currentTheme = themes.getCurrentThemeName();
+
+	return themeNames.map((themeName, i) => {
+		if (themeName !== currentTheme) {
+			return (
+				<i style={Object.assign(
+						{},
+						css.themeMenuItem,
+						{
+							backgroundColor: themeList[themeName].primary1Color,
+							border: '2px solid ' + themeList[themeName].accent1Color
+						})
+					}
+					key={i}
+					onClick={changeTheme.bind(null, themeName)}
+				/>
+			);
+		}
 	});
-	
-	return themeIcons;
 }
 
 // Theme menu to allow users to switch themes

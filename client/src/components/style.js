@@ -20,7 +20,7 @@ export const common = {
 	},	
 	form: {
 		width: '80%',
-		margin: '0px auto 5px',
+		margin: '0px auto 15px',
 		textAlign: 'center',
 	},
 };
@@ -28,11 +28,11 @@ export const common = {
 
 // app bar component on top of window
 export const css_appBar = {
-	main:{
+	main: {
 		zIndex: 2000,
 		position: 'fixed',
 	},
-	text:{
+	text: {
 		color: theme.alternateTextColor,
 		letterSpacing: 2,
 	},
@@ -267,11 +267,13 @@ export const css_dashboard = {
 // is rendered inside css_content
 export const css_help = {
 	container: {
+		backgroundColor: theme.alternateTextColor,
 		padding: '40px',
 		textAlign: 'left',
 	},
 	title: {
 		textAlign: 'center',
+		marginBottom: '30px',
 	},
 	sectionHeader: {
 		marginTop: '10px',

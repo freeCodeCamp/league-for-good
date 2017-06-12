@@ -14,7 +14,7 @@ let AssignPlayerForm = props => {
 	const {teams, players, handleSubmit } = props;
 	return (
 		<div style={css_content.body}>
-			<h1 style={css_dashboard.title}>Assign a player to a team</h1>
+			<h1 style={css_dashboard.title}>Assign Player</h1>
 			<form 
 				style={css_dashboard.form}
 				onSubmit={handleSubmit}
@@ -53,16 +53,12 @@ let AssignPlayerForm = props => {
 						name="position"
 					/>
 				</div>
-				
-				<br/>				
 				<RaisedButton
 					type="submit"
-					label="Submit"
-
-					fullWidth={true}
-					primary={true}
+					label="Assign Player"
+					labelStyle={css_dashboard.raisedButton.label}
+					backgroundColor={css_dashboard.raisedButton.backgroundColor}
 				/>
-
 			</form>
 		</div>
 	)
