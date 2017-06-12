@@ -29,12 +29,12 @@ class Modal extends Component {
 		}		
 
 		return bindActionCreators({ 
-			handleSubmit: submitActions[onSubmit]
+			handleSubmit: submitActions[onSubmit],
 		}, dispatch); 
 	};
 
 	render() {
-	 
+	
 		const { view, open, data } = this.props;
 	
 		const { title, Children, actionLabel } = modalMapping[view];
@@ -43,7 +43,7 @@ class Modal extends Component {
 
 		const actions = [
 			<RaisedButton
-				label={actionLabel || "Submit"}
+				label={actionLabel || 'Submit'}
 				labelStyle={css_modal.raisedButton.label} 
 				backgroundColor={css_modal.raisedButton.backgroundColor}
 				style={css_modal.raisedButton.style}
@@ -55,7 +55,7 @@ class Modal extends Component {
 				backgroundColor={css_modal.raisedButton.backgroundColor}
 				style={css_modal.raisedButton.style}
 				onTouchTap={this.handleClose}
-			/>
+			/>,
 		];
 
 		return (
@@ -70,7 +70,7 @@ class Modal extends Component {
 					open={this.props.open}
 					onRequestClose={this.handleClose}
 				>
-					{!!Children ? <Children {...data} /> : null}
+					{Children ? <Children {...data} /> : null}
 				</Dialog>
 			</div>
 		);

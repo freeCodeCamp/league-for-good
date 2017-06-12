@@ -24,7 +24,7 @@ const PlayerList = props => {
 			/>
 		</div>
 	);
-}
+};
 
 function mapStateToProps({ players }){
 	/*

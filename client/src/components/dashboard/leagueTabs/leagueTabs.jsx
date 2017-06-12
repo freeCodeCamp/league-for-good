@@ -14,7 +14,7 @@ const routes = {
 	Players: <PlayerRoutes/>,
 	Seasons: <div></div>,
 	Settings: <div></div>,
-}
+};
 
 // Tabs for each section the user can manage
 const LeagueTabs = ({history, leagueId}) => {
@@ -27,7 +27,7 @@ const LeagueTabs = ({history, leagueId}) => {
 						label={tab.name}
 						key={i}
 						style={css_dashboard.tabs.tab}
-						onActive={()=> history.push(`/dashboard`)}
+						onActive={()=> history.push('/dashboard')}
 					>
 						{generateLinks(tab.links, leagueId)}
 						{routes[tab.name]}	
@@ -37,7 +37,7 @@ const LeagueTabs = ({history, leagueId}) => {
 			}
 		</Tabs>
 	);
-}
+};
 
 
 export default LeagueTabs;

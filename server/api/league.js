@@ -47,19 +47,19 @@ const createLeague = (req, res) => {
 
 const addStaff = (req, res) => {
 
-	const {name, email} = req.params
+	const {name, email} = req.params;
 
 	sendEmail({
 		organization:'NAACP',
-		recipients:`<adamhs7843521@gmail.com>`,
+		recipients:'<adamhs7843521@gmail.com>',
 		message: 'why is this not working',
-		subject: "no subject",
+		subject: 'no subject',
 	},
 		function(err, info){
-			res.send({err, info})
+			res.send({err, info});
 		}
-	)
-}
+	);
+};
 
 
 // Router.route('/fetchLeagues').get(getLeagues);

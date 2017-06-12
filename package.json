@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lintServer:js": "eslint server/ webpack.*.js --cache",
-    "lintClient:js": "eslint client/ webpack.*.js --cache",
+    "lint": "npm run lintServer:js && npm run lintClient:js",
+    "lintServer:js": "eslint server/**/*.js server/**/*.jsx webpack.*.js index.js --cache",
+    "lintClient:js": "eslint client/**/*.js client/**/*.jsx --cache",
+    "lint:autoFix": "eslint --fix server/**/*.js server/**/*.jsx client/**/*.js client/**/*.jsx",
     "dev": "nodemon index.js --ignore client"
   },
   "author": "",

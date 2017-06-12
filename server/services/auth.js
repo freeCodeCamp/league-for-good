@@ -25,23 +25,23 @@ passport.use(new GoogleStrategy({
 			.exec() 
       .then(user => {
 			
-				if (!user) {
-					const newUser = new User({
-						name:profile.displayName,
-						googleId: profile.id,
-						avatar:profile.photos[0].value,
-						email:profile.emails[0].value,
-					});
+	if (!user) {
+		const newUser = new User({
+			name:profile.displayName,
+			googleId: profile.id,
+			avatar:profile.photos[0].value,
+			email:profile.emails[0].value,
+		});
 				
-					newUser.save();
-					return cb(null, newUser);
-				}
-				else {
-					return cb(null, user);
-				}
-			})
-			.catch(err => cb(err))
+		newUser.save();
+		return cb(null, newUser);
+	}
+	else {
+		return cb(null, user);
+	}
+})
+			.catch(err => cb(err));
 	})
-)
+);
 
 

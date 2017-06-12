@@ -20,7 +20,7 @@ const addPlayerToLeague = (req, res) => {
 				Teams.findByIdAndUpdate(teamId, {$push: { players: newPlayer }})
 					.exec()
 					.then(() => res.send( newPlayer ))
-					.catch(e => res.send({ error: e }))
+					.catch(e => res.send({ error: e }));
 			}
 			else{
 				res.send(newPlayer);
@@ -48,11 +48,11 @@ const getPlayer = (req, res) => {
 const fetchList = (req, res) => {
 	const { leagueId } = req.params;
 	const query = { leagues: { $in: [leagueId] }};
-	const select = {} 
+	const select = {}; 
 	Player.find(query)
 		.exec()
-		.then(players => res.send(players))
-}
+		.then(players => res.send(players));
+};
 
 const addPlayerToTeam = (req, res) => {
 	const { playerId, team } = req.body;
@@ -62,12 +62,12 @@ const addPlayerToTeam = (req, res) => {
 		.then(() => {
 			Teams.findByIdAndUpdate(team.teamId, { $addToSet: { players: playerId }})
 				.exec()
-				.then(() => res.send("Successfully assigned player to team."))
-				.catch( err => { throw err })
+				.then(() => res.send('Successfully assigned player to team.'))
+				.catch( err => { throw err; });
 		})
-		.catch(err => res.send(String(err)))
+		.catch(err => res.send(String(err)));
 
-}
+};
 
 Router.route('/list/:leagueId').get(fetchList);
 Router.route('/add').post(addPlayerToLeague);

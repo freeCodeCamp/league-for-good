@@ -24,7 +24,7 @@ const PlayerLink = props => {
 			</Link>
 		</div>
 	);
-}
+};
 
 
 function mapDispatchToProps(dispatch){

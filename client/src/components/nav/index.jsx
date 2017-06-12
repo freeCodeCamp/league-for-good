@@ -10,7 +10,7 @@ import {
 	openModal, 
 	selectTeams, 
 	changeTheme, 
-	fetchPlayerList 
+	fetchPlayerList, 
 } from '../../actions/index';
 
 

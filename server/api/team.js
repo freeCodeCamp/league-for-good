@@ -13,7 +13,7 @@ const createTeam = (req, res) => {
 
 	const newTeam = new Team({
 		name: req.body.name,
-		league_id: league
+		league_id: league,
 	});
 
 	newTeam.save()
@@ -42,8 +42,8 @@ const updateTeam = (req, res) => {
 	Team.update(query, req.body, {new:true, upsert:true})
 		.exec()
 		.then(() => res.send(req.body))
-		.catch(error => res.status(500).json({ error: error}))
-}
+		.catch(error => res.status(500).json({ error: error}));
+};
 
 const showRoster = (req, res) => {
 	//TODO - add search params for seasonId
@@ -53,8 +53,8 @@ const showRoster = (req, res) => {
 		.exec()
 		.then(buildRoster)
 		.then(data => res.send(data))
-		.catch(err => res.send(String(err)))
-}
+		.catch(err => res.send(String(err)));
+};
 
 Router.route('/roster/:teamId').get(showRoster);
 

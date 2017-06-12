@@ -2,7 +2,7 @@
 function capitalizeWord(acc, val, index){
 	const padding = index > 0 ? ' ' : '';
 	return acc + padding + val.charAt(0).toUpperCase() + val.slice(1);
-};
+}
 
 
 //Capitalize the first letter in each word of a string
@@ -28,7 +28,7 @@ module.exports = function(schema, {fields}){
 			
 			if( self[field] ){
 				self[field] = toTitleCase(self[field]);
-			}; 
+			} 
 		});
 
 		return next();

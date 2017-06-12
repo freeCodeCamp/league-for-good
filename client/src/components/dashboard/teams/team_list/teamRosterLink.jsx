@@ -26,7 +26,7 @@ const RosterLink = props => {
 			</IconButton>
 		</Link>
 	);
-}
+};
 
 function mapDispatchToProps(dispatch){
 	return bindActionCreators({ fetchRoster }, dispatch);

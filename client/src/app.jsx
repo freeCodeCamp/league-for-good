@@ -29,7 +29,7 @@ const App = props => {
 			</Router>
 		</MuiThemeProvider>
 	);
-}
+};
 
 
 function mapStateToProps(state){
