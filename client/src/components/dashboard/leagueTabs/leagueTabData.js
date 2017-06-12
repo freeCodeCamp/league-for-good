@@ -32,7 +32,7 @@ const teamLinks = [
 // Links that the user can access to modify players
 const playerLinks = [
 	{
-		description: 'View a list of all players',
+		description: 'View a list of all players.',
 		label: 'ViewPlayers',
 		icon: <ListIcon />,
 		url : LINK.PLAYER_LIST,

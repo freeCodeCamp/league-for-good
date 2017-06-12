@@ -25,7 +25,7 @@ class CreateLeagueForm extends Component {
 		createLeague(formBody, redirectMethod);	
 	}
 
-	render(){
+	render() {
 		const {error, handleSubmit, change, SelectedSportType} = this.props;
 
 		return (
