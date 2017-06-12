@@ -5,7 +5,7 @@ import {
 	TableHeader,
 	TableHeaderColumn,
 	TableRow,
-	TableRowColumn
+	TableRowColumn,
 } from 'material-ui/Table';
 
 import TextField from 'material-ui/TextField';
@@ -53,7 +53,7 @@ const SearchTable = (props) => {
 			hintText={<SearchIcon />}
 			underlineFocusStyle={css_dashboard.table.searchUnderline}
 			style={css_dashboard.table.search}
-			floatingLabelText={"Search " + props.searchLabel}
+			floatingLabelText={'Search ' + props.searchLabel}
 			floatingLabelFixed={true}
 			onChange={props.onSearch}
 		/>
@@ -118,7 +118,7 @@ const renderBody = (rows) => {
 				);
 			})
 	);
-}
+};
 
 // column header with sorting icons
 // when clicked will sort columns with asc, desc, or no order
@@ -126,7 +126,7 @@ const ColumnHeaderChild = (props) => {
 	let arrowIcon = <noScript />;
 
 	// If the column is sortable, determine appropriate icon
-	if (!!props.sortable) {
+	if (props.sortable) {
 		let columnSorted = props.colIndex === props.sortColumnIndex;
 		let iconColor = columnSorted ?
 			css_dashboard.table.sortArrowActiveColor :
@@ -159,7 +159,7 @@ const ColumnHeaderChild = (props) => {
 			labelPosition="before"
 			disabled={!props.sortable}
 			disableTouchRipple={true}
-			onTouchTap={() => { props.onClick(props.colIndex) }}
+			onTouchTap={() => { props.onClick(props.colIndex); }}
 		/>
 	);
 };
@@ -175,7 +175,7 @@ class TableTemplate extends Component {
 		css_dashboard.table.defaultCol.width = 90;
 		
 		this.props.headers.forEach((header, i) => {
-			if (!!header.searchable) {
+			if (header.searchable) {
 				searchableColumnIndex = i;
 				searchableColumnLabel = header.label;
 			}
@@ -199,7 +199,7 @@ class TableTemplate extends Component {
 			let searchableColumnLabel = '';
 			
 			this.props.headers.forEach((header, i) => {
-				if (!!header.searchable) {
+				if (header.searchable) {
 					searchableColumnIndex = i;
 					searchableColumnLabel = header.label;
 				}
@@ -221,9 +221,9 @@ class TableTemplate extends Component {
 		newValue = newValue.trim();
 		let rowValue = '';
 		let searchRows = this.props.rows.filter((row) => {
-				rowValue = row[this.state.searchableColumnIndex].value.toLowerCase();
-				return rowValue.indexOf(newValue.toLowerCase()) === 0;
-			}, this);
+			rowValue = row[this.state.searchableColumnIndex].value.toLowerCase();
+			return rowValue.indexOf(newValue.toLowerCase()) === 0;
+		}, this);
 		
 		this.setState({
 			searchTerm: newValue,
@@ -265,7 +265,7 @@ class TableTemplate extends Component {
 		// else, the sorting has been reset to the original state
 		else {
 			// if the user is searching, return to the original state of searched rows
-			if (!!this.state.searchTerm) {
+			if (this.state.searchTerm) {
 				sortedRows = Array.from(this.state.searchRows);
 			}
 			else {
@@ -299,7 +299,7 @@ class TableTemplate extends Component {
 				return 1;
 			}
 			return 0;
-		}
+		};
 	}
 	
 
@@ -307,16 +307,16 @@ class TableTemplate extends Component {
 		return (
 			<div>
 				{
-					!!this.props.title ? 
+					this.props.title ? 
 					<TableTitle title={this.props.title} /> :
-					""
+					''
 				}
 				{
 					this.state.searchableColumnIndex !== -1 ?				
 					<SearchTable 
 						onSearch={this.onSearch.bind(this)}
 						searchLabel={this.state.searchableColumnLabel}
-					/> : ""
+					/> : ''
 				}
 				<Table>
 					<TableHeader 

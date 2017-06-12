@@ -11,8 +11,8 @@ import validate from './utils/validation';
 
 
 const AddTeamForm = props => {	
-		const { handleSubmit } = props;
-		return (
+	const { handleSubmit } = props;
+	return (
 			<div style={css_content.body}>
 				<h1 style={css_dashboard.title}>Add Team</h1>
 				<h6 style={css_dashboard.warning}>* = Required</h6>
@@ -37,8 +37,8 @@ const AddTeamForm = props => {
 					/>
 				</form>
 			</div>
-		);
-	}
+	);
+};
 
 
 

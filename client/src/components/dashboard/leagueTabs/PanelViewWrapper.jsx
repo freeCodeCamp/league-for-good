@@ -18,7 +18,7 @@ import { Route } from 'react-router-dom';
 const PanelViewWrapper = props => {
 	const { view, league, teams, roster } = props;
 	return (
-		<noScript/>;
+		<noScript/>
 	);
 		// switch (view) {
 							

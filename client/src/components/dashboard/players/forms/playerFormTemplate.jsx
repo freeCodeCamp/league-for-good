@@ -12,7 +12,6 @@ import { normalizeJerseyNum as normalize } from './utils/normalize';
 import validate from './utils/playerFormValidation';
 
 let PlayerFormTemplate = ({handleSubmit, teams, title, initialValues}) => {
-	console.log(initialValues);
 	return (
 		<div style={css_content.body}>
 			<h1 style={css_dashboard.title}>{title}</h1>
@@ -87,7 +86,7 @@ let PlayerFormTemplate = ({handleSubmit, teams, title, initialValues}) => {
 						filter={AutoComplete.caseInsensitiveFilter}
 						floatingLabelText="Team"
 						dataSource={teams}
-						dataSourceConfig={{text:"name", value:"_id"}}
+						dataSourceConfig={{text:'name', value:'_id'}}
 						maxSearchResults={5}
 					/>
 					<Field
@@ -114,8 +113,8 @@ let PlayerFormTemplate = ({handleSubmit, teams, title, initialValues}) => {
 				/>
 			</form>
 		</div>
-	)
-}
+	);
+};
 
 function mapStateToProps({teams}, ownProps){
 	//flag for rendering props relative to Update form or Add player form

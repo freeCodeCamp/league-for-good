@@ -8,8 +8,8 @@ import { addStaffMember, openSnackbar } from '../../../../actions/index';
 import { css_content, css_dashboard } from '../../../style';
 
 const AddStaffForm = props => {	
-		const {handleSubmit} = props;
-		return (
+	const {handleSubmit} = props;
+	return (
 			<div >
 				<h1 >Grant login access to a staff member</h1>
 				<h6 >Requires a Gmail Account</h6>
@@ -33,8 +33,8 @@ const AddStaffForm = props => {
 					/>
 				</form>
 			</div>
-		);
-	}
+	);
+};
 
 
 

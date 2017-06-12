@@ -9,11 +9,11 @@ import { Link, withRouter } from 'react-router-dom';
 
 const LinkTemplate = props => {
 	
-		const { description, url, leagueId, icon, location: {pathname}} = props;
+	const { description, url, leagueId, icon, location: {pathname}} = props;
 		
-		const { iconNavbar: { iconButton }} = css_content
+	const { iconNavbar: { iconButton }} = css_content;
 		
-		const linkIsActive = url && pathname.match(url) && pathname !== '/dashboard'; 
+	const linkIsActive = url && pathname.match(url) && pathname !== '/dashboard'; 
 		//In progress..... Checks if icon should be highlighted
 
 	return (
@@ -23,14 +23,14 @@ const LinkTemplate = props => {
 				tooltip={description}
 				touch={true}
 				style={iconButton.style}
-				iconStyle={ linkIsActive ? iconButton.iconStyle : {iconHoverColor: "#fff"}}
+				iconStyle={ linkIsActive ? iconButton.iconStyle : {iconHoverColor: '#fff'}}
 				hoveredStyle={iconButton.hoveredStyle}
 			>
 				{icon}
 			</IconButton>
 		</Link>
 	);
-}
+};
 
 export default withRouter(LinkTemplate);
 

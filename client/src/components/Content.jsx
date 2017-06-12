@@ -26,7 +26,7 @@ const Content = props => {
 			<SnackBar />
 		</div>
 	);
-}
+};
 
 
 export default Content;

@@ -19,6 +19,6 @@ const PlayerEditLink = ({ player, ...props }) => {
 				</IconButton>
 			</Link>
 	);
-}
+};
 
 export default PlayerEditLink;

@@ -56,7 +56,7 @@ else {
 		res.json({user:req.user});
 	});
 	app.get('/logout', (req,res) => {
-		req.logOut()
+		req.logOut();
 		res.redirect('/');
 	});
 }

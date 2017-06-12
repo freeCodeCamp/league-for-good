@@ -26,7 +26,7 @@ let AssignPlayerForm = props => {
 						filter={AutoComplete.caseInsensitiveFilter}
 						floatingLabelText="Team"
 						dataSource={teams}
-						dataSourceConfig={{text:"name", value:"_id"}}
+						dataSourceConfig={{text:'name', value:'_id'}}
 						maxSearchResults={5}
 					/>
 					<Field
@@ -65,8 +65,8 @@ let AssignPlayerForm = props => {
 
 			</form>
 		</div>
-	)
-}
+	);
+};
 
 const mapState = ({players, teams}) => ({teams, players: players.list});
 
@@ -77,4 +77,4 @@ export default reduxForm({
 	onSubmit: assignPlayer, 
 	onSubmitSuccess: openSnackbar, 
 	validate,
-})(AssignPlayerForm)
+})(AssignPlayerForm);

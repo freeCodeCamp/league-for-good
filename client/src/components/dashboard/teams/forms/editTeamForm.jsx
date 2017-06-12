@@ -34,5 +34,5 @@ export default reduxForm({
 	form:'EditTeamForm',
 	onSubmit: updateTeam,
 	onSubmitSuccess: openSnackbar,
-	validate
+	validate,
 })(EditTeamForm);

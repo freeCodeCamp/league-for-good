@@ -6,15 +6,15 @@ class FormSubmissionSnackbar extends Component {
 	render(){
 		return (
 			<div>
-	      <Snackbar
-	  			open={this.props.open}
-	  			message={this.props.message}
-			    autoHideDuration={4000}
-			    onRequestClose={this.props.handleClose}
-	  		/>
-	    </div>
+			<Snackbar
+				open={this.props.open}
+				message={this.props.message}
+				autoHideDuration={4000}
+				onRequestClose={this.props.handleClose}
+			/>
+		</div>
 		);
-  }
+	}
 }
 
 function mapStateToProps(state){

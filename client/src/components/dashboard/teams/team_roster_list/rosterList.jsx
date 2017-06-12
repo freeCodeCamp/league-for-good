@@ -38,7 +38,7 @@ const Roster = ({roster, history}) => {
 			/>
 		</div>
 	);
-}
+};
 
 function mapStateToProps(state, props){
 	const rosterSelector = getRoster();

@@ -23,17 +23,17 @@ const TeamSchema = new Schema({
 		ref: 'league',
 	},
 	staff: [
-	 	{
+		{
 			role: String,
 			name: String,
 			email: String,
 			phone_num: String,
-		}
+		},
 	],
 },
-{ 
-	collection: 'teams',
-});
+	{ 
+		collection: 'teams',
+	});
 
 TeamSchema.plugin(capitalize, {fields: ['name']});
 

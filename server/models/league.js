@@ -8,7 +8,7 @@ const LeagueSchema = new Schema(
 		name: {
 			type: String,
 			required: true,
-			trim: true
+			trim: true,
 		},
 		owner: {
 			type: Schema.Types.ObjectId,
@@ -17,7 +17,7 @@ const LeagueSchema = new Schema(
 		},
 		staff: [{
 			type: Schema.Types.ObjectId,
-			ref: 'user'		
+			ref: 'user',		
 		}],
 		sport_type: {
 			type: String,

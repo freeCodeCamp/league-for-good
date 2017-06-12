@@ -14,10 +14,10 @@ import { css_menu } from '../style';
 
 
 const Menu = props => {
-    const { open, leagues, selectLeague, openModal } = props;
+	const { open, leagues, selectLeague, openModal } = props;
  
-    return (
-    	<Drawer open={open} width={"15%"}>
+	return (
+		<Drawer open={open} width={'15%'}>
 			<List style={css_menu.drawer.list}>
 				{
 					leagues.map((league,i) => (
@@ -43,12 +43,12 @@ const Menu = props => {
 					leftIcon={<Help />}
 					containerElement={<Link to="/help" />}
 				/>
-	      <ListItem
-	        primaryText="Log out"
-	        onTouchTap={()=> openModal('logout')}
-	        leftIcon={<LogOutIcon/>}
-	      />
-	    </List>
+			<ListItem
+				primaryText="Log out"
+				onTouchTap={()=> openModal('logout')}
+				leftIcon={<LogOutIcon/>}
+			/>
+		</List>
     </Drawer>
 	);
 };
