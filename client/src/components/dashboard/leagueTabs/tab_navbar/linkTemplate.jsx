@@ -23,7 +23,7 @@ const LinkTemplate = props => {
 				tooltip={description}
 				touch={true}
 				style={iconButton.style}
-				iconStyle={ linkIsActive ? iconButton.iconStyle : {iconHoverColor: "#fff"}}
+				iconStyle={ linkIsActive ? iconButton.iconStyle : "" } 
 				hoveredStyle={iconButton.hoveredStyle}
 			>
 				{icon}

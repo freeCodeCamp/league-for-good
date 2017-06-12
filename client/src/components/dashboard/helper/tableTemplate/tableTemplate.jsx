@@ -316,7 +316,7 @@ class TableTemplate extends Component {
 						searchLabel={this.state.searchableColumnLabel}
 					/> : ""
 				}
-				<Table>
+				<Table style={css_dashboard.table.style}>
 					<TableHeader 
 						adjustForCheckbox={false}
 						displaySelectAll={false} 
