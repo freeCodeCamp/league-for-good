@@ -11,20 +11,20 @@ import { openModal } from '../../../../actions/index';
 //Returns an icon for the table - either for deleting or editing a team
 class Icon extends Component {
 	
-	constructor(props){
+	constructor(props) {
 		super(props);
 		this.onClick = this.onClick.bind(this);
 	}
 
-	onClick(team, action){
-		if(action === 'edit') {
+	onClick(team, action) {
+		if (action === 'edit') {
 			this.props.openModal('editTeam', {initialValues: {...team}});
 		}
 		else {
 			this.props.openModal('removeTeam', team);
 		}
 	}
-	render(){
+	render() {
 		const { team, action } = this.props;
 		
 		return (
@@ -40,7 +40,7 @@ class Icon extends Component {
 	}
 }
 
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ openModal }, dispatch);
 }
 

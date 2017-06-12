@@ -72,7 +72,7 @@ const Headers = (props) => {
 						<TableHeaderColumn 
 							key={i}
 							style={header.style ||
-								css_dashboard.table.defaultCol}>
+								css_dashboard.table.columns.defaultCol}>
 							<ColumnHeaderChild
 								label={header.label}
 								onClick={props.onSort}
@@ -104,7 +104,7 @@ const renderBody = (rows) => {
 								return (
 									<TableRowColumn 
 										style={rowData.style || 
-											css_dashboard.table.defaultCol}
+											css_dashboard.table.columns.defaultCol}
 										key={i}
 									>
 										{ i === 0 ?  <strong>{rowData.value}</strong> 
@@ -171,8 +171,6 @@ class TableTemplate extends Component {
 		super(props);
 		let searchableColumnIndex = -1;
 		let searchableColumnLabel = '';
-		// set width of default columns in table
-		css_dashboard.table.defaultCol.width = 90;
 		
 		this.props.headers.forEach((header, i) => {
 			if (!!header.searchable) {

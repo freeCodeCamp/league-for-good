@@ -217,9 +217,6 @@ export const css_dashboard = {
 	raisedButton: common.raisedButton,
 	// table contains the styling for the table template
 	table: {
-		defaultCol: {
-			textAlign: 'left',
-		},
 		search: {
 			marginLeft: '20px',
 			marginBottom: '10px',
@@ -250,6 +247,9 @@ export const css_dashboard = {
 			borderRadius: '25px',
 		},
 		columns: {
+			defaultCol: {
+				textAlign: 'left',
+			},
 			icon: {
 				textAlign: 'left',
 				width: '10%',
