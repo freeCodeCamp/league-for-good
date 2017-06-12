@@ -6,67 +6,50 @@ import spacing from 'material-ui/styles/spacing';
 //****************************** Theme Colors *****************************************
 //*************************************************************************************
 
+// These theme values are only used as main colors in components
+// Accent colors remain the same for smaller components
 const themeValues = {
-	/*tealPink: {
-		darkPrimaryColor: '#00796B',
-		defaultPrimaryColor: '#009688',
-		lightPrimaryColor: '#B2DFDB',
-		textPrimaryColor: '#FFFFFF',
-		accentColor: '#FF4081',
-		primaryTextColor: '#212121',
-		secondaryTextColor: '#757575',
-		dividerColor: '#BDBDBD',
-	},*/
+	lightgreen: {
+		primary1Color: '#8BC34A',	// default
+		primary2Color: '#689F38',	// dark
+		primary3Color: '#DCEDC8',	// light
+		pickerHeaderColor: '#8BC34A',	// should be same as primary1Color
+		canvasColor: '#DCEDC8',		// should be same as primary3Color
+	},
+
 	teal: {
-		primary1Color: '#9fa8da',	// default
-		primary2Color: '#6f79a8',	// dark
-		primary3Color: '#d1d9ff',	// light
-		accent1Color: '#bdbdbd',	// default
-		accent2Color: '#8d8d8d',	// dark
-		accent3Color: '#efefef',	// light
-		pickerHeaderColor: '#9fa8da',	// should be same as primary1Color
-		canvasColor: '#d1d9ff',
+		primary1Color: '#009688',	// default
+		primary2Color: '#00796B',	// dark
+		primary3Color: '#B2DFDB',	// light
+		pickerHeaderColor: '#009688',	// should be same as primary1Color
+		canvasColor: '#B2DFDB',		// should be same as primary3Color
 	},
 
-	/*purpleAmber: {
-		darkPrimaryColor: '#512DA8',
-		defaultPrimaryColor: '#673AB7',
-		lightPrimaryColor: '#D1C4E9',
-		textPrimaryColor: '#FFFFFF',
-		accentColor: '#FFC107',
-		primaryTextColor: '#212121',
-		secondaryTextColor: '#757575',
-		dividerColor: '#BDBDBD',
-	},*/
-	purple: {
-		primary1Color: '#673AB7',	// default
-		primary2Color: '#512DA8',	// dark
-		primary3Color: '#D1C4E9',	// light
-		pickerHeaderColor: '#673AB7',	// should be same as primary1Color
-	},
-
-	bluegreyIndigo: {
-		darkPrimaryColor: '#455A64',
-		defaultPrimaryColor: '#607D8B',
-		lightPrimaryColor: '#CFD8DC',
-		textPrimaryColor: '#FFFFFF',
-		accentColor: '#536DFE',
-		primaryTextColor: '#212121',
-		secondaryTextColor: '#757575',
-		dividerColor: '#BDBDBD',
+	lightblue: {
+		primary1Color: '#03A9F4',	// default
+		primary2Color: '#0288D1',	// dark
+		primary3Color: '#B3E5FC',	// light
+		pickerHeaderColor: '#03A9F4',	// should be same as primary1Color
+		canvasColor: '#B3E5FC',		// should be same as primary3Color
 	},
 };
 
-const defaultTheme = 'teal';
+// if user has no saved theme, default to this
+const defaultTheme = 'lightblue';
 
 const textMixin = {
 	textColor: '#000000',
 	alternateTextColor: '#ffffff',
 };
 
+const accentMixin = {
+	accent1Color: '#455a64',	// default
+	accent2Color: '#1c313a',	// dark
+	accent3Color: '#718792',	// light
+};
+
 // extra colors required for the palette
 const miscMixin = {
-	//canvasColor: white,
 	borderColor: '#bdbdbd',
 	disabledColor: fade(darkBlack, 0.3),
 	clockCircleColor: fade(darkBlack, 0.07),
@@ -113,6 +96,6 @@ const themes = (function(themeValues, defaultTheme, ...mixins) {
 			return themeValues;
 		},
 	};
-})(themeValues, defaultTheme, textMixin, miscMixin, warningMixin);
+})(themeValues, defaultTheme, accentMixin, textMixin, miscMixin, warningMixin);
 
 export default themes;

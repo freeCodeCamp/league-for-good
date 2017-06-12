@@ -5,6 +5,7 @@ import AddPersonIcon from 'material-ui/svg-icons/social/person-add';
 import EditIcon from 'material-ui/svg-icons/image/edit';
 import ArchiveIcon from 'material-ui/svg-icons/content/archive';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
+import DeleteForeverIcon from 'material-ui/svg-icons/action/delete-forever';
 import EmailIcon from 'material-ui/svg-icons/communication/email';
 import AssignmentIcon from 'material-ui/svg-icons/action/assignment';
 import UpdateIcon from 'material-ui/svg-icons/action/update';
@@ -57,9 +58,14 @@ const playerLinks = [
 // Links for managing general league settings
 const settingsLinks = [
 	{
-		description: 'Add a new staff member to log into the dashboard.',
+		description: 'Add a new staff member to manage your league.',
 		label: 'AddStaff',
 		icon: <AddPersonIcon />,
+	},
+	{
+		description: 'Delete your league.',
+		label: 'DeleteLeague',
+		icon: <DeleteForeverIcon />,
 	},
 ];
 

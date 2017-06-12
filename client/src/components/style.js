@@ -2,13 +2,7 @@
 import themes from './themes';
 
 //let theme = themes.getCurrentThemeProps();
-let theme = themes.getCurrentThemeProps();
-
-export function changeTheme() {
-	theme = themes.getCurrentThemeProps();
-	// console.log(theme);
-}
-
+const theme = themes.getCurrentThemeProps();
 
 // common css that will be reused among components
 export const common = {
@@ -18,7 +12,7 @@ export const common = {
 			fontWeight: 500,
 		},
 		style: { marginTop: '30px' },
-		backgroundColor: theme.defaultPrimaryColor,
+//		backgroundColor: theme.primary1Color,
 	},
 	formRow: {
 		display:'flex',
@@ -37,7 +31,7 @@ export const css_appBar = {
 	main:{
 		zIndex: 2000,
 		position: 'fixed',
-		//backgroundColor: theme.darkPrimaryColor,
+		//backgroundColor: changeTheme().darkPrimaryColor,
 		borderBottom: '1px solid ' + theme.dividerColor,
 	},
 	text:{
