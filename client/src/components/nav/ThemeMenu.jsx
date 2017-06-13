@@ -20,10 +20,10 @@ function generateThemeIcons(themeList, themeNames, changeTheme) {
 				<i style={Object.assign(
 						{},
 						css.themeMenuItem,
-						{
-							backgroundColor: themeList[themeName].primary1Color,
-							border: '2px solid ' + themeList[themeName].accent1Color
-						})
+					{
+						backgroundColor: themeList[themeName].primary1Color,
+						border: '2px solid ' + themeList[themeName].accent1Color,
+					})
 					}
 					key={i}
 					onClick={changeTheme.bind(null, themeName)}

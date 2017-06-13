@@ -70,9 +70,6 @@ class CreateLeagueForm extends Component {
 //redux-form method to access form field values
 const selector = formValueSelector('CreateLeagueForm');
 
-//Decorate component with redux-form
-CreateLeagueForm = reduxForm({ form: 'CreateLeagueForm', validate })(CreateLeagueForm);
-
 // Callback function passed to the connect function to access the form state
 function mapFormStateToProps(state){
 	return {SelectedSportType: selector(state, 'sportType')};
@@ -82,10 +79,14 @@ function mapDispatchToProps(dispatch){
 	return bindActionCreators({ createLeague }, dispatch);
 }
 
-//Decorate component with redux bindings
-CreateLeagueForm = connect(mapFormStateToProps, mapDispatchToProps)(CreateLeagueForm);
-
 //Decorate component one last time with react-router bindings in order to redirect user
 //after a successful form submission
-export default withRouter(CreateLeagueForm);
-
+export default withRouter(
+	//Decorate component with redux bindings
+	connect(mapFormStateToProps, mapDispatchToProps)(
+		//Decorate component with redux-form
+		reduxForm({ form: 'CreateLeagueForm', validate })(
+			CreateLeagueForm
+		)
+	)
+);

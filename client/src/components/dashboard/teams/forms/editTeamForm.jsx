@@ -22,7 +22,7 @@ class EditTeamForm extends Component {
 	handleToggle() {
 		console.log('toggled');
 		this.setState({
-			active: !this.state.active ? "Active" : "Archived",
+			active: !this.state.active ? 'Active' : 'Archived',
 		});
 		console.log('toggled');
 	}
