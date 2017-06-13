@@ -7,6 +7,7 @@
     "lint": "eslint . --ext .js,.jsx",
     "lint:autoFix": "eslint . --fix --ext .js,.jsx",
     "pretest": "npm run lint",
+    "test": "echo \"No tests\"",
     "dev": "nodemon index.js --ignore client"
   },
   "author": "",
