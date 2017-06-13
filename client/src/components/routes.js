@@ -13,6 +13,9 @@ export const TEAM_ROSTER = '/dashboard/teams/roster/:teamId';
 export const TEAM_ROSTER_PLAYER_DETAIL = '/dashboard/teams/player/:playerId'; 
 export const TEAM_ADD_FORM = '/dashboard/add-new-team';
 
+// Settings routes
+export const SETTINGS_DELETE_LEAGUE = '/dashboard/settings/delete';
+export const SETTINGS_ADD_STAFF_FORM = '/dashboard/settings/create';
 
 
 

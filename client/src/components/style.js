@@ -195,6 +195,14 @@ export const css_dashboard = {
 		textAlign: 'center',
 		color: theme.warning,
 	},
+	warningButton: {
+		label: {
+			color: theme.alternateTextColor,
+			fontWeight: 500,
+		},
+		style: { marginTop: '30px' },
+		backgroundColor: theme.warning,
+	},
 	form: common.form,
 	formRow: common.formRow,
 	formRequired: {

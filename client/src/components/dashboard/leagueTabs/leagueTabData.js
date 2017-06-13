@@ -61,11 +61,13 @@ const settingsLinks = [
 		description: 'Add a new staff member to manage your league.',
 		label: 'AddStaff',
 		icon: <AddPersonIcon />,
+		url: LINK.SETTINGS_ADD_STAFF_FORM,
 	},
 	{
 		description: 'Delete your league.',
 		label: 'DeleteLeague',
 		icon: <DeleteForeverIcon />,
+		url: LINK.SETTINGS_DELETE_LEAGUE,
 	},
 ];
 
@@ -74,5 +76,5 @@ export const tabs = [
 	{ name: 'Teams', links: teamLinks },
 	{ name: 'Players', links: playerLinks },
 	{ name: 'Seasons', links: [] },
-	{ name: 'Settings', links: settingsLinks, routes: null },
+	{ name: 'Settings', links: settingsLinks },
 ];
