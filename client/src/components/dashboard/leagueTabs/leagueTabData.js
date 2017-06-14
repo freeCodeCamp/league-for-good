@@ -3,12 +3,9 @@ import React from 'react';
 import AddIcon from 'material-ui/svg-icons/content/add';
 import AddPersonIcon from 'material-ui/svg-icons/social/person-add';
 import EditIcon from 'material-ui/svg-icons/image/edit';
-import ArchiveIcon from 'material-ui/svg-icons/content/archive';
-import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import DeleteForeverIcon from 'material-ui/svg-icons/action/delete-forever';
 import EmailIcon from 'material-ui/svg-icons/communication/email';
 import AssignmentIcon from 'material-ui/svg-icons/action/assignment';
-import UpdateIcon from 'material-ui/svg-icons/action/update';
 import ListIcon from 'material-ui/svg-icons/action/view-list';
 
 import * as LINK from '../../routes';
@@ -58,10 +55,22 @@ const playerLinks = [
 // Links for managing general league settings
 const settingsLinks = [
 	{
+		description: 'View a list of all staff members.',
+		label: 'ViewStaff',
+		icon: <ListIcon />,
+		url: LINK.SETTINGS_STAFF_LIST,
+	},
+	{
 		description: 'Add a new staff member to manage your league.',
 		label: 'AddStaff',
 		icon: <AddPersonIcon />,
 		url: LINK.SETTINGS_ADD_STAFF_FORM,
+	},
+	{
+		description: 'Edit a staff members access level.',
+		label: 'EditStaff',
+		icon: <EditIcon />,
+		url: LINK.SETTINGS_EDIT_STAFF_FORM,
 	},
 	{
 		description: 'Delete your league.',

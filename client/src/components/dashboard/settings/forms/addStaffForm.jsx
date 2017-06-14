@@ -11,7 +11,7 @@ const AddStaffForm = props => {
 	const {handleSubmit} = props;
 	return (
 			<div style={css_content.body}>
-				<h1 style={css_dashboard.title}>Grant login access to a staff member</h1>
+				<h1 style={css_dashboard.title}>Grant access to a staff member</h1>
 				<h6 style={css_dashboard.warning}>*Requires a Gmail Account</h6>
 				<form 
 					onSubmit={ handleSubmit }
