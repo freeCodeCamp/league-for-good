@@ -176,6 +176,7 @@ export const css_dashboard = {
 		padding: '0px',
 		color: theme.textColor,
 	},
+	// top section of the dashboard
 	toolbar: {
 		title: {
 			color: theme.alternateTextColor,
@@ -240,6 +241,10 @@ export const css_dashboard = {
 			backgroundColor: theme.accent3Color,
 			borderRadius: '25px',
 		},
+		// columns uses defaultCol for all the columns in the table and lets material ui
+		// to automatically size the columns to an appropriate width
+		// if you are using an icon for a column, use the icon style to reduce the width
+		// in the table since material ui will give it a width that is usually too large
 		columns: {
 			defaultCol: {
 				textAlign: 'left',
@@ -249,6 +254,7 @@ export const css_dashboard = {
 				width: '10%',
 			},
 		},
+		// used for the team list displaying all teams in a league
 		teams: {
 			// toolbar used on top of table
 			dropdown: {
@@ -258,13 +264,25 @@ export const css_dashboard = {
 			},
 		},
 	},
-	players: {
-		title: {
-			textAlign: 'center',
-			margin: '0px 0px 0px 20px',
-			padding: '0px',
-			color: theme.textColor,
+	// custom css in the teams tab
+	teams: {
+		forms: {
+			edit: {
+				style: {
+					margin: '0px auto',
+					width: '50%',
+				},
+				checkbox: {
+					width: '125px',
+				},
+				checkboxDiv: {
+					float: 'right',
+				},
+			},
 		},
+	},
+	// custom css in the players tab
+	players: {
 		ul: {
 			listStyleType: 'none',
 		},

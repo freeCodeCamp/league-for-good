@@ -1,55 +1,36 @@
 import React, {Component} from 'react';
-import { TextField, Toggle } from 'redux-form-material-ui';
-import Checkbox from 'material-ui/Checkbox';
+import { TextField, Toggle, Checkbox } from 'redux-form-material-ui';
 import {Field, reduxForm } from 'redux-form';
 import { updateTeam, openSnackbar } from '../../../../actions/index';
 
 import validate from './utils/validation';
 import normalize from './utils/normalize';
 
-const formStyle = {margin:'0px auto', width:'50%'};
-const toggleStyle = {maxWidth:150, float:'right'};
+import { css_dashboard } from '../../../style';
 
-class EditTeamForm extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			active: props.initialValues.currently_active, 
-		};
-	}
-
-	handleToggle() {
-		console.log('toggled');
-		this.setState({
-			active: !this.state.active ? 'Active' : 'Archived',
-		});
-		console.log('toggled');
-	}
-
-	render() {
-		return (
-			<form style={formStyle}>
+const EditTeamForm = (props) => {
+	return (
+		<form style={css_dashboard.teams.forms.edit.style}>
+			<Field
+				name="name" 
+				component={TextField}
+				normalize={normalize}
+				hintText="Team name"
+				floatingLabelText="Team Name:"
+				fullWidth={true}
+			/>
+			<div style={css_dashboard.teams.forms.edit.checkboxDiv}>
 				<Field
-					name="name" 
-					component={TextField}
-					normalize={normalize}
-					hintText="Team name"
-					floatingLabelText="Team Name:"
-					fullWidth={true}
+					component={Checkbox}
+					name="currently_active"
+					label="Check if active"
+					checked={props.initialValues.currently_active}
+					labelPosition="left"
+					labelStyle={css_dashboard.teams.forms.edit.checkbox}
 				/>
-				<div style={toggleStyle}>
-					<Field
-						component={Toggle}
-						name="currently_active"
-						label="Active"
-						toggled={this.state.active}
-						onToggle={this.handleToggle}
-					/>
-				</div>
-			</form>
-		);
-	}
+			</div>
+		</form>
+	);
 }
 
 export default reduxForm({
