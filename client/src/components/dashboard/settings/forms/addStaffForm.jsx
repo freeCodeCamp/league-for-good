@@ -6,6 +6,7 @@ import { Field, reduxForm } from 'redux-form';
 import { addStaffMember, openSnackbar } from '../../../../actions/index';
 
 import { css_content, css_dashboard } from '../../../style';
+import validate from './utils/addStaffFormValidation';
 
 const AddStaffForm = props => {	
 	const {handleSubmit} = props;
@@ -41,6 +42,7 @@ const AddStaffForm = props => {
 
 export default reduxForm({
 	form: 'AddStaffForm',
+	validate,
 	onSubmit: addStaffMember,
 	onSubmitSuccess: openSnackbar,
 })( AddStaffForm );

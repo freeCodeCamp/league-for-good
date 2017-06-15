@@ -10,7 +10,6 @@ const SettingsRoutes = props => (
 	<div>
 		<Route exact path={Links.SETTINGS_STAFF_LIST} component={AddStaffForm} />
 		<Route path={Links.SETTINGS_ADD_STAFF_FORM} component={AddStaffForm} />
-		<Route path={Links.SETTINGS_EDIT_STAFF_FORM} component={AddStaffForm} />
 		<Route path={Links.SETTINGS_DELETE_LEAGUE} component={DeleteLeagueForm} />
 	</div>	
 );

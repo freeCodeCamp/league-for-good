@@ -1,9 +1,10 @@
-const emailRegex = new RegExp('^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$');
+const emailRegex = new RegExp('^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$', 'i');
 const jerseyRegex = /^\d{1,2}$/;
+
 //prevent user from submitting incorrect player info
 const validate = val => {
 	const errors = { team :{} };
-	if(!val.first_name){
+	if (!val.first_name){
 		errors.first_name = 'Please provide a first name';
 	}
 	else if (!val.last_name) {

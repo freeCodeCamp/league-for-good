@@ -43,6 +43,7 @@ app.use('/auth', Routes.auth);
 app.use('/league', Routes.league);
 app.use('/team', Routes.team);
 app.use('/player', Routes.player);
+app.use('/settings', Routes.settings);
 
 //Disable webpack build if debugging backend functionality
 

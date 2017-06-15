@@ -39,10 +39,10 @@ const updateTeam = (req, res) => {
 	const query = { _id: req.params.teamId };
 	const { league_id } = req.body;
 
-	Team.update(query, req.body, {new:true, upsert:true})
+	Team.update(query, req.body, {new: true, upsert: true})
 		.exec()
 		.then(() => res.send(req.body))
-		.catch(error => res.status(500).json({ error: error}));
+		.catch(error => res.status(500).json({ error: error }));
 };
 
 const showRoster = (req, res) => {

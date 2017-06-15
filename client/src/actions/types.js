@@ -37,3 +37,6 @@ export const ADD_PLAYER_TO_TEAM = 'ADD_PLAYER_TO_TEAM';
 // Roster action types
 export const FETCH_ROSTER = 'FETCH_ROSTER';
 export const ADD_PLAYER_TO_ROSTER = 'ADD_PLAYER_TO_ROSTER';
+
+// Settings action types
+export const CREATE_STAFF_MEMBER = 'CREATE_STAFF_MEMBER';

@@ -2,7 +2,7 @@ import { reset, submit } from 'redux-form';
 import { OPEN_SNACKBAR } from './types';
 //a mapping of success messages. Will be moved to it's own file
 
-const getGessage = ({values, form}) => {
+const getMessage = ({values, form}) => {
 	
 	const { first_name, last_name, name } = values;
 
@@ -11,7 +11,7 @@ const getGessage = ({values, form}) => {
 		AddTeamForm: 'A new team was successfully added to your league.',
 		AddPlayerForm: `${first_name} ${last_name} has been successfully added to your league`,
 		UpdatePlayerForm: `${first_name} ${last_name} has been successfully updated`,
-		AddStaffForm:'Congrats',
+		AddStaffForm: 'A new staff member was successfully added to your league',
 		AssignPlayerForm: 'Successfully assigned a new player',
 	};
 
@@ -23,7 +23,7 @@ const getGessage = ({values, form}) => {
 export function openSnackbar(results, dispatch, props){
 	const form = props.form;
 
-	const message = getGessage(props);
+	const message = getMessage(props);
 
 	dispatch({ type: OPEN_SNACKBAR, message });
 	

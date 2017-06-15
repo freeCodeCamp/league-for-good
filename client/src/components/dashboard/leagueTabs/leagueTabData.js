@@ -67,12 +67,6 @@ const settingsLinks = [
 		url: LINK.SETTINGS_ADD_STAFF_FORM,
 	},
 	{
-		description: 'Edit a staff members access level.',
-		label: 'EditStaff',
-		icon: <EditIcon />,
-		url: LINK.SETTINGS_EDIT_STAFF_FORM,
-	},
-	{
 		description: 'Delete your league.',
 		label: 'DeleteLeague',
 		icon: <DeleteForeverIcon />,

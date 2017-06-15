@@ -16,8 +16,7 @@ const LeagueSchema = new Schema(
 			required: true,
 		},
 		staff: [{
-			type: Schema.Types.ObjectId,
-			ref: 'user',		
+			type: String,
 		}],
 		sport_type: {
 			type: String,

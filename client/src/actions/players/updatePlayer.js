@@ -27,13 +27,13 @@ export function updatePlayer(form, dispatch, props){
 		// console.log('team model needs update', prevTeam.teamId, team.teamId)
 		teamUpdate = {
 			prevTeam,
-			currTeam: team.teamId
-		}
+			currTeam: team.teamId,
+		};
 		console.log(teamUpdate);
 	}
 	
 	axios.put(url, { playerUpdate, teamUpdate })
-		.then(({data}) => console.log(data))
-		.catch(err => {console.error(err)})
+		.then(({data}) => { console.log(data); })
+		.catch(err => { console.error(err); });
 
 }

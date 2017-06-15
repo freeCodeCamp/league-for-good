@@ -17,7 +17,6 @@ export const TEAM_ADD_FORM = '/dashboard/add-new-team';
 export const SETTINGS_DELETE_LEAGUE = '/dashboard/settings/delete';
 export const SETTINGS_ADD_STAFF_FORM = '/dashboard/settings/create';
 export const SETTINGS_STAFF_LIST = '/dashboard/settings/staff';
-export const SETTINGS_EDIT_STAFF_FORM = '/dashboard/settings/staff/:userId';
 
 
 

@@ -5,7 +5,7 @@ import  * as Links  from '../../routes';
 
 import PlayerList from './player_list/playerList.jsx';
 import PlayerDetails from '../players/player_list/playerDetails.jsx';
-import PlayerForm from './forms/playerFormTemplate.jsx';
+import PlayerForm from './forms/playerForm.jsx';
 import AssignPlayer from './forms/assignToTeamForm.jsx';
 
 const PlayerRoutes = props => (

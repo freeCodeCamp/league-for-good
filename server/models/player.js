@@ -28,7 +28,6 @@ const PlayerSchema = new Schema({
 		email: String,
 		relation: String,
 	},
-
 	address: {
 		street: String,
 		city: String,

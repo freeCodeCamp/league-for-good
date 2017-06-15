@@ -7,7 +7,7 @@ import { rootURL } from '../../globals';
 //Redirect the user
 
 export function createLeague(body, redirectCallback) {
-	return function(dispatch){
+	return function(dispatch) {
 		axios.post(`${rootURL}/league/create`, body)
 			.then(({data}) => {
 				return dispatch({type: CREATE_LEAGUE, newLeague: data});
@@ -16,10 +16,7 @@ export function createLeague(body, redirectCallback) {
 	};
 }
 
-export function addStaffMember(body){
-	///
-}
 
-export function selectLeague(league){
+export function selectLeague(league) {
 	return {type: SELECT_LEAGUE, leagueData: league};
 }
