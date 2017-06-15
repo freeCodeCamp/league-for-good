@@ -11,7 +11,7 @@ import { css_content, css_dashboard } from '../../../style';
 import { normalizeJerseyNum as normalize } from './utils/normalize'; 
 import validate from './utils/playerFormValidation';
 
-let PlayerFormTemplate = ({handleSubmit, teams, title, initialValues}) => {
+let PlayerFormTemplate = ({handleSubmit, teams, title}) => {
 	return (
 		<div style={css_content.body}>
 			<h1 style={css_dashboard.title}>{title}</h1>
@@ -53,13 +53,13 @@ let PlayerFormTemplate = ({handleSubmit, teams, title, initialValues}) => {
 				</div>
 				<div style={css_dashboard.formRow}>			
 					<Field
-						name="address" 
+						name="address.street" 
 						component={TextField}
 						hintText="Address"
 						floatingLabelText="Address"
 					/>
 					<Field
-						name="city" 
+						name="address.city" 
 						component={TextField}
 						hintText="City"
 						floatingLabelText="City"
@@ -67,13 +67,13 @@ let PlayerFormTemplate = ({handleSubmit, teams, title, initialValues}) => {
 				</div>
 				<div style={css_dashboard.formRow}>
 					<Field
-						name="state" 
+						name="address.state" 
 						component={TextField}
 						hintText="State"
 						floatingLabelText="State"
 					/>
 					<Field
-						name="country" 
+						name="address.country" 
 						component={TextField}
 						hintText="Country"
 						floatingLabelText="Country"
@@ -105,7 +105,7 @@ let PlayerFormTemplate = ({handleSubmit, teams, title, initialValues}) => {
 					/>
 				</div>
 				<RaisedButton
-					label="Add Player"
+					label={title}
 					labelStyle={css_dashboard.raisedButton.label}
 					backgroundColor={css_dashboard.raisedButton.backgroundColor}
 					style={css_dashboard.raisedButton.style}
@@ -137,3 +137,8 @@ PlayerFormTemplate = reduxForm({
 })(PlayerFormTemplate);
 
 export default connect(mapStateToProps)(PlayerFormTemplate);
+
+/*
+	Team input should hopefully be able to populate initialValue soon
+	https://github.com/erikras/redux-form-material-ui/pull/140
+*/

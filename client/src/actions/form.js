@@ -10,6 +10,7 @@ const getGessage = ({values, form}) => {
 		EditTeamForm: `The team - '${name}' - has been updated`,
 		AddTeamForm: 'A new team was successfully added to your league.',
 		AddPlayerForm: `${first_name} ${last_name} has been successfully added to your league`,
+		UpdatePlayerForm: `${first_name} ${last_name} has been successfully updated`,
 		AddStaffForm:'Congrats',
 		AssignPlayerForm: 'Successfully assigned a new player',
 	};

@@ -17,12 +17,10 @@ const PlayerSchema = new Schema({
 	},
 	email: {
 		type: String,
-		unique: true,
 		required: true,
 	},
 	phone_num: {
 		type: String,
-		// unique: true,
 	},
 	emergency_contact: {
 		name: String,
@@ -30,17 +28,12 @@ const PlayerSchema = new Schema({
 		email: String,
 		relation: String,
 	},
+
 	address: {
-		type: String,
-	},
-	city: {
-		type: String,
-	},
-	state: {
-		type: String,
-	},
-	country: {
-		type: String,
+		street: String,
+		city: String,
+		state: String,
+		country: String,
 	},
 	leagues: [{
 		type: Schema.Types.ObjectId,

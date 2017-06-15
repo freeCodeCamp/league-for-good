@@ -69,10 +69,35 @@ const addPlayerToTeam = (req, res) => {
 
 };
 
+const swapTeams = (teamUpdate, player) => {
+	if (!teamUpdate) return Promise.resolve('No update');
+
+	const { prevTeam, currTeam } = teamUpdate;
+	Promise.all([
+		Teams.findByIdAndUpdate( prevTeam, { $pull: { players: player }}).exec(),
+		Teams.findByIdAndUpdate( currTeam, { $push: { players: player }}).exec()
+	])
+	.then(() => Promise.resolve('Updated'))
+	.catch(err => { throw err})
+};
+
+const updatePlayer = (req, res) => {
+	const { playerId } = req.params;
+	const { playerUpdate, teamUpdate } = req.body;
+
+	Player.findByIdAndUpdate( playerId, playerUpdate )
+		.exec()
+		.then(() => swapTeams(teamUpdate, playerId))
+		.then(() => res.send(playerUpdate))
+		.catch(err => { throw err })
+
+};
+
 Router.route('/list/:leagueId').get(fetchList);
-Router.route('/add').post(addPlayerToLeague);
-// Router.route('/getAllPlayers').get(getAllPlayers);
 Router.route('/details/:playerId').get(getPlayer);
+
+Router.route('/update/:playerId').put(updatePlayer);
 Router.route('/assign').put(addPlayerToTeam);
+Router.route('/add').post(addPlayerToLeague);
 
 module.exports = Router;

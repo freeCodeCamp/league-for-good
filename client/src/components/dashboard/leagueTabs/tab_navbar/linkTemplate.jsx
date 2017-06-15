@@ -1,8 +1,6 @@
 // A template helper class to generate new links for panels under tabs
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { changeManageView } from '../../../../actions/index';
+import React from 'react';
+
 import IconButton from 'material-ui/IconButton';
 import { css_content } from '../../../style';
 import { Link, withRouter } from 'react-router-dom';
@@ -23,7 +21,7 @@ const LinkTemplate = props => {
 				tooltip={description}
 				touch={true}
 				style={iconButton.style}
-				iconStyle={ linkIsActive ? iconButton.iconStyle : '' } 
+				iconStyle={ linkIsActive ? iconButton.iconStyle : {} } 
 				hoveredStyle={iconButton.hoveredStyle}
 			>
 				{icon}

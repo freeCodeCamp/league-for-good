@@ -29,37 +29,27 @@
 // "59271a9debc3cb2730e067ef"
 // ];
 
-// var teamId = "591617449b73010a086bde86";
+// var leagues = db.leagues.find({}, {_id:1}).toArray();
 
-// var objectIdArray = playerIds.map(function(id){
-// 	return ObjectId(id)
-// });
+var players = db.players.find({});
 
 
-// var players =	db.players.aggregate([
-// 		{$match: 
-// 			{ _id: {$in: objectIdArray } }
-// 		},
-// 		{$unwind:"$teams"},
-// 		{$match: 
-// 			{"teams.teamId" : { $in: [ObjectId(teamId)]}} 
-// 		},
-// 		{$project: 
-// 			{
-// 				first_name:1, 
-// 				last_name:1, 
-// 				jersey_num: "$teams.jersey_num",
-// 				position: "$teams.position", 
-// 				email:1, 
-// 				phone_num:1,
-// 			}
-// 		}
-// 	]).toArray()
+players.forEach(function(player){
 
 
-// db.teams.find({}).forEach(function(team){
-// 	db.players.updateMany({ teams: {$elemMatch: {teamId: team._id }}}, {$set: {leagues: [team.league_id]}})
-// })
+		var q = {_id: player._id};
+		var t = player.teams[0];
+		
 
+		if(t){
 
+			var team = {
+				teamId: t.teamId,
+				seasonId: t.season_id,
+				position: t.position,
+				jersey_num: t.jersey_num,
+			};	
+			db.players.update(q, {$set: {teams: [team]}})
+		} 
+})
 
