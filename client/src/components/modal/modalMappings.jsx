@@ -63,6 +63,12 @@ const mappings = {
 		reduxFormName:'EditTeamForm',
 		actionLabel: 'Edit Team',
 	},
+	removeStaff: {
+		title: 'Delete Staff',
+		Children: null,
+		onSubmit: 'removeStaff',
+		actionLabel: 'Delete Staff',
+	},
 };
 
 export default mappings;

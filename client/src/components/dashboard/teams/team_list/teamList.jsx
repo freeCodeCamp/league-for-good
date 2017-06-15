@@ -72,7 +72,7 @@ class TeamTable extends Component {
 	}
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
 	return { teams: state.teams };
 }
 
