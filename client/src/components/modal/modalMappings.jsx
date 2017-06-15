@@ -1,6 +1,7 @@
 import React from 'react';
 import EditTeamForm from '../dashboard/teams/forms/editTeamForm.jsx';
 import DeleteTeamForm from '../dashboard/teams/forms/deleteTeamForm.jsx';
+import DeleteStaffForm from '../dashboard/settings/forms/deleteStaffForm.jsx';
 import { reduxForm } from 'redux-form';
 /* Map all the components and/or props to be used inside the main modal component
 	Required:
@@ -65,7 +66,7 @@ const mappings = {
 	},
 	removeStaff: {
 		title: 'Delete Staff',
-		Children: null,
+		Children: DeleteStaffForm,
 		onSubmit: 'removeStaff',
 		actionLabel: 'Delete Staff',
 	},

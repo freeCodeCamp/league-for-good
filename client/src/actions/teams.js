@@ -23,12 +23,12 @@ export function createTeam( formVals, dispatch, { location } ) {
 }
 
 //Select teams to display from league
-export function selectTeams(teams){
+export function selectTeams(teams) {
 	return { type: SELECT_TEAMS, teams: teams };
 }
 
 //Edit a team's name and active status
-export function updateTeam(formVals, dispatch, props){
+export function updateTeam(formVals, dispatch, props) {
 	
 	const { _id, currently_active, name } = formVals;
 	const body = { name, currently_active };
@@ -46,13 +46,13 @@ export function updateTeam(formVals, dispatch, props){
 }
 
 //Delete a team from a league
-export function removeTeam(team){
+export function removeTeam(team) {
 	const { _id, name } = team;
 
 	const teamName = name.replace(/^The/, '');
 	const message = `The ${teamName} have been deleted from your league`;
 
-	return function( dispatch ){
+	return function( dispatch ) {
 		
 		dispatch({ type: CLOSE_MODAL });
 

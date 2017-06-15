@@ -12,7 +12,6 @@ import { css_content } from '../../../style.js';
 			/>
 			*/
 const StaffList = props => {
-	console.log(props);
 	return (
 		<div style={css_content.body}>
 			<TableTemplate
@@ -24,7 +23,6 @@ const StaffList = props => {
 };
 
 function mapStateToProps(state) {
-	console.log(state.league.selected);
 	return { staff: state.league.selected.staff };
 }
 

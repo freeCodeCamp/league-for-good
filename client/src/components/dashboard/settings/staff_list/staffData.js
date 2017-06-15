@@ -25,10 +25,11 @@ export const colData = [
 function getCellValue(staff, prop, action) {
 
 	if (prop === 'icon') {
-		const iconProps = { action, staff };
+		const iconProps = { action, staffEmail: staff };
 		return <Icon {...iconProps} />;
 	}
-	// The staff data is passed as an array of strings unlike the teams and players list tables.
+	// The staff data is passed as an array of strings unlike the teams and players list tables
+	// so we just pass the string back for each cell value if it's not a delete icon
 	return staff;
 }
 	

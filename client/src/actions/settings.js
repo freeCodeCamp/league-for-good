@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CREATE_STAFF_MEMBER } from './types';
+import { CREATE_STAFF_MEMBER, REMOVE_STAFF_MEMBER } from './types';
 import { rootURL } from '../../globals';
 
 export function addStaffMember(formVals, dispatch, { location }) {
@@ -16,4 +16,8 @@ export function addStaffMember(formVals, dispatch, { location }) {
 		.catch( err => {
 			throw new Error(err);
 		});
+}
+
+export function removeStaff(staff) {
+	
 }

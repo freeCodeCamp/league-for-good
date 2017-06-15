@@ -20,11 +20,11 @@ class Icon extends Component {
 	}
 
 	render() {
-		const { staff, action } = this.props;
+		const { staffEmail, action } = this.props;
 		
 		return (
 			<IconButton 
-				onTouchTap={()=> this.onClick(staff, action) }
+				onTouchTap={()=> this.onClick({ email: staffEmail }, action) }
 				hoveredStyle={css_dashboard.table.iconHover}
 			>
 				<DeleteIcon />

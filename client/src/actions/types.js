@@ -40,3 +40,4 @@ export const ADD_PLAYER_TO_ROSTER = 'ADD_PLAYER_TO_ROSTER';
 
 // Settings action types
 export const CREATE_STAFF_MEMBER = 'CREATE_STAFF_MEMBER';
+export const REMOVE_STAFF_MEMBER = 'REMOVE_STAFF_MEMBER';

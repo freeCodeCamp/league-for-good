@@ -14,6 +14,17 @@ const createStaff = (req, res) => {
 		.catch(error => res.status(500).json({ error: error }));
 };
 
+const deleteStaff = (req, res) => {
+	const query = { _id: req.body.league };
+	const update = { "$pull": { staff: req.params.email } };
+
+	//League.update(query, update)
+	//	.exec()
+	//	.then(() => res.send('Successfully removed staff.'))
+	//	.catch(error => res.send({msg: 'An error occured while removing staff', error}));
+	
+	res.send('delete staff fired');
+};
 
 Router.route('/create').post(createStaff);
 
