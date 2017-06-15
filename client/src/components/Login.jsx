@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import RaisedButton from 'material-ui/RaisedButton';
 import { css_login } from './style';
+
+import { Link } from 'react-router-dom';
 
 const Button = () => (   
 	<RaisedButton 
@@ -24,6 +26,7 @@ const LoginModal = props => {
 				open={true}
 			>
 			</Dialog>
+			
 		</div>
 	);
 };

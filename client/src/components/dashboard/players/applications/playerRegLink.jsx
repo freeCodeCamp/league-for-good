@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { PLAYER_DETAIL, makeLinkDynamic } from '../../../routes';
+import { PLAYER_REGISTRATION_DETAILS as url, makeLinkDynamic } from '../../../routes';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchPlayer } from '../../../../actions/index';
@@ -11,9 +11,9 @@ import IconButton from 'material-ui/IconButton';
 import ProfileIcon from 'material-ui/svg-icons/action/account-box';
 
 const PlayerLink = props => {
-	const { fetchPlayer, ...player } = props;
-	
-	const playerUrl = makeLinkDynamic( PLAYER_DETAIL, player._id );
+	const { fetchPlayer, player } = props;
+	console.log('player link', player);
+	const playerUrl = makeLinkDynamic( url, player._id );
 	
 	return(
 		<div onClick={() => fetchPlayer(player)}>

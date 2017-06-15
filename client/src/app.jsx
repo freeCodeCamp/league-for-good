@@ -16,6 +16,8 @@ import themes from './components/themes';
 
 //Main app component using 'connect' wrapper to dynamically set muiTheme
 
+const RegForm = () => <h2>Hello</h2>
+
 const App = props => {
 	const { palette } = props;
 		
@@ -24,6 +26,7 @@ const App = props => {
 			<Router>
 				<div>
 					<Route path="/" component={requireAuth(Content)}/>
+					<Route path="/registration" component={RegForm}/>
 					<Route path="/login" component={Login} />
 				</div>
 			</Router>

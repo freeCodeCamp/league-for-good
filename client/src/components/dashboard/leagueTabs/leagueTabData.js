@@ -41,9 +41,9 @@ const playerLinks = [
 		url: LINK.PLAYER_ADD_FORM,
 	},
 	{
-		description: 'Email a form to allow players to register for your league.',
-		label: 'EmailPlayer',
+		description: 'View Player Registrations',
 		icon: <EmailIcon />,
+		url: LINK.PLAYER_REGISTRATION_LIST,
 	},
 	{
 		description: 'Assign a player to a team.',

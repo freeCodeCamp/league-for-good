@@ -6,6 +6,8 @@ export const PLAYER_DETAIL ='/dashboard/players/profile/:playerId';
 export const PLAYER_ADD_FORM = '/dashboard/players/create';
 export const PLAYER_UPDATE_FORM = '/dashboard/players/update/:playerId';
 export const PLAYER_ASSIGN_FORM = '/dashboard/players/assign';
+export const PLAYER_REGISTRATION_LIST = '/dashboard/players/registration';
+export const PLAYER_REGISTRATION_DETAILS = '/dashboard/players/registration/:playerId';
 
 //Team Routes
 export const TEAM_LIST = '/dashboard/teams/list';

@@ -21,7 +21,7 @@ passport.use(new GoogleStrategy({
 	(token, refreshToken, profile, cb) => {
 		if (!profile) return cb('Invalid credentials');
     
-		User.findOne({ googleId: profile.id })
+		User.findOne({ google_id: profile.id })
 			.exec() 
       .then(user => {
 			

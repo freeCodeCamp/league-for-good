@@ -55,10 +55,6 @@ const PlayerSchema = new Schema({
 const fields = [
 	'first_name', 
 	'last_name', 
-	'city', 
-	'country', 
-	'state', 
-	'address',
 	'emergency_contact.name',
 ];
 

@@ -6,7 +6,7 @@ function capitalizeWord(acc, val, index){
 
 
 //Capitalize the first letter in each word of a string
-const toTitleCase = function(str){
+const toTitleCase = function(str = ''){
 	const words = str.split(' ');
 	
 	return words.reduce(capitalizeWord , '');

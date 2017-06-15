@@ -15,7 +15,7 @@ const UserSchema = new Schema({
 		type: String,
 	},
 	
-	googleId: {
+	google_id: {
 		type: String,
 	}},
 
