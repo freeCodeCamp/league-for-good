@@ -26,12 +26,19 @@ const createTeam = (req, res) => {
 		.catch(error => res.send({ error }));
 };
 
+
 const deleteTeam = (req, res) => {
-	const query = { _id: req.params.teamId };
+	const { teamId } = req.params;
+	const query = { _id: teamId };
+	//TODO Create pre-remove hook to delete all team refs
+	const playerQuery = {}
 
 	Team.remove(query)
 		.exec()
 		.then(() => res.send('Successfully removed team.'))
+		.then(() => {
+			Player.update()
+		})
 		.catch(error => res.send({msg:'An error occured while removing team', error}));
 };
 

@@ -11,8 +11,10 @@ import { css_content } from '../../../style.js';
 
 import { getPlayerApplications } from '../../../../selectors/player_registration';
 
+const playerSelector = getPlayerApplications();
+
 const PlayerList = props => {
-	console.log(props.players);
+	
 	return (
 		<div style={css_content.body}>
 			<IconButton 
@@ -28,8 +30,9 @@ const PlayerList = props => {
 	);
 };
 
-function mapStateToProps(state){
-	const playerSelector = getPlayerApplications();
+
+
+function mapStateToProps(state){	
 	return { players: playerSelector(state)};
 }
 

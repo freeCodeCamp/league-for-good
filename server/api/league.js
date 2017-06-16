@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const User = mongoose.model('user');
 const League = mongoose.model('league');
 
-const sendEmail = require('../services/nodemailer');
 
 // Create a new league for the user
 const createLeague = (req, res) => {
@@ -45,25 +44,9 @@ const createLeague = (req, res) => {
 // 		})
 // }
 
-const addStaff = (req, res) => {
-
-	const {name, email} = req.params;
-
-	sendEmail({
-		organization:'NAACP',
-		recipients:'<adamhs7843521@gmail.com>',
-		message: 'why is this not working',
-		subject: 'no subject',
-	},
-		function(err, info){
-			res.send({err, info});
-		}
-	);
-};
-
 
 // Router.route('/fetchLeagues').get(getLeagues);
 Router.route('/create').post(createLeague);
-Router.route('/add-staff/:name/:email').get(addStaff);
+
 
 module.exports = Router;

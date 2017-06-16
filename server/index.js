@@ -12,6 +12,9 @@ const passportConfig = require('./services/auth');
 const MONGO_URI = process.env.MONGO_URI;
 const MongoStore = require('connect-mongo')(session);
 
+const path = require('path');
+
+
 mongoose.Promise = global.Promise;
 
 mongoose.connect(MONGO_URI);
@@ -25,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(session({
-	resave: true,
+	resave: false,
 	saveUninitialized: true,
 	secret: process.env.SESSION_SECRET,
 	store: new MongoStore({
@@ -38,12 +41,16 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.set('views', path.join(__dirname, './views'));
+app.set('view engine', 'ejs');
+
 //define all routes here
 app.use('/auth', Routes.auth);
 app.use('/league', Routes.league);
 app.use('/team', Routes.team);
 app.use('/player', Routes.player);
 app.use('/settings', Routes.settings);
+app.use('/register', Routes.registration)
 
 //Disable webpack build if debugging backend functionality
 
@@ -53,12 +60,7 @@ if (process.env.NODE_ENV !== 'backend-dev') {
 }
 else {
 	app.get('/', (req,res) => {
-
 		res.json({user:req.user});
-	});
-	app.get('/logout', (req,res) => {
-		req.logOut();
-		res.redirect('/');
 	});
 }
 

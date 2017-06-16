@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+	<title>Player Registration</title>
+</head>
+<body>
+	<div class="container">
+		<h3 class="center-align"><%= league.name %> Registration</h3>
+  <div class="row">
+    <form class="col s12" action="/register/<%=league._id %>" method="post">
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="First Name" name="first_name" type="text" class="validate">
+          <label for="first_name">First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input name="last_name" placeholder="Last Name" type="text" class="validate">
+          <label for="last_name">Last Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input name="phone_num" type="text" placeholder="Phone Number" class="validate">
+          <label for="phone_num">Phone Number</label>
+        </div>
+        <div class="input-field col s6">
+          <input name="email" type="email" class="validate" placeholder="Email">
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  </div>	
+   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+</body>
+</html>
