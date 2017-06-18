@@ -22,26 +22,27 @@ export const colData = [
 ];
 
 // Get the value for the cell
-function getCellValue(staff, prop, action) {
+function getCellValue(staff, prop, action, leagueId) {
 
 	if (prop === 'icon') {
-		const iconProps = { action, staffEmail: staff };
-		return <Icon {...iconProps} />;
+		const iconProps = { action, email: staff, leagueId };
+		return <Icon {...iconProps} />; 
 	}
-	// The staff data is passed as an array of strings unlike the teams and players list tables
+	
+	// The staff data is passed as an array of strings unlike the teams and players list tables 
 	// so we just pass the string back for each cell value if it's not a delete icon
 	return staff;
 }
 	
 
 // Massage the data for the table body
-const getStaffTableData = (staff) => {
+const getStaffTableData = (staff, leagueId) => {
 	//map each row
 	return staff.map( staffMember => {
 		//map each cell
 		return colData.map( col => (
 			{
-				value: getCellValue(staffMember, col.cellProp, col.action),
+				value: getCellValue(staffMember, col.cellProp, col.action, leagueId),
 				style: col.style,
 			}
 		));

@@ -41,7 +41,7 @@ function addPlayerToTeam(teams, {player, teamId}){
 export default function(state = [], action) {
 	const { payload, type } = action;
 
-	switch(type) {
+	switch (type) {
 	
 	case SELECT_TEAMS:
 		return action.teams;

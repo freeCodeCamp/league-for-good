@@ -15,17 +15,16 @@ const createStaff = (req, res) => {
 };
 
 const deleteStaff = (req, res) => {
-	const query = { _id: req.body.league };
+	const query = { _id: req.query.leagueId };
 	const update = { "$pull": { staff: req.params.email } };
 
-	//League.update(query, update)
-	//	.exec()
-	//	.then(() => res.send('Successfully removed staff.'))
-	//	.catch(error => res.send({msg: 'An error occured while removing staff', error}));
-	
-	res.send('delete staff fired');
+	League.update(query, update)
+		.exec()
+		.then(() => res.send('Successfully removed staff.'))
+		.catch(error => res.send({msg: 'An error occured while removing staff', error}));
 };
 
 Router.route('/create').post(createStaff);
+Router.route('/remove/:email').delete(deleteStaff);
 
 module.exports = Router;

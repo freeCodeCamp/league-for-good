@@ -5,25 +5,23 @@ import getStaffTableRows, { colData } from './staffData';
 
 import { css_content } from '../../../style.js';
 
-/*
-			<TableTemplate 
-				headers={colData}
-				rows={getRowData( props.players )}
-			/>
-			*/
 const StaffList = props => {
 	return (
 		<div style={css_content.body}>
 			<TableTemplate
 				headers={colData}
-				rows={getStaffTableRows(props.staff)}
+				rows={getStaffTableRows(props.staff, props.leagueId)}
 			/>
 		</div>
 	);
 };
 
 function mapStateToProps(state) {
-	return { staff: state.league.selected.staff };
+	console.table(state.settings);
+	return { 
+		staff: state.settings.staff,
+		leagueId: state.league.selected._id,
+	};
 }
 
 export default connect(mapStateToProps)(StaffList);

@@ -12,13 +12,13 @@ Authentication State
 	user     : Object  
 */
 export default function(state = defaultState, action) {
-	switch(action.type){
+	switch (action.type) {
 	
 	case INIT_AUTH_STATE:
 		return action.payload;
 	
 	case LOG_OUT:
-		return {...state, loggedIn:false };
+		return {...state, loggedIn: false };
 	}
 	return state;
 }

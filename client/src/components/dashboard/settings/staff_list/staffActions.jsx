@@ -12,19 +12,19 @@ class Icon extends Component {
 	
 	constructor(props) {
 		super(props);
-		this.onClick = this.onClick.bind(this);
+		this.openModal = this.openModal.bind(this);
 	}
 
-	onClick(staff, action) {
+	openModal(staff, action) {
 		this.props.openModal('removeStaff', staff);
 	}
 
 	render() {
-		const { staffEmail, action } = this.props;
+		const { email, leagueId, action } = this.props;
 		
 		return (
 			<IconButton 
-				onTouchTap={()=> this.onClick({ email: staffEmail }, action) }
+				onTouchTap={()=> this.openModal({ email, leagueId }, action) }
 				hoveredStyle={css_dashboard.table.iconHover}
 			>
 				<DeleteIcon />
