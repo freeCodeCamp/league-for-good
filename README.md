@@ -4,7 +4,7 @@ This is a free, open-source web application designed to help sports leagues trac
 
 ## Getting Started
 
-### Prerequisits
+### Prerequisites
 
 - [NodeJS](https://nodejs.org)
 - [MongoDB](https://www.mongodb.org)
@@ -27,11 +27,15 @@ In order for the authorization component of this app to work, it needs to be reg
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory, run the following commands in this order to get the app up and running:
 
 ### `npm install`
 
 Installs all the dependencies
+
+### `npm run init`
+
+Runs the initialization script for the database
 
 ### `npm run dev`
 

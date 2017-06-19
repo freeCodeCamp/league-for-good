@@ -18,8 +18,6 @@ const UserSchema = new Schema({
 	google_id: {
 		type: String,
 	}},
-
-
 	{
 		collection: 'users',
 	}
