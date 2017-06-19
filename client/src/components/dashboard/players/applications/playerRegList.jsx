@@ -9,9 +9,6 @@ import IconButton from 'material-ui/IconButton';
 import BackArrow from 'material-ui/svg-icons/navigation/arrow-back';
 import { css_content } from '../../../style.js';
 
-import { getPlayerApplications } from '../../../../selectors/player_registration';
-
-const playerSelector = getPlayerApplications();
 
 const PlayerList = props => {
 	

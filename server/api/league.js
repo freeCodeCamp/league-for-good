@@ -24,25 +24,6 @@ const createLeague = (req, res) => {
 		});
 };
 
-//Add a new staff member to the league
-// const addStaff = (req, res) => {
-
-// 	const _id = req.params.leagueId;
-
-// 	const newStaff = new User( req.body );
-
-// 	newStaff.save()
-// 		.then(user => {
-// 			League.findByIdAndUpdate( _id, {$push: { staff: user }})
-// 				.exec()
-// 				.then(() => user);
-// 		})
-// 		.then(user => res.send(user))
-// 		.catch(error => {
-// 			res.status(500);
-// 			res.send(error);
-// 		})
-// }
 
 
 // Router.route('/fetchLeagues').get(getLeagues);

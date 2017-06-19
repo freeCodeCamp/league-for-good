@@ -37,54 +37,37 @@ const Schema = mongoose.Schema;
 //	deleteStaff: user can delete staff members
 //	deleteLeague: user can delete the league
 
-const defaultPrivileges = {
-	viewTeams: false,
-	viewSubsetTeams: false,
-	createTeams: false,
-	editTeams: false,
-	deleteTeams: false,
-	viewPlayers: false,
-	viewPlayerRegistrations: false,
-	createPlayers: false,
-	editPlayers: false,
-	assignPlayers: false,
-	viewSeasons: false,
-	editSeasons: false,
-	deleteSeasons: false,
-	viewSettings: false,
-	createStaff: false,
-	editStaff: false,
-	deleteStaff: false,
-	deleteLeague: false,
+const defaultProperty = {
+	type: Boolean,
+	default: false
 };
 
 const RoleSchema = new Schema({
-	name: {
+	title: {
 		type: String,
-      		unique: true,
-      		required: true,
-     	},
+    unique: true,
+    required: true,
+  },
 	privileges: {
-      		viewTeams: Boolean,
-      		viewSubsetTeams: Boolean,
-      		createTeams: Boolean,
-      		editTeams: Boolean,
-      		deleteTeams: Boolean,
-      		viewPlayers: Boolean,
-		viewPlayerRegistrations: Boolean,
-      		createPlayers: Boolean,
-      		editPlayers: Boolean,
-      		assignPlayers: Boolean,
-      		viewSeasons: Boolean,
-      		editSeasons: Boolean,
-      		deleteSeasons: Boolean,
-      		viewSettings: Boolean,
-      		createStaff: Boolean,
-      		editStaff: Boolean,
-      		deleteStaff: Boolean,
-      		deleteLeague: Boolean,
-		default: defaultPrivileges,
-     	}},
+    viewTeams: defaultProperty,
+    viewSubsetTeams: defaultProperty,
+    createTeams: defaultProperty,
+    editTeams: defaultProperty,
+    deleteTeams: defaultProperty,
+    viewPlayers: defaultProperty,
+		viewPlayerRegistrations: defaultProperty,
+    createPlayers: defaultProperty,
+    editPlayers: defaultProperty,
+    assignPlayers: defaultProperty,
+    viewSeasons: defaultProperty,
+    editSeasons: defaultProperty,
+    deleteSeasons: defaultProperty,
+    viewSettings: defaultProperty,
+    createStaff: defaultProperty,
+    editStaff: defaultProperty,
+    deleteStaff: defaultProperty,
+    deleteLeague: defaultProperty,
+  }},
 	{
 		collection: 'roles'
 	}

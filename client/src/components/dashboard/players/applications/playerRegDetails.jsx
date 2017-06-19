@@ -44,7 +44,7 @@ const Player = ({ player, history }) => {
 	);
 };
 
-function mapStateToProps({ players }){
+function mapStateToProps(){
 	
 	return { player: players.selected };
 }

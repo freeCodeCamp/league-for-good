@@ -20,7 +20,7 @@ const addPlayerToLeague = (req, res) => {
 				Teams.findByIdAndUpdate(teamId, {$push: { players: newPlayer }})
 					.exec()
 					.then(() => res.send( newPlayer ))
-					.catch(e => res.send({ error: e }));
+					.catch(error => res.send({ error }));
 			}
 			else{
 				res.send(newPlayer);
@@ -38,12 +38,6 @@ const getPlayer = (req, res) => {
 		.catch(err => res.send(String(err)));
 };
 
-// const getAllPlayers = (req, res) => {
-// 	Player.find({})
-// 		.exec()
-// 		.then(data => res.send(data))
-// 		.catch(err => res.send(String(err)));
-// };
 
 const fetchList = (req, res) => {
 	const { leagueId } = req.params;
