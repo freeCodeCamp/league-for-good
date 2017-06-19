@@ -7,7 +7,7 @@
     "lint": "eslint . --ext .js,.jsx",
     "lint:autoFix": "eslint . --fix --ext .js,.jsx",
     "pretest": "npm run lint",
-    "test": "echo \"No tests\"",
+    "test": "tape **/__tests__/*.test.js",
     "init": "node server/init/initRoles.js",
     "dev": "nodemon index.js --ignore client"
   },
@@ -62,6 +62,7 @@
     "file-loader": "^0.11.1",
     "html-webpack-plugin": "^2.26.0",
     "image-webpack-loader": "^3.3.0",
+    "tape": "^4.6.3",
     "url-loader": "^0.5.8",
     "webpack": "^2.2.0",
     "webpack-dev-middleware": "^1.9.0"
