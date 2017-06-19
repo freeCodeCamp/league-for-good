@@ -10,7 +10,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-	done(null,id);
+	done(null, id);
 });
 
 passport.use(new GoogleStrategy({
@@ -20,26 +20,26 @@ passport.use(new GoogleStrategy({
 },
 	(token, refreshToken, profile, cb) => {
 		if (!profile) return cb('Invalid credentials');
-    
-		User.findOne({ google_id: profile.id })
-			.exec() 
-      .then(user => {
-			
-	if (!user) {
-		const newUser = new User({
-			name:profile.displayName,
-			googleId: profile.id,
-			avatar:profile.photos[0].value,
-			email:profile.emails[0].value,
-		});
-				
-		newUser.save();
-		return cb(null, newUser);
-	}
-	else {
-		return cb(null, user);
-	}
-})
+
+		User.findOne({ googleId: profile.id })
+			.exec()
+			.then(user => {
+
+				if (!user) {
+					const newUser = new User({
+						name: profile.displayName,
+						googleId: profile.id,
+						avatar: profile.photos[0].value,
+						email: profile.emails[0].value,
+					});
+
+					newUser.save();
+					return cb(null, newUser);
+				}
+				else {
+					return cb(null, user);
+				}
+			})
 			.catch(err => cb(err));
 	})
 );

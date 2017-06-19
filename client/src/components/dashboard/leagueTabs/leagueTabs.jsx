@@ -28,7 +28,7 @@ const LeagueTabs = ({history, leagueId}) => {
 						label={tab.name}
 						key={i}
 						style={css_dashboard.tabs.tab}
-						onActive={()=> history.push('/dashboard')}
+						onActive={()=> history.push(tab.links[0].url)}
 					>
 						{generateLinks(tab.links, leagueId)}
 						{routes[tab.name]}	

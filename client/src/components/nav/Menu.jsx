@@ -6,6 +6,7 @@ import {List, ListItem} from 'material-ui/List';
 import AddCircle from 'material-ui/svg-icons/content/add-circle';
 import Help from 'material-ui/svg-icons/action/help';
 import LogOutIcon from 'material-ui/svg-icons/action/exit-to-app';
+import  * as Links  from '../routes';
 
 import Avatar from 'material-ui/Avatar';
 
@@ -25,7 +26,7 @@ const Menu = props => {
 							key={i}
 							primaryText={league.name}
 							onClick={() => selectLeague(league)}
-							containerElement={<Link to="/dashboard"/>}
+							containerElement={<Link to={Links.TEAM_LIST}/>}
 							leftIcon={<Avatar  
 								backgroundColor={css_menu.avatar.backgroundColor}
 								src={SportsIcons[league.sport_type]}/>}
