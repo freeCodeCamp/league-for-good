@@ -21,14 +21,14 @@ passport.use(new GoogleStrategy({
 	(token, refreshToken, profile, cb) => {
 		if (!profile) return cb('Invalid credentials');
 
-		User.findOne({ googleId: profile.id })
+		User.findOne({ google_id: profile.id })
 			.exec()
 			.then(user => {
 
 				if (!user) {
 					const newUser = new User({
 						name: profile.displayName,
-						googleId: profile.id,
+						google_id: profile.id,
 						avatar: profile.photos[0].value,
 						email: profile.emails[0].value,
 					});

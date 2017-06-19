@@ -60,7 +60,7 @@ if (process.env.NODE_ENV !== 'backend-dev') {
 }
 else {
 	app.get('/', (req,res) => {
-		res.json({user:req.user});
+		res.json({user: req.user});
 	});
 }
 

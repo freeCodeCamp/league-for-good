@@ -4,7 +4,7 @@ This is a free, open-source web application designed to help sports leagues trac
 
 ## Getting Started
 
-### Prerequisits
+### Prerequisites
 
 - [NodeJS](https://nodejs.org)
 - [MongoDB](https://www.mongodb.org)
@@ -21,17 +21,22 @@ In order for the authorization component of this app to work, it needs to be reg
   - GOOGLE_CLIENT_SECRET = *Client secret assigned by Google*
   - SESSION_SECRET = *Any random string of characters*
   - GOOGLE_CALLBACK_URL = http://localhost:4000/auth/google/callback (*Use for the callback url in the Google API console*)
-- Open a new terminal session and run `mongod`
+- Open a new terminal session and run `mongod` if mongodb is on the local machine
+- Run `npm run init`
 - Run `npm run dev`
 - Navigate to `localhost:4000` in your browser
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory, the following commands are available:
 
 ### `npm install`
 
 Installs all the dependencies
+
+### `npm run init`
+
+Runs the initialization script for the database
 
 ### `npm run dev`
 
