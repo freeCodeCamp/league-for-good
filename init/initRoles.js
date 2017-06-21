@@ -32,8 +32,8 @@ mongoose.connection
     .on('error', error => console.log('Error connecting to MongoDB:', error));
 
 
-const ownerRole = new Role({
-	title: 'owner',
+const adminRole = new Role({
+	title: 'Admin',
       	privileges: {
 		viewTeams: true,
 		viewSubsetTeams: false,
@@ -52,12 +52,12 @@ const ownerRole = new Role({
 		createStaff: true,
 		editStaff: true,
 		deleteStaff: true,
-		deleteLeague: true,
+		deleteLeague: false,
 	},
 });
 
 const managerRole = new Role({
-	title: 'manager',
+	title: 'Manager',
       	privileges: {
 		viewTeams: true,
 		viewSubsetTeams: false,
@@ -81,7 +81,7 @@ const managerRole = new Role({
 });
 
 const coachRole = new Role({
-	title: 'coach',
+	title: 'Coach',
       	privileges: {
 		viewTeams: false,
 		viewSubsetTeams: true,
@@ -105,13 +105,13 @@ const coachRole = new Role({
 });
 
 
-const ownerPromise = ownerRole.save()
+const adminPromise = adminRole.save()
 	.then(() => console.log('Owner role added'));
 const managerPromise = managerRole.save()
 	.then(() => console.log('Manager role added'));
 const coachPromise = coachRole.save()
 	.then(() => console.log('Coach role added'));
 
-Promise.all([ownerPromise, managerPromise, coachPromise])
+Promise.all([adminPromise, managerPromise, coachPromise])
 	.then(() => console.log('Roles added'))
 	.catch(err => console.log(err));

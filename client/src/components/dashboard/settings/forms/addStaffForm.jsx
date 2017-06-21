@@ -1,6 +1,9 @@
 import React from 'react';
-import { TextField } from 'redux-form-material-ui';
+import { TextField, SelectField } from 'redux-form-material-ui';
+import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
+import IconButton from 'material-ui/IconButton';
+import HelpOutline from 'material-ui/svg-icons/action/help-outline';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
@@ -10,7 +13,8 @@ import { css_content, css_dashboard } from '../../../style';
 import validate from './utils/addStaffFormValidation';
 
 const AddStaffForm = props => {	
-	const { handleSubmit } = props;
+	const { handleSubmit, roles } = props;
+
 	return (
 			<div style={css_content.body}>
 				<h1 style={css_dashboard.title}>Grant access to a staff member</h1>
@@ -27,6 +31,25 @@ const AddStaffForm = props => {
 						floatingLabelStyle={css_dashboard.formRequired}
 						fullWidth={true}
 					/>									
+					<Field
+						name="role"
+						component={SelectField}
+						hintText="Choose Role"
+					>
+						{
+							roles.map((role, i) => {
+								return <MenuItem value={role.title} primaryText={role.title} key={i} />;
+							})
+						}
+					</Field>
+					<IconButton
+						disabled={true}
+						tooltip="View Description Of Roles"
+						tooltipPosition="top-right"
+						touch={true}
+					>
+						<HelpOutline />
+					</IconButton>
 					<RaisedButton
 						label="Add Staff Member"
 						labelStyle={css_dashboard.raisedButton.label}
