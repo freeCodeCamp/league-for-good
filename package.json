@@ -8,8 +8,8 @@
     "lint:autoFix": "eslint . --fix --ext .js,.jsx",
     "pretest": "npm run lint",
     "test": "tape **/__tests__/*.test.js",
-    "init": "node server/init/initRoles.js",
-    "dev": "nodemon index.js --ignore client"
+    "init": "node init/initRoles.js",
+    "dev": "nodemon index.js --ignore client --ignore init"
   },
   "author": "",
   "license": "ISC",

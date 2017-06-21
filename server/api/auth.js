@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 
 const Leagues = mongoose.model('league');
+const Roles = mongoose.model('role');
 
 function logInUser(req,res){
 	req.logIn(req.user, err => {
@@ -18,17 +19,23 @@ function logOutUser(req, res){
 }
 
 //This is called when the user loads up the page to get 
-//all of their teams and leagues if they have an authenticated session
-function fetchUserAndLeagues(req, res, next){
+//all of the initial data if they have an authenticated session
+//	Initial data:
+//		User access to leagues
+//		Roles to determine proper access to those league
+function fetchInitialData(req, res, next){
 	const { user } = req;
 	
-	if(!user) return next();
+	if (!user) return next();
 
-	return Leagues.find({ owner: user._id })
-		.populate('teams')
-		.exec()
-		.then(leagueInfo => { 
-			res.send({user, leagueInfo, loggedIn: true });
+	const leaguePromise =  Leagues.find({ owner: user._id })
+		.populate('teams');
+	const rolePromise =  Roles.find({});
+
+	return Promise.all([leaguePromise.exec(), rolePromise.exec()])
+		.then(initData => { 
+			console.log(initData);
+			res.send({user, leagueInfo: initData[0], roles: initData[1], loggedIn: true });
 		})
 		.catch((err) => res.send(err));
 }
@@ -44,16 +51,16 @@ function handleAuthFailure(req,res){
 
 
 Router.route('/google')
-  .get(passport.authenticate('google',{scope:['profile','email']}));
+  .get(passport.authenticate('google', {scope: ['profile', 'email']}));
 
 
 Router.route('/google/callback')
-  .get(passport.authenticate('google',{failureRedirect: '/'}), logInUser);
+  .get(passport.authenticate('google', {failureRedirect: '/'}), logInUser);
 
 Router.route('/logout')
   .post(logOutUser);
 
 Router.route('/authenticate')
-  .post(fetchUserAndLeagues, handleAuthFailure);
+  .post(fetchInitialData, handleAuthFailure);
 
 module.exports = Router;  

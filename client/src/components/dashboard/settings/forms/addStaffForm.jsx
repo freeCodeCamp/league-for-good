@@ -2,6 +2,7 @@ import React from 'react';
 import { TextField } from 'redux-form-material-ui';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
 
 import { addStaffMember, openSnackbar } from '../../../../actions/index';
 
@@ -9,7 +10,7 @@ import { css_content, css_dashboard } from '../../../style';
 import validate from './utils/addStaffFormValidation';
 
 const AddStaffForm = props => {	
-	const {handleSubmit} = props;
+	const { handleSubmit } = props;
 	return (
 			<div style={css_content.body}>
 				<h1 style={css_dashboard.title}>Grant access to a staff member</h1>
@@ -38,13 +39,16 @@ const AddStaffForm = props => {
 	);
 };
 
+function mapStateToProps(state) {
+	console.log('add staff form', state);
+	return { roles: state.roles };
+}
 
-
-export default reduxForm({
+export default connect(mapStateToProps)(reduxForm({
 	form: 'AddStaffForm',
 	validate,
 	onSubmit: addStaffMember,
 	onSubmitSuccess: openSnackbar,
-})( AddStaffForm );
+})( AddStaffForm ));
 
 

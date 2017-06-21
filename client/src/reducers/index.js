@@ -11,6 +11,7 @@ import rosterReducer from './roster';
 import themeReducer from './theme';
 import playerReducer from './player';
 import settingsReducer from './settings';
+import rolesReducer from './roles';
 
 //Create a single 'reducer' that stores all other various slices of state that were defined in the other reducers
 //Redux uses a 'single source of truth' for an application's 'store'
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
 	theme: themeReducer,
 	players:playerReducer,
 	settings: settingsReducer,
+      	roles: rolesReducer,
 });
 
 export default rootReducer;

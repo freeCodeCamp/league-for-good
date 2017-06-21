@@ -3,7 +3,7 @@ import { INIT_AUTH_STATE, LOG_OUT } from '../actions/types';
 //initialize authentication state as logged out and loading so nothing
 //renders until the page can make a post request to the server verifying
 //a user having an active session
-const defaultState = {loggedIn:false, loading:true};
+const defaultState = { loggedIn:false, loading:true };
 
 /*
 Authentication State

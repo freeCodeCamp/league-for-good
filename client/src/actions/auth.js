@@ -1,23 +1,24 @@
 import axios from 'axios';
-import { INIT_AUTH_STATE, LOG_OUT, FETCH_LEAGUES } from './types';
+import { INIT_AUTH_STATE, LOG_OUT, FETCH_LEAGUES, FETCH_ROLES } from './types';
 
-//function to invoke once when the page is initially loaded
-//checks whether the user is currently logged in with the server and
-//dispatched the resolved response to the 'authReducer' 
+// function to invoke once when the page is initially loaded
+// checks whether the user is currently logged in with the server and
+// dispatched the resolved response to the 'authReducer' 
 export function initAuthState() {
 	
 	return function(dispatch) {
 
 		axios.post('/auth/authenticate')
 			.then(({data}) => {
-				const { leagueInfo, ...userData } = data;
-	
+				const { leagueInfo, roles, ...userData } = data;
+				console.log('auth action', leagueInfo, roles);	
 				//send users info to reducer	
-				dispatch({ type: INIT_AUTH_STATE, payload: {loading:false, ...userData}});
+				dispatch({ type: INIT_AUTH_STATE, payload: {loading: false, ...userData}});
 
 				//send user's leagues to reducer
 				if (leagueInfo) {
-					dispatch({ type: FETCH_LEAGUES, payload: leagueInfo});
+					dispatch({ type: FETCH_LEAGUES, leagueInfo });
+					dispatch({ type: FETCH_ROLES, roles });
 				}
 			})
 			.catch(err => dispatch({type:'AUTH_ERROR'}));

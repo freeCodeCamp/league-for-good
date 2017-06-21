@@ -23,7 +23,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 const MONGO_URI = process.env.MONGO_URI; 
-const Role = require('../models/roles.js');
+const Role = require('../server/models/roles.js');
 
 
 mongoose.connect(MONGO_URI);
@@ -33,7 +33,7 @@ mongoose.connection
 
 
 const ownerRole = new Role({
-	name: 'owner',
+	title: 'owner',
       	privileges: {
 		viewTeams: true,
 		viewSubsetTeams: false,
@@ -57,7 +57,7 @@ const ownerRole = new Role({
 });
 
 const managerRole = new Role({
-	name: 'manager',
+	title: 'manager',
       	privileges: {
 		viewTeams: true,
 		viewSubsetTeams: false,
@@ -81,7 +81,7 @@ const managerRole = new Role({
 });
 
 const coachRole = new Role({
-	name: 'coach',
+	title: 'coach',
       	privileges: {
 		viewTeams: false,
 		viewSubsetTeams: true,

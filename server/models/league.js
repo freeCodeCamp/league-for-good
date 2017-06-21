@@ -16,7 +16,8 @@ const LeagueSchema = new Schema(
 			required: true,
 		},
 		staff: [{
-			type: String,
+			title: String,
+      			username: String,
 		}],
 		pending_players: [{
 			type: Schema.Types.ObjectId,

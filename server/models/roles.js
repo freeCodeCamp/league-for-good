@@ -45,29 +45,29 @@ const defaultProperty = {
 const RoleSchema = new Schema({
 	title: {
 		type: String,
-    unique: true,
-    required: true,
-  },
+		unique: true,
+		required: true,
+	},
 	privileges: {
-    viewTeams: defaultProperty,
-    viewSubsetTeams: defaultProperty,
-    createTeams: defaultProperty,
-    editTeams: defaultProperty,
-    deleteTeams: defaultProperty,
-    viewPlayers: defaultProperty,
+		viewTeams: defaultProperty,
+		viewSubsetTeams: defaultProperty,
+		createTeams: defaultProperty,
+		editTeams: defaultProperty,
+		deleteTeams: defaultProperty,
+		viewPlayers: defaultProperty,
 		viewPlayerRegistrations: defaultProperty,
-    createPlayers: defaultProperty,
-    editPlayers: defaultProperty,
-    assignPlayers: defaultProperty,
-    viewSeasons: defaultProperty,
-    editSeasons: defaultProperty,
-    deleteSeasons: defaultProperty,
-    viewSettings: defaultProperty,
-    createStaff: defaultProperty,
-    editStaff: defaultProperty,
-    deleteStaff: defaultProperty,
-    deleteLeague: defaultProperty,
-  }},
+		createPlayers: defaultProperty,
+		editPlayers: defaultProperty,
+		assignPlayers: defaultProperty,
+		viewSeasons: defaultProperty,
+		editSeasons: defaultProperty,
+		deleteSeasons: defaultProperty,
+		viewSettings: defaultProperty,
+		createStaff: defaultProperty,
+		editStaff: defaultProperty,
+		deleteStaff: defaultProperty,
+		deleteLeague: defaultProperty,
+	}},
 	{
 		collection: 'roles'
 	}
@@ -75,8 +75,8 @@ const RoleSchema = new Schema({
 
 const RoleModel = mongoose.model('role', RoleSchema);
 RoleModel.schema.options.emitIndexErrors;
-RoleModel.on('index', function(error) {
-	console.log('index error', error);
-});
+//RoleModel.on('index', function(error) {
+//	console.log('index error', error);
+//});
 
 module.exports = RoleModel;
