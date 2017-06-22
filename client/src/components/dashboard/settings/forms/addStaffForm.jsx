@@ -23,18 +23,19 @@ const AddStaffForm = props => {
 					onSubmit={ handleSubmit }
 					style={css_dashboard.form}
 				>
-					<Field
-						name="email" 
-						component={TextField}
-						hintText="Enter A Gmail Account"
-						floatingLabelText="User's Gmail Account*"
-						floatingLabelStyle={css_dashboard.formRequired}
-						fullWidth={true}
-					/>									
+					<IconButton
+						tooltip="View Description Of Roles"
+						tooltipPosition="top-right"
+						touch={true}
+						style={css_dashboard.settings.forms.add.info}
+					>
+						<HelpOutline />
+					</IconButton>
 					<Field
 						name="role"
 						component={SelectField}
 						hintText="Choose Role"
+						style={css_dashboard.settings.forms.add.selectField}
 					>
 						{
 							roles.map((role, i) => {
@@ -42,14 +43,14 @@ const AddStaffForm = props => {
 							})
 						}
 					</Field>
-					<IconButton
-						disabled={true}
-						tooltip="View Description Of Roles"
-						tooltipPosition="top-right"
-						touch={true}
-					>
-						<HelpOutline />
-					</IconButton>
+					<Field
+						name="email" 
+						component={TextField}
+						hintText="Enter A Gmail Account"
+						floatingLabelText="User's Gmail Account*"
+						floatingLabelStyle={css_dashboard.formRequired}
+						style={css_dashboard.settings.forms.add.textField}
+					/>									
 					<RaisedButton
 						label="Add Staff Member"
 						labelStyle={css_dashboard.raisedButton.label}

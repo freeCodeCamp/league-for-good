@@ -50,6 +50,21 @@ export const css_appBar = {
 	},
 };
 
+export const css_loading = {
+	style: {
+		position:'absolute',
+		top:0,
+		left:0,
+		width:'100%',
+		height: '100%',
+		background:'white',
+		zIndex:2001,
+		display:'flex',
+		justifyContent: 'center',
+		alignItems:'center',
+	},
+	size: 80,
+};
 
 // login styling
 export const css_login = {
@@ -285,6 +300,30 @@ export const css_dashboard = {
 	players: {
 		ul: {
 			listStyleType: 'none',
+		},
+	},
+	// custom css in the settings tab
+	settings: {
+		forms: {
+			add: {
+				textField: {
+					width: '100%',
+					padding: '0px',
+				},
+				selectField: {
+					width: '15%',
+					margin: '0px',
+					padding: '0px',
+					float: 'right',
+					textAlign: 'left',
+				},
+				info: {
+					marginBottom: '5px',
+					marginLeft: '5px',
+					textAlign: 'right',
+					float: 'right',
+				},
+			},
 		},
 	},
 };
