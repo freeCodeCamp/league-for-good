@@ -29,7 +29,7 @@ const rootReducer = combineReducers({
 	theme: themeReducer,
 	players:playerReducer,
 	settings: settingsReducer,
-      	roles: rolesReducer,
+	roles: rolesReducer,
 });
 
 export default rootReducer;

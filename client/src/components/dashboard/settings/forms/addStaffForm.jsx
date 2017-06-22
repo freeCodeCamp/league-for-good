@@ -39,7 +39,7 @@ const AddStaffForm = props => {
 					>
 						{
 							roles.map((role, i) => {
-								return <MenuItem value={role.title} primaryText={role.title} key={i} />;
+								return <MenuItem value={role._id} primaryText={role.title} key={i} />;
 							})
 						}
 					</Field>

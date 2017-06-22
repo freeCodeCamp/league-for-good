@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import IconButton from 'material-ui/IconButton';
+import EditIcon from 'material-ui/svg-icons/image/edit';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -16,7 +17,12 @@ class Icon extends Component {
 	}
 
 	openModal(staff, action) {
-		this.props.openModal('removeStaff', staff);
+		if (action === 'edit') {
+			this.props.openModal('editStaff', staff);
+		}
+		else {
+			this.props.openModal('removeStaff', staff);
+		}
 	}
 
 	render() {
@@ -27,7 +33,10 @@ class Icon extends Component {
 				onTouchTap={()=> this.openModal({ email, leagueId }, action) }
 				hoveredStyle={css_dashboard.table.iconHover}
 			>
-				<DeleteIcon />
+				{action === 'edit' ?
+					<EditIcon /> :
+					<DeleteIcon />
+				}
 			</IconButton>
 		);
 	}

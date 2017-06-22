@@ -13,6 +13,17 @@ export const colData = [
 		sortable: true, 
 		searchable: true, 
 	},
+	//{
+	//	label: 'Role',
+	//	cellProp: 'role',
+	//	sortable: true,
+	//},
+	//{
+	//	label: 'Edit',
+	//	style: css_dashboard.table.columns.icon,
+	//	action: 'edit',
+	//	cellProp: 'icon,
+	//},
 	{ 
 		label: 'Delete', 
 		style: css_dashboard.table.columns.icon,
@@ -31,7 +42,7 @@ function getCellValue(staff, prop, action, leagueId) {
 	
 	// The staff data is passed as an array of strings unlike the teams and players list tables 
 	// so we just pass the string back for each cell value if it's not a delete icon
-	return staff;
+	return staff[prop];
 }
 	
 

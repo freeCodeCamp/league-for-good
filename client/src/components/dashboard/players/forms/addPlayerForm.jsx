@@ -9,7 +9,7 @@ import { createPlayer, updatePlayer, openSnackbar } from '../../../../actions/in
 import { css_content, css_dashboard } from '../../../style';
 
 import { normalizeJerseyNum as normalize } from './utils/normalize'; 
-import validate from './utils/playerFormValidation';
+import validate from './utils/addPlayerFormValidation';
 
 let PlayerFormTemplate = ({handleSubmit, teams, title}) => {
 	return (

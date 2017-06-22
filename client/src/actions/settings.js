@@ -11,6 +11,7 @@ export function addStaffMember(formVals, dispatch, { location }) {
 	const body = {
 		email: formVals.email,
 		league: location.state.leagueId,
+		role: formVals.role,
 	};
 
 	axios.post(`${rootURL}/settings/create`, body)

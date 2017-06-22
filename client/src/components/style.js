@@ -11,7 +11,7 @@ export const common = {
 			color: theme.alternateTextColor,
 			fontWeight: 500,
 		},
-		style: { marginTop: '30px' },
+		style: { marginTop: '50px' },
 		backgroundColor: theme.accent1Color,
 	},
 	formRow: {
@@ -319,7 +319,7 @@ export const css_dashboard = {
 				},
 				info: {
 					marginBottom: '5px',
-					marginLeft: '5px',
+					marginLeft: '10px',
 					textAlign: 'right',
 					float: 'right',
 				},

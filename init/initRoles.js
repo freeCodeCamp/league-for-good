@@ -33,7 +33,7 @@ mongoose.connection
 
 
 const adminRole = new Role({
-	title: 'Admin',
+	title: 'Administrator',
       	privileges: {
 		viewTeams: true,
 		viewSubsetTeams: false,

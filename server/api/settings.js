@@ -6,7 +6,13 @@ const League = mongoose.model('league');
 
 const createStaff = (req, res) => {
 	const query = { _id: req.body.league };
-	const update = { "$push": { staff: req.body.email } };
+	const updateInfo = {
+		staff: {
+			email: req.body.email,
+			role: req.body.roleId
+		}
+	};
+	const update = { "$push": updateInfo };
 
 	League.update(query, update)
 		.exec()
