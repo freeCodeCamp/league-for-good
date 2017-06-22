@@ -15,6 +15,17 @@ import ArrowUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
 import ArrowDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
 import { css_dashboard } from '../../../style';
 
+// IMPORTED STYLES 
+const { table: { 
+	sortArrowActiveColor, 
+	sortArrowInactiveColor, 
+	colHeaderLabelStyle,
+	colHeaderStyle,
+	colRowStyle, 
+}} = css_dashboard;
+/////////////////////////
+
+
 // A table template to easily render a table in the management panel
 // Also allows the styling of each column to be specified or uses a default
 // styling component, where each column is an equal width
@@ -71,8 +82,9 @@ const Headers = (props) => {
 					return (
 						<TableHeaderColumn 
 							key={i}
-							style={header.style ||
-								css_dashboard.table.columns.defaultCol}>
+							colSpan={header.colSpan || 1}
+							style={colHeaderStyle}
+						>
 							<ColumnHeaderChild
 								label={header.label}
 								onClick={props.onSort}
@@ -103,8 +115,8 @@ const renderBody = (rows) => {
 							row.map(function(rowData, i) {
 								return (
 									<TableRowColumn 
-										style={rowData.style || 
-											css_dashboard.table.columns.defaultCol}
+										colSpan={rowData.colSpan}
+										style={rowData.style}
 										key={i}
 									>
 										{ i === 0 ?  <strong>{rowData.value}</strong> 
@@ -122,45 +134,49 @@ const renderBody = (rows) => {
 
 // column header with sorting icons
 // when clicked will sort columns with asc, desc, or no order
-const ColumnHeaderChild = (props) => {
+const ColumnHeaderChild = props => {
+	
 	let arrowIcon = <noScript />;
 
-	// If the column is sortable, determine appropriate icon
-	if (props.sortable) {
-		let columnSorted = props.colIndex === props.sortColumnIndex;
-		let iconColor = columnSorted ?
-			css_dashboard.table.sortArrowActiveColor :
-			css_dashboard.table.sortArrowInactiveColor;
-			
-		if (props.sortDirection === 'asc') {
-			if (columnSorted) {
-				arrowIcon = <ArrowDown color={iconColor} />;
-			}
-			else {
-				arrowIcon = <ArrowUp color={iconColor} />;
-			}
+	//Return early if column is not sortable
+	if (!props.sortable) {
+		return (
+			<div style={colHeaderLabelStyle}>
+				{props.label}
+			</div>
+		)
+	}
+	
+
+	let columnSorted = props.colIndex === props.sortColumnIndex;
+	let iconColor = columnSorted ? sortArrowActiveColor : sortArrowInactiveColor;
+	
+	// Determine appropriate icon and icon color	
+	if (props.sortDirection === 'asc') {
+		if (columnSorted) {
+			arrowIcon = <ArrowDown color={iconColor} />;
 		}
-		else if (props.sortDirection === 'desc') {
-			arrowIcon = <ArrowUp color={iconColor} />;
-		}
-		// else, no sorting
 		else {
 			arrowIcon = <ArrowUp color={iconColor} />;
 		}
 	}
+	else if (props.sortDirection === 'desc') {
+		arrowIcon = <ArrowUp color={iconColor} />;
+	}
+	// else, no sorting
+	else {
+		arrowIcon = <ArrowUp color={iconColor} />;
+	}
+	
 
 	return (
-		<FlatButton 
-			label={props.label}
-			icon={arrowIcon}
-			hoverColor={css_dashboard.table.colHeaderHover}
-			labelStyle={css_dashboard.table.colHeaderButtonLabel}
-			style={css_dashboard.table.colHeaderStyle}
-			labelPosition="before"
-			disabled={!props.sortable}
-			disableTouchRipple={true}
-			onTouchTap={() => { props.onClick(props.colIndex); }}
-		/>
+		<div 
+			style={{...colHeaderLabelStyle, cursor:'pointer'}}
+			onClick={() => { props.onClick(props.colIndex); }}
+		>
+			{arrowIcon}
+			{props.label}	
+		</div>
 	);
 };
 

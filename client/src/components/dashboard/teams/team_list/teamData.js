@@ -12,37 +12,39 @@ export const colData = [
 		label: 'Name',
 		cellProp: 'name', 
 		sortable: true, 
-		searchable: true, 
+		searchable: true,
+		colSpan:2,
+
 	},
 	{ 
 		label: 'Roster Size', 
 		cellProp: 'players.length', 
-		sortable: true, 
+		sortable: true,
+		style: css_dashboard.table.columns.defaultCol, 
 	},
 	{ 
-		label: 'Seasons Played', 
+		label: 'Seasons', 
 		cellProp: 'seasons.length', 
 		sortable: true,
+		style: css_dashboard.table.columns.defaultCol, 
 	},
 	{ 
 		label: 'Status', 
 		cellProp: 'currently_active',
 		sortable: true, 
+		style: css_dashboard.table.columns.defaultCol, 
 	},
 	{
 		label: 'Roster',
-		style: css_dashboard.table.columns.icon,
 		cellProp: 'link',
 	},	
 	{ 
 		label: 'Edit', 
-		style: css_dashboard.table.columns.icon,
 		action: 'edit', 
 		cellProp: 'icon', 
 	},
 	{ 
 		label: 'Delete', 
-		style: css_dashboard.table.columns.icon,
 		action: 'delete', 
 		cellProp: 'icon', 
 	},	
@@ -77,6 +79,7 @@ const getTeamTableData = ({ teams }) => {
 		return colData.map( col => (
 			{
 				value: getCellValue(team, col.cellProp, col.action),
+				colSpan: col.colSpan || 1,
 				style: col.style,
 			}
 		));

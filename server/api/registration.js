@@ -11,9 +11,8 @@ const getRegForm = (req, res) => {
 	req.session.submitted = false;
 
 	League.findById(leagueId)
-		.populate('pending_players')
 		.exec()
-		.then(league => res.render('playerRegistration.ejs', { league } ))
+		.then(league => res.render('playerRegistration', { league } ))
 		.catch(err => res.render('error', 
 			{ message : 'The current link does not exist' }))
 }
@@ -36,10 +35,22 @@ const createPlayer = (req, res) => {
 		.catch(err => res.render('error', { message: 'Error submitting your registration form'}))
 }
 
+const deleteRegistration = (req, res) => {
+	const { playerId } = req.params;
+
+	Player.findById(playerId)
+		.exec()
+		.then(player => player.remove())
+		.then(() => res.send('Player registration deleted'))
+		.catch(err => { throw err})	
+
+}
+
 Router.route('/:leagueId')
 	.get(getRegForm)
 	.post(createPlayer);
 	
-
+Router.route('/delete/:playerId')
+	.delete(deleteRegistration)
 
 module.exports = Router;

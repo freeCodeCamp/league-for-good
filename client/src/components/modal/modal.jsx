@@ -77,7 +77,7 @@ class Modal extends Component {
 	}
 }
 
-function mapStateToProps({modal}) {
+function mapStateToProps({ modal, league }) {
 	const { open, view, data } = modal; 
 	return { open, view, data };
 }
