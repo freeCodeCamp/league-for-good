@@ -13,17 +13,18 @@ export const colData = [
 		sortable: true, 
 		searchable: true, 
 	},
-	//{
-	//	label: 'Role',
-	//	cellProp: 'role',
-	//	sortable: true,
-	//},
-	//{
-	//	label: 'Edit',
-	//	style: css_dashboard.table.columns.icon,
-	//	action: 'edit',
-	//	cellProp: 'icon,
-	//},
+	{
+		label: 'Role',
+		cellProp: 'role.title',
+		sortable: true,
+	},
+	{
+		label: 'Edit',
+		style: css_dashboard.table.columns.icon,
+		action: 'edit',
+		cellProp: 'icon',
+		//TODO: add the edit staff modal
+	},
 	{ 
 		label: 'Delete', 
 		style: css_dashboard.table.columns.icon,
@@ -35,8 +36,11 @@ export const colData = [
 // Get the value for the cell
 function getCellValue(staff, prop, action, leagueId) {
 
-	if (prop === 'icon') {
-		const iconProps = { action, email: staff, leagueId };
+	if (prop.split('.').length > 1) {
+		return prop.split('.').reduce((o, i) => o[i], staff);
+	}
+	else if (prop === 'icon') {
+		const iconProps = { action, email: staff.email, leagueId };
 		return <Icon {...iconProps} />; 
 	}
 	

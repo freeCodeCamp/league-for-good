@@ -174,8 +174,8 @@ const ColumnHeaderChild = props => {
 			style={{...colHeaderLabelStyle, cursor:'pointer'}}
 			onClick={() => { props.onClick(props.colIndex); }}
 		>
-			{arrowIcon}
 			{props.label}	
+			{arrowIcon}
 		</div>
 	);
 };
