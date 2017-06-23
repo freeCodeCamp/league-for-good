@@ -7,8 +7,14 @@ import { connect } from 'react-redux';
 import IconButton from 'material-ui/IconButton';
 import BackArrow from 'material-ui/svg-icons/navigation/arrow-back';
 
-const Player = ({ player, history }) => {
-	console.log(player);
+const PlayerApplication = ({ location, history }) => {
+	//Player application is loaded from state stored in react-router's location property
+	//rather than from redux store
+	/*
+		As pending_player data grows perhaps its a better idea to fetch the info from the server 
+		rather than loading it all at once when the page initializes
+	*/
+	const { state: { player }} = location;
 	if (!player) {
 		return (
 			<h2>...Loading</h2>
@@ -44,9 +50,4 @@ const Player = ({ player, history }) => {
 	);
 };
 
-function mapStateToProps(){
-	
-	return { player: players.selected };
-}
-
-export default connect(mapStateToProps)(Player);
+export default PlayerApplication

@@ -234,21 +234,20 @@ export const css_dashboard = {
 			marginLeft: '20px',
 			marginBottom: '10px',
 		},
-		sortIcon: {
-			display: 'inline',
-			cursor: 'pointer',
-		},
 		colHeaderHover: theme.alternateTextColor,
-		colHeaderButtonLabel: {
-			color: theme.textColor,
-			textTransform: 'none',
-			padding: '0px',
-			margin: '0px',
-		},
+		// colHeaderButtonLabel: {
+		// 	color: theme.textColor,
+		// 	textTransform: 'none',
+		// 	padding: '0px',
+		// 	margin: '0px',
+		// },
 		colHeaderStyle: {
-			padding: '0px',
-			margin: '0px',
-			textAlign: 'left',
+			
+		},
+		colHeaderLabelStyle: {
+			display:'flex', 
+			alignItems:'center',
+			color: theme.textColor, 
 		},
 		sortArrowActiveColor: theme.textColor,
 		sortArrowInactiveColor: theme.borderColor,
@@ -261,12 +260,13 @@ export const css_dashboard = {
 		// if you are using an icon for a column, use the icon style to reduce the width
 		// in the table since material ui will give it a width that is usually too large
 		columns: {
+		 	
 			defaultCol: {
-				textAlign: 'left',
+				textAlign: 'center',
 			},
 			icon: {
 				textAlign: 'left',
-				width: '10%',
+				
 			},
 		},
 		// used for the team list displaying all teams in a league

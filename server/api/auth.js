@@ -18,8 +18,8 @@ function logOutUser(req, res){
 	res.status(200).send('User logged out');
 }
 
-//This is called when the user loads up the page to get 
-//all of the initial data if they have an authenticated session
+// This is called when the user loads up the page to get 
+// all of the initial data if they have an authenticated session
 //	Initial data:
 //		User access to leagues
 //		Roles to determine proper access to those league
@@ -29,7 +29,8 @@ function fetchInitialData(req, res, next){
 	if (!user) return next();
 
 	const leaguePromise =  Leagues.find({ owner: user._id })
-		.populate('teams');
+		.populate('teams')
+		.populate('staff.role');
 	const rolePromise =  Roles.find({});
 
 	return Promise.all([leaguePromise.exec(), rolePromise.exec()])
