@@ -4,7 +4,7 @@ import EditIcon from 'material-ui/svg-icons/image/edit';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { css_dashboard } from '../../../../style';
+import { cssDashboard } from '../../../../style';
 import { openModal } from '../../../../../actions/index';
 
 
@@ -24,7 +24,7 @@ class Icon extends Component {
 		return (
 			<IconButton
 				onTouchTap={()=> this.onClick() }
-				hoveredStyle={css_dashboard.table.iconHover}
+				hoveredStyle={cssDashboard.table.iconHover}
 				>
 				{action === 'delete' ?
 					<DeleteIcon /> :

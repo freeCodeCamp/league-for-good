@@ -10,19 +10,19 @@ import {
 import CreateLeagueButton from './CreateLeagueButton.jsx';
 
 import { sports } from '../sports.js';
-import { css_createLeague } from '../style';
+import { cssCreateLeague } from '../style';
 
 
 // Creates a list of different buttons for selecting
 // a sport type for the new league
 // Once a sport type is selected, the proper form will be rendered
 const CreateLeagueSelector = ({onSelect, selectedSport})=> (
-	<Card style={css_createLeague.card.style}>
+	<Card style={cssCreateLeague.card.style}>
 		<CardTitle
 			title='Create a New League'
-			titleColor={css_createLeague.card.title.titleColor}
+			titleColor={cssCreateLeague.card.title.titleColor}
 			subtitle='Choose a sport'
-			subtitleColor={css_createLeague.card.title.subtitleColor}
+			subtitleColor={cssCreateLeague.card.title.subtitleColor}
 		/>
 		<CardActions>
 			{sports.map((sport, i) => {

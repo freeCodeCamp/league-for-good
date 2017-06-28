@@ -1,5 +1,5 @@
 import React from 'react';
-import { css_dashboard } from '../../../style';
+import { cssDashboard } from '../../../style';
 import DetailsLink from './links/playerDetailsLink.jsx';
 import EditLink from './links/playerEditLink.jsx';
 
@@ -27,13 +27,13 @@ export const colData = [
 	},
 	{
 		label: 'Edit',
-		style: css_dashboard.table.columns.icon,
+		style: cssDashboard.table.columns.icon,
 		cellProp: 'link',
 		action: 'editPlayer'
 	},
 	{
 		label: 'View',
-		style: css_dashboard.table.columns.icon,
+		style: cssDashboard.table.columns.icon,
 		action: 'viewPlayer',
 		cellProp: 'link'
 	}

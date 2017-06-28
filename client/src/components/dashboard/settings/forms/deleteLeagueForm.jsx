@@ -4,26 +4,26 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { Field, reduxForm } from 'redux-form';
 
 import { createTeam, openSnackbar } from '../../../../actions/index';
-import { css_content, css_dashboard } from '../../../style';
+import { cssContent, cssDashboard } from '../../../style';
 
 
 const DeleteLeagueForm = props => {
 	// const { handleSubmit } = props;
 	return (
-			<div style={css_content.body}>
-				<h1 style={css_dashboard.title}>Delete League</h1>
-				<h2 style={css_dashboard.warning}>
+			<div style={cssContent.body}>
+				<h1 style={cssDashboard.title}>Delete League</h1>
+				<h2 style={cssDashboard.warning}>
 					Are you sure you want to delete the league? This action cannot be undone.
 				</h2>
 				<form
 					// onSubmit={ handleSubmit }
-					style={css_dashboard.form}
+					style={cssDashboard.form}
 					>
 					<RaisedButton
 						label='Delete League'
-						labelStyle={css_dashboard.warningButton.label}
-						backgroundColor={css_dashboard.warningButton.backgroundColor}
-						style={css_dashboard.warningButton.style}
+						labelStyle={cssDashboard.warningButton.label}
+						backgroundColor={cssDashboard.warningButton.backgroundColor}
+						style={cssDashboard.warningButton.style}
 						type='submit'
 					/>
 				</form>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { css_content, css_dashboard } from '../../../style';
+import { cssContent, cssDashboard } from '../../../style';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
 
 import MenuItem from 'material-ui/MenuItem';
@@ -51,11 +51,11 @@ class TeamTable extends Component {
 		const teams = this.formatTeams();
 
 		return (
-			<div style={css_content.body}>
+			<div style={cssContent.body}>
 				<DropDownMenu
 					value={this.state.filterValue}
 					onChange={this.handleChange}
-					style={css_dashboard.table.teams.dropdown}
+					style={cssDashboard.table.teams.dropdown}
 					>
 					<MenuItem value='all' primaryText='All Teams' />
 					<MenuItem value='active' primaryText='Active Teams' />

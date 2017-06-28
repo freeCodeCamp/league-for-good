@@ -1,5 +1,5 @@
 import React from 'react';
-import { css_dashboard } from '../../../style';
+import { cssDashboard } from '../../../style';
 import Icon from './teamActions.jsx';
 import Link from './teamRosterLink.jsx';
 
@@ -20,19 +20,19 @@ export const colData = [
 		label: 'Roster Size',
 		cellProp: 'players.length',
 		sortable: true,
-		style: css_dashboard.table.columns.defaultCol
+		style: cssDashboard.table.columns.defaultCol
 	},
 	{
 		label: 'Seasons',
 		cellProp: 'seasons.length',
 		sortable: true,
-		style: css_dashboard.table.columns.defaultCol
+		style: cssDashboard.table.columns.defaultCol
 	},
 	{
 		label: 'Status',
 		cellProp: 'currently_active',
 		sortable: true,
-		style: css_dashboard.table.columns.defaultCol
+		style: cssDashboard.table.columns.defaultCol
 	},
 	{
 		label: 'Roster',

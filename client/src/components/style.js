@@ -27,7 +27,7 @@ export const common = {
 
 
 // app bar component on top of window
-export const css_appBar = {
+export const cssAppBar = {
 	main: {
 		zIndex: 2000,
 		position: 'fixed'
@@ -52,7 +52,7 @@ export const css_appBar = {
 
 
 // login styling
-export const css_login = {
+export const cssLogin = {
 	raisedButton: common.raisedButton,
 	dialog: {
 		title: {
@@ -65,7 +65,7 @@ export const css_login = {
 
 
 // menu on left side of window
-export const css_menu = {
+export const cssMenu = {
 	drawer: {
 		list: {
 			marginTop: '70px'
@@ -79,7 +79,7 @@ export const css_menu = {
 
 // content is a wrapper that will contain the main
 // components rendered for the UI
-export const css_content = {
+export const cssContent = {
 	// paper is a material ui component used as background
 	paper: {
 		width: '90%',
@@ -123,8 +123,8 @@ export const css_content = {
 
 // the create league component contains a form and
 // corresponding buttons
-// rendered inside css_content
-export const css_createLeague = {
+// rendered inside cssContent
+export const cssCreateLeague = {
 	form: common.form,
 	raisedButton: common.raisedButton,
 	card: {
@@ -162,8 +162,8 @@ export const css_createLeague = {
 
 // dashboard will contain most of the actual managing
 // of the league data
-// rendered inside css_content
-export const css_dashboard = {
+// rendered inside cssContent
+export const cssDashboard = {
 	// tabs are used to display sections to the user
 	tabs: {
 		inkBar: {
@@ -292,8 +292,8 @@ export const css_dashboard = {
 };
 
 
-// is rendered inside css_content
-export const css_help = {
+// is rendered inside cssContent
+export const cssHelp = {
 	container: {
 		backgroundColor: theme.alternateTextColor,
 		padding: '40px',
@@ -326,7 +326,7 @@ export const css_help = {
 };
 
 
-export const css_modal = {
+export const cssModal = {
 	dialogRoot: {
 		display: 'flex',
 		alignItems: 'center',

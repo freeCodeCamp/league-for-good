@@ -8,7 +8,7 @@
 // } from 'material-ui/Toolbar';
 // import RaisedButton from 'material-ui/RaisedButton';
 // import { findRoster } from '../../../../actions/index';
-// import { common, css_dashboard } from '../../../style';
+// import { common, cssDashboard } from '../../../style';
 
 // const validate = val => {
 // 	const errors = {};
@@ -45,7 +45,7 @@
 // 				<RaisedButton
 // 					label="Find"
 // 					style={{marginLeft:15}}
-// 					backgroundColor={css_dashboard.raisedButton.backgroundColor}
+// 					backgroundColor={cssDashboard.raisedButton.backgroundColor}
 // 					type="submit"
 // 				/>
 // 			</form>

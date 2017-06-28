@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import { generateLinks } from './tab_navbar/generateLinks.jsx';
 import { tabs } from './leagueTabData';
-import { css_content, css_dashboard } from '../../style';
+import { cssContent, cssDashboard } from '../../style';
 
 import TeamRoutes from '../teams/routes.jsx';
 import PlayerRoutes from '../players/routes.jsx';
@@ -21,13 +21,13 @@ const routes = {
 const LeagueTabs = ({history, leagueId}) => {
 
 	return (
-		<Tabs inkBarStyle={css_dashboard.tabs.inkBar}>
+		<Tabs inkBarStyle={cssDashboard.tabs.inkBar}>
 			{
 				tabs.map((tab, i) => (
 					<Tab
 						label={tab.name}
 						key={i}
-						style={css_dashboard.tabs.tab}
+						style={cssDashboard.tabs.tab}
 						onActive={()=> history.push(tab.links[0].url)}
 						>
 						{generateLinks(tab.links, leagueId)}

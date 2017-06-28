@@ -5,18 +5,18 @@ import {
 	ToolbarSeparator,
 	ToolbarTitle
 } from 'material-ui/Toolbar';
-import { css_dashboard } from '../../style';
+import { cssDashboard } from '../../style';
 
 
 const Header = ({league}) => (
 	<Toolbar>
 		<ToolbarGroup>
 			<ToolbarTitle
-				style={css_dashboard.toolbar.title}
+				style={cssDashboard.toolbar.title}
 				text={league.name}
 			/>
-			<ToolbarSeparator style={css_dashboard.toolbar.separator} />
-			<em style={css_dashboard.toolbar.subtitle}>
+			<ToolbarSeparator style={cssDashboard.toolbar.separator} />
+			<em style={cssDashboard.toolbar.subtitle}>
 				{`${league.sport_type} League`}
 			</em>
 		</ToolbarGroup>

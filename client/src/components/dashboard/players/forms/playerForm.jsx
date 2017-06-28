@@ -10,43 +10,43 @@ import {
 	updatePlayer,
 	openSnackbar
 } from '../../../../actions/index';
-import { css_content, css_dashboard } from '../../../style';
+import { cssContent, cssDashboard } from '../../../style';
 
 import { normalizeJerseyNum as normalize } from './utils/normalize';
 import validate from './utils/playerFormValidation';
 
 let PlayerFormTemplate = ({handleSubmit, teams, title}) => {
 	return (
-		<div style={css_content.body}>
-			<h1 style={css_dashboard.title}>{title}</h1>
-			<h6 style={css_dashboard.warning}>* = Required</h6>
+		<div style={cssContent.body}>
+			<h1 style={cssDashboard.title}>{title}</h1>
+			<h6 style={cssDashboard.warning}>* = Required</h6>
 			<form
 				onSubmit={ handleSubmit}
-				style={css_dashboard.form}
+				style={cssDashboard.form}
 				>
-				<div style={css_dashboard.formRow}>
+				<div style={cssDashboard.formRow}>
 					<Field
 						name='first_name'
 						component={TextField}
 						hintText='First name'
 						floatingLabelText='First name*'
-						floatingLabelStyle={css_dashboard.formRequired}
+						floatingLabelStyle={cssDashboard.formRequired}
 					/>
 					<Field
 						name='last_name'
 						component={TextField}
 						hintText='Last name'
 						floatingLabelText='Last name*'
-						floatingLabelStyle={css_dashboard.formRequired}
+						floatingLabelStyle={cssDashboard.formRequired}
 					/>
 				</div>
-				<div style={css_dashboard.formRow}>
+				<div style={cssDashboard.formRow}>
 					<Field
 						name='email'
 						component={TextField}
 						hintText='Email'
 						floatingLabelText='Email*'
-						floatingLabelStyle={css_dashboard.formRequired}
+						floatingLabelStyle={cssDashboard.formRequired}
 					/>
 					<Field
 						name='phone_num'
@@ -55,7 +55,7 @@ let PlayerFormTemplate = ({handleSubmit, teams, title}) => {
 						floatingLabelText='Phone number'
 					/>
 				</div>
-				<div style={css_dashboard.formRow}>
+				<div style={cssDashboard.formRow}>
 					<Field
 						name='address.street'
 						component={TextField}
@@ -69,7 +69,7 @@ let PlayerFormTemplate = ({handleSubmit, teams, title}) => {
 						floatingLabelText='City'
 					/>
 				</div>
-				<div style={css_dashboard.formRow}>
+				<div style={cssDashboard.formRow}>
 					<Field
 						name='address.state'
 						component={TextField}
@@ -83,7 +83,7 @@ let PlayerFormTemplate = ({handleSubmit, teams, title}) => {
 						floatingLabelText='Country'
 					/>
 				</div>
-				<div style={css_dashboard.formRow}>
+				<div style={cssDashboard.formRow}>
 					<Field
 						name='team.teamId'
 						component={AutoComplete}
@@ -110,9 +110,9 @@ let PlayerFormTemplate = ({handleSubmit, teams, title}) => {
 				</div>
 				<RaisedButton
 					label={title}
-					labelStyle={css_dashboard.raisedButton.label}
-					backgroundColor={css_dashboard.raisedButton.backgroundColor}
-					style={css_dashboard.raisedButton.style}
+					labelStyle={cssDashboard.raisedButton.label}
+					backgroundColor={cssDashboard.raisedButton.backgroundColor}
+					style={cssDashboard.raisedButton.style}
 					type='submit'
 				/>
 			</form>

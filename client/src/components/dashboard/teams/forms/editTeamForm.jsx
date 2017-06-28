@@ -6,11 +6,11 @@ import { updateTeam, openSnackbar } from '../../../../actions/index';
 import validate from './utils/validation';
 import normalize from './utils/normalize';
 
-import { css_dashboard } from '../../../style';
+import { cssDashboard } from '../../../style';
 
 const EditTeamForm = (props) => {
 	return (
-		<form style={css_dashboard.teams.forms.edit.style}>
+		<form style={cssDashboard.teams.forms.edit.style}>
 			<Field
 				name='name'
 				component={TextField}
@@ -19,14 +19,14 @@ const EditTeamForm = (props) => {
 				floatingLabelText='Team Name:'
 				fullWidth={true}
 			/>
-			<div style={css_dashboard.teams.forms.edit.checkboxDiv}>
+			<div style={cssDashboard.teams.forms.edit.checkboxDiv}>
 				<Field
 					component={Checkbox}
 					name='currently_active'
 					label='Check if active'
 					checked={props.initialValues.currently_active}
 					labelPosition='left'
-					labelStyle={css_dashboard.teams.forms.edit.checkbox}
+					labelStyle={cssDashboard.teams.forms.edit.checkbox}
 				/>
 			</div>
 		</form>

@@ -1,6 +1,6 @@
 import React from 'react';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
-import { css_content, css_dashboard } from '../../../style';
+import { cssContent, cssDashboard } from '../../../style';
 
 import { connect } from 'react-redux';
 
@@ -16,21 +16,21 @@ const Player = ({ player, history }) => {
 	}
 
 	return (
-		<div style={css_content.body}>
+		<div style={cssContent.body}>
 			<IconButton
 				onTouchTap={() => history.goBack()}
 				tooltip='Back to team roster'
 				>
 				<BackArrow />
 			</IconButton>
-			<h1 style={css_dashboard.title}>
+			<h1 style={cssDashboard.title}>
 				{player.full_name}
 			</h1>
 			<h4>Email: {player.email}</h4>
 			<h4>Phone: {player.phone_num}</h4>
 
 			<hr/>
-			<h3 style={css_dashboard.players.title}>Teams:</h3>
+			<h3 style={cssDashboard.players.title}>Teams:</h3>
 			{
 				player.teams.map(team => (
 					<div key={team.teamId}>

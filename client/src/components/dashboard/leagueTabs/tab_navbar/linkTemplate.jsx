@@ -2,14 +2,14 @@
 import React from 'react';
 
 import IconButton from 'material-ui/IconButton';
-import { css_content } from '../../../style';
+import { cssContent } from '../../../style';
 import { Link, withRouter } from 'react-router-dom';
 
 const LinkTemplate = props => {
 
 	const { description, url, leagueId, icon, location: {pathname}} = props;
 
-	const { iconNavbar: { iconButton }} = css_content;
+	const { iconNavbar: { iconButton }} = cssContent;
 
 	const linkIsActive = url && pathname.match(url) && pathname !== '/dashboard';
 		// In progress..... Checks if icon should be highlighted

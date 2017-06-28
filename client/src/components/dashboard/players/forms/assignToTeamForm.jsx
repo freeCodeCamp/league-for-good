@@ -5,7 +5,7 @@ import { AutoComplete, TextField } from 'redux-form-material-ui';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import { assignPlayer, openSnackbar } from '../../../../actions/index';
-import { css_content, css_dashboard } from '../../../style';
+import { cssContent, cssDashboard } from '../../../style';
 
 import { normalizeJerseyNum } from './utils/normalize';
 import validate from './utils/assignPlayerValidation';
@@ -13,13 +13,13 @@ import validate from './utils/assignPlayerValidation';
 let AssignPlayerForm = props => {
 	const {teams, players, handleSubmit } = props;
 	return (
-		<div style={css_content.body}>
-			<h1 style={css_dashboard.title}>Assign Player</h1>
+		<div style={cssContent.body}>
+			<h1 style={cssDashboard.title}>Assign Player</h1>
 			<form
-				style={css_dashboard.form}
+				style={cssDashboard.form}
 				onSubmit={handleSubmit}
 				>
-				<div style={css_dashboard.formRow}>
+				<div style={cssDashboard.formRow}>
 					<Field
 						name='teamId'
 						component={AutoComplete}
@@ -39,7 +39,7 @@ let AssignPlayerForm = props => {
 						name='playerId'
 					/>
 				</div>
-				<div style={css_dashboard.formRow}>
+				<div style={cssDashboard.formRow}>
 					<Field
 						component={TextField}
 						type='number'
@@ -56,8 +56,8 @@ let AssignPlayerForm = props => {
 				<RaisedButton
 					type='submit'
 					label='Assign Player'
-					labelStyle={css_dashboard.raisedButton.label}
-					backgroundColor={css_dashboard.raisedButton.backgroundColor}
+					labelStyle={cssDashboard.raisedButton.label}
+					backgroundColor={cssDashboard.raisedButton.backgroundColor}
 				/>
 			</form>
 		</div>

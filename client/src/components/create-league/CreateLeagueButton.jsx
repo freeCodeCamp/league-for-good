@@ -1,12 +1,12 @@
 import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
 
-import { css_createLeague } from '../style';
+import { cssCreateLeague } from '../style';
 
 
 // Icon Component for the button
 const CreateLeagueIcon = (props) => (
-	<img src={props.icon} style={css_createLeague.sportIcon} />
+	<img src={props.icon} style={cssCreateLeague.sportIcon} />
 );
 
 
@@ -15,13 +15,13 @@ const CreateLeagueButton = (props) => (
 	<FlatButton
 		label={props.label}
 		backgroundColor={props.active ?
-			css_createLeague.sportButton.active :
-			css_createLeague.sportButton.inactive}
+			cssCreateLeague.sportButton.active :
+			cssCreateLeague.sportButton.inactive}
 		hoverColor={props.active ?
-			css_createLeague.sportButton.active :
-			css_createLeague.sportButton.hover}
+			cssCreateLeague.sportButton.active :
+			cssCreateLeague.sportButton.hover}
 		disableTouchRipple={true}
-		style={css_createLeague.sportButton.style}
+		style={cssCreateLeague.sportButton.style}
 		onTouchTap={() => props.onClick(props.label)}
 		icon={<CreateLeagueIcon icon={props.icon} />}
 	/>

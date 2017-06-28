@@ -1,7 +1,7 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import ThemeMenu from './ThemeMenu.jsx';
-import { css_appBar as css } from '../style';
+import { cssAppBar as css } from '../style';
 
 // Bar goes at the top of the window
 // Contains the title, menu toggle and select theme menu

@@ -8,7 +8,7 @@ import NavBar from './nav/index.jsx';
 import Dashboard from './dashboard/dashboard.jsx';
 import Help from './help/help.jsx';
 import Modal from './modal/modal.jsx';
-import { css_content } from './style';
+import { cssContent } from './style';
 
 const Content = props => {
 
@@ -16,7 +16,7 @@ const Content = props => {
 		<div>
 			<NavBar changeTheme={props.changeTheme} />
 			<div className={props.menuOpen ? 'content-wrapper' : 'content-wrapper-expanded'}>
-				<Paper style={css_content.paper} zDepth={3}>
+				<Paper style={cssContent.paper} zDepth={3}>
 					<Route path='/dashboard' component={Dashboard} />
 					<Route path='/create' component={CreateLeagueForm} />
 					<Route path='/help' component={Help} />

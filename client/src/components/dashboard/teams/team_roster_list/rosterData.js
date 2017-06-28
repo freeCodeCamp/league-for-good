@@ -1,5 +1,5 @@
 import React from 'react';
-import { css_dashboard } from '../../../style';
+import { cssDashboard } from '../../../style';
 import { get as getObjProp } from 'lodash';
 // All player data passed from the reducers is reformatted here so
 // it contains the correct values for the TableTemplate component
@@ -31,7 +31,7 @@ export const colData = [
 	},
 	{
 		label: 'Update',
-		style: css_dashboard.table.columns.icon,
+		style: cssDashboard.table.columns.icon,
 		cellProp: 'link'
 	}
 ];

@@ -1,6 +1,6 @@
 import React from 'react';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
-import { css_content, css_dashboard } from '../../../style';
+import { cssContent, cssDashboard } from '../../../style';
 
 import { connect } from 'react-redux';
 
@@ -22,21 +22,21 @@ const PlayerApplication = ({ location, history }) => {
 	}
 
 	return (
-		<div style={css_content.body}>
+		<div style={cssContent.body}>
 			<IconButton
 				onTouchTap={() => history.goBack()}
 				tooltip='Back'
 				>
 				<BackArrow />
 			</IconButton>
-			<h1 style={css_dashboard.title}>
+			<h1 style={cssDashboard.title}>
 				{player.full_name}
 			</h1>
 			<h4>Email: {player.email}</h4>
 			<h4>Phone: {player.phone_num}</h4>
 			{
 				player.address && <div>
-					<h3 style={css_dashboard.title}>
+					<h3 style={cssDashboard.title}>
 						Address
 					</h3>
 					<h4>Street: {player.address.street}</h4>

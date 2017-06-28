@@ -11,7 +11,7 @@ import * as Links from '../routes';
 import Avatar from 'material-ui/Avatar';
 
 import {SportsIcons} from '../sports';
-import { css_menu } from '../style';
+import { cssMenu } from '../style';
 
 
 const Menu = props => {
@@ -19,7 +19,7 @@ const Menu = props => {
 
 	return (
 		<Drawer open={open} width={'15%'}>
-			<List style={css_menu.drawer.list}>
+			<List style={cssMenu.drawer.list}>
 				{
 					leagues.map((league, i) => (
 						<ListItem
@@ -28,7 +28,7 @@ const Menu = props => {
 							onClick={() => selectLeague(league)}
 							containerElement={<Link to={Links.TEAM_LIST}/>}
 							leftIcon={<Avatar
-								backgroundColor={css_menu.avatar.backgroundColor}
+								backgroundColor={cssMenu.avatar.backgroundColor}
 								src={SportsIcons[league.sport_type]}
 							/>}
 						/>

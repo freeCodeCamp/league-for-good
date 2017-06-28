@@ -1,5 +1,5 @@
 import React from 'react';
-import { css_dashboard } from '../../../style';
+import { cssDashboard } from '../../../style';
 
 import ModalLinks from './links/modalLink.jsx';
 import Link from './links/playerRegLink.jsx';
@@ -31,18 +31,18 @@ export const colData = [
 	},
 	{
 		label: 'View',
-		style: css_dashboard.table.columns.icon,
+		style: cssDashboard.table.columns.icon,
 		cellProp: 'link'
 	},
 	{
 		label: 'Assign',
-		style: css_dashboard.table.columns.icon,
+		style: cssDashboard.table.columns.icon,
 		action: 'assign',
 		cellProp: 'modal'
 	},
 	{
 		label: 'Delete',
-		style: css_dashboard.table.columns.icon,
+		style: cssDashboard.table.columns.icon,
 		cellProp: 'modal',
 		action: 'delete'
 	}

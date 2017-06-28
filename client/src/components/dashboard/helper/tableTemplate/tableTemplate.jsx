@@ -13,7 +13,7 @@ import FlatButton from 'material-ui/FlatButton';
 import SearchIcon from 'material-ui/svg-icons/action/search';
 import ArrowUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
 import ArrowDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
-import { css_dashboard } from '../../../style';
+import { cssDashboard } from '../../../style';
 
 // IMPORTED STYLES
 const { table: {
@@ -22,7 +22,7 @@ const { table: {
 	colHeaderLabelStyle,
 	colHeaderStyle,
 	colRowStyle
-}} = css_dashboard;
+}} = cssDashboard;
 // ///////////////////////
 
 
@@ -54,7 +54,7 @@ const { table: {
 
 // Optional title for the table
 const TableTitle = (props) => {
-	return <h1 style={css_dashboard.title}>{props.title}</h1>;
+	return <h1 style={cssDashboard.title}>{props.title}</h1>;
 };
 
 // Optional search for the table
@@ -62,8 +62,8 @@ const SearchTable = (props) => {
 	return (
 		<TextField
 			hintText={<SearchIcon />}
-			underlineFocusStyle={css_dashboard.table.searchUnderline}
-			style={css_dashboard.table.search}
+			underlineFocusStyle={cssDashboard.table.searchUnderline}
+			style={cssDashboard.table.search}
 			floatingLabelText={'Search ' + props.searchLabel}
 			floatingLabelFixed={true}
 			onChange={props.onSearch}
@@ -328,7 +328,7 @@ class TableTemplate extends Component {
 						searchLabel={this.state.searchableColumnLabel}
 					/> : ''
 				}
-				<Table style={css_dashboard.table.style}>
+				<Table style={cssDashboard.table.style}>
 					<TableHeader
 						adjustForCheckbox={false}
 						displaySelectAll={false}

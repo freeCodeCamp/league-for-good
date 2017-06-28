@@ -1,5 +1,5 @@
 import React from 'react';
-import { css_dashboard } from '../../../style';
+import { cssDashboard } from '../../../style';
 import Icon from './staffActions.jsx';
 
 // All staff data passed from the reducers is reformatted here so
@@ -15,7 +15,7 @@ export const colData = [
 	},
 	{
 		label: 'Delete',
-		style: css_dashboard.table.columns.icon,
+		style: cssDashboard.table.columns.icon,
 		action: 'delete',
 		cellProp: 'icon'
 	}

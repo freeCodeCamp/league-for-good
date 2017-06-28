@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import validate from './validate';
 import CreateLeagueSelector from './CreateLeagueSelector.jsx';
 import { createLeague } from '../../actions/index';
-import { css_content, css_createLeague } from '../style';
+import { cssContent, cssCreateLeague } from '../style';
 
 
 class CreateLeagueForm extends Component {
@@ -29,17 +29,17 @@ class CreateLeagueForm extends Component {
 		const {error, handleSubmit, change, SelectedSportType} = this.props;
 
 		return (
-			<div style={css_content.header}>
+			<div style={cssContent.header}>
 				<CreateLeagueSelector
 					onSelect={(sport) => change('sportType', sport)}
 					selectedSport={SelectedSportType}
 				/>
 				{
 					SelectedSportType &&
-					<div style={css_content.body}>
+					<div style={cssContent.body}>
 						<form
 							onSubmit={ handleSubmit(this.onSubmit)}
-							style={css_createLeague.form}
+							style={cssCreateLeague.form}
 							>
 							<Field
 								name='sportType'
@@ -54,9 +54,9 @@ class CreateLeagueForm extends Component {
 							/>
 							<RaisedButton
 								label='Create'
-								labelStyle={css_createLeague.raisedButton.label}
-								backgroundColor={css_createLeague.raisedButton.backgroundColor}
-								style={css_createLeague.raisedButton.style}
+								labelStyle={cssCreateLeague.raisedButton.label}
+								backgroundColor={cssCreateLeague.raisedButton.backgroundColor}
+								style={cssCreateLeague.raisedButton.style}
 								type='submit'
 							/>
 						</form>

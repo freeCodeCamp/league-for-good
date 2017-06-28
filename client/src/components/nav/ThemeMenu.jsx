@@ -2,7 +2,7 @@ import React from 'react';
 import IconButton from 'material-ui/IconButton';
 import Brush from 'material-ui/svg-icons/image/brush';
 import themes from '../themes';
-import { css_appBar as css } from '../style';
+import { cssAppBar as css } from '../style';
 
 // Generates the theme icons when the user clicks a theme
 // @themeList(Object) - a list of all current themes in an object uses the theme

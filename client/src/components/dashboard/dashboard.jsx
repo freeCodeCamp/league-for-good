@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 
 import LeagueTabs from './leagueTabs/leagueTabs.jsx';
 import LeagueTabsHeader from './leagueTabs/leagueTabsHeader.jsx';
-import { css_content } from '../style';
+import { cssContent } from '../style';
 
 
 class Dashboard extends Component {
@@ -18,7 +18,7 @@ class Dashboard extends Component {
 
 			<div>
 				{league.name &&
-				<div style={css_content.header}>
+				<div style={cssContent.header}>
 					<LeagueTabsHeader league={league}/>
 					<LeagueTabs {...tabProps} />
 				</div>

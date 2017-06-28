@@ -9,7 +9,7 @@ import { submit } from 'redux-form';
 import modalMapping from './modalMappings.jsx';
 import * as submitActions from '../../actions/index';
 
-import { css_modal } from '../style';
+import { cssModal } from '../style';
 
 class Modal extends Component {
 
@@ -44,16 +44,16 @@ class Modal extends Component {
 		const actions = [
 			<RaisedButton
 				label={actionLabel || 'Submit'}
-				labelStyle={css_modal.raisedButton.label}
-				backgroundColor={css_modal.raisedButton.backgroundColor}
-				style={css_modal.raisedButton.style}
+				labelStyle={cssModal.raisedButton.label}
+				backgroundColor={cssModal.raisedButton.backgroundColor}
+				style={cssModal.raisedButton.style}
 				onTouchTap={() => handleSubmit(data)}
 			/>,
 			<RaisedButton
 				label='Cancel'
-				labelStyle={css_modal.raisedButton.label}
-				backgroundColor={css_modal.raisedButton.backgroundColor}
-				style={css_modal.raisedButton.style}
+				labelStyle={cssModal.raisedButton.label}
+				backgroundColor={cssModal.raisedButton.backgroundColor}
+				style={cssModal.raisedButton.style}
 				onTouchTap={this.handleClose}
 			/>
 		];
@@ -61,10 +61,10 @@ class Modal extends Component {
 		return (
 			<div>
 				<Dialog
-					contentStyle={css_modal.dialogContent}
-					bodyStyle={css_modal.dialogBody}
+					contentStyle={cssModal.dialogContent}
+					bodyStyle={cssModal.dialogBody}
 					title={title}
-					titleStyle={css_modal.title}
+					titleStyle={cssModal.title}
 					actions={actions}
 					modal={false}
 					open={this.props.open}
