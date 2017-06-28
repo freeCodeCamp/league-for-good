@@ -2,8 +2,8 @@ import React from 'react';
 import { css_dashboard } from '../../../style';
 import Icon from './staffActions.jsx';
 
-// All staff data passed from the reducers is reformatted here so it contains the correct
-// values for the TableTemplate component
+// All staff data passed from the reducers is reformatted here so
+// it contains the correct values for the TableTemplate component
 
 // Column headers and data
 export const colData = [
@@ -29,8 +29,9 @@ function getCellValue(staff, prop, action, leagueId) {
 		return <Icon {...iconProps} />;
 	}
 
-	// The staff data is passed as an array of strings unlike the teams and players list tables
-	// so we just pass the string back for each cell value if it's not a delete icon
+	// The staff data is passed as an array of strings unlike
+	// the teams and players list tables so we just pass the string
+	// back for each cell value if it's not a delete icon
 	return staff;
 }
 

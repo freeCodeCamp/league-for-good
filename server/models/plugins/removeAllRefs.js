@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 /*
-		Mongoose plugin for removing any refs of a document about to be deleted
-		that reside within another model
+	Mongoose plugin for removing any refs of a document about to be deleted
+	that reside within another model
 
-		**params**
-		@schema - A reference to the mongoose schema using the plugin
-		@options - An object with the following keys:
-			@modelName: [STRING] The mongoose model that needs to remove the ref
-			@field: [STRING] The name of the property in which the ref is located
+	**params**
+	@schema - A reference to the mongoose schema using the plugin
+	@options - An object with the following keys:
+		@modelName: [STRING] The mongoose model that needs to remove the ref
+		@field: [STRING] The name of the property in which the ref is located
 
 */
 

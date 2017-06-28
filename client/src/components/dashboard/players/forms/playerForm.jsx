@@ -5,7 +5,11 @@ import { TextField, AutoComplete } from 'redux-form-material-ui';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import { createPlayer, updatePlayer, openSnackbar } from '../../../../actions/index';
+import {
+	createPlayer,
+	updatePlayer,
+	openSnackbar
+} from '../../../../actions/index';
 import { css_content, css_dashboard } from '../../../style';
 
 import { normalizeJerseyNum as normalize } from './utils/normalize';

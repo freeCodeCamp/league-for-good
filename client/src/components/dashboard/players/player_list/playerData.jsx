@@ -4,8 +4,8 @@ import DetailsLink from './links/playerDetailsLink.jsx';
 import EditLink from './links/playerEditLink.jsx';
 
 import { get as getObjProp } from 'lodash';
-// All player data passed from the reducers is reformatted here so it contains the correct
-// values for the TableTemplate component
+// All player data passed from the reducers is reformatted here so it
+// contains the correct values for the TableTemplate component
 
 // Column headers and data
 export const colData = [

@@ -36,7 +36,9 @@ test('player has all fields', (assert) => {
 	assert.equal(player.first_name, playerData.first_name, 'has first name');
 	assert.equal(player.last_name, playerData.last_name, 'has last name');
 	assert.equal(player.phone_num, playerData.phone_num, 'has phone number');
-	assert.equal(player.emergency_contact.name, playerData.emergency_contact.name, 'has emergency contact name');
+	assert.equal(player.emergency_contact.name,
+				 playerData.emergency_contact.name,
+				 'has emergency contact name');
 	assert.equal(player.emergency_contact.phone_num, playerData.emergency_contact.phone_num, 'has emergency contact phone number');
 	assert.equal(player.emergency_contact.email, playerData.emergency_contact.email, 'has emergency contact email');
 	assert.equal(player.emergency_contact.relation, playerData.emergency_contact.relation, 'has emergency contact relation');

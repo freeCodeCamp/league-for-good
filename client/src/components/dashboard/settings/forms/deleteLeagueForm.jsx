@@ -12,7 +12,9 @@ const DeleteLeagueForm = props => {
 	return (
 			<div style={css_content.body}>
 				<h1 style={css_dashboard.title}>Delete League</h1>
-				<h2 style={css_dashboard.warning}>Are you sure you want to delete the league? This action cannot be undone.</h2>
+				<h2 style={css_dashboard.warning}>
+					Are you sure you want to delete the league? This action cannot be undone.
+				</h2>
 				<form
 					// onSubmit={ handleSubmit }
 					style={css_dashboard.form}

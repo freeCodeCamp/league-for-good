@@ -3,8 +3,8 @@ import { css_dashboard } from '../../../style';
 import Icon from './teamActions.jsx';
 import Link from './teamRosterLink.jsx';
 
-// All team data passed from the reducers is reformatted here so it contains the correct
-// values for the TableTemplate component
+// All team data passed from the reducers is reformatted here so
+// it contains the correct values for the TableTemplate component
 
 // Column headers and data
 export const colData = [

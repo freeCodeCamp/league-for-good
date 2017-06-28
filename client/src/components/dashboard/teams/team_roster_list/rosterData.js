@@ -1,8 +1,8 @@
 import React from 'react';
 import { css_dashboard } from '../../../style';
 import { get as getObjProp } from 'lodash';
-// All player data passed from the reducers is reformatted here so it contains the correct
-// values for the TableTemplate component
+// All player data passed from the reducers is reformatted here so
+// it contains the correct values for the TableTemplate component
 
 // Column headers and data
 export const colData = [

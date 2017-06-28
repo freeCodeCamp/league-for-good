@@ -9,9 +9,19 @@ import StaffList from './staff_list/staffList.jsx';
 
 const SettingsRoutes = props => (
 	<div>
-		<Route exact={true} path={Links.SETTINGS_STAFF_LIST} component={StaffList} />
-		<Route path={Links.SETTINGS_ADD_STAFF_FORM} component={AddStaffForm} />
-		<Route path={Links.SETTINGS_DELETE_LEAGUE} component={DeleteLeagueForm} />
+		<Route
+			exact={true}
+			path={Links.SETTINGS_STAFF_LIST}
+			component={StaffList}
+		/>
+		<Route
+			path={Links.SETTINGS_ADD_STAFF_FORM}
+			component={AddStaffForm}
+		/>
+		<Route
+			path={Links.SETTINGS_DELETE_LEAGUE}
+			component={DeleteLeagueForm}
+		/>
 	</div>
 );
 

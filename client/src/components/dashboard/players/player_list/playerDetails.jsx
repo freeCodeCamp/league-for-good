@@ -40,8 +40,9 @@ const Player = ({ player, history }) => {
 						<h4>Positions: {team.position.join(', ')}</h4>
 					</div>
 					// TO DO
-					// Populate teams in players teams on server so the team name can be rendered in place of teamId
-					// Seed Season data into db so same can be done with season
+					// * Populate teams in players teams on server so
+					// 	 the team name can be rendered in place of teamId
+					// * Seed Season data into db so same can be done with season
 				))
 			}
 		</div>

@@ -17,7 +17,8 @@ export default function(value, prevVal) {
 	if (firstLetter.test(value)) {
 		return value.toUpperCase();
 	}
-	// Capitalize first character after a space or hyphen (as long as the user isnt hitting backspace)
+	// Capitalize first character after a space or hyphen
+	// (as long as the user isnt hitting backspace)
 	else if ( /\W\w$/.test(value) && length > prevVal.length) {
 		return prevVal + value.charAt(length - 1).toUpperCase();
 	}

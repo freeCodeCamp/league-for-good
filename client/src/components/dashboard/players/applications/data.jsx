@@ -4,8 +4,8 @@ import { css_dashboard } from '../../../style';
 import ModalLinks from './links/modalLink.jsx';
 import Link from './links/playerRegLink.jsx';
 import { get as getObjProp } from 'lodash';
-// All player data passed from the reducers is reformatted here so it contains the correct
-// values for the TableTemplate component
+// All player data passed from the reducers is reformatted here so
+// it contains the correct values for the TableTemplate component
 
 // Column headers and data
 export const colData = [

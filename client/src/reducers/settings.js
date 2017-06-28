@@ -1,4 +1,8 @@
-import { CREATE_STAFF_MEMBER, REMOVE_STAFF_MEMBER, SELECT_STAFF_MEMBERS } from '../actions/types';
+import {
+	CREATE_STAFF_MEMBER,
+	REMOVE_STAFF_MEMBER,
+	SELECT_STAFF_MEMBERS
+} from '../actions/types';
 
 /*
  * 	Settings State
@@ -18,7 +22,10 @@ export default function(state = {}, action) {
 	case CREATE_STAFF_MEMBER:
 		return { ...state, staff: [action.newStaff, ...state.staff] };
 	case REMOVE_STAFF_MEMBER:
-		return { ...state, staff: state.staff.filter(removeStaff(action.removedStaffEmail)) };
+		return {
+			...state,
+			staff: state.staff.filter(removeStaff(action.removedStaffEmail))
+		};
 	}
 
 

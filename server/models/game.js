@@ -1,5 +1,6 @@
 /*
-* Game model stores information about all the games played and the players who played
+* Game model stores information about all the games played
+* and the players who played
 */
 const mongoose = require('mongoose');
 

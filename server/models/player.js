@@ -1,5 +1,6 @@
 /*
-* Player model stores information about each player, their contact info, and teams they played on
+* Player model stores information about each player,
+* their contact info, and teams they played on
 */
 const mongoose = require('mongoose');
 
@@ -69,7 +70,9 @@ PlayerSchema.virtual('team').get(function() {
 	return this.teams[0];
 });
 
-PlayerSchema.plugin(removeRefs, { modelName: 'league', field: 'pending_players' });
+PlayerSchema.plugin(removeRefs, {
+	modelName: 'league', field: 'pending_players'
+});
 PlayerSchema.plugin(capitalize, { fields });
 
 module.exports = mongoose.model('player', PlayerSchema);

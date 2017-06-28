@@ -12,13 +12,36 @@ import PlayerRegDetails from './applications/playerRegDetails.jsx';
 
 const PlayerRoutes = props => (
 	<div>
-		<Route exact={true} path={Links.PLAYER_LIST} component={PlayerList}/>
-		<Route path={Links.PLAYER_DETAIL} component={PlayerDetails} />
-		<Route path={Links.PLAYER_ASSIGN_FORM} component={AssignPlayer}/>
-		<Route path={Links.PLAYER_ADD_FORM} component={PlayerForm}/>
-		<Route path={Links.PLAYER_UPDATE_FORM} component={PlayerForm}/>
-		<Route exact={true} path={Links.PLAYER_REGISTRATION_LIST} component={PlayerRegList}/>
-		<Route path={Links.PLAYER_REGISTRATION_DETAILS} component={PlayerRegDetails}/>
+		<Route
+			exact={true}
+			path={Links.PLAYER_LIST}
+			component={PlayerList}
+		/>
+		<Route
+			path={Links.PLAYER_DETAIL}
+			component={PlayerDetails}
+		/>
+		<Route
+			path={Links.PLAYER_ASSIGN_FORM}
+			component={AssignPlayer}
+		/>
+		<Route
+			path={Links.PLAYER_ADD_FORM}
+			component={PlayerForm}
+		/>
+		<Route
+			path={Links.PLAYER_UPDATE_FORM}
+			component={PlayerForm}
+		/>
+		<Route
+			exact={true}
+			path={Links.PLAYER_REGISTRATION_LIST}
+			component={PlayerRegList}
+		/>
+		<Route
+			path={Links.PLAYER_REGISTRATION_DETAILS}
+			component={PlayerRegDetails}
+		/>
 	</div>
 );
 

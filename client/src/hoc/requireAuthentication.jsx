@@ -23,13 +23,14 @@ const style = {
   If the application is loading it will render a loading view
 
 
-  Currently this function is only used when the application is initially started to
-  to hide any state changes while an authentication call to the server is being resolved
+  Currently this function is only used when the application is initially
+	started to hide any state changes while an authentication call
+	to the server is being resolved
 
   Can be applied during other Async calls
 
   @composedComponent -
-  @userProps([Functions]) - extra user defined props to pass to composed component
+  @userProps([Functions]) - user defined props to pass to composed component
 */
 
 export default function(ComposedComponent) {
@@ -49,7 +50,7 @@ export default function(ComposedComponent) {
 
 		componentWillMount() {
       // Get authentication status from the server
-      // This switches off the loading state as long as a success response is received
+      // Switches off the loading state when a success response is received
 
 			this.props.initAuthState();
 		}

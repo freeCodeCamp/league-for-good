@@ -13,7 +13,8 @@ function removeId(teamId) {
 	return team => team._id !== teamId;
 }
 
-// Replace the team from state whose index matches payload._id; used for updating team list
+// Replace the team from state whose index matches payload._id
+// Used for updating team list
 function replaceTeam(currTeams, updatedTeam) {
 	const _id = updatedTeam._id;
 	const index = findIndex(currTeams, (v) => v._id === _id );
@@ -23,7 +24,8 @@ function replaceTeam(currTeams, updatedTeam) {
 	return [...head, updatedTeam, ...tail];
 }
 
-// Replace the team from state whose index matches payload._id; used for updating team list
+// Replace the team from state whose index matches payload._id
+// Used for updating team list
 function addPlayerToTeam(teams, {player, teamId}) {
 	const index = findIndex(teams, v => v._id === teamId);
 	const head = teams.slice(0, index);

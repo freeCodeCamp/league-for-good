@@ -1,10 +1,14 @@
-import { FETCH_PLAYER, ADD_PLAYER, FETCH_ALL_PLAYERS } from '../actions/types';
+import {
+	FETCH_PLAYER,
+	ADD_PLAYER,
+	FETCH_ALL_PLAYERS
+} from '../actions/types';
 
 
 // Player State - returns a player info
 /*
-	list [Array]      : list of player objects (within league) containing basic info
-	selected [Object] : complete player details
+	list [Array]: list of player objects (within league) containing basic info
+	selected [Object]: complete player details
 */
 
 export default function(state = null, action) {

@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { PLAYER_REGISTRATION_DETAILS as url, makeLinkDynamic } from '../../../../routes';
+import {
+	PLAYER_REGISTRATION_DETAILS as url,
+	makeLinkDynamic
+} from '../../../../routes';
 import { css_dashboard } from '../../../../style';
 
 import IconButton from 'material-ui/IconButton';

@@ -1,6 +1,6 @@
 /*
  * This script will initialize the default roles in the database for the app
- * This is just a sample of roles that you can use, feel free to create your own.
+ * This is a sample of roles that you can use, feel free to create your own.
  *
  * Default roles:
  * 	owner:

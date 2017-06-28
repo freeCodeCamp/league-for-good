@@ -236,14 +236,16 @@ export const css_dashboard = {
 		},
 		sortArrowActiveColor: theme.textColor,
 		sortArrowInactiveColor: theme.borderColor,
-		iconHover: {		// for icons rendered inside the table
+		// for icons rendered inside the table
+		iconHover: {
 			backgroundColor: theme.accent3Color,
 			borderRadius: '25px'
 		},
-		// columns uses defaultCol for all the columns in the table and lets material ui
-		// to automatically size the columns to an appropriate width
-		// if you are using an icon for a column, use the icon style to reduce the width
-		// in the table since material ui will give it a width that is usually too large
+		// columns uses defaultCol for all the columns in the table and
+		// lets material ui automatically size the columns to an appropriate
+		// width. If you are using an icon for a column, use the icon style
+		// to reduce the width in the table since material ui will give it
+		// a width that is usually too large
 		columns: {
 
 			defaultCol: {

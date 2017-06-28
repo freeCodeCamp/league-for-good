@@ -12,7 +12,7 @@ const toTitleCase = function(str = '') {
 	return words.reduce(capitalizeWord, '');
 };
 
-// Custom mongoose plugin that will use the above string method to format various fields
+// Custom mongoose plugin that will use the above method to format fields
 // to a schema before it is saved to the database
 
 // NOTE : this function will not work on embedded fields
