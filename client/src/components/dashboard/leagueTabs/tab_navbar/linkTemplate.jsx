@@ -6,24 +6,24 @@ import { css_content } from '../../../style';
 import { Link, withRouter } from 'react-router-dom';
 
 const LinkTemplate = props => {
-	
+
 	const { description, url, leagueId, icon, location: {pathname}} = props;
-		
+
 	const { iconNavbar: { iconButton }} = css_content;
-		
-	const linkIsActive = url && pathname.match(url) && pathname !== '/dashboard'; 
-		//In progress..... Checks if icon should be highlighted
+
+	const linkIsActive = url && pathname.match(url) && pathname !== '/dashboard';
+		// In progress..... Checks if icon should be highlighted
 
 	return (
-		<Link to={{ pathname:url, state: {leagueId} }}>
+		<Link to={{ pathname: url, state: {leagueId} }}>
 			<IconButton
-				tooltipPosition="bottom-right"
+				tooltipPosition='bottom-right'
 				tooltip={description}
 				touch={true}
 				style={iconButton.style}
-				iconStyle={ linkIsActive ? iconButton.iconStyle : {} } 
+				iconStyle={ linkIsActive ? iconButton.iconStyle : {} }
 				hoveredStyle={iconButton.hoveredStyle}
-			>
+				>
 				{icon}
 			</IconButton>
 		</Link>

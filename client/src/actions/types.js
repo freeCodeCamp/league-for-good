@@ -1,7 +1,7 @@
-//All 'action types' are stored here and exported as variables in order to avoid bugs 
-//caused by typos when creating actions and reducers
+// All 'action types' are stored here and exported as variables in order to avoid bugs
+// caused by typos when creating actions and reducers
 
-//UI related action types 
+// UI related action types
 export const TOGGLE_MENU = 'Toggle Menu';
 export const OPEN_MODAL = 'OPEN_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
@@ -11,12 +11,12 @@ export const OPEN_SNACKBAR = 'OPEN_SNACKBAR';
 export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR';
 export const CHANGE_THEME = 'CHANGE_THEME';
 
-//Authentication action types 
+// Authentication action types
 export const INIT_AUTH_STATE = 'InitAuthState';
 export const LOG_OUT = 'log out';
 
 
-//League action types
+// League action types
 
 export const FETCH_LEAGUES = 'fetch leagues';
 export const CREATE_LEAGUE = 'create league';

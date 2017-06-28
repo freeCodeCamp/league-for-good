@@ -16,7 +16,7 @@ test('user has all fields', (assert) => {
 		name: 'Test Name',
 		email: 'test@test.com',
 		avatar: 'testAvatar',
-		google_id: 'testGoogleId',
+		google_id: 'testGoogleId'
 	};
 
 	var user = new User(userData);

@@ -4,59 +4,59 @@ import { bindActionCreators } from 'redux';
 import AppBar from 'material-ui/AppBar';
 import Menu from './Menu.jsx';
 import Bar from './Bar.jsx';
-import { 
-	toggleMenu,  
-	selectLeague, 
-	openModal, 
-	selectTeams, 
-	changeTheme, 
-	fetchPlayerList, 
-	selectStaff,
+import {
+	toggleMenu,
+	selectLeague,
+	openModal,
+	selectTeams,
+	changeTheme,
+	fetchPlayerList,
+	selectStaff
 } from '../../actions/index';
 
 
 class NavBar extends Component {
 	constructor(props) {
 		super(props);
-		
+
 		this.state = {
-			themeMenuOpen: false,
+			themeMenuOpen: false
 		};
 	}
 
 	selectLeague = league => {
 		const { teams, staff, ...leagueData } = league;
 
-		//Mark new league as 'Selected'
+		// Mark new league as 'Selected'
 		this.props.selectLeague(leagueData);
-		//Fetch players from league from the server
+		// Fetch players from league from the server
 		this.props.fetchPlayerList(leagueData._id);
-		//Dispatch teams in the league to the teams reducer
+		// Dispatch teams in the league to the teams reducer
 		this.props.selectTeams(teams);
 		// Dispatch staff in the league to the staff reducer
 		this.props.selectStaff(staff);
 	}
-	
+
 	themeMenuToggle = () => {
 		this.setState({
-			themeMenuOpen: !this.state.themeMenuOpen,
+			themeMenuOpen: !this.state.themeMenuOpen
 		});
 	}
 
 	render() {
 		const {dispatch} = this.props;
-		
+
 		return (
 			<div>
-				<Bar 
+				<Bar
 					toggleMenu={this.props.toggleMenu}
 					themeMenuToggle={this.themeMenuToggle}
 					themeMenuOpen={this.state.themeMenuOpen}
 					changeTheme={this.props.changeTheme}
 				/>
-				<Menu 
+				<Menu
 					leagues={this.props.leagues}
-					open={this.props.open} 
+					open={this.props.open}
 					openModal={this.props.openModal}
 					selectLeague={this.selectLeague}
 				/>
@@ -71,14 +71,14 @@ function mapStateToProps({menu, league}) {
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ 
+	return bindActionCreators({
 		toggleMenu,
 		selectLeague,
 		selectTeams,
 		openModal,
 		changeTheme,
 		fetchPlayerList,
-		selectStaff,
+		selectStaff
 	}, dispatch);
 }
 

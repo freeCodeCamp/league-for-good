@@ -16,19 +16,19 @@ import { css_dashboard } from '../../../style';
 const RosterLink = props => {
 	const { fetchRoster, ...team } = props;
 	const url = makeLinkDynamic( TEAM_ROSTER, team._id );
-	return(
+	return (
 		<Link to={url}>
-			<IconButton 
+			<IconButton
 				// onTouchTap={() => fetchRoster(team)}
 				hoveredStyle={css_dashboard.table.iconHover}
-			>
+				>
 				<ListIcon />
 			</IconButton>
 		</Link>
 	);
 };
 
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ fetchRoster }, dispatch);
 }
 

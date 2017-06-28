@@ -1,5 +1,5 @@
 // Contains all the sports that are currently offered
-//sports icons
+// sports icons
 import baseballIcon from 'url-loader?limit=10000!../assets/images/sports_icons/baseball.svg';
 import footballIcon from 'url-loader?limit=10000!../assets/images/sports_icons/football.svg';
 import hockeyIcon from 'url-loader?limit=10000!../assets/images/sports_icons/puck.svg';
@@ -12,7 +12,7 @@ export const sports = [
 	{name: 'Basketball', icon: basketballIcon},
 	{name: 'Soccer', icon: soccerIcon},
 	{name: 'Baseball', icon: baseballIcon},
-	{name: 'Hockey', icon: hockeyIcon},
+	{name: 'Hockey', icon: hockeyIcon}
 ];
 
 export const SportsIcons = {
@@ -20,5 +20,5 @@ export const SportsIcons = {
 	Baseball: baseballIcon,
 	Soccer: soccerIcon,
 	Basketball: basketballIcon,
-	Hockey: hockeyIcon,
+	Hockey: hockeyIcon
 };

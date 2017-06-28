@@ -6,7 +6,7 @@
  * 	owner:
  * 		-owner of the league
  * 		-has access to all privileges
- *	manager: 
+ *	manager:
  *		-manager of the league
  *		-has access to all the teams, players, and season privileges
  *		-no access to settings tab
@@ -22,7 +22,8 @@
 
 const mongoose = require('mongoose');
 require('dotenv').config();
-const MONGO_URI = process.env.MONGO_URI; 
+
+const MONGO_URI = process.env.MONGO_URI;
 const Role = require('../models/roles.js');
 
 
@@ -52,8 +53,8 @@ const ownerRole = new Role({
 		createStaff: true,
 		editStaff: true,
 		deleteStaff: true,
-		deleteLeague: true,
-	},
+		deleteLeague: true
+	}
 });
 
 const managerRole = new Role({
@@ -76,8 +77,8 @@ const managerRole = new Role({
 		createStaff: false,
 		editStaff: false,
 		deleteStaff: false,
-		deleteLeague: false,
-	},
+		deleteLeague: false
+	}
 });
 
 const coachRole = new Role({
@@ -100,8 +101,8 @@ const coachRole = new Role({
 		createStaff: false,
 		editStaff: false,
 		deleteStaff: false,
-		deleteLeague: false,
-	},
+		deleteLeague: false
+	}
 });
 
 

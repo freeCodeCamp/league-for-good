@@ -1,12 +1,14 @@
 const express = require('express');
+
 const Router = express.Router();
 const mongoose = require('mongoose');
+
 const League = mongoose.model('league');
 
 
 const createStaff = (req, res) => {
 	const query = { _id: req.body.league };
-	const update = { "$push": { staff: req.body.email } };
+	const update = { $push: { staff: req.body.email } };
 
 	League.update(query, update)
 		.exec()
@@ -16,7 +18,7 @@ const createStaff = (req, res) => {
 
 const deleteStaff = (req, res) => {
 	const query = { _id: req.query.leagueId };
-	const update = { "$pull": { staff: req.params.email } };
+	const update = { $pull: { staff: req.params.email } };
 
 	League.update(query, update)
 		.exec()

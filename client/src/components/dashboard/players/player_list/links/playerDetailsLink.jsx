@@ -12,10 +12,10 @@ import ListIcon from 'material-ui/svg-icons/action/list';
 
 const PlayerLink = props => {
 	const { fetchPlayer, ...player } = props;
-	
+
 	const playerUrl = makeLinkDynamic( PLAYER_DETAIL, player._id );
-	
-	return(
+
+	return (
 		<div onClick={() => fetchPlayer(player)}>
 			<Link to={playerUrl}>
 				<IconButton hoveredStyle={css_dashboard.table.iconHover}>
@@ -27,7 +27,7 @@ const PlayerLink = props => {
 };
 
 
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ fetchPlayer }, dispatch);
 }
 

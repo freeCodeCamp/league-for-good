@@ -10,30 +10,30 @@ import { css_content, css_dashboard } from '../../../style';
 import validate from './utils/validation';
 
 
-const AddTeamForm = props => {	
+const AddTeamForm = props => {
 	const { handleSubmit } = props;
 	return (
 			<div style={css_content.body}>
 				<h1 style={css_dashboard.title}>Add Team</h1>
 				<h6 style={css_dashboard.warning}>* = Required</h6>
-				<form 
+				<form
 					onSubmit={ handleSubmit }
 					style={css_dashboard.form}
-				>
+					>
 					<Field
-						name="name" 
+						name='name'
 						component={TextField}
-						hintText="Team name"
-						floatingLabelText="Team name*"
+						hintText='Team name'
+						floatingLabelText='Team name*'
 						floatingLabelStyle={css_dashboard.formRequired}
 						fullWidth={true}
 					/>
 					<RaisedButton
-						label="Create Team"
+						label='Create Team'
 						labelStyle={css_dashboard.raisedButton.label}
 						backgroundColor={css_dashboard.raisedButton.backgroundColor}
 						style={css_dashboard.raisedButton.style}
-						type="submit"
+						type='submit'
 					/>
 				</form>
 			</div>
@@ -41,12 +41,11 @@ const AddTeamForm = props => {
 };
 
 
-
 export default reduxForm({
 	form: 'AddTeamForm',
 	onSubmit: createTeam,
 	onSubmitSuccess: openSnackbar,
-	validate,
+	validate
 })( AddTeamForm );
 
 

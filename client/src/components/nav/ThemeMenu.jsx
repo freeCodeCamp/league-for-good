@@ -14,13 +14,12 @@ import { css_appBar as css } from '../style';
 function generateThemeIcons(themeList, themeNames, changeTheme) {
 	return themeNames.map((themeName, i) => {
 		return (
-			<i style={Object.assign(
-					{},
-					css.themeMenuItem,
-				{
+			<i style={({
+					...css.themeMenuItem,
+				...{
 					backgroundColor: themeList[themeName].primary1Color,
-					border: '2px solid ' + themeList[themeName].accent1Color,
-				})
+					border: '2px solid ' + themeList[themeName].accent1Color
+				}})
 				}
 				key={i}
 				onClick={changeTheme.bind(null, themeName)}
@@ -34,15 +33,15 @@ const ThemeMenu = (props) => {
 	return (
 		<div>
 			{
-				props.themeMenuOpen && 
+				props.themeMenuOpen &&
 				generateThemeIcons(
 					themes.getThemeList(), themes.getThemeNames(), props.changeTheme)
 			}
-			<IconButton 
-				iconStyle={css.iconStyle} 
+			<IconButton
+				iconStyle={css.iconStyle}
 				onClick={props.themeMenuToggle}
 				disableTouchRipple={true}
-			>
+				>
 				<Brush />
 			</IconButton>
 		</div>

@@ -4,15 +4,15 @@ import { css_dashboard } from '../../style';
 
 
 const Header = ({league}) => (
-	<Toolbar> 
+	<Toolbar>
 		<ToolbarGroup>
-			<ToolbarTitle 
+			<ToolbarTitle
 				style={css_dashboard.toolbar.title}
 				text={league.name}
 			/>
 			<ToolbarSeparator style={css_dashboard.toolbar.separator} />
 			<em style={css_dashboard.toolbar.subtitle}>
-				{`${league.sport_type} League`} 
+				{`${league.sport_type} League`}
 			</em>
 		</ToolbarGroup>
 	</Toolbar>

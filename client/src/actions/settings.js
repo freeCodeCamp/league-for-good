@@ -7,10 +7,10 @@ export function selectStaff(staff) {
 }
 
 export function addStaffMember(formVals, dispatch, { location }) {
-	
+
 	const body = {
 		email: formVals.email,
-		league: location.state.leagueId,
+		league: location.state.leagueId
 	};
 
 	axios.post(`${rootURL}/settings/create`, body)
@@ -28,10 +28,10 @@ export function removeStaff(staffInfo) {
 	const message = `${email} has been deleted as a staff member of your league`;
 
 	return function(dispatch) {
-		
+
 		dispatch({ type: CLOSE_MODAL });
 
-		axios.delete(`${rootURL}/settings/remove/${email}`, 
+		axios.delete(`${rootURL}/settings/remove/${email}`,
 				{ params: { leagueId } })
 			.then((data) => dispatch({ type: REMOVE_STAFF_MEMBER, removedStaffEmail: email }))
 			.then(() => dispatch({ type: OPEN_SNACKBAR, message }));

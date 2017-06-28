@@ -1,6 +1,8 @@
 const express = require('express');
+
 const Router = express.Router();
 const mongoose = require('mongoose');
+
 const User = mongoose.model('user');
 const League = mongoose.model('league');
 
@@ -10,9 +12,9 @@ const createLeague = (req, res) => {
 	const newLeague = new League({
 		name: req.body.name,
 		sport_type: req.body.sportType,
-		owner: req.user._id,
+		owner: req.user._id
 	});
-	
+
 	newLeague.save()
 		.then((league) => {
 			res.status(200);
@@ -23,7 +25,6 @@ const createLeague = (req, res) => {
 			res.send('error server side');
 		});
 };
-
 
 
 // Router.route('/fetchLeagues').get(getLeagues);

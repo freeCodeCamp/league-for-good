@@ -12,13 +12,13 @@ const CreateLeagueIcon = (props) => (
 
 // League Button with icon for create league form
 const CreateLeagueButton = (props) => (
-	<FlatButton 
+	<FlatButton
 		label={props.label}
-		backgroundColor={props.active ? 
+		backgroundColor={props.active ?
 			css_createLeague.sportButton.active :
 			css_createLeague.sportButton.inactive}
 		hoverColor={props.active ?
-			css_createLeague.sportButton.active : 
+			css_createLeague.sportButton.active :
 			css_createLeague.sportButton.hover}
 		disableTouchRipple={true}
 		style={css_createLeague.sportButton.style}

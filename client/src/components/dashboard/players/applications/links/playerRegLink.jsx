@@ -13,9 +13,9 @@ const PlayerLink = props => {
 	const playerUrl = {
 		pathname: makeLinkDynamic( url, player._id ),
 		state: { player }
-	}
-	
-	return(
+	};
+
+	return (
 		<Link to={playerUrl}>
 			<IconButton hoveredStyle={css_dashboard.table.iconHover}>
 				<ProfileIcon />

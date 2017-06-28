@@ -11,10 +11,10 @@ import { css_createLeague } from '../style';
 // Once a sport type is selected, the proper form will be rendered
 const CreateLeagueSelector = ({onSelect, selectedSport})=> (
 	<Card style={css_createLeague.card.style}>
-		<CardTitle 
-			title="Create a New League"
+		<CardTitle
+			title='Create a New League'
 			titleColor={css_createLeague.card.title.titleColor}
-			subtitle="Choose a sport"
+			subtitle='Choose a sport'
 			subtitleColor={css_createLeague.card.title.subtitleColor}
 		/>
 		<CardActions>
@@ -26,7 +26,7 @@ const CreateLeagueSelector = ({onSelect, selectedSport})=> (
 						label={sport.name}
 						icon={sport.icon}
 						onClick={onSelect}
-					/> 
+					/>
 				);
 			})
 		}

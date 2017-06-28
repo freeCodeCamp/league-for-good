@@ -17,10 +17,10 @@ const Player = ({ player, history }) => {
 
 	return (
 		<div style={css_content.body}>
-			<IconButton 
+			<IconButton
 				onTouchTap={() => history.goBack()}
-				tooltip="Back to team roster"
-			>
+				tooltip='Back to team roster'
+				>
 				<BackArrow />
 			</IconButton>
 			<h1 style={css_dashboard.title}>
@@ -39,17 +39,17 @@ const Player = ({ player, history }) => {
 						<h4>Jersey Number: {team.jersey_num}</h4>
 						<h4>Positions: {team.position.join(', ')}</h4>
 					</div>
-					//TO DO
-					//Populate teams in players teams on server so the team name can be rendered in place of teamId
-					//Seed Season data into db so same can be done with season
+					// TO DO
+					// Populate teams in players teams on server so the team name can be rendered in place of teamId
+					// Seed Season data into db so same can be done with season
 				))
 			}
 		</div>
 	);
 };
 
-function mapStateToProps({ players }){
-	
+function mapStateToProps({ players }) {
+
 	return { player: players.selected };
 }
 

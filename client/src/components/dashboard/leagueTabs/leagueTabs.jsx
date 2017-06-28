@@ -13,25 +13,25 @@ import SettingsRoutes from '../settings/routes.jsx';
 const routes = {
 	Teams: <TeamRoutes />,
 	Players: <PlayerRoutes />,
-	Seasons: <div></div>,
-	Settings: <SettingsRoutes />,
+	Seasons: <div />,
+	Settings: <SettingsRoutes />
 };
 
 // Tabs for each section the user can manage
 const LeagueTabs = ({history, leagueId}) => {
-	
+
 	return (
 		<Tabs inkBarStyle={css_dashboard.tabs.inkBar}>
 			{
 				tabs.map((tab, i) => (
-					<Tab 
+					<Tab
 						label={tab.name}
 						key={i}
 						style={css_dashboard.tabs.tab}
 						onActive={()=> history.push(tab.links[0].url)}
-					>
+						>
 						{generateLinks(tab.links, leagueId)}
-						{routes[tab.name]}	
+						{routes[tab.name]}
 					</Tab>
 					)
 				)

@@ -2,9 +2,9 @@ import { white, darkBlack, fullBlack } from 'material-ui/styles/colors';
 import {fade} from 'material-ui/utils/colorManipulator';
 import spacing from 'material-ui/styles/spacing';
 
-//*************************************************************************************
-//****************************** Theme Colors *****************************************
-//*************************************************************************************
+//* ************************************************************************************
+//* ***************************** Theme Colors *****************************************
+//* ************************************************************************************
 
 // These theme values are only used as main colors in components
 // Accent colors remain the same for smaller components
@@ -14,7 +14,7 @@ const themeValues = {
 		primary2Color: '#689F38',	// dark
 		primary3Color: '#DCEDC8',	// light
 		pickerHeaderColor: '#8BC34A',	// should be same as primary1Color
-		canvasColor: '#DCEDC8',		// should be same as primary3Color
+		canvasColor: '#DCEDC8'		// should be same as primary3Color
 	},
 
 	teal: {
@@ -22,7 +22,7 @@ const themeValues = {
 		primary2Color: '#00796B',	// dark
 		primary3Color: '#B2DFDB',	// light
 		pickerHeaderColor: '#009688',	// should be same as primary1Color
-		canvasColor: '#B2DFDB',		// should be same as primary3Color
+		canvasColor: '#B2DFDB'		// should be same as primary3Color
 	},
 
 	lightblue: {
@@ -30,8 +30,8 @@ const themeValues = {
 		primary2Color: '#0288D1',	// dark
 		primary3Color: '#B3E5FC',	// light
 		pickerHeaderColor: '#03A9F4',	// should be same as primary1Color
-		canvasColor: '#B3E5FC',		// should be same as primary3Color
-	},
+		canvasColor: '#B3E5FC'		// should be same as primary3Color
+	}
 };
 
 // if user has no saved theme, default to this
@@ -39,13 +39,13 @@ const defaultTheme = 'lightblue';
 
 const textMixin = {
 	textColor: '#000000',
-	alternateTextColor: '#ffffff',
+	alternateTextColor: '#ffffff'
 };
 
 const accentMixin = {
 	accent1Color: '#455a64',	// default
 	accent2Color: '#1c313a',	// dark
-	accent3Color: '#718792',	// light
+	accent3Color: '#718792'	// light
 };
 
 // extra colors required for the palette
@@ -53,12 +53,12 @@ const miscMixin = {
 	borderColor: '#bdbdbd',
 	disabledColor: fade(darkBlack, 0.3),
 	clockCircleColor: fade(darkBlack, 0.07),
-	shadowColor: fullBlack,
+	shadowColor: fullBlack
 };
 
 // mixin for warning color to the user
 const warningMixin = {
-	warning: 'red',
+	warning: 'red'
 };
 
 const themes = (function(themeValues, defaultTheme, ...mixins) {
@@ -68,7 +68,7 @@ const themes = (function(themeValues, defaultTheme, ...mixins) {
 			themeValues[themeName] = Object.assign(themeValues[themeName], mixin);
 		});
 	});
-	
+
 	let currentTheme = themeValues[defaultTheme];
 	let currentThemeName = defaultTheme;
 
@@ -94,7 +94,7 @@ const themes = (function(themeValues, defaultTheme, ...mixins) {
 		// Retrieves a list of all theme properties
 		getThemeList: function() {
 			return themeValues;
-		},
+		}
 	};
 })(themeValues, defaultTheme, accentMixin, textMixin, miscMixin, warningMixin);
 

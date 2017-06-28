@@ -12,12 +12,12 @@ function removeStaff(removedEmail) {
 
 export default function(state = {}, action) {
 	switch (action.type) {
-		
-	case SELECT_STAFF_MEMBERS: 
+
+	case SELECT_STAFF_MEMBERS:
 		return { ...state, staff: action.staff };
 	case CREATE_STAFF_MEMBER:
 		return { ...state, staff: [action.newStaff, ...state.staff] };
-	case REMOVE_STAFF_MEMBER: 
+	case REMOVE_STAFF_MEMBER:
 		return { ...state, staff: state.staff.filter(removeStaff(action.removedStaffEmail)) };
 	}
 

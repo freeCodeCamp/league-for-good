@@ -13,13 +13,13 @@ class Dashboard extends Component {
 	render() {
 		const { league, history } = this.props;
 		const tabProps = { league, history, leagueId: league._id };
-		
+
 		return (
-			
+
 			<div>
 				{league.name &&
 				<div style={css_content.header}>
-					<LeagueTabsHeader league={league}/>	
+					<LeagueTabsHeader league={league}/>
 					<LeagueTabs {...tabProps} />
 				</div>
 				}
@@ -28,7 +28,7 @@ class Dashboard extends Component {
 	}
 }
 
-function mapStateToProps({ league: {selected} }){
+function mapStateToProps({ league: {selected} }) {
 
 	return { league: selected };
 }

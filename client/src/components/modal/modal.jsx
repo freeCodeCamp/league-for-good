@@ -21,41 +21,41 @@ class Modal extends Component {
 	getAction = () => {
 		const { view, dispatch } = this.props;
 		const { onSubmit, reduxFormName } = modalMapping[view];
-		
-		//HAndle edge case in which ReduxForm component is being used as child content
-		//and needs to be submitted remotely via a modal action
-		if( reduxFormName ){
-			return { handleSubmit:() => dispatch(submit(reduxFormName)) };
-		}		
 
-		return bindActionCreators({ 
-			handleSubmit: submitActions[onSubmit],
-		}, dispatch); 
+		// HAndle edge case in which ReduxForm component is being used as child content
+		// and needs to be submitted remotely via a modal action
+		if ( reduxFormName ) {
+			return { handleSubmit: () => dispatch(submit(reduxFormName)) };
+		}
+
+		return bindActionCreators({
+			handleSubmit: submitActions[onSubmit]
+		}, dispatch);
 	};
 
 	render() {
-	
+
 		const { view, open, data } = this.props;
-	
+
 		const { title, Children, actionLabel } = modalMapping[view];
-		
+
 		const handleSubmit = this.getAction().handleSubmit;
 
 		const actions = [
 			<RaisedButton
 				label={actionLabel || 'Submit'}
-				labelStyle={css_modal.raisedButton.label} 
+				labelStyle={css_modal.raisedButton.label}
 				backgroundColor={css_modal.raisedButton.backgroundColor}
 				style={css_modal.raisedButton.style}
 				onTouchTap={() => handleSubmit(data)}
 			/>,
 			<RaisedButton
-				label="Cancel"
-				labelStyle={css_modal.raisedButton.label} 
+				label='Cancel'
+				labelStyle={css_modal.raisedButton.label}
 				backgroundColor={css_modal.raisedButton.backgroundColor}
 				style={css_modal.raisedButton.style}
 				onTouchTap={this.handleClose}
-			/>,
+			/>
 		];
 
 		return (
@@ -69,7 +69,7 @@ class Modal extends Component {
 					modal={false}
 					open={this.props.open}
 					onRequestClose={this.handleClose}
-				>
+					>
 					{Children ? <Children {...data} /> : null}
 				</Dialog>
 			</div>
@@ -78,7 +78,7 @@ class Modal extends Component {
 }
 
 function mapStateToProps({ modal, league }) {
-	const { open, view, data } = modal; 
+	const { open, view, data } = modal;
 	return { open, view, data };
 }
 

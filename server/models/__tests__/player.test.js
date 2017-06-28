@@ -21,14 +21,14 @@ test('player has all fields', (assert) => {
 			name: 'Test Emergency Name',
 			phone_num: '123-456-7890',
 			email: 'test@test.com',
-			relation: 'Test Relation',
+			relation: 'Test Relation'
 		},
 		address: {
 			street: '123 Test St.',
 			city: 'Test',
 			state: 'Testerton',
-			country: 'Test Country',
-		},
+			country: 'Test Country'
+		}
 	};
 
 	var player = new Player(playerData);
@@ -52,7 +52,7 @@ test('player has all fields', (assert) => {
 test('player has computed fields', (assert) => {
 	const playerData = {
 		first_name: 'Test',
-		last_name: 'Testerton',
+		last_name: 'Testerton'
 	};
 
 	var player = new Player(playerData);

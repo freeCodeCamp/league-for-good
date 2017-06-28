@@ -6,12 +6,12 @@ const defaultState = { view: null };
 
 export default function(state = defaultState, action) {
 	switch (action.type) {
-	
+
 	case CHANGE_MANAGE_VIEW:
 		return { view: action.view };
-	
+
 	case RESET_DASHBOARD:
-		return { view: null };	
+		return { view: null };
 	}
 	return state;
 }

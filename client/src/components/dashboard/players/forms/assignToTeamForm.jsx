@@ -8,25 +8,25 @@ import { assignPlayer, openSnackbar } from '../../../../actions/index';
 import { css_content, css_dashboard } from '../../../style';
 
 import { normalizeJerseyNum } from './utils/normalize';
-import validate  from './utils/assignPlayerValidation';
+import validate from './utils/assignPlayerValidation';
 
 let AssignPlayerForm = props => {
 	const {teams, players, handleSubmit } = props;
 	return (
 		<div style={css_content.body}>
 			<h1 style={css_dashboard.title}>Assign Player</h1>
-			<form 
+			<form
 				style={css_dashboard.form}
 				onSubmit={handleSubmit}
-			>	
-				<div style={css_dashboard.formRow}>	
-					<Field 
-						name="teamId"
+				>
+				<div style={css_dashboard.formRow}>
+					<Field
+						name='teamId'
 						component={AutoComplete}
 						filter={AutoComplete.caseInsensitiveFilter}
-						floatingLabelText="Team"
+						floatingLabelText='Team'
 						dataSource={teams}
-						dataSourceConfig={{text:'name', value:'_id'}}
+						dataSourceConfig={{text: 'name', value: '_id'}}
 						maxSearchResults={5}
 					/>
 					<Field
@@ -34,28 +34,28 @@ let AssignPlayerForm = props => {
 						filter={AutoComplete.caseInsensitiveFilter}
 						dataSource={players}
 						maxSearchResults={3}
-						dataSourceConfig={{text:'full_name', value:'_id'}}
-						floatingLabelText="Select a player"
-						name="playerId"
+						dataSourceConfig={{text: 'full_name', value: '_id'}}
+						floatingLabelText='Select a player'
+						name='playerId'
 					/>
-				</div>	
+				</div>
 				<div style={css_dashboard.formRow}>
 					<Field
 						component={TextField}
-						type="number"
-						floatingLabelText="Jersey Number"
-						name="jersey_num"
+						type='number'
+						floatingLabelText='Jersey Number'
+						name='jersey_num'
 						normalize={normalizeJerseyNum}
 					/>
 					<Field
 						component={TextField}
-						floatingLabelText="Position(s)"
-						name="position"
+						floatingLabelText='Position(s)'
+						name='position'
 					/>
 				</div>
 				<RaisedButton
-					type="submit"
-					label="Assign Player"
+					type='submit'
+					label='Assign Player'
 					labelStyle={css_dashboard.raisedButton.label}
 					backgroundColor={css_dashboard.raisedButton.backgroundColor}
 				/>
@@ -68,9 +68,9 @@ const mapState = ({players, teams}) => ({teams, players: players.list});
 
 AssignPlayerForm = connect(mapState)(AssignPlayerForm);
 
-export default reduxForm({ 
+export default reduxForm({
 	form: 'AssignPlayerForm',
-	onSubmit: assignPlayer, 
-	onSubmitSuccess: openSnackbar, 
-	validate,
+	onSubmit: assignPlayer,
+	onSubmitSuccess: openSnackbar,
+	validate
 })(AssignPlayerForm);

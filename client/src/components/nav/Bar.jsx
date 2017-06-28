@@ -7,9 +7,9 @@ import { css_appBar as css } from '../style';
 // Contains the title, menu toggle and select theme menu
 const ThemeIcon = props => {
 	return (
-		<ThemeMenu 
+		<ThemeMenu
 			themeMenuToggle={props.themeMenuToggle}
-			themeMenuOpen={props.themeMenuOpen} 
+			themeMenuOpen={props.themeMenuOpen}
 			changeTheme={props.changeTheme}
 		/>
 	);
@@ -18,8 +18,8 @@ const ThemeIcon = props => {
 const Bar = props => {
 	const { toggleMenu, ...iconProps } = props;
 	return (
-		<AppBar 
-			title="League For Good"
+		<AppBar
+			title='League For Good'
 			iconStyleLeft={css.text}
 			titleStyle={css.text}
 			style={css.main}
