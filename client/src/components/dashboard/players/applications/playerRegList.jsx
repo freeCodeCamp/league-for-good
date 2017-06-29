@@ -35,7 +35,7 @@ PlayerList.propTypes = {
 };
 
 function mapStateToProps(state) {
-	return { players: state.league.selected.pending_players };
+	return { players: state.league.selected.pendingPlayers };
 }
 
 export default connect(mapStateToProps)(PlayerList);

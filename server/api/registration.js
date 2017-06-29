@@ -31,7 +31,7 @@ const createPlayer = (req, res) => {
 	return Player.create(req.body)
 		.then( player =>
 			League.findByIdAndUpdate( leagueId, {
-				$push: { pending_players: player }
+				$push: { pendingPlayers: player }
 			})
 			.exec()
 		)

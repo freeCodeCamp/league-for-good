@@ -5,20 +5,20 @@ test('missing player fields present error message', (assert) => {
 	var player = new Player();
 	const error = player.validateSync();
 
-	assert.assert(error.errors.first_name, 'has first name missing message');
-	assert.assert(error.errors.last_name, 'has last name missing message');
+	assert.assert(error.errors.firstName, 'has first name missing message');
+	assert.assert(error.errors.lastName, 'has last name missing message');
 	assert.assert(error.errors.email, 'has email missing message');
 	assert.end();
 });
 
 test('player has all fields', (assert) => {
 	const playerData = {
-		first_name: 'Test',
-		last_name: 'Testerton',
-		phone_num: '123-456-7890',
-		emergency_contact: {
+		firstName: 'Test',
+		lastName: 'Testerton',
+		phoneNum: '123-456-7890',
+		emergencyContact: {
 			name: 'Test Emergency Name',
-			phone_num: '123-456-7890',
+			phoneNum: '123-456-7890',
 			email: 'test@test.com',
 			relation: 'Test Relation'
 		},
@@ -32,20 +32,20 @@ test('player has all fields', (assert) => {
 
 	var player = new Player(playerData);
 
-	assert.equal(player.first_name, playerData.first_name, 'has first name');
-	assert.equal(player.last_name, playerData.last_name, 'has last name');
-	assert.equal(player.phone_num, playerData.phone_num, 'has phone number');
-	assert.equal(player.emergency_contact.name,
-					playerData.emergency_contact.name,
+	assert.equal(player.firstName, playerData.firstName, 'has first name');
+	assert.equal(player.lastName, playerData.lastName, 'has last name');
+	assert.equal(player.phoneNum, playerData.phoneNum, 'has phone number');
+	assert.equal(player.emergencyContact.name,
+					playerData.emergencyContact.name,
 					'has emergency contact name');
-	assert.equal(player.emergency_contact.phone_num,
-					playerData.emergency_contact.phone_num,
+	assert.equal(player.emergencyContact.phoneNum,
+					playerData.emergencyContact.phoneNum,
 					'has emergency contact phone number');
-	assert.equal(player.emergency_contact.email,
-					playerData.emergency_contact.email,
+	assert.equal(player.emergencyContact.email,
+					playerData.emergencyContact.email,
 					'has emergency contact email');
-	assert.equal(player.emergency_contact.relation,
-					playerData.emergency_contact.relation,
+	assert.equal(player.emergencyContact.relation,
+					playerData.emergencyContact.relation,
 					'has emergency contact relation');
 	assert.equal(player.address.street,
 					playerData.address.street,
@@ -66,14 +66,14 @@ test('player has all fields', (assert) => {
 
 test('player has computed fields', (assert) => {
 	const playerData = {
-		first_name: 'Test',
-		last_name: 'Testerton'
+		firstName: 'Test',
+		lastName: 'Testerton'
 	};
 
 	var player = new Player(playerData);
 
-	assert.equal(`${player.full_name}`,
-					`${playerData.first_name} ${playerData.last_name}`,
+	assert.equal(`${player.fullName}`,
+					`${playerData.firstName} ${playerData.lastName}`,
 					'has full name');
 	assert.end();
 });

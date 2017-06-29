@@ -16,7 +16,7 @@ const createTeam = (req, res) => {
 
 	const newTeam = new Team({
 		name: req.body.name,
-		league_id: league
+		leagueId: league
 	});
 
 	newTeam.save()

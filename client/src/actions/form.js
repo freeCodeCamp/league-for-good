@@ -4,8 +4,8 @@ import { OPEN_SNACKBAR } from './types';
 
 const getMessage = ({values, form}) => {
 
-	const { first_name, last_name, name } = values;
-	const playerName = `${first_name} ${last_name}`;
+	const { firstName, lastName, name } = values;
+	const playerName = `${firstName} ${lastName}`;
 
 	const messages = {
 		EditTeamForm: `The team - '${name}' - has been updated`,

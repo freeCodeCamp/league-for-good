@@ -28,7 +28,7 @@ const Menu = props => {
 							key={i}
 							leftIcon={<Avatar
 								backgroundColor={cssMenu.avatar.backgroundColor}
-								src={SportsIcons[league.sport_type]}
+								src={SportsIcons[league.sportType]}
 							/>}
 							onClick={() => selectLeague(league)}
 							primaryText={league.name}

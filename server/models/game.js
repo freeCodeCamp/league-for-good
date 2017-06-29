@@ -7,11 +7,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const GameSchema = new Schema({
-	team_id: {
+	teamId: {
 		type: Schema.Types.ObjectId,
 		ref: 'team'
 	},
-	season_id: {
+	seasonId: {
 		type: Schema.Types.ObjectId,
 		ref: 'season'
 	},
@@ -24,16 +24,16 @@ const GameSchema = new Schema({
 		default: 0,
 		min: 0
 	},
-	opponent_id: {
+	opponentId: {
 		type: Schema.Types.ObjectId,
 		ref: 'team'
 	},
-	opponent_score: {
+	opponentScore: {
 		type: Number,
 		default: 0,
 		min: 0
 	},
-	date_played: {
+	datePlayed: {
 		type: Date,
 		required: true
 	},

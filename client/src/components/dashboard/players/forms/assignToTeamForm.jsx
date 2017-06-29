@@ -33,7 +33,7 @@ let AssignPlayerForm = props => {
 					<Field
 						component={AutoComplete}
 						dataSource={players}
-						dataSourceConfig={{text: 'full_name', value: '_id'}}
+						dataSourceConfig={{text: 'fullName', value: '_id'}}
 						filter={AutoComplete.caseInsensitiveFilter}
 						floatingLabelText='Select a player'
 						maxSearchResults={3}
@@ -44,7 +44,7 @@ let AssignPlayerForm = props => {
 					<Field
 						component={TextField}
 						floatingLabelText='Jersey Number'
-						name='jersey_num'
+						name='jerseyNum'
 						normalize={normalizeJerseyNum}
 						type='number'
 					/>

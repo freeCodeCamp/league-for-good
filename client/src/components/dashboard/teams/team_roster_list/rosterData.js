@@ -7,12 +7,12 @@ import { get as getObjProp } from 'lodash';
 export const colData = [
 	{
 		label: 'Name',
-		cellProp: 'full_name',
+		cellProp: 'fullName',
 		sortable: true
 	},
 	{
 		label: '#',
-		cellProp: 'team.jersey_num',
+		cellProp: 'team.jerseyNum',
 		sortable: true
 	},
 	{
@@ -26,7 +26,7 @@ export const colData = [
 	},
 	{
 		label: 'Phone',
-		cellProp: 'phone_num'
+		cellProp: 'phoneNum'
 	},
 	{
 		label: 'Update',

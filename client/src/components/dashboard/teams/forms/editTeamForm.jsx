@@ -22,12 +22,12 @@ const EditTeamForm = (props) => {
 			/>
 			<div style={cssDashboard.teams.forms.edit.checkboxDiv}>
 				<Field
-					checked={props.initialValues.currently_active}
+					checked={props.initialValues.currentlyActive}
 					component={Checkbox}
 					label='Check if active'
 					labelPosition='left'
 					labelStyle={cssDashboard.teams.forms.edit.checkbox}
-					name='currently_active'
+					name='currentlyActive'
 				/>
 			</div>
 		</form>

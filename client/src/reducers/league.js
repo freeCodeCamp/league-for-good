@@ -8,11 +8,11 @@ import {FETCH_LEAGUES, CREATE_LEAGUE, SELECT_LEAGUE } from '../actions/types';
 
 */
 
-const removeReg = ({ selected: { pending_players, ...rest }}, _id) => {
-	const updatedArr = pending_players
+const removeReg = ({ selected: { pendingPlayers, ...rest }}, _id) => {
+	const updatedArr = pendingPlayers
 		.filter(player => player._id !== _id);
 
-	return { ...rest, pending_players: updatedArr };
+	return { ...rest, pendingPlayers: updatedArr };
 };
 
 

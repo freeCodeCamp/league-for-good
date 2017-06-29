@@ -24,10 +24,10 @@ const Player = ({ player, history }) => {
 				<BackArrow />
 			</IconButton>
 			<h1 style={cssDashboard.title}>
-				{player.full_name}
+				{player.fullName}
 			</h1>
 			<h4>Email: {player.email}</h4>
-			<h4>Phone: {player.phone_num}</h4>
+			<h4>Phone: {player.phoneNum}</h4>
 
 			<hr/>
 			<h3 style={cssDashboard.players.title}>Teams:</h3>
@@ -36,7 +36,7 @@ const Player = ({ player, history }) => {
 					<div key={team.teamId}>
 						<h4>Team Id: {team.teamId}</h4>
 						<h4>Season Id: {team.seasonId}</h4>
-						<h4>Jersey Number: {team.jersey_num}</h4>
+						<h4>Jersey Number: {team.jerseyNum}</h4>
 						<h4>Positions: {team.position.join(', ')}</h4>
 					</div>
 					// TO DO

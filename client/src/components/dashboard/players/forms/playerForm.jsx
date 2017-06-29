@@ -30,14 +30,14 @@ let PlayerFormTemplate = ({handleSubmit, teams, title}) => {
 						floatingLabelStyle={cssDashboard.formRequired}
 						floatingLabelText='First name*'
 						hintText='First name'
-						name='first_name'
+						name='firstName'
 					/>
 					<Field
 						component={TextField}
 						floatingLabelStyle={cssDashboard.formRequired}
 						floatingLabelText='Last name*'
 						hintText='Last name'
-						name='last_name'
+						name='lastName'
 					/>
 				</div>
 				<div style={cssDashboard.formRow}>
@@ -52,7 +52,7 @@ let PlayerFormTemplate = ({handleSubmit, teams, title}) => {
 						component={TextField}
 						floatingLabelText='Phone number'
 						hintText='Phone number'
-						name='phone_num'
+						name='phoneNum'
 					/>
 				</div>
 				<div style={cssDashboard.formRow}>
@@ -96,7 +96,7 @@ let PlayerFormTemplate = ({handleSubmit, teams, title}) => {
 					<Field
 						component={TextField}
 						floatingLabelText='Jersey Number'
-						name='team.jersey_num'
+						name='team.jerseyNum'
 						normalize={normalize}
 						type='number'
 					/>

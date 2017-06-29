@@ -29,10 +29,10 @@ const PlayerApplication = ({ location, history }) => {
 				<BackArrow />
 			</IconButton>
 			<h1 style={cssDashboard.title}>
-				{player.full_name}
+				{player.fullName}
 			</h1>
 			<h4>Email: {player.email}</h4>
-			<h4>Phone: {player.phone_num}</h4>
+			<h4>Phone: {player.phoneNum}</h4>
 			{
 				player.address && <div>
 					<h3 style={cssDashboard.title}>

@@ -16,7 +16,7 @@ test('user has all fields', (assert) => {
 		name: 'Test Name',
 		email: 'test@test.com',
 		avatar: 'testAvatar',
-		google_id: 'testGoogleId'
+		googleId: 'testGoogleId'
 	};
 
 	var user = new User(userData);
@@ -24,6 +24,6 @@ test('user has all fields', (assert) => {
 	assert.equal(user.name, userData.name, 'has name');
 	assert.equal(user.email, userData.email, 'has email');
 	assert.equal(user.avatar, userData.avatar, 'has avatar');
-	assert.equal(user.google_id, userData.google_id, 'has Google ID');
+	assert.equal(user.googleId, userData.googleId, 'has Google ID');
 	assert.end();
 });

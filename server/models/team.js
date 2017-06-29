@@ -15,11 +15,11 @@ const TeamSchema = new Schema({
 	},
 	players: [{type: Schema.Types.ObjectId, ref: 'player'}],
 	seasons: [{type: Schema.Types.ObjectId, ref: 'season'}],
-	currently_active: {
+	currentlyActive: {
 		type: Boolean,
 		default: false
 	},
-	league_id: {
+	leagueId: {
 		type: Schema.Types.ObjectId,
 		ref: 'league'
 	},
@@ -28,7 +28,7 @@ const TeamSchema = new Schema({
 			role: String,
 			name: String,
 			email: String,
-			phone_num: String
+			phoneNum: String
 		}
 	]
 },

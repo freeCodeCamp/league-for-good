@@ -18,7 +18,7 @@ const Header = ({league}) => (
 			/>
 			<ToolbarSeparator style={cssDashboard.toolbar.separator} />
 			<em style={cssDashboard.toolbar.subtitle}>
-				{`${league.sport_type} League`}
+				{`${league.sportType} League`}
 			</em>
 		</ToolbarGroup>
 	</Toolbar>

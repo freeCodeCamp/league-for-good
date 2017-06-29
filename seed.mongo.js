@@ -45,9 +45,9 @@
 
 // 			var team = {
 // 				teamId: t.teamId,
-// 				seasonId: t.season_id,
+// 				seasonId: t.seasonId,
 // 				position: t.position,
-// 				jersey_num: t.jersey_num
+// 				jerseyNum: t.jerseyNum
 // 			};
 // 			db.players.update(q, {$set: {teams: [team]}});
 // 		}

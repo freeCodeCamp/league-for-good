@@ -37,8 +37,8 @@ export function selectTeams(teams) {
 // Edit a team's name and active status
 export function updateTeam(formVals, dispatch) {
 
-	const { _id, currently_active, name } = formVals;
-	const body = { name, currently_active };
+	const { _id, currentlyActive, name } = formVals;
+	const body = { name, currentlyActive };
 	dispatch({ type: CLOSE_MODAL });
 
 	axios.put(`${rootURL}/team/update/${_id}`, body)

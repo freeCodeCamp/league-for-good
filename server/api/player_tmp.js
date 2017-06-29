@@ -18,15 +18,15 @@ const createPlayers = teams => {
 		for (let i = 0; i < size; i++) {
 
 			Player.create({
-				first_name: faker.name.firstName(),
-				last_name: faker.name.lastName(),
+				firstName: faker.name.firstName(),
+				lastName: faker.name.lastName(),
 				email: faker.internet.email(),
-				phone_num: faker.phone.phoneNumber(),
+				phoneNum: faker.phone.phoneNumber(),
 				leagues: [team.leagueId],
 				teams: [{
 					teamId: team._id,
 					position: ['Goalie'],
-					jersey_num: random(1, 99)
+					jerseyNum: random(1, 99)
 				}]
 			})
 			.then(player => Teams.update({_id: team._id}, {$push: {players: player}}))

@@ -10,7 +10,7 @@ const League = mongoose.model('league');
 const createLeague = (req, res) => {
 	const newLeague = new League({
 		name: req.body.name,
-		sport_type: req.body.sportType,
+		sportType: req.body.sportType,
 		owner: req.user._id
 	});
 
