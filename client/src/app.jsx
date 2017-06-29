@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import requireAuth from './hoc/requireAuthentication.jsx';
@@ -25,15 +26,18 @@ const App = props => {
 		<MuiThemeProvider muiTheme={getMuiTheme({ palette })}>
 			<Router>
 				<div>
-					<Route path='/' component={requireAuth(Content)}/>
-					<Route path='/registration' component={RegForm}/>
-					<Route path='/login' component={Login} />
+					<Route component={requireAuth(Content)} path='/' />
+					<Route component={RegForm} path='/registration' />
+					<Route component={Login} path='/login' />
 				</div>
 			</Router>
 		</MuiThemeProvider>
 	);
 };
 
+App.propTypes = {
+	palette: PropTypes.object
+};
 
 function mapStateToProps(state) {
 	const palette = themes.getThemeList()[state.theme];

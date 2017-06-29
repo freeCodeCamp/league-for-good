@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
 
 import { cssContent } from '../../../style';
@@ -32,12 +33,17 @@ const Roster = ({roster, history}) => {
 				<BackArrow/>
 			</IconButton>
 			<TableTemplate
-				title={title}
 				headers={colData}
-				rows={getRowData( roster.players )}
+				rows={getRowData(roster.players)}
+				title={title}
 			/>
 		</div>
 	);
+};
+
+Roster.propTypes = {
+	history: PropTypes.object,
+	roster: PropTypes.object
 };
 
 function mapStateToProps(state, props) {

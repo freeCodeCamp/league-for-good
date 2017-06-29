@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { PLAYER_DETAIL, makeLinkDynamic } from '../../../../routes';
@@ -26,6 +27,9 @@ const PlayerLink = props => {
 	);
 };
 
+PlayerLink.propTypes = {
+	fetchPlayer: PropTypes.func
+};
 
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ fetchPlayer }, dispatch);

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
 import { connect } from 'react-redux';
 import getStaffTableRows, { colData } from './staffData';
@@ -14,6 +15,11 @@ const StaffList = props => {
 			/>
 		</div>
 	);
+};
+
+StaffList.propTypes = {
+	leagueId: PropTypes.string,
+	staff: PropTypes.arrayOf(PropTypes.string)
 };
 
 function mapStateToProps(state) {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import EditIcon from 'material-ui/svg-icons/image/edit';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
@@ -28,8 +29,8 @@ class Icon extends Component {
 
 		return (
 			<IconButton
-				onTouchTap={()=> this.onClick(team, action) }
 				hoveredStyle={cssDashboard.table.iconHover}
+				onTouchTap={()=> this.onClick(team, action) }
 				>
 				{action === 'delete' ?
 					<DeleteIcon /> :
@@ -38,6 +39,12 @@ class Icon extends Component {
 		);
 	}
 }
+
+Icon.propTypes = {
+	action: PropTypes.string,
+	openModal: PropTypes.func,
+	team: PropTypes.object
+};
 
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ openModal }, dispatch);

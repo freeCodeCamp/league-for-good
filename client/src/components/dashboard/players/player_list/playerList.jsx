@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
 
 import getRowData, { colData } from './playerData.jsx';
@@ -24,6 +25,11 @@ export const PlayerList = props => {
 			/>
 		</div>
 	);
+};
+
+PlayerList.propTypes = {
+	history: PropTypes.object,
+	players: PropTypes.arrayOf(PropTypes.object)
 };
 
 function mapStateToProps({ players }) {

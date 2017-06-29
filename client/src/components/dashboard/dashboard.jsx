@@ -1,6 +1,7 @@
 // The dashboard component contains the management UI for the user
 // to modify the league and its properties
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import LeagueTabs from './leagueTabs/leagueTabs.jsx';
@@ -28,10 +29,13 @@ class Dashboard extends Component {
 	}
 }
 
-function mapStateToProps({ league: {selected} }) {
+Dashboard.propTypes = {
+	history: PropTypes.object,
+	league: PropTypes.object
+};
 
+function mapStateToProps({ league: {selected} }) {
 	return { league: selected };
 }
-
 
 export default connect(mapStateToProps)(Dashboard);

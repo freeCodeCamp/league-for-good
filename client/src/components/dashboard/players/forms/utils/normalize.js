@@ -1,5 +1,5 @@
 
-export function normalizeJerseyNum(val, prevVal) {
+export function normalizeJerseyNum(val) {
 
 	if (/^\d{1,2}$/.test(val)) {
 		return val;

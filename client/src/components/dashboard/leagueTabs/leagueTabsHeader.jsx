@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
 	Toolbar,
 	ToolbarGroup,
@@ -22,5 +23,9 @@ const Header = ({league}) => (
 		</ToolbarGroup>
 	</Toolbar>
 );
+
+Header.propTypes = {
+	league: PropTypes.object
+};
 
 export default Header;

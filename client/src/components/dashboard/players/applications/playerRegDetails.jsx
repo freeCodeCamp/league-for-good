@@ -1,18 +1,17 @@
 import React from 'react';
-import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
+import PropTypes from 'prop-types';
 import { cssContent, cssDashboard } from '../../../style';
-
-import { connect } from 'react-redux';
 
 import IconButton from 'material-ui/IconButton';
 import BackArrow from 'material-ui/svg-icons/navigation/arrow-back';
 
 const PlayerApplication = ({ location, history }) => {
-	// Player application is loaded from state stored in react-router's location property
-	// rather than from redux store
+	// Player application is loaded from state stored in react-router's
+	// location property rather than from redux store
 	/*
-		As pending_player data grows perhaps its a better idea to fetch the info from the server
-		rather than loading it all at once when the page initializes
+		As pending_player data grows perhaps its a better idea to fetch
+		the info from the server rather than loading it all at once when
+		the page initializes
 	*/
 	const { state: { player }} = location;
 	if (!player) {
@@ -48,6 +47,11 @@ const PlayerApplication = ({ location, history }) => {
 			<hr/>
 		</div>
 	);
+};
+
+PlayerApplication.propTypes = {
+	history: PropTypes.object,
+	location: PropTypes.object
 };
 
 export default PlayerApplication;

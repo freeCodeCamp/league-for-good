@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { cssContent, cssDashboard } from '../../../style';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
 
 import MenuItem from 'material-ui/MenuItem';
 import DropDownMenu from 'material-ui/DropDownMenu';
-import TextField from 'material-ui/TextField';
-import SearchIcon from 'material-ui/svg-icons/action/search';
 
 import getRowData, { colData } from './teamData';
 
@@ -36,9 +35,9 @@ class TeamTable extends Component {
 
 			if (filterValue === 'all') {
 				filterFlag = true;
-			}			else if (filterValue === 'active') {
+			} else if (filterValue === 'active') {
 				filterFlag = team.currently_active;
-			}			else {
+			} else {
 				filterFlag = !team.currently_active;
 			}
 
@@ -53,13 +52,13 @@ class TeamTable extends Component {
 		return (
 			<div style={cssContent.body}>
 				<DropDownMenu
-					value={this.state.filterValue}
 					onChange={this.handleChange}
 					style={cssDashboard.table.teams.dropdown}
+					value={this.state.filterValue}
 					>
-					<MenuItem value='all' primaryText='All Teams' />
-					<MenuItem value='active' primaryText='Active Teams' />
-					<MenuItem value='archived' primaryText='Archived Teams' />
+					<MenuItem primaryText='All Teams' value='all' />
+					<MenuItem primaryText='Active Teams' value='active' />
+					<MenuItem primaryText='Archived Teams' value='archived' />
 				</DropDownMenu>
 				<TableTemplate
 					headers={colData}
@@ -69,6 +68,10 @@ class TeamTable extends Component {
 		);
 	}
 }
+
+TeamTable.propTypes = {
+	teams: PropTypes.arrayOf(PropTypes.object)
+};
 
 function mapStateToProps(state) {
 	return { teams: state.teams };

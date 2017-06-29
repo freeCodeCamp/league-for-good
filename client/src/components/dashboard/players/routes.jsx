@@ -10,37 +10,37 @@ import AssignPlayer from './forms/assignToTeamForm.jsx';
 import PlayerRegList from './applications/playerRegList.jsx';
 import PlayerRegDetails from './applications/playerRegDetails.jsx';
 
-const PlayerRoutes = props => (
+const PlayerRoutes = () => (
 	<div>
 		<Route
+			component={PlayerList}
 			exact={true}
 			path={Links.PLAYER_LIST}
-			component={PlayerList}
 		/>
 		<Route
-			path={Links.PLAYER_DETAIL}
 			component={PlayerDetails}
+			path={Links.PLAYER_DETAIL}
 		/>
 		<Route
-			path={Links.PLAYER_ASSIGN_FORM}
 			component={AssignPlayer}
+			path={Links.PLAYER_ASSIGN_FORM}
 		/>
 		<Route
+			component={PlayerForm}
 			path={Links.PLAYER_ADD_FORM}
-			component={PlayerForm}
 		/>
 		<Route
+			component={PlayerForm}
 			path={Links.PLAYER_UPDATE_FORM}
-			component={PlayerForm}
 		/>
 		<Route
+			component={PlayerRegList}
 			exact={true}
 			path={Links.PLAYER_REGISTRATION_LIST}
-			component={PlayerRegList}
 		/>
 		<Route
-			path={Links.PLAYER_REGISTRATION_DETAILS}
 			component={PlayerRegDetails}
+			path={Links.PLAYER_REGISTRATION_DETAILS}
 		/>
 	</div>
 );

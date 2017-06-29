@@ -2,11 +2,9 @@ const express  	= require('express');
 
 const Router   	= express.Router();
 const mongoose 	= require('mongoose');
-const _ 				= require('lodash');
 const faker 		= require('faker');
 
 const Player 	= mongoose.model('player');
-const Leagues 	= mongoose.model('league');
 const Teams   	= mongoose.model('team');
 const random = (min, max) => Math.floor(Math.random() * (max - min) + min);
 
@@ -45,7 +43,7 @@ Router.route('/seed')
 		Teams.find({})
 			.exec()
 			.then(createPlayers)
-			.then(data => res.redirect('/player/seed1'))
+			.then(() => res.redirect('/player/seed1'))
 			.catch(err => res.send({err}));
 	});
 Router.route('/seed1')

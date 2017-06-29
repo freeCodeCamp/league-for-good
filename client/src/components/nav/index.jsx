@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import AppBar from 'material-ui/AppBar';
 import Menu from './Menu.jsx';
 import Bar from './Bar.jsx';
 import {
@@ -13,6 +12,7 @@ import {
 	fetchPlayerList,
 	selectStaff
 } from '../../actions/index';
+import PropTypes from 'prop-types';
 
 
 class NavBar extends Component {
@@ -44,15 +44,13 @@ class NavBar extends Component {
 	}
 
 	render() {
-		const {dispatch} = this.props;
-
 		return (
 			<div>
 				<Bar
-					toggleMenu={this.props.toggleMenu}
-					themeMenuToggle={this.themeMenuToggle}
-					themeMenuOpen={this.state.themeMenuOpen}
 					changeTheme={this.props.changeTheme}
+					themeMenuOpen={this.state.themeMenuOpen}
+					themeMenuToggle={this.themeMenuToggle}
+					toggleMenu={this.props.toggleMenu}
 				/>
 				<Menu
 					leagues={this.props.leagues}
@@ -64,6 +62,18 @@ class NavBar extends Component {
 		);
 	}
 }
+
+NavBar.propTypes = {
+	changeTheme: PropTypes.func,
+	fetchPlayerList: PropTypes.func,
+	leagues: PropTypes.arrayOf(PropTypes.object),
+	open: PropTypes.bool,
+	openModal: PropTypes.func,
+	selectLeague: PropTypes.func,
+	selectStaff: PropTypes.func,
+	selectTeams: PropTypes.func,
+	toggleMenu: PropTypes.func
+};
 
 function mapStateToProps({menu, league}) {
 	const { open } = menu;

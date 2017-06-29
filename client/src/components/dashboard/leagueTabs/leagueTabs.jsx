@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Tabs, Tab } from 'material-ui/Tabs';
 import { generateLinks } from './tab_navbar/generateLinks.jsx';
 import { tabs } from './leagueTabData';
-import { cssContent, cssDashboard } from '../../style';
+import { cssDashboard } from '../../style';
 
 import TeamRoutes from '../teams/routes.jsx';
 import PlayerRoutes from '../players/routes.jsx';
@@ -25,10 +26,10 @@ const LeagueTabs = ({history, leagueId}) => {
 			{
 				tabs.map((tab, i) => (
 					<Tab
-						label={tab.name}
 						key={i}
-						style={cssDashboard.tabs.tab}
+						label={tab.name}
 						onActive={()=> history.push(tab.links[0].url)}
+						style={cssDashboard.tabs.tab}
 						>
 						{generateLinks(tab.links, leagueId)}
 						{routes[tab.name]}
@@ -40,5 +41,9 @@ const LeagueTabs = ({history, leagueId}) => {
 	);
 };
 
+LeagueTabs.propTypes = {
+	history: PropTypes.object,
+	leagueId: PropTypes.string
+};
 
 export default LeagueTabs;

@@ -1,5 +1,6 @@
 // A template helper class to generate new links for panels under tabs
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import IconButton from 'material-ui/IconButton';
 import { cssContent } from '../../../style';
@@ -17,17 +18,25 @@ const LinkTemplate = props => {
 	return (
 		<Link to={{ pathname: url, state: {leagueId} }}>
 			<IconButton
-				tooltipPosition='bottom-right'
-				tooltip={description}
-				touch={true}
-				style={iconButton.style}
-				iconStyle={ linkIsActive ? iconButton.iconStyle : {} }
 				hoveredStyle={iconButton.hoveredStyle}
+				iconStyle={ linkIsActive ? iconButton.iconStyle : {} }
+				style={iconButton.style}
+				tooltip={description}
+				tooltipPosition='bottom-right'
+				touch={true}
 				>
 				{icon}
 			</IconButton>
 		</Link>
 	);
+};
+
+LinkTemplate.propTypes = {
+	description: PropTypes.string,
+	icon: PropTypes.object,
+	leagueId: PropTypes.string,
+	location: PropTypes.object,
+	url: PropTypes.string
 };
 
 export default withRouter(LinkTemplate);

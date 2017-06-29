@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { TextField, AutoComplete } from 'redux-form-material-ui';
-import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import {
@@ -26,98 +26,104 @@ let PlayerFormTemplate = ({handleSubmit, teams, title}) => {
 				>
 				<div style={cssDashboard.formRow}>
 					<Field
-						name='first_name'
 						component={TextField}
-						hintText='First name'
+						floatingLabelStyle={cssDashboard.formRequired}
 						floatingLabelText='First name*'
-						floatingLabelStyle={cssDashboard.formRequired}
+						hintText='First name'
+						name='first_name'
 					/>
 					<Field
-						name='last_name'
 						component={TextField}
-						hintText='Last name'
+						floatingLabelStyle={cssDashboard.formRequired}
 						floatingLabelText='Last name*'
-						floatingLabelStyle={cssDashboard.formRequired}
+						hintText='Last name'
+						name='last_name'
 					/>
 				</div>
 				<div style={cssDashboard.formRow}>
 					<Field
-						name='email'
 						component={TextField}
-						hintText='Email'
+						floatingLabelStyle={cssDashboard.formRequired}
 						floatingLabelText='Email*'
-						floatingLabelStyle={cssDashboard.formRequired}
+						hintText='Email'
+						name='email'
 					/>
 					<Field
-						name='phone_num'
 						component={TextField}
-						hintText='Phone number'
 						floatingLabelText='Phone number'
+						hintText='Phone number'
+						name='phone_num'
 					/>
 				</div>
 				<div style={cssDashboard.formRow}>
 					<Field
-						name='address.street'
 						component={TextField}
-						hintText='Address'
 						floatingLabelText='Address'
+						hintText='Address'
+						name='address.street'
 					/>
 					<Field
-						name='address.city'
 						component={TextField}
-						hintText='City'
 						floatingLabelText='City'
+						hintText='City'
+						name='address.city'
 					/>
 				</div>
 				<div style={cssDashboard.formRow}>
 					<Field
-						name='address.state'
 						component={TextField}
-						hintText='State'
 						floatingLabelText='State'
+						hintText='State'
+						name='address.state'
 					/>
 					<Field
-						name='address.country'
 						component={TextField}
-						hintText='Country'
 						floatingLabelText='Country'
+						hintText='Country'
+						name='address.country'
 					/>
 				</div>
 				<div style={cssDashboard.formRow}>
 					<Field
-						name='team.teamId'
 						component={AutoComplete}
-						filter={AutoComplete.caseInsensitiveFilter}
-						floatingLabelText='Team'
 						dataSource={teams}
 						dataSourceConfig={{text: 'name', value: '_id'}}
+						filter={AutoComplete.caseInsensitiveFilter}
+						floatingLabelText='Team'
 						maxSearchResults={5}
+						name='team.teamId'
 					/>
 					<Field
-						name='team.jersey_num'
-						floatingLabelText='Jersey Number'
-						type='number'
-						normalize={normalize}
 						component={TextField}
+						floatingLabelText='Jersey Number'
+						name='team.jersey_num'
+						normalize={normalize}
+						type='number'
 					/>
 				</div>
 				<div>
 					<Field
-						name='team.position'
 						component={TextField}
 						floatingLabelText='Position(s)'
+						name='team.position'
 					/>
 				</div>
 				<RaisedButton
+					backgroundColor={cssDashboard.raisedButton.backgroundColor}
 					label={title}
 					labelStyle={cssDashboard.raisedButton.label}
-					backgroundColor={cssDashboard.raisedButton.backgroundColor}
 					style={cssDashboard.raisedButton.style}
 					type='submit'
 				/>
 			</form>
 		</div>
 	);
+};
+
+PlayerFormTemplate.propTypes = {
+	handleSubmit: PropTypes.func,
+	teams: PropTypes.arrayOf(PropTypes.object),
+	title: PropTypes.string
 };
 
 function mapStateToProps({teams}, ownProps) {

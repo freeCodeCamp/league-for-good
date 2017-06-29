@@ -1,4 +1,3 @@
-import React from 'react';
 import { cssDashboard } from '../../../style';
 import { get as getObjProp } from 'lodash';
 // All player data passed from the reducers is reformatted here so
@@ -42,7 +41,7 @@ const getPlayerTableData = (players) => {
 	// map each row
 	return players.map( player => {
 		// map each cell
-		return colData.map( ({cellProp, style, ...col}) => (
+		return colData.map( ({cellProp, style}) => (
 			{
 				value: getObjProp(player, cellProp),
 				style: style

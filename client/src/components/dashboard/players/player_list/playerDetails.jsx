@@ -1,5 +1,5 @@
 import React from 'react';
-import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
+import PropTypes from 'prop-types';
 import { cssContent, cssDashboard } from '../../../style';
 
 import { connect } from 'react-redux';
@@ -47,6 +47,11 @@ const Player = ({ player, history }) => {
 			}
 		</div>
 	);
+};
+
+Player.propTypes = {
+	history: PropTypes.object,
+	player: PropTypes.object
 };
 
 function mapStateToProps({ players }) {

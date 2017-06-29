@@ -14,7 +14,7 @@ import { cssDashboard } from '../../../style';
 // Roster link changes the current state to that renders view
 // that contains the roster inside the same panel from PanelViewWrapper
 const RosterLink = props => {
-	const { fetchRoster, ...team } = props;
+	const { ...team } = props;
 	const url = makeLinkDynamic( TEAM_ROSTER, team._id );
 	return (
 		<Link to={url}>

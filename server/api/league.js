@@ -3,7 +3,6 @@ const express = require('express');
 const Router = express.Router();
 const mongoose = require('mongoose');
 
-const User = mongoose.model('user');
 const League = mongoose.model('league');
 
 

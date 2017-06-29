@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import { connect } from 'react-redux';
@@ -15,23 +16,30 @@ class Icon extends Component {
 		this.openModal = this.openModal.bind(this);
 	}
 
-	openModal(staff, action) {
+	openModal(staff) {
 		this.props.openModal('removeStaff', staff);
 	}
 
 	render() {
-		const { email, leagueId, action } = this.props;
+		const { email, leagueId } = this.props;
 
 		return (
 			<IconButton
-				onTouchTap={()=> this.openModal({ email, leagueId }, action) }
 				hoveredStyle={cssDashboard.table.iconHover}
+				onTouchTap={()=> this.openModal({ email, leagueId }) }
 				>
 				<DeleteIcon />
 			</IconButton>
 		);
 	}
 }
+
+Icon.propTypes = {
+	action: PropTypes.string,
+	email: PropTypes.string,
+	leagueId: PropTypes.string,
+	openModal: PropTypes.func
+};
 
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ openModal }, dispatch);

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { ADD_PLAYER_TO_TEAM } from '../types';
 import { rootURL } from '../../../globals';
 
-export function assignPlayer( form, dispatch, props ) {
+export function assignPlayer(form, dispatch) {
 
 	const { playerId, ...team } = form;
 	const { teamId } = team;
@@ -11,7 +11,7 @@ export function assignPlayer( form, dispatch, props ) {
 	if (!playerId || !teamId ) {return;}
 
 	axios.put(`${rootURL}/player/assign`, reqBody)
-		.then(({data}) => {
+		.then(() => {
 			dispatch({
 				type: ADD_PLAYER_TO_TEAM,
 				payload: { player: playerId, teamId }

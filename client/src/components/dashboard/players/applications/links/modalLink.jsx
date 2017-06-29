@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import EditIcon from 'material-ui/svg-icons/image/edit';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
@@ -19,12 +20,12 @@ class Icon extends Component {
 		}
 	}
 	render() {
-		const { player, action } = this.props;
+		const { action } = this.props;
 
 		return (
 			<IconButton
-				onTouchTap={()=> this.onClick() }
 				hoveredStyle={cssDashboard.table.iconHover}
+				onTouchTap={()=> this.onClick() }
 				>
 				{action === 'delete' ?
 					<DeleteIcon /> :
@@ -33,6 +34,13 @@ class Icon extends Component {
 		);
 	}
 }
+
+Icon.propTypes = {
+	action: PropTypes.string,
+	leagueId: PropTypes.string,
+	openModal: PropTypes.func,
+	player: PropTypes.object
+};
 
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ openModal }, dispatch);

@@ -1,6 +1,13 @@
 // User actions to add, edit, and delete teams in the league
 import axios from 'axios';
-import { CREATE_TEAM, REMOVE_TEAM, SELECT_TEAMS, UPDATE_TEAM, OPEN_SNACKBAR, CLOSE_MODAL } from './types';
+import {
+	CREATE_TEAM,
+	REMOVE_TEAM,
+	SELECT_TEAMS,
+	UPDATE_TEAM,
+	OPEN_SNACKBAR,
+	CLOSE_MODAL
+} from './types';
 import { rootURL } from '../../globals';
 
 
@@ -28,17 +35,18 @@ export function selectTeams(teams) {
 }
 
 // Edit a team's name and active status
-export function updateTeam(formVals, dispatch, props) {
+export function updateTeam(formVals, dispatch) {
 
 	const { _id, currently_active, name } = formVals;
 	const body = { name, currently_active };
 	dispatch({ type: CLOSE_MODAL });
 
 	axios.put(`${rootURL}/team/update/${_id}`, body)
-		.then((data) => {
-
-			return dispatch({type: UPDATE_TEAM, updatedTeam: {...formVals, ...body }});
-
+		.then(() => {
+			return dispatch({
+				type: UPDATE_TEAM,
+				updatedTeam: {...formVals, ...body }
+			});
 		})
 		.catch( error => {
 			throw new Error(error);
@@ -57,7 +65,7 @@ export function removeTeam(team) {
 		dispatch({ type: CLOSE_MODAL });
 
 		axios.delete(`${rootURL}/team/remove/${_id}`)
-			.then((data) => dispatch({ type: REMOVE_TEAM, removedTeam: _id }))
+			.then(() => dispatch({ type: REMOVE_TEAM, removedTeam: _id }))
 			.then(() =>
 				dispatch({ type: OPEN_SNACKBAR, message })
 			);

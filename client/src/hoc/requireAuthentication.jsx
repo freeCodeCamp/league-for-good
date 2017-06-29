@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import CircularProgress from 'material-ui/CircularProgress';
 import { initAuthState } from '../actions/index';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const style = {
 	position: 'absolute',
@@ -39,38 +40,40 @@ export default function(ComposedComponent) {
 
 		renderSpinner() {
 			return (
-        <div style={style}>
-          <CircularProgress
-            size={80}
-            thickness={3.5}
-          />
-        </div>
+				<div style={style}>
+					<CircularProgress
+						size={80}
+						thickness={3.5}
+					/>
+				</div>
 			);
 		}
 
 		componentWillMount() {
-      // Get authentication status from the server
-      // Switches off the loading state when a success response is received
+			// Get authentication status from the server
+			// Switches off the loading state when a success response is received
 
 			this.props.initAuthState();
 		}
 
 		render() {
-			const { initAuthState, loggedIn, ...props } = this.props;
-
+			const { loggedIn, ...props } = this.props;
 			if (props.loading) {
 				return this.renderSpinner();
-			}
-      // Redirect instantly if the user is not logged in
-			else if (!loggedIn) {
-				return <Redirect to='/login'/>;
-			}
-      // Render the desired content
-			else {
+			} else if (!loggedIn) {
+				// Redirect instantly if the user is not logged in
+				return <Redirect to='/login' />;
+			} else {
+				// Render the desired content
 				return <ComposedComponent {...props} />;
 			}
 		}
-  }
+	}
+
+	loadState.propTypes = {
+		initAuthState: PropTypes.func,
+		loggedIn: PropTypes.bool
+	};
 
 	function mapStateToProps({ auth, menu }) {
 
