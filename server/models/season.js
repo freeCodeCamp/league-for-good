@@ -4,27 +4,31 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const quarterNames = ['Fall', 'Winter', 'Spring', 'Summer'];
+
 const SeasonSchema = new Schema({
 	start_date: {
 		type: Date,
+		set: (val) => Date.parse(val),
+		get: (val) => val.toDateString(),		
 		required: true,
 	},
 	end_date: {
 		type: Date,
+		set: (val) => Date.parse(val),
+		get: (val) => {
+			return new Date(val).toDateString();
+		},
 		required: true,
 	},
 	quarter: {
 		type: String,
-		enum: ['Fall', 'Winter', 'Spring', 'Summer'],
+		enum: quarterNames,
 		required: true,
 	},
 	year: {
 		type: Number,
 		required: true,
-	},
-	active: {
-		type: Boolean,
-		default: false,
 	},
 	league_id: {
 		type: Schema.Types.ObjectId,
@@ -32,13 +36,34 @@ const SeasonSchema = new Schema({
 	}},
 	{
 		collection: 'seasons',
-		toObject: { virtuals: true },
-		toJSON: { virtuals: true },
+		toObject: { 
+			getters: true, 
+			setters: true,
+			virtuals: true 
+		},
+		toJSON: { 
+			getters: true, 
+			setters: true,			
+			virtuals: true 
+		},
 	}
 );
 
-SeasonSchema.virtual('season_name').get(function() {
+SeasonSchema.virtual('seasonName').get(function() {
 	return this.quarter + ' ' + this.year;
 });
+
+SeasonSchema.virtual('active').get(function() {
+	const now = Date.now();
+
+	return now >= this.start_date && now <= this.end_date;
+});
+
+SeasonSchema.virtual('quarterNamesList').get(function(){
+	return quarterNames;
+})
+
+
+
 
 module.exports = mongoose.model('season', SeasonSchema);

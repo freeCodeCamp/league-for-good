@@ -47,7 +47,6 @@ class NavBar extends Component {
 	}
 
 	render() {
-		const {dispatch} = this.props;
 		
 		return (
 			<div>

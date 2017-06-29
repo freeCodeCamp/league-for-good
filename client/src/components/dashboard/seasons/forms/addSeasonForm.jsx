@@ -1,5 +1,7 @@
 import React from 'react';
-import { TextField } from 'redux-form-material-ui';
+import { connect } from 'react-redux';
+import { TextField, SelectField } from 'redux-form-material-ui';
+import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Field, reduxForm } from 'redux-form';
 
@@ -7,29 +9,54 @@ import { createTeam, openSnackbar } from '../../../../actions/index';
 import { css_content, css_dashboard } from '../../../style';
 
 
-import validate from './utils/validation';
+// import validate from './utils/validation';
+
+const thisYear = new Date().getFullYear();
 
 
-const AddTeamForm = props => {	
+const normalizeYear = (val, prevVal) => {
+	if (!isNaN(val) && val.length <= 4) return val;
+	return prevVal;
+}
+
+const AddSeasonForm = props => {	
 	const { handleSubmit } = props;
+	
 	return (
 			<div style={css_content.body}>
-				<h1 style={css_dashboard.title}>Add Team</h1>
+				<h1 style={css_dashboard.title}>Add Season</h1>
 				<h6 style={css_dashboard.warning}>* = Required</h6>
 				<form 
 					onSubmit={ handleSubmit }
 					style={css_dashboard.form}
 				>
+					<div>
 					<Field
-						name="name" 
-						component={TextField}
-						hintText="Team name"
-						floatingLabelText="Team name*"
+						name="quarter" 
+						component={SelectField}
+						hintText="Season"
+						floatingLabelText="Season*"
 						floatingLabelStyle={css_dashboard.formRequired}
-						fullWidth={true}
+					>
+						{
+							props.initialValues.quarterNamesList.map(name => 
+								<MenuItem key={name} value={name} primaryText={name}/>
+							)
+						}
+					</Field>
+					</div>
+					<div>
+					<Field
+						name="year" 
+						normalize={normalizeYear}
+						component={TextField}
+						hintText="Year"
+						floatingLabelText="Year*"
+						floatingLabelStyle={css_dashboard.formRequired}
 					/>
+					</div>
 					<RaisedButton
-						label="Create Team"
+						label="Create Season"
 						labelStyle={css_dashboard.raisedButton.label}
 						backgroundColor={css_dashboard.raisedButton.backgroundColor}
 						style={css_dashboard.raisedButton.style}
@@ -40,14 +67,20 @@ const AddTeamForm = props => {
 	);
 };
 
+function mapStateToProps(state) {
+	return { initialValues: state.seasons.list[0] };
+}
+
 
 
 export default reduxForm({
-	form: 'AddTeamForm',
+	form: 'AddSeasonForm',
 	onSubmit: createTeam,
 	onSubmitSuccess: openSnackbar,
-	validate,
-})( AddTeamForm );
+	// validate,
+})( 
+	connect(mapStateToProps)(AddSeasonForm)
+);
 
 
 
