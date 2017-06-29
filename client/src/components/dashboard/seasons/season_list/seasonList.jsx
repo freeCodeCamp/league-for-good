@@ -10,15 +10,13 @@ import getRowData, { colData } from './seasonData';
 import { connect } from 'react-redux';
 
 // Table that lists all the seasons and the ability to edit or delete each season
-const SeasonTable = props => {
-	console.log('season table', props.seasons);
-	const seasons = props.seasons;
-	console.log('seasons', seasons);
+const SeasonList = props => {
+
 	return (
 		<div style={css_content.body}>	
 			<TableTemplate 
 				headers={colData}
-				rows={getRowData(seasons)}
+				rows={getRowData(props.seasons)}
 			/>
 		</div>
 	);
@@ -28,7 +26,7 @@ function mapStateToProps(state) {
 	return { seasons: state.seasons.list };
 }
 
-export default connect(mapStateToProps)(SeasonTable);
+export default connect(mapStateToProps)(SeasonList);
 
 
 

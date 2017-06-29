@@ -7,7 +7,7 @@ import Icon from './seasonActions.jsx';
 export const colData = [
 	{
 		label: 'Season',
-		cellProp: 'quarter_year',
+		cellProp: 'season_name',
 		sortable: true,
 		searchable: true,
 	},
@@ -56,7 +56,8 @@ function getCellValue(season, prop, action) {
 
 
 // Massaging data
-const getSeasonTableData = ({ seasons }) => {
+const getSeasonTableData = seasons => {
+	console.log(seasons);
 	// rows
 	return seasons.map( season => {
 		// columns
