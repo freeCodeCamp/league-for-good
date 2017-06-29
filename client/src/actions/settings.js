@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CREATE_STAFF_MEMBER, REMOVE_STAFF_MEMBER, SELECT_STAFF_MEMBERS, CLOSE_MODAL, OPEN_SNACKBAR } from './types';
+import { CREATE_STAFF_MEMBER, REMOVE_STAFF_MEMBER, SELECT_STAFF_MEMBERS, UPDATE_STAFF_MEMBER, CLOSE_MODAL, OPEN_SNACKBAR } from './types';
 import { rootURL } from '../../globals';
 
 export function selectStaff(staff) {
@@ -7,11 +7,10 @@ export function selectStaff(staff) {
 }
 
 export function addStaffMember(formVals, dispatch, { location }) {
-	
 	const body = {
 		email: formVals.email,
 		league: location.state.leagueId,
-		roleId: formVals.role,
+		title: formVals.role,
 	};
 
 	axios.post(`${rootURL}/settings/create`, body)
@@ -22,6 +21,26 @@ export function addStaffMember(formVals, dispatch, { location }) {
 			throw new Error(err);
 		});
 }
+
+// Update a staff members email and/or role
+export function updateStaff(formVals, dispatch, props) {
+	
+	//TODO: write the reducer for updating staff
+	const { email, role } = formVals;
+	const body = { email, roleId: role };
+	dispatch({ type: CLOSE_MODAL });
+
+	axios.put(`${rootURL}/settings/update/${email}`, body)
+		.then((data) => {
+		
+			return dispatch({type: UPDATE_STAFF_MEMBER, updatedStaff: {...formVals, ...body }});
+
+		})
+		.catch( error => {
+			throw new Error(error);
+		});
+}
+
 
 export function removeStaff(staffInfo) {
 

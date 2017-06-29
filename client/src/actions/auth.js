@@ -10,6 +10,7 @@ export function initAuthState() {
 
 		axios.post('/auth/authenticate')
 			.then(({data}) => {
+				console.log(data);
 				const { leagueInfo, roles, ...userData } = data;
 				console.log('auth action', leagueInfo, roles);	
 				//send users info to reducer	
@@ -22,7 +23,7 @@ export function initAuthState() {
 				}
 			})
 			.catch(err => dispatch({type:'AUTH_ERROR'}));
-	};		//TO-DO build auth-error action
+	};		//TODO build auth-error action
 }
 
 //updates the user's state as logged out after 

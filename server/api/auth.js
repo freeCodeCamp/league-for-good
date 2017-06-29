@@ -31,8 +31,7 @@ function fetchInitialData(req, res, next){
 	const query = { '$or': [ { owner: user._id }, { 'staff.email': user.email } ] };
 
 	const leaguePromise =  Leagues.find(query)
-		.populate('teams')
-		.populate('staff.role');
+		.populate('teams');
 	const rolePromise =  Roles.find({});
 
 	return Promise.all([leaguePromise.exec(), rolePromise.exec()])

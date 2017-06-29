@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import { TextField, Toggle, Checkbox } from 'redux-form-material-ui';
-import {Field, reduxForm } from 'redux-form';
+import React from 'react';
+import { TextField, Checkbox } from 'redux-form-material-ui';
+import { Field, reduxForm } from 'redux-form';
 import { updateTeam, openSnackbar } from '../../../../actions/index';
 
 import validate from './utils/validation';
@@ -15,7 +15,7 @@ const EditTeamForm = (props) => {
 				name="name" 
 				component={TextField}
 				normalize={normalize}
-				hintText="Team name"
+				hintText="Team Name"
 				floatingLabelText="Team Name:"
 				fullWidth={true}
 			/>

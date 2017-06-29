@@ -14,7 +14,6 @@ const UserSchema = new Schema({
 	avatar: {
 		type: String,
 	},
-	
 	google_id: {
 		type: String,
 	}},

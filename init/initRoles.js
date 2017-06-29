@@ -57,7 +57,7 @@ const adminRole = new Role({
 });
 
 const managerRole = new Role({
-	title: 'Manager',
+	title: 'General Manager',
       	privileges: {
 		viewTeams: true,
 		viewSubsetTeams: false,

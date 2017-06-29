@@ -10,7 +10,7 @@ const createStaff = (req, res) => {
 	const updateInfo = {
 		staff: {
 			email: req.body.email,
-			role: req.body.roleId
+			role: req.body.title
 		}
 	};
 	const update = { '$push': updateInfo };
@@ -19,6 +19,13 @@ const createStaff = (req, res) => {
 		.exec()
 		.then(() => res.send(req.body))
 		.catch(error => res.status(500).json({ error: error }));
+};
+
+const updateStaff = (req, res) => {
+	const query = { _id: req.body.league };
+
+	//TODO: finish the backend for editing a staff member
+	console.log(req.body);
 };
 
 const deleteStaff = (req, res) => {
@@ -33,6 +40,7 @@ const deleteStaff = (req, res) => {
 };
 
 Router.route('/create').post(createStaff);
+Router.route('/update/:email').put(updateStaff);
 Router.route('/remove/:email').delete(deleteStaff);
 
 module.exports = Router;

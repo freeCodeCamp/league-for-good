@@ -1,6 +1,7 @@
 import React from 'react';
 import EditTeamForm from '../dashboard/teams/forms/editTeamForm.jsx';
 import DeleteTeamForm from '../dashboard/teams/forms/deleteTeamForm.jsx';
+import EditStaffForm from '../dashboard/settings/forms/editStaffForm.jsx';
 import DeleteStaffForm from '../dashboard/settings/forms/deleteStaffForm.jsx';
 import DeletePlayerRegForm from '../dashboard/players/applications/modals/delete.jsx';
 import { reduxForm } from 'redux-form';
@@ -58,12 +59,18 @@ const mappings = {
 		onSubmit: 'removeTeam',
 		actionLabel: 'Delete Team',
 	},
-	editTeam:{
+	editTeam: {
 		title: 'Edit Team',
 		Children: EditTeamForm,
 		onSubmit: null,
 		reduxFormName:'EditTeamForm',
 		actionLabel: 'Edit Team',
+	},
+	editStaff: {
+		title: 'Edit Staff',
+		Children: EditStaffForm,
+		onSubmit: 'editStaff',
+		actionLabel: 'Edit Staff',
 	},
 	removeStaff: {
 		title: 'Delete Staff',
@@ -78,7 +85,7 @@ const mappings = {
 		title: 'Delete Player Application',
 		Children: DeletePlayerRegForm,
 		onSubmit: 'deletePlayerRegistration',
-		actionLabel: 'Delete',
+		actionLabel: 'Delete Player',
 	},
 };
 
