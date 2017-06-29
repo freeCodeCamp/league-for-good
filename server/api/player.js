@@ -39,7 +39,7 @@ const getPlayer = (req, res) => {
 };
 
 
-const fetchList = (req, res) => {
+const fetchPlayerList = (req, res) => {
 	const { leagueId } = req.params;
 	const query = { leagues: { $in: [leagueId] }};
 	const select = {}; 
@@ -87,7 +87,7 @@ const updatePlayer = (req, res) => {
 
 };
 
-Router.route('/list/:leagueId').get(fetchList);
+Router.route('/list/:leagueId').get(fetchPlayerList);
 Router.route('/details/:playerId').get(getPlayer);
 
 Router.route('/update/:playerId').put(updatePlayer);

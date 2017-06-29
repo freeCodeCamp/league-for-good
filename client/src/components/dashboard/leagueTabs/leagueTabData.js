@@ -52,6 +52,22 @@ const playerLinks = [
 	},
 ];
 
+// Links for managing the seasons
+const seasonLinks = [
+	{
+		description: 'View a list of all seasons.',
+		label: 'ViewSeasons',
+		icon: <ListIcon />,
+		url: LINK.SEASON_LIST,
+	},
+	{
+		description: 'Add a new season to your league.',
+		label: 'AddSeason',
+		icon: <AddIcon />,
+		url: LINK.SEASON_ADD_FORM,
+	},
+];
+
 // Links for managing general league settings
 const settingsLinks = [
 	{
@@ -78,6 +94,6 @@ const settingsLinks = [
 export const tabs = [
 	{ name: 'Teams', links: teamLinks },
 	{ name: 'Players', links: playerLinks },
-	{ name: 'Seasons', links: [] },
+	{ name: 'Seasons', links: seasonLinks },
 	{ name: 'Settings', links: settingsLinks },
 ];

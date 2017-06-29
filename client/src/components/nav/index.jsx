@@ -11,6 +11,7 @@ import {
 	selectTeams, 
 	changeTheme, 
 	fetchPlayerList, 
+	fetchSeasonList,
 	selectStaff,
 } from '../../actions/index';
 
@@ -27,11 +28,14 @@ class NavBar extends Component {
 	selectLeague = league => {
 		const { teams, staff, ...leagueData } = league;
 
-		//Mark new league as 'Selected'
+		console.log(this.props);
+		// Mark new league as 'Selected'
 		this.props.selectLeague(leagueData);
-		//Fetch players from league from the server
+		// Fetch players from league from the server
 		this.props.fetchPlayerList(leagueData._id);
-		//Dispatch teams in the league to the teams reducer
+		// Fetch seasons from league from the server
+		this.props.fetchSeasonList(leagueData._id);
+		// Dispatch teams in the league to the teams reducer
 		this.props.selectTeams(teams);
 		// Dispatch staff in the league to the staff reducer
 		this.props.selectStaff(staff);
@@ -78,6 +82,7 @@ function mapDispatchToProps(dispatch) {
 		openModal,
 		changeTheme,
 		fetchPlayerList,
+	       	fetchSeasonList,
 		selectStaff,
 	}, dispatch);
 }

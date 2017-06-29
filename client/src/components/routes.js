@@ -13,13 +13,16 @@ export const PLAYER_REGISTRATION_DETAILS = '/dashboard/players/registration/:pla
 export const TEAM_LIST = '/dashboard/teams/list';
 export const TEAM_ROSTER = '/dashboard/teams/roster/:teamId';
 export const TEAM_ROSTER_PLAYER_DETAIL = '/dashboard/teams/player/:playerId'; 
-export const TEAM_ADD_FORM = '/dashboard/add-new-team';
+export const TEAM_ADD_FORM = '/dashboard/teams/create';
 
 // Settings routes
 export const SETTINGS_DELETE_LEAGUE = '/dashboard/settings/delete';
 export const SETTINGS_ADD_STAFF_FORM = '/dashboard/settings/create';
 export const SETTINGS_STAFF_LIST = '/dashboard/settings/staff';
 
+// Season routes
+export const SEASON_LIST = '/dashboard/seasons/list';
+export const SEASON_ADD_FORM = '/dashboard/seasons/create';
 
 
 export function makeLinkDynamic( link, uniqueID ){

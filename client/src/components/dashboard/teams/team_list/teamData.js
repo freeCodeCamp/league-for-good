@@ -14,39 +14,38 @@ export const colData = [
 		sortable: true, 
 		searchable: true,
 		colSpan:2,
-
 	},
 	{ 
 		label: 'Roster Size', 
 		cellProp: 'players.length', 
 		sortable: true,
-		style: css_dashboard.table.columns.defaultCol, 
 	},
 	{ 
 		label: 'Seasons', 
 		cellProp: 'seasons.length', 
 		sortable: true,
-		style: css_dashboard.table.columns.defaultCol, 
 	},
 	{ 
 		label: 'Status', 
 		cellProp: 'currently_active',
 		sortable: true, 
-		style: css_dashboard.table.columns.defaultCol, 
 	},
 	{
 		label: 'Roster',
 		cellProp: 'link',
+		style: css_dashboard.table.columns.icon,
 	},	
 	{ 
 		label: 'Edit', 
 		action: 'edit', 
 		cellProp: 'icon', 
+		style: css_dashboard.table.columns.icon,
 	},
 	{ 
 		label: 'Delete', 
 		action: 'delete', 
 		cellProp: 'icon', 
+		style: css_dashboard.table.columns.icon,
 	},	
 ];
 

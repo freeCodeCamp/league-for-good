@@ -10,7 +10,7 @@ import { FETCH_PLAYER, ADD_PLAYER, FETCH_ALL_PLAYERS }  from '../actions/types';
 		
 export default function(state = null, action) {
 
-	switch(action.type) {
+	switch (action.type) {
 	
 	case FETCH_PLAYER:
 		return { ...state, selected: action.playerDetails };

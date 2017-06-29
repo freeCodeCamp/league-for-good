@@ -45,5 +45,9 @@ export const REMOVE_STAFF_MEMBER = 'REMOVE_STAFF_MEMBER';
 export const SELECT_STAFF_MEMBERS = 'SELECT_STAFF_MEMBERS';
 export const UPDATE_STAFF_MEMBER = 'UPDATE_STAFF_MEMBER';
 
+// Season action types
+export const FETCH_SEASON = 'FETCH_SEASON';
+export const FETCH_ALL_SEASONS = 'FETCH_ALL_SEASONS';
+
 // Roles action types
 export const FETCH_ROLES = 'FETCH_ROLES';

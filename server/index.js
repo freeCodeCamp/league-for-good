@@ -50,7 +50,8 @@ app.use('/league', Routes.league);
 app.use('/team', Routes.team);
 app.use('/player', Routes.player);
 app.use('/settings', Routes.settings);
-app.use('/register', Routes.registration)
+app.use('/register', Routes.registration);
+app.use('/seasons', Routes.seasons);
 
 //Disable webpack build if debugging backend functionality
 

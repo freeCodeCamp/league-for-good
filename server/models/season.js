@@ -32,7 +32,13 @@ const SeasonSchema = new Schema({
 	}},
 	{
 		collection: 'seasons',
+		toObject: { virtuals: true },
+		toJSON: { virtuals: true },
 	}
 );
+
+SeasonSchema.virtual('season_name').get(function() {
+	return this.quarter + ' ' + this.year;
+});
 
 module.exports = mongoose.model('season', SeasonSchema);
