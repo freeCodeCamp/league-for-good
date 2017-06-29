@@ -9,5 +9,5 @@ export const getPlayerApplications = () => {
 		players => {
 
 			return players.filter(player => player.team === null);
-		});	
+		});
 };

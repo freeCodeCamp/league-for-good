@@ -1,6 +1,6 @@
 const emailRegex = new RegExp('^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@gmail.com$', 'i');
 
-//prevent user from submitting incorrect staff info
+// prevent user from submitting incorrect staff info
 const validate = val => {
 	const errors = {};
 

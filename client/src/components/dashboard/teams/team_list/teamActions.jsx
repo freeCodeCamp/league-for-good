@@ -4,13 +4,13 @@ import EditIcon from 'material-ui/svg-icons/image/edit';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { css_dashboard } from '../../../style';
+import { cssDashboard } from '../../../style';
 import { openModal } from '../../../../actions/index';
 
 
-//Returns an icon for the table - either for deleting or editing a team
+// Returns an icon for the table - either for deleting or editing a team
 class Icon extends Component {
-	
+
 	constructor(props) {
 		super(props);
 		this.onClick = this.onClick.bind(this);
@@ -19,19 +19,18 @@ class Icon extends Component {
 	onClick(team, action) {
 		if (action === 'edit') {
 			this.props.openModal('editTeam', {initialValues: {...team}});
-		}
-		else {
+		}		else {
 			this.props.openModal('removeTeam', team);
 		}
 	}
 	render() {
 		const { team, action } = this.props;
-		
+
 		return (
-			<IconButton 
+			<IconButton
 				onTouchTap={()=> this.onClick(team, action) }
-				hoveredStyle={css_dashboard.table.iconHover}
-			>
+				hoveredStyle={cssDashboard.table.iconHover}
+				>
 				{action === 'delete' ?
 					<DeleteIcon /> :
 					<EditIcon /> }

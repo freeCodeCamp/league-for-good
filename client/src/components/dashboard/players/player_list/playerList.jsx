@@ -7,18 +7,18 @@ import { connect } from 'react-redux';
 
 import IconButton from 'material-ui/IconButton';
 import BackArrow from 'material-ui/svg-icons/navigation/arrow-back';
-import { css_content } from '../../../style.js';
+import { cssContent } from '../../../style.js';
 
 export const PlayerList = props => {
 
 	return (
-		<div style={css_content.body}>
-			<IconButton 
+		<div style={cssContent.body}>
+			<IconButton
 				onTouchTap={() => props.history.goBack()}
-			>
+				>
 				<BackArrow/>
 			</IconButton>
-			<TableTemplate 
+			<TableTemplate
 				headers={colData}
 				rows={getRowData( props.players )}
 			/>
@@ -26,13 +26,13 @@ export const PlayerList = props => {
 	);
 };
 
-function mapStateToProps({ players }){
+function mapStateToProps({ players }) {
 	/*
-		Until theres paginating functionality we will 
+		Until theres paginating functionality we will
 		only work with a subset of the players list array to avoid long render times
 	*/
 	const playerList = players.list.slice(0, 25);
-	
+
 	return { players: playerList };
 }
 

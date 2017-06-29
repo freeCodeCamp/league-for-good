@@ -5,7 +5,7 @@ import {
 	TableHeader,
 	TableHeaderColumn,
 	TableRow,
-	TableRowColumn,
+	TableRowColumn
 } from 'material-ui/Table';
 
 import TextField from 'material-ui/TextField';
@@ -13,17 +13,17 @@ import FlatButton from 'material-ui/FlatButton';
 import SearchIcon from 'material-ui/svg-icons/action/search';
 import ArrowUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
 import ArrowDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
-import { css_dashboard } from '../../../style';
+import { cssDashboard } from '../../../style';
 
-// IMPORTED STYLES 
-const { table: { 
-	sortArrowActiveColor, 
-	sortArrowInactiveColor, 
+// IMPORTED STYLES
+const { table: {
+	sortArrowActiveColor,
+	sortArrowInactiveColor,
 	colHeaderLabelStyle,
 	colHeaderStyle,
-	colRowStyle, 
-}} = css_dashboard;
-/////////////////////////
+	colRowStyle
+}} = cssDashboard;
+// ///////////////////////
 
 
 // A table template to easily render a table in the management panel
@@ -54,16 +54,16 @@ const { table: {
 
 // Optional title for the table
 const TableTitle = (props) => {
-	return <h1 style={css_dashboard.title}>{props.title}</h1>;
+	return <h1 style={cssDashboard.title}>{props.title}</h1>;
 };
 
 // Optional search for the table
 const SearchTable = (props) => {
 	return (
-		<TextField 
+		<TextField
 			hintText={<SearchIcon />}
-			underlineFocusStyle={css_dashboard.table.searchUnderline}
-			style={css_dashboard.table.search}
+			underlineFocusStyle={cssDashboard.table.searchUnderline}
+			style={cssDashboard.table.search}
 			floatingLabelText={'Search ' + props.searchLabel}
 			floatingLabelFixed={true}
 			onChange={props.onSearch}
@@ -72,19 +72,18 @@ const SearchTable = (props) => {
 };
 
 
-
 // Header row for the table containing column names
 const Headers = (props) => {
 	return (
 		<TableRow>
 			{
-				props.headers.map(function(header,i) {
+				props.headers.map(function(header, i) {
 					return (
-						<TableHeaderColumn 
+						<TableHeaderColumn
 							key={i}
 							colSpan={header.colSpan || 1}
 							style={colHeaderStyle}
-						>
+							>
 							<ColumnHeaderChild
 								label={header.label}
 								onClick={props.onSort}
@@ -101,26 +100,26 @@ const Headers = (props) => {
 	);
 };
 
-// renders the TableRow components that will appear inside the TableBody 
+// renders the TableRow components that will appear inside the TableBody
 // Not a functional component.. This returns an array rather than a single JSX component
 const renderBody = (rows) => {
 	return (
 			rows.map(function(row, i) {
 				return (
-					<TableRow 
-						key={i} 
+					<TableRow
+						key={i}
 						selectable={false}
-					>
+						>
 						{
 							row.map(function(rowData, i) {
 								return (
-									<TableRowColumn 
+									<TableRowColumn
 										colSpan={rowData.colSpan}
 										style={rowData.style}
 										key={i}
-									>
-										{ i === 0 ?  <strong>{rowData.value}</strong> 
-												: <span>{rowData.value}</span> 
+										>
+										{ i === 0 ? <strong>{rowData.value}</strong>
+												: <span>{rowData.value}</span>
 										}
 									</TableRowColumn>
 								);
@@ -135,47 +134,45 @@ const renderBody = (rows) => {
 // column header with sorting icons
 // when clicked will sort columns with asc, desc, or no order
 const ColumnHeaderChild = props => {
-	
+
 	let arrowIcon = <noScript />;
 
-	//Return early if column is not sortable
+	// Return early if column is not sortable
 	if (!props.sortable) {
 		return (
 			<div style={colHeaderLabelStyle}>
 				{props.label}
 			</div>
-		)
+		);
 	}
-	
+
 
 	let columnSorted = props.colIndex === props.sortColumnIndex;
 	let iconColor = columnSorted ? sortArrowActiveColor : sortArrowInactiveColor;
-	
-	// Determine appropriate icon and icon color	
+
+	// Determine appropriate icon and icon color
 	if (props.sortDirection === 'asc') {
 		if (columnSorted) {
 			arrowIcon = <ArrowDown color={iconColor} />;
-		}
-		else {
+		}		else {
 			arrowIcon = <ArrowUp color={iconColor} />;
 		}
-	}
-	else if (props.sortDirection === 'desc') {
+	}	else if (props.sortDirection === 'desc') {
 		arrowIcon = <ArrowUp color={iconColor} />;
 	}
 	// else, no sorting
 	else {
 		arrowIcon = <ArrowUp color={iconColor} />;
 	}
-	
+
 
 	return (
-		<div 
-			style={{...colHeaderLabelStyle, cursor:'pointer'}}
+		<div
+			style={{...colHeaderLabelStyle, cursor: 'pointer'}}
 			onClick={() => { props.onClick(props.colIndex); }}
-		>
+			>
 			{arrowIcon}
-			{props.label}	
+			{props.label}
 		</div>
 	);
 };
@@ -187,14 +184,14 @@ class TableTemplate extends Component {
 		super(props);
 		let searchableColumnIndex = -1;
 		let searchableColumnLabel = '';
-		
+
 		this.props.headers.forEach((header, i) => {
 			if (header.searchable) {
 				searchableColumnIndex = i;
 				searchableColumnLabel = header.label;
 			}
 		});
-		
+
 		this.state = {
 			rows: Array.from(this.props.rows),
 			sortDirection: 'none',
@@ -202,33 +199,33 @@ class TableTemplate extends Component {
 			searchableColumnLabel: searchableColumnLabel,
 			sortColumnIndex: null,
 			searchTerm: '',
-			searchRows: [],
+			searchRows: []
 		};
 	}
-	
+
 	// Change state of teams based on panel rendered
 	componentWillReceiveProps(nextProps) {
 		if (this.props.rows !== nextProps.rows) {
 			let searchableColumnIndex = -1;
 			let searchableColumnLabel = '';
-			
+
 			this.props.headers.forEach((header, i) => {
 				if (header.searchable) {
 					searchableColumnIndex = i;
 					searchableColumnLabel = header.label;
 				}
 			});
-			
+
 			this.setState({
 				rows: Array.from(nextProps.rows),
 				sortDirection: 'none',
 				searchableColumnIndex: searchableColumnIndex,
 				searchableColumnLabel: searchableColumnLabel,
-				sortColumnIndex: null,
+				sortColumnIndex: null
 			});
 		}
 	}
-	
+
 	// Search for rows passed in to the table as a searchable column
 	// Only one column is currently allowed to be searchable
 	onSearch = (event, newValue) => {
@@ -238,14 +235,14 @@ class TableTemplate extends Component {
 			rowValue = row[this.state.searchableColumnIndex].value.toLowerCase();
 			return rowValue.indexOf(newValue.toLowerCase()) === 0;
 		}, this);
-		
+
 		this.setState({
 			searchTerm: newValue,
 			searchRows: Array.from(searchRows),
-			rows: searchRows,
+			rows: searchRows
 		});
 	}
-	
+
 	// Sort when clicked
 	// @colProp: which column to sort by
 	onSort(colIndex) {
@@ -255,7 +252,7 @@ class TableTemplate extends Component {
 			this.sortMap[this.state.sortDirection] :
 			'asc';
 		let sortedRows;
-		
+
 		// Changing sort from asc to desc or desc to none
 		// if a different column has been sorted, sort to default(asc)
 		if (colIndex !== this.state.sortColumnIndex) {
@@ -281,26 +278,25 @@ class TableTemplate extends Component {
 			// if the user is searching, return to the original state of searched rows
 			if (this.state.searchTerm) {
 				sortedRows = Array.from(this.state.searchRows);
-			}
-			else {
+			}			else {
 				sortedRows = Array.from(this.props.rows);
 			}
 			colIndex = null;
 		}
-	
+
 		this.setState({
 			rows: sortedRows,
 			sortDirection: sortDirection,
-			sortColumnIndex: colIndex,
+			sortColumnIndex: colIndex
 		});
 	}
-	
+
 	sortMap = {
-		'none': 'asc',
-		'asc': 'desc',
-		'desc': 'none',
+		none: 'asc',
+		asc: 'desc',
+		desc: 'none'
 	}
-	
+
 	// sort column based on a direction
 	// @direction: direction in which to sort the column
 	// @colIndex: column index of the table
@@ -315,30 +311,30 @@ class TableTemplate extends Component {
 			return 0;
 		};
 	}
-	
+
 
 	render() {
 		return (
 			<div>
 				{
-					this.props.title ? 
+					this.props.title ?
 					<TableTitle title={this.props.title} /> :
 					''
 				}
 				{
-					this.state.searchableColumnIndex !== -1 ?				
-					<SearchTable 
+					this.state.searchableColumnIndex !== -1 ?
+					<SearchTable
 						onSearch={this.onSearch.bind(this)}
 						searchLabel={this.state.searchableColumnLabel}
 					/> : ''
 				}
-				<Table style={css_dashboard.table.style}>
-					<TableHeader 
+				<Table style={cssDashboard.table.style}>
+					<TableHeader
 						adjustForCheckbox={false}
-						displaySelectAll={false} 
+						displaySelectAll={false}
 						selectable={false}
-					>
-						<Headers 
+						>
+						<Headers
 							headers={this.props.headers}
 							onSort={this.onSort.bind(this)}
 							sortDirection={this.state.sortDirection}
@@ -348,7 +344,7 @@ class TableTemplate extends Component {
 					<TableBody
 						displayRowCheckbox={false}
 						preScanRows={false}
-					>
+						>
 						{renderBody(this.state.rows)}
 					</TableBody>
 				</Table>

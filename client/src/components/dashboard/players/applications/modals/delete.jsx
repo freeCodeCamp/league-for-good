@@ -8,4 +8,4 @@ const DeletePlayerRegModal = ({player}) => (
 	</div>
 );
 
-export default DeletePlayerRegModal
+export default DeletePlayerRegModal;

@@ -1,26 +1,28 @@
 const express = require('express');
+
 const Router = express.Router();
 const mongoose = require('mongoose');
+
 const Team = mongoose.model('team');
 const League = mongoose.model('league');
 const buildRoster = require('./aggregation/buildRoster');
 
 // Create a new team for a selected league
-//after the team is saved, push the mongo generated _id into the 'teams' array with that league
-//Send the newly created team back to the client 
+// after the team is saved, push the mongo generated _id into the 'teams' array with that league
+// Send the newly created team back to the client
 const createTeam = (req, res) => {
 	const league = req.body.league;
 
 	const newTeam = new Team({
 		name: req.body.name,
-		league_id: league,
+		league_id: league
 	});
 
 	newTeam.save()
 		.then( team => {
 			return League.findByIdAndUpdate(league, { $push: { teams: team} })
 				.exec()
-				.then(() => team); 
+				.then(() => team);
 		})
 		.then(team => res.send(team))
 		.catch(error => res.send({ error }));
@@ -30,16 +32,16 @@ const createTeam = (req, res) => {
 const deleteTeam = (req, res) => {
 	const { teamId } = req.params;
 	const query = { _id: teamId };
-	//TODO Create pre-remove hook to delete all team refs
-	const playerQuery = {}
+	// TODO Create pre-remove hook to delete all team refs
+	const playerQuery = {};
 
 	Team.remove(query)
 		.exec()
 		.then(() => res.send('Successfully removed team.'))
 		.then(() => {
-			Player.update()
+			Player.update();
 		})
-		.catch(error => res.send({msg:'An error occured while removing team', error}));
+		.catch(error => res.send({msg: 'An error occured while removing team', error}));
 };
 
 const updateTeam = (req, res) => {
@@ -53,9 +55,9 @@ const updateTeam = (req, res) => {
 };
 
 const showRoster = (req, res) => {
-	//TODO - add search params for seasonId
+	// TODO - add search params for seasonId
 	const { teamId } = req.params;
-	
+
 	Team.findById(teamId)
 		.exec()
 		.then(buildRoster)

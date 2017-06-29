@@ -7,19 +7,19 @@ import { connect } from 'react-redux';
 
 import IconButton from 'material-ui/IconButton';
 import BackArrow from 'material-ui/svg-icons/navigation/arrow-back';
-import { css_content } from '../../../style.js';
+import { cssContent } from '../../../style.js';
 
 
 const PlayerList = props => {
 	const leagueId = props.location.state.leagueId;
 	return (
-		<div style={css_content.body}>
-			<IconButton 
+		<div style={cssContent.body}>
+			<IconButton
 				onTouchTap={() => props.history.goBack()}
-			>
+				>
 				<BackArrow/>
 			</IconButton>
-			<TableTemplate 
+			<TableTemplate
 				headers={colData}
 				rows={getRowData( props.players, leagueId )}
 			/>
@@ -28,8 +28,7 @@ const PlayerList = props => {
 };
 
 
-
-function mapStateToProps(state){	
+function mapStateToProps(state) {
 	return { players: state.league.selected.pending_players };
 }
 

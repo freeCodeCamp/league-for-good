@@ -32,9 +32,9 @@ const store = createStore(reducers, applyMiddleware(thunk));
 // 	currentTheme = select(store.getState());
 
 // 	if (previousTheme !== currentTheme) {
-		
+
 // 		palette = themes.getThemeList()[currentTheme]
-		
+
 // 	}
 // }
 
@@ -42,7 +42,7 @@ const store = createStore(reducers, applyMiddleware(thunk));
 
 const Root = () => {
 
-	return(
+	return (
 		<Provider store={store}>
 			<App />
 		</Provider>

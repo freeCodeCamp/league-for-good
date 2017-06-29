@@ -3,11 +3,11 @@ import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
 import { connect } from 'react-redux';
 import getStaffTableRows, { colData } from './staffData';
 
-import { css_content } from '../../../style.js';
+import { cssContent } from '../../../style.js';
 
 const StaffList = props => {
 	return (
-		<div style={css_content.body}>
+		<div style={cssContent.body}>
 			<TableTemplate
 				headers={colData}
 				rows={getStaffTableRows(props.staff, props.leagueId)}
@@ -18,9 +18,9 @@ const StaffList = props => {
 
 function mapStateToProps(state) {
 	console.table(state.settings);
-	return { 
+	return {
 		staff: state.settings.staff,
-		leagueId: state.league.selected._id,
+		leagueId: state.league.selected._id
 	};
 }
 

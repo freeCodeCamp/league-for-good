@@ -14,19 +14,19 @@ export const getRoster = () => {
 		[getPlayers, getSelectedTeam],
 		(players, team) => {
 			const roster = { ...team };
-			
+
 			roster.players = team.players.reduce((playerList, playerId) => {
-				
+
 				const player = players.find(({_id}) => _id === playerId);
-				
+
 				if (player) {
 					playerList.push(player);
 				}
-				
+
 				return playerList;
 			}, []);
 
-			return roster; 
+			return roster;
 		}
 	);
 };

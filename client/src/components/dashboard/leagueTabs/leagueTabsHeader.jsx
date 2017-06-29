@@ -1,18 +1,23 @@
 import React from 'react';
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
-import { css_dashboard } from '../../style';
+import {
+	Toolbar,
+	ToolbarGroup,
+	ToolbarSeparator,
+	ToolbarTitle
+} from 'material-ui/Toolbar';
+import { cssDashboard } from '../../style';
 
 
 const Header = ({league}) => (
-	<Toolbar> 
+	<Toolbar>
 		<ToolbarGroup>
-			<ToolbarTitle 
-				style={css_dashboard.toolbar.title}
+			<ToolbarTitle
+				style={cssDashboard.toolbar.title}
 				text={league.name}
 			/>
-			<ToolbarSeparator style={css_dashboard.toolbar.separator} />
-			<em style={css_dashboard.toolbar.subtitle}>
-				{`${league.sport_type} League`} 
+			<ToolbarSeparator style={cssDashboard.toolbar.separator} />
+			<em style={cssDashboard.toolbar.subtitle}>
+				{`${league.sport_type} League`}
 			</em>
 		</ToolbarGroup>
 	</Toolbar>

@@ -7,6 +7,6 @@ export function changeManageView(view) {
 }
 
 // Reset the active view when a user selects a new league
-export function resetDashboard(){
+export function resetDashboard() {
 	return { type: RESET_DASHBOARD };
 }

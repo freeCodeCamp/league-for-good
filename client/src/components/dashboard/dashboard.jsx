@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 
 import LeagueTabs from './leagueTabs/leagueTabs.jsx';
 import LeagueTabsHeader from './leagueTabs/leagueTabsHeader.jsx';
-import { css_content } from '../style';
+import { cssContent } from '../style';
 
 
 class Dashboard extends Component {
@@ -13,13 +13,13 @@ class Dashboard extends Component {
 	render() {
 		const { league, history } = this.props;
 		const tabProps = { league, history, leagueId: league._id };
-		
+
 		return (
-			
+
 			<div>
 				{league.name &&
-				<div style={css_content.header}>
-					<LeagueTabsHeader league={league}/>	
+				<div style={cssContent.header}>
+					<LeagueTabsHeader league={league}/>
 					<LeagueTabs {...tabProps} />
 				</div>
 				}
@@ -28,7 +28,7 @@ class Dashboard extends Component {
 	}
 }
 
-function mapStateToProps({ league: {selected} }){
+function mapStateToProps({ league: {selected} }) {
 
 	return { league: selected };
 }

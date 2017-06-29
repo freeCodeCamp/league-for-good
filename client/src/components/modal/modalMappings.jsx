@@ -9,13 +9,13 @@ import { reduxForm } from 'redux-form';
 		title -    (STRING) The modals title prop;
 		Children - (function/null) Any components to be rendered inside the modal;
 		onSubmit - (STRING) The name of the action that will be dispatched
-	
-	ex- 
-		
+
+	ex-
+
 		const LeagueForm = props => (
 			<form> .... </form>
 		);
-		
+
 		const mappings = {
 			EditLeague: {
 				title: 'Edit League',
@@ -27,10 +27,10 @@ import { reduxForm } from 'redux-form';
 		Pretend that a button was clicked that triggered the action: openModal('EditLeague')
 			(see the ../nav/menu for an example of how this is used to trigger the Log Out modal)
 		Now this.props.modal will be set to: {open: true, view: 'EditLeague'}
-		
+
 		The modal component will update itself by calling: mappings[this.props.modal.view]
 		 (see the main.jsx file)
-		 
+
 *************
 	Note: The Children key in the object must be capitalized for the modal to render
 		  correctly with Material UI
@@ -38,38 +38,37 @@ import { reduxForm } from 'redux-form';
 */
 
 
-
 const mappings = {
 	default: {
-		title:'',
+		title: '',
 		Children: null,
-		onSubmit: null,
+		onSubmit: null
 	},
-	
+
 	logout: {
 		title: 'Logout',
-		Children: null,          
+		Children: null,
 		onSubmit: 'logOut',
-		actionLabel: 'Logout',
+		actionLabel: 'Logout'
 	},
 	removeTeam: {
 		title: 'Delete Team',
 		Children: DeleteTeamForm,
 		onSubmit: 'removeTeam',
-		actionLabel: 'Delete Team',
+		actionLabel: 'Delete Team'
 	},
-	editTeam:{
+	editTeam: {
 		title: 'Edit Team',
 		Children: EditTeamForm,
 		onSubmit: null,
-		reduxFormName:'EditTeamForm',
-		actionLabel: 'Edit Team',
+		reduxFormName: 'EditTeamForm',
+		actionLabel: 'Edit Team'
 	},
 	removeStaff: {
 		title: 'Delete Staff',
 		Children: DeleteStaffForm,
 		onSubmit: 'removeStaff',
-		actionLabel: 'Delete Staff',
+		actionLabel: 'Delete Staff'
 	},
 	assignPlayer: {
 
@@ -78,8 +77,8 @@ const mappings = {
 		title: 'Delete Player Application',
 		Children: DeletePlayerRegForm,
 		onSubmit: 'deletePlayerRegistration',
-		actionLabel: 'Delete',
-	},
+		actionLabel: 'Delete'
+	}
 };
 
 export default mappings;

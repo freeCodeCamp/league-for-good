@@ -1,7 +1,7 @@
 
-export default function(val){
+export default function(val) {
 	const errors = {};
-	
+
 	if (!val.playerId) {
 		errors.playerId = 'Please select a player';
 	}

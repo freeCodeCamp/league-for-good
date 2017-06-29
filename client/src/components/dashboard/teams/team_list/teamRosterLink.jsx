@@ -9,26 +9,26 @@ import { fetchRoster } from '../../../../actions/index';
 
 import IconButton from 'material-ui/IconButton';
 import ListIcon from 'material-ui/svg-icons/action/list';
-import { css_dashboard } from '../../../style';
+import { cssDashboard } from '../../../style';
 
 // Roster link changes the current state to that renders view
 // that contains the roster inside the same panel from PanelViewWrapper
 const RosterLink = props => {
 	const { fetchRoster, ...team } = props;
 	const url = makeLinkDynamic( TEAM_ROSTER, team._id );
-	return(
+	return (
 		<Link to={url}>
-			<IconButton 
+			<IconButton
 				// onTouchTap={() => fetchRoster(team)}
-				hoveredStyle={css_dashboard.table.iconHover}
-			>
+				hoveredStyle={cssDashboard.table.iconHover}
+				>
 				<ListIcon />
 			</IconButton>
 		</Link>
 	);
 };
 
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ fetchRoster }, dispatch);
 }
 

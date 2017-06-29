@@ -21,14 +21,14 @@ test('player has all fields', (assert) => {
 			name: 'Test Emergency Name',
 			phone_num: '123-456-7890',
 			email: 'test@test.com',
-			relation: 'Test Relation',
+			relation: 'Test Relation'
 		},
 		address: {
 			street: '123 Test St.',
 			city: 'Test',
 			state: 'Testerton',
-			country: 'Test Country',
-		},
+			country: 'Test Country'
+		}
 	};
 
 	var player = new Player(playerData);
@@ -36,7 +36,9 @@ test('player has all fields', (assert) => {
 	assert.equal(player.first_name, playerData.first_name, 'has first name');
 	assert.equal(player.last_name, playerData.last_name, 'has last name');
 	assert.equal(player.phone_num, playerData.phone_num, 'has phone number');
-	assert.equal(player.emergency_contact.name, playerData.emergency_contact.name, 'has emergency contact name');
+	assert.equal(player.emergency_contact.name,
+				 playerData.emergency_contact.name,
+				 'has emergency contact name');
 	assert.equal(player.emergency_contact.phone_num, playerData.emergency_contact.phone_num, 'has emergency contact phone number');
 	assert.equal(player.emergency_contact.email, playerData.emergency_contact.email, 'has emergency contact email');
 	assert.equal(player.emergency_contact.relation, playerData.emergency_contact.relation, 'has emergency contact relation');
@@ -52,7 +54,7 @@ test('player has all fields', (assert) => {
 test('player has computed fields', (assert) => {
 	const playerData = {
 		first_name: 'Test',
-		last_name: 'Testerton',
+		last_name: 'Testerton'
 	};
 
 	var player = new Player(playerData);

@@ -53,6 +53,8 @@
     "eslint": "^3.19.0",
     "eslint-config-rallycoding": "^3.2.0",
     "eslint-loader": "^1.7.1",
+    "eslint-plugin-import": "^2.6.0",
+    "eslint-plugin-prefer-object-spread": "^1.2.1",
     "eslint-plugin-react": "^7.0.1",
     "faker": "^4.1.0",
     "file-loader": "^0.11.1",

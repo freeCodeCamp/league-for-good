@@ -1,7 +1,7 @@
 import React from 'react';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
 
-import { css_content } from '../../../style';
+import { cssContent } from '../../../style';
 import getRowData, { colData } from './rosterData';
 
 import { connect } from 'react-redux';
@@ -12,26 +12,26 @@ import BackArrow from 'material-ui/svg-icons/navigation/arrow-back';
 import { getRoster } from '../../../../selectors/roster';
 
 const Roster = ({roster, history}) => {
-	
+
 	const title = roster ? roster.name : '';
 
-	if (!roster){
+	if (!roster) {
 		return (
-			<div style={css_content.body}>
+			<div style={cssContent.body}>
 				Loading...
 			</div>
 		);
 	}
 
 	return (
-		<div style={css_content.body}>
-			<IconButton 
+		<div style={cssContent.body}>
+			<IconButton
 				onTouchTap={() => history.goBack()}
-				tooltip="Back to teams list"
-			>
+				tooltip='Back to teams list'
+				>
 				<BackArrow/>
 			</IconButton>
-			<TableTemplate 
+			<TableTemplate
 				title={title}
 				headers={colData}
 				rows={getRowData( roster.players )}
@@ -40,9 +40,9 @@ const Roster = ({roster, history}) => {
 	);
 };
 
-function mapStateToProps(state, props){
+function mapStateToProps(state, props) {
 	const rosterSelector = getRoster();
-	
+
 	return { roster: rosterSelector(state, props) };
 }
 

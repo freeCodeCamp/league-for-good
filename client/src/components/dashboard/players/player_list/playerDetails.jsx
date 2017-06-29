@@ -1,6 +1,6 @@
 import React from 'react';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
-import { css_content, css_dashboard } from '../../../style';
+import { cssContent, cssDashboard } from '../../../style';
 
 import { connect } from 'react-redux';
 
@@ -16,21 +16,21 @@ const Player = ({ player, history }) => {
 	}
 
 	return (
-		<div style={css_content.body}>
-			<IconButton 
+		<div style={cssContent.body}>
+			<IconButton
 				onTouchTap={() => history.goBack()}
-				tooltip="Back to team roster"
-			>
+				tooltip='Back to team roster'
+				>
 				<BackArrow />
 			</IconButton>
-			<h1 style={css_dashboard.title}>
+			<h1 style={cssDashboard.title}>
 				{player.full_name}
 			</h1>
 			<h4>Email: {player.email}</h4>
 			<h4>Phone: {player.phone_num}</h4>
 
 			<hr/>
-			<h3 style={css_dashboard.players.title}>Teams:</h3>
+			<h3 style={cssDashboard.players.title}>Teams:</h3>
 			{
 				player.teams.map(team => (
 					<div key={team.teamId}>
@@ -39,17 +39,18 @@ const Player = ({ player, history }) => {
 						<h4>Jersey Number: {team.jersey_num}</h4>
 						<h4>Positions: {team.position.join(', ')}</h4>
 					</div>
-					//TO DO
-					//Populate teams in players teams on server so the team name can be rendered in place of teamId
-					//Seed Season data into db so same can be done with season
+					// TO DO
+					// * Populate teams in players teams on server so
+					// 	 the team name can be rendered in place of teamId
+					// * Seed Season data into db so same can be done with season
 				))
 			}
 		</div>
 	);
 };
 
-function mapStateToProps({ players }){
-	
+function mapStateToProps({ players }) {
+
 	return { player: players.selected };
 }
 
