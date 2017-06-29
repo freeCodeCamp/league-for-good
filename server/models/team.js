@@ -1,5 +1,5 @@
 /*
-* Team model stores information about each team, players, and seasons they played in
+* Team model stores information about each team, players, and seasons
 */
 const mongoose = require('mongoose');
 

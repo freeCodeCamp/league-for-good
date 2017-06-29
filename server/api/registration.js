@@ -28,7 +28,7 @@ const createPlayer = (req, res) => {
 
 	req.session.submitted = true;
 
-	Player.create(req.body)
+	return Player.create(req.body)
 		.then( player =>
 			League.findByIdAndUpdate( leagueId, {
 				$push: { pending_players: player }

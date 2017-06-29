@@ -31,25 +31,25 @@
 
 // var leagues = db.leagues.find({}, {_id:1}).toArray();
 
-var players = db.players.find({});
+// var players = db.players.find({});
 
 
-players.forEach(function(player) {
+// players.forEach(function(player) {
 
 
-		var q = {_id: player._id};
-		var t = player.teams[0];
+// 		var q = {_id: player._id};
+// 		var t = player.teams[0];
 
 
-		if (t) {
+// 		if (t) {
 
-			var team = {
-				teamId: t.teamId,
-				seasonId: t.season_id,
-				position: t.position,
-				jersey_num: t.jersey_num
-			};
-			db.players.update(q, {$set: {teams: [team]}});
-		}
-});
+// 			var team = {
+// 				teamId: t.teamId,
+// 				seasonId: t.season_id,
+// 				position: t.position,
+// 				jersey_num: t.jersey_num
+// 			};
+// 			db.players.update(q, {$set: {teams: [team]}});
+// 		}
+// });
 

@@ -30,6 +30,7 @@ class Modal extends Component {
 		}
 
 		return bindActionCreators({
+			// eslint-disable-next-line import/namespace
 			handleSubmit: submitActions[onSubmit]
 		}, dispatch);
 	};

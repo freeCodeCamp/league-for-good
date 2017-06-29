@@ -60,10 +60,12 @@ const addPlayerToTeam = (req, res) => {
 };
 
 const swapTeams = (teamUpdate, player) => {
-	if (!teamUpdate) {return Promise.resolve('No update');}
+	if (!teamUpdate) {
+		return Promise.resolve('No update');
+	}
 
 	const { prevTeam, currTeam } = teamUpdate;
-	Promise.all([
+	return Promise.all([
 		Teams.findByIdAndUpdate( prevTeam, { $pull: { players: player }}).exec(),
 		Teams.findByIdAndUpdate( currTeam, { $push: { players: player }}).exec()
 	])

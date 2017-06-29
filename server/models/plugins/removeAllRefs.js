@@ -15,6 +15,10 @@ const mongoose = require('mongoose');
 module.exports = function(schema, options) {
 
 	const { modelName, field } = options;
+	const successfulRemove =
+		`Schema pre remove hook successfully deleted ref in ${modelName} model`;
+	const failedRemove =
+		`Failed to delete ref in ${modelName} model`;
 
 	schema.pre('remove', function(next) {
 		const _id = this._id;
@@ -24,11 +28,11 @@ module.exports = function(schema, options) {
 		mongoose.model(modelName).findOneAndUpdate(query, update)
 			.exec()
 			.then(() => {
-				console.log(`Schema pre remove hook successfully deleted ref in ${modelName} model`);
+				console.log(successfulRemove);
 				return next();
 			})
 			.catch(error => {
-				console.log(`Something went wrong while attempting to delete ref in ${modelName} model`);
+				console.log(failedRemove);
 				throw error;
 			});
 	});

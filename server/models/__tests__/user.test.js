@@ -1,5 +1,5 @@
 var test = require('tape');
-const mongoose = require('mongoose');
+
 const User = require('../user');
 
 test('missing user fields present error message', (assert) => {

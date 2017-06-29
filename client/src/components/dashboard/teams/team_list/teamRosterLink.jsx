@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 import { TEAM_ROSTER, makeLinkDynamic } from '../../../routes';
 
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { fetchRoster } from '../../../../actions/index';
+// import { connect } from 'react-redux';
+// import { bindActionCreators } from 'redux';
+// import { fetchRoster } from '../../../../actions/index';
 
 import IconButton from 'material-ui/IconButton';
 import ListIcon from 'material-ui/svg-icons/action/list';
@@ -28,8 +28,8 @@ const RosterLink = props => {
 	);
 };
 
-function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ fetchRoster }, dispatch);
-}
+// function mapDispatchToProps() {
+// 	return bindActionCreators({ fetchRoster }, dispatch);
+// }
 
-export default connect(null, mapDispatchToProps)(RosterLink);
+export default RosterLink;
