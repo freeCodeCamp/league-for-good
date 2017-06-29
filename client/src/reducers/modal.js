@@ -12,11 +12,13 @@ import { OPEN_MODAL, CLOSE_MODAL } from '../actions/types';
 export default function(state = { open: false, view: 'default' }, action) {
 	switch (action.type) {
 
-	case OPEN_MODAL:
-		return { open: true, ...action.modalInfo };
+		case OPEN_MODAL:
+			return { open: true, ...action.modalInfo };
 
-	case CLOSE_MODAL:
-		return {open: false, view: 'default', data: null };
+		case CLOSE_MODAL:
+			return {open: false, view: 'default', data: null };
+
+		default:
+			return state;
 	}
-	return state;
 }

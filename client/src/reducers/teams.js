@@ -45,22 +45,22 @@ export default function(state = [], action) {
 
 	switch (type) {
 
-	case SELECT_TEAMS:
-		return action.teams;
+		case SELECT_TEAMS:
+			return action.teams;
 
-	case CREATE_TEAM:
-		return [action.newTeam, ...state];
+		case CREATE_TEAM:
+			return [action.newTeam, ...state];
 
-	case UPDATE_TEAM:
-		return replaceTeam(state, action.updatedTeam);
+		case UPDATE_TEAM:
+			return replaceTeam(state, action.updatedTeam);
 
-	case ADD_PLAYER_TO_TEAM:
-		return addPlayerToTeam(state, payload);
+		case ADD_PLAYER_TO_TEAM:
+			return addPlayerToTeam(state, payload);
 
-	case REMOVE_TEAM:
-		return state.filter( removeId(action.removedTeam));
+		case REMOVE_TEAM:
+			return state.filter( removeId(action.removedTeam));
+
+		default:
+			return state;
 	}
-	return state;
 }
-
-

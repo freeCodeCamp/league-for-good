@@ -9,13 +9,11 @@ export default function(state = defaultState, action) {
 
 	switch (action.type) {
 
-	case CHANGE_THEME:
-		localStorage.setItem('theme', action.theme);
-		themes.setCurrentTheme(action.theme);
-		return action.theme;
+		case CHANGE_THEME:
+			localStorage.setItem('theme', action.theme);
+			themes.setCurrentTheme(action.theme);
+			return action.theme;
+		default:
+			return state;
 	}
-
-	return state;
 }
-
-

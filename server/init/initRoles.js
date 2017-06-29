@@ -35,7 +35,7 @@ mongoose.connection
 
 const ownerRole = new Role({
 	name: 'owner',
-      	privileges: {
+		privileges: {
 		viewTeams: true,
 		viewSubsetTeams: false,
 		createTeams: true,
@@ -59,7 +59,7 @@ const ownerRole = new Role({
 
 const managerRole = new Role({
 	name: 'manager',
-      	privileges: {
+		privileges: {
 		viewTeams: true,
 		viewSubsetTeams: false,
 		createTeams: true,
@@ -83,7 +83,7 @@ const managerRole = new Role({
 
 const coachRole = new Role({
 	name: 'coach',
-      	privileges: {
+		privileges: {
 		viewTeams: false,
 		viewSubsetTeams: true,
 		createTeams: false,

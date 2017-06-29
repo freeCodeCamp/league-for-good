@@ -8,13 +8,11 @@ export default function(state = null, action) {
 
 	switch (action.type) {
 
-	case FETCH_ROSTER:
-		return action.rosterData;
-	case ADD_PLAYER_TO_ROSTER:
-		return {...state, players: [action.newPlayer, ...state.players]};
+		case FETCH_ROSTER:
+			return action.rosterData;
+		case ADD_PLAYER_TO_ROSTER:
+			return {...state, players: [action.newPlayer, ...state.players]};
+		default:
+			return state;
 	}
-
-	return state;
 }
-
-

@@ -26,8 +26,7 @@ export default function(state = {}, action) {
 			...state,
 			staff: state.staff.filter(removeStaff(action.removedStaffEmail))
 		};
+	default:
+		return state;
 	}
-
-
-	return state;
 }
