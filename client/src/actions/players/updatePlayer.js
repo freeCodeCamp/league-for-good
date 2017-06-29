@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { FETCH_PLAYER, FETCH_ALL_PLAYERS } from '../types';
-import { rootURL } from '../../../globals';
+import { ROOT_URL } from '../../../globals';
 
 
 export function updatePlayer(form, dispatch, props){
 	let { team, teams, ...fields } = form;
-	const url = `${rootURL}/player/update/${fields._id}`; 
+	const url = `${ROOT_URL}/player/update/${fields._id}`; 
 	
 	let prevTeam;
 	let teamUpdate = null; 
@@ -29,7 +29,7 @@ export function updatePlayer(form, dispatch, props){
 			prevTeam,
 			currTeam: team.teamId,
 		};
-		console.log(teamUpdate);
+		
 	}
 	
 	axios.put(url, { playerUpdate, teamUpdate })

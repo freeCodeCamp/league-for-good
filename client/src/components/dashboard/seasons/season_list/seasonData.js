@@ -2,6 +2,10 @@ import React from 'react';
 import { css_dashboard } from '../../../style';
 import Icon from './seasonActions.jsx';
 
+function formatDate(d) {
+	return (d.getMonth() + 1) + ' / ' + d.getDate() + ' / ' + d.getFullYear();
+}
+
 // All season data passed from the reducers is reformatted here 
 
 export const colData = [
@@ -42,13 +46,16 @@ export const colData = [
 
 // Get value for the cell
 function getCellValue(season, prop, action) {
-
+	
 	if (prop === 'active') {
 		return season.active ? 'Active' : 'Archived';
 	}
+	if (/_date$/.test(prop)) {
+		return formatDate(season[prop]);
+	}
 	if (prop === 'icon') {
 		const iconProps = { action, season };
-		return <Icon {...iconProps} />;
+		return <noScript/>;
 	}
 
 	return season[prop];
@@ -56,17 +63,17 @@ function getCellValue(season, prop, action) {
 
 
 // Massaging data
-const getSeasonTableData = seasons => {
-	console.log(seasons);
+export const getSeasonTableData = seasons => {
+
 	// rows
 	return seasons.map( season => {
 		// columns
 		return colData.map( col => (
 			{
 				value: getCellValue(season, col.cellProp, col.action),
-		       		colSpan: col.colSpan || 1,
-		       		style: col.style,
-		       	}
+				colSpan: col.colSpan || 1,
+				style: col.style,
+			}
 		));
 	});
 };

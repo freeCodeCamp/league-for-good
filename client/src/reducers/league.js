@@ -13,7 +13,7 @@ const removeReg = ({ selected : { pending_players, ...rest }}, _id) => {
 		.filter(player => player._id !== _id);
 	
 	return { ...rest, pending_players: updatedArr };
-}
+};
 
 
 

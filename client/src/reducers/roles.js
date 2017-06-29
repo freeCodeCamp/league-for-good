@@ -10,7 +10,7 @@ export default function(state = [], action) {
 	switch(action.type) {
 
 	case FETCH_ROLES:
-		console.log('role reducer', action);
+		
 		return action.roles;
 	}
 

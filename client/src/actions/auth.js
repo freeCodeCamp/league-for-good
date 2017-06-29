@@ -10,9 +10,9 @@ export function initAuthState() {
 
 		axios.post('/auth/authenticate')
 			.then(({data}) => {
-				console.log(data);
+		
 				const { leagueInfo, roles, ...userData } = data;
-				console.log('auth action', leagueInfo, roles);	
+			
 				//send users info to reducer	
 				dispatch({ type: INIT_AUTH_STATE, payload: {loading: false, ...userData}});
 
