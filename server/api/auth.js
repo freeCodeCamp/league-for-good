@@ -36,7 +36,7 @@ function fetchInitialData(req, res, next){
 
 	return Promise.all([leaguePromise.exec(), rolePromise.exec()])
 		.then(initData => { 
-			console.log(initData);
+	
 			res.send({user, leagueInfo: initData[0], roles: initData[1], loggedIn: true });
 		})
 		.catch((err) => res.send(err));

@@ -4,26 +4,24 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const quarterNames = ['Fall', 'Winter', 'Spring', 'Summer'];
+const formatDate = date => 
+	date.toDateString().replace(/^\w*\s/, '')
 
 const SeasonSchema = new Schema({
 	start_date: {
 		type: Date,
 		set: (val) => Date.parse(val),
-		get: (val) => val.toDateString(),		
+		get: formatDate,		
 		required: true,
 	},
 	end_date: {
 		type: Date,
 		set: (val) => Date.parse(val),
-		get: (val) => {
-			return new Date(val).toDateString();
-		},
+		get: formatDate,
 		required: true,
 	},
 	quarter: {
 		type: String,
-		enum: quarterNames,
 		required: true,
 	},
 	year: {
@@ -55,13 +53,12 @@ SeasonSchema.virtual('seasonName').get(function() {
 
 SeasonSchema.virtual('active').get(function() {
 	const now = Date.now();
+	const start = Date.parse(this.start_date);
+	const end = Date.parse(this.end_date);
 
-	return now >= this.start_date && now <= this.end_date;
+	return now >= start && now <= end;
 });
 
-SeasonSchema.virtual('quarterNamesList').get(function(){
-	return quarterNames;
-})
 
 
 

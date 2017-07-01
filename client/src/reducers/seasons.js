@@ -1,4 +1,4 @@
-import { FETCH_SEASON, FETCH_ALL_SEASONS }  from '../actions/types';
+import { FETCH_SEASON, FETCH_ALL_SEASONS, CREATE_SEASON }  from '../actions/types';
 
 
 // Season state - returns season info
@@ -14,6 +14,8 @@ export default function(state = null, action) {
 		return { ...state };
 	case FETCH_ALL_SEASONS: 
 		return { ...state, list: action.seasonsList };
+	case CREATE_SEASON:
+		return { ...state, list: [...state.list, action.newSeason] };	
 	}
 
 	return state;

@@ -25,7 +25,6 @@ const createLeague = (req, res) => {
 };
 
 
-
 // Router.route('/fetchLeagues').get(getLeagues);
 Router.route('/create').post(createLeague);
 
