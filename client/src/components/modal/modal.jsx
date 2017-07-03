@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Dialog from 'material-ui/Dialog';
@@ -22,13 +23,14 @@ class Modal extends Component {
 		const { view, dispatch } = this.props;
 		const { onSubmit, reduxFormName } = modalMapping[view];
 
-		// HAndle edge case in which ReduxForm component is being used as child content
-		// and needs to be submitted remotely via a modal action
+		// HAndle edge case in which ReduxForm component is being used as
+		// child content and needs to be submitted remotely via a modal action
 		if ( reduxFormName ) {
 			return { handleSubmit: () => dispatch(submit(reduxFormName)) };
 		}
 
 		return bindActionCreators({
+			// eslint-disable-next-line import/namespace
 			handleSubmit: submitActions[onSubmit]
 		}, dispatch);
 	};
@@ -43,32 +45,32 @@ class Modal extends Component {
 
 		const actions = [
 			<RaisedButton
+				backgroundColor={cssModal.raisedButton.backgroundColor}
 				label={actionLabel || 'Submit'}
 				labelStyle={cssModal.raisedButton.label}
-				backgroundColor={cssModal.raisedButton.backgroundColor}
-				style={cssModal.raisedButton.style}
 				onTouchTap={() => handleSubmit(data)}
+				style={cssModal.raisedButton.style}
 			/>,
 			<RaisedButton
+				backgroundColor={cssModal.raisedButton.backgroundColor}
 				label='Cancel'
 				labelStyle={cssModal.raisedButton.label}
-				backgroundColor={cssModal.raisedButton.backgroundColor}
-				style={cssModal.raisedButton.style}
 				onTouchTap={this.handleClose}
+				style={cssModal.raisedButton.style}
 			/>
 		];
 
 		return (
 			<div>
 				<Dialog
-					contentStyle={cssModal.dialogContent}
+					actions={actions}
 					bodyStyle={cssModal.dialogBody}
+					contentStyle={cssModal.dialogContent}
+					modal={false}
+					onRequestClose={this.handleClose}
+					open={open}
 					title={title}
 					titleStyle={cssModal.title}
-					actions={actions}
-					modal={false}
-					open={this.props.open}
-					onRequestClose={this.handleClose}
 					>
 					{Children ? <Children {...data} /> : null}
 				</Dialog>
@@ -77,7 +79,14 @@ class Modal extends Component {
 	}
 }
 
-function mapStateToProps({ modal, league }) {
+Modal.propTypes = {
+	data: PropTypes.object,
+	dispatch: PropTypes.func,
+	open: PropTypes.bool,
+	view: PropTypes.string
+};
+
+function mapStateToProps({ modal }) {
 	const { open, view, data } = modal;
 	return { open, view, data };
 }

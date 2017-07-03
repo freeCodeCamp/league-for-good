@@ -30,7 +30,7 @@ export const colData = [
 	},
 	{
 		label: 'Status',
-		cellProp: 'currently_active',
+		cellProp: 'currentlyActive',
 		sortable: true,
 		style: cssDashboard.table.columns.defaultCol
 	},
@@ -53,8 +53,8 @@ export const colData = [
 // Get the value for the cell
 function getCellValue(team, prop, action) {
 
-	if (prop === 'currently_active') {
-		return team.currently_active ? 'Active' : 'Archived';
+	if (prop === 'currentlyActive') {
+		return team.currentlyActive ? 'Active' : 'Archived';
 	}
 	if (prop === 'icon') {
 		const iconProps = { action, team };

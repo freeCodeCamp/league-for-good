@@ -10,11 +10,11 @@ const capitalize = require('./plugins/capitalize');
 const removeRefs = require('./plugins/removeAllRefs');
 
 const PlayerSchema = new Schema({
-	first_name: {
+	firstName: {
 		type: String,
 		required: true
 	},
-	last_name: {
+	lastName: {
 		type: String,
 		required: true
 	},
@@ -22,12 +22,12 @@ const PlayerSchema = new Schema({
 		type: String,
 		required: true
 	},
-	phone_num: {
+	phoneNum: {
 		type: String
 	},
-	emergency_contact: {
+	emergencyContact: {
 		name: String,
-		phone_num: String,
+		phoneNum: String,
 		email: String,
 		relation: String
 	},
@@ -45,7 +45,7 @@ const PlayerSchema = new Schema({
 		teamId: Schema.Types.ObjectId,
 		seasonId: Schema.Types.ObjectId,
 		position: [String],
-		jersey_num: Number
+		jerseyNum: Number
 	}]},
 	{
 		collection: 'players',
@@ -56,13 +56,13 @@ const PlayerSchema = new Schema({
 
 
 const fields = [
-	'first_name',
-	'last_name',
-	'emergency_contact.name'
+	'firstName',
+	'lastName',
+	'emergencyContact.name'
 ];
 
-PlayerSchema.virtual('full_name').get(function() {
-	return `${this.first_name} ${this.last_name}`;
+PlayerSchema.virtual('fullName').get(function() {
+	return `${this.firstName} ${this.lastName}`;
 });
 
 // TODO -- virtual should return team config relative to league AND seasonId
@@ -71,7 +71,7 @@ PlayerSchema.virtual('team').get(function() {
 });
 
 PlayerSchema.plugin(removeRefs, {
-	modelName: 'league', field: 'pending_players'
+	modelName: 'league', field: 'pendingPlayers'
 });
 PlayerSchema.plugin(capitalize, { fields });
 

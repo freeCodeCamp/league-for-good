@@ -23,7 +23,10 @@ const deleteStaff = (req, res) => {
 	League.update(query, update)
 		.exec()
 		.then(() => res.send('Successfully removed staff.'))
-		.catch(error => res.send({msg: 'An error occured while removing staff', error}));
+		.catch(error => res.send({
+			msg: 'An error occured while removing staff',
+			error
+		}));
 };
 
 Router.route('/create').post(createStaff);

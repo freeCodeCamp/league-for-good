@@ -3,7 +3,6 @@ const express = require('express');
 const Router = express.Router();
 const mongoose = require('mongoose');
 
-const User = mongoose.model('user');
 const League = mongoose.model('league');
 
 
@@ -11,7 +10,7 @@ const League = mongoose.model('league');
 const createLeague = (req, res) => {
 	const newLeague = new League({
 		name: req.body.name,
-		sport_type: req.body.sportType,
+		sportType: req.body.sportType,
 		owner: req.user._id
 	});
 

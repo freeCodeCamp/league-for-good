@@ -16,13 +16,13 @@ module.exports = ({players, _id}) =>
 		},
 		{$project:
 		{
-			first_name: 1,
-			last_name: 1,
-			full_name: { $concat: ['$last_name', ', ', '$first_name']},
-			jersey_num: '$teams.jersey_num',
+			firstName: 1,
+			lastName: 1,
+			fullName: { $concat: ['$lastName', ', ', '$firstName']},
+			jerseyNum: '$teams.jerseyNum',
 			position: '$teams.position',
 			email: 1,
-			phone_num: 1
+			phoneNum: 1
 		}
 		}
 	]).exec();

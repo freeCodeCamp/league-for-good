@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import {
@@ -25,6 +26,10 @@ const PlayerLink = props => {
 			</IconButton>
 		</Link>
 	);
+};
+
+PlayerLink.propTypes = {
+	player: PropTypes.object
 };
 
 export default PlayerLink;

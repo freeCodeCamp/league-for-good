@@ -1,10 +1,8 @@
 import React from 'react';
-import FlatButton from 'material-ui/FlatButton';
+import PropTypes from 'prop-types';
 import {
 	Card,
 	CardActions,
-	CardHeader,
-	CardText,
 	CardTitle
 } from 'material-ui/Card';
 import CreateLeagueButton from './CreateLeagueButton.jsx';
@@ -19,19 +17,19 @@ import { cssCreateLeague } from '../style';
 const CreateLeagueSelector = ({onSelect, selectedSport})=> (
 	<Card style={cssCreateLeague.card.style}>
 		<CardTitle
-			title='Create a New League'
-			titleColor={cssCreateLeague.card.title.titleColor}
 			subtitle='Choose a sport'
 			subtitleColor={cssCreateLeague.card.title.subtitleColor}
+			title='Create a New League'
+			titleColor={cssCreateLeague.card.title.titleColor}
 		/>
 		<CardActions>
 			{sports.map((sport, i) => {
 				return (
 					<CreateLeagueButton
-						key={i}
-						active={selectedSport == sport.name}
-						label={sport.name}
+						active={selectedSport === sport.name}
 						icon={sport.icon}
+						key={i}
+						label={sport.name}
 						onClick={onSelect}
 					/>
 				);
@@ -40,5 +38,10 @@ const CreateLeagueSelector = ({onSelect, selectedSport})=> (
 		</CardActions>
 	</Card>
 );
+
+CreateLeagueSelector.propTypes = {
+	onSelect: PropTypes.func,
+	selectedSport: PropTypes.string
+};
 
 export default CreateLeagueSelector;

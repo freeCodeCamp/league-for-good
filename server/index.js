@@ -6,9 +6,9 @@ const bodyParser = require('body-parser');
 
 require('dotenv').config();
 
-const models = require('./models/index');
+require('./models/index');
 const Routes = require('./api/index');
-const passportConfig = require('./services/auth');
+require('./services/auth');
 
 const MONGO_URI = process.env.MONGO_URI;
 const MongoStore = require('connect-mongo')(session);

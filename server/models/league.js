@@ -19,11 +19,11 @@ const LeagueSchema = new Schema(
 		staff: [{
 			type: String
 		}],
-		pending_players: [{
+		pendingPlayers: [{
 			type: Schema.Types.ObjectId,
 			ref: 'player'
 		}],
-		sport_type: {
+		sportType: {
 			type: String,
 			required: true
 		},

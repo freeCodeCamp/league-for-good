@@ -1,5 +1,11 @@
 import axios from 'axios';
-import { CREATE_STAFF_MEMBER, REMOVE_STAFF_MEMBER, SELECT_STAFF_MEMBERS, CLOSE_MODAL, OPEN_SNACKBAR } from './types';
+import {
+	CREATE_STAFF_MEMBER,
+	REMOVE_STAFF_MEMBER,
+	SELECT_STAFF_MEMBERS,
+	CLOSE_MODAL,
+	OPEN_SNACKBAR
+} from './types';
 import { rootURL } from '../../globals';
 
 export function selectStaff(staff) {
@@ -14,7 +20,7 @@ export function addStaffMember(formVals, dispatch, { location }) {
 	};
 
 	axios.post(`${rootURL}/settings/create`, body)
-		.then(({data}) => {
+		.then(() => {
 			return dispatch({ type: CREATE_STAFF_MEMBER, newStaff: body.email });
 		})
 		.catch( err => {
@@ -33,7 +39,10 @@ export function removeStaff(staffInfo) {
 
 		axios.delete(`${rootURL}/settings/remove/${email}`,
 				{ params: { leagueId } })
-			.then((data) => dispatch({ type: REMOVE_STAFF_MEMBER, removedStaffEmail: email }))
+			.then(() => dispatch({
+				type: REMOVE_STAFF_MEMBER,
+				removedStaffEmail: email
+			}))
 			.then(() => dispatch({ type: OPEN_SNACKBAR, message }));
 	};
 }

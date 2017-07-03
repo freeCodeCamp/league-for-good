@@ -13,15 +13,19 @@ export function initAuthState() {
 				const { leagueInfo, ...userData } = data;
 
 				// send users info to reducer
-				dispatch({ type: INIT_AUTH_STATE, payload: {loading: false, ...userData}});
+				dispatch({
+					type: INIT_AUTH_STATE,
+					payload: {loading: false, ...userData}
+				});
 
 				// send user's leagues to reducer
 				if (leagueInfo) {
 					dispatch({ type: FETCH_LEAGUES, payload: leagueInfo});
 				}
 			})
-			.catch(err => dispatch({type: 'AUTH_ERROR'}));
-	};		// TO-DO build auth-error action
+			.catch(() => dispatch({type: 'AUTH_ERROR'}));
+	};
+	// TO-DO build auth-error action
 }
 
 // updates the user's state as logged out after
@@ -29,7 +33,7 @@ export function initAuthState() {
 export function logOut() {
 	return function(dispatch) {
 		axios.post('/auth/logout')
-			.then((data) => {
+			.then(() => {
 				dispatch({type: LOG_OUT});
 			});
 	};

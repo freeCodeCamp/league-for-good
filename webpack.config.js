@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
@@ -25,7 +24,10 @@ module.exports = {
 			},
 			{
 				test: /\.(jpe?g|png|gif|svg)$/i,
-				include: path.join(__dirname, 'images'),
+				include: [
+					path.join(__dirname, 'images'),
+					path.join(__dirname, 'client/src/assets')
+				],
 				loader: 'url-loader?limit=30000&name=images/[name].[ext]'
 			}
 		]

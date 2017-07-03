@@ -1,9 +1,8 @@
 import axios from 'axios';
-import { FETCH_PLAYER, FETCH_ALL_PLAYERS } from '../types';
 import { rootURL } from '../../../globals';
 
 
-export function updatePlayer(form, dispatch, props) {
+export function updatePlayer(form) {
 	let { team, teams, ...fields } = form;
 	const url = `${rootURL}/player/update/${fields._id}`;
 

@@ -1,5 +1,5 @@
-// All 'action types' are stored here and exported as variables in order to avoid bugs
-// caused by typos when creating actions and reducers
+// All 'action types' are stored here and exported as variables in order
+// to avoid bugs caused by typos when creating actions and reducers
 
 // UI related action types
 export const TOGGLE_MENU = 'Toggle Menu';
@@ -14,7 +14,6 @@ export const CHANGE_THEME = 'CHANGE_THEME';
 // Authentication action types
 export const INIT_AUTH_STATE = 'InitAuthState';
 export const LOG_OUT = 'log out';
-
 
 // League action types
 

@@ -6,11 +6,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const SeasonSchema = new Schema({
-	start_date: {
+	startDate: {
 		type: Date,
 		required: true
 	},
-	end_date: {
+	endDate: {
 		type: Date,
 		required: true
 	},
@@ -27,7 +27,7 @@ const SeasonSchema = new Schema({
 		type: Boolean,
 		default: false
 	},
-	league_id: {
+	leagueId: {
 		type: Schema.Types.ObjectId,
 		ref: 'league'
 	}},

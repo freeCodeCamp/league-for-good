@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
 	Table,
 	TableBody,
@@ -9,7 +10,6 @@ import {
 } from 'material-ui/Table';
 
 import TextField from 'material-ui/TextField';
-import FlatButton from 'material-ui/FlatButton';
 import SearchIcon from 'material-ui/svg-icons/action/search';
 import ArrowUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
 import ArrowDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
@@ -20,8 +20,7 @@ const { table: {
 	sortArrowActiveColor,
 	sortArrowInactiveColor,
 	colHeaderLabelStyle,
-	colHeaderStyle,
-	colRowStyle
+	colHeaderStyle
 }} = cssDashboard;
 // ///////////////////////
 
@@ -45,9 +44,9 @@ const { table: {
 //
 // @rows - [[Object]]: An array of an array of objects
 //		The rows array is an array containing each row in the table
-//		Each row will map to the headers prop, so the arrays must be the same length
+//		Each row maps to the headers prop, so arrays must be the same length
 //		Each row is an array of objects with each object being a cell value
-//		Each row is passed in with the following values in the objects in the row array
+//		Each row is passed in with the following values in the objects:
 //			value - Value that will be displayed in the cell
 //			style(Object) - a css object to style the cell(optional)
 
@@ -57,20 +56,28 @@ const TableTitle = (props) => {
 	return <h1 style={cssDashboard.title}>{props.title}</h1>;
 };
 
+TableTitle.propTypes = {
+	title: PropTypes.string
+};
+
 // Optional search for the table
 const SearchTable = (props) => {
 	return (
 		<TextField
-			hintText={<SearchIcon />}
-			underlineFocusStyle={cssDashboard.table.searchUnderline}
-			style={cssDashboard.table.search}
-			floatingLabelText={'Search ' + props.searchLabel}
 			floatingLabelFixed={true}
+			floatingLabelText={'Search ' + props.searchLabel}
+			hintText={<SearchIcon />}
 			onChange={props.onSearch}
+			style={cssDashboard.table.search}
+			underlineFocusStyle={cssDashboard.table.searchUnderline}
 		/>
 	);
 };
 
+SearchTable.propTypes = {
+	onSearch: PropTypes.func,
+	searchLabel: PropTypes.string
+};
 
 // Header row for the table containing column names
 const Headers = (props) => {
@@ -80,17 +87,17 @@ const Headers = (props) => {
 				props.headers.map(function(header, i) {
 					return (
 						<TableHeaderColumn
-							key={i}
 							colSpan={header.colSpan || 1}
+							key={i}
 							style={colHeaderStyle}
 							>
 							<ColumnHeaderChild
+								colIndex={i}
 								label={header.label}
 								onClick={props.onSort}
 								sortable={header.sortable}
-								colIndex={i}
-								sortDirection={props.sortDirection}
 								sortColumnIndex={props.sortColumnIndex}
+								sortDirection={props.sortDirection}
 							/>
 						</TableHeaderColumn>
 					);
@@ -100,8 +107,13 @@ const Headers = (props) => {
 	);
 };
 
-// renders the TableRow components that will appear inside the TableBody
-// Not a functional component.. This returns an array rather than a single JSX component
+Headers.propTypes = {
+	headers: PropTypes.arrayOf(PropTypes.object),
+	sortDirection: PropTypes.string
+};
+
+// Renders the TableRow components that will appear inside the TableBody
+// Not a functional component. This returns an array rather than a component
 const renderBody = (rows) => {
 	return (
 			rows.map(function(row, i) {
@@ -115,8 +127,8 @@ const renderBody = (rows) => {
 								return (
 									<TableRowColumn
 										colSpan={rowData.colSpan}
-										style={rowData.style}
 										key={i}
+										style={rowData.style}
 										>
 										{ i === 0 ? <strong>{rowData.value}</strong>
 												: <span>{rowData.value}</span>
@@ -159,22 +171,30 @@ const ColumnHeaderChild = props => {
 		}
 	}	else if (props.sortDirection === 'desc') {
 		arrowIcon = <ArrowUp color={iconColor} />;
-	}
-	// else, no sorting
-	else {
+	} else {
+		// else, no sorting
 		arrowIcon = <ArrowUp color={iconColor} />;
 	}
 
 
 	return (
 		<div
-			style={{...colHeaderLabelStyle, cursor: 'pointer'}}
 			onClick={() => { props.onClick(props.colIndex); }}
+			style={{...colHeaderLabelStyle, cursor: 'pointer'}}
 			>
 			{arrowIcon}
 			{props.label}
 		</div>
 	);
+};
+
+ColumnHeaderChild.propTypes = {
+	colIndex: PropTypes.number,
+	label: PropTypes.string,
+	onClick: PropTypes.func,
+	sortColumnIndex: PropTypes.number,
+	sortDirection: PropTypes.string,
+	sortable: PropTypes.bool
 };
 
 
@@ -259,22 +279,21 @@ class TableTemplate extends Component {
 			sortedRows = this.state.rows.sort(
 				this.sortColumn(colIndex)
 			);
-		}
-		// If the same column is being sorted (i.e. asc -> desc)
-		else if (sortDirection !== 'none') {
+		} else if (sortDirection !== 'none') {
+			// If the same column is being sorted (i.e. asc -> desc)
+
 			// if sorting using asc
 			if (sortDirection === 'asc') {
 				sortedRows = this.state.rows.sort(
 					this.sortColumn(colIndex)
 				);
-			}
-			// else, it is switching to desc and can just reverse current state of rows
-			else {
+			} else {
+				// it is desc and can just reverse current state of rows
 				sortedRows = this.state.rows.reverse();
 			}
-		}
+		} else {
 		// else, the sorting has been reset to the original state
-		else {
+
 			// if the user is searching, return to the original state of searched rows
 			if (this.state.searchTerm) {
 				sortedRows = Array.from(this.state.searchRows);
@@ -337,8 +356,8 @@ class TableTemplate extends Component {
 						<Headers
 							headers={this.props.headers}
 							onSort={this.onSort.bind(this)}
-							sortDirection={this.state.sortDirection}
 							sortColumnIndex={this.state.sortColumnIndex}
+							sortDirection={this.state.sortDirection}
 						/>
 					</TableHeader>
 					<TableBody
@@ -352,5 +371,11 @@ class TableTemplate extends Component {
 		);
 	}
 }
+
+TableTemplate.propTypes = {
+	headers: PropTypes.arrayOf(PropTypes.object),
+	rows: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)),
+	title: PropTypes.string
+};
 
 export default TableTemplate;

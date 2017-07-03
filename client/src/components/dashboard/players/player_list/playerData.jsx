@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { cssDashboard } from '../../../style';
 import DetailsLink from './links/playerDetailsLink.jsx';
 import EditLink from './links/playerEditLink.jsx';
@@ -11,13 +12,13 @@ import { get as getObjProp } from 'lodash';
 export const colData = [
 	{
 		label: 'Last Name',
-		cellProp: 'last_name',
+		cellProp: 'lastName',
 		sortable: true,
 		searchable: true
 	},
 	{
 		label: 'First Name',
-		cellProp: 'first_name',
+		cellProp: 'firstName',
 		sortable: true
 	},
 	{
@@ -47,6 +48,11 @@ const Link = ({action, player}) => {
 	}
 };
 
+Link.propTypes = {
+	action: PropTypes.string,
+	player: PropTypes.object
+};
+
 // Get the value for the cell
 function getCellValue(player, prop, action) {
 	if (prop !== 'link') {
@@ -62,7 +68,7 @@ const getPlayerTableData = (players) => {
 	// map each row
 	return players.map( player => {
 		// map each cell
-		return colData.map( ({cellProp, action, style, ...col}) => (
+		return colData.map( ({cellProp, action, style}) => (
 			{
 				value: getCellValue(player, cellProp, action),
 				style: style

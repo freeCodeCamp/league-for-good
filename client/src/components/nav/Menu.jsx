@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import Drawer from 'material-ui/Drawer';
 import {List, ListItem} from 'material-ui/List';
@@ -23,36 +24,43 @@ const Menu = props => {
 				{
 					leagues.map((league, i) => (
 						<ListItem
-							key={i}
-							primaryText={league.name}
-							onClick={() => selectLeague(league)}
 							containerElement={<Link to={Links.TEAM_LIST}/>}
+							key={i}
 							leftIcon={<Avatar
 								backgroundColor={cssMenu.avatar.backgroundColor}
-								src={SportsIcons[league.sport_type]}
+								src={SportsIcons[league.sportType]}
 							/>}
+							onClick={() => selectLeague(league)}
+							primaryText={league.name}
 						/>
 						)
 					)
 				}
 				<ListItem
-					primaryText='Create League'
-					leftIcon={<AddCircle />}
 					containerElement={<Link to='/create' />}
+					leftIcon={<AddCircle />}
+					primaryText='Create League'
 				/>
 				<ListItem
-					primaryText='Help'
-					leftIcon={<Help />}
 					containerElement={<Link to='/help' />}
+					leftIcon={<Help />}
+					primaryText='Help'
 				/>
 			<ListItem
-				primaryText='Log out'
-				onTouchTap={()=> openModal('logout')}
 				leftIcon={<LogOutIcon/>}
+				onTouchTap={()=> openModal('logout')}
+				primaryText='Log out'
 			/>
 		</List>
     </Drawer>
 	);
+};
+
+Menu.propTypes = {
+	leagues: PropTypes.arrayOf(PropTypes.object),
+	open: PropTypes.bool,
+	openModal: PropTypes.func,
+	selectLeague: PropTypes.func
 };
 
 export default Menu;

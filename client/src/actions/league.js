@@ -3,7 +3,7 @@ import { CREATE_LEAGUE, SELECT_LEAGUE } from './types';
 import { rootURL } from '../../globals';
 
 // Post createLeague form to the server
-// Send the response object to a reducer that will append it to a list of user's leagues
+// Send the response object to a reducer that will append it to user's leagues
 // Redirect the user
 
 export function createLeague(body, redirectCallback) {

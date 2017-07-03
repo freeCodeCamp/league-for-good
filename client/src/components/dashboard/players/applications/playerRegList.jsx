@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
 
 import getRowData, { colData } from './data.jsx';
@@ -27,9 +28,14 @@ const PlayerList = props => {
 	);
 };
 
+PlayerList.propTypes = {
+	history: PropTypes.object,
+	location: PropTypes.object,
+	players: PropTypes.arrayOf(PropTypes.object)
+};
 
 function mapStateToProps(state) {
-	return { players: state.league.selected.pending_players };
+	return { players: state.league.selected.pendingPlayers };
 }
 
 export default connect(mapStateToProps)(PlayerList);

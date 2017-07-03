@@ -2,11 +2,8 @@ const express = require('express');
 
 const Router = express.Router();
 const mongoose = require('mongoose');
-const _ = require('lodash');
-const faker = require('faker');
 
 const Player = mongoose.model('player');
-const Leagues = mongoose.model('league');
 const Teams = mongoose.model('team');
 
 
@@ -42,7 +39,6 @@ const getPlayer = (req, res) => {
 const fetchList = (req, res) => {
 	const { leagueId } = req.params;
 	const query = { leagues: { $in: [leagueId] }};
-	const select = {};
 	Player.find(query)
 		.exec()
 		.then(players => res.send(players));
@@ -64,10 +60,12 @@ const addPlayerToTeam = (req, res) => {
 };
 
 const swapTeams = (teamUpdate, player) => {
-	if (!teamUpdate) {return Promise.resolve('No update');}
+	if (!teamUpdate) {
+		return Promise.resolve('No update');
+	}
 
 	const { prevTeam, currTeam } = teamUpdate;
-	Promise.all([
+	return Promise.all([
 		Teams.findByIdAndUpdate( prevTeam, { $pull: { players: player }}).exec(),
 		Teams.findByIdAndUpdate( currTeam, { $push: { players: player }}).exec()
 	])
