@@ -47,10 +47,6 @@ function getCellValue(season, prop, action) {
 	if (prop === 'active') {
 		return season.active ? 'Active' : 'Archived';
 	}
-<<<<<<< HEAD
-=======
-
->>>>>>> a27d69e2bf4682b7e07ba4b38caaf2ada6608a8b
 	if (prop === 'icon') {
 		const iconProps = { action, season };
 		return <noScript/>;
