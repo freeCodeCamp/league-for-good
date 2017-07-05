@@ -3,6 +3,25 @@
 */
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+
+/*
+	Various settings properties to be associated with each league
+	
+*/
+const LeagueSettings = {
+	season: {
+		numberPerYear : {
+			type: Number,
+			default: 4,
+			min: 1,
+		},
+		names: {
+			type: [String],
+			default:['Fall', 'Winter', 'Spring', 'Summer'],
+		}
+	}
+};
+
 const LeagueSchema = new Schema(
 	{
 		name: {
@@ -10,6 +29,7 @@ const LeagueSchema = new Schema(
 			required: true,
 			trim: true,
 		},
+		settings: LeagueSettings,		
 		owner: {
 			type: Schema.Types.ObjectId,
 			ref: 'user',

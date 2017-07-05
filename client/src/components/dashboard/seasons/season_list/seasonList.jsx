@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 
 // Table that lists all the seasons and the ability to edit or delete each season
 const SeasonList = props => {
-	console.log(props, 'SeasonList')
+
 	return (
 		<div style={css_content.body}>	
 			<TableTemplate

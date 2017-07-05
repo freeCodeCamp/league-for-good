@@ -48,6 +48,7 @@ export const UPDATE_STAFF_MEMBER = 'UPDATE_STAFF_MEMBER';
 // Season action types
 export const FETCH_SEASON = 'FETCH_SEASON';
 export const FETCH_ALL_SEASONS = 'FETCH_ALL_SEASONS';
+export const CREATE_SEASON = 'CREATE_SEASON';
 
 // Roles action types
 export const FETCH_ROLES = 'FETCH_ROLES';

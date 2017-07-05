@@ -4,27 +4,29 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const formatDate = date => 
+	date.toDateString().replace(/^\w*\s/, '')
+
 const SeasonSchema = new Schema({
 	start_date: {
 		type: Date,
+		set: (val) => Date.parse(val),
+		get: formatDate,		
 		required: true,
 	},
 	end_date: {
 		type: Date,
+		set: (val) => Date.parse(val),
+		get: formatDate,
 		required: true,
 	},
 	quarter: {
 		type: String,
-		enum: ['Fall', 'Winter', 'Spring', 'Summer'],
 		required: true,
 	},
 	year: {
 		type: Number,
 		required: true,
-	},
-	active: {
-		type: Boolean,
-		default: false,
 	},
 	league_id: {
 		type: Schema.Types.ObjectId,
@@ -32,13 +34,33 @@ const SeasonSchema = new Schema({
 	}},
 	{
 		collection: 'seasons',
-		toObject: { virtuals: true },
-		toJSON: { virtuals: true },
+		toObject: { 
+			getters: true, 
+			setters: true,
+			virtuals: true 
+		},
+		toJSON: { 
+			getters: true, 
+			setters: true,			
+			virtuals: true 
+		},
 	}
 );
 
-SeasonSchema.virtual('season_name').get(function() {
+SeasonSchema.virtual('seasonName').get(function() {
 	return this.quarter + ' ' + this.year;
 });
+
+SeasonSchema.virtual('active').get(function() {
+	const now = Date.now();
+	const start = Date.parse(this.start_date);
+	const end = Date.parse(this.end_date);
+
+	return now >= start && now <= end;
+});
+
+
+
+
 
 module.exports = mongoose.model('season', SeasonSchema);

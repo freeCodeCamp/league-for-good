@@ -15,6 +15,16 @@ const fetchSeasonList = (req, res) => {
 		.catch(err => { throw err });
 };
 
+const createSeason = (req, res) => {
+
+	const { league_id } = req.params;
+
+	Seasons.create(req.body)
+		.then( newSeason => res.send(newSeason))
+		.catch( err => { throw err });
+};
+
 Router.route('/list/:leagueId').get(fetchSeasonList);
+Router.route('/create/:league_id').post(createSeason);
 
 module.exports = Router;
