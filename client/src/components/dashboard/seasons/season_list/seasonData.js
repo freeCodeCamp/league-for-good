@@ -2,9 +2,6 @@ import React from 'react';
 import { css_dashboard } from '../../../style';
 import Icon from './seasonActions.jsx';
 
-function formatDate(d) {
-	return (d.getMonth() + 1) + ' / ' + d.getDate() + ' / ' + d.getFullYear();
-}
 
 // All season data passed from the reducers is reformatted here 
 
@@ -49,9 +46,6 @@ function getCellValue(season, prop, action) {
 	
 	if (prop === 'active') {
 		return season.active ? 'Active' : 'Archived';
-	}
-	if (/_date$/.test(prop)) {
-		return formatDate(season[prop]);
 	}
 	if (prop === 'icon') {
 		const iconProps = { action, season };
