@@ -7,7 +7,7 @@
     "lint": "eslint . --ext .js,.jsx",
     "lint:autoFix": "eslint . --fix --ext .js,.jsx",
     "pretest": "npm run lint",
-    "test": "tape **/__tests__/*.test.js",
+    "test": "tape -r babel-register **/__tests__/*.test.js | faucet",
     "init": "node server/init/initRoles.js",
     "dev": "nodemon index.js --ignore client"
   },
@@ -58,6 +58,7 @@
     "eslint-plugin-prefer-object-spread": "^1.2.1",
     "eslint-plugin-react": "^7.0.1",
     "faker": "^4.1.0",
+    "faucet": "0.0.1",
     "file-loader": "^0.11.1",
     "html-webpack-plugin": "^2.26.0",
     "image-webpack-loader": "^3.3.0",
