@@ -15,7 +15,7 @@ export const colData = [
 	},
 	{
 		label: 'Role',
-		cellProp: 'role.title',
+		cellProp: 'role',
 		sortable: true,
 	},
 	{
@@ -40,7 +40,7 @@ function getCellValue(staff, prop, action, leagueId) {
 		return prop.split('.').reduce((o, i) => o[i], staff);
 	}
 	else if (prop === 'icon') {
-		const iconProps = { action, email: staff.email, leagueId };
+		const iconProps = { action, leagueId, ...staff };
 		return <Icon {...iconProps} />; 
 	}
 	

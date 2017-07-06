@@ -11,7 +11,7 @@ export function initAuthState() {
 		axios.post('/auth/authenticate')
 			.then(({data}) => {
 				const { leagueInfo, roles, ...userData } = data;
-				console.log('auth action', leagueInfo, roles);	
+				console.log('auth action', leagueInfo, roles, userData);	
 				//send users info to reducer	
 				dispatch({ type: INIT_AUTH_STATE, payload: {loading: false, ...userData}});
 
@@ -21,7 +21,7 @@ export function initAuthState() {
 					dispatch({ type: FETCH_ROLES, roles });
 				}
 			})
-			.catch(err => dispatch({type:'AUTH_ERROR'}));
+			.catch(err => dispatch({type: 'AUTH_ERROR'}));
 	};		//TO-DO build auth-error action
 }
 

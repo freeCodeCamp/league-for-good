@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CREATE_STAFF_MEMBER, REMOVE_STAFF_MEMBER, SELECT_STAFF_MEMBERS, CLOSE_MODAL, OPEN_SNACKBAR } from './types';
+import { CREATE_STAFF_MEMBER, REMOVE_STAFF_MEMBER, UPDATE_STAFF_MEMBER, SELECT_STAFF_MEMBERS, CLOSE_MODAL, OPEN_SNACKBAR } from './types';
 import { rootURL } from '../../globals';
 
 export function selectStaff(staff) {
@@ -20,6 +20,22 @@ export function addStaffMember(formVals, dispatch, { location }) {
 		})
 		.catch( err => {
 			throw new Error(err);
+		});
+}
+
+export function updateStaff(formVals, dispatch) {
+	const { leagueId, email, role } = formVals;
+	const body = { email, role };
+	dispatch({ type: CLOSE_MODAL });
+
+	axios.put(`${rootURL}/staff/update/${leagueId}`, body)
+		.then((data) => {
+
+			return dispatch({ type: UPDATE_STAFF_MEMBER, updatedStaff: { ...body }});
+
+		})
+		.catch(error => {
+			throw new Error(error);
 		});
 }
 

@@ -6,16 +6,16 @@ const passport = require('passport');
 const Leagues = mongoose.model('league');
 const Roles = mongoose.model('role');
 
-function logInUser(req,res){
+function logInUser(req, res){
 	req.logIn(req.user, err => {
-		if(err) throw err;
+		if (err) throw err;
 		res.redirect('/');
 	});
 }
 
 function logOutUser(req, res){
 	req.logout();
-	res.status(200).send('User logged out');
+	res.send('User logged out');
 }
 
 // This is called when the user loads up the page to get 
@@ -31,8 +31,7 @@ function fetchInitialData(req, res, next){
 	const query = { '$or': [ { owner: user._id }, { 'staff.email': user.email } ] };
 
 	const leaguePromise =  Leagues.find(query)
-		.populate('teams')
-		.populate('staff.role');
+		.populate('teams');
 	const rolePromise =  Roles.find({});
 
 	return Promise.all([leaguePromise.exec(), rolePromise.exec()])

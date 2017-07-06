@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { TextField, Toggle, Checkbox } from 'redux-form-material-ui';
-import {Field, reduxForm } from 'redux-form';
+import { TextField, Checkbox } from 'redux-form-material-ui';
+import { Field, reduxForm } from 'redux-form';
 import { updateTeam, openSnackbar } from '../../../../actions/index';
 
 import validate from './utils/validation';
