@@ -3,6 +3,7 @@
 */
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const removeRefs = require('./plugins/removeAllRefs');
 
 const formatDate = date => 
 	date.toDateString().replace(/^\w*\s/, '')
@@ -61,6 +62,26 @@ SeasonSchema.virtual('active').get(function() {
 
 
 
+SeasonSchema.pre('remove', function(next) {
+	const teamQuery = { seasons: { $in: [this._id] }};
+	const teamUpdate = { $pull: { seasons: { $in: [this._id] }}};
+	
+	const playerQuery = { 'teams.seasonId': { $in: [this._id] }};
+	const playerUpdate = { $pull: { teams: {season: this._id }}};
+
+	const options = { multi: true };
+
+	const teamPromise   = mongoose.model('team').update(teamQuery, teamUpdate, options);
+	const playerPromise = mongoose.model('player').update(playerQuery, playerUpdate, options);
+
+	Promise.all([ 
+		teamPromise.exec(),
+		playerPromise.exec()
+	])
+	.then(() => next())
+	.catch( err => { throw err })
+
+})
 
 
 module.exports = mongoose.model('season', SeasonSchema);

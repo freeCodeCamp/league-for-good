@@ -11,7 +11,9 @@ export default function(state = defaultState, action) {
 	
 	case CHANGE_THEME:
 		localStorage.setItem('theme', action.theme);
+		
 		themes.setCurrentTheme(action.theme);
+		
 		return action.theme;
 	}
 

@@ -6,8 +6,6 @@ import authReducer from './auth';
 import menuReducer from './menu';
 import leagueReducer from './league';
 import teamReducer from './teams';
-import manageReducer from './manage';
-import rosterReducer from './roster';
 import themeReducer from './theme';
 import playerReducer from './player';
 import settingsReducer from './settings';
@@ -25,8 +23,6 @@ const rootReducer = combineReducers({
 	form: formReducer,
 	league: leagueReducer,
 	teams: teamReducer,
-	manage: manageReducer,
-	roster: rosterReducer,
 	theme: themeReducer,
 	players:playerReducer,
 	settings: settingsReducer,

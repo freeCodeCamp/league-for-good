@@ -51,7 +51,7 @@ function getCellValue(season, prop, action) {
 
 	if (prop === 'icon') {
 		const iconProps = { action, season };
-		return <noScript/>;
+		return <Icon {...iconProps}/>;
 	}
 
 	return season[prop];

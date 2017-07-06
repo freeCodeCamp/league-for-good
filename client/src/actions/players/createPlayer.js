@@ -8,10 +8,10 @@ export function createPlayer(form, dispatch, { location: { state }}) {
 	
 	
 	const { team, ...player } = form;
-	const leagues = [ state.leagueId ];
+	const leagueId = state.leagueId
 
 	// format the request body to match the format of player model
-	const reqBody = { ...player, leagues, teams: [team] };
+	const reqBody = { ...player, leagueId, teams: [team] };
 	
 	axios.post(`${ROOT_URL}/player/add`, reqBody)
 		.then(({data}) => {

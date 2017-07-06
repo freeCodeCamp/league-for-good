@@ -1,8 +1,14 @@
 // User actions to add, edit, and delete seasons in the league
 import axios from 'axios';
-import { FETCH_SEASON, FETCH_ALL_SEASONS, CREATE_SEASON } from './types';
 import { ROOT_URL } from '../../globals';
-
+import { 
+	FETCH_SEASON, 
+	FETCH_ALL_SEASONS, 
+	CREATE_SEASON, 
+	REMOVE_SEASON,
+	UPDATE_SEASON,
+	CLOSE_MODAL 
+} from './types';
 // Get more detailed season info
 export function fetchSeason(season) {
 	
@@ -39,4 +45,24 @@ export function createSeason(form, dispatch, props) {
 				dispatch({ type: CREATE_SEASON, newSeason: data })
 			)
 			.catch(err => console.error(err))
+}
+
+export function deleteSeason(season) {
+	const deletedSeason = season._id
+	const url = `${ROOT_URL}/seasons/remove/${deletedSeason}`;
+	
+	return dispatch =>
+		axios.delete(url)
+			.then(() => dispatch({ type: REMOVE_SEASON, deletedSeason })) 
+			.then(() => dispatch({ type: CLOSE_MODAL }))
+			.catch(err => console.error(err))
+}
+
+export function updateSeason(form, dispatch) {
+	const url = `${ROOT_URL}/seasons/update/${form.league_id}`;
+	const action = 
+
+	dispatch({ type: UPDATE_SEASON, season: form });
+	
+	console.log(form, 'updateSeasonForm');
 }

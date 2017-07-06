@@ -61,4 +61,21 @@ const LeagueSchema = new Schema(
 	}
 );
 
+LeagueSchema.pre('remove', function(next) {
+	const _id = this._id;
+
+	Promise.all([
+		mongoose.model('season').remove({ league_id: _id }),
+		mongoose.model('team').remove({ league_id: _id }),
+		mongoose.model('player').remove({ leagueId: _id }),
+		
+	])
+	.then(() => {
+		console.log('League refs all deleted');
+		next()
+	})
+	.catch(err => { throw err })
+
+})
+
 module.exports = mongoose.model('league', LeagueSchema);

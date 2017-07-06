@@ -21,6 +21,7 @@ export const LOG_OUT = 'log out';
 export const FETCH_LEAGUES = 'fetch leagues';
 export const CREATE_LEAGUE = 'create league';
 export const SELECT_LEAGUE = 'select league';
+export const REMOVE_LEAGUE = 'REMOVE_LEAGUE';
 
 // Team action types
 export const CREATE_TEAM = 'create team';
@@ -49,6 +50,8 @@ export const UPDATE_STAFF_MEMBER = 'UPDATE_STAFF_MEMBER';
 export const FETCH_SEASON = 'FETCH_SEASON';
 export const FETCH_ALL_SEASONS = 'FETCH_ALL_SEASONS';
 export const CREATE_SEASON = 'CREATE_SEASON';
+export const UPDATE_SEASON = 'UPDATE_SEASON';
+export const REMOVE_SEASON = 'REMOVE_SEASON';
 
 // Roles action types
 export const FETCH_ROLES = 'FETCH_ROLES';

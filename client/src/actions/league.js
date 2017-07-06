@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {  CREATE_LEAGUE, SELECT_LEAGUE } from './types';
+import {  CREATE_LEAGUE, SELECT_LEAGUE, REMOVE_LEAGUE } from './types';
 import { ROOT_URL } from '../../globals';
 
 //Post createLeague form to the server
@@ -16,6 +16,19 @@ export function createLeague(body, redirectCallback) {
 	};
 }
 
+export function deleteLeague(_, dispatch, props) {
+	const { history, location: { state: { leagueId }}} = props;
+	const url = `${ROOT_URL}/league/remove/${leagueId}`;
+	const action = { type: REMOVE_LEAGUE, leagueId };
+
+	axios.delete(url)
+		.then(response => {
+			console.log(response)
+			dispatch(action)
+		})
+		.then(() => history.push('/'))
+		.catch(err => { throw err })
+}
 
 export function selectLeague(leagueData) {
 	

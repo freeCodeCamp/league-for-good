@@ -29,7 +29,7 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps({ league: {selected} }){
-
+	
 	return { league: selected };
 }
 

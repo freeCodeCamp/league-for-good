@@ -24,9 +24,18 @@ const createLeague = (req, res) => {
 		});
 };
 
+const deleteLeague = (req, res) => {
+	const { leagueId } = req.params;
+
+	League.findById(leagueId)
+		.exec()
+		.then( league => league.remove())
+		.then(() => res.status(200).send('Deleted League'))
+		.catch( err => { throw err })
+}
 
 // Router.route('/fetchLeagues').get(getLeagues);
 Router.route('/create').post(createLeague);
-
+Router.route('/remove/:leagueId').delete(deleteLeague);
 
 module.exports = Router;

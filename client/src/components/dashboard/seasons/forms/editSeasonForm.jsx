@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { TextField, SelectField, DatePicker, Checkbox } from 'redux-form-material-ui';
+import { TextField, SelectField, DatePicker, CheckBox } from 'redux-form-material-ui';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
@@ -19,7 +19,7 @@ const normalizeYear = (val, prevVal) => {
 	return prevVal;
 }
 
-const AddSeasonForm = props => {	
+const EditSeasonForm = props => {	
 	const { handleSubmit, leagueSettings, formVals, change } = props;
 	
 	return (
@@ -76,17 +76,7 @@ const AddSeasonForm = props => {
 							minDate = {getMinDate(formVals, leagueSettings)}
 						/>						
 					</div>
-					<br/>
-					<div style={css_dashboard.teams.forms.edit.checkboxDiv}>
-						<Field
-							name="importActiveTeams"
-							label="Import Active Teams"
-							component={Checkbox}
-							labelPosition="left"
-							checked={props.initialValues.importActiveTeams}
-							labelStyle={css_dashboard.teams.forms.edit.checkbox}
-						/>
-					</div>
+
 					<RaisedButton
 						label="Create Season"
 						labelStyle={css_dashboard.raisedButton.label}
@@ -99,7 +89,7 @@ const AddSeasonForm = props => {
 	);
 };
 
-const selector = formValueSelector('AddSeasonForm');
+const selector = formValueSelector('EditSeasonForm');
 
 function mapStateToProps(state) {
 	const { year, start_date } = selector(state, 'year', 'start_date')
@@ -110,14 +100,16 @@ function mapStateToProps(state) {
 	};
 }
 
-const WrappedForm = reduxForm({
-	form: 'AddSeasonForm',
+
+
+export default reduxForm({
+	form: 'EditSeasonForm',
 	onSubmit: createSeason,
 	onSubmitSuccess: openSnackbar,
 	// validate,
-})(AddSeasonForm);
-
-export default connect(mapStateToProps)(WrappedForm);
+})( 
+	connect(mapStateToProps)(EditSeasonForm)
+);
 
 
 

@@ -81,6 +81,11 @@ const mappings = {
 	assignPlayer: {
 
 	},
+	removeSeason: {
+		title: 'Permanently Delete Season',
+		onSubmit: 'deleteSeason',
+		actionLabel: 'DELETE',
+	},
 	removePlayerApplication: {
 		title: 'Delete Player Application',
 		Children: DeletePlayerRegForm,

@@ -6,7 +6,6 @@ export * from './modal';
 export * from './teams';
 export * from './form';
 export * from './players/index';
-export * from './manage.js';
 export * from './theme.js';
 export * from './settings.js';
 export * from './seasons.js';

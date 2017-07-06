@@ -15,16 +15,47 @@ const fetchSeasonList = (req, res) => {
 		.catch(err => { throw err });
 };
 
-const createSeason = (req, res) => {
+const importTeamsToSeason = (doc, importTeams) => {
+	const query = { league_id: doc.league_id, currently_active: true };
+	const update = { $push: { seasons: doc._id }};
+	const options = { multi: true };
+	
+	if (!importTeams) {
+		console.log('Not importing teams');
+		return doc;
+	}
 
+	mongoose.model('team').update(query, update, options)
+		.exec()
+		.then(() => Promise.resolve(doc))
+		.catch(err => { throw err });
+
+}
+
+
+const createSeason = (req, res) => {
 	const { league_id } = req.params;
+	const { importActiveTeams } = req.body;
 
 	Seasons.create(req.body)
+		.then(doc => importTeamsToSeason(doc, importActiveTeams))
 		.then( newSeason => res.send(newSeason))
 		.catch( err => { throw err });
 };
 
+const deleteSeason = ( req, res ) => {
+
+	const { seasonId } = req.params;
+
+	Seasons.findById( seasonId )
+		.exec()
+		.then( season => season.remove())
+		.then( () => res.status(200).send('Successfully removed season'))
+		.catch(err => { throw err })
+}	
+
 Router.route('/list/:leagueId').get(fetchSeasonList);
 Router.route('/create/:league_id').post(createSeason);
+Router.route('/remove/:seasonId').delete(deleteSeason);
 
 module.exports = Router;

@@ -41,9 +41,8 @@ const getPlayer = (req, res) => {
 
 const fetchPlayerList = (req, res) => {
 	const { leagueId } = req.params;
-	const query = { leagues: { $in: [leagueId] }};
-	const select = {}; 
-	Player.find(query)
+
+	Player.find({ leagueId })
 		.exec()
 		.then(players => res.send(players));
 };

@@ -80,7 +80,7 @@ function mapDispatchToProps(dispatch) {
 		openModal,
 		changeTheme,
 		fetchPlayerList,
-	       	fetchSeasonList,
+	  fetchSeasonList,
 		selectStaff,
 	}, dispatch);
 }

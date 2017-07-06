@@ -1,4 +1,4 @@
-import {FETCH_LEAGUES, CREATE_LEAGUE, SELECT_LEAGUE } from '../actions/types';
+import {FETCH_LEAGUES, CREATE_LEAGUE, SELECT_LEAGUE, REMOVE_LEAGUE } from '../actions/types';
  
 /*
 	League State
@@ -17,7 +17,7 @@ const removeReg = ({ selected : { pending_players, ...rest }}, _id) => {
 
 
 
-const defaultState = { list: [], selected: null };
+const defaultState = { list: [], selected: {} };
 
 export default function(state = defaultState, action) {
 	
@@ -35,6 +35,11 @@ export default function(state = defaultState, action) {
 	case 'REMOVE_REGISTRATION':
 		return { ...state, selected: removeReg(state, action.payload) };
 
+	case REMOVE_LEAGUE: 
+		return { 
+			selected: {},
+			list: state.list.filter(league => league._id !== action.leagueId)
+		}
 	}
 	return state;
 }
