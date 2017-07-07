@@ -29,6 +29,7 @@ function fetchInitialData(req, res, next){
 	if (!user) return next();
 
 	const query = { '$or': [ { owner: user._id }, { 'staff.email': user.email } ] };
+	console.log('fetch init data');
 
 	const leaguePromise =  Leagues.find(query)
 		.populate('teams');

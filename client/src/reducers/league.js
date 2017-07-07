@@ -24,13 +24,13 @@ export default function(state = defaultState, action) {
 	switch (action.type) {
 	
 	case CREATE_LEAGUE:
-		return {...state, list: [...state.list, action.newLeague]};	
+		return { ...state, list: [...state.list, action.newLeague] };
 	
 	case FETCH_LEAGUES:
-		return {...state, list: action.leagueInfo };
+		return { ...state, list: action.leagueInfo };
 	
 	case SELECT_LEAGUE:
-		return {...state, selected: action.leagueData};
+		return { ...state, selected: action.leagueData };
 
 	case 'REMOVE_REGISTRATION':
 		return { ...state, selected: removeReg(state, action.payload) };

@@ -40,7 +40,7 @@ function getCellValue(staff, prop, action, leagueId) {
 		return prop.split('.').reduce((o, i) => o[i], staff);
 	}
 	else if (prop === 'icon') {
-		const iconProps = { action, leagueId, ...staff };
+		const iconProps = { action, leagueId };//,...staff };
 		return <Icon {...iconProps} />; 
 	}
 	

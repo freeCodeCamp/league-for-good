@@ -9,7 +9,7 @@ import validate from './utils/addStaffFormValidation';
 import { css_dashboard } from '../../../style';
 
 const EditStaffForm = (props) => {
-	return (
+/*	return (
 		<form style={css_dashboard.teams.forms.edit.style}>
 			<Field
 				name="role"
@@ -31,7 +31,8 @@ const EditStaffForm = (props) => {
 				fullWidth={true}
 			/>
 		</form>
-	);
+	);*/
+	return <noScript />;
 }
 
 export default reduxForm({

@@ -43,12 +43,12 @@ export default function(ComposedComponent) {
 		render() {
 			const { initAuthState, loggedIn, ...props } = this.props;
      
-			if(props.loading) {
+			if (props.loading) {
 				return this.renderSpinner();
 			}
 			//Redirect instantly if the user is not logged in 
-			else if(!loggedIn) {
-				return <Redirect to="/login"/>;
+			else if (!loggedIn) {
+				return <Redirect to="/login" />;
 			}
 			//Render the desired content
 			else {

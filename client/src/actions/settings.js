@@ -25,10 +25,10 @@ export function addStaffMember(formVals, dispatch, { location }) {
 
 export function updateStaff(formVals, dispatch) {
 	const { leagueId, email, role } = formVals;
-	const body = { email, role };
+	const body = { leagueId, email, role };
 	dispatch({ type: CLOSE_MODAL });
 
-	axios.put(`${rootURL}/staff/update/${leagueId}`, body)
+	axios.put(`${rootURL}/staff/update/${email}`, body)
 		.then((data) => {
 
 			return dispatch({ type: UPDATE_STAFF_MEMBER, updatedStaff: { ...body }});

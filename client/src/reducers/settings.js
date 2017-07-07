@@ -21,7 +21,7 @@ export default function(state = {}, action) {
 	case REMOVE_STAFF_MEMBER: 
 		return { ...state, staff: state.staff.filter(removeStaff(action.removedStaffEmail)) };
 	case UPDATE_STAFF_MEMBER: 
-		return { ...state };
+		return state;
 	}
 
 
