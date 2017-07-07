@@ -36,10 +36,10 @@ const PlayerSchema = new Schema({
 		state: String,
 		country: String
 	},
-	leagues: [{
+	leagueId: {
 		type: Schema.Types.ObjectId,
 		ref: 'league'
-	}],
+	},
 	teams: [{
 		teamId: Schema.Types.ObjectId,
 		seasonId: Schema.Types.ObjectId,
