@@ -17,17 +17,17 @@ export const colData = [
 	},
 	{ 
 		label: 'Roster Size', 
-		cellProp: 'players.length', 
+		cellProp: 'playerCount', 
 		sortable: true,
 	},
-	{ 
-		label: 'Seasons', 
-		cellProp: 'seasons.length', 
-		sortable: true,
-	},
+	// { 
+	// 	label: 'Seasons', 
+	// 	cellProp: 'seasons.length', 
+	// 	sortable: true,
+	// },
 	{ 
 		label: 'Status', 
-		cellProp: 'currently_active',
+		cellProp: 'status',
 		sortable: true, 
 	},
 	{
@@ -52,9 +52,6 @@ export const colData = [
 // Get the value for the cell
 function getCellValue(team, prop, action) {
 
-	if (prop === 'currently_active') {
-		return team.currently_active ? 'Active' : 'Archived';
-	}
 	if (prop === 'icon') {
 		const iconProps = { action, team };
 		return <Icon {...iconProps} />;
@@ -62,10 +59,7 @@ function getCellValue(team, prop, action) {
 	if (prop === 'link') {
 		return <Link {...team} />;
 	}
-	// Split properties if cell property is nested
-	if (prop.split('.').length > 1) {
-		return prop.split('.').reduce((o, i) => o[i], team);
-	}
+
 	return team[prop];
 }
 	

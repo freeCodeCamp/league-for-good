@@ -3,32 +3,24 @@
 */
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const removeRefs = require('./plugins/removeAllRefs');
 
-const formatDate = date => 
-	date.toDateString().replace(/^\w*\s/, '')
 
 const SeasonSchema = new Schema({
 	start_date: {
 		type: Date,
-		set: (val) => Date.parse(val),
-		get: formatDate,		
+		set: (val) => Date.parse(val),		
 		required: true,
 	},
 	end_date: {
 		type: Date,
 		set: (val) => Date.parse(val),
-		get: formatDate,
 		required: true,
 	},
-	quarter: {
+	name: {
 		type: String,
 		required: true,
 	},
-	year: {
-		type: Number,
-		required: true,
-	},
+	teams: [{type: Schema.Types.ObjectId, ref: 'team'}],
 	league_id: {
 		type: Schema.Types.ObjectId,
 		ref: 'league',
@@ -48,8 +40,10 @@ const SeasonSchema = new Schema({
 	}
 );
 
+//Convenience method for displaying season name w/ year;
 SeasonSchema.virtual('seasonName').get(function() {
-	return this.quarter + ' ' + this.year;
+	const d = new Date(this.start_date);
+	return `${this.name} ${d.getFullYear()}`;
 });
 
 SeasonSchema.virtual('active').get(function() {

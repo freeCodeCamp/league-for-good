@@ -2,7 +2,8 @@ import React from 'react';
 import { css_dashboard } from '../../../style';
 import Icon from './seasonActions.jsx';
 
-
+const formatDate = date => 
+	new Date(date).toDateString().replace(/^\w*\s/, '')
 
 // All season data passed from the reducers is reformatted here 
 
@@ -42,14 +43,18 @@ export const colData = [
 	},
 ];
 
+
 // Get value for the cell
 function getCellValue(season, prop, action) {
 	
 	if (prop === 'active') {
 		return season.active ? 'Active' : 'Archived';
 	}
+	else if (/date$/.test(prop)) {
+		return formatDate(season[prop]); 
+	}
 
-	if (prop === 'icon') {
+	else if (prop === 'icon') {
 		const iconProps = { action, season };
 		return <Icon {...iconProps}/>;
 	}

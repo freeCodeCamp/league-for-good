@@ -21,7 +21,6 @@ const importTeamsToSeason = (doc, importTeams) => {
 	const options = { multi: true };
 	
 	if (!importTeams) {
-		console.log('Not importing teams');
 		return doc;
 	}
 

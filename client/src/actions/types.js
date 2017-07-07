@@ -52,6 +52,7 @@ export const FETCH_ALL_SEASONS = 'FETCH_ALL_SEASONS';
 export const CREATE_SEASON = 'CREATE_SEASON';
 export const UPDATE_SEASON = 'UPDATE_SEASON';
 export const REMOVE_SEASON = 'REMOVE_SEASON';
+export const SELECT_SEASON = 'SELECT_SEASON';
 
 // Roles action types
 export const FETCH_ROLES = 'FETCH_ROLES';

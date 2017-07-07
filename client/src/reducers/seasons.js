@@ -4,6 +4,7 @@ import {
 	CREATE_SEASON, 
 	REMOVE_SEASON, 
 	UPDATE_SEASON, 
+	SELECT_SEASON,
 }  from '../actions/types';
 
 import { findIndex } from 'lodash';
@@ -22,7 +23,7 @@ function replace(currSeasons, updatedSeason){
 	return [...head, updatedSeason, ...tail];
 }
 
-export default function(state = null, action) {
+export default function(state = {}, action) {
 	switch (action.type) {
 
 	case FETCH_SEASON: 
@@ -40,8 +41,15 @@ export default function(state = null, action) {
 		return {
 			...state,
 			list: state.list.filter( season => season._id !== action.deletedSeason),
-		}		
+		}	
+	case SELECT_SEASON:	
+		return {
+			...state,
+			selected: action.currentSeason,
+		}
 	}
+	
+
 
 	return state;
 }
