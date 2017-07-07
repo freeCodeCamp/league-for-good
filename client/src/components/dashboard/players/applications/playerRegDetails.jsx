@@ -1,18 +1,25 @@
 import React from 'react';
-import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
-import { css_content, css_dashboard } from '../../../style';
-
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { cssContent, cssDashboard } from '../../../style';
 
 import IconButton from 'material-ui/IconButton';
 import BackArrow from 'material-ui/svg-icons/navigation/arrow-back';
 
 const PlayerApplication = ({ location, history }) => {
+<<<<<<< HEAD
 	//Player application is loaded from state stored in react-router's location property
 	//rather than from redux store
 	/*
 		As pending_player data grows perhaps its a better idea to fetch the info from the server 
 		rather than loading it all at once when the page initializes
+=======
+	// Player application is loaded from state stored in react-router's
+	// location property rather than from redux store
+	/*
+		As pending_player data grows perhaps its a better idea to fetch
+		the info from the server rather than loading it all at once when
+		the page initializes
+>>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 	*/
 	const { state: { player }} = location;
 	if (!player) {
@@ -22,27 +29,27 @@ const PlayerApplication = ({ location, history }) => {
 	}
 
 	return (
-		<div style={css_content.body}>
-			<IconButton 
+		<div style={cssContent.body}>
+			<IconButton
 				onTouchTap={() => history.goBack()}
-				tooltip="Back"
-			>
+				tooltip='Back'
+				>
 				<BackArrow />
 			</IconButton>
-			<h1 style={css_dashboard.title}>
-				{player.full_name}
+			<h1 style={cssDashboard.title}>
+				{player.fullName}
 			</h1>
 			<h4>Email: {player.email}</h4>
-			<h4>Phone: {player.phone_num}</h4>
+			<h4>Phone: {player.phoneNum}</h4>
 			{
-				player.address && <div> 
-					<h3 style={css_dashboard.title}>
+				player.address && <div>
+					<h3 style={cssDashboard.title}>
 						Address
 					</h3>
 					<h4>Street: {player.address.street}</h4>
 					<h4>City: {player.address.city}</h4>
 					<h4>State: {player.address.state}</h4>
-					<h4>Country: {player.address.country}</h4>				
+					<h4>Country: {player.address.country}</h4>
 				</div>
 			}
 			<hr/>
@@ -50,4 +57,13 @@ const PlayerApplication = ({ location, history }) => {
 	);
 };
 
+<<<<<<< HEAD
 export default PlayerApplication
+=======
+PlayerApplication.propTypes = {
+	history: PropTypes.object,
+	location: PropTypes.object
+};
+
+export default PlayerApplication;
+>>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2

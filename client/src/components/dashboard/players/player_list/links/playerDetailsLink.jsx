@@ -1,24 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { PLAYER_DETAIL, makeLinkDynamic } from '../../../../routes';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchPlayer } from '../../../../../actions/index';
-import { css_dashboard } from '../../../../style';
+import { cssDashboard } from '../../../../style';
 
 import IconButton from 'material-ui/IconButton';
 import ListIcon from 'material-ui/svg-icons/action/list';
 
 const PlayerLink = props => {
 	const { fetchPlayer, ...player } = props;
-	
+
 	const playerUrl = makeLinkDynamic( PLAYER_DETAIL, player._id );
-	
-	return(
+
+	return (
 		<div onClick={() => fetchPlayer(player)}>
 			<Link to={playerUrl}>
-				<IconButton hoveredStyle={css_dashboard.table.iconHover}>
+				<IconButton hoveredStyle={cssDashboard.table.iconHover}>
 					<ListIcon />
 				</IconButton>
 			</Link>
@@ -26,8 +27,11 @@ const PlayerLink = props => {
 	);
 };
 
+PlayerLink.propTypes = {
+	fetchPlayer: PropTypes.func
+};
 
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ fetchPlayer }, dispatch);
 }
 

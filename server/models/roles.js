@@ -1,11 +1,12 @@
-/* 
+/*
  * Role model stores information about the roles each user can have in a league
  */
 
 const mongoose = require('mongoose');
+
 const Schema = mongoose.Schema;
 
-// Privileges that each role can be assigned 
+// Privileges that each role can be assigned
 //
 // Teams
 // 	viewTeams: user can view the team tab and a list of all teams
@@ -45,9 +46,15 @@ const defaultProperty = {
 const RoleSchema = new Schema({
 	title: {
 		type: String,
+<<<<<<< HEAD
 		unique: true,
 		required: true,
 	},
+=======
+    unique: true,
+    required: true
+  },
+>>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 	privileges: {
 		viewTeams: defaultProperty,
 		viewSubsetTeams: defaultProperty,
@@ -56,6 +63,7 @@ const RoleSchema = new Schema({
 		deleteTeams: defaultProperty,
 		viewPlayers: defaultProperty,
 		viewPlayerRegistrations: defaultProperty,
+<<<<<<< HEAD
 		createPlayers: defaultProperty,
 		editPlayers: defaultProperty,
 		assignPlayers: defaultProperty,
@@ -68,12 +76,27 @@ const RoleSchema = new Schema({
 		deleteStaff: defaultProperty,
 		deleteLeague: defaultProperty,
 	}},
+=======
+    createPlayers: defaultProperty,
+    editPlayers: defaultProperty,
+    assignPlayers: defaultProperty,
+    viewSeasons: defaultProperty,
+    editSeasons: defaultProperty,
+    deleteSeasons: defaultProperty,
+    viewSettings: defaultProperty,
+    createStaff: defaultProperty,
+    editStaff: defaultProperty,
+    deleteStaff: defaultProperty,
+    deleteLeague: defaultProperty
+  }},
+>>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 	{
 		collection: 'roles'
 	}
 );
 
 const RoleModel = mongoose.model('role', RoleSchema);
+// eslint-disable-next-line no-unused-expressions
 RoleModel.schema.options.emitIndexErrors;
 //RoleModel.on('index', function(error) {
 //	console.log('index error', error);

@@ -6,9 +6,10 @@ const bodyParser = require('body-parser');
 
 require('dotenv').config();
 
-const models = require('./models/index');
+require('./models/index');
 const Routes = require('./api/index');
-const passportConfig = require('./services/auth');
+require('./services/auth');
+
 const MONGO_URI = process.env.MONGO_URI;
 const MongoStore = require('connect-mongo')(session);
 
@@ -33,8 +34,8 @@ app.use(session({
 	secret: process.env.SESSION_SECRET,
 	store: new MongoStore({
 		url: MONGO_URI,
-		autoReconnect: true,
-	}),
+		autoReconnect: true
+	})
 }));
 
 
@@ -44,28 +45,27 @@ app.use(passport.session());
 app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
 
-//define all routes here
+// define all routes here
 app.use('/auth', Routes.auth);
 app.use('/league', Routes.league);
 app.use('/team', Routes.team);
 app.use('/player', Routes.player);
 app.use('/settings', Routes.settings);
-app.use('/register', Routes.registration)
+app.use('/register', Routes.registration);
 
-//Disable webpack build if debugging backend functionality
+// Disable webpack build if debugging backend functionality
 
 if (process.env.NODE_ENV !== 'backend-dev') {
 	const webpackMiddleware = require('../webpack.dev.middleware');
 	app.use(webpackMiddleware);
-}
-else {
-	app.get('/', (req,res) => {
+} else {
+	app.get('/', (req, res) => {
 		res.json({user: req.user});
 	});
 }
 
 app.get('*', (req, res) => res.redirect('/'));
-//Temporary fix for syncing up with react-routers urls
-//avoids causing a server-side error when refreshing browser on the /login page
+// Temporary fix for syncing up with react-routers urls
+// avoids causing a server-side error when refreshing browser on the /login page
 
 module.exports = app;

@@ -2,36 +2,37 @@
 * Season model stores information about current and past seasons
 */
 const mongoose = require('mongoose');
+
 const Schema = mongoose.Schema;
 
 const SeasonSchema = new Schema({
-	start_date: {
+	startDate: {
 		type: Date,
-		required: true,
+		required: true
 	},
-	end_date: {
+	endDate: {
 		type: Date,
-		required: true,
+		required: true
 	},
 	quarter: {
 		type: String,
 		enum: ['Fall', 'Winter', 'Spring', 'Summer'],
-		required: true,
+		required: true
 	},
 	year: {
 		type: Number,
-		required: true,
+		required: true
 	},
 	active: {
 		type: Boolean,
-		default: false,
+		default: false
 	},
-	league_id: {
+	leagueId: {
 		type: Schema.Types.ObjectId,
-		ref: 'league',
+		ref: 'league'
 	}},
 	{
-		collection: 'seasons',
+		collection: 'seasons'
 	}
 );
 

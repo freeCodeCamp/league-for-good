@@ -7,9 +7,15 @@
     "lint": "eslint . --ext .js,.jsx",
     "lint:autoFix": "eslint . --fix --ext .js,.jsx",
     "pretest": "npm run lint",
+<<<<<<< HEAD
     "test": "tape **/__tests__/*.test.js",
     "init": "node init/initRoles.js",
     "dev": "nodemon index.js --ignore client --ignore init"
+=======
+    "test": "tape -r babel-register **/__tests__/*.test.js | faucet",
+    "init": "node server/init/initRoles.js",
+    "dev": "nodemon index.js --ignore client"
+>>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
   },
   "author": "",
   "license": "ISC",
@@ -28,6 +34,7 @@
     "nodemailer": "^4.0.1",
     "passport": "^0.3.2",
     "passport-google-oauth20": "^1.0.0",
+    "prop-types": "^15.5.10",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.4",
@@ -53,8 +60,11 @@
     "eslint": "^3.19.0",
     "eslint-config-rallycoding": "^3.2.0",
     "eslint-loader": "^1.7.1",
+    "eslint-plugin-import": "^2.6.0",
+    "eslint-plugin-prefer-object-spread": "^1.2.1",
     "eslint-plugin-react": "^7.0.1",
     "faker": "^4.1.0",
+    "faucet": "0.0.1",
     "file-loader": "^0.11.1",
     "html-webpack-plugin": "^2.26.0",
     "image-webpack-loader": "^3.3.0",

@@ -1,4 +1,5 @@
-import React,{Component} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 import { Route } from 'react-router-dom';
 
@@ -8,18 +9,20 @@ import NavBar from './nav/index.jsx';
 import Dashboard from './dashboard/dashboard.jsx';
 import Help from './help/help.jsx';
 import Modal from './modal/modal.jsx';
-import { css_content } from './style';
+import { cssContent } from './style';
 
 const Content = props => {
-
+	const contentWrapperClass = props.menuOpen ?
+		'content-wrapper' :
+		'content-wrapper-expanded';
 	return (
 		<div>
 			<NavBar changeTheme={props.changeTheme} />
-			<div className={props.menuOpen ? 'content-wrapper': 'content-wrapper-expanded'}>
-				<Paper style={css_content.paper} zDepth={3}>
-					<Route path="/dashboard" component={Dashboard} />
-					<Route path="/create" component={CreateLeagueForm} />
-					<Route path="/help" component={Help} />
+			<div className={contentWrapperClass}>
+				<Paper style={cssContent.paper} zDepth={3}>
+					<Route component={Dashboard} path='/dashboard' />
+					<Route component={CreateLeagueForm} path='/create' />
+					<Route component={Help} path='/help' />
 				</Paper>
 			</div>
 			<Modal />
@@ -28,5 +31,9 @@ const Content = props => {
 	);
 };
 
+Content.propTypes = {
+	changeTheme: PropTypes.func,
+	menuOpen: PropTypes.bool
+};
 
 export default Content;

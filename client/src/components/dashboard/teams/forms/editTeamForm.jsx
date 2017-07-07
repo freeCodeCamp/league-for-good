@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import React, {Component} from 'react';
+=======
+import React from 'react';
+import PropTypes from 'prop-types';
+>>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 import { TextField, Checkbox } from 'redux-form-material-ui';
 import { Field, reduxForm } from 'redux-form';
 import { updateTeam, openSnackbar } from '../../../../actions/index';
@@ -6,36 +11,40 @@ import { updateTeam, openSnackbar } from '../../../../actions/index';
 import validate from './utils/validation';
 import normalize from './utils/normalize';
 
-import { css_dashboard } from '../../../style';
+import { cssDashboard } from '../../../style';
 
 const EditTeamForm = (props) => {
 	return (
-		<form style={css_dashboard.teams.forms.edit.style}>
+		<form style={cssDashboard.teams.forms.edit.style}>
 			<Field
-				name="name" 
 				component={TextField}
-				normalize={normalize}
-				hintText="Team name"
-				floatingLabelText="Team Name:"
+				floatingLabelText='Team Name:'
 				fullWidth={true}
+				hintText='Team name'
+				name='name'
+				normalize={normalize}
 			/>
-			<div style={css_dashboard.teams.forms.edit.checkboxDiv}>
+			<div style={cssDashboard.teams.forms.edit.checkboxDiv}>
 				<Field
+					checked={props.initialValues.currentlyActive}
 					component={Checkbox}
-					name="currently_active"
-					label="Check if active"
-					checked={props.initialValues.currently_active}
-					labelPosition="left"
-					labelStyle={css_dashboard.teams.forms.edit.checkbox}
+					label='Check if active'
+					labelPosition='left'
+					labelStyle={cssDashboard.teams.forms.edit.checkbox}
+					name='currentlyActive'
 				/>
 			</div>
 		</form>
 	);
-}
+};
+
+EditTeamForm.propTypes = {
+	initialValues: PropTypes.object
+};
 
 export default reduxForm({
-	form:'EditTeamForm',
+	form: 'EditTeamForm',
 	onSubmit: updateTeam,
 	onSubmitSuccess: openSnackbar,
-	validate,
+	validate
 })(EditTeamForm);

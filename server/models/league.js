@@ -2,42 +2,47 @@
 * League model stores information about each league and the teams in each league
 */
 const mongoose = require('mongoose');
+
 const Schema = mongoose.Schema;
 const LeagueSchema = new Schema(
 	{
 		name: {
 			type: String,
 			required: true,
-			trim: true,
+			trim: true
 		},
 		owner: {
 			type: Schema.Types.ObjectId,
 			ref: 'user',
-			required: true,
+			required: true
 		},
 		staff: [{
+<<<<<<< HEAD
 			role: String,
       			email: String,
       			teams: {
 				type: [String],
       				default: [],
 			},
+=======
+			type: String
+>>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 		}],
-		pending_players: [{
+		pendingPlayers: [{
 			type: Schema.Types.ObjectId,
 			ref: 'player'
 		}],
-		sport_type: {
+		sportType: {
 			type: String,
-			required: true,
+			required: true
 		},
 		teams: [{
 			type: Schema.Types.ObjectId,
-			ref: 'team',
-		}],
+			ref: 'team'
+		}]
 	},
 	{
-		collection: 'leagues',
+		collection: 'leagues'
 	}
 );
 

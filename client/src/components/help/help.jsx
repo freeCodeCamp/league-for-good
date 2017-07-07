@@ -1,15 +1,15 @@
 import React from 'react';
-import { css_help } from '../style';
+import { cssHelp } from '../style';
 
 const Help = () => {
 	return (
-		<div style={css_help.container}>
-			<h1 style={css_help.title}>Help</h1>
-			<ul style={css_help.ul}>
-				<li style={css_help.li}><a href="#whatisthis">What is this?</a></li>
+		<div style={cssHelp.container}>
+			<h1 style={cssHelp.title}>Help</h1>
+			<ul style={cssHelp.ul}>
+				<li style={cssHelp.li}><a href='#whatisthis'>What is this?</a></li>
 			</ul>
-			<h2 style={css_help.sectionHeader} name="whatisthis">What is this?</h2>
-			<p style={css_help.section}>
+			<h2 name='whatisthis' style={cssHelp.sectionHeader}>What is this?</h2>
+			<p style={cssHelp.section}>
 				This is a free application that allows people to manage leagues.
 			</p>
 		</div>

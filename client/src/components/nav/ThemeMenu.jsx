@@ -2,7 +2,8 @@ import React from 'react';
 import IconButton from 'material-ui/IconButton';
 import Brush from 'material-ui/svg-icons/image/brush';
 import themes from '../themes';
-import { css_appBar as css } from '../style';
+import { cssAppBar as css } from '../style';
+import PropTypes from 'prop-types';
 
 // Generates the theme icons when the user clicks a theme
 // @themeList(Object) - a list of all current themes in an object uses the theme
@@ -14,16 +15,16 @@ import { css_appBar as css } from '../style';
 function generateThemeIcons(themeList, themeNames, changeTheme) {
 	return themeNames.map((themeName, i) => {
 		return (
-			<i style={Object.assign(
-					{},
-					css.themeMenuItem,
-				{
-					backgroundColor: themeList[themeName].primary1Color,
-					border: '2px solid ' + themeList[themeName].accent1Color,
-				})
-				}
+			<i
 				key={i}
 				onClick={changeTheme.bind(null, themeName)}
+				style={({
+					...css.themeMenuItem,
+				...{
+					backgroundColor: themeList[themeName].primary1Color,
+					border: '2px solid ' + themeList[themeName].accent1Color
+				}})
+				}
 			/>
 		);
 	});
@@ -34,19 +35,25 @@ const ThemeMenu = (props) => {
 	return (
 		<div>
 			{
-				props.themeMenuOpen && 
+				props.themeMenuOpen &&
 				generateThemeIcons(
 					themes.getThemeList(), themes.getThemeNames(), props.changeTheme)
 			}
-			<IconButton 
-				iconStyle={css.iconStyle} 
-				onClick={props.themeMenuToggle}
+			<IconButton
 				disableTouchRipple={true}
-			>
+				iconStyle={css.iconStyle}
+				onClick={props.themeMenuToggle}
+				>
 				<Brush />
 			</IconButton>
 		</div>
 	);
+};
+
+ThemeMenu.propTypes = {
+	changeTheme: PropTypes.func,
+	themeMenuOpen: PropTypes.bool,
+	themeMenuToggle: PropTypes.func
 };
 
 export default ThemeMenu;

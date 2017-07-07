@@ -1,6 +1,8 @@
 const express = require('express');
+
 const Router = express.Router();
 const mongoose = require('mongoose');
+
 const League = mongoose.model('league');
 
 
@@ -8,6 +10,7 @@ const League = mongoose.model('league');
 const createStaff = (req, res) => {
 	console.log(req.body);
 	const query = { _id: req.body.league };
+<<<<<<< HEAD
 	const updateInfo = {
 		staff: {
 			email: req.body.email,
@@ -15,6 +18,9 @@ const createStaff = (req, res) => {
 		}
 	};
 	const update = { '$push': updateInfo };
+=======
+	const update = { $push: { staff: req.body.email } };
+>>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 
 	League.findOneAndUpdate(query, update)
 		.exec()
@@ -37,12 +43,19 @@ const updateStaff = (req, res) => {
 const deleteStaff = (req, res) => {
 	console.log('query', req.query, 'params', req.params);
 	const query = { _id: req.query.leagueId };
+<<<<<<< HEAD
 	const update = { '$pull': { 'staff': { 'email': req.params.email } } };
+=======
+	const update = { $pull: { staff: req.params.email } };
+>>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 
 	League.findOneAndUpdate(query, update)
 		.exec()
 		.then(() => res.send('Successfully removed staff.'))
-		.catch(error => res.send({msg: 'An error occured while removing staff', error}));
+		.catch(error => res.send({
+			msg: 'An error occured while removing staff',
+			error
+		}));
 };
 
 Router.route('/create').post(createStaff);

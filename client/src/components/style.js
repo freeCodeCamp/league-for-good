@@ -9,35 +9,40 @@ export const common = {
 	raisedButton: {
 		label: {
 			color: theme.alternateTextColor,
-			fontWeight: 500,
+			fontWeight: 500
 		},
+<<<<<<< HEAD
 		style: { marginTop: '50px' },
 		backgroundColor: theme.accent1Color,
+=======
+		style: { marginTop: '30px' },
+		backgroundColor: theme.accent1Color
+>>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 	},
 	formRow: {
-		display:'flex',
-		justifyContent:'space-around',
-	},	
+		display: 'flex',
+		justifyContent: 'space-around'
+	},
 	form: {
 		width: '80%',
 		margin: '0px auto 15px',
-		textAlign: 'center',
-	},
+		textAlign: 'center'
+	}
 };
 
 
 // app bar component on top of window
-export const css_appBar = {
+export const cssAppBar = {
 	main: {
 		zIndex: 2000,
-		position: 'fixed',
+		position: 'fixed'
 	},
 	text: {
 		color: theme.alternateTextColor,
-		letterSpacing: 2,
+		letterSpacing: 2
 	},
 	iconStyle: {
-		color: theme.alternateTextColor,
+		color: theme.alternateTextColor
 	},
 	themeMenuItem: {
 		display: 'inline-block',
@@ -46,8 +51,8 @@ export const css_appBar = {
 		height: '25px',
 		marginRight: '5px',
 		cursor: 'pointer',
-		boxSizing: 'border-box',
-	},
+		boxSizing: 'border-box'
+	}
 };
 
 export const css_loading = {
@@ -67,62 +72,62 @@ export const css_loading = {
 };
 
 // login styling
-export const css_login = {
+export const cssLogin = {
 	raisedButton: common.raisedButton,
 	dialog: {
 		title: {
 			backgroundColor: theme.accent1Color,
 			borderBottom: '1px solid ' + theme.borderColor,
-			color: theme.alternateTextColor,
-		},
-	},
+			color: theme.alternateTextColor
+		}
+	}
 };
 
 
 // menu on left side of window
-export const css_menu = {
+export const cssMenu = {
 	drawer: {
 		list: {
-			marginTop: '70px',
-		},
+			marginTop: '70px'
+		}
 	},
 	avatar: {
-		backgroundColor: 'none',
-	},
+		backgroundColor: 'none'
+	}
 };
 
 
 // content is a wrapper that will contain the main
 // components rendered for the UI
-export const css_content = {
+export const cssContent = {
 	// paper is a material ui component used as background
 	paper: {
-		width:'90%',
-		margin:'85px auto',
+		width: '90%',
+		margin: '85px auto',
 		height: 'auto',
 		textAlign: 'center',
 		color: theme.textColor,
-		border:'1px solid ' + theme.borderColor,
+		border: '1px solid ' + theme.borderColor
 	},
 	header: {
 		width: '100%',
-		height: 'auto',
+		height: 'auto'
 	},
 	// navbar designed for use with icons
 	iconNavbar: {
 		iconButton: {
 			style: {
-				margin: '10px',
+				margin: '10px'
 			},
 			iconStyle: {
 				borderBottom: '4px solid ' + theme.accent3Color,
-				paddingBottom: '5px',
+				paddingBottom: '5px'
 			},
 			hoveredStyle: {
 				backgroundColor: theme.accent3Color,
-				borderRadius: '25px',
-			},
-		},
+				borderRadius: '25px'
+			}
+		}
 	},
 	body: {
 		width: '100%',
@@ -131,25 +136,25 @@ export const css_content = {
 		paddingTop: '40px',
 		paddingBottom: '40px',
 		backgroundColor: theme.alternateTextColor,
-		textAlign: 'left',
-	},
+		textAlign: 'left'
+	}
 };
 
 
 // the create league component contains a form and
 // corresponding buttons
-// rendered inside css_content
-export const css_createLeague = {
+// rendered inside cssContent
+export const cssCreateLeague = {
 	form: common.form,
 	raisedButton: common.raisedButton,
 	card: {
 		style: {
-			boxShadow: 'none',
+			boxShadow: 'none'
 		},
 		title: {
 			titleColor: theme.textColor,
-			subtitleColor: theme.textColor,
-		},
+			subtitleColor: theme.textColor
+		}
 	},
 	sportButton: {
 		style: {
@@ -158,11 +163,11 @@ export const css_createLeague = {
 			width: '160px',
 			height: 'auto',
 			textAlign: 'center',
-			padding: '5px',
+			padding: '5px'
 		},
 		active: theme.accent3Color,
 		inactive: theme.alternateTextColor,
-		hover: theme.accent3Color,
+		hover: theme.accent3Color
 	},
 	sportIcon: {
 		height: '30px',
@@ -170,26 +175,26 @@ export const css_createLeague = {
 		marginRight: '10px',
 		marginBottom: '10px',
 		width: '160px',
-		textAlign: 'center',
-	},
+		textAlign: 'center'
+	}
 };
 
 
 // dashboard will contain most of the actual managing
 // of the league data
-// rendered inside css_content
-export const css_dashboard = {
+// rendered inside cssContent
+export const cssDashboard = {
 	// tabs are used to display sections to the user
 	tabs: {
 		inkBar: {
-			zIndex: 999,
-		},
+			zIndex: 999
+		}
 	},
 	title: {
 		textAlign: 'center',
 		margin: '0px 0px 0px 20px',
 		padding: '0px',
-		color: theme.textColor,
+		color: theme.textColor
 	},
 	// top section of the dashboard
 	toolbar: {
@@ -197,42 +202,46 @@ export const css_dashboard = {
 			color: theme.alternateTextColor,
 			letterSpacing: 1.5,
 			fontWeight: 'bolder',
-			fontSize: '2em',
+			fontSize: '2em'
 		},
 		subtitle: {
 			color: theme.accent3Color,
-			marginLeft: '10px',
+			marginLeft: '10px'
 		},
 		separator: {
-			backgroundColor: theme.accent3Color,
-		},
+			backgroundColor: theme.accent3Color
+		}
 	},
 	warning: {
 		textAlign: 'center',
-		color: theme.warning,
+		color: theme.warning
 	},
 	warningButton: {
 		label: {
 			color: theme.alternateTextColor,
-			fontWeight: 500,
+			fontWeight: 500
 		},
 		style: { marginTop: '30px' },
-		backgroundColor: theme.warning,
+		backgroundColor: theme.warning
 	},
 	form: common.form,
 	formRow: common.formRow,
 	formRequired: {
-		color: theme.warning,
+		color: theme.warning
 	},
 	raisedButton: common.raisedButton,
 	// table contains the styling for the table template
 	table: {
 		style: {
-			backgroundColor: theme.alternateTextColor,
+			backgroundColor: theme.alternateTextColor
 		},
 		search: {
 			marginLeft: '20px',
+<<<<<<< HEAD
 			marginBottom: '10px',
+=======
+			marginBottom: '10px'
+>>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 		},
 		colHeaderHover: theme.alternateTextColor,
 		// colHeaderButtonLabel: {
@@ -242,24 +251,36 @@ export const css_dashboard = {
 		// 	margin: '0px',
 		// },
 		colHeaderStyle: {
+<<<<<<< HEAD
 			
 		},
 		colHeaderLabelStyle: {
 			display:'flex', 
 			alignItems:'center',
 			color: theme.textColor, 
+=======
+
+		},
+		colHeaderLabelStyle: {
+			display: 'flex',
+			alignItems: 'center',
+			color: theme.textColor
+>>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 		},
 		sortArrowActiveColor: theme.textColor,
 		sortArrowInactiveColor: theme.borderColor,
-		iconHover: {		// for icons rendered inside the table
+		// for icons rendered inside the table
+		iconHover: {
 			backgroundColor: theme.accent3Color,
-			borderRadius: '25px',
+			borderRadius: '25px'
 		},
-		// columns uses defaultCol for all the columns in the table and lets material ui
-		// to automatically size the columns to an appropriate width
-		// if you are using an icon for a column, use the icon style to reduce the width
-		// in the table since material ui will give it a width that is usually too large
+		// columns uses defaultCol for all the columns in the table and
+		// lets material ui automatically size the columns to an appropriate
+		// width. If you are using an icon for a column, use the icon style
+		// to reduce the width in the table since material ui will give it
+		// a width that is usually too large
 		columns: {
+<<<<<<< HEAD
 		 	
 			defaultCol: {
 				textAlign: 'center',
@@ -268,6 +289,16 @@ export const css_dashboard = {
 				textAlign: 'left',
 				
 			},
+=======
+
+			defaultCol: {
+				textAlign: 'center'
+			},
+			icon: {
+				textAlign: 'left'
+
+			}
+>>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 		},
 		// used for the team list displaying all teams in a league
 		teams: {
@@ -275,9 +306,9 @@ export const css_dashboard = {
 			dropdown: {
 				float: 'right',
 				padding: '0px',
-				margin: '0px',
-			},
-		},
+				margin: '0px'
+			}
+		}
 	},
 	// custom css in the teams tab
 	teams: {
@@ -285,20 +316,21 @@ export const css_dashboard = {
 			edit: {
 				style: {
 					margin: '0px auto',
-					width: '50%',
+					width: '50%'
 				},
 				checkbox: {
-					width: '125px',
+					width: '125px'
 				},
 				checkboxDiv: {
-					float: 'right',
-				},
-			},
-		},
+					float: 'right'
+				}
+			}
+		}
 	},
 	// custom css in the players tab
 	players: {
 		ul: {
+<<<<<<< HEAD
 			listStyleType: 'none',
 		},
 	},
@@ -326,26 +358,31 @@ export const css_dashboard = {
 			},
 		},
 	},
+=======
+			listStyleType: 'none'
+		}
+	}
+>>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 };
 
 
-// is rendered inside css_content
-export const css_help = {
+// is rendered inside cssContent
+export const cssHelp = {
 	container: {
 		backgroundColor: theme.alternateTextColor,
 		padding: '40px',
-		textAlign: 'left',
+		textAlign: 'left'
 	},
 	title: {
 		textAlign: 'center',
-		marginBottom: '30px',
+		marginBottom: '30px'
 	},
 	sectionHeader: {
 		marginTop: '10px',
-		marginBottom: '10px',
+		marginBottom: '10px'
 	},
 	section: {
-		marginLeft: '25px',
+		marginLeft: '25px'
 	},
 	ul: {
 		width: '75%',
@@ -355,42 +392,42 @@ export const css_help = {
 		marginBottom: '40px',
 		color: theme.alternateTextColor,
 		backgroundColor: theme.accent3Color,
-		border: '2px dotted ' + theme.borderColor,
+		border: '2px dotted ' + theme.borderColor
 	},
 	li: {
-		marginLeft: '20px',
-	},
+		marginLeft: '20px'
+	}
 };
 
 
-export const css_modal = {
+export const cssModal = {
 	dialogRoot: {
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
-		paddingTop: 0,
+		paddingTop: 0
 	},
 	dialogContent: {
 		position: 'relative',
 		width: '90%',
-		maxWidth: 800,
+		maxWidth: 800
 	},
 	dialogBody: {
-		paddingBottom: 0,
+		paddingBottom: 0
 	},
 	title: {
 		textAlign: 'left',
 		backgroundColor: theme.accent1Color,
 		borderBottom: '1px solid ' + theme.borderColor,
 		color: theme.alternateTextColor,
-		fontWeight: 400,
+		fontWeight: 400
 	},
 	raisedButton: {
-		style: Object.assign({}, common.raisedButton.style, { 
-			marginRight: '10px', 
-			marginBottom: '10px',
-		}),
+		style: ({...common.raisedButton.style, ...{
+			marginRight: '10px',
+			marginBottom: '10px'
+		}}),
 		label: common.raisedButton.label,
-		backgroundColor: common.raisedButton.backgroundColor,
-	},
+		backgroundColor: common.raisedButton.backgroundColor
+	}
 };

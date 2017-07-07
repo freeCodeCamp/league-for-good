@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Tabs, Tab } from 'material-ui/Tabs';
 import { generateLinks } from './tab_navbar/generateLinks.jsx';
 import { tabs } from './leagueTabData';
-import { css_content, css_dashboard } from '../../style';
+import { cssDashboard } from '../../style';
 
 import TeamRoutes from '../teams/routes.jsx';
 import PlayerRoutes from '../players/routes.jsx';
@@ -13,25 +14,25 @@ import SettingsRoutes from '../settings/routes.jsx';
 const routes = {
 	Teams: <TeamRoutes />,
 	Players: <PlayerRoutes />,
-	Seasons: <div></div>,
-	Settings: <SettingsRoutes />,
+	Seasons: <div />,
+	Settings: <SettingsRoutes />
 };
 
 // Tabs for each section the user can manage
 const LeagueTabs = ({history, leagueId}) => {
-	
+
 	return (
-		<Tabs inkBarStyle={css_dashboard.tabs.inkBar}>
+		<Tabs inkBarStyle={cssDashboard.tabs.inkBar}>
 			{
 				tabs.map((tab, i) => (
-					<Tab 
-						label={tab.name}
+					<Tab
 						key={i}
-						style={css_dashboard.tabs.tab}
+						label={tab.name}
 						onActive={()=> history.push(tab.links[0].url)}
-					>
+						style={cssDashboard.tabs.tab}
+						>
 						{generateLinks(tab.links, leagueId)}
-						{routes[tab.name]}	
+						{routes[tab.name]}
 					</Tab>
 					)
 				)
@@ -40,5 +41,9 @@ const LeagueTabs = ({history, leagueId}) => {
 	);
 };
 
+LeagueTabs.propTypes = {
+	history: PropTypes.object,
+	leagueId: PropTypes.string
+};
 
 export default LeagueTabs;

@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import {reducer as formReducer} from 'redux-form';
+import { reducer as formReducer } from 'redux-form';
 import modalReducer from './modal';
 import snackbarReducer from './snackbar';
 import authReducer from './auth';
@@ -13,8 +13,9 @@ import playerReducer from './player';
 import settingsReducer from './settings';
 import rolesReducer from './roles';
 
-//Create a single 'reducer' that stores all other various slices of state that were defined in the other reducers
-//Redux uses a 'single source of truth' for an application's 'store'
+// Create a single 'reducer' that stores all other various slices of
+// state that were defined in the other reducers
+// Redux uses a 'single source of truth' for an application's 'store'
 
 const rootReducer = combineReducers({
 	snackbar: snackbarReducer,
@@ -27,9 +28,14 @@ const rootReducer = combineReducers({
 	manage: manageReducer,
 	roster: rosterReducer,
 	theme: themeReducer,
+<<<<<<< HEAD
 	players:playerReducer,
 	settings: settingsReducer,
 	roles: rolesReducer,
+=======
+	players: playerReducer,
+	settings: settingsReducer
+>>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 });
 
 export default rootReducer;

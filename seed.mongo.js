@@ -1,4 +1,4 @@
-//mongo ds139899.mlab.com:39899/league-for-good -u ahstein3521 -p Wouldnt you like to know
+// mongo ds139899.mlab.com:39899/league-for-good -u ahstein3521 -p 
 
 // var playerIds =  [
 // "59271a9debc3cb2730e067c7",
@@ -31,25 +31,25 @@
 
 // var leagues = db.leagues.find({}, {_id:1}).toArray();
 
-var players = db.players.find({});
+// var players = db.players.find({});
 
 
-players.forEach(function(player){
+// players.forEach(function(player) {
 
 
-		var q = {_id: player._id};
-		var t = player.teams[0];
-		
+// 		var q = {_id: player._id};
+// 		var t = player.teams[0];
 
-		if(t){
 
-			var team = {
-				teamId: t.teamId,
-				seasonId: t.season_id,
-				position: t.position,
-				jersey_num: t.jersey_num,
-			};	
-			db.players.update(q, {$set: {teams: [team]}})
-		} 
-})
+// 		if (t) {
+
+// 			var team = {
+// 				teamId: t.teamId,
+// 				seasonId: t.seasonId,
+// 				position: t.position,
+// 				jerseyNum: t.jerseyNum
+// 			};
+// 			db.players.update(q, {$set: {teams: [team]}});
+// 		}
+// });
 

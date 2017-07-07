@@ -1,10 +1,14 @@
 // import React from 'react';
 // import { reduxForm, Field } from 'redux-form';
 // import { AutoComplete } from 'redux-form-material-ui';
-// import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+// import { Toolbar,
+//    ToolbarGroup,
+//     ToolbarSeparator,
+//     ToolbarTitle
+// } from 'material-ui/Toolbar';
 // import RaisedButton from 'material-ui/RaisedButton';
 // import { findRoster } from '../../../../actions/index';
-// import { common, css_dashboard } from '../../../style';
+// import { common, cssDashboard } from '../../../style';
 
 // const validate = val => {
 // 	const errors = {};
@@ -21,13 +25,13 @@
 // 		<Toolbar>
 // 			<ToolbarTitle text={title}/>
 // 			<ToolbarGroup>
-				
+
 // 				<ToolbarSeparator/>
-// 			<form 
+// 			<form
 // 				style={{padding:15}}
 // 				onSubmit={handleSubmit}
 // 			>
-// 				<Field 
+// 				<Field
 // 					onNewRequest={team => change("team", team)}
 // 					name="team"
 // 					component={AutoComplete}
@@ -41,9 +45,9 @@
 // 				<RaisedButton
 // 					label="Find"
 // 					style={{marginLeft:15}}
-// 					backgroundColor={css_dashboard.raisedButton.backgroundColor}
+// 					backgroundColor={cssDashboard.raisedButton.backgroundColor}
 // 					type="submit"
-// 				/>				
+// 				/>
 // 			</form>
 // 			</ToolbarGroup>
 // 		</Toolbar>

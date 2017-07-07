@@ -1,19 +1,20 @@
 import React from 'react';
-import { css_dashboard } from '../../../style';
+import { cssDashboard } from '../../../style';
 import Icon from './staffActions.jsx';
 
-//All staff data passed from the reducers is reformatted here so it contains the correct
-//values for the TableTemplate component
+// All staff data passed from the reducers is reformatted here so
+// it contains the correct values for the TableTemplate component
 
 // Column headers and data
 export const colData = [
-	{ 
+	{
 		label: 'Email',
-		cellProp: 'email', 
-		sortable: true, 
-		searchable: true, 
+		cellProp: 'email',
+		sortable: true,
+		searchable: true
 	},
 	{
+<<<<<<< HEAD
 		label: 'Role',
 		cellProp: 'role',
 		sortable: true,
@@ -31,11 +32,19 @@ export const colData = [
 		action: 'delete', 
 		cellProp: 'icon', 
 	},	
+=======
+		label: 'Delete',
+		style: cssDashboard.table.columns.icon,
+		action: 'delete',
+		cellProp: 'icon'
+	}
+>>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 ];
 
 // Get the value for the cell
 function getCellValue(staff, prop, action, leagueId) {
 
+<<<<<<< HEAD
 	if (prop.split('.').length > 1) {
 		return prop.split('.').reduce((o, i) => o[i], staff);
 	}
@@ -47,18 +56,29 @@ function getCellValue(staff, prop, action, leagueId) {
 	// The staff data is passed as an array of strings unlike the teams and players list tables 
 	// so we just pass the string back for each cell value if it's not a delete icon
 	return staff[prop];
+=======
+	if (prop === 'icon') {
+		const iconProps = { action, email: staff, leagueId };
+		return <Icon {...iconProps} />;
+	}
+
+	// The staff data is passed as an array of strings unlike
+	// the teams and players list tables so we just pass the string
+	// back for each cell value if it's not a delete icon
+	return staff;
+>>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 }
-	
+
 
 // Massage the data for the table body
 const getStaffTableData = (staff, leagueId) => {
-	//map each row
+	// map each row
 	return staff.map( staffMember => {
-		//map each cell
+		// map each cell
 		return colData.map( col => (
 			{
 				value: getCellValue(staffMember, col.cellProp, col.action, leagueId),
-				style: col.style,
+				style: col.style
 			}
 		));
 	});

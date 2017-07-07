@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Dialog from 'material-ui/Dialog';
@@ -9,7 +10,7 @@ import { submit } from 'redux-form';
 import modalMapping from './modalMappings.jsx';
 import * as submitActions from '../../actions/index';
 
-import { css_modal } from '../style';
+import { cssModal } from '../style';
 
 class Modal extends Component {
 
@@ -21,55 +22,56 @@ class Modal extends Component {
 	getAction = () => {
 		const { view, dispatch } = this.props;
 		const { onSubmit, reduxFormName } = modalMapping[view];
-		
-		//HAndle edge case in which ReduxForm component is being used as child content
-		//and needs to be submitted remotely via a modal action
-		if( reduxFormName ){
-			return { handleSubmit:() => dispatch(submit(reduxFormName)) };
-		}		
 
-		return bindActionCreators({ 
-			handleSubmit: submitActions[onSubmit],
-		}, dispatch); 
+		// HAndle edge case in which ReduxForm component is being used as
+		// child content and needs to be submitted remotely via a modal action
+		if ( reduxFormName ) {
+			return { handleSubmit: () => dispatch(submit(reduxFormName)) };
+		}
+
+		return bindActionCreators({
+			// eslint-disable-next-line import/namespace
+			handleSubmit: submitActions[onSubmit]
+		}, dispatch);
 	};
 
 	render() {
-	
+
 		const { view, open, data } = this.props;
-	
+
 		const { title, Children, actionLabel } = modalMapping[view];
-		
+
 		const handleSubmit = this.getAction().handleSubmit;
 
 		const actions = [
 			<RaisedButton
+				backgroundColor={cssModal.raisedButton.backgroundColor}
 				label={actionLabel || 'Submit'}
-				labelStyle={css_modal.raisedButton.label} 
-				backgroundColor={css_modal.raisedButton.backgroundColor}
-				style={css_modal.raisedButton.style}
+				labelStyle={cssModal.raisedButton.label}
 				onTouchTap={() => handleSubmit(data)}
+				style={cssModal.raisedButton.style}
 			/>,
 			<RaisedButton
-				label="Cancel"
-				labelStyle={css_modal.raisedButton.label} 
-				backgroundColor={css_modal.raisedButton.backgroundColor}
-				style={css_modal.raisedButton.style}
+				backgroundColor={cssModal.raisedButton.backgroundColor}
+				label='Cancel'
+				labelStyle={cssModal.raisedButton.label}
 				onTouchTap={this.handleClose}
-			/>,
+				style={cssModal.raisedButton.style}
+			/>
 		];
 
 		return (
 			<div>
 				<Dialog
-					contentStyle={css_modal.dialogContent}
-					bodyStyle={css_modal.dialogBody}
-					title={title}
-					titleStyle={css_modal.title}
 					actions={actions}
+					bodyStyle={cssModal.dialogBody}
+					contentStyle={cssModal.dialogContent}
 					modal={false}
-					open={this.props.open}
 					onRequestClose={this.handleClose}
-				>
+					open={open}
+					title={title}
+					titleStyle={cssModal.title}
+					>
 					{Children ? <Children {...data} /> : null}
 				</Dialog>
 			</div>
@@ -77,8 +79,20 @@ class Modal extends Component {
 	}
 }
 
+<<<<<<< HEAD
 function mapStateToProps({ modal, league }) {
 	const { open, view, data } = modal; 
+=======
+Modal.propTypes = {
+	data: PropTypes.object,
+	dispatch: PropTypes.func,
+	open: PropTypes.bool,
+	view: PropTypes.string
+};
+
+function mapStateToProps({ modal }) {
+	const { open, view, data } = modal;
+>>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 	return { open, view, data };
 }
 

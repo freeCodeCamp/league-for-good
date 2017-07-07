@@ -1,76 +1,83 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { AutoComplete, TextField } from 'redux-form-material-ui';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import { assignPlayer, openSnackbar } from '../../../../actions/index';
-import { css_content, css_dashboard } from '../../../style';
+import { cssContent, cssDashboard } from '../../../style';
 
 import { normalizeJerseyNum } from './utils/normalize';
-import validate  from './utils/assignPlayerValidation';
+import validate from './utils/assignPlayerValidation';
 
 let AssignPlayerForm = props => {
 	const {teams, players, handleSubmit } = props;
 	return (
-		<div style={css_content.body}>
-			<h1 style={css_dashboard.title}>Assign Player</h1>
-			<form 
-				style={css_dashboard.form}
+		<div style={cssContent.body}>
+			<h1 style={cssDashboard.title}>Assign Player</h1>
+			<form
 				onSubmit={handleSubmit}
-			>	
-				<div style={css_dashboard.formRow}>	
-					<Field 
-						name="teamId"
+				style={cssDashboard.form}
+				>
+				<div style={cssDashboard.formRow}>
+					<Field
 						component={AutoComplete}
-						filter={AutoComplete.caseInsensitiveFilter}
-						floatingLabelText="Team"
 						dataSource={teams}
-						dataSourceConfig={{text:'name', value:'_id'}}
+						dataSourceConfig={{text: 'name', value: '_id'}}
+						filter={AutoComplete.caseInsensitiveFilter}
+						floatingLabelText='Team'
 						maxSearchResults={5}
+						name='teamId'
 					/>
 					<Field
 						component={AutoComplete}
-						filter={AutoComplete.caseInsensitiveFilter}
 						dataSource={players}
+						dataSourceConfig={{text: 'fullName', value: '_id'}}
+						filter={AutoComplete.caseInsensitiveFilter}
+						floatingLabelText='Select a player'
 						maxSearchResults={3}
-						dataSourceConfig={{text:'full_name', value:'_id'}}
-						floatingLabelText="Select a player"
-						name="playerId"
+						name='playerId'
 					/>
-				</div>	
-				<div style={css_dashboard.formRow}>
+				</div>
+				<div style={cssDashboard.formRow}>
 					<Field
 						component={TextField}
-						type="number"
-						floatingLabelText="Jersey Number"
-						name="jersey_num"
+						floatingLabelText='Jersey Number'
+						name='jerseyNum'
 						normalize={normalizeJerseyNum}
+						type='number'
 					/>
 					<Field
 						component={TextField}
-						floatingLabelText="Position(s)"
-						name="position"
+						floatingLabelText='Position(s)'
+						name='position'
 					/>
 				</div>
 				<RaisedButton
-					type="submit"
-					label="Assign Player"
-					labelStyle={css_dashboard.raisedButton.label}
-					backgroundColor={css_dashboard.raisedButton.backgroundColor}
+					backgroundColor={cssDashboard.raisedButton.backgroundColor}
+					label='Assign Player'
+					labelStyle={cssDashboard.raisedButton.label}
+					type='submit'
 				/>
 			</form>
 		</div>
 	);
 };
 
+AssignPlayerForm.propTypes = {
+	handleSubmit: PropTypes.func,
+	players: PropTypes.arrayOf(PropTypes.object),
+	teams: PropTypes.arrayOf(PropTypes.object)
+};
+
 const mapState = ({players, teams}) => ({teams, players: players.list});
 
 AssignPlayerForm = connect(mapState)(AssignPlayerForm);
 
-export default reduxForm({ 
+export default reduxForm({
 	form: 'AssignPlayerForm',
-	onSubmit: assignPlayer, 
-	onSubmitSuccess: openSnackbar, 
-	validate,
+	onSubmit: assignPlayer,
+	onSubmitSuccess: openSnackbar,
+	validate
 })(AssignPlayerForm);
