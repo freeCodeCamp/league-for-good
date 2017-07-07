@@ -6,20 +6,12 @@ import IconButton from 'material-ui/IconButton';
 import BackArrow from 'material-ui/svg-icons/navigation/arrow-back';
 
 const PlayerApplication = ({ location, history }) => {
-<<<<<<< HEAD
-	//Player application is loaded from state stored in react-router's location property
-	//rather than from redux store
-	/*
-		As pending_player data grows perhaps its a better idea to fetch the info from the server 
-		rather than loading it all at once when the page initializes
-=======
 	// Player application is loaded from state stored in react-router's
 	// location property rather than from redux store
 	/*
 		As pending_player data grows perhaps its a better idea to fetch
 		the info from the server rather than loading it all at once when
 		the page initializes
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 	*/
 	const { state: { player }} = location;
 	if (!player) {
@@ -57,13 +49,9 @@ const PlayerApplication = ({ location, history }) => {
 	);
 };
 
-<<<<<<< HEAD
-export default PlayerApplication
-=======
 PlayerApplication.propTypes = {
 	history: PropTypes.object,
 	location: PropTypes.object
 };
 
 export default PlayerApplication;
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2

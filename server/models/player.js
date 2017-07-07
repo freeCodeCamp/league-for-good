@@ -2,12 +2,7 @@
 * Player model stores information about each player,
 * their contact info, and teams they played on
 */
-<<<<<<< HEAD
-const mongoose = require('mongoose')
-=======
 const mongoose = require('mongoose');
-
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 const Schema = mongoose.Schema;
 
 const capitalize = require('./plugins/capitalize');
@@ -69,14 +64,6 @@ PlayerSchema.virtual('fullName').get(function() {
 	return `${this.firstName} ${this.lastName}`;
 });
 
-<<<<<<< HEAD
-//TODO -- virtual should return team config relative to league AND seasonId
-PlayerSchema.virtual('team').get(function () {
-	return this.teams[0];
-});
-
-PlayerSchema.plugin(removeRefs, { modelName: 'league', field: 'pending_players' });
-=======
 // TODO -- virtual should return team config relative to league AND seasonId
 PlayerSchema.virtual('team').get(function() {
 	return this.teams[0];
@@ -85,7 +72,7 @@ PlayerSchema.virtual('team').get(function() {
 PlayerSchema.plugin(removeRefs, {
 	modelName: 'league', field: 'pendingPlayers'
 });
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
+
 PlayerSchema.plugin(capitalize, { fields });
 
 module.exports = mongoose.model('player', PlayerSchema);

@@ -15,15 +15,6 @@ import ArrowUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
 import ArrowDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
 import { cssDashboard } from '../../../style';
 
-// IMPORTED STYLES
-const { table: {
-	sortArrowActiveColor,
-	sortArrowInactiveColor,
-	colHeaderLabelStyle,
-	colHeaderStyle
-}} = cssDashboard;
-// ///////////////////////
-
 
 // IMPORTED STYLES 
 const { table: { 
@@ -100,14 +91,9 @@ const Headers = (props) => {
 						<TableHeaderColumn
 							colSpan={header.colSpan || 1}
 							key={i}
-<<<<<<< HEAD
 							colSpan={header.colSpan || 1}
 							style={colHeaderStyle}
 						>
-=======
-							style={colHeaderStyle}
-							>
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 							<ColumnHeaderChild
 								colIndex={i}
 								label={header.label}
@@ -142,17 +128,11 @@ const renderBody = (rows) => {
 						{
 							row.map(function(rowData, i) {
 								return (
-<<<<<<< HEAD
 									<TableRowColumn 
 										colSpan={rowData.colSpan}
 										style={rowData.style}
-=======
-									<TableRowColumn
-										colSpan={rowData.colSpan}
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 										key={i}
-										style={rowData.style}
-										>
+									>
 										{ i === 0 ? <strong>{rowData.value}</strong>
 												: <span>{rowData.value}</span>
 										}
@@ -169,23 +149,14 @@ const renderBody = (rows) => {
 // column header with sorting icons
 // when clicked will sort columns with asc, desc, or no order
 const ColumnHeaderChild = props => {
-<<<<<<< HEAD
-	
-	let arrowIcon = <noScript />;
-
-	//Return early if column is not sortable
-=======
-
 	let arrowIcon = <noScript />;
 
 	// Return early if column is not sortable
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 	if (!props.sortable) {
 		return (
 			<div style={colHeaderLabelStyle}>
 				{props.label}
 			</div>
-<<<<<<< HEAD
 		)
 	}
 	
@@ -201,27 +172,6 @@ const ColumnHeaderChild = props => {
 		else {
 			arrowIcon = <ArrowUp color={iconColor} />;
 		}
-=======
-		);
-	}
-
-
-	let columnSorted = props.colIndex === props.sortColumnIndex;
-	let iconColor = columnSorted ? sortArrowActiveColor : sortArrowInactiveColor;
-
-	// Determine appropriate icon and icon color
-	if (props.sortDirection === 'asc') {
-		if (columnSorted) {
-			arrowIcon = <ArrowDown color={iconColor} />;
-		}		else {
-			arrowIcon = <ArrowUp color={iconColor} />;
-		}
-	}	else if (props.sortDirection === 'desc') {
-		arrowIcon = <ArrowUp color={iconColor} />;
-	} else {
-		// else, no sorting
-		arrowIcon = <ArrowUp color={iconColor} />;
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 	}
 	else if (props.sortDirection === 'desc') {
 		arrowIcon = <ArrowUp color={iconColor} />;
@@ -234,21 +184,12 @@ const ColumnHeaderChild = props => {
 
 
 	return (
-<<<<<<< HEAD
 		<div 
 			style={{...colHeaderLabelStyle, cursor:'pointer'}}
 			onClick={() => { props.onClick(props.colIndex); }}
 		>
 			{props.label}	
 			{arrowIcon}
-=======
-		<div
-			onClick={() => { props.onClick(props.colIndex); }}
-			style={{...colHeaderLabelStyle, cursor: 'pointer'}}
-			>
-			{arrowIcon}
-			{props.label}
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 		</div>
 	);
 };

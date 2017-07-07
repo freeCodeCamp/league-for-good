@@ -1,7 +1,4 @@
 import axios from 'axios';
-<<<<<<< HEAD
-import { CREATE_STAFF_MEMBER, REMOVE_STAFF_MEMBER, UPDATE_STAFF_MEMBER, SELECT_STAFF_MEMBERS, CLOSE_MODAL, OPEN_SNACKBAR } from './types';
-=======
 import {
 	CREATE_STAFF_MEMBER,
 	REMOVE_STAFF_MEMBER,
@@ -9,7 +6,6 @@ import {
 	CLOSE_MODAL,
 	OPEN_SNACKBAR
 } from './types';
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 import { rootURL } from '../../globals';
 
 export function selectStaff(staff) {
@@ -20,7 +16,6 @@ export function addStaffMember(formVals, dispatch, { location }) {
 
 	const body = {
 		email: formVals.email,
-<<<<<<< HEAD
 		league: location.state.leagueId,
 		roleTitle: formVals.role,
 	};
@@ -28,14 +23,6 @@ export function addStaffMember(formVals, dispatch, { location }) {
 	axios.post(`${rootURL}/settings/create`, body)
 		.then(({data}) => {
 			return dispatch({ type: CREATE_STAFF_MEMBER, newStaff: { email: body.email, role: body.roleTitle, teams: [] }});
-=======
-		league: location.state.leagueId
-	};
-
-	axios.post(`${rootURL}/settings/create`, body)
-		.then(() => {
-			return dispatch({ type: CREATE_STAFF_MEMBER, newStaff: body.email });
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 		})
 		.catch( err => {
 			throw new Error(err);

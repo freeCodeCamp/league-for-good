@@ -11,13 +11,8 @@ export const common = {
 			color: theme.alternateTextColor,
 			fontWeight: 500
 		},
-<<<<<<< HEAD
 		style: { marginTop: '50px' },
 		backgroundColor: theme.accent1Color,
-=======
-		style: { marginTop: '30px' },
-		backgroundColor: theme.accent1Color
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 	},
 	formRow: {
 		display: 'flex',
@@ -237,11 +232,7 @@ export const cssDashboard = {
 		},
 		search: {
 			marginLeft: '20px',
-<<<<<<< HEAD
-			marginBottom: '10px',
-=======
 			marginBottom: '10px'
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 		},
 		colHeaderHover: theme.alternateTextColor,
 		// colHeaderButtonLabel: {
@@ -251,21 +242,12 @@ export const cssDashboard = {
 		// 	margin: '0px',
 		// },
 		colHeaderStyle: {
-<<<<<<< HEAD
-			
-		},
-		colHeaderLabelStyle: {
-			display:'flex', 
-			alignItems:'center',
-			color: theme.textColor, 
-=======
 
 		},
 		colHeaderLabelStyle: {
 			display: 'flex',
 			alignItems: 'center',
 			color: theme.textColor
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 		},
 		sortArrowActiveColor: theme.textColor,
 		sortArrowInactiveColor: theme.borderColor,
@@ -280,16 +262,6 @@ export const cssDashboard = {
 		// to reduce the width in the table since material ui will give it
 		// a width that is usually too large
 		columns: {
-<<<<<<< HEAD
-		 	
-			defaultCol: {
-				textAlign: 'center',
-			},
-			icon: {
-				textAlign: 'left',
-				
-			},
-=======
 
 			defaultCol: {
 				textAlign: 'center'
@@ -298,7 +270,6 @@ export const cssDashboard = {
 				textAlign: 'left'
 
 			}
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 		},
 		// used for the team list displaying all teams in a league
 		teams: {
@@ -330,7 +301,6 @@ export const cssDashboard = {
 	// custom css in the players tab
 	players: {
 		ul: {
-<<<<<<< HEAD
 			listStyleType: 'none',
 		},
 	},
@@ -358,11 +328,6 @@ export const cssDashboard = {
 			},
 		},
 	},
-=======
-			listStyleType: 'none'
-		}
-	}
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 };
 
 

@@ -38,12 +38,7 @@ const store = createStore(reducers, applyMiddleware(thunk));
 // store.subscribe(handleThemeChange);
 
 const Root = () => {
-<<<<<<< HEAD
-	return(
-=======
-
 	return (
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 		<Provider store={store}>
 			<App />
 		</Provider>

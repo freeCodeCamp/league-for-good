@@ -17,7 +17,6 @@ class Icon extends Component {
 		this.openModal = this.openModal.bind(this);
 	}
 
-<<<<<<< HEAD
 	openModal(staff, action) {
 		if (action === 'edit') {
 			this.props.openModal('editStaff', staff);
@@ -40,21 +39,6 @@ class Icon extends Component {
 					<EditIcon /> :
 					<DeleteIcon />
 				}
-=======
-	openModal(staff) {
-		this.props.openModal('removeStaff', staff);
-	}
-
-	render() {
-		const { email, leagueId } = this.props;
-
-		return (
-			<IconButton
-				hoveredStyle={cssDashboard.table.iconHover}
-				onTouchTap={()=> this.openModal({ email, leagueId }) }
-				>
-				<DeleteIcon />
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 			</IconButton>
 		);
 	}

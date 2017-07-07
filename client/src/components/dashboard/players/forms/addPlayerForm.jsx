@@ -12,13 +12,8 @@ import {
 } from '../../../../actions/index';
 import { cssContent, cssDashboard } from '../../../style';
 
-<<<<<<< HEAD:client/src/components/dashboard/players/forms/addPlayerForm.jsx
 import { normalizeJerseyNum as normalize } from './utils/normalize'; 
 import validate from './utils/addPlayerFormValidation';
-=======
-import { normalizeJerseyNum as normalize } from './utils/normalize';
-import validate from './utils/playerFormValidation';
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2:client/src/components/dashboard/players/forms/playerForm.jsx
 
 let PlayerFormTemplate = ({handleSubmit, teams, title}) => {
 	return (

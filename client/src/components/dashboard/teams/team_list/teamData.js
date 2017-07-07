@@ -10,46 +10,6 @@ import Link from './teamRosterLink.jsx';
 export const colData = [
 	{
 		label: 'Name',
-<<<<<<< HEAD
-		cellProp: 'name', 
-		sortable: true, 
-		searchable: true,
-		colSpan:2,
-
-	},
-	{ 
-		label: 'Roster Size', 
-		cellProp: 'players.length', 
-		sortable: true,
-		style: css_dashboard.table.columns.defaultCol, 
-	},
-	{ 
-		label: 'Seasons', 
-		cellProp: 'seasons.length', 
-		sortable: true,
-		style: css_dashboard.table.columns.defaultCol, 
-	},
-	{ 
-		label: 'Status', 
-		cellProp: 'currently_active',
-		sortable: true, 
-		style: css_dashboard.table.columns.defaultCol, 
-	},
-	{
-		label: 'Roster',
-		cellProp: 'link',
-	},	
-	{ 
-		label: 'Edit', 
-		action: 'edit', 
-		cellProp: 'icon', 
-	},
-	{ 
-		label: 'Delete', 
-		action: 'delete', 
-		cellProp: 'icon', 
-	},	
-=======
 		cellProp: 'name',
 		sortable: true,
 		searchable: true,
@@ -88,7 +48,6 @@ export const colData = [
 		action: 'delete',
 		cellProp: 'icon'
 	}
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 ];
 
 // Get the value for the cell
@@ -121,11 +80,7 @@ const getTeamTableData = ({ teams }) => {
 			{
 				value: getCellValue(team, col.cellProp, col.action),
 				colSpan: col.colSpan || 1,
-<<<<<<< HEAD
 				style: col.style,
-=======
-				style: col.style
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 			}
 		));
 	});

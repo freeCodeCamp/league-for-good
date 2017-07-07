@@ -12,16 +12,6 @@ import PlayerRegDetails from './applications/playerRegDetails.jsx';
 
 const PlayerRoutes = () => (
 	<div>
-<<<<<<< HEAD
-		<Route exact path={Links.PLAYER_LIST} component={PlayerList}/>
-		<Route path={Links.PLAYER_DETAIL} component={PlayerDetails} />
-		<Route path={Links.PLAYER_ASSIGN_FORM} component={AssignPlayer}/>
-		<Route path={Links.PLAYER_ADD_FORM} component={AddPlayerForm}/>
-		<Route path={Links.PLAYER_UPDATE_FORM} component={AddPlayerForm}/>
-		<Route exact path={Links.PLAYER_REGISTRATION_LIST} component={PlayerRegList}/>
-		<Route path={Links.PLAYER_REGISTRATION_DETAILS} component={PlayerRegDetails}/>
-	</div>	
-=======
 		<Route
 			component={PlayerList}
 			exact={true}
@@ -53,7 +43,6 @@ const PlayerRoutes = () => (
 			path={Links.PLAYER_REGISTRATION_DETAILS}
 		/>
 	</div>
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 );
 
 export default PlayerRoutes;

@@ -7,15 +7,9 @@ const passport = require('passport');
 const Leagues = mongoose.model('league');
 const Roles = mongoose.model('role');
 
-<<<<<<< HEAD
-function logInUser(req, res){
-	req.logIn(req.user, err => {
-		if (err) throw err;
-=======
 function logInUser(req, res) {
 	req.logIn(req.user, err => {
 		if (err) {throw err;}
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 		res.redirect('/');
 	});
 }
@@ -25,7 +19,6 @@ function logOutUser(req, res) {
 	res.send('User logged out');
 }
 
-<<<<<<< HEAD
 // This is called when the user loads up the page to get 
 // all of the initial data if they have an authenticated session
 //	Initial data:
@@ -37,30 +30,16 @@ function fetchInitialData(req, res, next){
 	if (!user) return next();
 
 	const query = { '$or': [ { owner: user._id }, { 'staff.email': user.email } ] };
-	console.log('fetch init data');
 
 	const leaguePromise =  Leagues.find(query)
-		.populate('teams');
-	const rolePromise =  Roles.find({});
+		.select('name _id sportType');
+	const rolePromise =  Roles.find({})
+		.select('title privileges');
 
 	return Promise.all([leaguePromise.exec(), rolePromise.exec()])
 		.then(initData => { 
 			console.log(initData);
 			res.send({user, leagueInfo: initData[0], roles: initData[1], loggedIn: true });
-=======
-// This is called when the user loads up the page to get
-// all of their teams and leagues if they have an authenticated session
-function fetchUserAndLeagues(req, res, next) {
-	const { user } = req;
-
-	if (!user) {return next();}
-
-	return Leagues.find({ owner: user._id })
-		.select('name _id sportType')
-		.exec()
-		.then(leagueInfo => {
-			res.send({user, leagueInfo, loggedIn: true });
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 		})
 		.catch((err) => res.send(err));
 }
@@ -83,8 +62,4 @@ Router.route('/logout')
 Router.route('/authenticate')
   .post(fetchInitialData, handleAuthFailure);
 
-<<<<<<< HEAD
 module.exports = Router;  
-=======
-module.exports = Router;
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2

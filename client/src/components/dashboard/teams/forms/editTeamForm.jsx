@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import React, {Component} from 'react';
-=======
 import React from 'react';
 import PropTypes from 'prop-types';
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 import { TextField, Checkbox } from 'redux-form-material-ui';
 import { Field, reduxForm } from 'redux-form';
 import { updateTeam, openSnackbar } from '../../../../actions/index';

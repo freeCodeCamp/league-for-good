@@ -28,14 +28,9 @@ const rootReducer = combineReducers({
 	manage: manageReducer,
 	roster: rosterReducer,
 	theme: themeReducer,
-<<<<<<< HEAD
 	players:playerReducer,
 	settings: settingsReducer,
-	roles: rolesReducer,
-=======
-	players: playerReducer,
-	settings: settingsReducer
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
+	roles: rolesReducer
 });
 
 export default rootReducer;

@@ -1,18 +1,9 @@
 import EditTeamForm from '../dashboard/teams/forms/editTeamForm.jsx';
 import EditStaffForm from '../dashboard/settings/forms/editStaffForm.jsx';
 import DeleteTeamForm from '../dashboard/teams/forms/deleteTeamForm.jsx';
-<<<<<<< HEAD
 import DeleteStaffForm from '../dashboard/settings/forms/deleteStaffForm.jsx';
 import DeletePlayerRegForm from '../dashboard/players/applications/modals/delete.jsx';
-import { reduxForm } from 'redux-form';
 /* Map all the components and/or props to be used inside the main modal component
-=======
-import DeleteStaffForm from
-	'../dashboard/settings/forms/deleteStaffForm.jsx';
-import DeletePlayerRegForm from
-	'../dashboard/players/applications/modals/delete.jsx';
-/* Map all components and/or props to be used inside the main modal component
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 	Required:
 		title -    (STRING) The modals title prop
 		Children - (function/null) Components to be rendered inside the modal
@@ -71,11 +62,7 @@ const mappings = {
 		Children: EditTeamForm,
 		onSubmit: null,
 		reduxFormName: 'EditTeamForm',
-<<<<<<< HEAD
-		actionLabel: 'Edit Team',
-=======
 		actionLabel: 'Edit Team'
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 	},
 /*	editStaff: {
 		title: 'Edit Staff',
@@ -93,23 +80,12 @@ const mappings = {
 	assignPlayer: {
 
 	},
-<<<<<<< HEAD
-	assignPlayer: {
-
-	},
-=======
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 	removePlayerApplication: {
 		title: 'Delete Player Application',
 		Children: DeletePlayerRegForm,
 		onSubmit: 'deletePlayerRegistration',
-<<<<<<< HEAD
-		actionLabel: 'Delete',
-	},
-=======
 		actionLabel: 'Delete'
 	}
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 };
 
 export default mappings;

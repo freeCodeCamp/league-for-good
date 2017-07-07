@@ -79,10 +79,6 @@ class Modal extends Component {
 	}
 }
 
-<<<<<<< HEAD
-function mapStateToProps({ modal, league }) {
-	const { open, view, data } = modal; 
-=======
 Modal.propTypes = {
 	data: PropTypes.object,
 	dispatch: PropTypes.func,
@@ -92,7 +88,6 @@ Modal.propTypes = {
 
 function mapStateToProps({ modal }) {
 	const { open, view, data } = modal;
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 	return { open, view, data };
 }
 

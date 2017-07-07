@@ -14,16 +14,10 @@ const getRegForm = (req, res) => {
 	League.findById(leagueId)
 		.exec()
 		.then(league => res.render('playerRegistration', { league } ))
-<<<<<<< HEAD
-		.catch(err => res.render('error', 
-			{ message : 'The current link does not exist' }))
-}
-=======
 		.catch(() => res.render('error', {
 			message: 'The current link does not exist'
 		}));
 };
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 
 const createPlayer = (req, res) => {
 	const { leagueId } = req.params;
@@ -47,16 +41,6 @@ const createPlayer = (req, res) => {
 		}));
 };
 
-const deleteRegistration = (req, res) => {
-	const { playerId } = req.params;
-
-	Player.findById(playerId)
-		.exec()
-		.then(player => player.remove())
-		.then(() => res.send('Player registration deleted'))
-		.catch(err => { throw err;});
-
-};
 
 const deleteRegistration = (req, res) => {
 	const { playerId } = req.params;
@@ -72,14 +56,7 @@ const deleteRegistration = (req, res) => {
 Router.route('/:leagueId')
 	.get(getRegForm)
 	.post(createPlayer);
-<<<<<<< HEAD
-	
-Router.route('/delete/:playerId')
-	.delete(deleteRegistration)
-=======
-
 Router.route('/delete/:playerId')
 	.delete(deleteRegistration);
->>>>>>> 2b3f020ce568d018cde22a5fad6e24be422578e2
 
 module.exports = Router;
