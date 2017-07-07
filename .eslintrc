@@ -15,7 +15,7 @@
   "plugins": [
     "react",
     "import",
-    "prefer-object-spread"
+ 
   ],
   "settings": {
     "import/ignore": [

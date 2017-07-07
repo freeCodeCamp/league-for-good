@@ -25,16 +25,17 @@ class NavBar extends Component {
 	}
 
 	selectLeague = league => {
-		const { teams, staff, ...leagueData } = league;
+		// const { teams, staff, ...leagueData } = league;
 
-		// Mark new league as 'Selected'
-		this.props.selectLeague(leagueData);
-		// Fetch players from league from the server
-		this.props.fetchPlayerList(leagueData._id);
-		// Dispatch teams in the league to the teams reducer
-		this.props.selectTeams(teams);
-		// Dispatch staff in the league to the staff reducer
-		this.props.selectStaff(staff);
+		// // Mark new league as 'Selected'
+		// this.props.selectLeague(leagueData);
+		// // Fetch players from league from the server
+		// this.props.fetchPlayerList(leagueData._id);
+		// // Dispatch teams in the league to the teams reducer
+		// this.props.selectTeams(teams);
+		// // Dispatch staff in the league to the staff reducer
+		// this.props.selectStaff(staff);
+		this.props.selectLeague(league._id);
 	}
 
 	themeMenuToggle = () => {

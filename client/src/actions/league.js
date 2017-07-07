@@ -17,6 +17,12 @@ export function createLeague(body, redirectCallback) {
 }
 
 
-export function selectLeague(league) {
-	return {type: SELECT_LEAGUE, leagueData: league};
+export function selectLeague(leagueId) {
+	
+	return dispatch => 
+		axios.get(`${rootURL}/league/fetch/${leagueId}`)
+			.then(response => {
+				console.log(response.data);
+				dispatch({type:'gdfgdfgdf'});
+			})
 }

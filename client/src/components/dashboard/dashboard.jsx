@@ -34,8 +34,8 @@ Dashboard.propTypes = {
 	league: PropTypes.object
 };
 
-function mapStateToProps({ league: {selected} }) {
-	return { league: selected };
+function mapStateToProps() {
+	return { league: {} };
 }
 
 export default connect(mapStateToProps)(Dashboard);
