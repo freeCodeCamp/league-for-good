@@ -1,5 +1,6 @@
 import React from 'react';
 import EditTeamForm from '../dashboard/teams/forms/editTeamForm.jsx';
+import EditStaffForm from '../dashboard/settings/forms/editStaffForm.jsx';
 import DeleteTeamForm from '../dashboard/teams/forms/deleteTeamForm.jsx';
 import DeleteStaffForm from '../dashboard/settings/forms/deleteStaffForm.jsx';
 import DeletePlayerRegForm from '../dashboard/players/applications/modals/delete.jsx';
