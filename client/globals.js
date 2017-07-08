@@ -1,2 +1,2 @@
-export const rootURL = 'http://localhost:4000';
+export const ROOT_URL = 'http://localhost:4000';
 

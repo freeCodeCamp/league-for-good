@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { ADD_PLAYER_TO_TEAM } from '../types';
-import { rootURL } from '../../../globals';
+import { ROOT_URL } from '../../../globals';
 
 export function assignPlayer(form, dispatch) {
 
@@ -10,7 +10,7 @@ export function assignPlayer(form, dispatch) {
 
 	if (!playerId || !teamId ) {return;}
 
-	axios.put(`${rootURL}/player/assign`, reqBody)
+	axios.put(`${ROOT_URL}/player/assign`, reqBody)
 		.then(() => {
 			dispatch({
 				type: ADD_PLAYER_TO_TEAM,

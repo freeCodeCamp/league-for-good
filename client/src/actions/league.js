@@ -5,7 +5,7 @@ import {
 	SELECT_TEAMS,
 	FETCH_ALL_PLAYERS
 } from './types';
-import { rootURL } from '../../globals';
+import { ROOT_URL } from '../../globals';
 
 // Post createLeague form to the server
 // Send the response object to a reducer that will append it to user's leagues
@@ -13,7 +13,7 @@ import { rootURL } from '../../globals';
 
 export function createLeague(body, redirectCallback) {
 	return function(dispatch) {
-		axios.post(`${rootURL}/league/create`, body)
+		axios.post(`${ROOT_URL}/league/create`, body)
 			.then(({data}) => {
 				return dispatch({type: CREATE_LEAGUE, newLeague: data});
 			})
@@ -27,7 +27,7 @@ export function selectLeague(leagueId) {
 	return dispatch => {
 		dispatch({ type: 'SET_LOADING_STATE', payload: true });
 
-		axios.get(`${rootURL}/league/fetch/${leagueId}`)
+		axios.get(`${ROOT_URL}/league/fetch/${leagueId}`)
 			.then(response => {
 				const { teams, players } = response.data;
 				dispatch({ type: SELECT_LEAGUE, leagueId });

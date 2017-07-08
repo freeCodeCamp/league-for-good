@@ -7,7 +7,7 @@ import {
 	CLOSE_MODAL,
 	OPEN_SNACKBAR
 } from './types';
-import { rootURL } from '../../globals';
+import { ROOT_URL } from '../../globals';
 
 export function selectStaff(staff) {
 	return { type: SELECT_STAFF_MEMBERS, staff: staff };
@@ -26,7 +26,7 @@ export function addStaffMember(formVals, dispatch, { location }) {
 		newStaff: {...body, teams: [] }
 	};
 
-	axios.post(`${rootURL}/settings/create`, body)
+	axios.post(`${ROOT_URL}/settings/create`, body)
 		.then(() =>
 			dispatch(action)
 		)
@@ -41,7 +41,7 @@ export function updateStaff(formVals, dispatch) {
 
 	dispatch({ type: CLOSE_MODAL });
 
-	axios.put(`${rootURL}/staff/update/${email}`, body)
+	axios.put(`${ROOT_URL}/staff/update/${email}`, body)
 		.then(() =>
 			dispatch({ type: UPDATE_STAFF_MEMBER, updatedStaff: { ...body }})
 		)
@@ -59,7 +59,7 @@ export function removeStaff(staffInfo) {
 
 		dispatch({ type: CLOSE_MODAL });
 
-		axios.delete(`${rootURL}/settings/remove/${email}`,
+		axios.delete(`${ROOT_URL}/settings/remove/${email}`,
 				{ params: { leagueId } })
 			.then(() => dispatch({
 				type: REMOVE_STAFF_MEMBER,
