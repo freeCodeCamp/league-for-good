@@ -29,10 +29,6 @@ export function createTeam( formVals, dispatch, { location } ) {
 		});
 }
 
-// Select teams to display from league
-export function selectTeams(teams) {
-	return { type: SELECT_TEAMS, teams: teams };
-}
 
 // Edit a team's name and active status
 export function updateTeam(formVals, dispatch) {

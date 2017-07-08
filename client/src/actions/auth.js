@@ -11,7 +11,7 @@ export function initAuthState() {
 		axios.post('/auth/authenticate')
 			.then(({data}) => {
 				const { leagueInfo, roles, ...userData } = data;
-
+				console.log(leagueInfo);
 				// send users info to reducer
 				dispatch({
 					type: INIT_AUTH_STATE,

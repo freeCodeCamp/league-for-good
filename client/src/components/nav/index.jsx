@@ -45,6 +45,7 @@ class NavBar extends Component {
 	}
 
 	render() {
+		console.log(this.props);
 		return (
 			<div>
 				<Bar
@@ -78,6 +79,7 @@ NavBar.propTypes = {
 
 function mapStateToProps({menu, league}) {
 	const { open } = menu;
+	
 	return { open, leagues: league.list };
 }
 
