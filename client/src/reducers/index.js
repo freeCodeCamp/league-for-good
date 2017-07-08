@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import modalReducer from './modal';
+import loadingReducer from './loading';
 import snackbarReducer from './snackbar';
 import authReducer from './auth';
 import menuReducer from './menu';
@@ -20,6 +21,7 @@ import rolesReducer from './roles';
 const rootReducer = combineReducers({
 	snackbar: snackbarReducer,
 	modal: modalReducer,
+	isLoading: loadingReducer,
 	auth: authReducer,
 	menu: menuReducer,
 	form: formReducer,

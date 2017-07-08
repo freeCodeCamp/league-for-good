@@ -29,7 +29,10 @@ export default function(state = defaultState, action) {
 			return {...state, list: action.payload};
 
 		case SELECT_LEAGUE:
-			return {...state, selected: action.leagueData};
+			return {
+				...state,
+				selected: state.list.find(league => league._id === action.leagueId),
+			};
 
 		case 'REMOVE_REGISTRATION':
 			return { ...state, selected: removeReg(state, action.payload) };

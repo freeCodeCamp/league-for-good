@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { CREATE_LEAGUE, SELECT_LEAGUE } from './types';
+import { 
+	CREATE_LEAGUE, 
+	SELECT_LEAGUE,
+	SELECT_TEAMS,
+	FETCH_ALL_PLAYERS, 
+} from './types';
 import { rootURL } from '../../globals';
 
 // Post createLeague form to the server
@@ -19,10 +24,16 @@ export function createLeague(body, redirectCallback) {
 
 export function selectLeague(leagueId) {
 	
-	return dispatch => 
+	return dispatch => {
+		dispatch({ type: 'SET_LOADING_STATE', payload: true });
+
 		axios.get(`${rootURL}/league/fetch/${leagueId}`)
 			.then(response => {
-				console.log(response.data);
-				dispatch({type:'gdfgdfgdf'});
+				const { teams, players } = response.data;
+				dispatch({ type: SELECT_LEAGUE, leagueId })
+				dispatch({ type: SELECT_TEAMS, teams });
+				dispatch({ type: FETCH_ALL_PLAYERS, players });
+				dispatch({ type: 'SET_LOADING_STATE', payload: false });
 			})
+	}
 }
