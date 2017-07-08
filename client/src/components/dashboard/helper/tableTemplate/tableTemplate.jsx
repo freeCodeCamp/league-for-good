@@ -23,7 +23,7 @@ const { table: {
 	colHeaderLabelStyle,
 	colHeaderStyle,
 	colRowStyle, 
-}} = css_dashboard;
+}} = cssDashboard;
 /////////////////////////
 
 

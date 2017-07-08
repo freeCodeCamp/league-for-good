@@ -15,7 +15,7 @@ export function initAuthState() {
 				// send users info to reducer
 				dispatch({
 					type: INIT_AUTH_STATE,
-					payload: {loading: false, ...userData}
+					payload: { loading: false, ...userData }
 				});
 
 				// send user's leagues to reducer

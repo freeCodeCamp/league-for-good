@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {
 	CREATE_STAFF_MEMBER,
+	UPDATE_STAFF_MEMBER,
 	REMOVE_STAFF_MEMBER,
 	SELECT_STAFF_MEMBERS,
 	CLOSE_MODAL,
@@ -17,12 +18,16 @@ export function addStaffMember(formVals, dispatch, { location }) {
 	const body = {
 		email: formVals.email,
 		league: location.state.leagueId,
-		roleTitle: formVals.role,
+		roleTitle: formVals.role
 	};
 
 	axios.post(`${rootURL}/settings/create`, body)
 		.then(({data}) => {
-			return dispatch({ type: CREATE_STAFF_MEMBER, newStaff: { email: body.email, role: body.roleTitle, teams: [] }});
+			return dispatch({ type: CREATE_STAFF_MEMBER, newStaff: {
+				email: body.email,
+				role: body.roleTitle,
+			       	teams: []
+			}});
 		})
 		.catch( err => {
 			throw new Error(err);

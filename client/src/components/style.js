@@ -11,8 +11,10 @@ export const common = {
 			color: theme.alternateTextColor,
 			fontWeight: 500
 		},
-		style: { marginTop: '50px' },
-		backgroundColor: theme.accent1Color,
+		style: {
+			marginTop: '50px'
+		},
+		backgroundColor: theme.accent1Color
 	},
 	formRow: {
 		display: 'flex',
@@ -50,20 +52,20 @@ export const cssAppBar = {
 	}
 };
 
-export const css_loading = {
+export const cssLoading = {
 	style: {
-		position:'absolute',
-		top:0,
-		left:0,
-		width:'100%',
+		position: 'absolute',
+		top: 0,
+		left: 0,
+		width: '100%',
 		height: '100%',
-		background:'white',
-		zIndex:2001,
-		display:'flex',
+		background: 'white',
+		zIndex: 2001,
+		display: 'flex',
 		justifyContent: 'center',
-		alignItems:'center',
+		alignItems: 'center'
 	},
-	size: 80,
+	size: 80
 };
 
 // login styling
@@ -301,8 +303,8 @@ export const cssDashboard = {
 	// custom css in the players tab
 	players: {
 		ul: {
-			listStyleType: 'none',
-		},
+			listStyleType: 'none'
+		}
 	},
 	// custom css in the settings tab
 	settings: {
@@ -310,24 +312,24 @@ export const cssDashboard = {
 			add: {
 				textField: {
 					width: '100%',
-					padding: '0px',
+					padding: '0px'
 				},
 				selectField: {
 					width: '15%',
 					margin: '0px',
 					padding: '0px',
 					float: 'right',
-					textAlign: 'left',
+					textAlign: 'left'
 				},
 				info: {
 					marginBottom: '5px',
 					marginLeft: '10px',
 					textAlign: 'right',
-					float: 'right',
-				},
-			},
-		},
-	},
+					float: 'right'
+				}
+			}
+		}
+	}
 };
 
 
