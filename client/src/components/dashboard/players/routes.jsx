@@ -26,11 +26,11 @@ const PlayerRoutes = () => (
 			path={Links.PLAYER_ASSIGN_FORM}
 		/>
 		<Route
-			component={PlayerForm}
+			component={AddPlayerForm}
 			path={Links.PLAYER_ADD_FORM}
 		/>
 		<Route
-			component={PlayerForm}
+			component={AddPlayerForm}
 			path={Links.PLAYER_UPDATE_FORM}
 		/>
 		<Route

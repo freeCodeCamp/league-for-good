@@ -20,14 +20,14 @@ export const colData = [
 	},
 	{
 		label: 'Edit',
-		style: css_dashboard.table.columns.icon,
+		style: cssDashboard.table.columns.icon,
 		action: 'edit',
 		cellProp: 'icon',
 		//TODO: add the edit staff modal
 	},
 	{ 
 		label: 'Delete', 
-		style: css_dashboard.table.columns.icon,
+		style: cssDashboard.table.columns.icon,
 		action: 'delete', 
 		cellProp: 'icon', 
 	},	

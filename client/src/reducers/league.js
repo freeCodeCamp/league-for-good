@@ -26,7 +26,7 @@ export default function(state = defaultState, action) {
 			return {...state, list: [...state.list, action.newLeague]};
 
 		case FETCH_LEAGUES:
-			return {...state, list: action.payload};
+			return {...state, list: action.leagueInfo };
 
 		case SELECT_LEAGUE:
 			return {
