@@ -79,7 +79,7 @@ NavBar.propTypes = {
 
 function mapStateToProps({menu, league}) {
 	const { open } = menu;
-	
+
 	return { open, leagues: league.list };
 }
 

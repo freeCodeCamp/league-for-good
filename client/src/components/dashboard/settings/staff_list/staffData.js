@@ -23,6 +23,9 @@ export const colData = [
 		style: cssDashboard.table.columns.icon,
 		action: 'edit',
 		cellProp: 'icon'
+
+		// TODO: add the edit staff modal
+
 	},
 	{
 		label: 'Delete',
@@ -37,6 +40,7 @@ function getCellValue(staff, prop, action, leagueId) {
 
 	if (prop.split('.').length > 1) {
 		return prop.split('.').reduce((o, i) => o[i], staff);
+
 	} else if (prop === 'icon') {
 		const iconProps = { action, leagueId, ...staff };
 		return <Icon {...iconProps} />;

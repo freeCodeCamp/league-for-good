@@ -26,7 +26,7 @@ import PropTypes from 'prop-types';
 
 export default function(ComposedComponent) {
 	class loadState extends Component {
-    
+
 		renderSpinner() {
 			return (
 				<div style={css_loading.style}>
@@ -43,15 +43,15 @@ export default function(ComposedComponent) {
 
 		render() {
 			const { initAuthState, loggedIn, ...props } = this.props;
-     
+
 			if (props.loading) {
 				return this.renderSpinner();
 			}
-			//Redirect instantly if the user is not logged in 
+			// Redirect instantly if the user is not logged in
 			else if (!loggedIn) {
-				return <Redirect to="/login" />;
+				return <Redirect to='/login' />;
 			}
-			//Render the desired content
+			// Render the desired content
 			else {
 				return <ComposedComponent {...props} />;
 			}

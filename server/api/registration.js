@@ -49,9 +49,9 @@ const deleteRegistration = (req, res) => {
 		.exec()
 		.then(player => player.remove())
 		.then(() => res.send('Player registration deleted'))
-		.catch(err => { throw err})	
+		.catch(err => { throw err;});
 
-}
+};
 
 Router.route('/:leagueId')
 	.get(getRegForm)

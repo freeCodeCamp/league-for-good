@@ -1,9 +1,11 @@
 
 export default function(state = false, action) {
-	switch(action.type) {
+	switch (action.type) {
 
 	case 'SET_LOADING_STATE':
 		return action.payload;
+	default:
+		return state;
 	}
-	return state;
+
 }

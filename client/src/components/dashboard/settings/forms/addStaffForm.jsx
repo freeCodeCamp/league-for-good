@@ -13,31 +13,31 @@ import { addStaffMember, openSnackbar } from '../../../../actions/index';
 import { cssContent, cssDashboard } from '../../../style';
 import validate from './utils/addStaffFormValidation';
 
-const AddStaffForm = props => {	
+const AddStaffForm = props => {
 	const { handleSubmit, roles } = props;
 
 	return (
 		<div style={css_content.body}>
 			<h1 style={css_dashboard.title}>Grant access to a staff member</h1>
 			<h6 style={css_dashboard.warning}>*Requires a Gmail Account</h6>
-			<form 
+			<form
 				onSubmit={ handleSubmit }
 				style={css_dashboard.form}
-			>
+				>
 				<IconButton
-					tooltip="View Description Of Roles"
-					tooltipPosition="top-right"
+					tooltip='View Description Of Roles'
+					tooltipPosition='top-right'
 					touch={true}
 					style={css_dashboard.settings.forms.add.info}
-				>
+					>
 					<HelpOutline />
 				</IconButton>
 				<Field
-					name="role"
+					name='role'
 					component={SelectField}
-					hintText="Choose Role"
+					hintText='Choose Role'
 					style={css_dashboard.settings.forms.add.selectField}
-				>
+					>
 					{
 						roles.map((role, i) => {
 							return <MenuItem value={role.title} primaryText={role.title} key={i} />;
@@ -45,19 +45,19 @@ const AddStaffForm = props => {
 					}
 				</Field>
 				<Field
-					name="email" 
+					name='email'
 					component={TextField}
-					hintText="Enter A Gmail Account"
+					hintText='Enter A Gmail Account'
 					floatingLabelText="User's Gmail Account*"
 					floatingLabelStyle={css_dashboard.formRequired}
 					style={css_dashboard.settings.forms.add.textField}
-				/>									
+				/>
 				<RaisedButton
-					label="Add Staff Member"
+					label='Add Staff Member'
 					labelStyle={css_dashboard.raisedButton.label}
 					backgroundColor={css_dashboard.raisedButton.backgroundColor}
 					style={css_dashboard.raisedButton.style}
-					type="submit"
+					type='submit'
 				/>
 			</form>
 		</div>
@@ -73,7 +73,7 @@ export default connect(mapStateToProps)(reduxForm({
 	form: 'AddStaffForm',
 	validate,
 	onSubmit: addStaffMember,
-	onSubmitSuccess: openSnackbar,
+	onSubmitSuccess: openSnackbar
 })( AddStaffForm ));
 
 

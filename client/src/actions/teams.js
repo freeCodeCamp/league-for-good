@@ -3,7 +3,6 @@ import axios from 'axios';
 import {
 	CREATE_TEAM,
 	REMOVE_TEAM,
-	SELECT_TEAMS,
 	UPDATE_TEAM,
 	OPEN_SNACKBAR,
 	CLOSE_MODAL

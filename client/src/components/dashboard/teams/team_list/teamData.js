@@ -80,7 +80,7 @@ const getTeamTableData = ({ teams }) => {
 			{
 				value: getCellValue(team, col.cellProp, col.action),
 				colSpan: col.colSpan || 1,
-				style: col.style,
+				style: col.style
 			}
 		));
 	});

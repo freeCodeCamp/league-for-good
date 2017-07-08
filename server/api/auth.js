@@ -19,26 +19,26 @@ function logOutUser(req, res) {
 	res.send('User logged out');
 }
 
-// This is called when the user loads up the page to get 
+// This is called when the user loads up the page to get
 // all of the initial data if they have an authenticated session
 //	Initial data:
 //		User access to leagues
 //		Roles to determine proper access to those league
-function fetchInitialData(req, res, next){
+function fetchInitialData(req, res, next) {
 	const { user } = req;
-	
-	if (!user) return next();
 
-	const query = { '$or': [ { owner: user._id }, { 'staff.email': user.email } ] };
+	if (!user) {return next();}
 
-	const leaguePromise =  Leagues.find(query)
+	const query = { $or: [ { owner: user._id }, { 'staff.email': user.email } ] };
+
+	const leaguePromise = Leagues.find(query)
 		.select('name _id sportType');
-	const rolePromise =  Roles.find({})
+	const rolePromise = Roles.find({})
 		.select('title privileges');
 
 	return Promise.all([leaguePromise.exec(), rolePromise.exec()])
-		.then(initData => { 
-			console.log(initData);
+		.then(initData => {
+	
 			res.send({user, leagueInfo: initData[0], roles: initData[1], loggedIn: true });
 		})
 		.catch((err) => res.send(err));
@@ -62,4 +62,4 @@ Router.route('/logout')
 Router.route('/authenticate')
   .post(fetchInitialData, handleAuthFailure);
 
-module.exports = Router;  
+module.exports = Router;

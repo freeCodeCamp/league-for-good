@@ -24,7 +24,7 @@ const EditStaffForm = (props) => {
 				}
 			</Field>
 			<Field
-				name="email" 
+				name="email"
 				component={TextField}
 				hintText="Enter A Gmail Account"
 				floatingLabelText="User's Gmail Account:"
@@ -33,12 +33,12 @@ const EditStaffForm = (props) => {
 		</form>
 	);*/
 	return <noScript />;
-}
+};
 
 export default reduxForm({
 	form: 'EditStaffForm',
 	onSubmit: updateStaff,
 	onSubmitSuccess: openSnackbar,
-	validate,
+	validate
 })(EditStaffForm);
 

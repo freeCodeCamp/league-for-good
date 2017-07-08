@@ -47,7 +47,7 @@ const RoleSchema = new Schema({
 	title: {
 		type: String,
 		unique: true,
-		required: true,
+		required: true
 	},
 	privileges: {
 		viewTeams: defaultProperty,
@@ -67,7 +67,7 @@ const RoleSchema = new Schema({
 		createStaff: defaultProperty,
 		editStaff: defaultProperty,
 		deleteStaff: defaultProperty,
-		deleteLeague: defaultProperty,
+		deleteLeague: defaultProperty
 	}},
 	{
 		collection: 'roles'
@@ -77,8 +77,8 @@ const RoleSchema = new Schema({
 const RoleModel = mongoose.model('role', RoleSchema);
 // eslint-disable-next-line no-unused-expressions
 RoleModel.schema.options.emitIndexErrors;
-//RoleModel.on('index', function(error) {
+// RoleModel.on('index', function(error) {
 //	console.log('index error', error);
-//});
+// });
 
 module.exports = RoleModel;
