@@ -17,13 +17,14 @@
 //  *		-can view a subset of team(s) that he is assigned to and their roster(s)
 //  *		-can view player information through the roster
 //  *
-//  * A description of what each privilege does can be found in ../models/roles.js
+//  * A description of what each privilege
+// does can be found in ../models/roles.js
 //  */
 
 // const mongoose = require('mongoose');
 // require('dotenv').config();
 // <<<<<<< HEAD:init/initRoles.js
-// const MONGO_URI = process.env.MONGO_URI; 
+// const MONGO_URI = process.env.MONGO_URI;
 // const Role = require('../server/models/roles.js');
 // =======
 
@@ -35,7 +36,7 @@
 // mongoose.connect(MONGO_URI);
 // mongoose.connection
 //     .once('open', () => console.log('Connected to MongoDB'))
-//     .on('error', error => console.log('Error connecting to MongoDB:', error));
+//     .on('error', error => console.log(error));
 
 
 // <<<<<<< HEAD:init/initRoles.js

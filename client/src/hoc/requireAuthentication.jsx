@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import CircularProgress from 'material-ui/CircularProgress';
 import { initAuthState } from '../actions/index';
 import { Redirect } from 'react-router-dom';
-import { css_loading } from '../components/style';
+import { cssLoading } from '../components/style';
 
 import PropTypes from 'prop-types';
 
@@ -29,8 +29,8 @@ export default function(ComposedComponent) {
 
 		renderSpinner() {
 			return (
-				<div style={css_loading.style}>
-					<CircularProgress size={css_loading.size} />
+				<div style={cssLoading.style}>
+					<CircularProgress size={cssLoading.size} />
 				</div>
 			);
 		}
@@ -42,17 +42,14 @@ export default function(ComposedComponent) {
 		}
 
 		render() {
-			const { initAuthState, loggedIn, ...props } = this.props;
-
+			const { loggedIn, ...props } = this.props;
 			if (props.loading) {
 				return this.renderSpinner();
-			}
+			} else if (!loggedIn) {
 			// Redirect instantly if the user is not logged in
-			else if (!loggedIn) {
 				return <Redirect to='/login' />;
-			}
+			} else {
 			// Render the desired content
-			else {
 				return <ComposedComponent {...props} />;
 			}
 		}

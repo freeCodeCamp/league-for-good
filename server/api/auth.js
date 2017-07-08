@@ -38,8 +38,8 @@ function fetchInitialData(req, res, next) {
 
 	return Promise.all([leaguePromise.exec(), rolePromise.exec()])
 		.then(initData => {
-	
-			res.send({user, leagueInfo: initData[0], roles: initData[1], loggedIn: true });
+			const [leagueInfo, roles] = initData;
+			res.send({user, leagueInfo, roles, loggedIn: true });
 		})
 		.catch((err) => res.send(err));
 }

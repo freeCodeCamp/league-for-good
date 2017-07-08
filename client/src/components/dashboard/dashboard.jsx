@@ -36,8 +36,9 @@ class Dashboard extends Component {
 
 Dashboard.propTypes = {
 	history: PropTypes.object,
-	league: PropTypes.object,
-	isLoading: PropTypes.bool
+	isLoading: PropTypes.bool,
+	league: PropTypes.object
+
 };
 
 function mapStateToProps(state) {

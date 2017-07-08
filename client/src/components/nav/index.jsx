@@ -7,10 +7,7 @@ import {
 	toggleMenu,
 	selectLeague,
 	openModal,
-	selectTeams,
-	changeTheme,
-	fetchPlayerList,
-	selectStaff
+	changeTheme
 } from '../../actions/index';
 import PropTypes from 'prop-types';
 
@@ -67,13 +64,10 @@ class NavBar extends Component {
 
 NavBar.propTypes = {
 	changeTheme: PropTypes.func,
-	fetchPlayerList: PropTypes.func,
 	leagues: PropTypes.arrayOf(PropTypes.object),
 	open: PropTypes.bool,
 	openModal: PropTypes.func,
 	selectLeague: PropTypes.func,
-	selectStaff: PropTypes.func,
-	selectTeams: PropTypes.func,
 	toggleMenu: PropTypes.func
 };
 
@@ -87,11 +81,8 @@ function mapDispatchToProps(dispatch) {
 	return bindActionCreators({
 		toggleMenu,
 		selectLeague,
-		selectTeams,
 		openModal,
-		changeTheme,
-		fetchPlayerList,
-		selectStaff
+		changeTheme
 	}, dispatch);
 }
 
