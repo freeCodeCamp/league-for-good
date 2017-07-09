@@ -32,18 +32,18 @@ const fetchLeagueDetails = (req, res) => {
 
 	const fetchPlayers = Players.find({ leagueId });
 	const fetchSeasons = Seasons.find({ leagueId });
-	const fetchTeams = Teams.find({ leagueId })
+	const fetchTeams = Teams.find({ leagueId });
 
 	Promise.all([
 		fetchSeasons.exec(),
 		fetchTeams.exec(),
 		fetchPlayers.exec()
 	])
-	.then(([seasons, teams, players]) => 
+	.then(([seasons, teams, players]) =>
 		res.send({ teams, seasons, players })
-	)
+	);
 
-}
+};
 
 
 Router.route('/create').post(createLeague);

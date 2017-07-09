@@ -30,7 +30,7 @@ const rootReducer = combineReducers({
 	manage: manageReducer,
 	roster: rosterReducer,
 	theme: themeReducer,
-	players:playerReducer,
+	players: playerReducer,
 	settings: settingsReducer,
 	roles: rolesReducer
 });

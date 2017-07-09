@@ -16,15 +16,15 @@ import ArrowDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
 import { cssDashboard } from '../../../style';
 
 
-// IMPORTED STYLES 
-const { table: { 
-	sortArrowActiveColor, 
-	sortArrowInactiveColor, 
+// IMPORTED STYLES
+const { table: {
+	sortArrowActiveColor,
+	sortArrowInactiveColor,
 	colHeaderLabelStyle,
 	colHeaderStyle,
-	colRowStyle, 
+	colRowStyle
 }} = cssDashboard;
-/////////////////////////
+// ///////////////////////
 
 
 // A table template to easily render a table in the management panel
@@ -93,7 +93,7 @@ const Headers = (props) => {
 							key={i}
 							colSpan={header.colSpan || 1}
 							style={colHeaderStyle}
-						>
+							>
 							<ColumnHeaderChild
 								colIndex={i}
 								label={header.label}
@@ -128,11 +128,11 @@ const renderBody = (rows) => {
 						{
 							row.map(function(rowData, i) {
 								return (
-									<TableRowColumn 
+									<TableRowColumn
 										colSpan={rowData.colSpan}
 										style={rowData.style}
 										key={i}
-									>
+										>
 										{ i === 0 ? <strong>{rowData.value}</strong>
 												: <span>{rowData.value}</span>
 										}
@@ -157,38 +157,35 @@ const ColumnHeaderChild = props => {
 			<div style={colHeaderLabelStyle}>
 				{props.label}
 			</div>
-		)
+		);
 	}
-	
+
 
 	let columnSorted = props.colIndex === props.sortColumnIndex;
 	let iconColor = columnSorted ? sortArrowActiveColor : sortArrowInactiveColor;
-	
-	// Determine appropriate icon and icon color	
+
+	// Determine appropriate icon and icon color
 	if (props.sortDirection === 'asc') {
 		if (columnSorted) {
 			arrowIcon = <ArrowDown color={iconColor} />;
-		}
-		else {
+		}		else {
 			arrowIcon = <ArrowUp color={iconColor} />;
 		}
-	}
-	else if (props.sortDirection === 'desc') {
+	}	else if (props.sortDirection === 'desc') {
 		arrowIcon = <ArrowUp color={iconColor} />;
 	}
 	// else, no sorting
 	else {
 		arrowIcon = <ArrowUp color={iconColor} />;
 	}
-	
 
 
 	return (
-		<div 
-			style={{...colHeaderLabelStyle, cursor:'pointer'}}
+		<div
+			style={{...colHeaderLabelStyle, cursor: 'pointer'}}
 			onClick={() => { props.onClick(props.colIndex); }}
-		>
-			{props.label}	
+			>
+			{props.label}
 			{arrowIcon}
 		</div>
 	);

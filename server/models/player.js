@@ -3,6 +3,7 @@
 * their contact info, and teams they played on
 */
 const mongoose = require('mongoose');
+
 const Schema = mongoose.Schema;
 
 const capitalize = require('./plugins/capitalize');

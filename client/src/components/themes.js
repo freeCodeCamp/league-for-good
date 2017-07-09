@@ -69,7 +69,7 @@ const warningMixin = {
 };
 
 const infoMixin = {
-	info: '#a9a9a9',
+	info: '#a9a9a9'
 };
 
 const themes = (function(themeValues, defaultTheme, ...mixins) {

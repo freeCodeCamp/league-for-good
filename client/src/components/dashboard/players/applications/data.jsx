@@ -51,29 +51,28 @@ export const colData = [
 
 // Get the value for the cell
 function getCellValue(player, colValues, leagueId ) {
-	const {  cellProp, action } = colValues;
+	const { cellProp, action } = colValues;
 
 	if (cellProp !== 'link' && cellProp !== 'modal') {
 		return getObjProp(player, cellProp);
+	}	else if (cellProp === 'modal') {
+		const modalProps = { action, player, leagueId };
+		return <ModalLinks {...modalProps} />;
 	}
-	else if (cellProp === 'modal') {
-		const modalProps = { action, player, leagueId }
-		return <ModalLinks {...modalProps} />
-	}	
-	
+
 	return <Link player={player} />;
-	
+
 }
 
 // Massage the data for the table body
 const getPlayerTableData = (players, leagueId) => {
-	//map each row
+	// map each row
 	return players.map( player => {
-		//map each cell
+		// map each cell
 		return colData.map( ({style, ...colValues}) => (
 			{
 				value: getCellValue(player, colValues, leagueId),
-				style,
+				style
 			}
 		));
 	});

@@ -14,12 +14,12 @@ class Dashboard extends Component {
 	render() {
 
 		if (this.props.isLoading) {
-			return <h2>.......Loading</h2>
+			return <h2>.......Loading</h2>;
 		}
 		const { league, history } = this.props;
 		const tabProps = { league, history, leagueId: league._id };
 
-		console.log('rendering....')
+		console.log('rendering....');
 
 		return (
 
@@ -37,14 +37,14 @@ class Dashboard extends Component {
 
 Dashboard.propTypes = {
 	history: PropTypes.object,
-	league: PropTypes.object,
+	league: PropTypes.object
 };
 
 function mapStateToProps(state) {
-	
-	return { 
+
+	return {
 		league: state.league.selected,
-		isLoading: state.isLoading,
+		isLoading: state.isLoading
 	};
 }
 

@@ -25,7 +25,7 @@ export function initAuthState() {
 				}
 			})
 			.catch(err => dispatch({type: 'AUTH_ERROR'}));
-	};		//TO-DO build auth-error action
+	};		// TO-DO build auth-error action
 }
 
 // updates the user's state as logged out after

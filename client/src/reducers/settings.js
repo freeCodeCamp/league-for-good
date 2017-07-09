@@ -17,15 +17,15 @@ function removeStaff(removedEmail) {
 
 export default function(state = {}, action) {
 	switch (action.type) {
-		
-	case SELECT_STAFF_MEMBERS: 
+
+	case SELECT_STAFF_MEMBERS:
 		console.log('got staff members in reducer', action.staff);
 		return { ...state, staff: action.staff };
 	case CREATE_STAFF_MEMBER:
 		return { ...state, staff: [action.newStaff, ...state.staff] };
-	case REMOVE_STAFF_MEMBER: 
+	case REMOVE_STAFF_MEMBER:
 		return { ...state, staff: state.staff.filter(removeStaff(action.removedStaffEmail)) };
-	case UPDATE_STAFF_MEMBER: 
+	case UPDATE_STAFF_MEMBER:
 		return state;
 	}
 

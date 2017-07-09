@@ -1,4 +1,4 @@
-// mongo ds139899.mlab.com:39899/league-for-good -u ahstein3521 -p 
+// mongo ds139899.mlab.com:39899/league-for-good -u ahstein3521 -p
 
 // var playerIds =  [
 // "59271a9debc3cb2730e067c7",

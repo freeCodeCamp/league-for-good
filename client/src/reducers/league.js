@@ -31,7 +31,7 @@ export default function(state = defaultState, action) {
 		case SELECT_LEAGUE:
 			return {
 				...state,
-				selected: state.list.find(league => league._id === action.leagueId),
+				selected: state.list.find(league => league._id === action.leagueId)
 			};
 
 		case 'REMOVE_REGISTRATION':
