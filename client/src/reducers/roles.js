@@ -8,11 +8,9 @@ import { FETCH_ROLES } from '../actions/types';
 
 export default function(state = [], action) {
 	switch (action.type) {
-
-	case FETCH_ROLES:
-		console.log('role reducer', action);
-		return action.roles;
+		case FETCH_ROLES:
+			return action.roles;
+		default:
+			return state;
 	}
-
-	return state;
 }

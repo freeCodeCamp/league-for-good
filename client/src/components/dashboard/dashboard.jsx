@@ -19,7 +19,6 @@ class Dashboard extends Component {
 		const { league, history } = this.props;
 		const tabProps = { league, history, leagueId: league._id };
 
-		console.log('rendering....');
 
 		return (
 
@@ -37,6 +36,7 @@ class Dashboard extends Component {
 
 Dashboard.propTypes = {
 	history: PropTypes.object,
+	isLoading: PropTypes.bool,
 	league: PropTypes.object
 };
 

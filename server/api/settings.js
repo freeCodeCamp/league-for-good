@@ -26,13 +26,15 @@ const createStaff = (req, res) => {
 
 // Update a staff member in a league
 const updateStaff = (req, res) => {
-	const query = { _id: req.body.leagueId, 'staff.email': req.params.email };
-	const update = { $set: { 'staff.$.email': req.body.email, 'staff.$.role': req.body.roleTitle } };
+	const { leagueId, email, roleTitle } = req.body;
+	const query = { _id: leagueId, 'staff.email': req.params.email };
+	const update = { $set: { 'staff.$.email': email, 'staff.$.role': roleTitle }};
+	const errorMsg = 'An error occured while editing staff';
 
 	League.findOneAndUpdate(query, update)
 		.exec()
 		.then(() => res.send('Successfully edited staff.'))
-		.catch(error => res.send({ msg: 'An error occured while editing staff', error }));
+		.catch(error => res.send({ msg: errorMsg, error }));
 };
 
 // Delete a staff member from a league

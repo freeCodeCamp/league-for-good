@@ -11,6 +11,7 @@ export const common = {
 			color: theme.alternateTextColor,
 			fontWeight: 500
 		},
+
 		style: {
 			marginTop: '50px'
 		},

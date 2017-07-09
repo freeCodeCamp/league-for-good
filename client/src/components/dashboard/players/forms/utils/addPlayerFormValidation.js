@@ -4,7 +4,7 @@ const emailRegex = new RegExp(regexString, 'i');
 const jerseyRegex = /^\d{1,2}$/;
 
 // prevent user from submitting incorrect player info
-const validate = val => {
+export default function(val) {
 	const errors = { team: {} };
 	if (!val.firstName) {
 		errors.firstName = 'Please provide a first name';
@@ -19,6 +19,6 @@ const validate = val => {
 		errors.team.jerseyNum = 'A jersey number should be between 0 and 99';
 	}
 	return errors;
-};
+}
 
-export default validate;
+

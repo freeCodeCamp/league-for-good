@@ -22,7 +22,6 @@ const { table: {
 	sortArrowInactiveColor,
 	colHeaderLabelStyle,
 	colHeaderStyle,
-	colRowStyle
 }} = cssDashboard;
 // ///////////////////////
 
@@ -91,7 +90,6 @@ const Headers = (props) => {
 						<TableHeaderColumn
 							colSpan={header.colSpan || 1}
 							key={i}
-							colSpan={header.colSpan || 1}
 							style={colHeaderStyle}
 							>
 							<ColumnHeaderChild
@@ -130,9 +128,8 @@ const renderBody = (rows) => {
 								return (
 									<TableRowColumn
 										colSpan={rowData.colSpan}
-										style={rowData.style}
 										key={i}
-										>
+									>
 										{ i === 0 ? <strong>{rowData.value}</strong>
 												: <span>{rowData.value}</span>
 										}
@@ -168,23 +165,22 @@ const ColumnHeaderChild = props => {
 	if (props.sortDirection === 'asc') {
 		if (columnSorted) {
 			arrowIcon = <ArrowDown color={iconColor} />;
-		}		else {
+		} else {
 			arrowIcon = <ArrowUp color={iconColor} />;
 		}
 	}	else if (props.sortDirection === 'desc') {
 		arrowIcon = <ArrowUp color={iconColor} />;
-	}
-	// else, no sorting
-	else {
+	} else {
+		// else, no sorting
 		arrowIcon = <ArrowUp color={iconColor} />;
 	}
 
 
 	return (
 		<div
-			style={{...colHeaderLabelStyle, cursor: 'pointer'}}
 			onClick={() => { props.onClick(props.colIndex); }}
-			>
+			style={{...colHeaderLabelStyle, cursor: 'pointer'}}
+		>
 			{props.label}
 			{arrowIcon}
 		</div>

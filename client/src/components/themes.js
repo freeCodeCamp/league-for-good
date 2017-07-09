@@ -108,6 +108,14 @@ const themes = (function(themeValues, defaultTheme, ...mixins) {
 			return themeValues;
 		}
 	};
-})(themeValues, defaultTheme, accentMixin, textMixin, miscMixin, warningMixin, infoMixin);
+})(
+	themeValues,
+	defaultTheme,
+	accentMixin,
+	textMixin,
+	miscMixin,
+	warningMixin,
+	infoMixin
+);
 
 export default themes;

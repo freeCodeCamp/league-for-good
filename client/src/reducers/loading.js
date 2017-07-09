@@ -4,6 +4,7 @@ export default function(state = false, action) {
 
 	case 'SET_LOADING_STATE':
 		return action.payload;
+	default:
+		return state;
 	}
-	return state;
 }

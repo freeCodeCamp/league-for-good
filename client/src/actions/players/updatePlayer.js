@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { rootURL } from '../../../globals';
+import { ROOT_URL } from '../../../globals';
 
 
 export function updatePlayer(form) {
 	let { team, teams, ...fields } = form;
-	const url = `${rootURL}/player/update/${fields._id}`;
+	const url = `${ROOT_URL}/player/update/${fields._id}`;
 
 	let prevTeam;
 	let teamUpdate = null;

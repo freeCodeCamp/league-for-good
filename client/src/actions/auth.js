@@ -11,7 +11,7 @@ export function initAuthState() {
 		axios.post('/auth/authenticate')
 			.then(({data}) => {
 				const { leagueInfo, roles, ...userData } = data;
-				console.log(leagueInfo);
+
 				// send users info to reducer
 				dispatch({
 					type: INIT_AUTH_STATE,
@@ -24,8 +24,9 @@ export function initAuthState() {
 					dispatch({ type: FETCH_ROLES, roles });
 				}
 			})
-			.catch(err => dispatch({type: 'AUTH_ERROR'}));
-	};		// TO-DO build auth-error action
+			.catch(err => { throw err; });
+	};
+	// TO-DO build auth-error action
 }
 
 // updates the user's state as logged out after
