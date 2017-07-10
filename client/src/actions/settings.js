@@ -1,5 +1,12 @@
 import axios from 'axios';
-import { CREATE_STAFF_MEMBER, REMOVE_STAFF_MEMBER, SELECT_STAFF_MEMBERS, UPDATE_STAFF_MEMBER, CLOSE_MODAL, OPEN_SNACKBAR } from './types';
+import {
+	CREATE_STAFF_MEMBER,
+	UPDATE_STAFF_MEMBER,
+	REMOVE_STAFF_MEMBER,
+	SELECT_STAFF_MEMBERS,
+	CLOSE_MODAL,
+	OPEN_SNACKBAR,
+} from './types';
 import { ROOT_URL } from '../../globals';
 
 export function selectStaff(staff) {
@@ -7,40 +14,46 @@ export function selectStaff(staff) {
 }
 
 export function addStaffMember(formVals, dispatch, { location }) {
+
 	const body = {
 		email: formVals.email,
 		league: location.state.leagueId,
-		title: formVals.role,
+		roleTitle: formVals.role,
+	};
+
+	const action = {
+		type: CREATE_STAFF_MEMBER,
+		newStaff: {
+			email: body.email,
+			role: body.roleTitle,
+			teams: [],
+		},
 	};
 
 	axios.post(`${ROOT_URL}/settings/create`, body)
-		.then(({data}) => {
-			return dispatch({ type: CREATE_STAFF_MEMBER, newStaff: body.email });
-		})
+		.then(() =>
+			dispatch(action)
+		)
 		.catch( err => {
 			throw new Error(err);
 		});
 }
 
-// Update a staff members email and/or role
-export function updateStaff(formVals, dispatch, props) {
-	
-	//TODO: write the reducer for updating staff
-	const { email, role } = formVals;
-	const body = { email, roleId: role };
+
+export function updateStaff(formVals, dispatch) {
+	const { leagueId, email, role } = formVals;
+	const body = { leagueId, email, role };
+
 	dispatch({ type: CLOSE_MODAL });
 
-	axios.put(`${ROOT_URL}/settings/update/${email}`, body)
-		.then((data) => {
-		
-			return dispatch({type: UPDATE_STAFF_MEMBER, updatedStaff: {...formVals, ...body }});
-
-		})
-		.catch( error => {
+	axios.put(`${ROOT_URL}/staff/update/${email}`, body)
+		.then(() =>
+			dispatch({ type: UPDATE_STAFF_MEMBER, updatedStaff: { ...body }})
+		)
+		.catch(error => {
 			throw new Error(error);
 		});
 }
-
 
 export function removeStaff(staffInfo) {
 
@@ -48,12 +61,14 @@ export function removeStaff(staffInfo) {
 	const message = `${email} has been deleted as a staff member of your league`;
 
 	return function(dispatch) {
-		
+
 		dispatch({ type: CLOSE_MODAL });
 
-		axios.delete(`${ROOT_URL}/settings/remove/${email}`, 
-				{ params: { leagueId } })
-			.then((data) => dispatch({ type: REMOVE_STAFF_MEMBER, removedStaffEmail: email }))
+		axios.delete(`${ROOT_URL}/settings/remove/${email}?leagueId=${leagueId}`)
+			.then(() => dispatch({
+				type: REMOVE_STAFF_MEMBER,
+				removedStaffEmail: email,
+			}))
 			.then(() => dispatch({ type: OPEN_SNACKBAR, message }));
 	};
 }

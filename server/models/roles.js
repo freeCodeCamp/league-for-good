@@ -1,11 +1,12 @@
-/* 
+/*
  * Role model stores information about the roles each user can have in a league
  */
 
 const mongoose = require('mongoose');
+
 const Schema = mongoose.Schema;
 
-// Privileges that each role can be assigned 
+// Privileges that each role can be assigned
 //
 // Teams
 // 	viewTeams: user can view the team tab and a list of all teams
@@ -46,7 +47,7 @@ const RoleSchema = new Schema({
 	title: {
 		type: String,
 		unique: true,
-		required: true,
+		required: true
 	},
 	privileges: {
 		viewTeams: defaultProperty,
@@ -66,7 +67,7 @@ const RoleSchema = new Schema({
 		createStaff: defaultProperty,
 		editStaff: defaultProperty,
 		deleteStaff: defaultProperty,
-		deleteLeague: defaultProperty,
+		deleteLeague: defaultProperty
 	}},
 	{
 		collection: 'roles'
@@ -74,9 +75,10 @@ const RoleSchema = new Schema({
 );
 
 const RoleModel = mongoose.model('role', RoleSchema);
+// eslint-disable-next-line no-unused-expressions
 RoleModel.schema.options.emitIndexErrors;
-//RoleModel.on('index', function(error) {
+// RoleModel.on('index', function(error) {
 //	console.log('index error', error);
-//});
+// });
 
 module.exports = RoleModel;

@@ -8,4 +8,4 @@ const CorfirmPlayerRegModal = ({player}) => (
 	</div>
 );
 
-export default CorfirmPlayerRegModal
+export default CorfirmPlayerRegModal;

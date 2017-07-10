@@ -2,28 +2,33 @@
 * Season model stores information about current and past seasons
 */
 const mongoose = require('mongoose');
+
 const Schema = mongoose.Schema;
 
 
 const SeasonSchema = new Schema({
-	start_date: {
+	startDate: {
 		type: Date,
-		set: (val) => Date.parse(val),		
+		get: (val) => Date.parse(val),		
 		required: true,
 	},
-	end_date: {
+	endDate: {
 		type: Date,
-		set: (val) => Date.parse(val),
+		get: (val) => Date.parse(val),
 		required: true,
 	},
 	name: {
 		type: String,
-		required: true,
+		required: true
+	},
+	year: {
+		type: Number,
+		required: true
 	},
 	teams: [{type: Schema.Types.ObjectId, ref: 'team'}],
-	league_id: {
+	leagueId: {
 		type: Schema.Types.ObjectId,
-		ref: 'league',
+		ref: 'league'
 	}},
 	{
 		collection: 'seasons',
@@ -36,20 +41,15 @@ const SeasonSchema = new Schema({
 			getters: true, 
 			setters: true,			
 			virtuals: true 
-		},
+		}
 	}
 );
 
-//Convenience method for displaying season name w/ year;
-SeasonSchema.virtual('seasonName').get(function() {
-	const d = new Date(this.start_date);
-	return `${this.name} ${d.getFullYear()}`;
-});
 
 SeasonSchema.virtual('active').get(function() {
 	const now = Date.now();
-	const start = Date.parse(this.start_date);
-	const end = Date.parse(this.end_date);
+	const start = Date.parse(this.startDate);
+	const end = Date.parse(this.endDate);
 
 	return now >= start && now <= end;
 });
@@ -65,17 +65,19 @@ SeasonSchema.pre('remove', function(next) {
 
 	const options = { multi: true };
 
-	const teamPromise   = mongoose.model('team').update(teamQuery, teamUpdate, options);
-	const playerPromise = mongoose.model('player').update(playerQuery, playerUpdate, options);
+	const teamPromise   = mongoose.model('team')
+		.update(teamQuery, teamUpdate, options);
+	const playerPromise = mongoose.model('player')
+		.update(playerQuery, playerUpdate, options);
 
 	Promise.all([ 
 		teamPromise.exec(),
 		playerPromise.exec()
 	])
 	.then(() => next())
-	.catch( err => { throw err })
+	.catch( err => { throw err; });
 
-})
+});
 
 
 module.exports = mongoose.model('season', SeasonSchema);

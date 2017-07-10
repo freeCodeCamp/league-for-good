@@ -1,8 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { PLAYER_REGISTRATION_DETAILS as url, makeLinkDynamic } from '../../../../routes';
-import { css_dashboard } from '../../../../style';
+import {
+	PLAYER_REGISTRATION_DETAILS as url,
+	makeLinkDynamic
+} from '../../../../routes';
+import { cssDashboard } from '../../../../style';
 
 import IconButton from 'material-ui/IconButton';
 import ProfileIcon from 'material-ui/svg-icons/action/account-box';
@@ -13,15 +17,19 @@ const PlayerLink = props => {
 	const playerUrl = {
 		pathname: makeLinkDynamic( url, player._id ),
 		state: { player }
-	}
-	
-	return(
+	};
+
+	return (
 		<Link to={playerUrl}>
-			<IconButton hoveredStyle={css_dashboard.table.iconHover}>
+			<IconButton hoveredStyle={cssDashboard.table.iconHover}>
 				<ProfileIcon />
 			</IconButton>
 		</Link>
 	);
+};
+
+PlayerLink.propTypes = {
+	player: PropTypes.object
 };
 
 export default PlayerLink;

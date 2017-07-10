@@ -1,27 +1,27 @@
 import React from 'react';
-import { css_dashboard } from '../../../style';
+import { cssDashboard } from '../../../style';
 import Icon from './seasonActions.jsx';
 
 const formatDate = date => 
-	new Date(date).toDateString().replace(/^\w*\s/, '')
+	new Date(date).toDateString().replace(/^\w*\s/, '');
 
 // All season data passed from the reducers is reformatted here 
 
 export const colData = [
 	{
 		label: 'Season',
-		cellProp: 'seasonName',
+		cellProp: 'name',
 		sortable: true,
 		searchable: true,
 	},
 	{
 		label: 'Start Date',
-		cellProp: 'start_date',
+		cellProp: 'startDate',
 		sortable: true,
 	},
 	{
 		label: 'End Date',
-		cellProp: 'end_date',
+		cellProp: 'endDate',
 		sortable: true,
 	},
 	{
@@ -33,13 +33,13 @@ export const colData = [
 		label: 'Edit',
 		action: 'edit',
 		cellProp: 'icon',
-		style: css_dashboard.table.columns.icon,
+		style: cssDashboard.table.columns.icon,
 	},
 	{
 		label: 'Delete',
 		action: 'delete',
 		cellProp: 'icon',
-		style: css_dashboard.table.columns.icon,
+		style: cssDashboard.table.columns.icon,
 	},
 ];
 
@@ -50,7 +50,7 @@ function getCellValue(season, prop, action) {
 	if (prop === 'active') {
 		return season.active ? 'Active' : 'Archived';
 	}
-	else if (/date$/.test(prop)) {
+	else if (/Date$/.test(prop)) {
 		return formatDate(season[prop]); 
 	}
 

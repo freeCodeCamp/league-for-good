@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import { css_content, css_dashboard } from '../../../style';
+import PropTypes from 'prop-types';
+import { cssContent, cssDashboard } from '../../../style';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
 
 import MenuItem from 'material-ui/MenuItem';
 import DropDownMenu from 'material-ui/DropDownMenu';
-import TextField from 'material-ui/TextField';
-import SearchIcon from 'material-ui/svg-icons/action/search';
 
-import getRowData,{ colData } from './teamData';
+import getRowData, { colData } from './teamData';
 
 import { configTeamForTable } from '../../../../selectors/teams_in_season';
 
@@ -20,7 +19,7 @@ class TeamTable extends Component {
 		super(props);
 
 		this.state = {
-			filterValue: 'all',
+			filterValue: 'all'
 		};
 	}
 
@@ -32,40 +31,38 @@ class TeamTable extends Component {
 	formatTeams() {
 		const { filterValue } = this.state;
 		let { teams } = this.props;
-		
+
 		return teams.filter(team => {
 			let filterFlag;
 
 			if (filterValue === 'all') {
 				filterFlag = true;
-			}
-			else if (filterValue === 'active') {
-				filterFlag = team.currently_active;
-			}
-			else {
-				filterFlag = !team.currently_active;
+			} else if (filterValue === 'active') {
+				filterFlag = team.currentlyActive;
+			} else {
+				filterFlag = !team.currentlyActive;
 			}
 
 			return filterFlag;
-		});     
+		});
 	}
 
 	render() {
-		
+
 		const teams = this.formatTeams();
-		console.log(this.props.teams, 'team table');
+
 		return (
-			<div style={css_content.body}>	
-				<DropDownMenu 
-					value={this.state.filterValue} 
+			<div style={cssContent.body}>
+				<DropDownMenu
 					onChange={this.handleChange}
-					style={css_dashboard.table.teams.dropdown}
-				>
-					<MenuItem value="all" primaryText="All Teams" />
-					<MenuItem value="active" primaryText="Active Teams" />
-					<MenuItem value="archived" primaryText="Archived Teams" />
+					style={cssDashboard.table.teams.dropdown}
+					value={this.state.filterValue}
+					>
+					<MenuItem primaryText="All Teams" value="all" />
+					<MenuItem primaryText="Active Teams" value="active" />
+					<MenuItem primaryText="Archived Teams" value="archived" />
 				</DropDownMenu>
-				<TableTemplate 
+				<TableTemplate
 					headers={colData}
 					rows={getRowData({teams})}
 				/>
@@ -74,6 +71,10 @@ class TeamTable extends Component {
 	}
 }
 const configTeams = configTeamForTable();
+
+TeamTable.propTypes = {
+	teams: PropTypes.arrayOf(PropTypes.object)
+};
 
 function mapStateToProps(state) {
 

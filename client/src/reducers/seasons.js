@@ -26,10 +26,8 @@ function replace(currSeasons, updatedSeason){
 export default function(state = {}, action) {
 	switch (action.type) {
 
-	case FETCH_SEASON: 
-		return { ...state };
 	case FETCH_ALL_SEASONS: 
-		return { ...state, list: action.seasonsList };
+		return { ...state, list: action.seasons };
 	case CREATE_SEASON:
 		return { ...state, list: [...state.list, action.newSeason] };	
 	case UPDATE_SEASON:
@@ -40,13 +38,14 @@ export default function(state = {}, action) {
 	case REMOVE_SEASON:
 		return {
 			...state,
-			list: state.list.filter( season => season._id !== action.deletedSeason),
-		}	
+			list: state.list
+				.filter( season => season._id !== action.deletedSeason),
+		};	
 	case SELECT_SEASON:	
 		return {
 			...state,
 			selected: action.currentSeason,
-		}
+		};
 	}
 	
 

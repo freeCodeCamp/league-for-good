@@ -1,4 +1,5 @@
 const express = require('express');
+
 const Router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
@@ -6,50 +7,46 @@ const passport = require('passport');
 const Leagues = mongoose.model('league');
 const Roles = mongoose.model('role');
 
-function logInUser(req,res){
+function logInUser(req, res) {
 	req.logIn(req.user, err => {
-		if(err) throw err;
+		if (err) {throw err;}
 		res.redirect('/');
 	});
 }
 
-function logOutUser(req, res){
+function logOutUser(req, res) {
 	req.logout();
-	res.status(200).send('User logged out');
+	res.send('User logged out');
 }
 
-// This is called when the user loads up the page to get 
+// This is called when the user loads up the page to get
 // all of the initial data if they have an authenticated session
 //	Initial data:
 //		User access to leagues
 //		Roles to determine proper access to those league
-function fetchInitialData(req, res, next){
+function fetchInitialData(req, res, next) {
 	const { user } = req;
-	
-	if (!user) return next();
 
-	const query = { '$or': [ { owner: user._id }, { 'staff.email': user.email } ] };
+	if (!user) {return next();}
 
-	const leaguePromise =  Leagues.find(query)
-		.populate('teams pending_players');
-	const rolePromise =  Roles.find({});
+	const query = { $or: [ { owner: user._id }, { 'staff.email': user.email } ] };
+
+	const leaguePromise = Leagues.find(query)
+		.select('name _id sportType');
+	const rolePromise = Roles.find({})
+		.select('title privileges');
 
 	return Promise.all([leaguePromise.exec(), rolePromise.exec()])
-		.then(initData => { 
-	
-			res.send({user, leagueInfo: initData[0], roles: initData[1], loggedIn: true });
+		.then(initData => {
+			const [leagueInfo, roles] = initData;
+			res.send({user, leagueInfo, roles, loggedIn: true });
 		})
 		.catch((err) => res.send(err));
 }
 
-function handleAuthFailure(req,res){
+function handleAuthFailure(req, res) {
 	return res.send({user: null, loggedIn: false});
 }
-
-
-
-
-
 
 
 Router.route('/google')
@@ -65,4 +62,4 @@ Router.route('/logout')
 Router.route('/authenticate')
   .post(fetchInitialData, handleAuthFailure);
 
-module.exports = Router;  
+module.exports = Router;

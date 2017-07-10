@@ -7,7 +7,7 @@ import {
 	CREATE_SEASON, 
 	REMOVE_SEASON,
 	UPDATE_SEASON,
-	CLOSE_MODAL 
+	CLOSE_MODAL, 
 } from './types';
 // Get more detailed season info
 export function fetchSeason(season) {
@@ -40,22 +40,22 @@ export function createSeason(form, dispatch, props) {
 	const body = { league_id, ...form };
 	const url = `${ROOT_URL}/seasons/create/${league_id}`;
 
-		axios.post(url, body)
+	axios.post(url, body)
 			.then(({data}) =>
 				dispatch({ type: CREATE_SEASON, newSeason: data })
 			)
-			.catch(err => console.error(err))
+			.catch(err => { throw err; });
 }
 
 export function deleteSeason(season) {
-	const deletedSeason = season._id
+	const deletedSeason = season._id;
 	const url = `${ROOT_URL}/seasons/remove/${deletedSeason}`;
 	
 	return dispatch =>
 		axios.delete(url)
 			.then(() => dispatch({ type: REMOVE_SEASON, deletedSeason })) 
 			.then(() => dispatch({ type: CLOSE_MODAL }))
-			.catch(err => console.error(err))
+			.catch(err => { throw err; });
 }
 
 export function updateSeason(form, dispatch) {
@@ -63,6 +63,5 @@ export function updateSeason(form, dispatch) {
 	const action = 
 
 	dispatch({ type: UPDATE_SEASON, season: form });
-	
-	console.log(form, 'updateSeasonForm');
+
 }

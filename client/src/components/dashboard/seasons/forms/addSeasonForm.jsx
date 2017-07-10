@@ -17,7 +17,7 @@ const thisYear = new Date().getFullYear();
 const normalizeYear = (val, prevVal) => {
 	if (!isNaN(val) && val.length <= 4) return val;
 	return prevVal;
-}
+};
 
 const AddSeasonForm = props => {	
 	const { handleSubmit, leagueSettings, formVals, change } = props;
@@ -102,7 +102,7 @@ const AddSeasonForm = props => {
 const selector = formValueSelector('AddSeasonForm');
 
 function mapStateToProps(state) {
-	const { year, start_date } = selector(state, 'year', 'start_date')
+	const { year, start_date } = selector(state, 'year', 'start_date');
 	return { 
 		formVals: { year, start_date },
 		leagueSettings: state.league.selected.settings,

@@ -11,14 +11,16 @@ export const common = {
 			color: theme.alternateTextColor,
 			fontWeight: 500,
 		},
-		style: { marginTop: '50px' },
+
+		style: {
+			marginTop: '50px',
+		},
 		backgroundColor: theme.accent1Color,
 	},
 	formRow: {
-		display:'flex',
-		justifyContent:'space-around',
-		textAlign:'left',
-	},	
+		display: 'flex',
+		justifyContent: 'space-around',
+	},
 	form: {
 		width: '80%',
 		margin: '0px auto 15px',
@@ -28,7 +30,7 @@ export const common = {
 
 
 // app bar component on top of window
-export const css_appBar = {
+export const cssAppBar = {
 	main: {
 		zIndex: 2000,
 		position: 'fixed',
@@ -51,24 +53,24 @@ export const css_appBar = {
 	},
 };
 
-export const css_loading = {
+export const cssLoading = {
 	style: {
-		position:'absolute',
-		top:0,
-		left:0,
-		width:'100%',
+		position: 'absolute',
+		top: 0,
+		left: 0,
+		width: '100%',
 		height: '100%',
-		background:'white',
-		zIndex:2001,
-		display:'flex',
+		background: 'white',
+		zIndex: 2001,
+		display: 'flex',
 		justifyContent: 'center',
-		alignItems:'center',
+		alignItems: 'center',
 	},
 	size: 80,
 };
 
 // login styling
-export const css_login = {
+export const cssLogin = {
 	raisedButton: common.raisedButton,
 	dialog: {
 		title: {
@@ -81,7 +83,7 @@ export const css_login = {
 
 
 // menu on left side of window
-export const css_menu = {
+export const cssMenu = {
 	drawer: {
 		list: {
 			marginTop: '70px',
@@ -95,15 +97,15 @@ export const css_menu = {
 
 // content is a wrapper that will contain the main
 // components rendered for the UI
-export const css_content = {
+export const cssContent = {
 	// paper is a material ui component used as background
 	paper: {
-		width:'90%',
-		margin:'85px auto',
+		width: '90%',
+		margin: '85px auto',
 		height: 'auto',
 		textAlign: 'center',
 		color: theme.textColor,
-		border:'1px solid ' + theme.borderColor,
+		border: '1px solid ' + theme.borderColor,
 	},
 	header: {
 		width: '100%',
@@ -139,8 +141,8 @@ export const css_content = {
 
 // the create league component contains a form and
 // corresponding buttons
-// rendered inside css_content
-export const css_createLeague = {
+// rendered inside cssContent
+export const cssCreateLeague = {
 	form: common.form,
 	raisedButton: common.raisedButton,
 	card: {
@@ -178,8 +180,12 @@ export const css_createLeague = {
 
 // dashboard will contain most of the actual managing
 // of the league data
-// rendered inside css_content
-export const css_dashboard = {
+// rendered inside cssContent
+export const cssDashboard = {
+	// Loading a league to display to the user
+	loading: {
+		margin: '20px 0px 20px 0px',
+	},
 	// tabs are used to display sections to the user
 	tabs: {
 		inkBar: {
@@ -243,31 +249,33 @@ export const css_dashboard = {
 		// 	margin: '0px',
 		// },
 		colHeaderStyle: {
-			
+
 		},
 		colHeaderLabelStyle: {
-			display:'flex', 
-			alignItems:'center',
-			color: theme.textColor, 
+			display: 'flex',
+			alignItems: 'center',
+			color: theme.textColor,
 		},
 		sortArrowActiveColor: theme.textColor,
 		sortArrowInactiveColor: theme.borderColor,
-		iconHover: {		// for icons rendered inside the table
+		// for icons rendered inside the table
+		iconHover: {
 			backgroundColor: theme.accent3Color,
 			borderRadius: '25px',
 		},
-		// columns uses defaultCol for all the columns in the table and lets material ui
-		// to automatically size the columns to an appropriate width
-		// if you are using an icon for a column, use the icon style to reduce the width
-		// in the table since material ui will give it a width that is usually too large
+		// columns uses defaultCol for all the columns in the table and
+		// lets material ui automatically size the columns to an appropriate
+		// width. If you are using an icon for a column, use the icon style
+		// to reduce the width in the table since material ui will give it
+		// a width that is usually too large
 		columns: {
-		 	
+
 			defaultCol: {
 				textAlign: 'center',
 			},
 			icon: {
 				textAlign: 'left',
-				
+
 			},
 		},
 		// used for the team list displaying all teams in a league
@@ -339,8 +347,8 @@ export const css_dashboard = {
 };
 
 
-// is rendered inside css_content
-export const css_help = {
+// is rendered inside cssContent
+export const cssHelp = {
 	container: {
 		backgroundColor: theme.alternateTextColor,
 		padding: '40px',
@@ -373,7 +381,7 @@ export const css_help = {
 };
 
 
-export const css_modal = {
+export const cssModal = {
 	dialogRoot: {
 		display: 'flex',
 		alignItems: 'center',
@@ -396,10 +404,10 @@ export const css_modal = {
 		fontWeight: 400,
 	},
 	raisedButton: {
-		style: Object.assign({}, common.raisedButton.style, { 
-			marginRight: '10px', 
+		style: ({...common.raisedButton.style, ...{
+			marginRight: '10px',
 			marginBottom: '10px',
-		}),
+		}}),
 		label: common.raisedButton.label,
 		backgroundColor: common.raisedButton.backgroundColor,
 	},

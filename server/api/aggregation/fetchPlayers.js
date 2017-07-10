@@ -25,4 +25,4 @@ module.exports = league_id =>
 			}
 		}
 	},
-]).exec()
+	]).exec();
