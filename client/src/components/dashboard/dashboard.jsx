@@ -42,7 +42,7 @@ Dashboard.propTypes = {
 };
 
 function mapStateToProps(state) {
-	console.log(state);
+
 	return {
 		league: state.league.selected,
 		isLoading: state.isLoading

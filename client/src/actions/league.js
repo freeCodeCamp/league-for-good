@@ -4,6 +4,7 @@ import {
 	SELECT_LEAGUE,
 	SELECT_TEAMS,
 	FETCH_ALL_PLAYERS,
+	SELECT_STAFF_MEMBERS,
 	SET_LOADING_STATE
 } from './types';
 import { ROOT_URL } from '../../globals';
@@ -30,10 +31,11 @@ export function selectLeague(leagueId) {
 
 		axios.get(`${ROOT_URL}/league/fetch/${leagueId}`)
 			.then(response => {
-				const { teams, players } = response.data;
+				const { teams, players, staff } = response.data;
 				dispatch({ type: SELECT_LEAGUE, leagueId });
 				dispatch({ type: SELECT_TEAMS, teams });
 				dispatch({ type: FETCH_ALL_PLAYERS, players });
+				dispatch({ type: SELECT_STAFF_MEMBERS, staff });
 				dispatch({ type: SET_LOADING_STATE, loading: false });
 			});
 	};

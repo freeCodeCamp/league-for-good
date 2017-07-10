@@ -33,14 +33,17 @@ const fetchLeagueDetails = (req, res) => {
 	const fetchPlayers = Players.find({ leagueId });
 	const fetchSeasons = Seasons.find({ leagueId });
 	const fetchTeams = Teams.find({ leagueId });
+	const fetchStaff = League.findOne({ _id: leagueId })
+				.select({ _id: 0, staff: 1});
 
 	Promise.all([
 		fetchSeasons.exec(),
 		fetchTeams.exec(),
-		fetchPlayers.exec()
+		fetchPlayers.exec(),
+		fetchStaff.exec()
 	])
-	.then(([seasons, teams, players]) =>
-		res.send({ teams, seasons, players })
+	.then(([seasons, teams, players, league]) =>
+		res.send({ teams, seasons, players, staff: league.staff })
 	);
 
 };

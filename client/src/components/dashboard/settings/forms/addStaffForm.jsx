@@ -67,7 +67,7 @@ const AddStaffForm = props => {
 AddStaffForm.propTypes = {
 	handleSubmit: PropTypes.func,
 	roles: PropTypes.array,
-	staff: PropTypes.object
+	staff: PropTypes.arrayOf(PropTypes.object)
 };
 
 function mapStateToProps(state) {
