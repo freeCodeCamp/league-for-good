@@ -3,7 +3,8 @@ import {
 	CREATE_LEAGUE,
 	SELECT_LEAGUE,
 	SELECT_TEAMS,
-	FETCH_ALL_PLAYERS
+	FETCH_ALL_PLAYERS,
+	SET_LOADING_STATE
 } from './types';
 import { ROOT_URL } from '../../globals';
 
@@ -25,7 +26,7 @@ export function createLeague(body, redirectCallback) {
 export function selectLeague(leagueId) {
 
 	return dispatch => {
-		dispatch({ type: 'SET_LOADING_STATE', payload: true });
+		dispatch({ type: SET_LOADING_STATE, loading: true });
 
 		axios.get(`${ROOT_URL}/league/fetch/${leagueId}`)
 			.then(response => {
@@ -33,7 +34,7 @@ export function selectLeague(leagueId) {
 				dispatch({ type: SELECT_LEAGUE, leagueId });
 				dispatch({ type: SELECT_TEAMS, teams });
 				dispatch({ type: FETCH_ALL_PLAYERS, players });
-				dispatch({ type: 'SET_LOADING_STATE', payload: false });
+				dispatch({ type: SET_LOADING_STATE, loading: false });
 			});
 	};
 }

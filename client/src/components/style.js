@@ -182,6 +182,10 @@ export const cssCreateLeague = {
 // of the league data
 // rendered inside cssContent
 export const cssDashboard = {
+	// Loading a league to display to the user
+	loading: {
+		margin: '20px 0px 20px 0px'
+	},
 	// tabs are used to display sections to the user
 	tabs: {
 		inkBar: {

@@ -10,6 +10,7 @@ export const RESET_DASHBOARD = 'RESET_DASHBOARD';
 export const OPEN_SNACKBAR = 'OPEN_SNACKBAR';
 export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR';
 export const CHANGE_THEME = 'CHANGE_THEME';
+export const SET_LOADING_STATE = 'SET_LOADING_STATE';
 
 // Authentication action types
 export const INIT_AUTH_STATE = 'InitAuthState';

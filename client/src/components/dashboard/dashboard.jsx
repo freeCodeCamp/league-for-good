@@ -6,7 +6,8 @@ import {connect} from 'react-redux';
 
 import LeagueTabs from './leagueTabs/leagueTabs.jsx';
 import LeagueTabsHeader from './leagueTabs/leagueTabsHeader.jsx';
-import { cssContent } from '../style';
+import { cssContent, cssDashboard } from '../style';
+import CircularProgress from 'material-ui/CircularProgress';
 
 
 class Dashboard extends Component {
@@ -14,7 +15,7 @@ class Dashboard extends Component {
 	render() {
 
 		if (this.props.isLoading) {
-			return <h2>.......Loading</h2>;
+			return <CircularProgress style={cssDashboard.loading} />; 
 		}
 		const { league, history } = this.props;
 		const tabProps = { league, history, leagueId: league._id };
@@ -41,7 +42,7 @@ Dashboard.propTypes = {
 };
 
 function mapStateToProps(state) {
-
+	console.log(state);
 	return {
 		league: state.league.selected,
 		isLoading: state.isLoading
