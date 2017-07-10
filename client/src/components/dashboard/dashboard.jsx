@@ -15,7 +15,7 @@ class Dashboard extends Component {
 	render() {
 
 		if (this.props.isLoading) {
-			return <CircularProgress style={cssDashboard.loading} />; 
+			return <CircularProgress style={cssDashboard.loading} />;
 		}
 		const { league, history } = this.props;
 		const tabProps = { league, history, leagueId: league._id };

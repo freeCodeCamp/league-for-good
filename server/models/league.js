@@ -18,10 +18,10 @@ const LeagueSchema = new Schema(
 		},
 		staff: [{
 			role: String,
-      			email: String,
-      			teams: {
+			email: String,
+			teams: {
 				type: [String],
-      				default: []
+				default: []
 			}
 		}],
 		pendingPlayers: [{

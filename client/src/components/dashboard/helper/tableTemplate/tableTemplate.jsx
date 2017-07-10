@@ -21,7 +21,7 @@ const { table: {
 	sortArrowActiveColor,
 	sortArrowInactiveColor,
 	colHeaderLabelStyle,
-	colHeaderStyle,
+	colHeaderStyle
 }} = cssDashboard;
 // ///////////////////////
 
@@ -129,7 +129,7 @@ const renderBody = (rows) => {
 									<TableRowColumn
 										colSpan={rowData.colSpan}
 										key={i}
-									>
+										>
 										{ i === 0 ? <strong>{rowData.value}</strong>
 												: <span>{rowData.value}</span>
 										}
@@ -180,7 +180,7 @@ const ColumnHeaderChild = props => {
 		<div
 			onClick={() => { props.onClick(props.colIndex); }}
 			style={{...colHeaderLabelStyle, cursor: 'pointer'}}
-		>
+			>
 			{props.label}
 			{arrowIcon}
 		</div>

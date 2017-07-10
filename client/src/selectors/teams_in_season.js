@@ -12,7 +12,8 @@ export const configTeamForTable = () => {
 
 
 			return teams.reduce((list, team) => {
-				// team.activeSeason = activeSeasons.find(season => season.teams.includes(team._id))
+				// team.activeSeason = activeSeasons.find(season =>
+				// season.teams.includes(team._id))
 
 				// if (team.activeSeason && team.currently_active) {
 				// 	team.activeSeason = team.activeSeason.seasonName;

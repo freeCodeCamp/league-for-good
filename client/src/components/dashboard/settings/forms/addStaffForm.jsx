@@ -29,7 +29,7 @@ const AddStaffForm = props => {
 					tooltip='View Description Of Roles'
 					tooltipPosition='top-right'
 					touch={true}
-				>
+					>
 					<HelpOutline />
 				</IconButton>
 				<Field
@@ -37,7 +37,7 @@ const AddStaffForm = props => {
 					hintText='Choose Role'
 					name='role'
 					style={cssDashboard.settings.forms.add.selectField}
-				>
+					>
 					{
 						roles.map((role, i) =>
 							<MenuItem key={i} primaryText={role.title} value={role.title} />

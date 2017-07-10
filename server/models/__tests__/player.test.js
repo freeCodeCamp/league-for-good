@@ -1,4 +1,5 @@
 var test = require('tape');
+var ObjectId = require('mongoose').Types.ObjectId;
 const Player = require('../player');
 
 test('missing player fields present error message', (assert) => {
@@ -27,7 +28,14 @@ test('player has all fields', (assert) => {
 			city: 'Test',
 			state: 'Testerton',
 			country: 'Test Country'
-		}
+		},
+		leagueId: ObjectId('555555555555'),
+		teams: [{
+			teamId: ObjectId('555555555555'),
+			seasonId: ObjectId('555555555555'),
+			position: ['Goalie'],
+			jerseyNum: 20
+		}]
 	};
 
 	var player = new Player(playerData);
@@ -59,8 +67,22 @@ test('player has all fields', (assert) => {
 	assert.equal(player.address.country,
 					playerData.address.country,
 					'has address country');
-	assert.assert(player.leagues, 'has leagues');
-	assert.assert(player.teams, 'has teams');
+	assert.assert(player.leagueId,
+					playerData.leagueId,
+					'has leagues');
+	assert.assert(player.teams[0].teamId,
+					playerData.teams[0].teamId,
+					'has teams team id');
+	assert.assert(player.teams[0].seasonId,
+					playerData.teams[0].seasonId,
+					'has team season id');
+	assert.assert(player.teams[0].position[0],
+					playerData.teams[0].position[0],
+					'has team position');
+	assert.assert(player.teams[0].jerseyNum,
+					playerData.teams[0].jerseyNum,
+					'has team jersey num');
+
 	assert.end();
 });
 
