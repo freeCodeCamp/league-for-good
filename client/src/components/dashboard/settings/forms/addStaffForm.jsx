@@ -11,9 +11,11 @@ import { connect } from 'react-redux';
 import { addStaffMember, openSnackbar } from '../../../../actions/index';
 
 import { cssContent, cssDashboard } from '../../../style';
-import validate from './utils/addStaffFormValidation';
+import validate, { uniqueEmailVal } from './utils/addStaffFormValidation';
+
 
 const AddStaffForm = props => {
+
 	const { handleSubmit, roles } = props;
 
 	return (
@@ -51,6 +53,7 @@ const AddStaffForm = props => {
 					hintText='Enter A Gmail Account'
 					name='email'
 					style={cssDashboard.settings.forms.add.textField}
+					validate={uniqueEmailVal.bind(null, props.staff)}
 				/>
 				<RaisedButton
 					backgroundColor={cssDashboard.raisedButton.backgroundColor}
@@ -71,7 +74,6 @@ AddStaffForm.propTypes = {
 };
 
 function mapStateToProps(state) {
-	console.log('add staff form', state);
 	return { roles: state.roles, staff: state.settings.staff };
 }
 
