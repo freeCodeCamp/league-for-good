@@ -7,10 +7,7 @@ import {
 	toggleMenu,
 	selectLeague,
 	openModal,
-	selectTeams,
-	changeTheme,
-	fetchPlayerList,
-	selectStaff
+	changeTheme
 } from '../../actions/index';
 import PropTypes from 'prop-types';
 
@@ -25,16 +22,17 @@ class NavBar extends Component {
 	}
 
 	selectLeague = league => {
-		const { teams, staff, ...leagueData } = league;
+		// const { teams, staff, ...leagueData } = league;
 
-		// Mark new league as 'Selected'
-		this.props.selectLeague(leagueData);
-		// Fetch players from league from the server
-		this.props.fetchPlayerList(leagueData._id);
-		// Dispatch teams in the league to the teams reducer
-		this.props.selectTeams(teams);
-		// Dispatch staff in the league to the staff reducer
-		this.props.selectStaff(staff);
+		// // Mark new league as 'Selected'
+		// this.props.selectLeague(leagueData);
+		// // Fetch players from league from the server
+		// this.props.fetchPlayerList(leagueData._id);
+		// // Dispatch teams in the league to the teams reducer
+		// this.props.selectTeams(teams);
+		// // Dispatch staff in the league to the staff reducer
+		// this.props.selectStaff(staff);
+		this.props.selectLeague(league._id);
 	}
 
 	themeMenuToggle = () => {
@@ -44,6 +42,7 @@ class NavBar extends Component {
 	}
 
 	render() {
+		console.log(this.props);
 		return (
 			<div>
 				<Bar
@@ -65,18 +64,16 @@ class NavBar extends Component {
 
 NavBar.propTypes = {
 	changeTheme: PropTypes.func,
-	fetchPlayerList: PropTypes.func,
 	leagues: PropTypes.arrayOf(PropTypes.object),
 	open: PropTypes.bool,
 	openModal: PropTypes.func,
 	selectLeague: PropTypes.func,
-	selectStaff: PropTypes.func,
-	selectTeams: PropTypes.func,
 	toggleMenu: PropTypes.func
 };
 
 function mapStateToProps({menu, league}) {
 	const { open } = menu;
+
 	return { open, leagues: league.list };
 }
 
@@ -84,11 +81,8 @@ function mapDispatchToProps(dispatch) {
 	return bindActionCreators({
 		toggleMenu,
 		selectLeague,
-		selectTeams,
 		openModal,
-		changeTheme,
-		fetchPlayerList,
-		selectStaff
+		changeTheme
 	}, dispatch);
 }
 

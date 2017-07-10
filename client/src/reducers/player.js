@@ -18,7 +18,7 @@ export default function(state = null, action) {
 		case FETCH_PLAYER:
 			return { ...state, selected: action.playerDetails };
 		case FETCH_ALL_PLAYERS:
-			return { list: action.playersList };
+			return { list: action.players };
 		case ADD_PLAYER:
 			return { ...state, list: [...state.list, action.payload] };
 		default:

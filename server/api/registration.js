@@ -41,6 +41,7 @@ const createPlayer = (req, res) => {
 		}));
 };
 
+
 const deleteRegistration = (req, res) => {
 	const { playerId } = req.params;
 
@@ -55,7 +56,6 @@ const deleteRegistration = (req, res) => {
 Router.route('/:leagueId')
 	.get(getRegForm)
 	.post(createPlayer);
-
 Router.route('/delete/:playerId')
 	.delete(deleteRegistration);
 

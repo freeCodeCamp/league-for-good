@@ -7,7 +7,11 @@ const validate = val => {
 
 	if (!emailRegex.test(val.email)) {
 		errors.email = 'Email must have a gmail address';
+
+	} else if (!val.role) {
+		errors.role = 'A role must be selected';
 	}
+	// TODO: Add a validator to check for same email addresses in staff list
 
 	return errors;
 };

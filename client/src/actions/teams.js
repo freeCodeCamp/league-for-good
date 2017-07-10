@@ -3,12 +3,11 @@ import axios from 'axios';
 import {
 	CREATE_TEAM,
 	REMOVE_TEAM,
-	SELECT_TEAMS,
 	UPDATE_TEAM,
 	OPEN_SNACKBAR,
 	CLOSE_MODAL
 } from './types';
-import { rootURL } from '../../globals';
+import { ROOT_URL } from '../../globals';
 
 
 // create a team
@@ -19,7 +18,7 @@ export function createTeam( formVals, dispatch, { location } ) {
 		league: location.state.leagueId
 	};
 
-	axios.post(`${rootURL}/team/create`, body)
+	axios.post(`${ROOT_URL}/team/create`, body)
 		.then(({data}) => {
 
 			return dispatch({ type: CREATE_TEAM, newTeam: data });
@@ -29,10 +28,6 @@ export function createTeam( formVals, dispatch, { location } ) {
 		});
 }
 
-// Select teams to display from league
-export function selectTeams(teams) {
-	return { type: SELECT_TEAMS, teams: teams };
-}
 
 // Edit a team's name and active status
 export function updateTeam(formVals, dispatch) {
@@ -41,7 +36,7 @@ export function updateTeam(formVals, dispatch) {
 	const body = { name, currentlyActive };
 	dispatch({ type: CLOSE_MODAL });
 
-	axios.put(`${rootURL}/team/update/${_id}`, body)
+	axios.put(`${ROOT_URL}/team/update/${_id}`, body)
 		.then(() => {
 			return dispatch({
 				type: UPDATE_TEAM,
@@ -64,7 +59,7 @@ export function removeTeam(team) {
 
 		dispatch({ type: CLOSE_MODAL });
 
-		axios.delete(`${rootURL}/team/remove/${_id}`)
+		axios.delete(`${ROOT_URL}/team/remove/${_id}`)
 			.then(() => dispatch({ type: REMOVE_TEAM, removedTeam: _id }))
 			.then(() =>
 				dispatch({ type: OPEN_SNACKBAR, message })

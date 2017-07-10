@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { TextField, AutoComplete } from 'redux-form-material-ui';
 import RaisedButton from 'material-ui/RaisedButton';
-
+import validate from './utils/addPlayerFormValidation';
 import {
 	createPlayer,
 	updatePlayer,
@@ -13,7 +13,6 @@ import {
 import { cssContent, cssDashboard } from '../../../style';
 
 import { normalizeJerseyNum as normalize } from './utils/normalize';
-import validate from './utils/playerFormValidation';
 
 let PlayerFormTemplate = ({handleSubmit, teams, title}) => {
 	return (

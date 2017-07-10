@@ -68,6 +68,10 @@ const warningMixin = {
 	warning: 'red'
 };
 
+const infoMixin = {
+	info: '#a9a9a9'
+};
+
 const themes = (function(themeValues, defaultTheme, ...mixins) {
 	// add all the mixins to each theme
 	mixins.forEach(mixin => {
@@ -104,6 +108,14 @@ const themes = (function(themeValues, defaultTheme, ...mixins) {
 			return themeValues;
 		}
 	};
-})(themeValues, defaultTheme, accentMixin, textMixin, miscMixin, warningMixin);
+})(
+	themeValues,
+	defaultTheme,
+	accentMixin,
+	textMixin,
+	miscMixin,
+	warningMixin,
+	infoMixin
+);
 
 export default themes;

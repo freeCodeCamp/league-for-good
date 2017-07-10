@@ -1,6 +1,7 @@
 import {
 	CREATE_STAFF_MEMBER,
 	REMOVE_STAFF_MEMBER,
+	UPDATE_STAFF_MEMBER,
 	SELECT_STAFF_MEMBERS
 } from '../actions/types';
 
@@ -10,8 +11,8 @@ import {
  * 	staff - (Array) - List of all staff members of a league
  */
 
-function removeStaff(removedEmail) {
-	return staffEmail => removedEmail !== staffEmail;
+function removeStaff({removedStaffEmail}) {
+	return staffEmail => removedStaffEmail !== staffEmail;
 }
 
 export default function(state = {}, action) {
@@ -22,10 +23,9 @@ export default function(state = {}, action) {
 	case CREATE_STAFF_MEMBER:
 		return { ...state, staff: [action.newStaff, ...state.staff] };
 	case REMOVE_STAFF_MEMBER:
-		return {
-			...state,
-			staff: state.staff.filter(removeStaff(action.removedStaffEmail))
-		};
+		return { ...state, staff: state.staff.filter(removeStaff(action)) };
+	case UPDATE_STAFF_MEMBER:
+		return state;
 	default:
 		return state;
 	}

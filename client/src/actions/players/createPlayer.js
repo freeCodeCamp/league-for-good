@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { ADD_PLAYER, ADD_PLAYER_TO_TEAM } from '../types';
-import { rootURL } from '../../../globals';
+import { ROOT_URL } from '../../../globals';
 
 
 // Add a new player to DB,
@@ -13,7 +13,7 @@ export function createPlayer(form, dispatch, { location: { state }}) {
 	// format the request body to match the format of player model
 	const reqBody = { ...player, leagues, teams: [team] };
 
-	axios.post(`${rootURL}/player/add`, reqBody)
+	axios.post(`${ROOT_URL}/player/add`, reqBody)
 		.then(({data}) => {
 
 			// Send new player to the playersReducer to be appended to the list

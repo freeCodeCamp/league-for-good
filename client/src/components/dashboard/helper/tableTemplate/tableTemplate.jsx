@@ -15,6 +15,7 @@ import ArrowUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
 import ArrowDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
 import { cssDashboard } from '../../../style';
 
+
 // IMPORTED STYLES
 const { table: {
 	sortArrowActiveColor,
@@ -128,7 +129,6 @@ const renderBody = (rows) => {
 									<TableRowColumn
 										colSpan={rowData.colSpan}
 										key={i}
-										style={rowData.style}
 										>
 										{ i === 0 ? <strong>{rowData.value}</strong>
 												: <span>{rowData.value}</span>
@@ -146,7 +146,6 @@ const renderBody = (rows) => {
 // column header with sorting icons
 // when clicked will sort columns with asc, desc, or no order
 const ColumnHeaderChild = props => {
-
 	let arrowIcon = <noScript />;
 
 	// Return early if column is not sortable
@@ -166,7 +165,7 @@ const ColumnHeaderChild = props => {
 	if (props.sortDirection === 'asc') {
 		if (columnSorted) {
 			arrowIcon = <ArrowDown color={iconColor} />;
-		}		else {
+		} else {
 			arrowIcon = <ArrowUp color={iconColor} />;
 		}
 	}	else if (props.sortDirection === 'desc') {
@@ -182,8 +181,8 @@ const ColumnHeaderChild = props => {
 			onClick={() => { props.onClick(props.colIndex); }}
 			style={{...colHeaderLabelStyle, cursor: 'pointer'}}
 			>
-			{arrowIcon}
 			{props.label}
+			{arrowIcon}
 		</div>
 	);
 };

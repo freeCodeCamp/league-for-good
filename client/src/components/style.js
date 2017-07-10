@@ -11,7 +11,10 @@ export const common = {
 			color: theme.alternateTextColor,
 			fontWeight: 500
 		},
-		style: { marginTop: '30px' },
+
+		style: {
+			marginTop: '50px'
+		},
 		backgroundColor: theme.accent1Color
 	},
 	formRow: {
@@ -50,6 +53,21 @@ export const cssAppBar = {
 	}
 };
 
+export const cssLoading = {
+	style: {
+		position: 'absolute',
+		top: 0,
+		left: 0,
+		width: '100%',
+		height: '100%',
+		background: 'white',
+		zIndex: 2001,
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center'
+	},
+	size: 80
+};
 
 // login styling
 export const cssLogin = {
@@ -164,6 +182,10 @@ export const cssCreateLeague = {
 // of the league data
 // rendered inside cssContent
 export const cssDashboard = {
+	// Loading a league to display to the user
+	loading: {
+		margin: '20px 0px 20px 0px'
+	},
 	// tabs are used to display sections to the user
 	tabs: {
 		inkBar: {
@@ -287,6 +309,30 @@ export const cssDashboard = {
 	players: {
 		ul: {
 			listStyleType: 'none'
+		}
+	},
+	// custom css in the settings tab
+	settings: {
+		forms: {
+			add: {
+				textField: {
+					width: '100%',
+					padding: '0px'
+				},
+				selectField: {
+					width: '15%',
+					margin: '0px',
+					padding: '0px',
+					float: 'right',
+					textAlign: 'left'
+				},
+				info: {
+					marginBottom: '5px',
+					marginLeft: '10px',
+					textAlign: 'right',
+					float: 'right'
+				}
+			}
 		}
 	}
 };

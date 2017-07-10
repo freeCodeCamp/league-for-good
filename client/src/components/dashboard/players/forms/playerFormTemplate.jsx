@@ -13,7 +13,7 @@ import {
 import { cssContent, cssDashboard } from '../../../style';
 
 import { normalizeJerseyNum as normalize } from './utils/normalize';
-import validate from './utils/playerFormValidation';
+import validate from './utils/addPlayerFormValidation';
 
 let PlayerFormTemplate = ({handleSubmit, teams, title}) => {
 	return (

@@ -19,11 +19,10 @@ const StaffList = props => {
 
 StaffList.propTypes = {
 	leagueId: PropTypes.string,
-	staff: PropTypes.arrayOf(PropTypes.string)
+	staff: PropTypes.arrayOf(PropTypes.object)
 };
 
 function mapStateToProps(state) {
-	console.table(state.settings);
 	return {
 		staff: state.settings.staff,
 		leagueId: state.league.selected._id

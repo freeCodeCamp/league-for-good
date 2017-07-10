@@ -37,10 +37,10 @@ const PlayerSchema = new Schema({
 		state: String,
 		country: String
 	},
-	leagues: [{
+	leagueId: {
 		type: Schema.Types.ObjectId,
 		ref: 'league'
-	}],
+	},
 	teams: [{
 		teamId: Schema.Types.ObjectId,
 		seasonId: Schema.Types.ObjectId,
@@ -73,6 +73,7 @@ PlayerSchema.virtual('team').get(function() {
 PlayerSchema.plugin(removeRefs, {
 	modelName: 'league', field: 'pendingPlayers'
 });
+
 PlayerSchema.plugin(capitalize, { fields });
 
 module.exports = mongoose.model('player', PlayerSchema);

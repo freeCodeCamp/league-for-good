@@ -26,10 +26,12 @@ const Menu = props => {
 						<ListItem
 							containerElement={<Link to={Links.TEAM_LIST}/>}
 							key={i}
-							leftIcon={<Avatar
-								backgroundColor={cssMenu.avatar.backgroundColor}
-								src={SportsIcons[league.sportType]}
-							/>}
+							leftIcon={
+								<Avatar
+									backgroundColor={cssMenu.avatar.backgroundColor}
+									src={SportsIcons[league.sportType]}
+								/>
+							}
 							onClick={() => selectLeague(league)}
 							primaryText={league.name}
 						/>

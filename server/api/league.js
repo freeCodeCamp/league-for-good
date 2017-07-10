@@ -4,7 +4,9 @@ const Router = express.Router();
 const mongoose = require('mongoose');
 
 const League = mongoose.model('league');
-
+const Seasons = mongoose.model('season');
+const Players = mongoose.model('player');
+const Teams = mongoose.model('team');
 
 // Create a new league for the user
 const createLeague = (req, res) => {
@@ -25,9 +27,30 @@ const createLeague = (req, res) => {
 		});
 };
 
+const fetchLeagueDetails = (req, res) => {
+	const { leagueId } = req.params;
 
-// Router.route('/fetchLeagues').get(getLeagues);
+	const fetchPlayers = Players.find({ leagueId });
+	const fetchSeasons = Seasons.find({ leagueId });
+	const fetchTeams = Teams.find({ leagueId });
+	const fetchStaff = League.findOne({ _id: leagueId })
+				.select({ _id: 0, staff: 1});
+
+	Promise.all([
+		fetchSeasons.exec(),
+		fetchTeams.exec(),
+		fetchPlayers.exec(),
+		fetchStaff.exec()
+	])
+	.then(([seasons, teams, players, league]) =>
+		res.send({ teams, seasons, players, staff: league.staff })
+	);
+
+};
+
+
 Router.route('/create').post(createLeague);
+Router.route('/fetch/:leagueId').get(fetchLeagueDetails);
 
 
 module.exports = Router;

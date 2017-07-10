@@ -10,6 +10,7 @@ export const RESET_DASHBOARD = 'RESET_DASHBOARD';
 export const OPEN_SNACKBAR = 'OPEN_SNACKBAR';
 export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR';
 export const CHANGE_THEME = 'CHANGE_THEME';
+export const SET_LOADING_STATE = 'SET_LOADING_STATE';
 
 // Authentication action types
 export const INIT_AUTH_STATE = 'InitAuthState';
@@ -42,3 +43,7 @@ export const ADD_PLAYER_TO_ROSTER = 'ADD_PLAYER_TO_ROSTER';
 export const CREATE_STAFF_MEMBER = 'CREATE_STAFF_MEMBER';
 export const REMOVE_STAFF_MEMBER = 'REMOVE_STAFF_MEMBER';
 export const SELECT_STAFF_MEMBERS = 'SELECT_STAFF_MEMBERS';
+export const UPDATE_STAFF_MEMBER = 'UPDATE_STAFF_MEMBER';
+
+// Roles action types
+export const FETCH_ROLES = 'FETCH_ROLES';
