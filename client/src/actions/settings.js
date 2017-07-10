@@ -23,7 +23,11 @@ export function addStaffMember(formVals, dispatch, { location }) {
 
 	const action = {
 		type: CREATE_STAFF_MEMBER,
-		newStaff: {...body, teams: [] }
+		newStaff: {
+			email: body.email,
+			role: body.roleTitle,
+			teams: []
+		}
 	};
 
 	axios.post(`${ROOT_URL}/settings/create`, body)
