@@ -11,9 +11,14 @@ const validate = val => {
 	} else if (!val.role) {
 		errors.role = 'A role must be selected';
 	}
-	// TODO: Add a validator to check for same email addresses in staff list
 
 	return errors;
 };
+
+// have to disable eslint since undefined is used by redux form for success
+/*eslint-disable*/
+export const uniqueEmailVal = (staff, value) => 
+	staff.some(staff => staff.email === value) ? 'Email already used' : undefined
+/*eslint-enable*/
 
 export default validate;
