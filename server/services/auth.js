@@ -16,31 +16,32 @@ passport.deserializeUser((id, done) => {
 passport.use(new GoogleStrategy({
 	clientID: process.env.GOOGLE_CLIENT_ID,
 	clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-	callbackURL: process.env.GOOGLE_CALLBACK_URL,
+	callbackURL: process.env.GOOGLE_CALLBACK_URL
 },
 	(token, refreshToken, profile, cb) => {
-		if (!profile) return cb('Invalid credentials');
+		if (!profile) {
+			return cb('Invalid credentials');
+		}
 
-		User.findOne({ google_id: profile.id })
+		return User.findOne({ googleId: profile.id })
 			.exec()
 			.then(user => {
 
 				if (!user) {
 					const newUser = new User({
 						name: profile.displayName,
-						google_id: profile.id,
+						googleId: profile.id,
 						avatar: profile.photos[0].value,
-						email: profile.emails[0].value,
+						email: profile.emails[0].value
 					});
 
 					newUser.save();
 					return cb(null, newUser);
-				}
-				else {
+				} else {
 					return cb(null, user);
 				}
 			})
-			.catch(err => cb(err));
+			.catch(err => { return cb(err); });
 	})
 );
 

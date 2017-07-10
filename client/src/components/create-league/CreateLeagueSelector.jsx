@@ -1,37 +1,47 @@
 import React from 'react';
-import FlatButton from 'material-ui/FlatButton';
-import {Card, CardActions, CardHeader, CardText, CardTitle} from 'material-ui/Card';
+import PropTypes from 'prop-types';
+import {
+	Card,
+	CardActions,
+	CardTitle
+} from 'material-ui/Card';
 import CreateLeagueButton from './CreateLeagueButton.jsx';
 
 import { sports } from '../sports.js';
-import { css_createLeague } from '../style';
+import { cssCreateLeague } from '../style';
 
 
-// Creates a list of different buttons for selecting a sport type for the new league
+// Creates a list of different buttons for selecting
+// a sport type for the new league
 // Once a sport type is selected, the proper form will be rendered
 const CreateLeagueSelector = ({onSelect, selectedSport})=> (
-	<Card style={css_createLeague.card.style}>
-		<CardTitle 
-			title="Create a New League"
-			titleColor={css_createLeague.card.title.titleColor}
+	<Card style={cssCreateLeague.card.style}>
+		<CardTitle
 			subtitle="Choose a sport"
-			subtitleColor={css_createLeague.card.title.subtitleColor}
+			subtitleColor={cssCreateLeague.card.title.subtitleColor}
+			title="Create a New League"
+			titleColor={cssCreateLeague.card.title.titleColor}
 		/>
 		<CardActions>
 			{sports.map((sport, i) => {
 				return (
 					<CreateLeagueButton
-						key={i}
-						active={selectedSport == sport.name}
-						label={sport.name}
+						active={selectedSport === sport.name}
 						icon={sport.icon}
+						key={i}
+						label={sport.name}
 						onClick={onSelect}
-					/> 
+					/>
 				);
 			})
 		}
 		</CardActions>
 	</Card>
 );
+
+CreateLeagueSelector.propTypes = {
+	onSelect: PropTypes.func,
+	selectedSport: PropTypes.string
+};
 
 export default CreateLeagueSelector;

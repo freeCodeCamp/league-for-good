@@ -1,7 +1,7 @@
-//All 'action types' are stored here and exported as variables in order to avoid bugs 
-//caused by typos when creating actions and reducers
+// All 'action types' are stored here and exported as variables in order
+// to avoid bugs caused by typos when creating actions and reducers
 
-//UI related action types 
+// UI related action types
 export const TOGGLE_MENU = 'Toggle Menu';
 export const OPEN_MODAL = 'OPEN_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
@@ -10,17 +10,18 @@ export const RESET_DASHBOARD = 'RESET_DASHBOARD';
 export const OPEN_SNACKBAR = 'OPEN_SNACKBAR';
 export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR';
 export const CHANGE_THEME = 'CHANGE_THEME';
+export const SET_LOADING_STATE = 'SET_LOADING_STATE';
 
-//Authentication action types 
+// Authentication action types
 export const INIT_AUTH_STATE = 'InitAuthState';
 export const LOG_OUT = 'log out';
 
-
-//League action types
+// League action types
 
 export const FETCH_LEAGUES = 'fetch leagues';
 export const CREATE_LEAGUE = 'create league';
 export const SELECT_LEAGUE = 'select league';
+export const REMOVE_LEAGUE = 'REMOVE_LEAGUE';
 
 // Team action types
 export const CREATE_TEAM = 'create team';
@@ -49,6 +50,10 @@ export const UPDATE_STAFF_MEMBER = 'UPDATE_STAFF_MEMBER';
 export const FETCH_SEASON = 'FETCH_SEASON';
 export const FETCH_ALL_SEASONS = 'FETCH_ALL_SEASONS';
 export const CREATE_SEASON = 'CREATE_SEASON';
+export const UPDATE_SEASON = 'UPDATE_SEASON';
+export const REMOVE_SEASON = 'REMOVE_SEASON';
+export const SELECT_SEASON = 'SELECT_SEASON';
+
 
 // Roles action types
 export const FETCH_ROLES = 'FETCH_ROLES';

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { css_content, css_dashboard } from '../../../style';
+import { cssContent } from '../../../style';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
 
 import TextField from 'material-ui/TextField';
@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 const SeasonList = props => {
 
 	return (
-		<div style={css_content.body}>	
+		<div style={cssContent.body}>	
 			<TableTemplate
 				title="Seasons" 
 				headers={colData}
@@ -21,7 +21,7 @@ const SeasonList = props => {
 			/>
 		</div>
 	);
-}
+};
 
 function mapStateToProps(state) {
 	return { seasons: state.seasons.list };

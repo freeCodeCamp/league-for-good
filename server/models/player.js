@@ -1,74 +1,83 @@
 /*
-* Player model stores information about each player, their contact info, and teams they played on
+* Player model stores information about each player,
+* their contact info, and teams they played on
 */
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+
 const Schema = mongoose.Schema;
 
 const capitalize = require('./plugins/capitalize');
 const removeRefs = require('./plugins/removeAllRefs');
 
 const PlayerSchema = new Schema({
-	first_name: {
+	firstName: {
 		type: String,
-		required: true,
+		required: true
 	},
-	last_name: {
+	lastName: {
 		type: String,
-		required: true,
+		required: true
 	},
 	email: {
 		type: String,
-		required: true,
+		required: true
 	},
-	phone_num: {
-		type: String,
+	phoneNum: {
+		type: String
 	},
-	emergency_contact: {
+	emergencyContact: {
 		name: String,
-		phone_num: String,
+		phoneNum: String,
 		email: String,
-		relation: String,
+		relation: String
 	},
 	address: {
 		street: String,
 		city: String,
 		state: String,
-		country: String,
+		country: String
 	},
-	leagues: [{
+	leagueId: {
 		type: Schema.Types.ObjectId,
-		ref: 'league',
-	}],
+		ref: 'league'
+	},
+	pending: {
+		type: Boolean,
+		default: true
+	},
 	teams: [{
 		teamId: Schema.Types.ObjectId,
 		seasonId: Schema.Types.ObjectId,
 		position: [String],
-		jersey_num: Number,
+		jerseyNum: Number
 	}]},
 	{
 		collection: 'players',
 		toObject: { virtuals: true },
-		toJSON: { virtuals: true },
+		toJSON: { virtuals: true }
 	}
 );
 
 
 const fields = [
-	'first_name', 
-	'last_name', 
-	'emergency_contact.name',
+	'firstName',
+	'lastName',
+	'emergencyContact.name'
 ];
 
-PlayerSchema.virtual('full_name').get(function () {
-	return `${this.first_name} ${this.last_name}`;
+PlayerSchema.virtual('fullName').get(function() {
+	return `${this.firstName} ${this.lastName}`;
 });
 
-//TODO -- virtual should return team config relative to league AND seasonId
-PlayerSchema.virtual('team').get(function () {
+// TODO -- virtual should return team config relative to league AND seasonId
+PlayerSchema.virtual('team').get(function() {
 	return this.teams[0];
 });
 
-PlayerSchema.plugin(removeRefs, { modelName: 'league', field: 'pending_players' });
+PlayerSchema.plugin(removeRefs, {
+	modelName: 'league', field: 'pendingPlayers'
+});
+
 PlayerSchema.plugin(capitalize, { fields });
 
 module.exports = mongoose.model('player', PlayerSchema);

@@ -1,28 +1,25 @@
 const express = require('express');
+
 const Router = express.Router();
 const mongoose = require('mongoose');
-const _ = require('lodash');
-const faker = require('faker');
 
 const Player = mongoose.model('player');
-const Leagues = mongoose.model('league');
 const Teams = mongoose.model('team');
 
 
-//Add a player into the database 
+// Add a player into the database
 const addPlayerToLeague = (req, res) => {
 	const { teams } = req.body;
 	const teamId = teams[0] && teams[0].teamId ? teams[0].teamId : null;
 
 	Player.create( req.body )
 		.then(newPlayer => {
-			if (teamId){
+			if (teamId) {
 				Teams.findByIdAndUpdate(teamId, {$push: { players: newPlayer }})
 					.exec()
 					.then(() => res.send( newPlayer ))
 					.catch(error => res.send({ error }));
-			}
-			else{
+			}			else {
 				res.send(newPlayer);
 			}
 		})
@@ -31,7 +28,7 @@ const addPlayerToLeague = (req, res) => {
 
 const getPlayer = (req, res) => {
 	const { playerId } = req.params;
-	
+
 	Player.findById(playerId)
 		.exec()
 		.then(data => res.send(data))
@@ -41,9 +38,8 @@ const getPlayer = (req, res) => {
 
 const fetchPlayerList = (req, res) => {
 	const { leagueId } = req.params;
-	const query = { leagues: { $in: [leagueId] }};
-	const select = {}; 
-	Player.find(query)
+
+	Player.find({ leagueId })
 		.exec()
 		.then(players => res.send(players));
 };
@@ -64,15 +60,17 @@ const addPlayerToTeam = (req, res) => {
 };
 
 const swapTeams = (teamUpdate, player) => {
-	if (!teamUpdate) return Promise.resolve('No update');
+	if (!teamUpdate) {
+		return Promise.resolve('No update');
+	}
 
 	const { prevTeam, currTeam } = teamUpdate;
-	Promise.all([
+	return Promise.all([
 		Teams.findByIdAndUpdate( prevTeam, { $pull: { players: player }}).exec(),
 		Teams.findByIdAndUpdate( currTeam, { $push: { players: player }}).exec()
 	])
 	.then(() => Promise.resolve('Updated'))
-	.catch(err => { throw err})
+	.catch(err => { throw err;});
 };
 
 const updatePlayer = (req, res) => {
@@ -83,7 +81,7 @@ const updatePlayer = (req, res) => {
 		.exec()
 		.then(() => swapTeams(teamUpdate, playerId))
 		.then(() => res.send(playerUpdate))
-		.catch(err => { throw err })
+		.catch(err => { throw err; });
 
 };
 

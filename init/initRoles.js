@@ -1,12 +1,15 @@
+require('dotenv').config();
+require('../server/models/index');
+
 /*
  * This script will initialize the default roles in the database for the app
- * This is just a sample of roles that you can use, feel free to create your own.
+ * This is a sample of roles that you can use, feel free to create your own.
  *
  * Default roles:
  * 	owner:
  * 		-owner of the league
  * 		-has access to all privileges
- *	manager: 
+ *	manager:
  *		-manager of the league
  *		-has access to all the teams, players, and season privileges
  *		-no access to settings tab
@@ -20,21 +23,22 @@
  * A description of what each privilege does can be found in ../models/roles.js
  */
 
+
 const mongoose = require('mongoose');
-require('dotenv').config();
-const MONGO_URI = process.env.MONGO_URI; 
-const Role = require('../server/models/roles.js');
+
+const Role = mongoose.model('role');
+const MONGO_URI = process.env.MONGO_URI;
 
 
 mongoose.connect(MONGO_URI);
 mongoose.connection
     .once('open', () => console.log('Connected to MongoDB'))
-    .on('error', error => console.log('Error connecting to MongoDB:', error));
+    .on('error', error => console.log(error));
 
 
 const adminRole = new Role({
 	title: 'Administrator',
-      	privileges: {
+	privileges: {
 		viewTeams: true,
 		viewSubsetTeams: false,
 		createTeams: true,
@@ -52,13 +56,13 @@ const adminRole = new Role({
 		createStaff: true,
 		editStaff: true,
 		deleteStaff: true,
-		deleteLeague: false,
-	},
+		deleteLeague: false
+	}
 });
 
 const managerRole = new Role({
 	title: 'General Manager',
-      	privileges: {
+	privileges: {
 		viewTeams: true,
 		viewSubsetTeams: false,
 		createTeams: true,
@@ -76,13 +80,13 @@ const managerRole = new Role({
 		createStaff: false,
 		editStaff: false,
 		deleteStaff: false,
-		deleteLeague: false,
-	},
+		deleteLeague: false
+	}
 });
 
 const coachRole = new Role({
 	title: 'Coach',
-      	privileges: {
+	privileges: {
 		viewTeams: false,
 		viewSubsetTeams: true,
 		createTeams: false,
@@ -100,15 +104,15 @@ const coachRole = new Role({
 		createStaff: false,
 		editStaff: false,
 		deleteStaff: false,
-		deleteLeague: false,
-	},
+		deleteLeague: false
+	}
 });
 
 
 const adminPromise = adminRole.save()
 	.then(() => console.log('Owner role added'));
 const managerPromise = managerRole.save()
-	.then(() => console.log('Manager role added'));
+	.then(() => console.log('General Manager role added'));
 const coachPromise = coachRole.save()
 	.then(() => console.log('Coach role added'));
 

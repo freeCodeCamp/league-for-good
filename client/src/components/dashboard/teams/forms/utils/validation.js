@@ -1,5 +1,5 @@
 
-//prevent user from submitting a team name that is blank or too short
+// prevent user from submitting a team name that is blank or too short
 const validate = val => {
 	const errors = {};
 	if (!val.name) {

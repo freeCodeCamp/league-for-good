@@ -2,7 +2,6 @@
 import React from 'react';
 import AddIcon from 'material-ui/svg-icons/content/add';
 import AddPersonIcon from 'material-ui/svg-icons/social/person-add';
-import EditIcon from 'material-ui/svg-icons/image/edit';
 import DeleteForeverIcon from 'material-ui/svg-icons/action/delete-forever';
 import EmailIcon from 'material-ui/svg-icons/communication/email';
 import AssignmentIcon from 'material-ui/svg-icons/action/assignment';
@@ -32,7 +31,7 @@ const playerLinks = [
 		description: 'View a list of all players.',
 		label: 'ViewPlayers',
 		icon: <ListIcon />,
-		url : LINK.PLAYER_LIST,
+		url: LINK.PLAYER_LIST,
 	},
 	{
 		description: 'Manually add a new player to your league.',

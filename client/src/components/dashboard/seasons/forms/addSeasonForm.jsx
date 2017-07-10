@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { TextField, SelectField, DatePicker } from 'redux-form-material-ui';
+import { TextField, SelectField, DatePicker, Checkbox } from 'redux-form-material-ui';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
@@ -17,7 +17,7 @@ const thisYear = new Date().getFullYear();
 const normalizeYear = (val, prevVal) => {
 	if (!isNaN(val) && val.length <= 4) return val;
 	return prevVal;
-}
+};
 
 const AddSeasonForm = props => {	
 	const { handleSubmit, leagueSettings, formVals, change } = props;
@@ -76,6 +76,17 @@ const AddSeasonForm = props => {
 							minDate = {getMinDate(formVals, leagueSettings)}
 						/>						
 					</div>
+					<br/>
+					<div style={css_dashboard.teams.forms.edit.checkboxDiv}>
+						<Field
+							name="importActiveTeams"
+							label="Import Active Teams"
+							component={Checkbox}
+							labelPosition="left"
+							checked={props.initialValues.importActiveTeams}
+							labelStyle={css_dashboard.teams.forms.edit.checkbox}
+						/>
+					</div>
 					<RaisedButton
 						label="Create Season"
 						labelStyle={css_dashboard.raisedButton.label}
@@ -91,23 +102,22 @@ const AddSeasonForm = props => {
 const selector = formValueSelector('AddSeasonForm');
 
 function mapStateToProps(state) {
-	const { year, start_date } = selector(state, 'year', 'start_date')
+	const { year, start_date } = selector(state, 'year', 'start_date');
 	return { 
 		formVals: { year, start_date },
-		leagueSettings: state.league.selected.settings 
+		leagueSettings: state.league.selected.settings,
+		initialValues: { importActiveTeams: true }, 
 	};
 }
 
-
-
-export default reduxForm({
+const WrappedForm = reduxForm({
 	form: 'AddSeasonForm',
 	onSubmit: createSeason,
 	onSubmitSuccess: openSnackbar,
 	// validate,
-})( 
-	connect(mapStateToProps)(AddSeasonForm)
-);
+})(AddSeasonForm);
+
+export default connect(mapStateToProps)(WrappedForm);
 
 
 

@@ -1,41 +1,43 @@
 import React from 'react';
-import { TextField } from 'redux-form-material-ui';
 import RaisedButton from 'material-ui/RaisedButton';
-import { Field, reduxForm } from 'redux-form';
+import { cssContent, cssDashboard } from '../../../style';
+import PropTypes from 'prop-types';
+import { reduxForm } from 'redux-form';
+import { deleteLeague } from '../../../../actions/index';
 
-import { createTeam, openSnackbar } from '../../../../actions/index';
-import { css_content, css_dashboard } from '../../../style';
-
-
-const DeleteLeagueForm = props => { 
-	//const { handleSubmit } = props;
+const DeleteLeagueForm = props => {
+	const { handleSubmit } = props;
 	return (
-			<div style={css_content.body}>
-				<h1 style={css_dashboard.title}>Delete League</h1>
-				<h2 style={css_dashboard.warning}>Are you sure you want to delete the league? This action cannot be undone.</h2>
-				<form 
-					//onSubmit={ handleSubmit }
-					style={css_dashboard.form}
+		<div style={cssContent.body}>
+			<h1 style={cssDashboard.title}>Delete League</h1>
+			<h2 style={cssDashboard.warning}>
+				Are you sure you want to delete the league?
+				This action cannot be undone.
+			</h2>
+			<form
+				onSubmit={ handleSubmit }
+				style={cssDashboard.form}
 				>
-					<RaisedButton
-						label="Delete League"
-						labelStyle={css_dashboard.warningButton.label}
-						backgroundColor={css_dashboard.warningButton.backgroundColor}
-						style={css_dashboard.warningButton.style}
-						type="submit"
-					/>
-				</form>
-			</div>
+				<RaisedButton
+					backgroundColor={cssDashboard.warningButton.backgroundColor}
+					label="Delete League"
+					labelStyle={cssDashboard.warningButton.label}
+					style={cssDashboard.warningButton.style}
+					type="submit"
+				/>
+			</form>
+		</div>
 	);
 };
 
+DeleteLeagueForm.propTypes = {
+	handleSubmit: PropTypes.func
+};
 
-export default DeleteLeagueForm;
-/*export default reduxForm({
-	form: 'AddTeamForm',
-	onSubmit: createTeam,
-	onSubmitSuccess: openSnackbar,
-	validate,
-})( AddTeamForm );
-*/
+export default reduxForm({
+	form: 'DeleteLeagueForm',
+	onSubmit: deleteLeague,
+	
+})( DeleteLeagueForm );
+
 

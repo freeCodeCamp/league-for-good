@@ -2,6 +2,7 @@
 * League model stores information about each league and the teams in each league
 */
 const mongoose = require('mongoose');
+
 const Schema = mongoose.Schema;
 
 /*
@@ -27,38 +28,54 @@ const LeagueSchema = new Schema(
 		name: {
 			type: String,
 			required: true,
-			trim: true,
+			trim: true
 		},
 		settings: LeagueSettings,		
 		owner: {
 			type: Schema.Types.ObjectId,
 			ref: 'user',
-			required: true,
+			required: true
 		},
 		staff: [{
-			role: String, 
-      			email: String,
-      			teams: {
-				type: [String],
-      				default: [],
-			},
+			role: String,
+			email: String,
+			teams: {
+				type: [String]
+			}
 		}],
-		pending_players: [{
+		pendingPlayers: [{
 			type: Schema.Types.ObjectId,
 			ref: 'player'
 		}],
-		sport_type: {
+		sportType: {
 			type: String,
-			required: true,
+			required: true
 		},
 		teams: [{
 			type: Schema.Types.ObjectId,
-			ref: 'team',
-		}],
+			ref: 'team'
+		}]
 	},
 	{
-		collection: 'leagues',
+		collection: 'leagues'
 	}
 );
+
+LeagueSchema.pre('remove', function(next) {
+	const _id = this._id;
+
+	Promise.all([
+		mongoose.model('season').remove({ league_id: _id }),
+		mongoose.model('team').remove({ league_id: _id }),
+		mongoose.model('player').remove({ leagueId: _id }),
+		
+	])
+	.then(() => {
+		console.log('League refs all deleted');
+		next();
+	})
+	.catch(err => { throw err; });
+
+});
 
 module.exports = mongoose.model('league', LeagueSchema);

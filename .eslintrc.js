@@ -17,7 +17,6 @@ module.exports = {
 	},
 	rules: {
 		'no-cond-assign': ['warn'],
-		'comma-dangle': ['error', 'always-multiline'],
 		'indent': ['error', 'tab'],
 		'jsx-quotes': ['error', 'prefer-double'],
 		'quotes': ['error', 'single'],
