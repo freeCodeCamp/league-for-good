@@ -22,17 +22,17 @@ const AddTeamForm = props => {
 				<Field
 					component={TextField}
 					floatingLabelStyle={cssDashboard.formRequired}
-					floatingLabelText="Team name*"
+					floatingLabelText='Team name*'
 					fullWidth={true}
-					hintText="Team name"
-					name="name"
+					hintText='Team name'
+					name='name'
 				/>
 				<RaisedButton
 					backgroundColor={cssDashboard.raisedButton.backgroundColor}
-					label="Create Team"
+					label='Create Team'
 					labelStyle={cssDashboard.raisedButton.label}
 					style={cssDashboard.raisedButton.style}
-					type="submit"
+					type='submit'
 				/>
 			</form>
 		</div>

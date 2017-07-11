@@ -26,39 +26,39 @@ let AssignPlayerForm = props => {
 						dataSource={teams}
 						dataSourceConfig={{text: 'name', value: '_id'}}
 						filter={AutoComplete.caseInsensitiveFilter}
-						floatingLabelText="Team"
+						floatingLabelText='Team'
 						maxSearchResults={5}
-						name="teamId"
+						name='teamId'
 					/>
 					<Field
 						component={AutoComplete}
 						dataSource={players}
 						dataSourceConfig={{text: 'fullName', value: '_id'}}
 						filter={AutoComplete.caseInsensitiveFilter}
-						floatingLabelText="Select a player"
+						floatingLabelText='Select a player'
 						maxSearchResults={3}
-						name="playerId"
+						name='playerId'
 					/>
 				</div>
 				<div style={cssDashboard.formRow}>
 					<Field
 						component={TextField}
-						floatingLabelText="Jersey Number"
-						name="jerseyNum"
+						floatingLabelText='Jersey Number'
+						name='jerseyNum'
 						normalize={normalizeJerseyNum}
-						type="number"
+						type='number'
 					/>
 					<Field
 						component={TextField}
-						floatingLabelText="Position(s)"
-						name="position"
+						floatingLabelText='Position(s)'
+						name='position'
 					/>
 				</div>
 				<RaisedButton
 					backgroundColor={cssDashboard.raisedButton.backgroundColor}
-					label="Assign Player"
+					label='Assign Player'
 					labelStyle={cssDashboard.raisedButton.label}
-					type="submit"
+					type='submit'
 				/>
 			</form>
 		</div>

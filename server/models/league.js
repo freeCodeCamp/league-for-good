@@ -7,18 +7,18 @@ const Schema = mongoose.Schema;
 
 /*
 	Various settings properties to be associated with each league
-	
+
 */
 const LeagueSettings = {
 	season: {
-		numberPerYear : {
+		numberPerYear: {
 			type: Number,
 			default: 4,
-			min: 1,
+			min: 1
 		},
 		names: {
 			type: [String],
-			default:['Fall', 'Winter', 'Spring', 'Summer'],
+			default: ['Fall', 'Winter', 'Spring', 'Summer']
 		}
 	}
 };
@@ -30,7 +30,7 @@ const LeagueSchema = new Schema(
 			required: true,
 			trim: true
 		},
-		settings: LeagueSettings,		
+		settings: LeagueSettings,
 		owner: {
 			type: Schema.Types.ObjectId,
 			ref: 'user',
@@ -62,13 +62,13 @@ const LeagueSchema = new Schema(
 );
 
 LeagueSchema.pre('remove', function(next) {
-	const _id = this._id;
+	const query = { leagueId: this._id };
 
 	Promise.all([
-		mongoose.model('season').remove({ league_id: _id }),
-		mongoose.model('team').remove({ league_id: _id }),
-		mongoose.model('player').remove({ leagueId: _id }),
-		
+		mongoose.model('season').remove(query),
+		mongoose.model('team').remove(query),
+		mongoose.model('player').remove(query)
+
 	])
 	.then(() => {
 		console.log('League refs all deleted');

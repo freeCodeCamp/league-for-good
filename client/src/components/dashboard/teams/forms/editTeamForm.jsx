@@ -16,18 +16,18 @@ const EditTeamForm = (props) => {
 			<Field
 				component={TextField}
 				fullWidth={true}
-				hintText="Team name"
-				name="name"
+				hintText='Team name'
+				name='name'
 				normalize={normalize}
 			/>
 			<div style={cssDashboard.teams.forms.edit.checkboxDiv}>
 				<Field
 					checked={props.initialValues.currentlyActive}
 					component={Checkbox}
-					label="Check if active"
-					labelPosition="left"
+					label='Check if active'
+					labelPosition='left'
 					labelStyle={cssDashboard.teams.forms.edit.checkbox}
-					name="currentlyActive"
+					name='currentlyActive'
 				/>
 			</div>
 		</form>

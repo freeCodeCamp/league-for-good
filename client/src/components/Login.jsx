@@ -6,8 +6,8 @@ import { cssLogin } from './style';
 const Button = () => (
 	<RaisedButton
 		backgroundColor={cssLogin.raisedButton.backgroundColor}
-		href="/auth/google"
-		label="Login"
+		href='/auth/google'
+		label='Login'
 		labelStyle={cssLogin.raisedButton.label}
 		style={cssLogin.raisedButton.style}
 	/>
@@ -20,7 +20,7 @@ const LoginModal = () => {
 				actions={<Button />}
 				modal={true}
 				open={true}
-				title="Log in with your Google+ account"
+				title='Log in with your Google+ account'
 				titleStyle={cssLogin.dialog.title}
 			/>
 

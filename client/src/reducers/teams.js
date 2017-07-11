@@ -3,7 +3,7 @@ import {
 	CREATE_TEAM,
 	REMOVE_TEAM,
 	UPDATE_TEAM,
-	SELECT_TEAMS,
+	SELECT_TEAMS
 } from '../actions/types';
 
 import { findIndex } from 'lodash';

@@ -39,19 +39,19 @@ const Menu = props => {
 					)
 				}
 				<ListItem
-					containerElement={<Link to="/create" />}
+					containerElement={<Link to='/create' />}
 					leftIcon={<AddCircle />}
-					primaryText="Create League"
+					primaryText='Create League'
 				/>
 				<ListItem
-					containerElement={<Link to="/help" />}
+					containerElement={<Link to='/help' />}
 					leftIcon={<Help />}
-					primaryText="Help"
+					primaryText='Help'
 				/>
 			<ListItem
 				leftIcon={<LogOutIcon/>}
 				onTouchTap={()=> openModal('logout')}
-				primaryText="Log out"
+				primaryText='Log out'
 			/>
 		</List>
     </Drawer>

@@ -28,7 +28,7 @@ const Roster = ({roster, history}) => {
 		<div style={cssContent.body}>
 			<IconButton
 				onTouchTap={() => history.goBack()}
-				tooltip="Back to teams list"
+				tooltip='Back to teams list'
 				>
 				<BackArrow/>
 			</IconButton>

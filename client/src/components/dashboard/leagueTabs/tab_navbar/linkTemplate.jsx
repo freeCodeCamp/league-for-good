@@ -22,7 +22,7 @@ const LinkTemplate = props => {
 				iconStyle={ linkIsActive ? iconButton.iconStyle : {} }
 				style={iconButton.style}
 				tooltip={description}
-				tooltipPosition="bottom-right"
+				tooltipPosition='bottom-right'
 				touch={true}
 				>
 				{icon}

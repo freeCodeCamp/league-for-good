@@ -30,7 +30,7 @@ const rootReducer = combineReducers({
 	players: playerReducer,
 	settings: settingsReducer,
 	roles: rolesReducer,
-	seasons: seasonsReducer,
+	seasons: seasonsReducer
 });
 
 export default rootReducer;

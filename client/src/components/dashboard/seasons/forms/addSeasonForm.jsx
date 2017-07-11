@@ -1,98 +1,90 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { TextField, SelectField, DatePicker, Checkbox } from 'redux-form-material-ui';
+import PropTypes from 'prop-types';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 
 import { createSeason, openSnackbar } from '../../../../actions/index';
-import { css_content, css_dashboard } from '../../../style';
+import { cssContent, cssDashboard } from '../../../style';
 import { getMinDate, getFormattedDate } from './utils/dateHelpers';
+import {
 
+	SelectField,
+	DatePicker,
+	Checkbox
+} from 'redux-form-material-ui';
 // import validate from './utils/validation';
 
-const thisYear = new Date().getFullYear();
+// const thisYear = new Date().getFullYear();
 
 
-const normalizeYear = (val, prevVal) => {
-	if (!isNaN(val) && val.length <= 4) return val;
-	return prevVal;
-};
+const AddSeasonForm = props => {
+	const { handleSubmit, leagueSettings, formVals } = props;
 
-const AddSeasonForm = props => {	
-	const { handleSubmit, leagueSettings, formVals, change } = props;
-	
 	return (
-			<div style={css_content.body}>
-				<h1 style={css_dashboard.title}>Add Season</h1>
-				<h6 style={css_dashboard.warning}>* = Required</h6>
-				<form 
+			<div style={cssContent.body}>
+				<h1 style={cssDashboard.title}>Add Season</h1>
+				<h6 style={cssDashboard.warning}>* = Required</h6>
+				<form
 					onSubmit={ handleSubmit }
-					style={css_dashboard.form}
-				>
-					<div style={css_dashboard.formRow}>
+					style={cssDashboard.form}
+					>
+					<div style={cssDashboard.formRow}>
 						<Field
-							name="quarter" 
 							component={SelectField}
-							hintText="Season"
-							floatingLabelText="Season*"
-							floatingLabelStyle={css_dashboard.formRequired}
-						>
+							floatingLabelStyle={cssDashboard.formRequired}
+							floatingLabelText='Season*'
+							hintText='Season'
+							name='quarter'
+							>
 						{
-								leagueSettings.season.names.map(name => 
-									<MenuItem key={name} value={name} primaryText={name}/>
+								leagueSettings.season.names.map(name =>
+									<MenuItem key={name} primaryText={name} value={name}/>
 								)
 							}
 						</Field>
-						<Field
-							name="year" 
-							normalize={normalizeYear}
-							component={TextField}
-							hintText="Year"
-							floatingLabelText="Year*"
-							floatingLabelStyle={css_dashboard.formRequired}
-						/>
 					</div>
-					<div style={css_dashboard.formRow}>
+					<div style={cssDashboard.formRow}>
 						<Field
-							component={DatePicker}
-							name="start_date"
-							format={null}
 							autoOk={true}
-							onChange={(_, date) => change('year', date.getFullYear())}
+							component={DatePicker}
+							floatingLabelStyle={cssDashboard.formRequired}
+							floatingLabelText='Start Date'
+							format={null}
 							formatDate={getFormattedDate}
-							floatingLabelStyle={css_dashboard.formRequired}
-							floatingLabelText="Start Date"
+							name='startDate'
 						/>
 						<Field
-							component={DatePicker}
-							name="end_date"
-							format={null}
-							floatingLabelStyle={css_dashboard.formRequired}
-							floatingLabelText="End Date"
 							autoOk={true}
+							component={DatePicker}
+							disabled={!formVals.startDate}
+							floatingLabelStyle={cssDashboard.formRequired}
+							floatingLabelText='End Date'
+							format={null}
 							formatDate={getFormattedDate}
-							disabled={!formVals.start_date}
 							minDate = {getMinDate(formVals, leagueSettings)}
-						/>						
+							name='endDate'
+						/>
 					</div>
 					<br/>
-					<div style={css_dashboard.teams.forms.edit.checkboxDiv}>
+					<div style={cssDashboard.teams.forms.edit.checkboxDiv}>
 						<Field
-							name="importActiveTeams"
-							label="Import Active Teams"
-							component={Checkbox}
-							labelPosition="left"
 							checked={props.initialValues.importActiveTeams}
-							labelStyle={css_dashboard.teams.forms.edit.checkbox}
+							component={Checkbox}
+							label='Import Active Teams'
+							labelPosition='left'
+							labelStyle={cssDashboard.teams.forms.edit.checkbox}
+							name='importActiveTeams'
+
 						/>
 					</div>
 					<RaisedButton
-						label="Create Season"
-						labelStyle={css_dashboard.raisedButton.label}
-						backgroundColor={css_dashboard.raisedButton.backgroundColor}
-						style={css_dashboard.raisedButton.style}
-						type="submit"
+						backgroundColor={cssDashboard.raisedButton.backgroundColor}
+						label='Create Season'
+						labelStyle={cssDashboard.raisedButton.label}
+						style={cssDashboard.raisedButton.style}
+						type='submit'
 					/>
 				</form>
 			</div>
@@ -101,23 +93,29 @@ const AddSeasonForm = props => {
 
 const selector = formValueSelector('AddSeasonForm');
 
+AddSeasonForm.propTypes = {
+	formVals: PropTypes.object,
+	handleSubmit: PropTypes.func,
+	initialValues: PropTypes.object,
+	leagueSettings: PropTypes.array
+};
+
 function mapStateToProps(state) {
-	const { year, start_date } = selector(state, 'year', 'start_date');
-	return { 
-		formVals: { year, start_date },
-		leagueSettings: state.league.selected.settings,
-		initialValues: { importActiveTeams: true }, 
+	const { year, startDate } = selector(state, 'year', 'startDate');
+	return {
+		formVals: { year, startDate },
+		initialValues: { importActiveTeams: true },
+		leagueSettings: state.league.selected.settings
 	};
 }
 
 const WrappedForm = reduxForm({
 	form: 'AddSeasonForm',
 	onSubmit: createSeason,
-	onSubmitSuccess: openSnackbar,
+	onSubmitSuccess: openSnackbar
 	// validate,
 })(AddSeasonForm);
 
 export default connect(mapStateToProps)(WrappedForm);
-
 
 

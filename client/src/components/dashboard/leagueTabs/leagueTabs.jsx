@@ -15,8 +15,8 @@ import SeasonRoutes from '../seasons/routes.jsx';
 const routes = {
 	Teams: <TeamRoutes />,
 	Players: <PlayerRoutes />,
-	Seasons:  <SeasonRoutes />,
-	Settings: <SettingsRoutes />,
+	Seasons: <SeasonRoutes />,
+	Settings: <SettingsRoutes />
 };
 
 // Tabs for each section the user can manage

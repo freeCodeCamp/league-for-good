@@ -17,9 +17,9 @@ import { cssCreateLeague } from '../style';
 const CreateLeagueSelector = ({onSelect, selectedSport})=> (
 	<Card style={cssCreateLeague.card.style}>
 		<CardTitle
-			subtitle="Choose a sport"
+			subtitle='Choose a sport'
 			subtitleColor={cssCreateLeague.card.title.subtitleColor}
-			title="Create a New League"
+			title='Create a New League'
 			titleColor={cssCreateLeague.card.title.titleColor}
 		/>
 		<CardActions>

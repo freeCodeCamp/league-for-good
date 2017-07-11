@@ -22,11 +22,9 @@ const TeamSchema = new Schema({
 	leagueId: {
 		type: Schema.Types.ObjectId,
 		ref: 'league'
-	},
-	{
-		collection: 'teams'
-	});
+	}
+});
 
 TeamSchema.plugin(capitalize, {fields: ['name']});
 
-module.exports = mongoose.model('team', TeamSchema);
+module.exports = mongoose.model('team', TeamSchema, 'teams');

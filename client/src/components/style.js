@@ -9,23 +9,23 @@ export const common = {
 	raisedButton: {
 		label: {
 			color: theme.alternateTextColor,
-			fontWeight: 500,
+			fontWeight: 500
 		},
 
 		style: {
-			marginTop: '50px',
+			marginTop: '50px'
 		},
-		backgroundColor: theme.accent1Color,
+		backgroundColor: theme.accent1Color
 	},
 	formRow: {
 		display: 'flex',
-		justifyContent: 'space-around',
+		justifyContent: 'space-around'
 	},
 	form: {
 		width: '80%',
 		margin: '0px auto 15px',
-		textAlign: 'center',
-	},
+		textAlign: 'center'
+	}
 };
 
 
@@ -33,14 +33,14 @@ export const common = {
 export const cssAppBar = {
 	main: {
 		zIndex: 2000,
-		position: 'fixed',
+		position: 'fixed'
 	},
 	text: {
 		color: theme.alternateTextColor,
-		letterSpacing: 2,
+		letterSpacing: 2
 	},
 	iconStyle: {
-		color: theme.alternateTextColor,
+		color: theme.alternateTextColor
 	},
 	themeMenuItem: {
 		display: 'inline-block',
@@ -49,8 +49,8 @@ export const cssAppBar = {
 		height: '25px',
 		marginRight: '5px',
 		cursor: 'pointer',
-		boxSizing: 'border-box',
-	},
+		boxSizing: 'border-box'
+	}
 };
 
 export const cssLoading = {
@@ -64,9 +64,9 @@ export const cssLoading = {
 		zIndex: 2001,
 		display: 'flex',
 		justifyContent: 'center',
-		alignItems: 'center',
+		alignItems: 'center'
 	},
-	size: 80,
+	size: 80
 };
 
 // login styling
@@ -76,9 +76,9 @@ export const cssLogin = {
 		title: {
 			backgroundColor: theme.accent1Color,
 			borderBottom: '1px solid ' + theme.borderColor,
-			color: theme.alternateTextColor,
-		},
-	},
+			color: theme.alternateTextColor
+		}
+	}
 };
 
 
@@ -86,12 +86,12 @@ export const cssLogin = {
 export const cssMenu = {
 	drawer: {
 		list: {
-			marginTop: '70px',
-		},
+			marginTop: '70px'
+		}
 	},
 	avatar: {
-		backgroundColor: 'none',
-	},
+		backgroundColor: 'none'
+	}
 };
 
 
@@ -105,27 +105,27 @@ export const cssContent = {
 		height: 'auto',
 		textAlign: 'center',
 		color: theme.textColor,
-		border: '1px solid ' + theme.borderColor,
+		border: '1px solid ' + theme.borderColor
 	},
 	header: {
 		width: '100%',
-		height: 'auto',
+		height: 'auto'
 	},
 	// navbar designed for use with icons
 	iconNavbar: {
 		iconButton: {
 			style: {
-				margin: '10px',
+				margin: '10px'
 			},
 			iconStyle: {
 				borderBottom: '4px solid ' + theme.accent3Color,
-				paddingBottom: '5px',
+				paddingBottom: '5px'
 			},
 			hoveredStyle: {
 				backgroundColor: theme.accent3Color,
-				borderRadius: '25px',
-			},
-		},
+				borderRadius: '25px'
+			}
+		}
 	},
 	body: {
 		width: '100%',
@@ -134,8 +134,8 @@ export const cssContent = {
 		paddingTop: '40px',
 		paddingBottom: '40px',
 		backgroundColor: theme.alternateTextColor,
-		textAlign: 'left',
-	},
+		textAlign: 'left'
+	}
 };
 
 
@@ -147,12 +147,12 @@ export const cssCreateLeague = {
 	raisedButton: common.raisedButton,
 	card: {
 		style: {
-			boxShadow: 'none',
+			boxShadow: 'none'
 		},
 		title: {
 			titleColor: theme.textColor,
-			subtitleColor: theme.textColor,
-		},
+			subtitleColor: theme.textColor
+		}
 	},
 	sportButton: {
 		style: {
@@ -161,11 +161,11 @@ export const cssCreateLeague = {
 			width: '160px',
 			height: 'auto',
 			textAlign: 'center',
-			padding: '5px',
+			padding: '5px'
 		},
 		active: theme.accent3Color,
 		inactive: theme.alternateTextColor,
-		hover: theme.accent3Color,
+		hover: theme.accent3Color
 	},
 	sportIcon: {
 		height: '30px',
@@ -173,8 +173,8 @@ export const cssCreateLeague = {
 		marginRight: '10px',
 		marginBottom: '10px',
 		width: '160px',
-		textAlign: 'center',
-	},
+		textAlign: 'center'
+	}
 };
 
 
@@ -184,19 +184,19 @@ export const cssCreateLeague = {
 export const cssDashboard = {
 	// Loading a league to display to the user
 	loading: {
-		margin: '20px 0px 20px 0px',
+		margin: '20px 0px 20px 0px'
 	},
 	// tabs are used to display sections to the user
 	tabs: {
 		inkBar: {
-			zIndex: 999,
-		},
+			zIndex: 999
+		}
 	},
 	title: {
 		textAlign: 'center',
 		margin: '0px 0px 0px 20px',
 		padding: '0px',
-		color: theme.textColor,
+		color: theme.textColor
 	},
 	// top section of the dashboard
 	toolbar: {
@@ -204,42 +204,42 @@ export const cssDashboard = {
 			color: theme.alternateTextColor,
 			letterSpacing: 1.5,
 			fontWeight: 'bolder',
-			fontSize: '2em',
+			fontSize: '2em'
 		},
 		subtitle: {
 			color: theme.accent3Color,
-			marginLeft: '10px',
+			marginLeft: '10px'
 		},
 		separator: {
-			backgroundColor: theme.accent3Color,
-		},
+			backgroundColor: theme.accent3Color
+		}
 	},
 	warning: {
 		textAlign: 'center',
-		color: theme.warning,
+		color: theme.warning
 	},
 	warningButton: {
 		label: {
 			color: theme.alternateTextColor,
-			fontWeight: 500,
+			fontWeight: 500
 		},
 		style: { marginTop: '30px' },
-		backgroundColor: theme.warning,
+		backgroundColor: theme.warning
 	},
 	form: common.form,
 	formRow: common.formRow,
 	formRequired: {
-		color: theme.warning,
+		color: theme.warning
 	},
 	raisedButton: common.raisedButton,
 	// table contains the styling for the table template
 	table: {
 		style: {
-			backgroundColor: theme.alternateTextColor,
+			backgroundColor: theme.alternateTextColor
 		},
 		search: {
 			marginLeft: '20px',
-			marginBottom: '10px',
+			marginBottom: '10px'
 		},
 		colHeaderHover: theme.alternateTextColor,
 		// colHeaderButtonLabel: {
@@ -254,14 +254,14 @@ export const cssDashboard = {
 		colHeaderLabelStyle: {
 			display: 'flex',
 			alignItems: 'center',
-			color: theme.textColor,
+			color: theme.textColor
 		},
 		sortArrowActiveColor: theme.textColor,
 		sortArrowInactiveColor: theme.borderColor,
 		// for icons rendered inside the table
 		iconHover: {
 			backgroundColor: theme.accent3Color,
-			borderRadius: '25px',
+			borderRadius: '25px'
 		},
 		// columns uses defaultCol for all the columns in the table and
 		// lets material ui automatically size the columns to an appropriate
@@ -271,12 +271,12 @@ export const cssDashboard = {
 		columns: {
 
 			defaultCol: {
-				textAlign: 'center',
+				textAlign: 'center'
 			},
 			icon: {
-				textAlign: 'left',
+				textAlign: 'left'
 
-			},
+			}
 		},
 		// used for the team list displaying all teams in a league
 		teams: {
@@ -284,9 +284,9 @@ export const cssDashboard = {
 			dropdown: {
 				float: 'right',
 				padding: '0px',
-				margin: '0px',
-			},
-		},
+				margin: '0px'
+			}
+		}
 	},
 	// custom css in the teams tab
 	teams: {
@@ -294,22 +294,22 @@ export const cssDashboard = {
 			edit: {
 				style: {
 					margin: '0px auto',
-					width: '50%',
+					width: '50%'
 				},
 				checkbox: {
-					width: '125px',
+					width: '125px'
 				},
 				checkboxDiv: {
-					float: 'right',
-				},
-			},
-		},
+					float: 'right'
+				}
+			}
+		}
 	},
 	// custom css in the players tab
 	players: {
 		ul: {
-			listStyleType: 'none',
-		},
+			listStyleType: 'none'
+		}
 	},
 	// custom css in the settings tab
 	settings: {
@@ -317,21 +317,21 @@ export const cssDashboard = {
 			add: {
 				textField: {
 					width: '100%',
-					padding: '0px',
+					padding: '0px'
 				},
 				selectField: {
 					width: '15%',
 					margin: '0px',
 					padding: '0px',
 					float: 'right',
-					textAlign: 'left',
+					textAlign: 'left'
 				},
 				info: {
 					marginBottom: '5px',
 					marginLeft: '10px',
 					textAlign: 'right',
-					float: 'right',
-				},
+					float: 'right'
+				}
 			},
 			edit: {
 				selectField: {
@@ -339,11 +339,11 @@ export const cssDashboard = {
 					marginTop: '20px',
 					padding: '0px',
 					textAlign: 'left',
-					float: 'right',
-				},
-			},
-		},
-	},
+					float: 'right'
+				}
+			}
+		}
+	}
 };
 
 
@@ -352,18 +352,18 @@ export const cssHelp = {
 	container: {
 		backgroundColor: theme.alternateTextColor,
 		padding: '40px',
-		textAlign: 'left',
+		textAlign: 'left'
 	},
 	title: {
 		textAlign: 'center',
-		marginBottom: '30px',
+		marginBottom: '30px'
 	},
 	sectionHeader: {
 		marginTop: '10px',
-		marginBottom: '10px',
+		marginBottom: '10px'
 	},
 	section: {
-		marginLeft: '25px',
+		marginLeft: '25px'
 	},
 	ul: {
 		width: '75%',
@@ -373,11 +373,11 @@ export const cssHelp = {
 		marginBottom: '40px',
 		color: theme.alternateTextColor,
 		backgroundColor: theme.accent3Color,
-		border: '2px dotted ' + theme.borderColor,
+		border: '2px dotted ' + theme.borderColor
 	},
 	li: {
-		marginLeft: '20px',
-	},
+		marginLeft: '20px'
+	}
 };
 
 
@@ -386,29 +386,29 @@ export const cssModal = {
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
-		paddingTop: 0,
+		paddingTop: 0
 	},
 	dialogContent: {
 		position: 'relative',
 		width: '90%',
-		maxWidth: 800,
+		maxWidth: 800
 	},
 	dialogBody: {
-		paddingBottom: 0,
+		paddingBottom: 0
 	},
 	title: {
 		textAlign: 'left',
 		backgroundColor: theme.accent1Color,
 		borderBottom: '1px solid ' + theme.borderColor,
 		color: theme.alternateTextColor,
-		fontWeight: 400,
+		fontWeight: 400
 	},
 	raisedButton: {
 		style: ({...common.raisedButton.style, ...{
 			marginRight: '10px',
-			marginBottom: '10px',
+			marginBottom: '10px'
 		}}),
 		label: common.raisedButton.label,
-		backgroundColor: common.raisedButton.backgroundColor,
-	},
+		backgroundColor: common.raisedButton.backgroundColor
+	}
 };

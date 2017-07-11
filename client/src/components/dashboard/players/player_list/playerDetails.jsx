@@ -19,7 +19,7 @@ const Player = ({ player, history }) => {
 		<div style={cssContent.body}>
 			<IconButton
 				onTouchTap={() => history.goBack()}
-				tooltip="Back to team roster"
+				tooltip='Back to team roster'
 				>
 				<BackArrow />
 			</IconButton>

@@ -18,7 +18,7 @@ const themeValues = {
 		primary2Color: '#689F38',
 		primary3Color: '#DCEDC8',
 		pickerHeaderColor: '#8BC34A',
-		canvasColor: '#DCEDC8',
+		canvasColor: '#DCEDC8'
 	},
 
 	teal: {
@@ -26,7 +26,7 @@ const themeValues = {
 		primary2Color: '#00796B',
 		primary3Color: '#B2DFDB',
 		pickerHeaderColor: '#009688',
-		canvasColor: '#B2DFDB',
+		canvasColor: '#B2DFDB'
 	},
 
 	lightblue: {
@@ -34,8 +34,8 @@ const themeValues = {
 		primary2Color: '#0288D1',
 		primary3Color: '#B3E5FC',
 		pickerHeaderColor: '#03A9F4',
-		canvasColor: '#B3E5FC',
-	},
+		canvasColor: '#B3E5FC'
+	}
 };
 
 // if user has no saved theme, default to this
@@ -43,7 +43,7 @@ const defaultTheme = 'lightblue';
 
 const textMixin = {
 	textColor: '#000000',
-	alternateTextColor: '#ffffff',
+	alternateTextColor: '#ffffff'
 };
 
 // - accent1Color = default
@@ -52,7 +52,7 @@ const textMixin = {
 const accentMixin = {
 	accent1Color: '#455a64',
 	accent2Color: '#1c313a',
-	accent3Color: '#718792',
+	accent3Color: '#718792'
 };
 
 // extra colors required for the palette
@@ -60,16 +60,16 @@ const miscMixin = {
 	borderColor: '#bdbdbd',
 	disabledColor: fade(darkBlack, 0.3),
 	clockCircleColor: fade(darkBlack, 0.07),
-	shadowColor: fullBlack,
+	shadowColor: fullBlack
 };
 
 // mixin for warning color to the user
 const warningMixin = {
-	warning: 'red',
+	warning: 'red'
 };
 
 const infoMixin = {
-	info: '#a9a9a9',
+	info: '#a9a9a9'
 };
 
 const themes = (function(themeValues, defaultTheme, ...mixins) {
@@ -106,7 +106,7 @@ const themes = (function(themeValues, defaultTheme, ...mixins) {
 		// Retrieves a list of all theme properties
 		getThemeList: function() {
 			return themeValues;
-		},
+		}
 	};
 })(
 	themeValues,

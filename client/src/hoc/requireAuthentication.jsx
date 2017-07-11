@@ -47,7 +47,7 @@ export default function(ComposedComponent) {
 				return this.renderSpinner();
 			} else if (!loggedIn) {
 				// Redirect instantly if the user is not logged in
-				return <Redirect to="/login" />;
+				return <Redirect to='/login' />;
 			} else {
 				// Render the desired content
 				return <ComposedComponent {...props} />;

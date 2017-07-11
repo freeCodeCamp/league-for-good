@@ -13,41 +13,41 @@ export const colData = [
 		cellProp: 'name',
 		sortable: true,
 		searchable: true,
-		colSpan: 2,
+		colSpan: 2
 
 	},
 	{
 		label: 'Roster Size',
 		cellProp: 'players.length',
 		sortable: true,
-		style: cssDashboard.table.columns.defaultCol,
+		style: cssDashboard.table.columns.defaultCol
 	},
 	{
 		label: 'Seasons',
 		cellProp: 'seasons.length',
 		sortable: true,
-		style: cssDashboard.table.columns.defaultCol,
+		style: cssDashboard.table.columns.defaultCol
 	},
 	{
 		label: 'Status',
 		cellProp: 'currentlyActive',
 		sortable: true,
-		style: cssDashboard.table.columns.defaultCol,
+		style: cssDashboard.table.columns.defaultCol
 	},
 	{
 		label: 'Roster',
-		cellProp: 'link',
+		cellProp: 'link'
 	},
 	{
 		label: 'Edit',
 		action: 'edit',
-		cellProp: 'icon',
+		cellProp: 'icon'
 	},
 	{
 		label: 'Delete',
 		action: 'delete',
-		cellProp: 'icon',
-	},
+		cellProp: 'icon'
+	}
 ];
 
 // Get the value for the cell
@@ -74,7 +74,7 @@ const getTeamTableData = ({ teams }) => {
 			{
 				value: getCellValue(team, col.cellProp, col.action),
 				colSpan: col.colSpan || 1,
-				style: col.style,
+				style: col.style
 			}
 		));
 	});

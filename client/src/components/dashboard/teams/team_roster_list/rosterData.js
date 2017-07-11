@@ -8,31 +8,31 @@ export const colData = [
 	{
 		label: 'Name',
 		cellProp: 'fullName',
-		sortable: true,
+		sortable: true
 	},
 	{
 		label: '#',
 		cellProp: 'team.jerseyNum',
-		sortable: true,
+		sortable: true
 	},
 	{
 		label: 'Position',
 		cellProp: 'team.position',
-		sortable: true,
+		sortable: true
 	},
 	{
 		label: 'Email',
-		cellProp: 'email',
+		cellProp: 'email'
 	},
 	{
 		label: 'Phone',
-		cellProp: 'phoneNum',
+		cellProp: 'phoneNum'
 	},
 	{
 		label: 'Update',
 		style: cssDashboard.table.columns.icon,
-		cellProp: 'link',
-	},
+		cellProp: 'link'
+	}
 ];
 
 
@@ -44,7 +44,7 @@ const getPlayerTableData = (players) => {
 		return colData.map( ({cellProp, style}) => (
 			{
 				value: getObjProp(player, cellProp),
-				style: style,
+				style: style
 			}
 		));
 	});

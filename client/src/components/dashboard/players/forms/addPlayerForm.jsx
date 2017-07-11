@@ -27,59 +27,59 @@ let PlayerFormTemplate = ({handleSubmit, teams, title}) => {
 					<Field
 						component={TextField}
 						floatingLabelStyle={cssDashboard.formRequired}
-						floatingLabelText="First name*"
-						hintText="First name"
-						name="firstName"
+						floatingLabelText='First name*'
+						hintText='First name'
+						name='firstName'
 					/>
 					<Field
 						component={TextField}
 						floatingLabelStyle={cssDashboard.formRequired}
-						floatingLabelText="Last name*"
-						hintText="Last name"
-						name="lastName"
+						floatingLabelText='Last name*'
+						hintText='Last name'
+						name='lastName'
 					/>
 				</div>
 				<div style={cssDashboard.formRow}>
 					<Field
 						component={TextField}
 						floatingLabelStyle={cssDashboard.formRequired}
-						floatingLabelText="Email*"
-						hintText="Email"
-						name="email"
+						floatingLabelText='Email*'
+						hintText='Email'
+						name='email'
 					/>
 					<Field
 						component={TextField}
-						floatingLabelText="Phone number"
-						hintText="Phone number"
-						name="phoneNum"
-					/>
-				</div>
-				<div style={cssDashboard.formRow}>
-					<Field
-						component={TextField}
-						floatingLabelText="Address"
-						hintText="Address"
-						name="address.street"
-					/>
-					<Field
-						component={TextField}
-						floatingLabelText="City"
-						hintText="City"
-						name="address.city"
+						floatingLabelText='Phone number'
+						hintText='Phone number'
+						name='phoneNum'
 					/>
 				</div>
 				<div style={cssDashboard.formRow}>
 					<Field
 						component={TextField}
-						floatingLabelText="State"
-						hintText="State"
-						name="address.state"
+						floatingLabelText='Address'
+						hintText='Address'
+						name='address.street'
 					/>
 					<Field
 						component={TextField}
-						floatingLabelText="Country"
-						hintText="Country"
-						name="address.country"
+						floatingLabelText='City'
+						hintText='City'
+						name='address.city'
+					/>
+				</div>
+				<div style={cssDashboard.formRow}>
+					<Field
+						component={TextField}
+						floatingLabelText='State'
+						hintText='State'
+						name='address.state'
+					/>
+					<Field
+						component={TextField}
+						floatingLabelText='Country'
+						hintText='Country'
+						name='address.country'
 					/>
 				</div>
 				<div style={cssDashboard.formRow}>
@@ -88,23 +88,23 @@ let PlayerFormTemplate = ({handleSubmit, teams, title}) => {
 						dataSource={teams}
 						dataSourceConfig={{text: 'name', value: '_id'}}
 						filter={AutoComplete.caseInsensitiveFilter}
-						floatingLabelText="Team"
+						floatingLabelText='Team'
 						maxSearchResults={5}
-						name="team.teamId"
+						name='team.teamId'
 					/>
 					<Field
 						component={TextField}
-						floatingLabelText="Jersey Number"
-						name="team.jerseyNum"
+						floatingLabelText='Jersey Number'
+						name='team.jerseyNum'
 						normalize={normalize}
-						type="number"
+						type='number'
 					/>
 				</div>
 				<div>
 					<Field
 						component={TextField}
-						floatingLabelText="Position(s)"
-						name="team.position"
+						floatingLabelText='Position(s)'
+						name='team.position'
 					/>
 				</div>
 				<RaisedButton
@@ -112,7 +112,7 @@ let PlayerFormTemplate = ({handleSubmit, teams, title}) => {
 					label={title}
 					labelStyle={cssDashboard.raisedButton.label}
 					style={cssDashboard.raisedButton.style}
-					type="submit"
+					type='submit'
 				/>
 			</form>
 		</div>

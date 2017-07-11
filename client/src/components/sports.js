@@ -12,7 +12,7 @@ export const sports = [
 	{name: 'Basketball', icon: basketballIcon},
 	{name: 'Soccer', icon: soccerIcon},
 	{name: 'Baseball', icon: baseballIcon},
-	{name: 'Hockey', icon: hockeyIcon},
+	{name: 'Hockey', icon: hockeyIcon}
 ];
 
 export const SportsIcons = {
@@ -20,5 +20,5 @@ export const SportsIcons = {
 	Baseball: baseballIcon,
 	Soccer: soccerIcon,
 	Basketball: basketballIcon,
-	Hockey: hockeyIcon,
+	Hockey: hockeyIcon
 };

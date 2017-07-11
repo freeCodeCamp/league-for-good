@@ -20,10 +20,10 @@ const DeleteLeagueForm = props => {
 				>
 				<RaisedButton
 					backgroundColor={cssDashboard.warningButton.backgroundColor}
-					label="Delete League"
+					label='Delete League'
 					labelStyle={cssDashboard.warningButton.label}
 					style={cssDashboard.warningButton.style}
-					type="submit"
+					type='submit'
 				/>
 			</form>
 		</div>
@@ -36,8 +36,8 @@ DeleteLeagueForm.propTypes = {
 
 export default reduxForm({
 	form: 'DeleteLeagueForm',
-	onSubmit: deleteLeague,
-	
+	onSubmit: deleteLeague
+
 })( DeleteLeagueForm );
 
 

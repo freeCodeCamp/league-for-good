@@ -5,7 +5,7 @@ import {
 	REMOVE_STAFF_MEMBER,
 	SELECT_STAFF_MEMBERS,
 	CLOSE_MODAL,
-	OPEN_SNACKBAR,
+	OPEN_SNACKBAR
 } from './types';
 import { ROOT_URL } from '../../globals';
 
@@ -18,7 +18,7 @@ export function addStaffMember(formVals, dispatch, { location }) {
 	const body = {
 		email: formVals.email,
 		league: location.state.leagueId,
-		roleTitle: formVals.role,
+		roleTitle: formVals.role
 	};
 
 	const action = {
@@ -26,8 +26,8 @@ export function addStaffMember(formVals, dispatch, { location }) {
 		newStaff: {
 			email: body.email,
 			role: body.roleTitle,
-			teams: [],
-		},
+			teams: []
+		}
 	};
 
 	axios.post(`${ROOT_URL}/settings/create`, body)
@@ -67,7 +67,7 @@ export function removeStaff(staffInfo) {
 		axios.delete(`${ROOT_URL}/settings/remove/${email}?leagueId=${leagueId}`)
 			.then(() => dispatch({
 				type: REMOVE_STAFF_MEMBER,
-				removedStaffEmail: email,
+				removedStaffEmail: email
 			}))
 			.then(() => dispatch({ type: OPEN_SNACKBAR, message }));
 	};

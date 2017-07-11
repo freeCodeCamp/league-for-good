@@ -28,16 +28,16 @@ const AddStaffForm = props => {
 				>
 				<IconButton
 					style={cssDashboard.settings.forms.add.info}
-					tooltip="View Description Of Roles"
-					tooltipPosition="top-right"
+					tooltip='View Description Of Roles'
+					tooltipPosition='top-right'
 					touch={true}
 					>
 					<HelpOutline />
 				</IconButton>
 				<Field
 					component={SelectField}
-					hintText="Choose Role"
-					name="role"
+					hintText='Choose Role'
+					name='role'
 					style={cssDashboard.settings.forms.add.selectField}
 					>
 					{
@@ -50,17 +50,17 @@ const AddStaffForm = props => {
 					component={TextField}
 					floatingLabelStyle={cssDashboard.formRequired}
 					floatingLabelText="User's Gmail Account*"
-					hintText="Enter A Gmail Account"
-					name="email"
+					hintText='Enter A Gmail Account'
+					name='email'
 					style={cssDashboard.settings.forms.add.textField}
 					validate={uniqueEmailVal.bind(null, props.staff)}
 				/>
 				<RaisedButton
 					backgroundColor={cssDashboard.raisedButton.backgroundColor}
-					label="Add Staff Member"
+					label='Add Staff Member'
 					labelStyle={cssDashboard.raisedButton.label}
 					style={cssDashboard.raisedButton.style}
-					type="submit"
+					type='submit'
 				/>
 			</form>
 		</div>

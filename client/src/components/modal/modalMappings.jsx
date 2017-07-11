@@ -69,7 +69,7 @@ const mappings = {
 		title: 'Edit Staff',
 		Children: EditStaffForm,
 		onSubmit: 'editStaff',
-		actionLabel: 'Edit Staff',
+		actionLabel: 'Edit Staff'
 	},
 	removeStaff: {
 		title: 'Delete Staff',
@@ -83,7 +83,7 @@ const mappings = {
 	removeSeason: {
 		title: 'Permanently Delete Season',
 		onSubmit: 'deleteSeason',
-		actionLabel: 'DELETE',
+		actionLabel: 'DELETE'
 	},
 	removePlayerApplication: {
 		title: 'Delete Player Application',

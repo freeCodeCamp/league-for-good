@@ -44,22 +44,22 @@ class CreateLeagueForm extends Component {
 							style={cssCreateLeague.form}
 							>
 							<Field
-								component="input"
-								name="sportType"
-								type="hidden"
+								component='input'
+								name='sportType'
+								type='hidden'
 							/>
 							<Field
 								component={TextField}
 								floatingLabelText={`${SelectedSportType} League Name`}
 								fullWidth={true}
-								name="name"
+								name='name'
 							/>
 							<RaisedButton
 								backgroundColor={cssCreateLeague.raisedButton.backgroundColor}
-								label="Create"
+								label='Create'
 								labelStyle={cssCreateLeague.raisedButton.label}
 								style={cssCreateLeague.raisedButton.style}
-								type="submit"
+								type='submit'
 							/>
 						</form>
 					</div>
