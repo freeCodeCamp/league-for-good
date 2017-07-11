@@ -18,19 +18,19 @@ export const colData = [
 	},
 	{
 		label: 'Roster Size',
-		cellProp: 'players.length',
+		cellProp: 'playerCount',
 		sortable: true,
 		style: cssDashboard.table.columns.defaultCol
 	},
 	{
 		label: 'Seasons',
-		cellProp: 'seasons.length',
+		cellProp: 'seasonCount',
 		sortable: true,
 		style: cssDashboard.table.columns.defaultCol
 	},
 	{
 		label: 'Status',
-		cellProp: 'currentlyActive',
+		cellProp: 'status',
 		sortable: true,
 		style: cssDashboard.table.columns.defaultCol
 	},

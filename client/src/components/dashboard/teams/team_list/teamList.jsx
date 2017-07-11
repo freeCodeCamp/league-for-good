@@ -8,7 +8,7 @@ import DropDownMenu from 'material-ui/DropDownMenu';
 
 import getRowData, { colData } from './teamData';
 
-import { configTeamForTable } from '../../../../selectors/teams_in_season';
+import { configTeamForTable } from '../../../../selectors/teamTableData';
 
 import { connect } from 'react-redux';
 
