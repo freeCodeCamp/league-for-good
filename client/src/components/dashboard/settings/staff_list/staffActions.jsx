@@ -26,7 +26,6 @@ class Icon extends Component {
 	}
 
 	render() {
-		console.log('staff list form', this.props);
 		const { email, leagueId, action } = this.props;
 
 		return (

@@ -332,6 +332,15 @@ export const cssDashboard = {
 					textAlign: 'right',
 					float: 'right'
 				}
+			},
+			edit: {
+				selectField: {
+					width: '25%',
+					marginTop: '20px',
+					padding: '0px',
+					textAlign: 'left',
+					float: 'right'
+				}
 			}
 		}
 	}

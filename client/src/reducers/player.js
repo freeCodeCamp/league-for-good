@@ -15,13 +15,14 @@ export default function(state = null, action) {
 
 	switch (action.type) {
 
-		case FETCH_PLAYER:
-			return { ...state, selected: action.playerDetails };
-		case FETCH_ALL_PLAYERS:
-			return { list: action.players };
-		case ADD_PLAYER:
-			return { ...state, list: [...state.list, action.payload] };
-		default:
-			return state;
+	case FETCH_PLAYER:
+		return { ...state, selected: action.playerDetails };
+	case FETCH_ALL_PLAYERS:
+		return { list: action.players };
+	case ADD_PLAYER:
+		return { ...state, list: [...state.list, action.payload] };
+	default:
+		return state;
+
 	}
 }

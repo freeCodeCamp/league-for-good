@@ -11,6 +11,7 @@ import themeReducer from './theme';
 import playerReducer from './player';
 import settingsReducer from './settings';
 import rolesReducer from './roles';
+import seasonsReducer from './seasons';
 
 // Create a single 'reducer' that stores all other various slices of
 // state that were defined in the other reducers
@@ -28,7 +29,8 @@ const rootReducer = combineReducers({
 	theme: themeReducer,
 	players: playerReducer,
 	settings: settingsReducer,
-	roles: rolesReducer
+	roles: rolesReducer,
+	seasons: seasonsReducer
 });
 
 export default rootReducer;

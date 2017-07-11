@@ -10,9 +10,9 @@ export default function(state = {open: true}, action) {
 
 	switch (action.type) {
 
-		case TOGGLE_MENU:
-			return {open: !state.open};
-		default:
-			return state;
+	case TOGGLE_MENU:
+		return {open: !state.open};
+	default:
+		return state;
 	}
 }

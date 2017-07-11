@@ -26,7 +26,6 @@ export const configTeamForTable = () => {
 				list.push(team);
 				return list;
 			}, []);
-
 		}
 	);
 };

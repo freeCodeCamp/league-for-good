@@ -82,7 +82,6 @@ test('player has all fields', (assert) => {
 	assert.assert(player.teams[0].jerseyNum,
 					playerData.teams[0].jerseyNum,
 					'has team jersey num');
-
 	assert.end();
 });
 

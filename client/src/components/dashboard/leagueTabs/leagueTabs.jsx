@@ -9,12 +9,13 @@ import { cssDashboard } from '../../style';
 import TeamRoutes from '../teams/routes.jsx';
 import PlayerRoutes from '../players/routes.jsx';
 import SettingsRoutes from '../settings/routes.jsx';
+import SeasonRoutes from '../seasons/routes.jsx';
 
 // Routes for each tab tab. Any possible view associated with a tab
 const routes = {
 	Teams: <TeamRoutes />,
 	Players: <PlayerRoutes />,
-	Seasons: <div />,
+	Seasons: <SeasonRoutes />,
 	Settings: <SettingsRoutes />
 };
 

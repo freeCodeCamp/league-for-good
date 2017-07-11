@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { TextField, Checkbox } from 'redux-form-material-ui';
 import { Field, reduxForm } from 'redux-form';
 import { updateTeam, openSnackbar } from '../../../../actions/index';
@@ -14,7 +15,6 @@ const EditTeamForm = (props) => {
 		<form style={cssDashboard.teams.forms.edit.style}>
 			<Field
 				component={TextField}
-				floatingLabelText='Team Name:'
 				fullWidth={true}
 				hintText='Team name'
 				name='name'

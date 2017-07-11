@@ -9,28 +9,28 @@ import { cssDashboard } from '../../../style';
 import { openModal } from '../../../../actions/index';
 
 
-// Returns an icon for the table - either for deleting or editing a team
-class Icon extends Component {
+// Returns an icon for the table - either for deleting or editing a season
+class SeasonIcon extends Component {
 
 	constructor(props) {
 		super(props);
 		this.onClick = this.onClick.bind(this);
 	}
 
-	onClick(team, action) {
+	onClick(season, action) {
 		if (action === 'edit') {
-			this.props.openModal('editTeam', {initialValues: team });
-		}	else {
-			this.props.openModal('removeTeam', team);
+			this.props.openModal('editSeasons', { initialValues: season });
+		} else {
+			this.props.openModal('removeSeason', season);
 		}
 	}
 	render() {
-		const { team, action } = this.props;
+		const { season, action } = this.props;
 
 		return (
 			<IconButton
 				hoveredStyle={cssDashboard.table.iconHover}
-				onTouchTap={()=> this.onClick(team, action) }
+				onTouchTap={()=> this.onClick(season, action) }
 				>
 				{action === 'delete' ?
 					<DeleteIcon /> :
@@ -40,14 +40,15 @@ class Icon extends Component {
 	}
 }
 
-Icon.propTypes = {
+SeasonIcon.propTypes = {
 	action: PropTypes.string,
+	initialValues: PropTypes.object,
 	openModal: PropTypes.func,
-	team: PropTypes.object
+	season: PropTypes.object
 };
 
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ openModal }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(Icon);
+export default connect(null, mapDispatchToProps)(SeasonIcon);

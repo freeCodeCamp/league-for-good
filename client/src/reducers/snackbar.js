@@ -9,13 +9,13 @@ import { OPEN_SNACKBAR, CLOSE_SNACKBAR } from '../actions/types';
 export default function(state = { open: false, message: '' }, action) {
 	switch (action.type) {
 
-		case OPEN_SNACKBAR:
-			return { open: true, message: action.message };
+	case OPEN_SNACKBAR:
+		return { open: true, message: action.message };
 
-		case CLOSE_SNACKBAR:
-			return {open: false, message: '' };
+	case CLOSE_SNACKBAR:
+		return {open: false, message: '' };
 
-		default:
-			return state;
+	default:
+		return state;
 	}
 }

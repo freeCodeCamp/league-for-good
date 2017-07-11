@@ -8,3 +8,4 @@ export * from './form';
 export * from './players/index';
 export * from './theme.js';
 export * from './settings.js';
+export * from './seasons.js';

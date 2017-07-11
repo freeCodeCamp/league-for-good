@@ -41,6 +41,10 @@ const PlayerSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'league'
 	},
+	pending: {
+		type: Boolean,
+		default: true
+	},
 	teams: [{
 		teamId: Schema.Types.ObjectId,
 		seasonId: Schema.Types.ObjectId,

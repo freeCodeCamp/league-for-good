@@ -8,6 +8,8 @@ import DropDownMenu from 'material-ui/DropDownMenu';
 
 import getRowData, { colData } from './teamData';
 
+import { configTeamForTable } from '../../../../selectors/teams_in_season';
+
 import { connect } from 'react-redux';
 
 // Table that lists all the teams and the ability to edit or delete each team
@@ -68,13 +70,15 @@ class TeamTable extends Component {
 		);
 	}
 }
+const configTeams = configTeamForTable();
 
 TeamTable.propTypes = {
 	teams: PropTypes.arrayOf(PropTypes.object)
 };
 
 function mapStateToProps(state) {
-	return { teams: state.teams };
+
+	return { teams: configTeams(state) };
 }
 
 export default connect(mapStateToProps)(TeamTable);

@@ -2,7 +2,6 @@ import axios from 'axios';
 import { FETCH_PLAYER, FETCH_ALL_PLAYERS } from '../types';
 import { ROOT_URL } from '../../../globals';
 
-
 // Get more detailed player info including stats
 export function fetchPlayer(player) {
 
@@ -11,7 +10,6 @@ export function fetchPlayer(player) {
 	return dispatch => {
 		axios.get(url)
 			.then(({data}) => {
-
 				dispatch({type: FETCH_PLAYER, playerDetails: data });
 			});
 	};
@@ -19,7 +17,6 @@ export function fetchPlayer(player) {
 
 // Retrieve all players
 export function fetchPlayerList(leagueId) {
-
 	const url = `${ROOT_URL}/player/list/${leagueId}`;
 
 	return dispatch => {

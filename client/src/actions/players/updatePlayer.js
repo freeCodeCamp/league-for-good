@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import { ROOT_URL } from '../../../globals';
 
 
@@ -28,11 +29,11 @@ export function updatePlayer(form) {
 			prevTeam,
 			currTeam: team.teamId
 		};
-		console.log(teamUpdate);
+
 	}
 
 	axios.put(url, { playerUpdate, teamUpdate })
-		.then(({data}) => { console.log(data); })
-		.catch(err => { console.error(err); });
+		.then(() => { return { type: 'NO TYPE'}; })
+		.catch(err => { throw err; });
 
 }

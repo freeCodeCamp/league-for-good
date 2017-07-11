@@ -39,7 +39,6 @@ const updateStaff = (req, res) => {
 
 // Delete a staff member from a league
 const deleteStaff = (req, res) => {
-	console.log('query', req.query, 'params', req.params);
 	const query = { _id: req.query.leagueId };
 	const update = { $pull: { staff: { email: req.params.email } } };
 
@@ -54,6 +53,6 @@ const deleteStaff = (req, res) => {
 
 Router.route('/create').post(createStaff);
 Router.route('/update/:email').put(updateStaff);
-Router.route('/remove/:email').delete(deleteStaff);
+Router.route('/remove/:email/').delete(deleteStaff);
 
 module.exports = Router;

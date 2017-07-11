@@ -39,6 +39,7 @@ export function addStaffMember(formVals, dispatch, { location }) {
 		});
 }
 
+
 export function updateStaff(formVals, dispatch) {
 	const { leagueId, email, role } = formVals;
 	const body = { leagueId, email, role };
@@ -63,8 +64,7 @@ export function removeStaff(staffInfo) {
 
 		dispatch({ type: CLOSE_MODAL });
 
-		axios.delete(`${ROOT_URL}/settings/remove/${email}`,
-				{ params: { leagueId } })
+		axios.delete(`${ROOT_URL}/settings/remove/${email}?leagueId=${leagueId}`)
 			.then(() => dispatch({
 				type: REMOVE_STAFF_MEMBER,
 				removedStaffEmail: email
