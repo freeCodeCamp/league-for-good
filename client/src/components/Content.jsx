@@ -20,9 +20,9 @@ const Content = props => {
 			<NavBar changeTheme={props.changeTheme} />
 			<div className={contentWrapperClass}>
 				<Paper style={cssContent.paper} zDepth={3}>
-					<Route component={Dashboard} path="/dashboard" />
-					<Route component={CreateLeagueForm} path="/create" />
-					<Route component={Help} path="/help" />
+					<Route component={Dashboard} path='/dashboard' />
+					<Route component={CreateLeagueForm} path='/create' />
+					<Route component={Help} path='/help' />
 				</Paper>
 			</div>
 			<Modal />

@@ -21,8 +21,10 @@ export const configTeamForTable = () => {
 				// else{
 				// 	team.activeSeason = 'N/A'
 				// }
-				team.status = team.currently_active ? 'Active' : 'Archived';
+				team.status = team.currentlyActive ? 'Active' : 'Archived';
 				team.playerCount = team.players.length;
+				team.seasonCount = team.seasons.length;
+
 				list.push(team);
 				return list;
 			}, []);

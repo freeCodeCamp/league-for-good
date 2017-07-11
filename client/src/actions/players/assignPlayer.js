@@ -14,7 +14,7 @@ export function assignPlayer(form, dispatch) {
 		.then(() => {
 			dispatch({
 				type: ADD_PLAYER_TO_TEAM,
-				payload: { player: playerId, teamId },
+				payload: { player: playerId, teamId }
 			});
 		});
 }

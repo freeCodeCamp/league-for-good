@@ -1,5 +1,10 @@
-import {FETCH_LEAGUES, CREATE_LEAGUE, SELECT_LEAGUE, REMOVE_LEAGUE } from '../actions/types';
- 
+import {
+	FETCH_LEAGUES,
+	CREATE_LEAGUE,
+	SELECT_LEAGUE,
+	REMOVE_LEAGUE
+} from '../actions/types';
+
 /*
 	League State
 
@@ -9,10 +14,9 @@ import {FETCH_LEAGUES, CREATE_LEAGUE, SELECT_LEAGUE, REMOVE_LEAGUE } from '../ac
 */
 
 const removeReg = ({ selected: { pendingPlayers, ...rest }}, _id) => {
-	const updatedArr = pendingPlayers.filter(p => p._id !== _id);	
-	return { ...rest, pending_players: updatedArr };
+	const updatedArr = pendingPlayers.filter(p => p._id !== _id);
+	return { ...rest, pendingPlayers: updatedArr };
 };
-
 
 
 const defaultState = { list: [], selected: {} };
@@ -21,10 +25,11 @@ export default function(state = defaultState, action) {
 
 	switch (action.type) {
 
-	case REMOVE_LEAGUE: 
-		return { 
+	case REMOVE_LEAGUE:
+		return {
 			selected: {},
-			list: state.list.filter(league => league._id !== action.leagueId),
+			list: state.list
+				.filter(league => league._id !== action.leagueId)
 		};
 
 	case CREATE_LEAGUE:
@@ -36,7 +41,8 @@ export default function(state = defaultState, action) {
 	case SELECT_LEAGUE:
 		return {
 			...state,
-			selected: state.list.find(league => league._id === action.leagueId),
+			selected: state.list.find(
+				league => league._id === action.leagueId)
 		};
 
 	case 'REMOVE_REGISTRATION':

@@ -13,7 +13,7 @@ export const PLAYER_REGISTRATION_DETAILS =
 // Team Routes
 export const TEAM_LIST = '/dashboard/teams/list';
 export const TEAM_ROSTER = '/dashboard/teams/roster/:teamId';
-export const TEAM_ROSTER_PLAYER_DETAIL = '/dashboard/teams/player/:playerId'; 
+export const TEAM_ROSTER_PLAYER_DETAIL = '/dashboard/teams/player/:playerId';
 export const TEAM_ADD_FORM = '/dashboard/teams/create';
 
 

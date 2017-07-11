@@ -12,7 +12,7 @@ export function createPlayer(form, dispatch, { location: { state }}) {
 
 	// format the request body to match the format of player model
 	const reqBody = { ...player, leagueId, teams: [team] };
-	
+
 	axios.post(`${ROOT_URL}/player/add`, reqBody)
 		.then(({data}) => {
 
@@ -23,7 +23,7 @@ export function createPlayer(form, dispatch, { location: { state }}) {
 			if ( team && team.teamId ) {
 				dispatch({
 					type: ADD_PLAYER_TO_TEAM,
-					payload: { teamId: team.teamId, player: data },
+					payload: { teamId: team.teamId, player: data }
 				});
 			}
 

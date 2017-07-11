@@ -11,18 +11,18 @@ export const colData = [
 		label: 'Email',
 		cellProp: 'email',
 		sortable: true,
-		searchable: true,
+		searchable: true
 	},
 	{
 		label: 'Role',
 		cellProp: 'role',
-		sortable: true,
+		sortable: true
 	},
 	{
 		label: 'Edit',
 		style: cssDashboard.table.columns.icon,
 		action: 'edit',
-		cellProp: 'icon',
+		cellProp: 'icon'
 
 		// TODO: add the edit staff modal
 
@@ -31,8 +31,8 @@ export const colData = [
 		label: 'Delete',
 		style: cssDashboard.table.columns.icon,
 		action: 'delete',
-		cellProp: 'icon',
-	},
+		cellProp: 'icon'
+	}
 ];
 
 // Get the value for the cell
@@ -61,7 +61,7 @@ const getStaffTableData = (staff, leagueId) => {
 		return colData.map( col => (
 			{
 				value: getCellValue(staffMember, col.cellProp, col.action, leagueId),
-				style: col.style,
+				style: col.style
 			}
 		));
 	});

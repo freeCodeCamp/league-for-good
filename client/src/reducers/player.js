@@ -1,7 +1,7 @@
 import {
 	FETCH_PLAYER,
 	ADD_PLAYER,
-	FETCH_ALL_PLAYERS,
+	FETCH_ALL_PLAYERS
 } from '../actions/types';
 
 
@@ -20,7 +20,7 @@ export default function(state = null, action) {
 	case FETCH_ALL_PLAYERS:
 		return { list: action.players };
 	case ADD_PLAYER:
-		return { ...state, list: [...state.list, action.payload] };	
+		return { ...state, list: [...state.list, action.payload] };
 	default:
 		return state;
 

@@ -7,7 +7,7 @@ import {
 	FETCH_ALL_PLAYERS,
 	SELECT_STAFF_MEMBERS,
 	REMOVE_LEAGUE,
-	SET_LOADING_STATE,
+	SET_LOADING_STATE
 } from './types';
 import { ROOT_URL } from '../../globals';
 
@@ -31,7 +31,7 @@ export function deleteLeague(_, dispatch, props) {
 	const action = { type: REMOVE_LEAGUE, leagueId };
 
 	axios.delete(url)
-		.then(response => {
+		.then(() => {
 			dispatch(action);
 		})
 		.then(() => history.push('/'))
@@ -47,7 +47,7 @@ export function selectLeague(leagueId) {
 		axios.get(`${ROOT_URL}/league/fetch/${leagueId}`)
 			.then(response => {
 				const { teams, players, staff, seasons } = response.data;
-		
+
 				dispatch({ type: SELECT_LEAGUE, leagueId });
 				dispatch({ type: SELECT_TEAMS, teams });
 				dispatch({ type: FETCH_ALL_SEASONS, seasons });

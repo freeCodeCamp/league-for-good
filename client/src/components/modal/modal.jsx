@@ -53,7 +53,7 @@ class Modal extends Component {
 			/>,
 			<RaisedButton
 				backgroundColor={cssModal.raisedButton.backgroundColor}
-				label="Cancel"
+				label='Cancel'
 				labelStyle={cssModal.raisedButton.label}
 				onTouchTap={this.handleClose}
 				style={cssModal.raisedButton.style}

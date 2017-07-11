@@ -30,7 +30,7 @@ const Bar = props => {
 			iconStyleLeft={css.text}
 			onLeftIconButtonTouchTap={() => toggleMenu()}
 			style={css.main}
-			title="League For Good"
+			title='League For Good'
 			titleStyle={css.text}
 		/>
 	);

@@ -26,9 +26,9 @@ const App = props => {
 		<MuiThemeProvider muiTheme={getMuiTheme({ palette })}>
 			<Router>
 				<div>
-					<Route component={requireAuth(Content)} path="/" />
-					<Route component={RegForm} path="/registration" />
-					<Route component={Login} path="/login" />
+					<Route component={requireAuth(Content)} path='/' />
+					<Route component={RegForm} path='/registration' />
+					<Route component={Login} path='/login' />
 				</div>
 			</Router>
 		</MuiThemeProvider>

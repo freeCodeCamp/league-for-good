@@ -5,7 +5,7 @@ import {
 	REMOVE_TEAM,
 	UPDATE_TEAM,
 	OPEN_SNACKBAR,
-	CLOSE_MODAL,
+	CLOSE_MODAL
 } from './types';
 import { ROOT_URL } from '../../globals';
 
@@ -15,7 +15,7 @@ export function createTeam( formVals, dispatch, { location } ) {
 
 	const body = {
 		name: formVals.name,
-		league: location.state.leagueId,
+		league: location.state.leagueId
 	};
 
 	axios.post(`${ROOT_URL}/team/create`, body)
@@ -40,7 +40,7 @@ export function updateTeam(formVals, dispatch) {
 		.then(() => {
 			return dispatch({
 				type: UPDATE_TEAM,
-				updatedTeam: {...formVals, ...body },
+				updatedTeam: {...formVals, ...body }
 			});
 		})
 		.catch( error => {

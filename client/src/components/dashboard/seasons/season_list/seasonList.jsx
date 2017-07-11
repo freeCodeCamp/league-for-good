@@ -1,23 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { cssContent } from '../../../style';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
-
-import TextField from 'material-ui/TextField';
-import SearchIcon from 'material-ui/svg-icons/action/search';
-
 import getRowData, { colData } from './seasonData';
 
-import { connect } from 'react-redux';
 
-// Table that lists all the seasons and the ability to edit or delete each season
+// Table that lists all the seasons and the
+	// ability to edit or delete each season
 const SeasonList = props => {
 
 	return (
-		<div style={cssContent.body}>	
+		<div style={cssContent.body}>
 			<TableTemplate
-				title="Seasons" 
 				headers={colData}
 				rows={getRowData(props.seasons)}
+				title='Seasons'
 			/>
 		</div>
 	);
@@ -27,7 +25,10 @@ function mapStateToProps(state) {
 	return { seasons: state.seasons.list };
 }
 
-export default connect(mapStateToProps)(SeasonList);
+SeasonList.propTypes = {
+	seasons: PropTypes.object
+};
 
+export default connect(mapStateToProps)(SeasonList);
 
 

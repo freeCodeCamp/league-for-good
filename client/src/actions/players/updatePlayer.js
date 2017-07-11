@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { FETCH_PLAYER, FETCH_ALL_PLAYERS } from '../types';
+
 import { ROOT_URL } from '../../../globals';
 
 
 export function updatePlayer(form) {
 	let { team, teams, ...fields } = form;
 	const url = `${ROOT_URL}/player/update/${fields._id}`;
-	
+
 	let prevTeam;
 	let teamUpdate = null;
 
@@ -27,13 +27,13 @@ export function updatePlayer(form) {
 		// console.log('team model needs update', prevTeam.teamId, team.teamId)
 		teamUpdate = {
 			prevTeam,
-			currTeam: team.teamId,
+			currTeam: team.teamId
 		};
-		
+
 	}
 
 	axios.put(url, { playerUpdate, teamUpdate })
-		.then(({data}) => { return { type: 'NO TYPE'}; })
+		.then(() => { return { type: 'NO TYPE'}; })
 		.catch(err => { throw err; });
 
 }
