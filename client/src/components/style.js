@@ -19,7 +19,7 @@ export const common = {
 	},
 	formRow: {
 		display: 'flex',
-		justifyContent: 'space-around'
+		justifyContent: 'space-between'
 	},
 	form: {
 		width: '80%',

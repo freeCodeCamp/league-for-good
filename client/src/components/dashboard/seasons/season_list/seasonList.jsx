@@ -9,7 +9,7 @@ import getRowData, { colData } from './seasonData';
 // Table that lists all the seasons and the
 	// ability to edit or delete each season
 const SeasonList = props => {
-
+	console.log(props.seasons);
 	return (
 		<div style={cssContent.body}>
 			<TableTemplate
@@ -26,7 +26,7 @@ function mapStateToProps(state) {
 }
 
 SeasonList.propTypes = {
-	seasons: PropTypes.object
+	seasons: PropTypes.array
 };
 
 export default connect(mapStateToProps)(SeasonList);

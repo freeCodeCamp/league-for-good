@@ -52,7 +52,8 @@ SeasonSchema.virtual('active').get(function() {
 	return now >= start && now <= end;
 });
 
-
+// If a season is deleted then refs within the player and team model
+// must be deleted as well
 SeasonSchema.pre('remove', function(next) {
 	const teamQuery = { seasons: { $in: [this._id] }};
 	const teamUpdate = { $pull: { seasons: { $in: [this._id] }}};
