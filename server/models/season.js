@@ -43,37 +43,26 @@ const SeasonSchema = new Schema(
 	}
 );
 
-
+// Compare start - end dates to todays date to determine
+// if the season is currently active
 SeasonSchema.virtual('active').get(function() {
 	const now = Date.now();
-	const start = Date.parse(this.startDate);
-	const end = Date.parse(this.endDate);
 
-	return now >= start && now <= end;
+	return now >= this.startDate && now <= this.endDate;
 });
 
-// If a season is deleted then refs within the player and team model
+// If a season is deleted then refs within the player model
 // must be deleted as well
 SeasonSchema.pre('remove', function(next) {
-	const teamQuery = { seasons: { $in: [this._id] }};
-	const teamUpdate = { $pull: { seasons: { $in: [this._id] }}};
-
-	const playerQuery = { 'teams.seasonId': { $in: [this._id] }};
-	const playerUpdate = { $pull: { teams: {season: this._id }}};
-
+	const Players = mongoose.model('player');
+	const query = { 'teams.seasonId': { $in: [this._id] }};
+	const update = { $pull: { teams: {season: this._id }}};
 	const options = { multi: true };
 
-	const teamPromise = mongoose.model('team')
-		.update(teamQuery, teamUpdate, options);
-	const playerPromise = mongoose.model('player')
-		.update(playerQuery, playerUpdate, options);
-
-	Promise.all([
-		teamPromise.exec(),
-		playerPromise.exec()
-	])
-	.then(() => next())
-	.catch( err => { throw err; });
+	Players.update(query, update, options)
+		.exec()
+		.then(() => next())
+		.catch( err => { throw err; });
 
 });
 

@@ -6,15 +6,14 @@ import { Field, reduxForm } from 'redux-form';
 
 import { createSeason, openSnackbar } from '../../../../actions/index';
 import { cssContent, cssDashboard } from '../../../style';
-import { getMinDate, getFormattedDate } from './utils/dateHelpers';
+import validate from './utils/validation';
+import getFormattedDate from './utils/formatDate';
+
 import {
 	TextField,
 	DatePicker,
 	Checkbox
 } from 'redux-form-material-ui';
-// import validate from './utils/validation';
-
-// const thisYear = new Date().getFullYear();
 
 
 const AddSeasonForm = props => {
@@ -41,12 +40,10 @@ const AddSeasonForm = props => {
 						<Field
 							autoOk={true}
 							component={DatePicker}
-							// disabled={!formVals.startDate}
 							floatingLabelStyle={cssDashboard.formRequired}
 							floatingLabelText='End Date'
 							format={null}
 							formatDate={getFormattedDate}
-							// minDate = {getMinDate(formVals, leagueSettings)}
 							name='endDate'
 						/>
 					</div>
@@ -88,8 +85,8 @@ AddSeasonForm.propTypes = {
 const DecoratedForm = reduxForm({
 	form: 'AddSeasonForm',
 	onSubmit: createSeason,
-	onSubmitSuccess: openSnackbar
-	// validate,
+	onSubmitSuccess: openSnackbar,
+	validate
 })(AddSeasonForm);
 
 function mapStateToProps(state) {
@@ -97,8 +94,5 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(DecoratedForm);
-
-
-
 
 
