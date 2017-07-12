@@ -15,28 +15,10 @@ const fetchSeasonList = (req, res) => {
 		.catch(err => { throw err; });
 };
 
-const importTeamsToSeason = (doc, importTeams) => {
-	const query = { leagueId: doc.leagueId, currentlyActive: true };
-	const update = { $push: { seasons: doc._id }};
-	const options = { multi: true };
-
-	if (!importTeams) {
-		return doc;
-	}
-
-	return mongoose.model('team').update(query, update, options)
-		.exec()
-		.then(() => Promise.resolve(doc))
-		.catch(err => { throw err; });
-
-};
-
 
 const createSeason = (req, res) => {
-	const { importActiveTeams } = req.body;
 
 	Seasons.create(req.body)
-		.then(doc => importTeamsToSeason(doc, importActiveTeams))
 		.then( newSeason => res.send(newSeason))
 		.catch( err => { throw err; });
 };

@@ -14,7 +14,6 @@ const TeamSchema = new Schema({
 		required: true
 	},
 	players: [{type: Schema.Types.ObjectId, ref: 'player'}],
-	seasons: [{type: Schema.Types.ObjectId, ref: 'season'}],
 	currentlyActive: {
 		type: Boolean,
 		default: false

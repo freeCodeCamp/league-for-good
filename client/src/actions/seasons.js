@@ -36,9 +36,15 @@ export function fetchSeasonList(leagueId) {
 }
 
 export function createSeason(form, dispatch, props) {
-	const leagueId = props.location.state.leagueId;
-	const body = { leagueId, ...form };
+	const { teams, location: { state: { leagueId }}} = props;
+	const { importActiveTeams, ...formVals } = form;
 	const url = `${ROOT_URL}/seasons/create/${leagueId}`;
+	let body = { ...formVals, leagueId };
+
+	if (importActiveTeams) {
+		body.teams = teams.filter(team => team.currentlyActive);
+	}
+
 
 	axios.post(url, body)
 			.then(({data}) =>
