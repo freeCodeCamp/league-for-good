@@ -28,7 +28,6 @@ class Icon extends Component {
 	render() {
 		const { leagueId, action } = this.props;
 		const { email, role } = this.props.staff;
-		console.log(this.props);
 
 		return (
 			<IconButton
@@ -46,9 +45,9 @@ class Icon extends Component {
 
 Icon.propTypes = {
 	action: PropTypes.string,
-	email: PropTypes.string,
 	leagueId: PropTypes.string,
-	openModal: PropTypes.func
+	openModal: PropTypes.func,
+	staff: PropTypes.object
 };
 
 function mapDispatchToProps(dispatch) {

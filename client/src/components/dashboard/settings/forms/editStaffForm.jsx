@@ -39,7 +39,8 @@ const EditStaffForm = (props) => {
 };
 
 EditStaffForm.propTypes = {
-	initialValues: PropTypes.object
+	initialValues: PropTypes.object,
+	roles: PropTypes.arrayOf(PropTypes.object)
 };
 
 function mapFormStateToProps(state) {
