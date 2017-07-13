@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { TEAM_ROSTER, makeLinkDynamic } from '../../../routes';
+import { SEASON_CURR_TEAMS, makeLinkDynamic } from '../../../routes';
 import IconButton from 'material-ui/IconButton';
 import ListIcon from 'material-ui/svg-icons/action/list';
 import { cssDashboard } from '../../../style';
 
 // Roster link changes the current state to that renders view
 // that contains the roster inside the same panel from PanelViewWrapper
-const RosterLink = props => {
-	const { ...team } = props;
-	const url = makeLinkDynamic( TEAM_ROSTER, team._id );
+const SeasonLink = props => {
+	const { ...season } = props;
+	const url = makeLinkDynamic(SEASON_CURR_TEAMS, season._id );
 	return (
 		<Link to={url}>
 			<IconButton
@@ -22,5 +22,4 @@ const RosterLink = props => {
 	);
 };
 
-
-export default RosterLink;
+export default SeasonLink;

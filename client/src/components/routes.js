@@ -24,6 +24,7 @@ export const SETTINGS_STAFF_LIST = '/dashboard/settings/staff';
 
 // Season routes
 export const SEASON_LIST = '/dashboard/seasons/list';
+export const SEASON_CURR_TEAMS = '/dashboard/seasons/current-teams/:seasonId';
 export const SEASON_ADD_FORM = '/dashboard/seasons/create';
 
 export function makeLinkDynamic( link, uniqueID ) {

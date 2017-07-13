@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import EditIcon from 'material-ui/svg-icons/image/edit';
@@ -10,42 +10,36 @@ import { openModal } from '../../../../actions/index';
 
 
 // Returns an icon for the table - either for deleting or editing a season
-class SeasonIcon extends Component {
+const SeasonIcon = props => {
+	const { season, action, openModal } = props;
+	// args passed to the openModal action creator for rendering
+	// correct modal
+	let view = 'removeSeason';
+	let data = season;
+	let Icon = DeleteIcon;
 
-	constructor(props) {
-		super(props);
-		this.onClick = this.onClick.bind(this);
+	if (action === 'edit') {
+		view = 'editSeasons';
+		data = { initialValues: season };
+		Icon = EditIcon;
 	}
 
-	onClick(season, action) {
-		if (action === 'edit') {
-			this.props.openModal('editSeasons', { initialValues: season });
-		} else {
-			this.props.openModal('removeSeason', season);
-		}
-	}
-	render() {
-		const { season, action } = this.props;
-
-		return (
-			<IconButton
-				hoveredStyle={cssDashboard.table.iconHover}
-				onTouchTap={()=> this.onClick(season, action) }
-				>
-				{action === 'delete' ?
-					<DeleteIcon /> :
-					<EditIcon /> }
-			</IconButton>
-		);
-	}
-}
+	return (
+		<IconButton
+			hoveredStyle={cssDashboard.table.iconHover}
+			onTouchTap={()=> openModal(view, data)}
+			>
+			<Icon/>
+		</IconButton>
+	);
+};
 
 SeasonIcon.propTypes = {
 	action: PropTypes.string,
-	initialValues: PropTypes.object,
 	openModal: PropTypes.func,
 	season: PropTypes.object
 };
+
 
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ openModal }, dispatch);
