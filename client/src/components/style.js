@@ -293,8 +293,8 @@ export const cssDashboard = {
 		forms: {
 			edit: {
 				style: {
-					margin: '0px auto',
-					width: '50%'
+					margin: '20px auto',
+					width: '75%'
 				},
 				checkbox: {
 					width: '125px'
@@ -334,9 +334,12 @@ export const cssDashboard = {
 				}
 			},
 			edit: {
+				style: {
+					margin: '20px auto',
+					width: '75%'
+				},
 				selectField: {
-					width: '25%',
-					marginTop: '20px',
+					width: '40%',
 					padding: '0px',
 					textAlign: 'left',
 					float: 'right'
