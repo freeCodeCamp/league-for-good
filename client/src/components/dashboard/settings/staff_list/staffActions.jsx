@@ -19,19 +19,20 @@ class Icon extends Component {
 
 	openModal(staff, action) {
 		if (action === 'edit') {
-			this.props.openModal('editStaff', staff);
+			this.props.openModal('editStaff', { initialValues: staff });
 		} else {
 			this.props.openModal('removeStaff', staff);
 		}
 	}
 
 	render() {
-		const { email, leagueId, action } = this.props;
+		const { leagueId, action } = this.props;
+		const { email, role } = this.props.staff;
 
 		return (
 			<IconButton
 				hoveredStyle={cssDashboard.table.iconHover}
-				onTouchTap={()=> this.openModal({ email, leagueId }, action) }
+				onTouchTap={()=> this.openModal({ email, leagueId, role }, action) }
 				>
 				{action === 'edit' ?
 					<EditIcon /> :
@@ -44,9 +45,9 @@ class Icon extends Component {
 
 Icon.propTypes = {
 	action: PropTypes.string,
-	email: PropTypes.string,
 	leagueId: PropTypes.string,
-	openModal: PropTypes.func
+	openModal: PropTypes.func,
+	staff: PropTypes.object
 };
 
 function mapDispatchToProps(dispatch) {
