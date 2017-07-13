@@ -4,3 +4,4 @@ exports.team = require('./team');
 exports.player = require('./player');
 exports.settings = require('./settings');
 exports.registration = require('./registration');
+exports.seasons = require('./seasons');

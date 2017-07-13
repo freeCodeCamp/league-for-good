@@ -15,10 +15,8 @@ const UserSchema = new Schema({
 	avatar: {
 		type: String
 	},
-
-	googleId: {
-		type: String
-	}},
+	googleId: String
+},
 	{
 		collection: 'users'
 	}

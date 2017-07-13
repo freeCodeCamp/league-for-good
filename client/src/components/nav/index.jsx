@@ -23,7 +23,6 @@ class NavBar extends Component {
 
 	selectLeague = league => {
 		// const { teams, staff, ...leagueData } = league;
-
 		// // Mark new league as 'Selected'
 		// this.props.selectLeague(leagueData);
 		// // Fetch players from league from the server
@@ -42,7 +41,6 @@ class NavBar extends Component {
 	}
 
 	render() {
-		console.log(this.props);
 		return (
 			<div>
 				<Bar

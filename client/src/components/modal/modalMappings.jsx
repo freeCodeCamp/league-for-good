@@ -1,6 +1,6 @@
 import EditTeamForm from '../dashboard/teams/forms/editTeamForm.jsx';
-// import EditStaffForm from '../dashboard/settings/forms/editStaffForm.jsx';
 import DeleteTeamForm from '../dashboard/teams/forms/deleteTeamForm.jsx';
+import EditStaffForm from '../dashboard/settings/forms/editStaffForm.jsx';
 import DeleteStaffForm from '../dashboard/settings/forms/deleteStaffForm.jsx';
 import DeleteRegForm from '../dashboard/players/applications/modals/delete.jsx';
 /* Map all the components and/or props to be used
@@ -65,13 +65,12 @@ const mappings = {
 		reduxFormName: 'EditTeamForm',
 		actionLabel: 'Edit Team'
 	},
-/*	editStaff: {
+	editStaff: {
 		title: 'Edit Staff',
 		Children: EditStaffForm,
-		onSubmit: null,
-		reduxFormName: 'EditStaffForm',
-		actionLabel: 'Edit Staff',
-	},*/
+		onSubmit: 'editStaff',
+		actionLabel: 'Edit Staff'
+	},
 	removeStaff: {
 		title: 'Delete Staff',
 		Children: DeleteStaffForm,
@@ -81,11 +80,16 @@ const mappings = {
 	assignPlayer: {
 
 	},
+	removeSeason: {
+		title: 'Permanently Delete Season',
+		onSubmit: 'deleteSeason',
+		actionLabel: 'DELETE'
+	},
 	removePlayerApplication: {
 		title: 'Delete Player Application',
 		Children: DeleteRegForm,
 		onSubmit: 'deletePlayerRegistration',
-		actionLabel: 'Delete'
+		actionLabel: 'Delete Player'
 	}
 };
 

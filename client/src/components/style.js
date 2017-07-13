@@ -19,7 +19,7 @@ export const common = {
 	},
 	formRow: {
 		display: 'flex',
-		justifyContent: 'space-around'
+		justifyContent: 'space-between'
 	},
 	form: {
 		width: '80%',
@@ -330,6 +330,15 @@ export const cssDashboard = {
 					marginBottom: '5px',
 					marginLeft: '10px',
 					textAlign: 'right',
+					float: 'right'
+				}
+			},
+			edit: {
+				selectField: {
+					width: '25%',
+					marginTop: '20px',
+					padding: '0px',
+					textAlign: 'left',
 					float: 'right'
 				}
 			}

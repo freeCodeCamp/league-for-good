@@ -1,10 +1,12 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
-
 import { cssContent, cssDashboard } from '../../../style';
+import PropTypes from 'prop-types';
+import { reduxForm } from 'redux-form';
+import { deleteLeague } from '../../../../actions/index';
 
-const DeleteLeagueForm = () => {
-	// const { handleSubmit } = props;
+const DeleteLeagueForm = props => {
+	const { handleSubmit } = props;
 	return (
 		<div style={cssContent.body}>
 			<h1 style={cssDashboard.title}>Delete League</h1>
@@ -13,7 +15,7 @@ const DeleteLeagueForm = () => {
 				This action cannot be undone.
 			</h2>
 			<form
-				// onSubmit={ handleSubmit }
+				onSubmit={ handleSubmit }
 				style={cssDashboard.form}
 				>
 				<RaisedButton
@@ -28,12 +30,14 @@ const DeleteLeagueForm = () => {
 	);
 };
 
-export default DeleteLeagueForm;
-/* export default reduxForm({
-	form: 'AddTeamForm',
-	onSubmit: createTeam,
-	onSubmitSuccess: openSnackbar,
-	validate,
-})( AddTeamForm );
-*/
+DeleteLeagueForm.propTypes = {
+	handleSubmit: PropTypes.func
+};
+
+export default reduxForm({
+	form: 'DeleteLeagueForm',
+	onSubmit: deleteLeague
+
+})( DeleteLeagueForm );
+
 

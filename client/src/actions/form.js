@@ -13,7 +13,8 @@ const getMessage = ({values, form}) => {
 		AddPlayerForm: `${playerName} has been successfully added to your league`,
 		UpdatePlayerForm: `${playerName} has been successfully updated`,
 		AddStaffForm: 'A new staff member was successfully added to your league',
-		AssignPlayerForm: 'Successfully assigned a new player'
+		AssignPlayerForm: 'Successfully assigned a new player',
+		AddSeasonForm: 'A new season has been created!'
 	};
 
 	return messages[form];

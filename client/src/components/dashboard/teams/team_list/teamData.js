@@ -18,19 +18,19 @@ export const colData = [
 	},
 	{
 		label: 'Roster Size',
-		cellProp: 'players.length',
+		cellProp: 'playerCount',
 		sortable: true,
 		style: cssDashboard.table.columns.defaultCol
 	},
 	{
 		label: 'Seasons',
-		cellProp: 'seasons.length',
+		cellProp: 'seasonCount',
 		sortable: true,
 		style: cssDashboard.table.columns.defaultCol
 	},
 	{
 		label: 'Status',
-		cellProp: 'currentlyActive',
+		cellProp: 'status',
 		sortable: true,
 		style: cssDashboard.table.columns.defaultCol
 	},
@@ -53,9 +53,6 @@ export const colData = [
 // Get the value for the cell
 function getCellValue(team, prop, action) {
 
-	if (prop === 'currentlyActive') {
-		return team.currentlyActive ? 'Active' : 'Archived';
-	}
 	if (prop === 'icon') {
 		const iconProps = { action, team };
 		return <Icon {...iconProps} />;
@@ -63,10 +60,7 @@ function getCellValue(team, prop, action) {
 	if (prop === 'link') {
 		return <Link {...team} />;
 	}
-	// Split properties if cell property is nested
-	if (prop.split('.').length > 1) {
-		return prop.split('.').reduce((o, i) => o[i], team);
-	}
+
 	return team[prop];
 }
 
