@@ -40,7 +40,7 @@ const updateSeason = (req, res) => {
 
 	Seasons.findByIdAndUpdate(seasonId, update)
 		.exec()
-		.then(x=> res.send(x))
+		.then(()=> res.status(200).send('Season updated'))
 		.catch(err => { throw err; });
 };
 

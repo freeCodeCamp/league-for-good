@@ -1,53 +1,76 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { reduxForm, Field, reset } from 'redux-form';
+import { reduxForm, Field, propTypes as reduxFormProps } from 'redux-form';
 import Checkbox from 'material-ui/Checkbox';
 import { currTeamsSelector } from '../season_list/seasonData.selector';
 import Divider from 'material-ui/Divider';
 import RaisedButton from 'material-ui/RaisedButton';
 import { updateTeamsInSeason } from '../../../../actions/index';
+import Navigation from '../../helper/NavigationArrow.jsx';
+import FormButtons from '../../helper/FormBtns.jsx';
+
+const rootStyle = {
+	width: '90%',
+	padding: 10,
+	margin: '10px auto 15px'
+};
+
+const checkBoxStyle = {
+	marginBottom:5, 
+	width:'40%'
+};
+
+
 
 const CustomCheckbox = ({ input, label }) => (
-	<Checkbox
-		checked={input.value ? true : false}
-		label={label}
-		onCheck={input.onChange}
-	/>
+	<div style={checkBoxStyle}>
+		<Checkbox
+			checked={input.value ? true : false}
+			label={label}
+			onCheck={input.onChange}
+		/>
+	</div>
 );
-
 
 const CurrTeamsList = props => {
 	const { name, range, teamList } = props.season;
   return (
-		<form onSubmit={props.handleSubmit}>
-			<div style={{textAlign: 'center'}}>
-				<h3>Available Teams</h3>
-				<p><b>{'Season: ' + name}</b></p>
-				<b>{range}</b>
-			</div>
+  	<div>
+  		<Divider/>
+			<Navigation tooltip="Back to seasons list">
+				<span>
+					<h3>Available Teams</h3>
+					<p><b>{'Season: ' + name}</b></p>
+					<p><b>{range}</b></p>				
+				</span>
+			</Navigation>
 			<Divider/>
-			{
-				teamList.map(team =>
-					(<Field
-						component={CustomCheckbox}
-						key={team._id}
-						label={team.name}
-						name={team._id}
-					/>)
-				)
-			}
-			<RaisedButton
-				label='Update'
-				primary={true}
-				type='submit'
-			/>
-			<RaisedButton
-				label='Reset'
-				onTouchTap={() => props.dispatch(reset('UpdateTeamsInSeasonForm'))}
-				secondary={true}
-			/>
-		</form>
+			<form 
+				onSubmit={props.handleSubmit}
+				style={rootStyle}
+				>
+
+				{
+					teamList.map(team =>
+						(
+							<Field
+								component={CustomCheckbox}
+								key={team._id}
+								label={team.name}
+								name={team._id}
+							/>
+							
+						)
+					)
+				}
+				<FormButtons
+					dispatch={props.dispatch}
+					formName='UpdateTeamsInSeason'
+					submitLabel='Update'
+				/>
+			</form>
+		</div>
 	);
 };
 
@@ -57,14 +80,12 @@ CustomCheckbox.propTypes = {
 };
 
 CurrTeamsList.propTypes = {
-	dispatch: PropTypes.func,
-	handleSubmit: PropTypes.func,
-	initialValues: PropTypes.object,
+	...reduxFormProps,
 	season: PropTypes.object
 };
 
 const FormWrapper = reduxForm({
-	form: 'UpdateTeamsInSeasonForm',
+	form: 'UpdateTeamsInSeason',
 	onSubmit: updateTeamsInSeason
 })(CurrTeamsList);
 
