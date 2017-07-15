@@ -4,9 +4,8 @@ import { Table } from 'material-ui/Table';
 
 import TableBody from './tableBody.jsx';
 import TableHeader from './tableHeader.jsx';
+import TableFooter from './tableFooter.jsx';
 import SearchTable from './tableSearchInput.jsx';
-import ArrowUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
-import ArrowDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
 import { cssDashboard } from '../../../style';
 import sortRows from './utils/sorting';
 
@@ -57,7 +56,7 @@ class TableTemplate extends Component {
 		});
 
 		this.state = {
-			page: 1,
+			page: 0,
 			rows: Array.from(this.props.rows),
 			rowsPerPage: 25,
 			sortDirection: 'none',
@@ -88,6 +87,7 @@ class TableTemplate extends Component {
 			});
 
 			this.setState({
+				page: 0,
 				rows: Array.from(nextProps.rows),
 				sortDirection: 'none',
 				searchableColumnIndex: searchableColumnIndex,
@@ -108,19 +108,24 @@ class TableTemplate extends Component {
 		}, this);
 
 		this.setState({
+			page: 0,
 			searchTerm: newValue,
 			searchRows: Array.from(searchRows),
 			rows: searchRows
 		});
 	}
 
-	paginateRows = rows => {
+	paginate = rows => {
 		const { rowsPerPage, page } = this.state;
-		const start = (page - 1) * rowsPerPage;
-		const end = page * rowsPerPage;
+		const start = page * rowsPerPage;
+		const end = (page + 1) * rowsPerPage;
 		return rows.slice(start, end);
 	}
 
+	onPaginate = step => {
+		const newPage = this.state.page + step;
+		this.setState({ page: newPage })
+	}
 	// Sort when clicked
 	// @colProp: which column to sort by
 	onSort(colIndex) {
@@ -135,11 +140,11 @@ class TableTemplate extends Component {
 			this.sortMap[sortDirection] : 'asc';
 		// if the user is searching, return to the original state of searched rows
 		if (this.state.searchTerm) {
-			sortedRows = Array.from(searchRows);
+			sortedRows = initialRows;
 		}	else {
 			sortedRows = handleSort(colIndex, sortDirection);
 		}
-			
+
 		this.setState({
 			rows: sortedRows,
 			sortDirection,
@@ -148,13 +153,14 @@ class TableTemplate extends Component {
 	}
 	
 	render() {
+		const { rows } = this.state;
 		return (
 			<div>
 				{
 					this.props.title &&
-					<h1 style={cssDashboard.title}>
-						{this.props.title}
-					</h1>
+						<h1 style={cssDashboard.title}>
+							{this.props.title}
+						</h1>
 				}
 				{
 					this.state.searchableColumnIndex !== -1 &&
@@ -170,7 +176,13 @@ class TableTemplate extends Component {
 						sortColumnIndex={this.state.sortColumnIndex}
 						sortDirection={this.state.sortDirection}
 					/>
-					<TableBody rows={this.state.rows}/>
+					<TableBody rows={this.paginate(rows)}/>
+					<TableFooter
+						onClick={this.onPaginate}
+						page={this.state.page}
+						rowsPerPage={this.state.rowsPerPage}
+						total={rows.length}
+					/>
 				</Table>
 			</div>
 		);
