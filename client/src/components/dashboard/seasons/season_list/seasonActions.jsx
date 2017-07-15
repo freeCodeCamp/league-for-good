@@ -11,25 +11,21 @@ import { openModal } from '../../../../actions/index';
 
 // Returns an icon for the table - either for deleting or editing a season
 const SeasonIcon = props => {
-	const { season, action, openModal } = props;
-	// args passed to the openModal action creator for rendering
-	// correct modal
-	let view = 'removeSeason';
-	let data = season;
-	let Icon = DeleteIcon;
 
-	if (action === 'edit') {
-		view = 'editSeasons';
-		data = { initialValues: season };
-		Icon = EditIcon;
-	}
+
+	const { season, action, openModal } = props;
+	const flag = action === 'edit';
+	const view = flag ? 'editSeasons' : 'removeSeason';
+	const data = flag ? season : { initialValues: season };
+	const SvgIcon = flag ? EditIcon : DeleteIcon;
+
 
 	return (
 		<IconButton
 			hoveredStyle={cssDashboard.table.iconHover}
 			onTouchTap={()=> openModal(view, data)}
 			>
-			<Icon/>
+			<SvgIcon/>
 		</IconButton>
 	);
 };
