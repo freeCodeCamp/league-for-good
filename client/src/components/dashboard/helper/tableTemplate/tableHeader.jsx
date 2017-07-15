@@ -8,15 +8,11 @@ import {
 import ColumnHeaderChild from './columnHeaderChild.jsx';
 import { cssDashboard } from '../../../style';
 
-// IMPORTED STYLES
-const { table: {
-	colHeaderLabelStyle,
-	colHeaderStyle
-}} = cssDashboard;
-
+// Header row for the table containing column names
 export default class TableHeader extends Component {
 	static muiName = 'TableHeader';
 
+	
 	renderColumns = () => {
 		const { onSort, sortColumnIndex, sortDirection } = this.props;
 		return this.props.headers.map(function(header, i) {
@@ -24,7 +20,7 @@ export default class TableHeader extends Component {
 				<TableHeaderColumn
 					colSpan={header.colSpan || 1}
 					key={i}
-					style={colHeaderStyle}
+					style={cssDashboard.table.colHeaderStyle}
 					>
 					<ColumnHeaderChild
 						colIndex={i}
@@ -36,9 +32,9 @@ export default class TableHeader extends Component {
 					/>
 				</TableHeaderColumn>
 			);
-		})		
+		});
 	}
-	render(){
+	render() {
 		return (
 			<MuiTableHeader
 				adjustForCheckbox={false}
@@ -50,11 +46,13 @@ export default class TableHeader extends Component {
 				</TableRow>
 			</MuiTableHeader>
 		);
-	};
+	}
 }
 
 TableHeader.propTypes = {
 	headers: PropTypes.arrayOf(PropTypes.object),
+	onSort: PropTypes.func,
+	sortColumnIndex: PropTypes.number,
 	sortDirection: PropTypes.string
 };
 

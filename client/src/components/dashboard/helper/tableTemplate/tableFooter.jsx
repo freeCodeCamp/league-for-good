@@ -10,27 +10,28 @@ import ChevronLeft from 'material-ui/svg-icons/navigation/chevron-left';
 import ChevronRight from 'material-ui/svg-icons/navigation/chevron-right';
 
 const footerTextStyle = {
-	float:'right',
-	height:16, 
-	paddingTop:16
+	float: 'right',
+	height: 16,
+	paddingTop: 16
 };
 
+// footer for the TableTemplate that handles pagination
 export default class TableFooter extends Component {
 	static muiName = 'TableFooter';
 
 	renderText = () => {
 		const { page, rowsPerPage, total } = this.props;
 		const start = page * rowsPerPage + 1;
-		const end = Math.min(((page+1) * rowsPerPage), total);
-		return `${start} - ${end} of ${total}`; 
+		const end = Math.min(((page + 1) * rowsPerPage), total);
+		return `${start} - ${end} of ${total}`;
 	}
 
-	render(){
-		const { onClick, page, rowsPerPage, total } = this.props; 
+	render() {
+		const { onClick, page, rowsPerPage, total } = this.props;
 		return (
 			<MuiTableFooter>
 				<TableRow>
-					<TableRowColumn style={{float:'right'}}>
+					<TableRowColumn style={{float: 'right'}}>
 						<IconButton
 							disabled={page === 0}
 							onTouchTap={()=> onClick(-1)}
@@ -38,11 +39,11 @@ export default class TableFooter extends Component {
 							<ChevronLeft/>
 						</IconButton>
 						<IconButton
-							disabled={(page+1)* rowsPerPage >= total}
+							disabled={(page + 1) * rowsPerPage >= total}
 							onTouchTap={()=> onClick(1)}
 							>
 							<ChevronRight/>
-						</IconButton>					
+						</IconButton>
 					</TableRowColumn>
 					<TableRowColumn style={footerTextStyle}>
 						{this.renderText()}
@@ -50,11 +51,13 @@ export default class TableFooter extends Component {
 				</TableRow>
 			</MuiTableFooter>
 		);
-	};
+	}
 }
 
 TableFooter.propTypes = {
-	headers: PropTypes.arrayOf(PropTypes.object),
-	sortDirection: PropTypes.string
+	onClick: PropTypes.func,
+	page: PropTypes.number,
+	rowsPerPage: PropTypes.number,
+	total: PropTypes.number
 };
 

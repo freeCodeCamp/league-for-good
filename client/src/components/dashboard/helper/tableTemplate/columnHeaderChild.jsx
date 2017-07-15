@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import ArrowUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
 import ArrowDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
@@ -8,8 +8,7 @@ import { cssDashboard } from '../../../style';
 const { table: {
 	sortArrowActiveColor,
 	sortArrowInactiveColor,
-	colHeaderLabelStyle,
-	colHeaderStyle
+	colHeaderLabelStyle
 }} = cssDashboard;
 
 // column header with sorting icons

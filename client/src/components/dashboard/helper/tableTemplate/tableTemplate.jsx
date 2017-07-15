@@ -9,14 +9,6 @@ import SearchTable from './tableSearchInput.jsx';
 import { cssDashboard } from '../../../style';
 import sortRows from './utils/sorting';
 
-// IMPORTED STYLES
-const { table: {
-	colHeaderLabelStyle,
-	colHeaderStyle
-}} = cssDashboard;
-// ///////////////////////
-
-
 // A table template to easily render a table in the management panel
 // Also allows the styling of each column to be specified or uses a default
 // styling component, where each column is an equal width
@@ -58,7 +50,7 @@ class TableTemplate extends Component {
 		this.state = {
 			page: 0,
 			rows: Array.from(this.props.rows),
-			rowsPerPage: 25,
+			rowsPerPage: 20,
 			sortDirection: 'none',
 			searchableColumnIndex: searchableColumnIndex,
 			searchableColumnLabel: searchableColumnLabel,
@@ -67,7 +59,7 @@ class TableTemplate extends Component {
 			searchRows: []
 		};
 	}
-	
+
 	sortMap = {
 		none: 'asc',
 		asc: 'desc',
@@ -124,19 +116,19 @@ class TableTemplate extends Component {
 
 	onPaginate = step => {
 		const newPage = this.state.page + step;
-		this.setState({ page: newPage })
+		this.setState({ page: newPage });
 	}
 	// Sort when clicked
 	// @colProp: which column to sort by
 	onSort(colIndex) {
 		let sortedRows;
-		let { sortDirection, searchRows, sortColumnIndex, rows } = this.state;
+		let { sortDirection, sortColumnIndex } = this.state;
 		const [...initialRows] = this.props.rows;
 		const handleSort = sortRows.bind(
 			{...this.state, initialRows});
-		
+
 		// Sort state should only update if the column selected is the same
-		sortDirection = colIndex === sortColumnIndex ? 
+		sortDirection = colIndex === sortColumnIndex ?
 			this.sortMap[sortDirection] : 'asc';
 		// if the user is searching, return to the original state of searched rows
 		if (this.state.searchTerm) {
@@ -151,7 +143,7 @@ class TableTemplate extends Component {
 			sortColumnIndex: colIndex
 		});
 	}
-	
+
 	render() {
 		const { rows } = this.state;
 		return (
@@ -167,7 +159,7 @@ class TableTemplate extends Component {
 					<SearchTable
 						onSearch={this.onSearch.bind(this)}
 						searchLabel={this.state.searchableColumnLabel}
-					/> 
+					/>
 				}
 				<Table style={cssDashboard.table.style}>
 					<TableHeader
@@ -196,3 +188,5 @@ TableTemplate.propTypes = {
 };
 
 export default TableTemplate;
+
+

@@ -132,7 +132,6 @@ export const cssContent = {
 		height: 'auto',
 		borderTop: '1px solid ' + theme.borderColor,
 		paddingTop: '40px',
-		paddingBottom: '40px',
 		backgroundColor: theme.alternateTextColor,
 		textAlign: 'left'
 	}

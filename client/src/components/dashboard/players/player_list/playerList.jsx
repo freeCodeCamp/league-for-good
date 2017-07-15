@@ -14,11 +14,6 @@ export const PlayerList = props => {
 
 	return (
 		<div style={cssContent.body}>
-			<IconButton
-				onTouchTap={() => props.history.goBack()}
-				>
-				<BackArrow/>
-			</IconButton>
 			<TableTemplate
 				headers={colData}
 				rows={getRowData( props.players )}
@@ -28,7 +23,6 @@ export const PlayerList = props => {
 };
 
 PlayerList.propTypes = {
-	history: PropTypes.object,
 	players: PropTypes.arrayOf(PropTypes.object)
 };
 

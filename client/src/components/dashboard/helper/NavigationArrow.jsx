@@ -5,7 +5,7 @@ import BackArrow from 'material-ui/svg-icons/navigation/arrow-back';
 import { withRouter } from 'react-router-dom';
 
 /*
-A component to be placed above a table or list that contains
+A component to be placed above a rendered view contains
 an SVG arrow to navigate back to the previous view
 
 You can optionially include text for a title or heading as
@@ -20,7 +20,7 @@ const rootStyle = {
 
 const TableNavigation = props => (
 	<div style={rootStyle}>
-		<div style={{width:'5%'}}>
+		<div style={{width: '5%'}}>
 			<IconButton
 				onTouchTap={() => props.history.goBack()}
 				tooltip={props.tooltip}
@@ -28,10 +28,10 @@ const TableNavigation = props => (
 				<BackArrow/>
 			</IconButton>
 		</div>
-		<div style={{width:'95%', textAlign:'center'}}>
+		<div style={{width: '95%', textAlign: 'center'}}>
 			{props.children}
 		</div>
-	</div>		
+	</div>
 );
 
 TableNavigation.propTypes = {

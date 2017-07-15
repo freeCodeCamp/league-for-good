@@ -5,7 +5,6 @@ import { reduxForm, Field, propTypes as reduxFormProps } from 'redux-form';
 import Checkbox from 'material-ui/Checkbox';
 import { currTeamsSelector } from '../season_list/seasonData.selector';
 import Divider from 'material-ui/Divider';
-import RaisedButton from 'material-ui/RaisedButton';
 import { updateTeamsInSeason } from '../../../../actions/index';
 import Navigation from '../../helper/NavigationArrow.jsx';
 import FormButtons from '../../helper/FormBtns.jsx';
@@ -17,10 +16,9 @@ const rootStyle = {
 };
 
 const checkBoxStyle = {
-	marginBottom:5, 
-	width:'40%'
+	marginBottom: 5,
+	width: '40%'
 };
-
 
 
 const CustomCheckbox = ({ input, label }) => (
@@ -36,17 +34,17 @@ const CustomCheckbox = ({ input, label }) => (
 const CurrTeamsList = props => {
 	const { name, range, teamList } = props.season;
   return (
-  	<div>
-  		<Divider/>
-			<Navigation tooltip="Back to seasons list">
+		<div>
+			<Divider/>
+			<Navigation tooltip='Back to seasons list'>
 				<span>
 					<h3>Available Teams</h3>
 					<p><b>{'Season: ' + name}</b></p>
-					<p><b>{range}</b></p>				
+					<p><b>{range}</b></p>
 				</span>
 			</Navigation>
 			<Divider/>
-			<form 
+			<form
 				onSubmit={props.handleSubmit}
 				style={rootStyle}
 				>
@@ -60,7 +58,7 @@ const CurrTeamsList = props => {
 								label={team.name}
 								name={team._id}
 							/>
-							
+
 						)
 					)
 				}
