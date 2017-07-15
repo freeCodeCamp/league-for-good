@@ -20,7 +20,7 @@ const rootStyle = {
 
 const TableNavigation = props => (
 	<div style={rootStyle}>
-		<div style={{width:'5%'}}>
+		<div style={{width: '5%'}}>
 			<IconButton
 				onTouchTap={() => props.history.goBack()}
 				tooltip={props.tooltip}
@@ -28,10 +28,10 @@ const TableNavigation = props => (
 				<BackArrow/>
 			</IconButton>
 		</div>
-		<div style={{width:'95%', textAlign:'center'}}>
+		<div style={{width: '95%', textAlign: 'center'}}>
 			{props.children}
 		</div>
-	</div>		
+	</div>
 );
 
 TableNavigation.propTypes = {
