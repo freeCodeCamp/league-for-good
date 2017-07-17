@@ -12,7 +12,7 @@ import { cssDashboard } from '../../../style';
 export default class TableHeader extends Component {
 	static muiName = 'TableHeader';
 
-	
+
 	renderColumns = () => {
 		const { onSort, sortColumnIndex, sortDirection } = this.props;
 		return this.props.headers.map(function(header, i) {
