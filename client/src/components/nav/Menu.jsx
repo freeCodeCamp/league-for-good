@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Drawer from 'material-ui/Drawer';
+import Divider from 'material-ui/Divider';
 import {List, ListItem} from 'material-ui/List';
 import AddCircle from 'material-ui/svg-icons/content/add-circle';
 import Help from 'material-ui/svg-icons/action/help';
@@ -38,6 +39,7 @@ const Menu = props => {
 						)
 					)
 				}
+				<Divider/>
 				<ListItem
 					containerElement={<Link to='/create' />}
 					leftIcon={<AddCircle />}

@@ -34,7 +34,18 @@ const deleteSeason = ( req, res ) => {
 		.catch(err => { throw err; });
 };
 
+const updateSeason = (req, res) => {
+	const { seasonId } = req.params;
+	const update = req.body;
+
+	Seasons.findByIdAndUpdate(seasonId, update)
+		.exec()
+		.then(()=> res.status(200).send('Season updated'))
+		.catch(err => { throw err; });
+};
+
 Router.route('/list/:leagueId').get(fetchSeasonList);
+Router.route('/update/:seasonId').put(updateSeason);
 Router.route('/create/:leagueId').post(createSeason);
 Router.route('/remove/:seasonId').delete(deleteSeason);
 
