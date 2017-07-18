@@ -29,7 +29,7 @@ const mongoose = require('mongoose');
 const Role = mongoose.model('role');
 const MONGO_URI = process.env.MONGO_URI;
 
-
+mongoose.Promise = global.Promise;
 mongoose.connect(MONGO_URI);
 mongoose.connection
     .once('open', () => console.log('Connected to MongoDB'))
@@ -117,5 +117,11 @@ const coachPromise = coachRole.save()
 	.then(() => console.log('Coach role added'));
 
 Promise.all([adminPromise, managerPromise, coachPromise])
-	.then(() => console.log('Roles added'))
-	.catch(err => console.log(err));
+	.then(() => {
+		console.log('Roles added');
+		mongoose.disconnect();
+	})
+	.catch(err => {
+		console.log(err);
+		mongoose.disconnect();
+	});
