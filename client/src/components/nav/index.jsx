@@ -76,7 +76,7 @@ function mapStateToProps({menu, league}) {
 	leagues = keys.map(key => {
 		const isSelected = selected === key;
 		return { ...leagues[key], isSelected };
-	})
+	});
 	return { open, leagues };
 }
 
