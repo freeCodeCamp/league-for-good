@@ -26,9 +26,9 @@ function logOutUser(req, res) {
 //		Roles to determine proper access to those league
 function fetchInitialData(req, res, next) {
 	const { user } = req;
-
+	;
 	if (!user) {return next();}
-
+	
 	const query = { $or: [ { owner: user._id }, { 'staff.email': user.email } ] };
 
 	const leaguePromise = Leagues.find(query)
@@ -39,6 +39,7 @@ function fetchInitialData(req, res, next) {
 	return Promise.all([leaguePromise.exec(), rolePromise.exec()])
 		.then(initData => {
 			const [leagueInfo, roles] = initData;
+
 			res.send({user, leagueInfo, roles, loggedIn: true });
 		})
 		.catch((err) => res.send(err));

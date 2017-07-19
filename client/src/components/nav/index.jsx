@@ -71,8 +71,13 @@ NavBar.propTypes = {
 
 function mapStateToProps({menu, league}) {
 	const { open } = menu;
-
-	return { open, leagues: league.list };
+	let { selected, ...leagues } = league;
+	const keys = Object.keys(leagues);
+	leagues = keys.map(key => {
+		const isSelected = selected === key;
+		return { ...leagues[key], isSelected };
+	})
+	return { open, leagues };
 }
 
 function mapDispatchToProps(dispatch) {
