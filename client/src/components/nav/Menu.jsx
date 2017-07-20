@@ -15,7 +15,6 @@ import Avatar from 'material-ui/Avatar';
 import {SportsIcons} from '../sports';
 import { cssMenu } from '../style';
 
-
 const Menu = props => {
 	const { open, leagues, selectLeague, openModal } = props;
 

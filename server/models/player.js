@@ -69,10 +69,6 @@ PlayerSchema.virtual('fullName').get(function() {
 	return `${this.firstName} ${this.lastName}`;
 });
 
-// TODO -- virtual should return team config relative to league AND seasonId
-PlayerSchema.virtual('team').get(function() {
-	return this.teams[0];
-});
 
 PlayerSchema.plugin(removeRefs, {
 	modelName: 'league', field: 'pendingPlayers'
