@@ -52,9 +52,12 @@ export function editStaff(formVals, dispatch) {
 	dispatch({ type: CLOSE_MODAL });
 
 	axios.put(`${ROOT_URL}/settings/staff/update/${email}`, updateStaffBody)
-		.then(() =>
-			dispatch({ type: EDIT_STAFF_MEMBER, updatedStaff: updateStaffBody })
-		)
+		.then(() => {
+			return dispatch({
+				type: EDIT_STAFF_MEMBER,
+				updatedStaff: updateStaffBody
+			});
+		})
 		.catch(error => {
 			throw new Error(error);
 		});
