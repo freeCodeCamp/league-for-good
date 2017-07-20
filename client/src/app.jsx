@@ -17,7 +17,11 @@ import themes from './components/themes';
 
 // Main app component using 'connect' wrapper to dynamically set muiTheme
 
-const RegForm = () => <h2>Hello</h2>;
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+
+// This must be invoked in order for the Material-UI theme provider to work
+injectTapEventPlugin();
 
 const App = props => {
 	const { palette } = props;
@@ -27,7 +31,6 @@ const App = props => {
 			<Router>
 				<div>
 					<Route component={requireAuth(Content)} path='/' />
-					<Route component={RegForm} path='/registration' />
 					<Route component={Login} path='/login' />
 				</div>
 			</Router>
@@ -38,6 +41,7 @@ const App = props => {
 App.propTypes = {
 	palette: PropTypes.object
 };
+
 
 function mapStateToProps(state) {
 	const palette = themes.getThemeList()[state.theme];

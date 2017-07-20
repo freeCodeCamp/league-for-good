@@ -20,7 +20,11 @@ export function initAuthState() {
 
 				// send user's leagues to reducer
 				if (leagueInfo) {
-					dispatch({ type: FETCH_LEAGUES, leagueInfo });
+
+					let leagueObj = leagueInfo.reduce((obj, league) =>
+						({...obj, [league._id]: league}), {});
+
+					dispatch({ type: FETCH_LEAGUES, leagueInfo: leagueObj });
 					dispatch({ type: FETCH_ROLES, roles });
 				}
 			})
