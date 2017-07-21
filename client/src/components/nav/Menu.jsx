@@ -49,13 +49,13 @@ const Menu = props => {
 					leftIcon={<Help />}
 					primaryText='Help'
 				/>
-			<ListItem
-				leftIcon={<LogOutIcon/>}
-				onTouchTap={()=> openModal('logout')}
-				primaryText='Log out'
-			/>
-		</List>
-    </Drawer>
+				<ListItem
+					leftIcon={<LogOutIcon/>}
+					onTouchTap={()=> openModal('logout')}
+					primaryText='Log out'
+				/>
+			</List>
+		</Drawer>
 	);
 };
 
