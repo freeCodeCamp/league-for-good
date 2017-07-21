@@ -69,9 +69,11 @@ export function editSeason(form, dispatch) {
 	const url = `${ROOT_URL}/seasons/update/${form._id}`;
 
 
-	const { startDate, endDate, name } = form;
+	let { startDate, endDate, name } = form;
 	const now = Date.now();
 
+	startDate = new Date(startDate);
+	endDate = new Date(endDate);
 
 	form.active = (now >= Date.parse(startDate)
 		&& now <= Date.parse(endDate));
@@ -79,8 +81,7 @@ export function editSeason(form, dispatch) {
 	dispatch({ type: CLOSE_MODAL });
 
 	axios.put(url, { startDate, endDate, name })
-		.then(({data}) => {
-			console.log(data);
+		.then(() => {
 			dispatch({ type: UPDATE_SEASON, season: form });
 		});
 
