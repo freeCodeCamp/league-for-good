@@ -1,7 +1,7 @@
 import {
 	CREATE_STAFF_MEMBER,
 	REMOVE_STAFF_MEMBER,
-	EDIT_STAFF_MEMBER,
+	UPDATE_STAFF_MEMBER,
 	SELECT_STAFF_MEMBERS
 } from '../actions/types';
 
@@ -15,12 +15,19 @@ function removeStaff({removedStaffEmail}) {
 	return staff => removedStaffEmail !== staff.email;
 }
 
-/* function updateStaff(staff, updatedStaffMember) {
+function updateStaff(staff, updatedStaffMember) {
 	return staff.map(function(staff) {
-		if (staff.email === updated
+		if (staff.email === updatedStaffMember.origEmail) {
+			return {
+				...staff,
+				email: updatedStaffMember.email,
+				role: updatedStaffMember.role
+			};
+		}
+		return staff;
 	});
 }
-*/
+
 export default function(state = {}, action) {
 	switch (action.type) {
 
@@ -30,8 +37,8 @@ export default function(state = {}, action) {
 			return { ...state, staff: [action.newStaff, ...state.staff] };
 		case REMOVE_STAFF_MEMBER:
 			return { ...state, staff: state.staff.filter(removeStaff(action)) };
-		case EDIT_STAFF_MEMBER:
-			return { ...state };
+		case UPDATE_STAFF_MEMBER:
+			return { ...state, staff: updateStaff(state.staff, action.updatedStaff) };
 		default:
 			return state;
 	}

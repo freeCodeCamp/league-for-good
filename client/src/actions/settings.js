@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {
 	CREATE_STAFF_MEMBER,
-	EDIT_STAFF_MEMBER,
+	UPDATE_STAFF_MEMBER,
 	REMOVE_STAFF_MEMBER,
 	SELECT_STAFF_MEMBERS,
 	CLOSE_MODAL,
@@ -40,9 +40,9 @@ export function addStaffMember(formVals, dispatch, { location }) {
 }
 
 
-export function editStaff(formVals, dispatch) {
+export function updateStaff(formVals, dispatch) {
 	console.log('edit staff action', arguments);
-	const { leagueId, email, role } = formVals;
+	const { leagueId, origEmail, email, role } = formVals;
 	const updateStaffBody = {
 		leagueId,
 		email,
@@ -51,11 +51,15 @@ export function editStaff(formVals, dispatch) {
 
 	dispatch({ type: CLOSE_MODAL });
 
-	axios.put(`${ROOT_URL}/settings/staff/update/${email}`, updateStaffBody)
+	axios.put(`${ROOT_URL}/settings/staff/update/${origEmail}`, updateStaffBody)
 		.then(() => {
 			return dispatch({
-				type: EDIT_STAFF_MEMBER,
-				updatedStaff: updateStaffBody
+				type: UPDATE_STAFF_MEMBER,
+				updatedStaff: {
+					origEmail,
+					role,
+					email
+				}
 			});
 		})
 		.catch(error => {

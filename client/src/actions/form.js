@@ -4,7 +4,7 @@ import { OPEN_SNACKBAR } from './types';
 
 const getMessage = ({values, form}) => {
 
-	const { firstName, lastName, name } = values;
+	const { firstName, lastName, name, email } = values;
 	const playerName = `${firstName} ${lastName}`;
 
 	const messages = {
@@ -13,6 +13,7 @@ const getMessage = ({values, form}) => {
 		AddPlayerForm: `${playerName} has been successfully added to your league`,
 		UpdatePlayerForm: `${playerName} has been successfully updated`,
 		AddStaffForm: 'A new staff member was successfully added to your league',
+		EditStaffForm: `Staff member ${email} was successfully updated`,
 		AssignPlayerForm: 'Successfully assigned a new player',
 		AddSeasonForm: 'A new season has been created!'
 	};

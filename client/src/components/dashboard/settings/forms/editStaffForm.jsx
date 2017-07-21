@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { TextField, SelectField } from 'redux-form-material-ui';
 import MenuItem from 'material-ui/MenuItem';
 import { Field, reduxForm } from 'redux-form';
-import { editStaff, openSnackbar } from '../../../../actions/index';
+import { updateStaff, openSnackbar } from '../../../../actions/index';
 
 import validate from './utils/addStaffFormValidation';
 
@@ -34,6 +34,11 @@ const EditStaffForm = (props) => {
 				hintText='Enter A Gmail Account'
 				name='email'
 			/>
+			<Field
+				component='input'
+				type='hidden'
+				name='origEmail'
+			/>
 		</form>
 	);
 };
@@ -46,7 +51,7 @@ EditStaffForm.propTypes = {
 export default reduxForm({
 	form: 'EditStaffForm',
 	validate,
-	onSubmit: editStaff,
+	onSubmit: updateStaff,
 	onSubmitSuccess: openSnackbar
 })(EditStaffForm);
 

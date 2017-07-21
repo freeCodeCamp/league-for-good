@@ -19,7 +19,13 @@ class Icon extends Component {
 
 	openModal(staff, action) {
 		if (action === 'edit') {
-			this.props.openModal('editStaff', { initialValues: staff, roles: this.props.roles });
+			this.props.openModal('editStaff', {
+				initialValues: {
+					...staff,
+					origEmail: staff.email
+				},
+				roles: this.props.roles
+			});
 		} else {
 			this.props.openModal('removeStaff', staff);
 		}
