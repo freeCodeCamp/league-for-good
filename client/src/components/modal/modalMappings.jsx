@@ -69,6 +69,7 @@ const mappings = {
 		title: 'Edit Staff',
 		Children: EditStaffForm,
 		onSubmit: 'editStaff',
+		reduxFormName: 'EditStaffForm',
 		actionLabel: 'Edit Staff'
 	},
 	removeStaff: {

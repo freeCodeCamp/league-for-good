@@ -19,7 +19,13 @@ class Icon extends Component {
 
 	openModal(staff, action) {
 		if (action === 'edit') {
-			this.props.openModal('editStaff', { initialValues: staff });
+			this.props.openModal('editStaff', {
+				initialValues: {
+					...staff,
+					origEmail: staff.email
+				},
+				roles: this.props.roles
+			});
 		} else {
 			this.props.openModal('removeStaff', staff);
 		}
@@ -47,11 +53,16 @@ Icon.propTypes = {
 	action: PropTypes.string,
 	leagueId: PropTypes.string,
 	openModal: PropTypes.func,
+	roles: PropTypes.arrayOf(PropTypes.object),
 	staff: PropTypes.object
 };
+
+function mapStateToProps(state) {
+	return { roles: state.roles };
+}
 
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ openModal }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(Icon);
+export default connect(mapStateToProps, mapDispatchToProps)(Icon);
