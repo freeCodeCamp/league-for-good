@@ -1,4 +1,5 @@
 import EditTeamForm from '../dashboard/teams/forms/editTeamForm.jsx';
+import EditSeasonForm from '../dashboard/seasons/forms/editSeasonForm.jsx';
 import DeleteTeamForm from '../dashboard/teams/forms/deleteTeamForm.jsx';
 import EditStaffForm from '../dashboard/settings/forms/editStaffForm.jsx';
 import DeleteStaffForm from '../dashboard/settings/forms/deleteStaffForm.jsx';
@@ -64,6 +65,13 @@ const mappings = {
 		onSubmit: null,
 		reduxFormName: 'EditTeamForm',
 		actionLabel: 'Edit Team'
+	},
+	editSeason: {
+		title: 'Edit Season',
+		Children: EditSeasonForm,
+		onSubmit: null,
+		reduxFormName: 'editSeasonForm',
+		actionLabel: 'Submit'
 	},
 	editStaff: {
 		title: 'Edit Staff',

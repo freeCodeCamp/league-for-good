@@ -36,7 +36,7 @@ export default function(state = {}, action) {
 	case UPDATE_SEASON:
 		return {
 			...state,
-			list: replace(state.list, action.currSeason)
+			list: replace(state.list, action.season)
 		};
 	case REMOVE_SEASON:
 		return {
