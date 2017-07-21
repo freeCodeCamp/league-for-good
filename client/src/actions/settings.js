@@ -41,7 +41,6 @@ export function addStaffMember(formVals, dispatch, { location }) {
 
 
 export function updateStaff(formVals, dispatch) {
-	console.log('edit staff action', arguments);
 	const { leagueId, origEmail, email, role } = formVals;
 	const updateStaffBody = {
 		leagueId,

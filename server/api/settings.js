@@ -29,8 +29,6 @@ const updateStaff = (req, res) => {
 	const { leagueId, email, roleTitle } = req.body;
 	// Original email if email was changed
 	const origEmail = req.params.email;
-	console.log('req.body', req.body);
-	console.log('req.params', req.params);
 	const query = { _id: leagueId, 'staff.email': origEmail };
 	const update = { $set: { 'staff.$.email': email, 'staff.$.role': roleTitle }};
 	const errorMsg = 'An error occured while editing staff';

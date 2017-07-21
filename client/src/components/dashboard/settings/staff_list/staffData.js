@@ -36,7 +36,6 @@ export const colData = [
 // Get the value for the cell
 function getCellValue(staff, prop, action, leagueId) {
 
-	console.log('staff in staffData', staff);
 	if (prop === 'icon') {
 		const iconProps = { action, leagueId, staff };
 		return <Icon {...iconProps} />;

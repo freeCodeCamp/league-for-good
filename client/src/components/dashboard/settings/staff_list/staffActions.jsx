@@ -53,6 +53,7 @@ Icon.propTypes = {
 	action: PropTypes.string,
 	leagueId: PropTypes.string,
 	openModal: PropTypes.func,
+	roles: PropTypes.arrayOf(PropTypes.object),
 	staff: PropTypes.object
 };
 

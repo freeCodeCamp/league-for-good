@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import { TextField, SelectField } from 'redux-form-material-ui';
 import MenuItem from 'material-ui/MenuItem';
@@ -12,7 +11,6 @@ import validate from './utils/addStaffFormValidation';
 import { cssDashboard } from '../../../style';
 
 const EditStaffForm = (props) => {
-	console.log('edit staff form props', props);
 	return (
 		<form style={cssDashboard.teams.forms.edit.style}>
 			<Field
@@ -36,8 +34,8 @@ const EditStaffForm = (props) => {
 			/>
 			<Field
 				component='input'
-				type='hidden'
 				name='origEmail'
+				type='hidden'
 			/>
 		</form>
 	);
