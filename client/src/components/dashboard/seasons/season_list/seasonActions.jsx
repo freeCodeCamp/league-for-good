@@ -15,8 +15,8 @@ const SeasonIcon = props => {
 
 	const { season, action, openModal } = props;
 	const flag = action === 'edit';
-	const view = flag ? 'editSeasons' : 'removeSeason';
-	const data = flag ? season : { initialValues: season };
+	const view = flag ? 'editSeason' : 'removeSeason';
+	const data = !flag ? season : { initialValues: season };
 	const SvgIcon = flag ? EditIcon : DeleteIcon;
 
 
