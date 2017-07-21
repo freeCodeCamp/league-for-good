@@ -1,31 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import RaisedButton from 'material-ui/RaisedButton';
 import { Field, reduxForm } from 'redux-form';
-
 import { editSeason, openSnackbar } from '../../../../actions/index';
-import { cssContent, cssDashboard } from '../../../style';
+import { cssDashboard } from '../../../style';
 import validate from './utils/validation';
 import getFormattedDate from './utils/formatDate';
+import { TextField, DatePicker } from 'redux-form-material-ui';
 
-//DatePicker component will throw an error if 
-//you pass in an initial value of a number
-const format = v => 
+// DatePicker component will throw an error if
+// you pass in an initial value of a number
+const format = v =>
 	typeof v === 'number' ? new Date(v) : v;
 
-import {
-	TextField,
-	DatePicker,
-	Checkbox
-} from 'redux-form-material-ui';
 
-
-const EditSeasonForm = props => {
+const EditSeasonForm = () => {
 
 
 	return (
-			
+
 				<form style={cssDashboard.form}>
 					<div style={cssDashboard.formRow}>
 						<Field
@@ -68,6 +59,5 @@ export default reduxForm({
 	onSubmitSuccess: openSnackbar,
 	validate
 })(EditSeasonForm);
-
 
 
