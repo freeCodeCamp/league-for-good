@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import { TextField, SelectField } from 'redux-form-material-ui';
 import MenuItem from 'material-ui/MenuItem';
@@ -12,7 +11,6 @@ import validate from './utils/addStaffFormValidation';
 import { cssDashboard } from '../../../style';
 
 const EditStaffForm = (props) => {
-	console.log('edit staff form props', props);
 	return (
 		<form style={cssDashboard.teams.forms.edit.style}>
 			<Field
@@ -34,6 +32,11 @@ const EditStaffForm = (props) => {
 				hintText='Enter A Gmail Account'
 				name='email'
 			/>
+			<Field
+				component='input'
+				name='origEmail'
+				type='hidden'
+			/>
 		</form>
 	);
 };
@@ -43,15 +46,10 @@ EditStaffForm.propTypes = {
 	roles: PropTypes.arrayOf(PropTypes.object)
 };
 
-function mapFormStateToProps(state) {
-	return { roles: state.roles };
-}
-
-export default connect(mapFormStateToProps)(
-	reduxForm({
-		form: 'EditStaffForm',
-		onSubmit: updateStaff,
-		onSubmitSuccess: openSnackbar,
-		validate
-})(EditStaffForm));
+export default reduxForm({
+	form: 'EditStaffForm',
+	validate,
+	onSubmit: updateStaff,
+	onSubmitSuccess: openSnackbar
+})(EditStaffForm);
 

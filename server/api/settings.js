@@ -27,7 +27,9 @@ const createStaff = (req, res) => {
 // Update a staff member in a league
 const updateStaff = (req, res) => {
 	const { leagueId, email, roleTitle } = req.body;
-	const query = { _id: leagueId, 'staff.email': req.params.email };
+	// Original email if email was changed
+	const origEmail = req.params.email;
+	const query = { _id: leagueId, 'staff.email': origEmail };
 	const update = { $set: { 'staff.$.email': email, 'staff.$.role': roleTitle }};
 	const errorMsg = 'An error occured while editing staff';
 
@@ -51,8 +53,8 @@ const deleteStaff = (req, res) => {
 		}));
 };
 
-Router.route('/create').post(createStaff);
-Router.route('/update/:email').put(updateStaff);
-Router.route('/remove/:email/').delete(deleteStaff);
+Router.route('/staff/create').post(createStaff);
+Router.route('/staff/update/:email').put(updateStaff);
+Router.route('/staff/remove/:email/').delete(deleteStaff);
 
 module.exports = Router;
