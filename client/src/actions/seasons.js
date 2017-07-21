@@ -65,10 +65,24 @@ export function deleteSeason(season) {
 			.catch(err => { throw err; });
 }
 
-export function updateSeason(form, dispatch) {
-	// const url = `${ROOT_URL}/seasons/update/${form.leagueId}`;
+export function editSeason(form, dispatch) {
+	const url = `${ROOT_URL}/seasons/update/${form._id}`;
 
-	return dispatch({ type: UPDATE_SEASON, season: form });
+
+	const { startDate, endDate, name } = form;
+	const now = Date.now();
+
+
+	form.active = (now >= Date.parse(startDate)
+		&& now <= Date.parse(endDate));
+
+	dispatch({ type: CLOSE_MODAL });
+
+	axios.put(url, { startDate, endDate, name })
+		.then(({data}) => {
+			console.log(data);
+			dispatch({ type: UPDATE_SEASON, season: form });
+		});
 
 }
 

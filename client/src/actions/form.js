@@ -9,6 +9,7 @@ const getMessage = ({values, form}) => {
 
 	const messages = {
 		EditTeamForm: `The team - '${name}' - has been updated`,
+		editSeasonForm: 'Season Updated',
 		AddTeamForm: 'A new team was successfully added to your league.',
 		AddPlayerForm: `${playerName} has been successfully added to your league`,
 		UpdatePlayerForm: `${playerName} has been successfully updated`,
