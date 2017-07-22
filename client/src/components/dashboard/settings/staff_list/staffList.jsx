@@ -25,7 +25,7 @@ StaffList.propTypes = {
 function mapStateToProps(state) {
 	return {
 		staff: state.settings.staff,
-		leagueId: state.league.selected._id
+		leagueId: state.league.selected
 	};
 }
 
