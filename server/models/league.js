@@ -31,11 +31,6 @@ const LeagueSchema = new Schema(
 			trim: true
 		},
 		settings: LeagueSettings,
-		owner: {
-			type: Schema.Types.ObjectId,
-			ref: 'user',
-			required: true
-		},
 		staff: [{
 			role: String,
 			email: String,

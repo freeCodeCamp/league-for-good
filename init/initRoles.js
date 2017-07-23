@@ -56,7 +56,7 @@ const adminRole = new Role({
 		createStaff: true,
 		editStaff: true,
 		deleteStaff: true,
-		deleteLeague: false
+		deleteLeague: true
 	}
 });
 

@@ -29,7 +29,7 @@ function fetchInitialData(req, res, next) {
 
 	if (!user) {return next();}
 
-	const query = { $or: [ { owner: user._id }, { 'staff.email': user.email } ] };
+	const query = { 'staff.email': user.email };
 
 	const leaguePromise = Leagues.find(query)
 		.select('name _id sportType');
