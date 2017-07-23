@@ -13,7 +13,11 @@ const createLeague = (req, res) => {
 	const newLeague = new League({
 		name: req.body.name,
 		sportType: req.body.sportType,
-		owner: req.user._id
+		staff: [{
+			email: req.user.email,
+			role: 'Administrator',
+			teams: []
+		}]
 	});
 
 	newLeague.save()

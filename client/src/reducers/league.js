@@ -29,25 +29,19 @@ export default function(state = defaultState, action) {
 
 	switch (action.type) {
 
-	case REMOVE_LEAGUE:
+		case REMOVE_LEAGUE:
+			return { ...omit(state, action.leagueId), selected: null };
+		case CREATE_LEAGUE:
+			return {...state, [action.newLeague._id]: action.newLeague };
+		case FETCH_LEAGUES:
+			console.log(action.leagueInfo);
+			return { ...state, ...action.leagueInfo };
+		case SELECT_LEAGUE:
+			return { ...state, selected: action.leagueId };
+		// case 'REMOVE_REGISTRATION':
 
-		return { ...omit(state, action.leagueId), selected: null };
-
-	case CREATE_LEAGUE:
-		return {...state, [action.newLeague._id]: action.newLeague };
-
-	case FETCH_LEAGUES:
-		console.log(action.leagueInfo);
-		return { ...state, ...action.leagueInfo };
-
-	case SELECT_LEAGUE:
-		return { ...state, selected: action.leagueId };
-
-	// case 'REMOVE_REGISTRATION':
-
-	// 	return { ...state, selected: removeReg(state, action.payload) };
-
-	default:
-		return state;
+		// 	return { ...state, selected: removeReg(state, action.payload) };
+		default:
+			return state;
 	}
 }

@@ -8,7 +8,6 @@ const League = mongoose.model('league');
 
 // Create a staff member on a league
 const createStaff = (req, res) => {
-	console.log(req.body);
 	const query = { _id: req.body.league };
 	const updateInfo = {
 		staff: {
