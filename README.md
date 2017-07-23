@@ -22,7 +22,6 @@ In order for the authorization component of this app to work, it needs to be reg
   - SESSION_SECRET = *Any random string of characters*
   - GOOGLE_CALLBACK_URL = http://localhost:4000/auth/google/callback (*Use for the callback url in the Google API console*)
 - Open a new terminal session and run `mongod` if mongodb is on the local machine
-- Run `npm run init`
 - Run `npm run dev`
 - Navigate to `localhost:4000` in your browser
 
@@ -33,10 +32,6 @@ In the project directory, the following commands are available:
 ### `npm install`
 
 Installs all the dependencies
-
-### `npm run init`
-
-Runs the initialization script for the database
 
 ### `npm run dev`
 

@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 
 const Leagues = mongoose.model('league');
-const Roles = mongoose.model('role');
+const roles = require('../config/roles.config');
 
 function logInUser(req, res) {
 	req.logIn(req.user, err => {
@@ -32,15 +32,10 @@ function fetchInitialData(req, res, next) {
 	const query = { 'staff.email': user.email };
 
 	const leaguePromise = Leagues.find(query)
-		.select('name _id sportType');
-	const rolePromise = Roles.find({})
-		.select('title privileges');
-
-	return Promise.all([leaguePromise.exec(), rolePromise.exec()])
-		.then(initData => {
-			const [leagueInfo, roles] = initData;
-
-			res.send({user, leagueInfo, roles, loggedIn: true });
+		.select('name _id sportType')
+		.exec()
+		.then(leagueInfo => {
+			res.send({user, leagueInfo, roles: roles.getRoleTitles(), loggedIn: true });
 		})
 		.catch((err) => res.send(err));
 }

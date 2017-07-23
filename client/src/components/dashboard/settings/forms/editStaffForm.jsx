@@ -21,7 +21,7 @@ const EditStaffForm = (props) => {
 				>
 				{
 					props.roles.map((role, i) =>
-						<MenuItem key={i} primaryText={role.title} value={role.title} />
+						<MenuItem key={i} primaryText={role} value={role} />
 					)
 				}
 			</Field>
@@ -43,7 +43,7 @@ const EditStaffForm = (props) => {
 
 EditStaffForm.propTypes = {
 	initialValues: PropTypes.object,
-	roles: PropTypes.arrayOf(PropTypes.object)
+	roles: PropTypes.array
 };
 
 export default reduxForm({

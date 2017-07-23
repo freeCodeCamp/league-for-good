@@ -1,12 +1,9 @@
-require('dotenv').config();
-require('../server/models/index');
-
 /*
- * This script will initialize the default roles in the database for the app
+ * This config file contains the default roles for the app
  * This is a sample of roles that you can use, feel free to create your own.
  *
  * Default roles:
- * 	owner:
+ * 	administrator:
  * 		-owner of the league
  * 		-has access to all privileges
  *	manager:
@@ -23,22 +20,11 @@ require('../server/models/index');
  * A description of what each privilege does can be found in ../models/roles.js
  */
 
+// This role is the one that is given to the creator of a league
+const ownerRole = 'Administrator';
 
-const mongoose = require('mongoose');
-
-const Role = mongoose.model('role');
-const MONGO_URI = process.env.MONGO_URI;
-
-mongoose.Promise = global.Promise;
-mongoose.connect(MONGO_URI);
-mongoose.connection
-    .once('open', () => console.log('Connected to MongoDB'))
-    .on('error', error => console.log(error));
-
-
-const adminRole = new Role({
-	title: 'Administrator',
-	privileges: {
+const roleDetails = {
+	'Administrator': {
 		viewTeams: true,
 		viewSubsetTeams: false,
 		createTeams: true,
@@ -57,12 +43,8 @@ const adminRole = new Role({
 		editStaff: true,
 		deleteStaff: true,
 		deleteLeague: true
-	}
-});
-
-const managerRole = new Role({
-	title: 'General Manager',
-	privileges: {
+	},
+	'General Manager': {
 		viewTeams: true,
 		viewSubsetTeams: false,
 		createTeams: true,
@@ -81,12 +63,8 @@ const managerRole = new Role({
 		editStaff: false,
 		deleteStaff: false,
 		deleteLeague: false
-	}
-});
-
-const coachRole = new Role({
-	title: 'Coach',
-	privileges: {
+	},
+	'Coach': {
 		viewTeams: false,
 		viewSubsetTeams: true,
 		createTeams: false,
@@ -106,22 +84,21 @@ const coachRole = new Role({
 		deleteStaff: false,
 		deleteLeague: false
 	}
-});
+};
 
 
-const adminPromise = adminRole.save()
-	.then(() => console.log('Owner role added'));
-const managerPromise = managerRole.save()
-	.then(() => console.log('General Manager role added'));
-const coachPromise = coachRole.save()
-	.then(() => console.log('Coach role added'));
+// Get the role for the league creator
+exports.getOwnerRole = function() {
+	return ownerRole;
+};
 
-Promise.all([adminPromise, managerPromise, coachPromise])
-	.then(() => {
-		console.log('Roles added');
-		mongoose.disconnect();
-	})
-	.catch(err => {
-		console.log(err);
-		mongoose.disconnect();
-	});
+// Get all role titles for the app
+exports.getRoleTitles = function() {
+	return Object.keys(roleDetails);
+};
+
+// Get role permissions for a single role
+// @role(String) - role to get permissions for
+exports.getRolePermissions = function(role) {
+	return roleDetails[role];
+};
