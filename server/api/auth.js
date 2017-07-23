@@ -22,8 +22,9 @@ function logOutUser(req, res) {
 // This is called when the user loads up the page to get
 // all of the initial data if they have an authenticated session
 //	Initial data:
+//		User info
 //		User access to leagues
-//		Roles to determine proper access to those league
+//		Role titles in the app
 function fetchInitialData(req, res, next) {
 	const { user } = req;
 
