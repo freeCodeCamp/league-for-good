@@ -31,11 +31,16 @@ function fetchInitialData(req, res, next) {
 
 	const query = { 'staff.email': user.email };
 
-	const leaguePromise = Leagues.find(query)
+	return Leagues.find(query)
 		.select('name _id sportType')
 		.exec()
 		.then(leagueInfo => {
-			res.send({user, leagueInfo, roles: roles.getRoleTitles(), loggedIn: true });
+			res.send({
+				user,
+				leagueInfo,
+				roles: roles.getRoleTitles(),
+				loggedIn: true
+			});
 		})
 		.catch((err) => res.send(err));
 }

@@ -24,7 +24,7 @@
 const ownerRole = 'Administrator';
 
 const roleDetails = {
-	'Administrator': {
+	Administrator: {
 		viewTeams: true,
 		viewSubsetTeams: false,
 		createTeams: true,
@@ -64,7 +64,7 @@ const roleDetails = {
 		deleteStaff: false,
 		deleteLeague: false
 	},
-	'Coach': {
+	Coach: {
 		viewTeams: false,
 		viewSubsetTeams: true,
 		createTeams: false,
