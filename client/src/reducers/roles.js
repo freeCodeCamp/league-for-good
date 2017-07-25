@@ -2,7 +2,7 @@ import { FETCH_ROLES } from '../actions/types';
 
 /*
  * 	Role state
- * 		roles - (Array) - list of all the roles for the app
+ * 		roles - (Array) - list of all the role titles for the app
  *
  */
 

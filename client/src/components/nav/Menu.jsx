@@ -38,7 +38,7 @@ const Menu = props => {
 						)
 					)
 				}
-				<Divider/>
+				{ leagues.length > 0 ? <Divider /> : <noScript /> }
 				<ListItem
 					containerElement={<Link to='/create' />}
 					leftIcon={<AddCircle />}

@@ -7,6 +7,7 @@ const League = mongoose.model('league');
 const Seasons = mongoose.model('season');
 const Players = mongoose.model('player');
 const Teams = mongoose.model('team');
+const roles = require('../config/roles.config');
 
 // Create a new league for the user
 const createLeague = (req, res) => {
@@ -15,7 +16,7 @@ const createLeague = (req, res) => {
 		sportType: req.body.sportType,
 		staff: [{
 			email: req.user.email,
-			role: 'Administrator',
+			role: roles.getOwnerRole(),
 			teams: []
 		}]
 	});
