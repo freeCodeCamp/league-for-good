@@ -46,9 +46,11 @@ export function selectLeague(leagueId) {
 
 		axios.get(`${ROOT_URL}/league/fetch/${leagueId}`)
 			.then(response => {
-				const { teams, players, staff, seasons } = response.data;
+				console.log('league response', response);
+				const { teams, players, staff, seasons, permissions } = response.data;
+				const leagueInfo = { leagueId, permissions };
 
-				dispatch({ type: SELECT_LEAGUE, leagueId });
+				dispatch({ type: SELECT_LEAGUE, leagueInfo});
 				dispatch({ type: SELECT_TEAMS, teams });
 				dispatch({ type: FETCH_ALL_SEASONS, seasons });
 				dispatch({ type: FETCH_ALL_PLAYERS, players });

@@ -14,7 +14,6 @@ export const colData = [
 		sortable: true,
 		searchable: true,
 		colSpan: 2
-
 	},
 	{
 		label: 'Roster Size',

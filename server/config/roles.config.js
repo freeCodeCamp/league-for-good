@@ -26,6 +26,7 @@ const ownerRole = 'Administrator';
 const roleDetails = {
 	Administrator: {
 		viewTeams: true,
+		viewAllTeams: true,
 		viewSubsetTeams: false,
 		createTeams: true,
 		editTeams: true,
@@ -46,6 +47,7 @@ const roleDetails = {
 	},
 	'General Manager': {
 		viewTeams: true,
+		viewAllTeams: true,
 		viewSubsetTeams: false,
 		createTeams: true,
 		editTeams: true,
@@ -66,6 +68,7 @@ const roleDetails = {
 	},
 	Coach: {
 		viewTeams: false,
+		viewAllTeams: false,
 		viewSubsetTeams: true,
 		createTeams: false,
 		editTeams: false,

@@ -47,9 +47,13 @@ const fetchLeagueDetails = (req, res) => {
 		fetchPlayers.exec(),
 		fetchStaff.exec()
 	])
-	.then(([seasons, teams, players, league]) =>
-		res.send({ teams, seasons, players, staff: league.staff })
-	);
+	.then(([seasons, teams, players, league]) => {
+		const staff = league.staff;
+		const permissions = roles.getRolePermissions(staff.role);
+		console.log('permissions from server', permissions);
+
+		res.send({ teams, seasons, players, staff, permissions })
+	});
 
 };
 

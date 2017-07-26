@@ -43,7 +43,7 @@ export const colData = [
 const Link = ({action, player}) => {
 	if (action === 'editPlayer') {
 		return <EditLink player={player}/>;
-	}	else {
+	} else {
 		return <DetailsLink {...player}/>;
 	}
 };
@@ -57,7 +57,7 @@ Link.propTypes = {
 function getCellValue(player, prop, action) {
 	if (prop !== 'link') {
 		return getObjProp(player, prop);
-	}	else {
+	} else {
 		const linkProps = { player, action };
 		return <Link {...linkProps} />;
 	}
