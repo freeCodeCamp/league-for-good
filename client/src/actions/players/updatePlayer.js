@@ -1,39 +1,66 @@
 import axios from 'axios';
-
+import { isEqual, findIndex } from 'lodash';
 import { ROOT_URL } from '../../../globals';
+import { UPDATE_PLAYER, UPDATE_TEAM } from '../types';
 
+export function updatePlayer(form, dispatch, props) {
+	const { originalTeam, team, teams, ...fields } = form;
 
-export function updatePlayer(form) {
-	let { team, teams, ...fields } = form;
-	const url = `${ROOT_URL}/player/update/${fields._id}`;
+	let playerRequest = {
+		query: { _id: form._id },
+		update: { ...fields }
+	};
 
-	let prevTeam;
-	let teamUpdate = null;
+	let teamRequest = {
+		shouldUpdate: false,
+		currTeam: {},
+		newTeam: {}
+	};
 
-	for (let i = 0; i < teams.length; i++) {
+	if (!isEqual(originalTeam, team)) {
 
-		if (teams[i].seasonId === team.seasonId) {
-			prevTeam = teams[i].teamId;
-			teams[i] = team;
-			break;
-		}
+		// Get the current season for the team so the player's team history has
+		// a seasonId
+		team.seasonId = props.teams.find(t => t._id === team.teamId).seasonId;
+
+		// Player model needs to update 'teams' subdocument
+		// so we need to modify the player query + update being sent to server
+
+		playerRequest.query['teams._id'] = team._id;
+		playerRequest.update['$set'] = { 'teams.$': team };
+
+		// Team model needs to update, so modify teamRequest object
+		teamRequest.currTeam.query = { _id: originalTeam.teamId };
+		teamRequest.currTeam.update = { $pull: { players: form._id }};
+		teamRequest.newTeam.query = { _id: team.teamId };
+		teamRequest.newTeam.update = { $addToSet: { players: form._id }};
+		teamRequest.shouldUpdate = true;
+
+		// Replace team in player's team array,
+		// so we can show updates on the front end
+		let oldIndex = findIndex(teams, { _id: team._id });
+		teams.splice(oldIndex, 1, team);
 	}
 
-	const playerUpdate = { ...fields, teams };
+	const requestObj = { player: playerRequest, team: teamRequest };
 
+	axios.put(`${ROOT_URL}/player/update`, requestObj)
+		.then(() => {
+			dispatch({
+				type: UPDATE_PLAYER,
+				updatedPlayer: { ...fields, teams }
+			});
 
-	if (prevTeam !== team.teamId) {
-		// Team model needs to update
-		// console.log('team model needs update', prevTeam.teamId, team.teamId)
-		teamUpdate = {
-			prevTeam,
-			currTeam: team.teamId
-		};
+			if (teamRequest.shouldUpdate) {
+				const oldTeam = originalTeam.teamId;
+				const newTeam = team.teamId;
+				const playerId = form._id;
+				const actions = { oldTeam, newTeam, playerId };
+				dispatch({ type: UPDATE_TEAM, ...actions });
+			}
+		})
 
-	}
-
-	axios.put(url, { playerUpdate, teamUpdate })
-		.then(() => { return { type: 'NO TYPE'}; })
 		.catch(err => { throw err; });
 
 }
+

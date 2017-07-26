@@ -34,13 +34,9 @@ export default function(state = defaultState, action) {
 		case CREATE_LEAGUE:
 			return {...state, [action.newLeague._id]: action.newLeague };
 		case FETCH_LEAGUES:
-			console.log(action.leagueInfo);
 			return { ...state, ...action.leagueInfo };
 		case SELECT_LEAGUE:
 			return { ...state, selected: action.leagueId };
-		// case 'REMOVE_REGISTRATION':
-
-		// 	return { ...state, selected: removeReg(state, action.payload) };
 		default:
 			return state;
 	}

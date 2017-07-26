@@ -11,7 +11,7 @@ import EditIcon from 'material-ui/svg-icons/image/edit';
 const PlayerEditLink = ({ player }) => {
 
 	const pathname = makeLinkDynamic( PLAYER_UPDATE_FORM, player._id );
-	const state = { player };
+	const state = { playerId: player._id };
 
 	return (
 			<Link to={{ state, pathname }}>

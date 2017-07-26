@@ -42,7 +42,6 @@ Dashboard.propTypes = {
 };
 
 function mapStateToProps(state) {
-	console.log(state);
 	const { selected, ...leagues } = state.league;
 
 	return {

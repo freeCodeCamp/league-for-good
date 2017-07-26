@@ -4,14 +4,17 @@ import { ROOT_URL } from '../../../globals';
 
 
 // Add a new player to DB,
-export function createPlayer(form, dispatch, { location: { state }}) {
-
-
+export function createPlayer(form, dispatch, props) {
+	const { teams } = props;
 	const { team, ...player } = form;
-	const leagueId = state.leagueId;
 
 	// format the request body to match the format of player model
-	const reqBody = { ...player, leagueId, teams: [team] };
+	const reqBody = { ...player, teams: [team] };
+
+	if (team && team.teamId) {
+		const match = teams.find(t => t._id === team.teamId);
+		team.seasonId = match.seasonId;
+	}
 
 	axios.post(`${ROOT_URL}/player/add`, reqBody)
 		.then(({data}) => {

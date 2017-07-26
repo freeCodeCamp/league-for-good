@@ -59,28 +59,26 @@ const addPlayerToTeam = (req, res) => {
 
 };
 
-const swapTeams = (teamUpdate, player) => {
-	if (!teamUpdate) {
-		return Promise.resolve('No update');
-	}
+const swapTeams = (req, res, next) => {
+	const { team: { shouldUpdate, currTeam, newTeam }} = req.body;
 
-	const { prevTeam, currTeam } = teamUpdate;
-	return Promise.all([
-		Teams.findByIdAndUpdate( prevTeam, { $pull: { players: player }}).exec(),
-		Teams.findByIdAndUpdate( currTeam, { $push: { players: player }}).exec()
-	])
-	.then(() => Promise.resolve('Updated'))
-	.catch(err => { throw err;});
+	if (shouldUpdate) {
+		Promise.all([
+			Teams.update(currTeam.query, currTeam.update).exec(),
+			Teams.update(newTeam.query, newTeam.update).exec()
+		])
+		.then(() => { return next(); })
+		.catch(err => { throw new Error({swapError: err}); });
+	}
+	return next();
 };
 
 const updatePlayer = (req, res) => {
-	const { playerId } = req.params;
-	const { playerUpdate, teamUpdate } = req.body;
+	const { player: { query, update }} = req.body;
 
-	Player.findByIdAndUpdate( playerId, playerUpdate )
+	Player.update(query, update)
 		.exec()
-		.then(() => swapTeams(teamUpdate, playerId))
-		.then(() => res.send(playerUpdate))
+		.then(() => res.send('Successfully updated player'))
 		.catch(err => { throw err; });
 
 };
@@ -88,7 +86,7 @@ const updatePlayer = (req, res) => {
 Router.route('/list/:leagueId').get(fetchPlayerList);
 Router.route('/details/:playerId').get(getPlayer);
 
-Router.route('/update/:playerId').put(updatePlayer);
+Router.route('/update').put(swapTeams, updatePlayer);
 Router.route('/assign').put(addPlayerToTeam);
 Router.route('/add').post(addPlayerToLeague);
 

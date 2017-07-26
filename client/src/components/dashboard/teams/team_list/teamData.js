@@ -1,13 +1,17 @@
 import React from 'react';
+import { createSelector } from 'reselect';
 import { cssDashboard } from '../../../style';
 import Icon from './teamActions.jsx';
 import Link from './teamRosterLink.jsx';
+
+const getSeasons = state => state.seasons.list;
+const getTeams = state => state.teams;
 
 // All team data passed from the reducers is reformatted here so
 // it contains the correct values for the TableTemplate component
 
 // Column headers and data
-export const colData = [
+const colData = [
 	{
 		label: 'Name',
 		cellProp: 'name',
@@ -65,19 +69,98 @@ function getCellValue(team, prop, action) {
 }
 
 
-// Massage the data for the table body
-const getTeamTableData = ({ teams }) => {
-	// map each row
-	return teams.map( team => {
+// Massage the data to make a table row for each team
+const makeTableRow = team => {
 		// map each cell
-		return colData.map( col => (
-			{
-				value: getCellValue(team, col.cellProp, col.action),
-				colSpan: col.colSpan || 1,
-				style: col.style
-			}
-		));
-	});
+	return colData.map( col => (
+		{
+			value: getCellValue(team, col.cellProp, col.action),
+			colSpan: col.colSpan || 1,
+			style: col.style
+		}
+	));
 };
 
-export default getTeamTableData;
+// Loops through each season to get quantity
+// of seasons for as well as
+// the current or last season played for each team
+function getSeasonInfo(seasons) {
+	// Track num of seasons per team
+	let numOfSeasons = {};
+	// If team has active season - map it
+	let activeSeasons = {};
+	// Map last active season otherwise
+	let recentSeasons = {};
+
+
+	seasons.forEach(({teams, _id, active}) => {
+
+		teams.forEach(team => {
+
+			// Record each occurence of a teamId related to a season
+
+			if (!numOfSeasons.hasOwnProperty(team)) {
+				numOfSeasons[team] = 1;
+			} else {
+				numOfSeasons[team] = numOfSeasons[team] + 1;
+			}
+
+			// Check if this specific team has been mapped being in an active
+			// season
+
+			if (!activeSeasons[team]) {
+				if (active) {
+					activeSeasons[team] = _id;
+				} else if (!recentSeasons[team]) {
+					// Note - the season's list is return from the server
+					// sorted by most recent, so we can ensure that the first match
+					// for each team id will also be the most recent
+					recentSeasons[team] = _id;
+				}
+			}
+		});
+	});
+	return {
+		numOfSeasons,
+		activeSeasons,
+		recentSeasons
+	};
+}
+
+// Runs calculations of team and season data
+// for the Team List Table
+export const configTeamForTable = () => {
+	return createSelector(
+		[getSeasons, getTeams],
+		(seasons = [], teams) => {
+
+			const {
+				numOfSeasons,
+				activeSeasons,
+				recentSeasons
+			} = getSeasonInfo(seasons);
+
+			// Format data of each team to coincide with the colData array
+			// and run makeTableRow function
+			const rows = teams.reduce(
+				(list, team) => {
+
+					team.status = team.currentlyActive ? 'Active' : 'Archived';
+					team.playerCount = team.players.length;
+					team.seasonCount = numOfSeasons[team._id] || 0;
+					team.currentSeason = activeSeasons[team._id];
+					team.recentSeason = recentSeasons[team._id];
+
+					let row = makeTableRow(team);
+
+					list.push(row);
+
+					return list;
+				},
+			[]);
+
+		return { rows, headers: colData };
+
+		}
+	);
+};

@@ -8,11 +8,13 @@ import { cssDashboard } from '../../../style';
 
 // Roster link changes the current state to that renders view
 // that contains the roster inside the same panel from PanelViewWrapper
-const RosterLink = props => {
-	const { ...team } = props;
+const RosterLink = team => {
+
 	const url = makeLinkDynamic( TEAM_ROSTER, team._id );
+	const state = { team };
+
 	return (
-		<Link to={url}>
+		<Link to={{ pathname: url, state }}>
 			<IconButton
 				hoveredStyle={cssDashboard.table.iconHover}
 				>

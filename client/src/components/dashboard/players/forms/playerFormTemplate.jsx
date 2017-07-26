@@ -1,21 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
-import { TextField, AutoComplete } from 'redux-form-material-ui';
+import { Field, reduxForm, propTypes as rfProps } from 'redux-form';
+import { TextField, SelectField} from 'redux-form-material-ui';
+import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
-
-import {
-	createPlayer,
-	updatePlayer,
-	openSnackbar
-} from '../../../../actions/index';
+import { getFormVals } from './playerFormData.selector';
+import { openSnackbar } from '../../../../actions/index';
 import { cssContent, cssDashboard } from '../../../style';
-
-import { normalizeJerseyNum as normalize } from './utils/normalize';
 import validate from './utils/addPlayerFormValidation';
 
-let PlayerFormTemplate = ({handleSubmit, teams, title}) => {
+let PlayerFormTemplate = props => {
+	const { handleSubmit, teams, title, buttonLabel } = props;
 	return (
 		<div style={cssContent.body}>
 			<h1 style={cssDashboard.title}>{title}</h1>
@@ -85,19 +81,27 @@ let PlayerFormTemplate = ({handleSubmit, teams, title}) => {
 				</div>
 				<div style={cssDashboard.formRow}>
 					<Field
-						component={AutoComplete}
-						dataSource={teams}
-						dataSourceConfig={{text: 'name', value: '_id'}}
-						filter={AutoComplete.caseInsensitiveFilter}
+						component={SelectField}
 						floatingLabelText='Team'
-						maxSearchResults={5}
 						name='team.teamId'
-					/>
+						style={{maxHeight: 150}}
+						>
+						{
+							teams.map(team => (
+								<MenuItem
+									key={team._id}
+									primaryText={team.name}
+									value={team._id}
+								/>
+								)
+							)
+						}
+					</Field>
 					<Field
 						component={TextField}
 						floatingLabelText='Jersey Number'
 						name='team.jerseyNum'
-						normalize={normalize}
+						parse={val => parseInt(val, 10)}
 						type='number'
 					/>
 				</div>
@@ -106,11 +110,17 @@ let PlayerFormTemplate = ({handleSubmit, teams, title}) => {
 						component={TextField}
 						floatingLabelText='Position(s)'
 						name='team.position'
+						parse={vals => vals.split(/\,\s*/)}
 					/>
 				</div>
+				<Field
+					component='input'
+					name='originalTeam'
+					type='hidden'
+				/>
 				<RaisedButton
 					backgroundColor={cssDashboard.raisedButton.backgroundColor}
-					label={title}
+					label={buttonLabel || 'Submit'}
 					labelStyle={cssDashboard.raisedButton.label}
 					style={cssDashboard.raisedButton.style}
 					type='submit'
@@ -121,24 +131,28 @@ let PlayerFormTemplate = ({handleSubmit, teams, title}) => {
 };
 
 PlayerFormTemplate.propTypes = {
-	handleSubmit: PropTypes.func,
+	...rfProps,
+	buttonLabel: PropTypes.string,
+	formAction: PropTypes.func.isRequired,
+	formName: PropTypes.string.isRequired,
+	playerId: PropTypes.string,
 	teams: PropTypes.arrayOf(PropTypes.object),
 	title: PropTypes.string
 };
 
-function mapStateToProps({teams}, ownProps) {
+const formVals = getFormVals();
+
+function mapStateToProps(state, ownProps) {
 	// flag for rendering props relative to Update form or Add player form
-	const emptyForm = !ownProps.match.params.playerId;
-	// Get proper 'form' key for reduxForm
-	const form = emptyForm ? 'AddPlayerForm' : 'UpdatePlayerForm';
-	// Get proper title
-	const title = emptyForm ? 'Add a new player' : 'Update player';
-	// Get proper onSubmit method
-	const onSubmit = emptyForm ? createPlayer : updatePlayer;
-
-	const initialValues = ownProps.location.state.player;
-
-	return { teams, form, initialValues, title, onSubmit };
+	const { formName, formAction, title } = ownProps;
+	const { initialValues, teams } = formVals(state, ownProps);
+	return {
+		form: formName,
+		initialValues,
+		onSubmit: formAction,
+		teams,
+		title: title
+	};
 }
 
 PlayerFormTemplate = reduxForm({

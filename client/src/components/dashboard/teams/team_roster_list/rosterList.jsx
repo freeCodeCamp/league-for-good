@@ -1,16 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
-
-import { cssContent } from '../../../style';
-import getRowData, { colData } from './rosterData';
-
 import { connect } from 'react-redux';
+import { getRoster } from './rosterData';
 
+import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
+import { cssContent } from '../../../style';
 import IconButton from 'material-ui/IconButton';
 import BackArrow from 'material-ui/svg-icons/navigation/arrow-back';
 
-import { getRoster } from '../../../../selectors/roster';
 
 const Roster = ({roster, history}) => {
 
@@ -33,8 +30,8 @@ const Roster = ({roster, history}) => {
 				<BackArrow/>
 			</IconButton>
 			<TableTemplate
-				headers={colData}
-				rows={getRowData(roster.players)}
+				headers={roster.headers}
+				rows={roster.players}
 				title={title}
 			/>
 		</div>
@@ -46,8 +43,9 @@ Roster.propTypes = {
 	roster: PropTypes.object
 };
 
+const rosterSelector = getRoster();
+
 function mapStateToProps(state, props) {
-	const rosterSelector = getRoster();
 
 	return { roster: rosterSelector(state, props) };
 }

@@ -36,7 +36,8 @@ const fetchLeagueDetails = (req, res) => {
 	const { leagueId } = req.params;
 
 	const fetchPlayers = Players.find({ leagueId });
-	const fetchSeasons = Seasons.find({ leagueId });
+	const fetchSeasons = Seasons.find({ leagueId })
+		.sort({ endDate: 1 });
 	const fetchTeams = Teams.find({ leagueId });
 	const fetchStaff = League.findOne({ _id: leagueId })
 				.select({ _id: 0, staff: 1});

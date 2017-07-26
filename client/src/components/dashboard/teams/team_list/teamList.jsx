@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import { cssContent, cssDashboard } from '../../../style';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
-
 import MenuItem from 'material-ui/MenuItem';
 import DropDownMenu from 'material-ui/DropDownMenu';
 
-import getRowData, { colData } from './teamData';
-
-import { configTeamForTable } from '../../../../selectors/teamTableData';
-
-import { connect } from 'react-redux';
+import { configTeamForTable } from './teamData';
 
 // Table that lists all the teams and the ability to edit or delete each team
 // Can also view the roster of each team
@@ -28,9 +25,9 @@ class TeamTable extends Component {
 	}
 
     // Filter the team list array with params in state
-	formatTeams() {
+	filterTeams() {
 		const { filterValue } = this.state;
-		let { teams } = this.props;
+		let teams = this.props.rows;
 
 		return teams.filter(team => {
 			let filterFlag;
@@ -49,8 +46,6 @@ class TeamTable extends Component {
 
 	render() {
 
-		const teams = this.formatTeams();
-
 		return (
 			<div style={cssContent.body}>
 				<DropDownMenu
@@ -63,22 +58,23 @@ class TeamTable extends Component {
 					<MenuItem primaryText='Archived Teams' value='archived' />
 				</DropDownMenu>
 				<TableTemplate
-					headers={colData}
-					rows={getRowData({teams})}
+					headers={this.props.headers}
+					rows={this.filterTeams()}
 				/>
 			</div>
 		);
 	}
 }
-const configTeams = configTeamForTable();
+const configTable = configTeamForTable();
 
 TeamTable.propTypes = {
-	teams: PropTypes.arrayOf(PropTypes.object)
+	headers: PropTypes.arrayOf(PropTypes.object),
+	rows: PropTypes.arrayOf(PropTypes.array)
 };
 
 function mapStateToProps(state) {
-
-	return { teams: configTeams(state) };
+	const { headers, rows } = configTable(state);
+	return { headers, rows };
 }
 
 export default connect(mapStateToProps)(TeamTable);

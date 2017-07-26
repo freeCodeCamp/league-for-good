@@ -1,5 +1,4 @@
 import {
-	ADD_PLAYER_TO_TEAM,
 	CREATE_TEAM,
 	REMOVE_TEAM,
 	UPDATE_TEAM,
@@ -15,35 +14,39 @@ function removeId(teamId) {
 
 // Replace the team from state whose index matches payload._id
 // Used for updating team list
-function replaceTeam(currTeams, updatedTeam) {
-	const _id = updatedTeam._id;
-	const index = findIndex(currTeams, (v) => v._id === _id );
-	const head = currTeams.slice(0, index);
-	const tail = currTeams.slice( index + 1);
+function replaceTeam(currTeams, action) {
+	let [...teams] = currTeams;
+	const { updatedTeam } = action;
+	if (action.playerId) {
+		return swapPlayer(teams, action);
+	}
 
-	return [...head, updatedTeam, ...tail];
+	const index = findIndex(teams, {_id: updatedTeam._id});
+
+	teams.splice(index, 1, updatedTeam);
+	return teams;
 }
 
-// Replace the team from state whose index matches payload._id
-// Used for updating team list
-function addPlayerToTeam(teams, {player, teamId}) {
-	const index = findIndex(teams, v => v._id === teamId);
-	const head = teams.slice(0, index);
-	const tail = teams.slice( index + 1);
+// Update player list when player swaps teams
+function swapPlayer(teams, action) {
+	const { oldTeam, newTeam, playerId } = action;
 
-	let updatedTeam = teams[index];
-	updatedTeam.players.push(player);
-
-	return [...head, updatedTeam, ...tail];
+	teams.forEach(team => {
+		if (team._id === oldTeam) {
+			let index = team.players.indexOf(playerId);
+			team.players.splice(index, 1);
+		} else if (team._id === newTeam) {
+			team.players.push(playerId);
+		}
+	});
+	return teams;
 }
-
 
 // Team State - returns an Array of Objects
 
 export default function(state = [], action) {
-	const { payload, type } = action;
 
-	switch (type) {
+	switch (action.type) {
 
 	case SELECT_TEAMS:
 		return action.teams;
@@ -52,10 +55,7 @@ export default function(state = [], action) {
 		return [action.newTeam, ...state];
 
 	case UPDATE_TEAM:
-		return replaceTeam(state, action.updatedTeam);
-
-	case ADD_PLAYER_TO_TEAM:
-		return addPlayerToTeam(state, payload);
+		return replaceTeam(state, action);
 
 	case REMOVE_TEAM:
 		return state.filter( removeId(action.removedTeam));

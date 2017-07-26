@@ -35,6 +35,7 @@ export const FETCH_PLAYER = 'FETCH_PLAYER';
 export const FETCH_ALL_PLAYERS = 'FETCH_ALL_PLAYERS';
 export const ADD_PLAYER_TO_TEAM = 'ADD_PLAYER_TO_TEAM';
 export const REMOVE_REGISTRATION = 'REMOVE_REGISTRATION';
+export const UPDATE_PLAYER = 'UPDATE_PLAYER';
 
 // Roster action types
 export const FETCH_ROSTER = 'FETCH_ROSTER';

@@ -8,7 +8,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { assignPlayer, openSnackbar } from '../../../../actions/index';
 import { cssContent, cssDashboard } from '../../../style';
 
-import { normalizeJerseyNum } from './utils/normalize';
+
 import validate from './utils/assignPlayerValidation';
 
 let AssignPlayerForm = props => {
@@ -45,13 +45,14 @@ let AssignPlayerForm = props => {
 						component={TextField}
 						floatingLabelText='Jersey Number'
 						name='jerseyNum'
-						normalize={normalizeJerseyNum}
+						parse={val => parseInt(val, 10)}
 						type='number'
 					/>
 					<Field
 						component={TextField}
 						floatingLabelText='Position(s)'
 						name='position'
+						parse={val => val.split(', ')}
 					/>
 				</div>
 				<RaisedButton
