@@ -12,11 +12,11 @@ import { openModal } from '../../../../../actions/index';
 class Icon extends Component {
 
 	onClick = () => {
-		const { player, action, leagueId } = this.props;
+		const { player, action } = this.props;
 		if (action === 'assign') {
-			this.props.openModal('assignPlayer', player);
+			this.props.openModal('assignPlayer', { player });
 		}		else {
-			this.props.openModal('removePlayerApplication', { player, leagueId });
+			this.props.openModal('removePlayerApplication', { player });
 		}
 	}
 	render() {
@@ -37,7 +37,6 @@ class Icon extends Component {
 
 Icon.propTypes = {
 	action: PropTypes.string,
-	leagueId: PropTypes.string,
 	openModal: PropTypes.func,
 	player: PropTypes.object
 };

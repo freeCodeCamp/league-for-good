@@ -5,7 +5,7 @@ import SearchIcon from 'material-ui/svg-icons/action/search';
 import { cssDashboard } from '../../../style';
 
 // Optional search for the table template
-const SearchTable = (props) => {
+const SearchTable = props => {
 	return (
 		<TextField
 			floatingLabelFixed={true}

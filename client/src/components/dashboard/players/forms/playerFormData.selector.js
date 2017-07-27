@@ -86,3 +86,17 @@ export const getFormVals = () =>
 			};
 		}
 	);
+
+export const getAssignFormVals = () =>
+	createSelector(
+		[getCurrTeams, getLeagueId, getPlayers],
+		(teams, leagueId, players) => {
+
+			return {
+				initialValues: { leagueId },
+				players,
+				teams: teams.filter(t => t.currentlyActive)
+			};
+		}
+	);
+

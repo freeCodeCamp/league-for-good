@@ -83,6 +83,7 @@ const updatePlayer = (req, res) => {
 
 };
 
+
 Router.route('/list/:leagueId').get(fetchPlayerList);
 Router.route('/details/:playerId').get(getPlayer);
 

@@ -2,7 +2,8 @@ import {
 	FETCH_PLAYER,
 	ADD_PLAYER,
 	UPDATE_PLAYER,
-	FETCH_ALL_PLAYERS
+	FETCH_ALL_PLAYERS,
+	REMOVE_PLAYER
 } from '../actions/types';
 import { findIndex } from 'lodash';
 
@@ -20,6 +21,14 @@ function replacePlayer(state, { updatedPlayer }) {
 	return list;
 }
 
+function removePlayer(state, playerId) {
+	const [...list] = state.list;
+	const index = findIndex(list, { _id: playerId });
+
+	list.splice(index, 1);
+	return list;
+}
+
 export default function(state = null, action) {
 
 	switch (action.type) {
@@ -32,6 +41,8 @@ export default function(state = null, action) {
 		return { ...state, list: [...state.list, action.payload] };
 	case UPDATE_PLAYER:
 		return { ...state, list: replacePlayer(state, action)};
+	case REMOVE_PLAYER:
+		return { ...state, list: removePlayer(state, action.playerId) };
 	default:
 		return state;
 

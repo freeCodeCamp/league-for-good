@@ -5,7 +5,6 @@
 export const TOGGLE_MENU = 'Toggle Menu';
 export const OPEN_MODAL = 'OPEN_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
-export const CHANGE_MANAGE_VIEW = 'change manage view';
 export const RESET_DASHBOARD = 'RESET_DASHBOARD';
 export const OPEN_SNACKBAR = 'OPEN_SNACKBAR';
 export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR';
@@ -34,8 +33,8 @@ export const ADD_PLAYER = 'ADD_PLAYER';
 export const FETCH_PLAYER = 'FETCH_PLAYER';
 export const FETCH_ALL_PLAYERS = 'FETCH_ALL_PLAYERS';
 export const ADD_PLAYER_TO_TEAM = 'ADD_PLAYER_TO_TEAM';
-export const REMOVE_REGISTRATION = 'REMOVE_REGISTRATION';
 export const UPDATE_PLAYER = 'UPDATE_PLAYER';
+export const REMOVE_PLAYER = 'REMOVE_PLAYER';
 
 // Roster action types
 export const FETCH_ROSTER = 'FETCH_ROSTER';

@@ -14,13 +14,15 @@ const getRegForm = (req, res) => {
 	League.findById(leagueId)
 		.exec()
 		.then(league => res.render('playerRegistration', { league } ))
-		.catch(() => res.render('error', {
-			message: 'The current link does not exist'
-		}));
+		.catch(() =>
+			res.render('error',
+				{ message: 'The current link does not exist'})
+		);
 };
 
 const createPlayer = (req, res) => {
 	const { leagueId } = req.params;
+	const player = ({...req.body, ...{ leagueId }});
 
 	if (req.session.submitted) {
 		return res.send('This session has expired');
@@ -28,17 +30,11 @@ const createPlayer = (req, res) => {
 
 	req.session.submitted = true;
 
-	return Player.create(req.body)
-		.then( player =>
-			League.findByIdAndUpdate( leagueId, {
-				$push: { pendingPlayers: player }
-			})
-			.exec()
-		)
+	return Player.create(player)
 		.then(() => res.render('success'))
-		.catch(() => res.render('error', {
-			message: 'Error submitting your registration form'
-		}));
+		.catch(() => res.render('error',
+			{	message: 'Error submitting your registration form'})
+		);
 };
 
 

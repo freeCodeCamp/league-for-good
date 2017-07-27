@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 const CorfirmPlayerRegModal = ({player}) => (
 	<div>
 		<h2>
-			Add { player.full_name} to your league database?
+			Add { player.fullName } to your league database?
 		</h2>
 	</div>
 );
 
 CorfirmPlayerRegModal.propTypes = {
-	player: PropTypes.string
+	player: PropTypes.object
 };
 
 export default CorfirmPlayerRegModal;

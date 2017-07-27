@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { createSelector } from 'reselect';
 import { cssDashboard } from '../../../style';
 import DetailsLink from './links/playerDetailsLink.jsx';
 import EditLink from './links/playerEditLink.jsx';
@@ -64,17 +65,33 @@ function getCellValue(player, prop, action) {
 }
 
 // Massage the data for the table body
-const getPlayerTableData = (players) => {
-	// map each row
-	return players.map( player => {
-		// map each cell
-		return colData.map( ({cellProp, action, style}) => (
-			{
-				value: getCellValue(player, cellProp, action),
-				style: style
-			}
-		));
-	});
+const makePlayerRow = player => {
+	// map each cell
+	return colData.map( ({cellProp, action, style}) => (
+		{
+			value: getCellValue(player, cellProp, action),
+			style: style
+		}
+	));
 };
 
-export default getPlayerTableData;
+const getPlayers = state => state.players.list;
+
+// Filter out pending players and make each players
+// data compatible with the tableTemplate
+export const configPlayerListForTable = () =>
+	createSelector(
+		[getPlayers],
+		(playersList) => {
+			const rows = [];
+
+			playersList.forEach(player => {
+				if (!player.pending) {
+					const playerRowData = makePlayerRow(player);
+					rows.push(playerRowData);
+				}
+			});
+			return { rows, headers: colData };
+		}
+	);
+

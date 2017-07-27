@@ -3,7 +3,8 @@ import EditSeasonForm from '../dashboard/seasons/forms/editSeasonForm.jsx';
 import DeleteTeamForm from '../dashboard/teams/forms/deleteTeamForm.jsx';
 import EditStaffForm from '../dashboard/settings/forms/editStaffForm.jsx';
 import DeleteStaffForm from '../dashboard/settings/forms/deleteStaffForm.jsx';
-import DeleteRegForm from '../dashboard/players/applications/modals/delete.jsx';
+import DeleteReg from '../dashboard/players/applications/modals/delete.jsx';
+import ConfirmReg from '../dashboard/players/applications/modals/confirm.jsx';
 /* Map all the components and/or props to be used
 		inside the main modal component
 	Required:
@@ -87,7 +88,10 @@ const mappings = {
 		actionLabel: 'Delete Staff'
 	},
 	assignPlayer: {
-
+		title: 'Add player to your league',
+		Children: ConfirmReg,
+		onSubmit: 'confirmPlayerRegistration',
+		actionLabel: 'Confirm'
 	},
 	removeSeason: {
 		title: 'Permanently Delete Season',
@@ -96,7 +100,7 @@ const mappings = {
 	},
 	removePlayerApplication: {
 		title: 'Delete Player Application',
-		Children: DeleteRegForm,
+		Children: DeleteReg,
 		onSubmit: 'deletePlayerRegistration',
 		actionLabel: 'Delete Player'
 	}

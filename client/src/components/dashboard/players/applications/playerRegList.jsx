@@ -1,42 +1,36 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
 
-import getRowData, { colData } from './data.jsx';
-
-import { connect } from 'react-redux';
-
-import IconButton from 'material-ui/IconButton';
-import BackArrow from 'material-ui/svg-icons/navigation/arrow-back';
+import { getPlayerRegistrations } from './data.jsx';
 import { cssContent } from '../../../style.js';
 
 
-const PlayerList = props => {
-	const leagueId = props.location.state.leagueId;
+const PlayerRegistrationList = props => {
+
 	return (
 		<div style={cssContent.body}>
-			<IconButton
-				onTouchTap={() => props.history.goBack()}
-				>
-				<BackArrow/>
-			</IconButton>
 			<TableTemplate
-				headers={colData}
-				rows={getRowData( props.players, leagueId )}
+				headers={props.headers}
+				rows={props.rows}
+				title='Player Registrations'
 			/>
 		</div>
 	);
 };
 
-PlayerList.propTypes = {
-	history: PropTypes.object,
-	location: PropTypes.object,
-	players: PropTypes.arrayOf(PropTypes.object)
+PlayerRegistrationList.propTypes = {
+	headers: PropTypes.arrayOf(PropTypes.object),
+	rows: PropTypes.arrayOf(PropTypes.array)
 };
 
+const getPlayerList = getPlayerRegistrations();
+
 function mapStateToProps(state) {
-	return { players: state.league.selected.pendingPlayers };
+	const { rows, headers } = getPlayerList(state);
+	return { rows, headers };
 }
 
-export default connect(mapStateToProps)(PlayerList);
+export default connect(mapStateToProps)(PlayerRegistrationList);
 

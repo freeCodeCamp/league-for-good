@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { AutoComplete, TextField } from 'redux-form-material-ui';
 import RaisedButton from 'material-ui/RaisedButton';
-
+import { getAssignFormVals } from './playerFormData.selector';
 import { assignPlayer, openSnackbar } from '../../../../actions/index';
 import { cssContent, cssDashboard } from '../../../style';
 
@@ -12,7 +12,7 @@ import { cssContent, cssDashboard } from '../../../style';
 import validate from './utils/assignPlayerValidation';
 
 let AssignPlayerForm = props => {
-	const {teams, players, handleSubmit } = props;
+	const {teams, players, handleSubmit, change } = props;
 	return (
 		<div style={cssContent.body}>
 			<h1 style={cssDashboard.title}>Assign Player</h1>
@@ -28,7 +28,8 @@ let AssignPlayerForm = props => {
 						filter={AutoComplete.caseInsensitiveFilter}
 						floatingLabelText='Team'
 						maxSearchResults={5}
-						name='teamId'
+						name='team.teamId'
+						onNewRequest={team => change('team.seasonId', team.seasonId)}
 					/>
 					<Field
 						component={AutoComplete}
@@ -38,23 +39,34 @@ let AssignPlayerForm = props => {
 						floatingLabelText='Select a player'
 						maxSearchResults={3}
 						name='playerId'
+						onNewRequest={player => change('player', player)}
 					/>
 				</div>
 				<div style={cssDashboard.formRow}>
 					<Field
 						component={TextField}
 						floatingLabelText='Jersey Number'
-						name='jerseyNum'
+						name='team.jerseyNum'
 						parse={val => parseInt(val, 10)}
 						type='number'
 					/>
 					<Field
 						component={TextField}
 						floatingLabelText='Position(s)'
-						name='position'
+						name='team.position'
 						parse={val => val.split(', ')}
 					/>
 				</div>
+				<Field
+					component='input'
+					name='player'
+					type='hidden'
+				/>
+				<Field
+					component='input'
+					name='team.season'
+					type='hidden'
+				/>
 				<RaisedButton
 					backgroundColor={cssDashboard.raisedButton.backgroundColor}
 					label='Assign Player'
@@ -67,18 +79,23 @@ let AssignPlayerForm = props => {
 };
 
 AssignPlayerForm.propTypes = {
+	change: PropTypes.func,
 	handleSubmit: PropTypes.func,
 	players: PropTypes.arrayOf(PropTypes.object),
 	teams: PropTypes.arrayOf(PropTypes.object)
 };
 
-const mapState = ({players, teams}) => ({teams, players: players.list});
+const selector = getAssignFormVals();
 
-AssignPlayerForm = connect(mapState)(AssignPlayerForm);
+function mapStateToProps(state) {
+	return { ...selector(state) };
+}
 
-export default reduxForm({
+const Form = reduxForm({
 	form: 'AssignPlayerForm',
 	onSubmit: assignPlayer,
 	onSubmitSuccess: openSnackbar,
 	validate
 })(AssignPlayerForm);
+
+export default connect(mapStateToProps)(Form);

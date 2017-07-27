@@ -1,4 +1,5 @@
 import React from 'react';
+import { createSelector } from 'reselect';
 import { cssDashboard } from '../../../style';
 
 import ModalLinks from './links/modalLink.jsx';
@@ -50,32 +51,49 @@ export const colData = [
 
 
 // Get the value for the cell
-function getCellValue(player, colValues, leagueId ) {
+function getCellValue(player, colValues ) {
 	const { cellProp, action } = colValues;
 
-	if (cellProp !== 'link' && cellProp !== 'modal') {
-		return getObjProp(player, cellProp);
+	if (cellProp === 'link') {
+		return <Link player={player} />;
 	}	else if (cellProp === 'modal') {
-		const modalProps = { action, player, leagueId };
+		const modalProps = { action, player };
 		return <ModalLinks {...modalProps} />;
+	} else {
+		return getObjProp(player, cellProp);
 	}
 
-	return <Link player={player} />;
 
 }
 
-// Massage the data for the table body
-const getPlayerTableData = (players, leagueId) => {
-	// map each row
-	return players.map( player => {
+// Massage the data for the table row
+const makeTableRow = player => {
 		// map each cell
-		return colData.map( ({style, ...colValues}) => (
-			{
-				value: getCellValue(player, colValues, leagueId),
-				style
-			}
-		));
-	});
+	return colData.map( ({style, ...colValues}) => (
+		{
+			value: getCellValue(player, colValues),
+			style
+		}
+	));
 };
 
-export default getPlayerTableData;
+const getPlayers = state => state.players.list;
+
+export const getPlayerRegistrations = () =>
+	createSelector(
+		[getPlayers],
+		(playerList) => {
+			const rows = [];
+
+			playerList.forEach(player => {
+				if (player.pending) {
+					const playerRowData = makeTableRow(player);
+					rows.push(playerRowData);
+				}
+			});
+
+			return { headers: colData, rows };
+		}
+	);
+
+

@@ -5,9 +5,7 @@
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
-
 const capitalize = require('./plugins/capitalize');
-const removeRefs = require('./plugins/removeAllRefs');
 
 const PlayerSchema = new Schema({
 	firstName: {
@@ -67,11 +65,6 @@ const fields = [
 
 PlayerSchema.virtual('fullName').get(function() {
 	return `${this.firstName} ${this.lastName}`;
-});
-
-
-PlayerSchema.plugin(removeRefs, {
-	modelName: 'league', field: 'pendingPlayers'
 });
 
 PlayerSchema.plugin(capitalize, { fields });
