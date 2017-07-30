@@ -34,6 +34,34 @@ const createLeague = (req, res) => {
 
 const fetchLeagueDetails = (req, res) => {
 	const { leagueId } = req.params;
+	const { email } = req.user;
+	// data that will be fetched based off role permissions
+	const dataToFetch = {
+		teams: Teams.find({ leagueId }),
+		players: Players.find({ leagueId }),
+		seasons: Seasons.find({ leagueId }),
+		staff: League.findById(leagueId)
+	};
+	
+	League.findById(leagueId)
+		.exec()
+		.then( leagueInfo => {
+
+			// Retrieve the staffer info for the league
+			const staffRole = leagueInfo.staff.find(staffer => {
+				return staffer.email === email;
+			});
+
+			const staffRoleAccess = roles.getRoleAccess(staffRole.role);
+			userData = {};
+
+			staffRoleAccess.reduce(function(userData, access) {
+				return dataToFetch[access].exec().then( data => {
+					userData[access] = data;
+					console.log(userData);
+				});
+			}, userData);
+		});
 
 	const fetchPlayers = Players.find({ leagueId });
 	const fetchSeasons = Seasons.find({ leagueId });

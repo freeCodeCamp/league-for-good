@@ -17,14 +17,14 @@
  *		-can view a subset of team(s) that he is assigned to and their roster(s)
  *		-can view player information through the roster
  *
- * A description of what each privilege does can be found in ../models/roles.js
  */
 
 // Privileges that each role can be assigned
 //
 // Teams
-// 	viewTeams: user can view the team tab and a list of all teams
-// 	viewSubsetTeams: user can view the team tab and only a subset of teams
+// 	viewTeams: user can view the team tab 
+// 	viewAllTeams: user can view all teams in the league
+// 	viewSubsetTeams: user can view only a subset of teams
 // 			 the list of teams is defined in the staff object in
 // 			 the league collection
 // 			 this would only be used for users that need to have limited
@@ -41,73 +41,92 @@
 //	editPlayers: user can edit players
 //	assignPlayers: user can assign players to teams
 //
+// Seasons
+//	viewSeasons: user can view the seasons tab and a list of the seasons
+//	editSeasons: user can edit a season
+//	deleteSeasons: user can delete seasons
+//
+// Settings
+//	viewSettings: user can view the settings and a list of staff members
+//	editStaff: user can edit a staff member
+//	deleteStaff: user can delete staff members
+//	deleteLeague: user can delete the league
 
 // This role is the one that is given to the creator of a league
 const ownerRole = 'Administrator';
 
 const roleDetails = {
 	Administrator: {
-		viewTeams: true,
-		viewAllTeams: true,
-		viewSubsetTeams: false,
-		createTeams: true,
-		editTeams: true,
-		deleteTeams: true,
-		viewPlayers: true,
-		viewPlayerRegistrations: true,
-		createPlayers: true,
-		editPlayers: true,
-		assignPlayers: true,
-		viewSeasons: true,
-		editSeasons: true,
-		deleteSeasons: true,
-		viewSettings: true,
-		createStaff: true,
-		editStaff: true,
-		deleteStaff: true,
-		deleteLeague: true
+		access: {teams: true, players: true, seasons: true, staff: true},
+		permissions: {
+			viewTeams: true,
+			viewAllTeams: true,
+			viewSubsetTeams: false,
+			createTeams: true,
+			editTeams: true,
+			deleteTeams: true,
+			viewPlayers: true,
+			viewPlayerRegistrations: true,
+			createPlayers: true,
+			editPlayers: true,
+			assignPlayers: true,
+			viewSeasons: true,
+			editSeasons: true,
+			deleteSeasons: true,
+			viewSettings: true,
+			createStaff: true,
+			editStaff: true,
+			deleteStaff: true,
+			deleteLeague: true
+		}
 	},
 	'General Manager': {
-		viewTeams: true,
-		viewAllTeams: true,
-		viewSubsetTeams: false,
-		createTeams: true,
-		editTeams: true,
-		deleteTeams: true,
-		viewPlayers: true,
-		viewPlayerRegistrations: true,
-		createPlayers: true,
-		editPlayers: true,
-		assignPlayers: true,
-		viewSeasons: true,
-		editSeasons: true,
-		deleteSeasons: true,
-		viewSettings: false,
-		createStaff: false,
-		editStaff: false,
-		deleteStaff: false,
-		deleteLeague: false
+		access: {teams: true, players: true, seasons: true, staff: false},
+		permissions: {
+			viewTeams: true,
+			viewAllTeams: true,
+			viewSubsetTeams: false,
+			createTeams: true,
+			editTeams: true,
+			deleteTeams: true,
+			viewPlayers: true,
+			viewPlayerRegistrations: true,
+			createPlayers: true,
+			editPlayers: true,
+			assignPlayers: true,
+			viewSeasons: true,
+			editSeasons: true,
+			deleteSeasons: true,
+			viewSettings: false,
+			createStaff: false,
+			editStaff: false,
+			deleteStaff: false,
+			deleteLeague: false
+		}
 	},
 	Coach: {
-		viewTeams: false,
-		viewAllTeams: false,
-		viewSubsetTeams: true,
-		createTeams: false,
-		editTeams: false,
-		deleteTeams: false,
-		viewPlayers: false,
-		viewPlayerRegistrations: false,
-		createPlayers: false,
-		editPlayers: false,
-		assignPlayers: false,
-		viewSeasons: false,
-		editSeasons: false,
-		deleteSeasons: false,
-		viewSettings: false,
-		createStaff: false,
-		editStaff: false,
-		deleteStaff: false,
-		deleteLeague: false
+		access: {teams: true, players: false, seasons: false, staff: false},
+		permissions: {
+			viewTeams: false,
+			viewAllTeams: false,
+			viewSubsetTeams: true,
+			createTeams: false,
+			editTeams: false,
+			deleteTeams: false,
+			viewPlayers: false,
+			viewPlayerRegistrations: false,
+			createPlayers: false,
+			editPlayers: false,
+			assignPlayers: false,
+			viewSeasons: false,
+			editSeasons: false,
+			deleteSeasons: false,
+			viewSettings: false,
+			createStaff: false,
+			editStaff: false,
+			deleteStaff: false,
+			deleteLeague: false
+		}
 	}
 };
 
@@ -125,5 +144,11 @@ exports.getRoleTitles = function() {
 // Get role permissions for a single role
 // @role(String) - role to get permissions for
 exports.getRolePermissions = function(role) {
-	return roleDetails[role];
+	return roleDetails[role].permissions;
 };
+
+// Get role access for a single role
+// @role(string) - role to get access for
+exports.getRoleAccess = function(role) {
+	return roleDetails[role].access;
+}
