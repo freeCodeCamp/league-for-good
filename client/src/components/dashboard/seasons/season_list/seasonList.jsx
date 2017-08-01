@@ -14,7 +14,7 @@ const SeasonList = props => {
 		<div style={cssContent.body}>
 			<TableTemplate
 				headers={props.headers}
-				rows={props.seasons}
+				rows={props.rows}
 				title='Seasons'
 			/>
 		</div>
@@ -25,14 +25,14 @@ const selector = configSeasonForTable();
 
 function mapStateToProps(state) {
 
-	const { seasons, headers } = selector(state);
+	const { rows, headers } = selector(state);
 
-	return { seasons, headers };
+	return { rows, headers };
 }
 
 SeasonList.propTypes = {
 	headers: PropTypes.array,
-	seasons: PropTypes.array
+	rows: PropTypes.array
 };
 
 export default connect(mapStateToProps)(SeasonList);

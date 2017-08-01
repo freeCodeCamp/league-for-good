@@ -87,7 +87,7 @@ const mappings = {
 		onSubmit: 'removeStaff',
 		actionLabel: 'Delete Staff'
 	},
-	assignPlayer: {
+	approvePlayerApplication: {
 		title: 'Add player to your league',
 		Children: ConfirmReg,
 		onSubmit: 'confirmPlayerRegistration',

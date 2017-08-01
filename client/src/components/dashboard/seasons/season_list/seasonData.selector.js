@@ -1,6 +1,6 @@
 import React from 'react';
 import { cssDashboard } from '../../../style';
-import Icon from './seasonActions.jsx';
+import Icon from '../../../modal/modalLinkIcon.jsx';
 import SeasonLink from './seasonLink.jsx';
 import { createSelector } from 'reselect';
 
@@ -23,12 +23,12 @@ export const colData = [
 	},
 	{
 		label: 'Start Date',
-		cellProp: 'startDate',
+		cellProp: 'start',
 		sortable: true
 	},
 	{
 		label: 'End Date',
-		cellProp: 'endDate',
+		cellProp: 'end',
 		sortable: true
 	},
 	{
@@ -44,50 +44,51 @@ export const colData = [
 	{
 		label: 'Edit',
 		action: 'edit',
-		cellProp: 'icon',
-		style: cssDashboard.table.columns.icon
+		cellProp: 'modal',
+		style: cssDashboard.table.columns.icon,
+		modalView: 'editSeason'
 	},
 	{
 		label: 'Delete',
-		action: 'delete',
-		cellProp: 'icon',
-		style: cssDashboard.table.columns.icon
+		action: 'remove',
+		cellProp: 'modal',
+		style: cssDashboard.table.columns.icon,
+		modalView: 'removeSeason'
 	}
 ];
 
 
 // Get value for the cell
-function getCellValue(season, prop, action) {
+function getCellValue(season, column) {
+	const { cellProp, action, modalView } = column;
 
-	if (prop === 'active') {
-		return season.active ? 'Active' : 'Not Active';
-	} else if (/Date$/.test(prop)) {
-		return formatDate(season[prop]);
-	} else if (prop === 'icon') {
-		const iconProps = { action, season };
+	if (cellProp === 'modal') {
+		const modalData = action === 'edit' ?
+			{ initialValues: season } : season;
+		const iconProps = { action, season, modalView, modalData };
 		return <Icon {...iconProps} />;
-	} else if (prop === 'link') {
+
+	} else if (cellProp === 'link') {
 		return <SeasonLink {...season} />;
 	}
 
-	return season[prop];
+	return season[cellProp];
 }
 
 
 // Massaging data
-const getSeasonTableData = seasons => {
+const makeSeasonRow = season => {
+	season.active = season.active ? 'Active' : 'Not Active';
+	season.start = formatDate(season.startDate);
+	season.end = formatDate(season.endDate);
 
-	// rows
-	return seasons.map( season =>
-		// columns
-		colData.map( col => (
-			{
-				value: getCellValue(season, col.cellProp, col.action),
-				colSpan: col.colSpan || 1,
-				style: col.style
-			}
-		))
-	);
+	return colData.map(col => (
+		{
+			value: getCellValue(season, col),
+			colSpan: col.colSpan || 1,
+			style: col.style
+		}
+	));
 };
 
 
@@ -95,8 +96,9 @@ export const configSeasonForTable = () =>
 	createSelector(
 		[getSeasons],
 		(seasons) => {
+
 			return {
-				seasons: getSeasonTableData(seasons),
+				rows: seasons.map(makeSeasonRow),
 				headers: colData
 			};
 		}

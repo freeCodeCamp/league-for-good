@@ -2,7 +2,7 @@ import React from 'react';
 import { createSelector } from 'reselect';
 import { cssDashboard } from '../../../style';
 
-import ModalLinks from './links/modalLink.jsx';
+import ModalLink from '../../../modal/modalLinkIcon.jsx';
 import Link from './links/playerRegLink.jsx';
 import { get as getObjProp } from 'lodash';
 // All player data passed from the reducers is reformatted here so
@@ -38,27 +38,29 @@ export const colData = [
 	{
 		label: 'Assign',
 		style: cssDashboard.table.columns.icon,
-		action: 'assign',
-		cellProp: 'modal'
+		action: 'edit',
+		cellProp: 'modal',
+		modalView: 'approvePlayerApplication'
 	},
 	{
 		label: 'Delete',
 		style: cssDashboard.table.columns.icon,
 		cellProp: 'modal',
-		action: 'delete'
+		action: 'remove',
+		modalView: 'removePlayerApplication'
 	}
 ];
 
 
 // Get the value for the cell
 function getCellValue(player, colValues ) {
-	const { cellProp, action } = colValues;
+	const { cellProp, action, modalView } = colValues;
 
 	if (cellProp === 'link') {
 		return <Link player={player} />;
 	}	else if (cellProp === 'modal') {
-		const modalProps = { action, player };
-		return <ModalLinks {...modalProps} />;
+		const modalProps = { action, modalView, modalData: { player }};
+		return <ModalLink {...modalProps} />;
 	} else {
 		return getObjProp(player, cellProp);
 	}

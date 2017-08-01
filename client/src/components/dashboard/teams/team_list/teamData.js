@@ -1,7 +1,7 @@
 import React from 'react';
 import { createSelector } from 'reselect';
 import { cssDashboard } from '../../../style';
-import Icon from './teamActions.jsx';
+import ModalIcon from '../../../modal/modalLinkIcon.jsx';
 import Link from './teamRosterLink.jsx';
 
 const getSeasons = state => state.seasons.list;
@@ -45,27 +45,35 @@ const colData = [
 	{
 		label: 'Edit',
 		action: 'edit',
-		cellProp: 'icon'
+		cellProp: 'modal',
+		modalView: 'editTeam'
 	},
 	{
 		label: 'Delete',
-		action: 'delete',
-		cellProp: 'icon'
+		action: 'remove',
+		cellProp: 'modal',
+		modalView: 'removeTeam'
 	}
 ];
 
 // Get the value for the cell
-function getCellValue(team, prop, action) {
+function getCellValue(team, column) {
+	const { cellProp, action, modalView } = column;
 
-	if (prop === 'icon') {
-		const iconProps = { action, team };
-		return <Icon {...iconProps} />;
+	if (cellProp === 'modal') {
+
+		const modalData = action === 'remove' ?
+			team : { initialValues: team };
+		const iconProps = { action, team, modalView, modalData };
+
+		return <ModalIcon {...iconProps} />;
+
 	}
-	if (prop === 'link') {
+	if (cellProp === 'link') {
 		return <Link {...team} />;
 	}
 
-	return team[prop];
+	return team[cellProp];
 }
 
 
@@ -74,7 +82,7 @@ const makeTableRow = team => {
 		// map each cell
 	return colData.map( col => (
 		{
-			value: getCellValue(team, col.cellProp, col.action),
+			value: getCellValue(team, col),
 			colSpan: col.colSpan || 1,
 			style: col.style
 		}
