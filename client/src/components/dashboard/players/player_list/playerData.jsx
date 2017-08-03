@@ -30,20 +30,22 @@ export const colData = [
 		label: 'Edit',
 		style: cssDashboard.table.columns.icon,
 		cellProp: 'link',
-		action: 'editPlayer'
+		action: 'editPlayers',
+		permission: 'editPlayers'
 	},
 	{
 		label: 'View',
 		style: cssDashboard.table.columns.icon,
 		action: 'viewPlayer',
-		cellProp: 'link'
+		cellProp: 'link',
+		permission: 'deletePlayers'
 	}
 ];
 
 const Link = ({action, player}) => {
 	if (action === 'editPlayer') {
 		return <EditLink player={player}/>;
-	}	else {
+	} else {
 		return <DetailsLink {...player}/>;
 	}
 };

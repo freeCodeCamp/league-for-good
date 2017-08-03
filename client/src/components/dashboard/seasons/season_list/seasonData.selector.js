@@ -45,13 +45,15 @@ export const colData = [
 		label: 'Edit',
 		action: 'edit',
 		cellProp: 'icon',
-		style: cssDashboard.table.columns.icon
+		style: cssDashboard.table.columns.icon,
+		permission: 'editSeason'
 	},
 	{
 		label: 'Delete',
 		action: 'delete',
 		cellProp: 'icon',
-		style: cssDashboard.table.columns.icon
+		style: cssDashboard.table.columns.icon,
+		permission: 'deleteSeason'
 	}
 ];
 

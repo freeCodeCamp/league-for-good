@@ -41,17 +41,19 @@ export const colData = [
 	{
 		label: 'Edit',
 		action: 'edit',
-		cellProp: 'icon'
+		cellProp: 'icon',
+		permission: 'editTeams'
 	},
 	{
 		label: 'Delete',
 		action: 'delete',
-		cellProp: 'icon'
+		cellProp: 'icon',
+		permission: 'deleteTeams'
 	}
 ];
 
 // Get the value for the cell
-function getCellValue(team, prop, action) {
+export function getTeamCellValue(team, prop, action) {
 
 	if (prop === 'icon') {
 		const iconProps = { action, team };
@@ -65,19 +67,3 @@ function getCellValue(team, prop, action) {
 }
 
 
-// Massage the data for the table body
-const getTeamTableData = ({ teams }) => {
-	// map each row
-	return teams.map( team => {
-		// map each cell
-		return colData.map( col => (
-			{
-				value: getCellValue(team, col.cellProp, col.action),
-				colSpan: col.colSpan || 1,
-				style: col.style
-			}
-		));
-	});
-};
-
-export default getTeamTableData;

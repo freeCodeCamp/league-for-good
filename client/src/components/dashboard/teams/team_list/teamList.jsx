@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { cssContent, cssDashboard } from '../../../style';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
+import processTableData from '../../helper/tableTemplate/utils/processTableData';
 
 import MenuItem from 'material-ui/MenuItem';
 import DropDownMenu from 'material-ui/DropDownMenu';
 
-import getRowData, { colData } from './teamData';
+import { getTeamCellValue, colData } from './teamData';
 
 import { configTeamForTable } from '../../../../selectors/teamTableData';
 
@@ -64,7 +65,7 @@ class TeamTable extends Component {
 				</DropDownMenu>
 				<TableTemplate
 					headers={colData}
-					rows={getRowData({teams})}
+					rows={processTableData(teams, colData, getTeamCellValue)}
 				/>
 			</div>
 		);
