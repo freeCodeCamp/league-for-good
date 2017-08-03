@@ -10,6 +10,8 @@ const getTeams = state => state.teams;
 const getCurrSeasonId = (state, ownProps) =>
 	ownProps.match.params.seasonId;
 
+const getReactRouter = (state, props) => props.history;
+
 const formatDate = date =>
 	new Date(date).toDateString().replace(/^\w*\s/, '');
 
@@ -39,6 +41,13 @@ export const colData = [
 	{
 		label: 'Teams',
 		cellProp: 'link',
+		action: 'teams',
+		style: cssDashboard.table.columns.icon
+	},
+	{
+		label: 'Games',
+		cellProp: 'link',
+		action: 'games',
 		style: cssDashboard.table.columns.icon
 	},
 	{
@@ -58,8 +67,8 @@ export const colData = [
 ];
 
 
-// Get value for the cell
-function getCellValue(season, column) {
+
+function getCellValue(season, column, history) {
 	const { cellProp, action, modalView } = column;
 
 	if (cellProp === 'modal') {
@@ -69,38 +78,45 @@ function getCellValue(season, column) {
 		return <Icon {...iconProps} />;
 
 	} else if (cellProp === 'link') {
-		return <SeasonLink {...season} />;
+		const linkProps = { history, season, action };
+		return <SeasonLink {...linkProps}/>;
+	} else {
+		return season[cellProp];
 	}
 
-	return season[cellProp];
+	
 }
 
 
-// Massaging data
-const makeSeasonRow = season => {
-	season.active = season.active ? 'Active' : 'Not Active';
-	season.start = formatDate(season.startDate);
-	season.end = formatDate(season.endDate);
+function makeSeasonRow(history) {
+	
+	return function (season) {
+		season.active = season.active ? 'Active' : 'Not Active';
+		season.start = formatDate(season.startDate);
+		season.end = formatDate(season.endDate);
 
-	return colData.map(col => (
-		{
-			value: getCellValue(season, col),
-			colSpan: col.colSpan || 1,
-			style: col.style
-		}
-	));
+		return colData.map(col => (
+			{
+				value: getCellValue(season, col, history),
+				colSpan: col.colSpan || 1,
+				style: col.style
+			}
+		));
+	}
 };
 
 
 export const configSeasonForTable = () =>
 	createSelector(
-		[getSeasons],
-		(seasons) => {
-
-			return {
-				rows: seasons.map(makeSeasonRow),
-				headers: colData
-			};
+		[getSeasons, getReactRouter],
+		(seasons, history) => {
+			const makeRow = makeSeasonRow(history);
+			return (
+				{
+					rows : seasons.map(makeRow),
+					headers: colData
+				}
+			)
 		}
 	);
 

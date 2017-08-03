@@ -22,7 +22,7 @@ const getRegForm = (req, res) => {
 
 const createPlayer = (req, res) => {
 	const { leagueId } = req.params;
-	const player = ({...req.body, ...{ leagueId }});
+	const player = Object.assign({}, req.body, { leagueId });
 
 	if (req.session.submitted) {
 		return res.send('This session has expired');

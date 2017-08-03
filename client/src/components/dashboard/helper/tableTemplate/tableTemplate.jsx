@@ -155,6 +155,12 @@ class TableTemplate extends Component {
 						</h1>
 				}
 				{
+					this.props.subtitle && 
+						<p style={cssDashboard.title}>
+							<b>{this.props.subtitle}</b>
+						</p>
+				}
+				{
 					this.state.searchableColumnIndex !== -1 &&
 					<SearchTable
 						onSearch={this.onSearch.bind(this)}
@@ -184,6 +190,7 @@ class TableTemplate extends Component {
 TableTemplate.propTypes = {
 	headers: PropTypes.arrayOf(PropTypes.object),
 	rows: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)),
+	subtitle: PropTypes.string,
 	title: PropTypes.string
 };
 

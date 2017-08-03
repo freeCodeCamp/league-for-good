@@ -1,25 +1,47 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
-import { SEASON_CURR_TEAMS, makeLinkDynamic } from '../../../routes';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { fetchGames } from '../../../../actions/index'; 
+import { 
+	SEASON_CURR_TEAMS, 
+	SEASON_GAME_LIST,
+	 makeLinkDynamic 
+	} from '../../../routes';
 import IconButton from 'material-ui/IconButton';
 import ListIcon from 'material-ui/svg-icons/action/list';
 import { cssDashboard } from '../../../style';
 
-// Roster link changes the current state to that renders view
-// that contains the roster inside the same panel from PanelViewWrapper
+function handleClick(props, url) {
+	if (props.action === 'games') {
+		props.fetchGames(props.season._id, {})
+		props.history.push(url);
+	} else {
+		props.history.push(url);
+	}
+};
+
 const SeasonLink = props => {
-	const { ...season } = props;
-	const url = makeLinkDynamic(SEASON_CURR_TEAMS, season._id );
-	return (
-		<Link to={url}>
-			<IconButton
-				hoveredStyle={cssDashboard.table.iconHover}
-				>
-				<ListIcon />
-			</IconButton>
-		</Link>
+	const { action, season } = props;
+	let url;
+
+	if (action === 'games') {
+		url = { pathname: SEASON_GAME_LIST, state: { season }};
+	} else {
+		url = makeLinkDynamic(SEASON_CURR_TEAMS, season._id );
+	}
+	return (	
+		<IconButton 
+			hoveredStyle={cssDashboard.table.iconHover}
+			onTouchTap={() => handleClick(props, url)}
+			>
+			<ListIcon />
+		</IconButton>
+
 	);
 };
 
-export default SeasonLink;
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators({ fetchGames }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(SeasonLink);

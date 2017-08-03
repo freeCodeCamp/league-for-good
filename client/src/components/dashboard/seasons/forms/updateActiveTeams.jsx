@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { reduxForm, Field, propTypes as reduxFormProps } from 'redux-form';
 import Checkbox from 'material-ui/Checkbox';
-import { currTeamsSelector } from '../season_list/seasonData.selector';
+import { currTeamsSelector } from '../season_list/seasonData.selector.jsx';
 import Divider from 'material-ui/Divider';
 import { updateTeamsInSeason } from '../../../../actions/index';
 import Navigation from '../../helper/NavigationArrow.jsx';

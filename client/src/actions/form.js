@@ -8,6 +8,7 @@ const getMessage = ({values, form}) => {
 	const playerName = `${firstName} ${lastName}`;
 
 	const messages = {
+
 		EditTeamForm: `The team - '${name}' - has been updated`,
 		editSeasonForm: 'Season Updated',
 		AddTeamForm: 'A new team was successfully added to your league.',
@@ -16,7 +17,8 @@ const getMessage = ({values, form}) => {
 		AddStaffForm: 'A new staff member was successfully added to your league',
 		EditStaffForm: `Staff member ${email} was successfully updated`,
 		AssignPlayerForm: 'Successfully assigned a new player',
-		AddSeasonForm: 'A new season has been created!'
+		AddSeasonForm: 'A new season has been created!',
+		AddGameForm: 'New game has been scheduled'
 	};
 
 	return messages[form];
@@ -32,4 +34,10 @@ export function openSnackbar(results, dispatch, props) {
 	dispatch({ type: OPEN_SNACKBAR, message });
 
 	dispatch(reset(form));
+}
+
+// Using the goBack method from react-router's history object
+// Redirect the user after form successfully submits
+export function redirect(values, dispatch, props) {
+	props.history.goBack();
 }

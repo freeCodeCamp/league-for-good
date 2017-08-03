@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { cssContent } from '../../../style';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
-import { configSeasonForTable } from './seasonData.selector';
+import { configSeasonForTable } from './seasonData.selector.jsx';
 
 
 // Table that lists all the seasons and the
@@ -23,9 +23,9 @@ const SeasonList = props => {
 
 const selector = configSeasonForTable();
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
 
-	const { rows, headers } = selector(state);
+	const { headers, rows } = selector(state, ownProps);
 
 	return { rows, headers };
 }
