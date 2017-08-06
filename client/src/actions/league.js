@@ -42,7 +42,6 @@ export function deleteLeague(_, dispatch, props) {
 export function selectLeague(leagueId) {
 
 	return dispatch => {
-		dispatch({ type: SET_LOADING_STATE, loading: true });
 
 		axios.get(`${ROOT_URL}/league/fetch/${leagueId}`)
 			.then(response => {
@@ -55,7 +54,6 @@ export function selectLeague(leagueId) {
 				dispatch({ type: FETCH_ALL_SEASONS, seasons });
 				dispatch({ type: FETCH_ALL_PLAYERS, players });
 				dispatch({ type: SELECT_STAFF_MEMBERS, staff });
-				dispatch({ type: SET_LOADING_STATE, loading: false });
 			});
 	};
 

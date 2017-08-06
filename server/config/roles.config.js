@@ -57,7 +57,7 @@ const ownerRole = 'Administrator';
 
 const roleDetails = {
 	Administrator: {
-		access: {teams: true, players: true, seasons: true, staff: true},
+		access: ['teams', 'players', 'seasons', 'staff'],
 		permissions: {
 			viewTeams: true,
 			viewAllTeams: true,
@@ -81,7 +81,7 @@ const roleDetails = {
 		}
 	},
 	'General Manager': {
-		access: {teams: true, players: true, seasons: true, staff: false},
+		access: ['teams', 'players', 'seasons'],
 		permissions: {
 			viewTeams: true,
 			viewAllTeams: true,
@@ -105,7 +105,7 @@ const roleDetails = {
 		}
 	},
 	Coach: {
-		access: {teams: true, players: false, seasons: false, staff: false},
+		access: ['teams'],
 		permissions: {
 			viewTeams: false,
 			viewAllTeams: false,

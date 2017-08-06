@@ -35,17 +35,13 @@ const createLeague = (req, res) => {
 const fetchLeagueDetails = (req, res) => {
 	const { leagueId } = req.params;
 	const { email } = req.user;
-	// data that will be fetched based off role permissions
-	const dataToFetch = {
-		teams: Teams.find({ leagueId }),
-		players: Players.find({ leagueId }),
-		seasons: Seasons.find({ leagueId }),
-		staff: League.findById(leagueId)
-	};
+
+	console.log(leagueId, email);
 	
 	League.findById(leagueId)
 		.exec()
 		.then( leagueInfo => {
+			let userData = {};
 
 			// Retrieve the staffer info for the league
 			const staffRole = leagueInfo.staff.find(staffer => {
@@ -53,35 +49,41 @@ const fetchLeagueDetails = (req, res) => {
 			});
 
 			const staffRoleAccess = roles.getRoleAccess(staffRole.role);
-			userData = {};
+			staffRoleAccess.forEach(access => {
+				userData[access] = true;
+			});
 
-			staffRoleAccess.reduce(function(userData, access) {
-				return dataToFetch[access].exec().then( data => {
-					userData[access] = data;
-					console.log(userData);
-				});
-			}, userData);
-		});
 
-	const fetchPlayers = Players.find({ leagueId });
-	const fetchSeasons = Seasons.find({ leagueId });
-	const fetchTeams = Teams.find({ leagueId });
-	const fetchStaff = League.findOne({ _id: leagueId })
-				.select({ _id: 0, staff: 1});
+			console.log('fetching league info');
 
-	Promise.all([
-		fetchSeasons.exec(),
-		fetchTeams.exec(),
-		fetchPlayers.exec(),
-		fetchStaff.exec()
-	])
-	.then(([seasons, teams, players, league]) => {
-		const staff = league.staff;
-		const permissions = roles.getRolePermissions(staff.role);
-		console.log('permissions from server', permissions);
+			const fetchPlayers = () => Players.find({ leagueId }).exec();
+			const fetchSeasons = () => Seasons.find({ leagueId }).exec();
+			const fetchTeams = () => Teams.find({ leagueId }).exec();
+			const fetchStaff = () => League.findOne({ _id: leagueId })
+						.select({ _id: 0, staff: 1}).exec();
 
-		res.send({ teams, seasons, players, staff, permissions })
-	});
+
+			console.log(userData);
+			Promise.all([
+				userData.players ? fetchPlayers() : Promise.resolve(), 
+				userData.seasons ? fetchSeasons() : Promise.resolve(),
+				userData.teams ? fetchTeams() : Promise.resolve(), 
+				userData.staff ? fetchStaff() : Promise.resolve()
+			])
+			.then(results => {
+				/*if (!!league) {
+					const staff = league.staff;
+					const permissions = roles.getRolePermissions(staff.role);
+				}*/
+				//console.log('permissions from server', permissions);
+				//console.log(seasons, teams, players, staff);
+				console.log(results);
+				res.send(JSON.stringify(results));
+
+				//res.send({ teams, seasons, players, staff, permissions })
+			})
+		})
+		.catch(err => { console.log(err); });
 
 };
 
