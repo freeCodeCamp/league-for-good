@@ -24,7 +24,7 @@ const EditTeamForm = (props) => {
 				<Field
 					checked={props.initialValues.currentlyActive}
 					component={Checkbox}
-					label='Check if active'
+					label='Check if team is active'
 					labelPosition='left'
 					labelStyle={cssDashboard.teams.forms.edit.checkbox}
 					name='currentlyActive'

@@ -38,7 +38,7 @@ const CurrTeamsList = props => {
 			<Divider/>
 			<Navigation tooltip='Back to seasons list'>
 				<span>
-					<h3>Available Teams</h3>
+					<h3>Seasons Active Teams</h3>
 					<p><b>{'Season: ' + name}</b></p>
 					<p><b>{range}</b></p>
 				</span>
