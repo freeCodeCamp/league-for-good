@@ -111,8 +111,8 @@ const Headers = (props) => {
 Headers.propTypes = {
 	headers: PropTypes.arrayOf(PropTypes.object),
 	onSort: PropTypes.func,
-	sortDirection: PropTypes.string,
-	sortColumnIndex: PropTypes.number
+	sortColumnIndex: PropTypes.number,
+	sortDirection: PropTypes.string
 };
 
 // Renders the TableRow components that will appear inside the TableBody
