@@ -105,7 +105,7 @@ let PlayerFormTemplate = props => {
 						type='number'
 					/>
 				</div>
-				<div>
+				<div style={cssDashboard.formRow}>
 					<Field
 						component={TextField}
 						floatingLabelText='Position(s)'
