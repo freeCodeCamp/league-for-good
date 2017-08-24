@@ -31,10 +31,6 @@ const colData = [
 	{
 		label: 'Phone',
 		cellProp: 'phoneNum'
-	},
-	{
-		label: 'Update',
-		cellProp: 'link'
 	}
 ];
 
