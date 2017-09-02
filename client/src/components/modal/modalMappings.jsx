@@ -1,5 +1,6 @@
 import EditTeamForm from '../dashboard/teams/forms/editTeamForm.jsx';
 import EditSeasonForm from '../dashboard/seasons/forms/editSeasonForm.jsx';
+import DeleteSeasonForm from '../dashboard/seasons/forms/deleteSeasonForm.jsx';
 import DeleteTeamForm from '../dashboard/teams/forms/deleteTeamForm.jsx';
 import EditStaffForm from '../dashboard/settings/forms/editStaffForm.jsx';
 import DeleteStaffForm from '../dashboard/settings/forms/deleteStaffForm.jsx';
@@ -95,6 +96,7 @@ const mappings = {
 	},
 	removeSeason: {
 		title: 'Permanently Delete Season',
+		Children: DeleteSeasonForm,
 		onSubmit: 'deleteSeason',
 		actionLabel: 'DELETE'
 	},
