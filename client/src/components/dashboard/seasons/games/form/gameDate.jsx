@@ -4,18 +4,18 @@ import { cssDashboard } from '../../../../style';
 import {
 	TextField,
 	TimePicker,
-	DatePicker,
+	DatePicker
 } from 'redux-form-material-ui';
 
 
-const GameDate = props => (
+const GameDate = () => (
 	<div style={cssDashboard.formRow}>
 		<Field
 			autoOk={true}
 			component={DatePicker}
 			floatingLabelStyle={cssDashboard.formRequired}
 			floatingLabelText='Date'
-			format={v => v? new Date(v) : null}
+			format={v => v ? new Date(v) : null}
 			formatDate={d => d.toDateString()}
 			name='datePlayed'
 		/>
@@ -24,17 +24,17 @@ const GameDate = props => (
 			component={TimePicker}
 			floatingLabelStyle={cssDashboard.formRequired}
 			floatingLabelText='Time'
-			format={null}				
+			format={null}
 			name='datePlayed'
-			props={{format:'ampm'}}
+			props={{format: 'ampm'}}
 		/>
 		<Field
 			component={TextField}
 			floatingLabelText='Venue'
 			name='venue'
-		/>		
+		/>
 	</div>
-)
+);
 
 export default GameDate;
 

@@ -16,7 +16,7 @@ export default function(state = { open: false, view: 'default' }, action) {
 		return { open: true, ...action.modalInfo };
 
 	case CLOSE_MODAL:
-		return {open: false, view: 'default', data: null };
+		return { open: false, view: 'default', data: null };
 
 	default:
 		return state;
