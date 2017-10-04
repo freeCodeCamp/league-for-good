@@ -28,6 +28,7 @@
     "material-ui": "^0.17.4",
     "mongoose": "^4.7.8",
     "nodemailer": "^4.0.1",
+    "nodemon": "^1.12.1",
     "passport": "^0.3.2",
     "passport-google-oauth20": "^1.0.0",
     "prop-types": "^15.5.10",

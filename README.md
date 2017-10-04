@@ -11,6 +11,8 @@ This is a free, open-source web application designed to help sports leagues trac
 
 In order for the authorization component of this app to work, it needs to be registered with Google. Here is a helpful walkthrough of that process: (https://developers.google.com/identity/sign-in/web/devconsole-project)
 
+This includes enabling the "Google+ API" on the Google API Console Dashboard.
+
 ### Steps
 
 - Fork and clone the repo
