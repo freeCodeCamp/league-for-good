@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { editSeason, openSnackbar } from '../../../../actions/index';
-import { cssDashboard } from '../../../style';
+import { cssDashboard } from '../../../styles';
 import validate from './utils/validation';
 import getFormattedDate from './utils/formatDate';
 import { TextField, DatePicker } from 'redux-form-material-ui';

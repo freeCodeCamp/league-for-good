@@ -6,7 +6,7 @@ import { AutoComplete, TextField } from 'redux-form-material-ui';
 import RaisedButton from 'material-ui/RaisedButton';
 import { getAssignFormVals } from './playerFormData.selector';
 import { assignPlayer, openSnackbar } from '../../../../actions/index';
-import { cssContent, cssDashboard } from '../../../style';
+import { cssContent, cssDashboard } from '../../../styles';
 
 
 import validate from './utils/assignPlayerValidation';

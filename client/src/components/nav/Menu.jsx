@@ -13,7 +13,7 @@ import * as Links from '../routes';
 import Avatar from 'material-ui/Avatar';
 
 import {SportsIcons} from '../sports';
-import { cssMenu } from '../style';
+import { cssMenu } from '../styles';
 
 const Menu = props => {
 	const { open, leagues, selectLeague, openModal } = props;

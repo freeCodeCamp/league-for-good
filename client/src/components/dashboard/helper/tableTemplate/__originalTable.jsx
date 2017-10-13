@@ -13,7 +13,7 @@ import TextField from 'material-ui/TextField';
 import SearchIcon from 'material-ui/svg-icons/action/search';
 import ArrowUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
 import ArrowDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
-import { cssDashboard } from '../../../style';
+import { cssDashboard } from '../../../styles';
 
 
 // IMPORTED STYLES

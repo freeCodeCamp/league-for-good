@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ArrowUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
 import ArrowDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
-import { cssDashboard } from '../../../style';
+import { cssDashboard } from '../../../styles';
 
 // IMPORTED STYLES
 const { table: {

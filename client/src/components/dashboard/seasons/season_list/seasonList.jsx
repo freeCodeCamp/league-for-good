@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { cssContent } from '../../../style';
+import { cssContent } from '../../../styles';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
 import { configSeasonForTable } from './seasonData.selector';
 

@@ -10,7 +10,7 @@ import { submit } from 'redux-form';
 import modalMapping from './modalMappings.jsx';
 import * as submitActions from '../../actions/index';
 
-import { cssModal } from '../style';
+import { cssModal } from '../styles';
 
 class Modal extends Component {
 

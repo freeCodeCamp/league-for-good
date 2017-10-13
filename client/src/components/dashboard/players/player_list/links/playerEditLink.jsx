@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { PLAYER_UPDATE_FORM, makeLinkDynamic } from '../../../../routes';
-import { cssDashboard } from '../../../../style';
+import { cssDashboard } from '../../../../styles';
 
 import IconButton from 'material-ui/IconButton';
 import EditIcon from 'material-ui/svg-icons/image/edit';

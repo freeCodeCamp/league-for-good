@@ -1,6 +1,6 @@
 import React from 'react';
 import { createSelector } from 'reselect';
-import { cssDashboard } from '../../../style';
+import { cssDashboard } from '../../../styles';
 
 import ModalLink from '../../../modal/modalLinkIcon.jsx';
 import Link from './links/playerRegLink.jsx';

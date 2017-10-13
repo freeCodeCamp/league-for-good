@@ -5,7 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { Field, reduxForm } from 'redux-form';
 
 import { createTeam, openSnackbar } from '../../../../actions/index';
-import { cssContent, cssDashboard } from '../../../style';
+import { cssContent, cssDashboard } from '../../../styles';
 
 import validate from './utils/validation';
 

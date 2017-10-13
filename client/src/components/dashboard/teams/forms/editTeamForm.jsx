@@ -8,7 +8,7 @@ import { updateTeam, openSnackbar } from '../../../../actions/index';
 import validate from './utils/validation';
 import normalize from './utils/normalize';
 
-import { cssDashboard } from '../../../style';
+import { cssDashboard } from '../../../styles';
 
 const EditTeamForm = (props) => {
 	return (

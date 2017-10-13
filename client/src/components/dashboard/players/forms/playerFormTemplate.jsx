@@ -7,7 +7,7 @@ import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import { getFormVals } from './playerFormData.selector';
 import { openSnackbar } from '../../../../actions/index';
-import { cssContent, cssDashboard } from '../../../style';
+import { cssContent, cssDashboard } from '../../../styles';
 import validate from './utils/addPlayerFormValidation';
 
 let PlayerFormTemplate = props => {

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MenuItem from 'material-ui/MenuItem';
 import { Field } from 'redux-form';
-import { cssDashboard } from '../../../../style';
+import { cssDashboard } from '../../../../styles';
 import { SelectField } from 'redux-form-material-ui';
 
 const renderTeams = teams =>

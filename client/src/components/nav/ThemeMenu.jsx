@@ -1,8 +1,8 @@
 import React from 'react';
 import IconButton from 'material-ui/IconButton';
 import Brush from 'material-ui/svg-icons/image/brush';
-import themes from '../themes';
-import { cssAppBar as css } from '../style';
+import themes from '../styles/themes';
+import { cssAppBar as css } from '../styles';
 import PropTypes from 'prop-types';
 
 // Generates the theme icons when the user clicks a theme

@@ -1,5 +1,5 @@
 import { CHANGE_THEME } from '../actions/types';
-import themes from '../components/themes';
+import themes from '../components/styles/themes';
 
 const storedTheme = localStorage.getItem('theme');
 

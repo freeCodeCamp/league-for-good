@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
 
 import { getPlayerRegistrations } from './data.jsx';
-import { cssContent } from '../../../style.js';
+import { cssContent } from '../../../styles';
 
 
 const PlayerRegistrationList = props => {

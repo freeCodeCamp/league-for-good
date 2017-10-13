@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import IconButton from 'material-ui/IconButton';
-import { cssContent } from '../../../style';
+import { cssContent } from '../../../styles';
 import { Link, withRouter } from 'react-router-dom';
 
 const LinkTemplate = props => {

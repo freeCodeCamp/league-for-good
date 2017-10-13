@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
 import { configPlayerListForTable } from './playerData.jsx';
-import { cssContent } from '../../../style.js';
+import { cssContent } from '../../../styles';
 
 
 export const PlayerList = props => {

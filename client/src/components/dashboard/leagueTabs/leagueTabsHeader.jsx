@@ -6,7 +6,7 @@ import {
 	ToolbarSeparator,
 	ToolbarTitle
 } from 'material-ui/Toolbar';
-import { cssDashboard } from '../../style';
+import { cssDashboard } from '../../styles';
 
 
 const Header = ({league}) => (
