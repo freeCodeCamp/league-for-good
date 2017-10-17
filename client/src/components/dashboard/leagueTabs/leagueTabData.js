@@ -2,7 +2,7 @@
 import React from 'react';
 import AddIcon from 'material-ui/svg-icons/content/add';
 import AddPersonIcon from 'material-ui/svg-icons/social/person-add';
-import DeleteForeverIcon from 'material-ui/svg-icons/action/delete-forever';
+// import DeleteForeverIcon from 'material-ui/svg-icons/action/delete-forever';
 import EmailIcon from 'material-ui/svg-icons/communication/email';
 import AssignmentIcon from 'material-ui/svg-icons/action/assignment';
 import ListIcon from 'material-ui/svg-icons/action/view-list';
@@ -80,13 +80,13 @@ const settingsLinks = [
 		label: 'AddStaff',
 		icon: <AddPersonIcon />,
 		url: LINK.SETTINGS_ADD_STAFF_FORM
-	},
-	{
-		description: 'Delete your league.',
-		label: 'DeleteLeague',
-		icon: <DeleteForeverIcon />,
-		url: LINK.SETTINGS_DELETE_LEAGUE
 	}
+//	{
+//		description: 'Delete your league.',
+//		label: 'DeleteLeague',
+//		icon: <DeleteForeverIcon />,
+//		url: LINK.SETTINGS_DELETE_LEAGUE
+// 	}
 ];
 
 // Tabs that hold the operations that can be performed

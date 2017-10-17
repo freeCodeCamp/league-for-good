@@ -6,3 +6,4 @@ npm-debug.log
 scripts
 .git
 tags
+.DS_Store
