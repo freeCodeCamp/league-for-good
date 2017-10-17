@@ -2,7 +2,7 @@
 import React from 'react';
 import AddIcon from 'material-ui/svg-icons/content/add';
 import AddPersonIcon from 'material-ui/svg-icons/social/person-add';
-import DeleteForeverIcon from 'material-ui/svg-icons/action/delete-forever';
+// import DeleteForeverIcon from 'material-ui/svg-icons/action/delete-forever';
 import EmailIcon from 'material-ui/svg-icons/communication/email';
 import AssignmentIcon from 'material-ui/svg-icons/action/assignment';
 import ListIcon from 'material-ui/svg-icons/action/view-list';
