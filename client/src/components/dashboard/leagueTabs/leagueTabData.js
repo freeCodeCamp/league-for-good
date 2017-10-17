@@ -80,13 +80,13 @@ const settingsLinks = [
 		label: 'AddStaff',
 		icon: <AddPersonIcon />,
 		url: LINK.SETTINGS_ADD_STAFF_FORM
-	},
-	{
-		description: 'Delete your league.',
-		label: 'DeleteLeague',
-		icon: <DeleteForeverIcon />,
-		url: LINK.SETTINGS_DELETE_LEAGUE
 	}
+//	{
+//		description: 'Delete your league.',
+//		label: 'DeleteLeague',
+//		icon: <DeleteForeverIcon />,
+//		url: LINK.SETTINGS_DELETE_LEAGUE
+// 	}
 ];
 
 // Tabs that hold the operations that can be performed
