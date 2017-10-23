@@ -1,5 +1,5 @@
 import React from 'react';
-import { cssDashboard } from '../../../style';
+import { cssDashboard } from '../../../styles';
 import Icon from './staffActions.jsx';
 
 // All staff data passed from the reducers is reformatted here so

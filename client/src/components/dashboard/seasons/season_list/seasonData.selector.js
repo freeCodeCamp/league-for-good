@@ -1,5 +1,5 @@
 import React from 'react';
-import { cssDashboard } from '../../../style';
+import { cssDashboard } from '../../../styles';
 import Icon from '../../../modal/modalLinkIcon.jsx';
 import SeasonLink from './seasonLink.jsx';
 import { createSelector } from 'reselect';

@@ -4,7 +4,7 @@ import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
 import { connect } from 'react-redux';
 import getStaffTableRows, { colData } from './staffData';
 
-import { cssContent } from '../../../style.js';
+import { cssContent } from '../../../styles';
 
 const StaffList = props => {
 	return (

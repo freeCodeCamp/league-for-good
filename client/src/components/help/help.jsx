@@ -1,5 +1,5 @@
 import React from 'react';
-import { cssHelp } from '../style';
+import { cssHelp } from '../styles';
 
 const Help = () => {
 	return (

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getRoster } from './rosterData';
 
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
-import { cssContent } from '../../../style';
+import { cssContent } from '../../../styles';
 import IconButton from 'material-ui/IconButton';
 import BackArrow from 'material-ui/svg-icons/navigation/arrow-back';
 

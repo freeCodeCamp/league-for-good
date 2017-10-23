@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import { cssDashboard } from '../../../../style';
+import { cssDashboard } from '../../../../styles';
 import {
 	TextField,
 	TimePicker,

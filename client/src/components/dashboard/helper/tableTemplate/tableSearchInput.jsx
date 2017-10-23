@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import SearchIcon from 'material-ui/svg-icons/action/search';
-import { cssDashboard } from '../../../style';
+import { cssDashboard } from '../../../styles';
 
 // Optional search for the table template
 const SearchTable = props => {

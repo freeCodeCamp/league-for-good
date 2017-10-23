@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import { generateLinks } from './tab_navbar/generateLinks.jsx';
 import { tabs } from './leagueTabData';
-import { cssDashboard } from '../../style';
+import { cssDashboard } from '../../styles';
 
 import TeamRoutes from '../teams/routes.jsx';
 import PlayerRoutes from '../players/routes.jsx';

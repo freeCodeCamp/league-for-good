@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createSelector } from 'reselect';
-import { cssDashboard } from '../../../style';
+import { cssDashboard } from '../../../styles';
 import DetailsLink from './links/playerDetailsLink.jsx';
 import EditLink from './links/playerEditLink.jsx';
 

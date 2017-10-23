@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 
 import Content from './components/Content.jsx';
 import Login from './components/Login.jsx';
-import themes from './components/themes';
+import themes from './components/styles/themes';
 
 // Main app component using 'connect' wrapper to dynamically set muiTheme
 

@@ -6,7 +6,7 @@ import {
 	TableRow
 } from 'material-ui/Table';
 import ColumnHeaderChild from './columnHeaderChild.jsx';
-import { cssDashboard } from '../../../style';
+import { cssDashboard } from '../../../styles';
 
 // Header row for the table containing column names
 export default class TableHeader extends Component {

@@ -6,7 +6,7 @@ import { PLAYER_DETAIL, makeLinkDynamic } from '../../../routes';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchPlayer } from '../../../../actions/index';
-import { cssDashboard } from '../../../style';
+import { cssDashboard } from '../../../styles';
 
 import IconButton from 'material-ui/IconButton';
 import ProfileIcon from 'material-ui/svg-icons/action/account-box';

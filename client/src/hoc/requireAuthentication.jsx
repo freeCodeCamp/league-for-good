@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import CircularProgress from 'material-ui/CircularProgress';
 import { initAuthState } from '../actions/index';
 import { Redirect } from 'react-router-dom';
-import { cssLoading } from '../components/style';
+import { cssLoading } from '../components/styles';
 
 import PropTypes from 'prop-types';
 

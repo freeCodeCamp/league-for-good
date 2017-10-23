@@ -8,7 +8,7 @@ import { updateStaff, openSnackbar } from '../../../../actions/index';
 
 import validate from './utils/addStaffFormValidation';
 
-import { cssDashboard } from '../../../style';
+import { cssDashboard } from '../../../styles';
 
 const EditStaffForm = (props) => {
 	return (

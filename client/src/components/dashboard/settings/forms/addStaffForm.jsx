@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 
 import { addStaffMember, openSnackbar } from '../../../../actions/index';
 
-import { cssContent, cssDashboard } from '../../../style';
+import { cssContent, cssDashboard } from '../../../styles';
 import validate, { uniqueEmailVal } from './utils/addStaffFormValidation';
 
 

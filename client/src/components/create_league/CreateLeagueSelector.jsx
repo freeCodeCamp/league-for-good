@@ -8,7 +8,7 @@ import {
 import CreateLeagueButton from './CreateLeagueButton.jsx';
 
 import { sports } from '../sports.js';
-import { cssCreateLeague } from '../style';
+import { cssCreateLeague } from '../styles';
 
 
 // Creates a list of different buttons for selecting

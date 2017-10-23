@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { cssContent, cssDashboard } from '../../../style';
+import { cssContent, cssDashboard } from '../../../styles';
 
 import { connect } from 'react-redux';
 

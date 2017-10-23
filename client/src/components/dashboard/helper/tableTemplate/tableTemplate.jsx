@@ -6,7 +6,7 @@ import TableBody from './tableBody.jsx';
 import TableHeader from './tableHeader.jsx';
 import TableFooter from './tableFooter.jsx';
 import SearchTable from './tableSearchInput.jsx';
-import { cssDashboard } from '../../../style';
+import { cssDashboard } from '../../../styles';
 import sortRows from './utils/sorting';
 
 // A table template to easily render a table in the management panel

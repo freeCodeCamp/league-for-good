@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import validate from './validate';
 import CreateLeagueSelector from './CreateLeagueSelector.jsx';
 import { createLeague } from '../../actions/index';
-import { cssContent, cssCreateLeague } from '../style';
+import { cssContent, cssCreateLeague } from '../styles';
 
 
 class CreateLeagueForm extends Component {

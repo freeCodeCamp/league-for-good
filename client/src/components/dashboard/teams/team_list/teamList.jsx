@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { cssContent, cssDashboard } from '../../../style';
+import { cssContent, cssDashboard } from '../../../styles';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
 import MenuItem from 'material-ui/MenuItem';
 import DropDownMenu from 'material-ui/DropDownMenu';
