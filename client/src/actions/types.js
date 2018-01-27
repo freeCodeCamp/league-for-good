@@ -54,6 +54,11 @@ export const UPDATE_SEASON = 'UPDATE_SEASON';
 export const REMOVE_SEASON = 'REMOVE_SEASON';
 export const SELECT_SEASON = 'SELECT_SEASON';
 
+export const ADD_GAME = 'ADD_GAME';
+export const DELETE_GAME = 'DELETE_GAME';
+export const FETCH_GAMES = 'FETCH_GAMES';
+export const UPDATE_GAME = 'UPDATE_GAME';
+
 
 // Roles action types
 export const FETCH_ROLES = 'FETCH_ROLES';

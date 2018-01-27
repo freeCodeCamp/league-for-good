@@ -53,7 +53,7 @@ app.use('/player', Routes.player);
 app.use('/settings', Routes.settings);
 app.use('/register', Routes.registration);
 app.use('/seasons', Routes.seasons);
-
+app.use('/games', Routes.games);
 
 // Disable webpack build if debugging backend functionality
 

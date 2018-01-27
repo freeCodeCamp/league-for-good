@@ -6,6 +6,7 @@ import AddPersonIcon from 'material-ui/svg-icons/social/person-add';
 import EmailIcon from 'material-ui/svg-icons/communication/email';
 import AssignmentIcon from 'material-ui/svg-icons/action/assignment';
 import ListIcon from 'material-ui/svg-icons/action/view-list';
+// import EventIcon from 'material-ui/svg-icons/action/event';
 
 import * as LINK from '../../routes';
 
@@ -65,6 +66,11 @@ const seasonLinks = [
 		icon: <AddIcon />,
 		url: LINK.SEASON_ADD_FORM
 	}
+	// {
+	// 	description: 'View scheduled games',
+	// 	icon: <EventIcon/>,
+	// 	url: LINK.GAME_LIST
+	// }
 ];
 
 // Links for managing general league settings
