@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchGames } from '../../../../actions/index';
 import PropTypes from 'prop-types';
-import { cssContent } from '../../../style';
+import { cssContent } from '../../../styles';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
 import RaisedButton from 'material-ui/RaisedButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';

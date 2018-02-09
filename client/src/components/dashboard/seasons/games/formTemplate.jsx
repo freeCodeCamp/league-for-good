@@ -7,7 +7,7 @@ import MenuItem from 'material-ui/MenuItem';
 import { Field, reduxForm } from 'redux-form';
 
 
-import { cssContent, cssDashboard } from '../../../style';
+import { cssContent, cssDashboard } from '../../../styles';
 
 
 import {
