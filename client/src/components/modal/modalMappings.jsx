@@ -5,6 +5,7 @@ import DeleteTeamForm from '../dashboard/teams/forms/deleteTeamForm.jsx';
 import EditStaffForm from '../dashboard/settings/forms/editStaffForm.jsx';
 import DeleteStaffForm from '../dashboard/settings/forms/deleteStaffForm.jsx';
 import DeleteReg from '../dashboard/players/applications/modals/delete.jsx';
+import DeleteGame from '../dashboard/seasons/games/modals/deleteGame.jsx';
 import ConfirmReg from '../dashboard/players/applications/modals/confirm.jsx';
 /* Map all the components and/or props to be used
 		inside the main modal component
@@ -105,6 +106,11 @@ const mappings = {
 		Children: DeleteReg,
 		onSubmit: 'deletePlayerRegistration',
 		actionLabel: 'Delete Player'
+	},
+	removeGame: {
+		title: 'Delete Upcoming Game?',
+		onSubmit: 'removeGame',
+		actionLabel: 'Delete'
 	}
 };
 

@@ -28,6 +28,11 @@ export const SEASON_LIST = '/dashboard/seasons/list';
 export const SEASON_CURR_TEAMS = '/dashboard/seasons/current-teams/:seasonId';
 export const SEASON_ADD_FORM = '/dashboard/seasons/create';
 
+export const EDIT_GAME = '/dashboard/seasons/games/edit';
+export const NEW_GAME = '/dashboard/seasons/games/new';
+export const SEASON_GAME_LIST = '/dashboard/seasons/games';
+
+
 export function makeLinkDynamic( link, uniqueID ) {
 	const regex = /\:\w*/;
 	return link.replace( regex, uniqueID);

@@ -6,7 +6,9 @@ import {
 	SELECT_SEASON
 } from '../actions/types';
 
+import { combineReducers } from 'redux';
 import { findIndex } from 'lodash';
+import GamesReducer from './games';
 
 // Season state - returns season info
 //
@@ -26,30 +28,25 @@ function remove(season) {
 	return season._id !== this.action.deletedSeason;
 }
 
-export default function(state = {}, action) {
+function seasonList(state = [], action) {
 	switch (action.type) {
 
 	case FETCH_ALL_SEASONS:
-		return { ...state, list: action.seasons };
+		return action.seasons;
 	case CREATE_SEASON:
-		return { ...state, list: [...state.list, action.newSeason] };
+		return [...state, action.newSeason];
 	case UPDATE_SEASON:
-		return {
-			...state,
-			list: replace(state.list, action.season)
-		};
-	case REMOVE_SEASON:
-		return {
-			...state,
-			list: state.list.filter(remove.bind({ action }))
-		};
-	case SELECT_SEASON:
-		return {
-			...state,
-			selected: action.currentSeason
-		};
+		return replace(state, action.season);
 
+	case REMOVE_SEASON:
+		return state.filter(remove.bind({ action }));
 	default:
 		return state;
 	}
 }
+
+export default combineReducers({
+	list: seasonList,
+	games: GamesReducer
+});
+
