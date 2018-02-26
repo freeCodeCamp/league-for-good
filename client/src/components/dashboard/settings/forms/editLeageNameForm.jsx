@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { TextField, SelectField } from 'redux-form-material-ui';
+import { TextField } from 'redux-form-material-ui';
 
 import { cssContent, cssDashboard } from '../../../styles';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -8,7 +8,7 @@ import { editLeague, openSnackbar } from '../../../../actions/index';
 import { connect } from 'react-redux';
 
 const EditLeageNameForm = props => {
-    const { handleSubmit, leagueId, leagueInfo } = props;
+    const { handleSubmit } = props;
     return (
         <div style={cssContent.body}>
             <h1 style={cssDashboard.title}>Enter New League Name</h1>
