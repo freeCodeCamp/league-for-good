@@ -3,7 +3,8 @@ import {
 	FETCH_LEAGUES,
 	CREATE_LEAGUE,
 	SELECT_LEAGUE,
-	REMOVE_LEAGUE
+	REMOVE_LEAGUE,
+	EDIT_LEAGUE
 } from '../actions/types';
 
 /*
@@ -37,6 +38,8 @@ export default function(state = defaultState, action) {
 			return { ...state, ...action.leagueInfo };
 		case SELECT_LEAGUE:
 			return { ...state, selected: action.leagueId };
+		case EDIT_LEAGUE:
+			return { ...state, ...action.payload };
 		default:
 			return state;
 	}

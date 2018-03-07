@@ -65,9 +65,18 @@ const deleteLeague = (req, res) => {
 		.catch( err => { throw err; });
 };
 
+const updateLeague = (req, res) => {
+	const query = { _id: req.params.leagueId };
+	League.update(query, req.body, {new: true, upsert: true})
+		.exec()
+		.then(() => res.send(req.body))
+		.catch(error => res.status(500).json({ error: error}));
+};
+
 Router.route('/create').post(createLeague);
 Router.route('/remove/:leagueId').delete(deleteLeague);
 Router.route('/fetch/:leagueId').get(fetchLeagueDetails);
+Router.route('/update/:leagueId').put(updateLeague);
 
 
 module.exports = Router;

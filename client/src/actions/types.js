@@ -21,6 +21,7 @@ export const FETCH_LEAGUES = 'fetch leagues';
 export const CREATE_LEAGUE = 'create league';
 export const SELECT_LEAGUE = 'select league';
 export const REMOVE_LEAGUE = 'REMOVE_LEAGUE';
+export const EDIT_LEAGUE = 'EDIT_LEAGUE';
 
 // Team action types
 export const CREATE_TEAM = 'create team';

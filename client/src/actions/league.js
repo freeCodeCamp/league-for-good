@@ -7,7 +7,9 @@ import {
 	FETCH_ALL_PLAYERS,
 	SELECT_STAFF_MEMBERS,
 	REMOVE_LEAGUE,
-	SET_LOADING_STATE
+	SET_LOADING_STATE,
+	EDIT_LEAGUE,
+	OPEN_SNACKBAR
 } from './types';
 import { ROOT_URL } from '../../globals';
 
@@ -38,6 +40,38 @@ export function deleteLeague(_, dispatch, props) {
 		.catch(err => { throw err; });
 }
 
+export function editLeague(formVals, dispatch, props) {
+	const { leagueName } = formVals;
+	const { leagueId } = props;
+	const { sportType } = props.leagueInfo;
+	const url = `${ROOT_URL}/league/update/${leagueId}`;
+	const body = {
+		name: leagueName
+	};
+	axios.put(url, body)
+		.then(() => {
+			return dispatch({
+				type: EDIT_LEAGUE,
+				leagueName,
+				payload: {
+					[leagueId]: {
+						_id: leagueId,
+						name: leagueName,
+						sportType: sportType
+					}
+				}
+			});
+		})
+		.then(() =>{
+			return dispatch({
+				type: OPEN_SNACKBAR,
+				message: 'Name Changed!'
+			});
+		})
+		.catch(error => {
+			throw new Error(error);
+		});
+}
 
 export function selectLeague(leagueId) {
 
