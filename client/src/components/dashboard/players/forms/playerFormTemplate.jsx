@@ -156,8 +156,7 @@ function mapStateToProps(state, ownProps) {
 }
 
 PlayerFormTemplate = reduxForm({
-	validate,
-	onSubmitSuccess: openSnackbar
+	validate
 })(PlayerFormTemplate);
 
 export default connect(mapStateToProps)(PlayerFormTemplate);

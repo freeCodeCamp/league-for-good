@@ -23,7 +23,9 @@ const addPlayerToLeague = (req, res) => {
 				res.send(newPlayer);
 			}
 		})
-		.catch(error => { throw error; });
+		.catch(error => { 
+			res.status(400).send({ message: error.message });
+		});
 };
 
 const getPlayer = (req, res) => {

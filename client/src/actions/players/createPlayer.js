@@ -1,6 +1,7 @@
 import axios from 'axios';
-import { ADD_PLAYER, ADD_PLAYER_TO_TEAM } from '../types';
+import { ADD_PLAYER, ADD_PLAYER_TO_TEAM, OPEN_SNACKBAR } from '../types';
 import { ROOT_URL } from '../../../globals';
+import { openSnackbar } from '../index';
 
 
 // Add a new player to DB,
@@ -18,6 +19,8 @@ export function createPlayer(form, dispatch, props) {
 
 	axios.post(`${ROOT_URL}/player/add`, reqBody)
 		.then(({data}) => {
+			// successful message
+			openSnackbar(form, dispatch, props);
 
 			// Send new player to the playersReducer to be appended to the list
 			dispatch({ type: ADD_PLAYER, payload: data });
@@ -29,6 +32,9 @@ export function createPlayer(form, dispatch, props) {
 					payload: { teamId: team.teamId, player: data }
 				});
 			}
-
+		})
+		.catch(error => {
+			// display error message
+			dispatch({ type: OPEN_SNACKBAR, message: error.response.data.message });
 		});
 }

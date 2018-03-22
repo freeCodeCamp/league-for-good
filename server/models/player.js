@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 const capitalize = require('./plugins/capitalize');
+const mongooseUniqueValidator = require('mongoose-unique-validator');
 
 const PlayerSchema = new Schema({
 	firstName: {
@@ -18,7 +19,8 @@ const PlayerSchema = new Schema({
 	},
 	email: {
 		type: String,
-		required: true
+		required: true,
+		unique: true
 	},
 	phoneNum: {
 		type: String
@@ -68,5 +70,6 @@ PlayerSchema.virtual('fullName').get(function() {
 });
 
 PlayerSchema.plugin(capitalize, { fields });
+PlayerSchema.plugin(mongooseUniqueValidator);
 
 module.exports = mongoose.model('player', PlayerSchema);
