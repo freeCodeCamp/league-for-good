@@ -143,6 +143,10 @@ PlayerFormTemplate.propTypes = {
 const formVals = getFormVals();
 
 function mapStateToProps(state, ownProps) {
+	// Getting the users role
+	const email = state.auth.user.email;
+	const staff = state.settings.staff;
+	const user = staff.find(staffPerson => staffPerson.email === email);
 	// flag for rendering props relative to Update form or Add player form
 	const { formName, formAction, title } = ownProps;
 	const { initialValues, teams } = formVals(state, ownProps);
@@ -151,7 +155,8 @@ function mapStateToProps(state, ownProps) {
 		initialValues,
 		onSubmit: formAction,
 		teams,
-		title: title
+		title: title,
+		isAdmin: user.role === 'Administrator' ? true : false
 	};
 }
 
