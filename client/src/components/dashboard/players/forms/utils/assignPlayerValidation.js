@@ -1,22 +1,19 @@
-const jerseyNumRegrex = new RegExp('^([1-9][0-9]?)$', 'i');
-
 export default function(val) {
 	const errors = { team: {} };
 
-	if (!val.playerId) {
-		errors.playerId = 'Please select a player';
-	}
-	if (!val.team) {
+	if (!val.team || !val.team.teamId) {
 		errors.team.teamId = 'Please select a team';
-	}
-	if (val.team && !val.team.position) {
+	} else if (!val.playerId) {
+		errors.playerId = 'Please select a player';
+	} else if (!val.team.position) {
 		errors.team.position = 'Please choose one or more position';
-	}
-	if (val.team && !val.team.jerseyNum) {
+	} else if (typeof val.team.jerseyNum !== 'number') {
 		errors.team.jerseyNum = 'Please select a jersey number';
-	}
-	if (val.team && !jerseyNumRegrex.test(val.team.jerseyNum)) {
-		errors.team.jerseyNum = 'Jersey numbers can be between 1 and 99';
+	} else {
+		const jerseyNum = val.team.jerseyNum;
+		if (jerseyNum < 0 || jerseyNum > 99) {
+				errors.team.jerseyNum = 'Jersey numbers can be between 0 and 99';
+		}
 	}
 
 	return errors;
