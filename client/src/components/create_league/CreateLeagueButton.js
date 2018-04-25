@@ -5,26 +5,30 @@ import FlatButton from 'material-ui/FlatButton';
 import { cssCreateLeague } from '../styles';
 
 // Icon Component for the button
-const CreateLeagueIcon = (props) => (
-	<img src={props.icon} style={cssCreateLeague.sportIcon} />
+export const CreateLeagueIcon = ({icon}) => (
+	<img src={icon} style={cssCreateLeague.sportIcon} />
 );
 
 CreateLeagueIcon.propTypes = {
 	icon: PropTypes.string
 };
 
+CreateLeagueIcon.defaultProps = {
+	icon: ''
+};
+
 // League Button with icon for create league form
-const CreateLeagueButton = (props) => (
+export const CreateLeagueButton = ({active, icon, label}) => (
 	<FlatButton
-		backgroundColor={props.active ?
+		backgroundColor={active ?
 			cssCreateLeague.sportButton.active :
 			cssCreateLeague.sportButton.inactive}
 		disableTouchRipple={true}
-		hoverColor={props.active ?
+		hoverColor={active ?
 			cssCreateLeague.sportButton.active :
 			cssCreateLeague.sportButton.hover}
-		icon={<CreateLeagueIcon icon={props.icon} />}
-		label={props.label}
+		icon={<CreateLeagueIcon icon={icon} />}
+		label={label}
 		onTouchTap={() => props.onClick(props.label)}
 		style={cssCreateLeague.sportButton.style}
 	/>
