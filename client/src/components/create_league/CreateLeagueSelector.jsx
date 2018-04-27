@@ -5,7 +5,7 @@ import {
 	CardActions,
 	CardTitle
 } from 'material-ui/Card';
-import CreateLeagueButton from './CreateLeagueButton.jsx';
+import CreateLeagueButton from './CreateLeagueButton.js';
 
 import { sports } from '../sports.js';
 import { cssCreateLeague } from '../styles';

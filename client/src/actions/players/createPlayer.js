@@ -27,7 +27,6 @@ export function createPlayer(form, dispatch, props) {
 			dispatch({ type: ADD_PLAYER, payload: data });
 
 			// send newly created player to team if team was selected
-			console.log(data);
 			if ( team && team.teamId && isAdmin ) {
 				dispatch({
 					type: ADD_PLAYER_TO_TEAM,

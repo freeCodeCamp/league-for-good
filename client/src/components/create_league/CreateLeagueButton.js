@@ -18,7 +18,7 @@ CreateLeagueIcon.defaultProps = {
 };
 
 // League Button with icon for create league form
-export const CreateLeagueButton = ({active, icon, label}) => (
+export const CreateLeagueButton = ({active, icon, label, onClick}) => (
 	<FlatButton
 		backgroundColor={active ?
 			cssCreateLeague.sportButton.active :
@@ -29,7 +29,7 @@ export const CreateLeagueButton = ({active, icon, label}) => (
 			cssCreateLeague.sportButton.hover}
 		icon={<CreateLeagueIcon icon={icon} />}
 		label={label}
-		onTouchTap={() => props.onClick(props.label)}
+		onTouchTap={() => onClick(label)}
 		style={cssCreateLeague.sportButton.style}
 	/>
 );
