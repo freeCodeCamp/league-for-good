@@ -2,7 +2,8 @@ import {
 	CREATE_TEAM,
 	REMOVE_TEAM,
 	UPDATE_TEAM,
-	SELECT_TEAMS
+	SELECT_TEAMS,
+	ADD_PLAYER_TO_TEAM
 } from '../actions/types';
 
 import { findIndex } from 'lodash';
@@ -59,6 +60,14 @@ export default function(state = [], action) {
 
 	case REMOVE_TEAM:
 		return state.filter( removeId(action.removedTeam));
+
+	case ADD_PLAYER_TO_TEAM:
+		return state.map(team => {
+			if (team._id === action.payload.teamId) {
+				team.players.push(action.payload.player);
+			}
+			return team;
+		});
 
 	default:
 		return state;

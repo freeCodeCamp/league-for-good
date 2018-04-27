@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ADD_PLAYER, OPEN_SNACKBAR, EDIT_LEAGUE } from '../types';
+import { ADD_PLAYER, OPEN_SNACKBAR, ADD_PLAYER_TO_TEAM } from '../types';
 import { ROOT_URL } from '../../../globals';
 import { openSnackbar } from '../index';
 
@@ -27,16 +27,12 @@ export function createPlayer(form, dispatch, props) {
 			dispatch({ type: ADD_PLAYER, payload: data });
 
 			// send newly created player to team if team was selected
-			if ( team && team.teamId ) {
-				const leagueID = data.leagueId;
-				axios.get(`${ROOT_URL}/league/fetch/${leagueID}`)
-					.then(leagueData => {
-						console.log(leagueData.data);
-						dispatch({
-							type: EDIT_LEAGUE,
-							payload: {...leagueData.data}
-						});
-					});
+			console.log(data);
+			if ( team && team.teamId && isAdmin ) {
+				dispatch({
+					type: ADD_PLAYER_TO_TEAM,
+					payload: { teamId: team.teamId, player: data.id }
+				});
 			}
 		})
 		.catch(error => {

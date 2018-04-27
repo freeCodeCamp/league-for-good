@@ -2,8 +2,8 @@ import {
 	FETCH_ALL_SEASONS,
 	CREATE_SEASON,
 	REMOVE_SEASON,
-	UPDATE_SEASON,
-	SELECT_SEASON
+	UPDATE_SEASON
+	// SELECT_SEASON
 } from '../actions/types';
 
 import { combineReducers } from 'redux';
@@ -33,13 +33,16 @@ function seasonList(state = [], action) {
 
 	case FETCH_ALL_SEASONS:
 		return action.seasons;
+
 	case CREATE_SEASON:
 		return [...state, action.newSeason];
+
 	case UPDATE_SEASON:
 		return replace(state, action.season);
 
 	case REMOVE_SEASON:
 		return state.filter(remove.bind({ action }));
+
 	default:
 		return state;
 	}
