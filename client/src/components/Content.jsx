@@ -7,7 +7,7 @@ import SnackBar from './snackbar.jsx';
 import CreateLeagueForm from './create_league/CreateLeagueForm.jsx';
 import NavBar from './nav/index.jsx';
 import Dashboard from './dashboard/dashboard.jsx';
-import Help from './help/help.jsx';
+import Help from './help/help';
 import Modal from './modal/modal.jsx';
 import {cssContent} from './styles';
 

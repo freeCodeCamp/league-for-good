@@ -19,6 +19,6 @@ const validate = val => {
 /*eslint-disable*/
 export const uniqueEmailVal = (staff, value) => 
 	staff.some(staff => staff.email === value) ? 'Email already used' : undefined
-/*eslint-enable*/
+/* eslint-enable*/
 
 export default validate;
