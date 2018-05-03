@@ -3,13 +3,9 @@ import PropTypes from 'prop-types';
 
 import { cssCreateLeague } from '../styles';
 
-export default class CreateLeagueIcon extends React.Component {
-    render() {
-        return (
-            <img src={this.props.icon} style={cssCreateLeague.sportIcon} />
-        );
-    }
-}
+const CreateLeagueIcon = (props) => (
+    <img src={props.icon} style={cssCreateLeague.sportIcon} />
+);
 
 CreateLeagueIcon.propTypes = {
     icon: PropTypes.string
@@ -18,3 +14,5 @@ CreateLeagueIcon.propTypes = {
 CreateLeagueIcon.defaultProps = {
     icon: ''
 };
+
+export default CreateLeagueIcon;
