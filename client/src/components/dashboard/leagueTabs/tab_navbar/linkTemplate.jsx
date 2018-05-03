@@ -19,7 +19,10 @@ const LinkTemplate = props => {
 		<Link to={{ pathname: url, state: {leagueId} }}>
 			<IconButton
 				hoveredStyle={iconButton.hoveredStyle}
-				iconStyle={ linkIsActive ? iconButton.iconStyle : {} }
+				iconStyle={ linkIsActive ?
+					iconButton.iconStyleActive :
+					iconButton.iconStyle
+				}
 				style={iconButton.style}
 				tooltip={description}
 				tooltipPosition='bottom-right'
