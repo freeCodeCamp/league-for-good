@@ -13,16 +13,22 @@ You can now join us on slack. [Get Invite Here](https://fcc-slack-invite.herokua
 - [NodeJS](https://nodejs.org)
 - [MongoDB](https://www.mongodb.org)
 
-In order for the authorization component of this app to work, it needs to be registered with Google. Here is a helpful walkthrough of that process: (https://developers.google.com/identity/sign-in/web/devconsole-project)
+In order for the authorization component of this app to work, it needs to be registered with Google. Here is a helpful walkthrough of that process: https://developers.google.com/identity/sign-in/web/devconsole-project.
 
-This includes enabling the "Google+ API" on the Google API Console Dashboard.
+You will want to register **Type** as **Web application**, set **Authorized JavaScript origins** to
+http://localhost:4000 (if you're running the application locally) and set the **Authorized
+redirect URI** to http://localhost:4000/auth/google/callback (this can be set through the Google API
+Console Dashboard under **Credentials** if not offered as an option during setup).
+
+You will also need to enable the "Google+ API" on the Google API Console Dashboard - if you forget,
+Google will display an error message (with a link to the API) the first time you try to log in.
 
 ### Steps
 
 - Fork and clone the repo
 - Run `npm install`
 - In the root directory, create a .env file and place the following: 
-  - MONGO_URI = *Your database uri* 
+  - MONGO_URI = *Your database uri - typically mongodb://localhost:27017/your_project_name if your MongoDB is local* 
   - GOOGLE_CLIENT_ID = *Client id assigned by Google* 
   - GOOGLE_CLIENT_SECRET = *Client secret assigned by Google*
   - SESSION_SECRET = *Any random string of characters*
