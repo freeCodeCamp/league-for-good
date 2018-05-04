@@ -8,65 +8,48 @@ import {List, ListItem} from 'material-ui/List';
 import AddCircle from 'material-ui/svg-icons/content/add-circle';
 import Help from 'material-ui/svg-icons/action/help';
 import LogOutIcon from 'material-ui/svg-icons/action/exit-to-app';
-import * as Links from '../routes';
 
-import Avatar from 'material-ui/Avatar';
+import MenuLeagueItem from './MenuLeagueItem.jsx';
 
-import {SportsIcons} from '../sports';
 import { cssMenu } from '../styles';
 
-const Menu = props => {
+const Menu = (props) => {
 	const { open, leagues, selectLeague, openModal } = props;
-
+	const activeLeagues = leagues.filter(league => league.archived === false);
+	const archivedLeagues = leagues.filter(league => league.archived !== false);
 	return (
 		<Drawer open={open} width={'15%'}>
 			<List style={cssMenu.drawer.list}>
-				{
-					leagues.filter(league => league.archived === false)
-						.map((league, i) => {
-							console.log(league);
-							return (
-							<ListItem
-								containerElement={<Link to={Links.TEAM_LIST}/>}
+				{activeLeagues.length > 0 ? (
+					<div>
+						{activeLeagues.map((league, i) => (
+							<MenuLeagueItem
 								key={i}
-								leftIcon={
-									<Avatar
-										backgroundColor={cssMenu.avatar.backgroundColor}
-										src={SportsIcons[league.sportType]}
-									/>
-								}
-								onClick={() => selectLeague(league)}
-								primaryText={league.name}
+								league={league}
+								selectLeague={selectLeague}
 							/>
-							);
-						}
-					)
+							)
+						)}
+						< Divider />
+					</div>) : <noScript />
 				}
-				{ leagues.filter(league => league.archived === false).length > 0 ?
-					<Divider /> :
-					<noScript />
-				}
-				{
-					leagues.filter(league => league.archived === true)
-						.map((league, i) => (
-							<ListItem
-								containerElement={<Link to={Links.TEAM_LIST} />}
-								key={i}
-								leftIcon={
-									<Avatar
-										backgroundColor={cssMenu.avatar.backgroundColor}
-										src={SportsIcons[league.sportType]}
+				{archivedLeagues.length > 0 ? (
+					<div>
+						<ListItem
+							nestedItems={[
+								archivedLeagues.map((league, i) => (
+									<MenuLeagueItem
+										key={i}
+										league={league}
+										selectLeague={selectLeague}
 									/>
-								}
-								onClick={() => selectLeague(league)}
-								primaryText={league.name}
-							/>
-						)
-					)
-				}
-				{leagues.filter(league => league.archived === true).length > 0 ?
-					<Divider /> :
-					<noScript />
+								)
+								)
+							]}
+							primaryText='ARCHIVE'
+						/>
+						< Divider />
+					</div>) : <noScript />
 				}
 				<ListItem
 					containerElement={<Link to='/create' />}
