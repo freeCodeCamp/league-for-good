@@ -31,6 +31,11 @@ const LeagueSchema = new Schema(
 			trim: true
 		},
 		settings: LeagueSettings,
+		archived: {
+			type: Boolean,
+			required: true,
+			default: false
+		},
 		staff: [{
 			role: String,
 			email: String,

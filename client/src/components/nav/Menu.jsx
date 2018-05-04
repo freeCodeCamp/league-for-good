@@ -22,23 +22,52 @@ const Menu = props => {
 		<Drawer open={open} width={'15%'}>
 			<List style={cssMenu.drawer.list}>
 				{
-					leagues.map((league, i) => (
-						<ListItem
-							containerElement={<Link to={Links.TEAM_LIST}/>}
-							key={i}
-							leftIcon={
-								<Avatar
-									backgroundColor={cssMenu.avatar.backgroundColor}
-									src={SportsIcons[league.sportType]}
-								/>
-							}
-							onClick={() => selectLeague(league)}
-							primaryText={league.name}
-						/>
+					leagues.filter(league => league.archived === false)
+						.map((league, i) => {
+							console.log(league);
+							return (
+							<ListItem
+								containerElement={<Link to={Links.TEAM_LIST}/>}
+								key={i}
+								leftIcon={
+									<Avatar
+										backgroundColor={cssMenu.avatar.backgroundColor}
+										src={SportsIcons[league.sportType]}
+									/>
+								}
+								onClick={() => selectLeague(league)}
+								primaryText={league.name}
+							/>
+							);
+						}
+					)
+				}
+				{ leagues.filter(league => league.archived === false).length > 0 ?
+					<Divider /> :
+					<noScript />
+				}
+				{
+					leagues.filter(league => league.archived === true)
+						.map((league, i) => (
+							<ListItem
+								containerElement={<Link to={Links.TEAM_LIST} />}
+								key={i}
+								leftIcon={
+									<Avatar
+										backgroundColor={cssMenu.avatar.backgroundColor}
+										src={SportsIcons[league.sportType]}
+									/>
+								}
+								onClick={() => selectLeague(league)}
+								primaryText={league.name}
+							/>
 						)
 					)
 				}
-				{ leagues.length > 0 ? <Divider /> : <noScript /> }
+				{leagues.filter(league => league.archived === true).length > 0 ?
+					<Divider /> :
+					<noScript />
+				}
 				<ListItem
 					containerElement={<Link to='/create' />}
 					leftIcon={<AddCircle />}
