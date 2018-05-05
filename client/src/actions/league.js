@@ -43,6 +43,7 @@ export function deleteLeague(_, dispatch, props) {
 export function editLeague(formVals, dispatch, props) {
 	const { leagueName } = formVals;
 	const { leagueId } = props;
+	const archived = props.leagueInfo.archived === true;
 	const { sportType } = props.leagueInfo;
 	const url = `${ROOT_URL}/league/update/${leagueId}`;
 	const body = {
@@ -57,7 +58,8 @@ export function editLeague(formVals, dispatch, props) {
 					[leagueId]: {
 						_id: leagueId,
 						name: leagueName,
-						sportType: sportType
+						sportType: sportType,
+						archived: archived
 					}
 				}
 			});

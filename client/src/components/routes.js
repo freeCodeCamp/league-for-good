@@ -22,6 +22,7 @@ export const SETTINGS_DELETE_LEAGUE = '/dashboard/settings/delete';
 export const SETTINGS_ADD_STAFF_FORM = '/dashboard/settings/create';
 export const SETTINGS_STAFF_LIST = '/dashboard/settings/staff';
 export const SETTINGS_EDIT_LEAGUE_NAME = '/dashboard/settings/leagueName';
+export const SETTINGS_EDIT_ARCHIVE_LEAGUE = '/dashboard/settings/archive';
 
 // Season routes
 export const SEASON_LIST = '/dashboard/seasons/list';
