@@ -26,14 +26,20 @@ export default class FormTemplate extends React.Component {
 		};
 	}
 
-	handleTeamSelection(id, newTeamId, oldTeamId, fieldId) {
-		const newState = fieldId === 'home' ? {home: newTeamId} : {away: newTeamId};
+	handleHomeTeamSelection(id, newTeamId) {
+		const newState = { home: newTeamId };
+		this.setState(newState);
+	}
+
+	handleAwayTeamSelection(id, newTeamId) {
+		const newState = { away: newTeamId };
 		this.setState(newState);
 	}
 
 	render() {
 		const { handleSubmit, teams, title, reset } = this.props;
-		this.handleTeamSelection = this.handleTeamSelection.bind(this);
+		this.handleHomeTeamSelection = this.handleHomeTeamSelection.bind(this);
+		this.handleAwayTeamSelection = this.handleAwayTeamSelection.bind(this);
 		return (
 			<div style={cssContent.body}>
 				<Navigation tooltip='Go Back'>
@@ -66,10 +72,7 @@ export default class FormTemplate extends React.Component {
 							floatingLabelText='Home Team'
 							hintText='Select the home team'
 							name='homeTeamId'
-							onChange={(i, n, o) => {
-								this.handleTeamSelection(i, n, o, 'home');
-								}
-							}
+							onChange={this.handleHomeTeamSelection}
 							style={cssDashboard.settings.forms.add.selectField}
 							>
 							{
@@ -87,10 +90,7 @@ export default class FormTemplate extends React.Component {
 							floatingLabelText='Opponent'
 							hintText='Select the an opponent'
 							name='awayTeamId'
-							onChange={(i, n, o) => {
-								this.handleTeamSelection(i, n, o, 'away');
-								}
-							}
+							onChange={this.handleAwayTeamSelection}
 							style={cssDashboard.settings.forms.add.selectField}
 							>
 							{
