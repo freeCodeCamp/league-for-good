@@ -20,9 +20,8 @@ const LeagueArchiveForm = props => {
                         component={Checkbox}
                         label='Check if team should be archived'
                         labelPosition='left'
-                        labelStyle={cssDashboard.teams.forms.edit.checkboxWide}
+                        // labelStyle={cssDashboard.teams.forms.edit.checkboxWide}
                         name='archived'
-
                     />
                 </div>
             </form>
