@@ -128,8 +128,14 @@ export const cssDashboard = {
 				checkbox: {
 					width: '125px'
 				},
+				checkboxWide: {
+					width: '250px'
+				},
 				checkboxDiv: {
 					float: 'right'
+				},
+				checkboxWideDiv: {
+					float: 'left'
 				}
 			}
 		}

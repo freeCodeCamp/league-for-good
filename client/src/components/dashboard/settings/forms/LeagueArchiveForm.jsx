@@ -4,32 +4,25 @@ import { Checkbox } from 'redux-form-material-ui';
 import PropTypes from 'prop-types';
 
 import { cssContent, cssDashboard } from '../../../styles';
-import { editLeague, openSnackbar } from '../../../../actions/index';
+import { switchArchiveLeague } from '../../../../actions/index';
 import { connect } from 'react-redux';
 
 const LeagueArchiveForm = props => {
-    // this appears to be a ref, function actually loads in the
-    // connect->reduxForm?
-    const { handleSubmit } = props;
-    // console.log(props);
-    // const checked = props.leagueInfo && props.leagueInfo.archived;
-    // console.log(checked);
-    console.log(props.leagueInfo && props.leagueInfo.archived);
+
     return (
         <div style={cssContent.body}>
-            <h1 style={cssDashboard.title}>Enter New League Name</h1>
             <form
-                onSubmit={handleSubmit}
                 style={cssDashboard.form}
                 >
-                <div style={cssDashboard.teams.forms.edit.checkboxDiv}>
+                <div style={cssDashboard.teams.forms.edit.checkboxWideDiv}>
                     <Field
-                        checked={props.leagueInfo && props.leagueInfo.archived}
+                        checked={props.initialValues.archived}
                         component={Checkbox}
-                        label='Check if team is active'
+                        label='Check if team should be archived'
                         labelPosition='left'
-                        labelStyle={cssDashboard.teams.forms.edit.checkbox}
+                        labelStyle={cssDashboard.teams.forms.edit.checkboxWide}
                         name='archived'
+
                     />
                 </div>
             </form>
@@ -38,27 +31,22 @@ const LeagueArchiveForm = props => {
 };
 
 LeagueArchiveForm.propTypes = {
-    handleSubmit: PropTypes.func
+    handleSubmit: PropTypes.func,
+    initialValues: PropTypes.object
 };
 
 function mapStateToProps(state) {
-    console.log('mapping state to props');
     const id = state.league.selected;
+    let archived = state.league[id]['archived'];
+    let initialValues = { archived };
     return {
+        initialValues,
         leagueId: state.league.selected,
-        leagueInfo: state.league[id],
-        snackbar: state.snackbar
+        leagueInfo: state.league[id]
     };
 }
 
 export default connect(mapStateToProps)(reduxForm({
     form: 'LeagueArchiveForm',
-    onSubmit: editLeague,
-    onSubmitSuccess: openSnackbar
+    onChange: switchArchiveLeague
 })(LeagueArchiveForm));
-
-// export default reduxForm({
-//     form: 'LeagueArchiveForm',
-//     onSubmit: editLeague,
-//     onSubmitSuccess: openSnackbar
-// })(LeagueArchiveForm);

@@ -94,3 +94,32 @@ export function selectLeague(leagueId) {
 	};
 
 }
+
+export function switchArchiveLeague(formVals, dispatch, props) {
+	const { archived } = formVals;
+	const { leagueId } = props;
+	const leagueName = props.leagueInfo.name;
+	const { sportType } = props.leagueInfo;
+	const url = `${ROOT_URL}/league/update/${leagueId}`;
+	const body = {
+		archived
+	};
+	axios.put(url, body)
+		.then(() => {
+			return dispatch({
+				type: EDIT_LEAGUE,
+				archived,
+				payload: {
+					[leagueId]: {
+						_id: leagueId,
+						name: leagueName,
+						sportType: sportType,
+						archived: archived
+					}
+				}
+			});
+		})
+		.catch(error => {
+			throw new Error(error);
+		});
+}
