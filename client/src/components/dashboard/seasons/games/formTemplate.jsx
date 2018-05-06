@@ -21,8 +21,8 @@ export default class FormTemplate extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			home: props.initialValues && props.initialValues.homeTeamId,
-			away: props.initialValues && props.initialValues.awayTeamId
+			home: props.initialValues.homeTeamId,
+			away: props.initialValues.awayTeamId
 		};
 	}
 
@@ -73,14 +73,13 @@ export default class FormTemplate extends React.Component {
 							style={cssDashboard.settings.forms.add.selectField}
 							>
 							{
-								teams.filter(team => team._id !== this.state.away).map(team => (
+								teams.map(team => team._id !== this.state.away ? (
 									<MenuItem
 										key={team._id}
 										primaryText={team.name}
 										value={team._id}
 									/>
-									)
-								)
+								) : '' )
 							}
 						</Field>
 						<Field
@@ -95,15 +94,13 @@ export default class FormTemplate extends React.Component {
 							style={cssDashboard.settings.forms.add.selectField}
 							>
 							{
-								teams.filter(team => team._id !== this.state.home).map(team => (
+								teams.map(team => team._id !== this.state.home ? (
 									<MenuItem
 										key={team._id}
-										// onChange={(e) => {this.handleTeamSelection(e, 'away');}}
 										primaryText={team.name}
 										value={team._id}
 									/>
-									)
-								)
+								) : '' )
 							}
 						</Field>
 					</div>
