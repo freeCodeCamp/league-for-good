@@ -128,14 +128,8 @@ export const cssDashboard = {
 				checkbox: {
 					width: '125px'
 				},
-				checkboxWide: {
-					width: '250px'
-				},
 				checkboxDiv: {
 					float: 'right'
-				},
-				checkboxWideDiv: {
-					float: 'left'
 				}
 			}
 		}
@@ -178,6 +172,14 @@ export const cssDashboard = {
 					padding: '0px',
 					textAlign: 'left',
 					float: 'right'
+				}
+			},
+			archive: {
+				label: {
+					width: '250px'
+				},
+				checkboxDiv: {
+					marginLeft: '20px'
 				}
 			}
 		}
