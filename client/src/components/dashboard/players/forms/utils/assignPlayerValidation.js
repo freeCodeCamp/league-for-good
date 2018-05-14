@@ -1,18 +1,20 @@
-
 export default function(val) {
-	const errors = {};
+	const errors = { team: {} };
 
-	if (!val.playerId) {
+	if (!val.team || !val.team.teamId) {
+		errors.team.teamId = 'Please select a team';
+	} else if (!val.playerId) {
 		errors.playerId = 'Please select a player';
+	} else if (!val.team.position) {
+		errors.team.position = 'Please choose one or more position';
+	} else if (typeof val.team.jerseyNum !== 'number') {
+		errors.team.jerseyNum = 'Please select a jersey number';
+	} else {
+		const jerseyNum = val.team.jerseyNum;
+		if (jerseyNum < 0 || jerseyNum > 99) {
+				errors.team.jerseyNum = 'Jersey numbers can be between 0 and 99';
+		}
 	}
-	if (!val.teamId) {
-		errors.teamId = 'Please select a team';
-	}
-	if (!val.position) {
-		errors.position = 'Please choose one or more position';
-	}
-	if (!val.jerseyNum ) {
-		errors.jerseyNum = 'Please select a jersey number';
-	}
+
 	return errors;
 }
