@@ -4,7 +4,7 @@ import Navigation from '../../helper/NavigationArrow.jsx';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import MenuItem from 'material-ui/MenuItem';
-import { Field, reduxForm } from 'redux-form';
+import { Field } from 'redux-form';
 
 
 import { cssContent, cssDashboard } from '../../../styles';
@@ -13,18 +13,37 @@ import { cssContent, cssDashboard } from '../../../styles';
 import {
 	TextField,
 	SelectField,
-	DatePicker,
-	Checkbox
+	DatePicker
 } from 'redux-form-material-ui';
 
 
-const FormTemplate = props => {
-	const { handleSubmit, teams } = props;
-	
-	return (
+export default class FormTemplate extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			home: props.initialValues.homeTeamId,
+			away: props.initialValues.awayTeamId
+		};
+	}
+
+	handleHomeTeamSelection(id, newTeamId) {
+		const newState = { home: newTeamId };
+		this.setState(newState);
+	}
+
+	handleAwayTeamSelection(id, newTeamId) {
+		const newState = { away: newTeamId };
+		this.setState(newState);
+	}
+
+	render() {
+		const { handleSubmit, teams, title, reset } = this.props;
+		this.handleHomeTeamSelection = this.handleHomeTeamSelection.bind(this);
+		this.handleAwayTeamSelection = this.handleAwayTeamSelection.bind(this);
+		return (
 			<div style={cssContent.body}>
 				<Navigation tooltip='Go Back'>
-					<h3>{props.title}</h3>
+					<h3>{title}</h3>
 				</Navigation>
 				<form
 					onSubmit={ handleSubmit }
@@ -36,7 +55,7 @@ const FormTemplate = props => {
 							component={DatePicker}
 							floatingLabelStyle={cssDashboard.formRequired}
 							floatingLabelText='Game Date'
-							format={v => v? new Date(v) : null}
+							format={v => v ? new Date(v) : null}
 							formatDate={d => d.toDateString()}
 							name='datePlayed'
 						/>
@@ -53,16 +72,17 @@ const FormTemplate = props => {
 							floatingLabelText='Home Team'
 							hintText='Select the home team'
 							name='homeTeamId'
+							onChange={this.handleHomeTeamSelection}
 							style={cssDashboard.settings.forms.add.selectField}
 							>
-							{
-								teams.map(team => 
-									<MenuItem 
+							{teams.filter(team => team._id !== this.state.away)
+								.map(team => (
+									<MenuItem
 										key={team._id}
 										primaryText={team.name}
 										value={team._id}
 									/>
-								)
+								))
 							}
 						</Field>
 						<Field
@@ -70,41 +90,41 @@ const FormTemplate = props => {
 							floatingLabelText='Opponent'
 							hintText='Select the an opponent'
 							name='awayTeamId'
+							onChange={this.handleAwayTeamSelection}
 							style={cssDashboard.settings.forms.add.selectField}
 							>
-							{
-								teams.map(team => 
-									<MenuItem 
+							{teams.filter(team => team._id !== this.state.home)
+								.map(team => (
+									<MenuItem
 										key={team._id}
 										primaryText={team.name}
 										value={team._id}
 									/>
-								)
+								))
 							}
-						</Field>							
+						</Field>
 					</div>
 					<RaisedButton
 						label='Submit'
 						primary={true}
-						style={{marginRight:5}}
+						style={{marginRight: 5}}
 						type='submit'
 					/>
 					<RaisedButton
 						label='Reset'
-						onTouchTap={props.reset}
+						onTouchTap={reset}
 						secondary={true}
-					/>					
+					/>
 				</form>
 			</div>
-	);
-};
+		);
+	}
+}
 
 FormTemplate.propTypes = {
 	handleSubmit: PropTypes.func,
+	initialValues: PropTypes.object,
 	reset: PropTypes.func,
+	teams: PropTypes.array,
 	title: PropTypes.string
 };
-
-export default FormTemplate;
-
-

@@ -16,6 +16,9 @@ export const cssDashboard = {
 	tabs: {
 		inkBar: {
 			zIndex: 999
+		},
+		tab: {
+			height: '48px'
 		}
 	},
 	title: {
