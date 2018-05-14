@@ -75,14 +75,14 @@ export default class FormTemplate extends React.Component {
 							onChange={this.handleHomeTeamSelection}
 							style={cssDashboard.settings.forms.add.selectField}
 							>
-							{
-								teams.map(team => team._id !== this.state.away ? (
+							{teams.filter(team => team._id !== this.state.away)
+								.map(team => (
 									<MenuItem
 										key={team._id}
 										primaryText={team.name}
 										value={team._id}
 									/>
-								) : '' )
+								))
 							}
 						</Field>
 						<Field
@@ -93,14 +93,14 @@ export default class FormTemplate extends React.Component {
 							onChange={this.handleAwayTeamSelection}
 							style={cssDashboard.settings.forms.add.selectField}
 							>
-							{
-								teams.map(team => team._id !== this.state.home ? (
+							{teams.filter(team => team._id !== this.state.home)
+								.map(team => (
 									<MenuItem
 										key={team._id}
 										primaryText={team.name}
 										value={team._id}
 									/>
-								) : '' )
+								))
 							}
 						</Field>
 					</div>
