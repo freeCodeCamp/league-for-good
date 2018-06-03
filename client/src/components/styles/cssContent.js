@@ -25,9 +25,14 @@ export const cssContent = {
 			style: {
 				margin: '10px'
 			},
-			iconStyle: {
+			// rename previous iconStyle style ...
+			iconStyleActive: {
 				borderBottom: '4px solid ' + theme.accent3Color,
 				paddingBottom: '5px'
+			},
+			// and add new 'inactive' style which matches verticla alignment
+			iconStyle: {
+				paddingBottom: '9px'
 			},
 			hoveredStyle: {
 				backgroundColor: theme.accent3Color,
