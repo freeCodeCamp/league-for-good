@@ -7,7 +7,7 @@ import {
 	SEASON_CURR_TEAMS,
 	SEASON_GAME_LIST,
 	makeLinkDynamic
-	} from '../../../routes';
+} from '../../../routes';
 import IconButton from 'material-ui/IconButton';
 import ListIcon from 'material-ui/svg-icons/action/list';
 import { cssDashboard } from '../../../styles';
@@ -33,7 +33,7 @@ const SeasonLink = props => {
 	return (
 		<IconButton
 			hoveredStyle={cssDashboard.table.iconHover}
-			onTouchTap={() => handleClick(props, url)}
+			onClick={() => handleClick(props, url)}
 			>
 			<ListIcon />
 		</IconButton>
