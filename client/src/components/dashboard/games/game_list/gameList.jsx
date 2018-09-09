@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchGames } from '../../../../actions/index';
@@ -6,21 +7,21 @@ import PropTypes from 'prop-types';
 import { cssContent } from '../../../styles';
 import TableTemplate from '../../helper/tableTemplate/tableTemplate.jsx';
 import RaisedButton from 'material-ui/RaisedButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
+// import ContentAdd from 'material-ui/svg-icons/content/add';
 import { makeTable } from './data';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { NEW_GAME as route } from '../../../routes';
 
 function formatSubtitle(season) {
 	const { startDate, endDate } = season;
 	const dString = d => new Date(d).toDateString();
 
-	return `${dString(startDate)} - ${dString(endDate)}`
+	return `${dString(startDate)} - ${dString(endDate)}`;
 }
 
 const GameList = props => {
-	const { season, history } = props;
-
+	// const { season, history } = props;
+	const { season } = props;
 	return (
 		<div style={cssContent.body}>
 			{
@@ -61,8 +62,10 @@ function mapDispatchToProps(dispatch) {
 
 GameList.propTypes = {
 	headers: PropTypes.array,
+	history: PropTypes.object,
 	loading: PropTypes.bool,
-	rows: PropTypes.arrayOf(PropTypes.array)
+	rows: PropTypes.arrayOf(PropTypes.array),
+	season: PropTypes.object
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameList);

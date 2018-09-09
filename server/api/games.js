@@ -3,12 +3,12 @@ const express = require('express');
 const Router = express.Router();
 const mongoose = require('mongoose');
 
-const League = mongoose.model('league');
-const Seasons = mongoose.model('season');
-const Teams = mongoose.model('team');
+// const League = mongoose.model('league');
+// const Seasons = mongoose.model('season');
+// const Teams = mongoose.model('team');
 const Games = mongoose.model('game');
 
-const seedGames = (req, res) => {
+/* const seedGames = (req, res) => {
 	const { leagueId } = req.params;
 	const now = new Date();
 
@@ -21,29 +21,29 @@ const seedGames = (req, res) => {
 		.lean()
 		.exec()
 		.then(s => {
-			let d = new Date(s.startDate)
+			// let d = new Date(s.startDate);
 			let [...teams] = s.teams;
 
-			res.send(teams)
+			res.send(teams);
 		})
-		.catch(e => res.send({ error: e }))
-};
+		.catch(e => res.send({ error: e }));
+};*/
 
 function createNewGame(req, res) {
-	
+
 	Games.create(req.body)
-		.then(game => 
+		.then(game =>
 			res.send(game)
-		)
+		);
 }
 
 function fetchGames(req, res) {
 	const seasonId = req.params.seasonId;
-	
+
 	Games.find({seasonId})
 		.exec()
 		.then(games => res.send(games))
-		.catch(error => { throw error })
+		.catch(error => { throw error; });
 }
 
 function updateGame(req, res) {
@@ -54,7 +54,7 @@ function updateGame(req, res) {
 		.then(() =>
 			res.status(200).send('update succeeded')
 		)
-		.catch(err => { throw err })
+		.catch(err => { throw err; });
 }
 
 function deleteGame(req, res) {
@@ -62,12 +62,12 @@ function deleteGame(req, res) {
 		.then(() =>
 			res.status(200).send('deletion succeeded')
 		)
-		.catch(err => { throw err })
+		.catch(err => { throw err; });
 }
 
 Router.route('/new').post(createNewGame);
 Router.route('/fetch/:seasonId').get(fetchGames);
 Router.route('/update/:gameId').put(updateGame);
 Router.route('/remove/:gameId').delete(deleteGame);
-//Router.route('/seed/:leagueId').get(seedGames);
+// Router.route('/seed/:leagueId').get(seedGames);
 module.exports = Router;
