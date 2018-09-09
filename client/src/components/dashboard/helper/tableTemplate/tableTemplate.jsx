@@ -155,7 +155,7 @@ class TableTemplate extends Component {
 						</h1>
 				}
 				{
-					this.props.subtitle && 
+					this.props.subtitle &&
 						<p style={cssDashboard.title}>
 							<b>{this.props.subtitle}</b>
 						</p>

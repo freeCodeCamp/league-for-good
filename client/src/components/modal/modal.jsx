@@ -71,7 +71,7 @@ class Modal extends Component {
 					open={open}
 					title={title}
 					titleStyle={cssModal.title}
-				>
+					>
 					{Children ? <Children {...data} /> : null}
 				</Dialog>
 			</div>
