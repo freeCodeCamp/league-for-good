@@ -2,8 +2,8 @@ import {
 	FETCH_ALL_SEASONS,
 	CREATE_SEASON,
 	REMOVE_SEASON,
-	UPDATE_SEASON,
-	SELECT_SEASON
+	UPDATE_SEASON
+	// SELECT_SEASON
 } from '../actions/types';
 
 import { combineReducers } from 'redux';
@@ -49,4 +49,3 @@ export default combineReducers({
 	list: seasonList,
 	games: GamesReducer
 });
-

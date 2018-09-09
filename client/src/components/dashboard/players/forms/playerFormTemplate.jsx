@@ -6,7 +6,7 @@ import { TextField, SelectField} from 'redux-form-material-ui';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import { getFormVals } from './playerFormData.selector';
-import { openSnackbar } from '../../../../actions/index';
+// import { openSnackbar } from '../../../../actions/index';
 import { cssContent, cssDashboard } from '../../../styles';
 import validate from './utils/addPlayerFormValidation';
 
@@ -157,6 +157,7 @@ function mapStateToProps(state, ownProps) {
 
 PlayerFormTemplate = reduxForm({
 	validate
+	// onSubmitSuccess: openSnack
 })(PlayerFormTemplate);
 
 export default connect(mapStateToProps)(PlayerFormTemplate);
