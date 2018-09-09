@@ -20,7 +20,8 @@ const CreateLeagueButton = (props) => {
 			icon={<CreateLeagueIcon icon={icon} />}
 			label={label}
 			// onTouchTap={() => props.onClick(props.label)}
-			onTouchTap={() => onClick(label)}
+			// onTouchTap={() => onClick(label)}
+			onClick={() => onClick(label)}
 			style={cssCreateLeague.sportButton.style}
 		/>
 	);

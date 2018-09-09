@@ -17,11 +17,11 @@ import themes from './components/styles/themes';
 
 // Main app component using 'connect' wrapper to dynamically set muiTheme
 
-import injectTapEventPlugin from 'react-tap-event-plugin';
+// import injectTapEventPlugin from 'react-tap-event-plugin';
 
 
 // This must be invoked in order for the Material-UI theme provider to work
-injectTapEventPlugin();
+// injectTapEventPlugin();
 
 const App = props => {
 	const { palette } = props;
