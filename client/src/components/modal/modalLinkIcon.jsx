@@ -33,7 +33,7 @@ const ModalLink = props => {
 	return (
 		<IconButton
 			hoveredStyle={cssDashboard.table.iconHover}
-			onTouchTap={()=> openModal(modalView, modalData)}
+			onClick={()=> openModal(modalView, modalData)}
 			>
 			<IconSVG/>
 		</IconButton>
@@ -53,4 +53,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(null, mapDispatchToProps)(ModalLink);
-

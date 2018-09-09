@@ -112,7 +112,7 @@ export default class FormTemplate extends React.Component {
 					/>
 					<RaisedButton
 						label='Reset'
-						onTouchTap={reset}
+						onClick={reset}
 						secondary={true}
 					/>
 				</form>

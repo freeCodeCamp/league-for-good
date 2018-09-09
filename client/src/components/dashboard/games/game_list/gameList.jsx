@@ -24,15 +24,18 @@ const GameList = props => {
 	return (
 		<div style={cssContent.body}>
 			{
-				props.season.active && 
-				<RaisedButton 
+				props.season.active &&
+				<RaisedButton
 					label='New Game'
-					onTouchTap={()=> 
-						props.history.push({pathname:route, state: {season}})}
+					// onTouchTap has been deprecated and replaced with onClick
+					// currently commented out bc don't know where in the app this happens
+					// and want to make sure it works before deleting it outright -Scott 9/9/18
+					// onTouchTap={() => props.history.push({pathname:route, state: {season}})}
+					onClick={() => props.history.push({pathname:route, state: {season}})}
 					primary={true}
 					style={{marginLeft: 15}}
-				/>				
-			}				
+				/>
+			}
 			<TableTemplate
 				headers={props.headers}
 				rows={props.rows}
@@ -47,7 +50,7 @@ const GameList = props => {
 const selector = makeTable();
 
 function mapStateToProps(state, ownProps) {
-	
+
 	const { rows, headers, season } = selector(state, ownProps);
 	return { rows, headers, season };
 }
@@ -63,5 +66,3 @@ GameList.propTypes = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameList);
-
-

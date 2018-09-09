@@ -1,11 +1,11 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchGames } from '../../../../actions/index'; 
-import { 
-	SEASON_CURR_TEAMS, 
+import { fetchGames } from '../../../../actions/index';
+import {
+	SEASON_CURR_TEAMS,
 	SEASON_GAME_LIST,
-	 makeLinkDynamic 
+	 makeLinkDynamic
 	} from '../../../routes';
 import IconButton from 'material-ui/IconButton';
 import ListIcon from 'material-ui/svg-icons/action/list';
@@ -29,10 +29,10 @@ const SeasonLink = props => {
 	} else {
 		url = makeLinkDynamic(SEASON_CURR_TEAMS, season._id );
 	}
-	return (	
-		<IconButton 
+	return (
+		<IconButton
 			hoveredStyle={cssDashboard.table.iconHover}
-			onTouchTap={() => handleClick(props, url)}
+			onClick={() => handleClick(props, url)}
 			>
 			<ListIcon />
 		</IconButton>

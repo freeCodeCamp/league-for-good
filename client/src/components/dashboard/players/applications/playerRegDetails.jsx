@@ -23,7 +23,7 @@ const PlayerApplication = ({ location, history }) => {
 	return (
 		<div style={cssContent.body}>
 			<IconButton
-				onTouchTap={() => history.goBack()}
+				onClick={() => history.goBack()}
 				tooltip='Back'
 				>
 				<BackArrow />
