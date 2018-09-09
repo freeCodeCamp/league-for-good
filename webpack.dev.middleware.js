@@ -1,5 +1,5 @@
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpack = require('webpack');
-const webpackConfig = require('./webpack.config.js');
+const webpackConfig = require('./webpack.config.js')({mode: 'development'});
 
 module.exports = webpackMiddleware(webpack(webpackConfig));
