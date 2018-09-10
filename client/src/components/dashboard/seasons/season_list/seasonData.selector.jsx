@@ -67,7 +67,6 @@ export const colData = [
 ];
 
 
-
 function getCellValue(season, column, history) {
 	const { cellProp, action, modalView } = column;
 
@@ -84,13 +83,13 @@ function getCellValue(season, column, history) {
 		return season[cellProp];
 	}
 
-	
+
 }
 
 
 function makeSeasonRow(history) {
-	
-	return function (season) {
+
+	return function(season) {
 		season.active = season.active ? 'Active' : 'Not Active';
 		season.start = formatDate(season.startDate);
 		season.end = formatDate(season.endDate);
@@ -102,8 +101,8 @@ function makeSeasonRow(history) {
 				style: col.style
 			}
 		));
-	}
-};
+	};
+}
 
 
 export const configSeasonForTable = () =>
@@ -113,10 +112,10 @@ export const configSeasonForTable = () =>
 			const makeRow = makeSeasonRow(history);
 			return (
 				{
-					rows : seasons.map(makeRow),
+					rows: seasons.map(makeRow),
 					headers: colData
 				}
-			)
+			);
 		}
 	);
 

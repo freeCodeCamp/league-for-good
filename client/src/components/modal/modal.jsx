@@ -48,14 +48,14 @@ class Modal extends Component {
 				backgroundColor={cssModal.raisedButton.backgroundColor}
 				label={actionLabel || 'Submit'}
 				labelStyle={cssModal.raisedButton.label}
-				onTouchTap={() => handleSubmit(data)}
+				onClick={() => handleSubmit(data)}
 				style={cssModal.raisedButton.style}
 			/>,
 			<RaisedButton
 				backgroundColor={cssModal.raisedButton.backgroundColor}
 				label='Cancel'
 				labelStyle={cssModal.raisedButton.label}
-				onTouchTap={this.handleClose}
+				onClick={this.handleClose}
 				style={cssModal.raisedButton.style}
 			/>
 		];
@@ -71,7 +71,7 @@ class Modal extends Component {
 					open={open}
 					title={title}
 					titleStyle={cssModal.title}
-				>
+					>
 					{Children ? <Children {...data} /> : null}
 				</Dialog>
 			</div>

@@ -51,7 +51,7 @@ const Menu = props => {
 				/>
 				<ListItem
 					leftIcon={<LogOutIcon/>}
-					onTouchTap={()=> openModal('logout')}
+					onClick={()=> openModal('logout')}
 					primaryText='Log out'
 				/>
 			</List>

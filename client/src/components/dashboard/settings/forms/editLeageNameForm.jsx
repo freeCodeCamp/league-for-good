@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
 
@@ -33,6 +34,10 @@ const EditLeageNameForm = props => {
             </form>
         </div>
     );
+};
+
+EditLeageNameForm.propTypes = {
+	handleSubmit: PropTypes.func
 };
 
 function mapStateToProps(state) {
