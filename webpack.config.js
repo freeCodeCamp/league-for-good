@@ -4,7 +4,8 @@ const path = require('path');
 
 module.exports = env =>({
 	mode: env.mode,
-	devtool: env.mode === 'development' ? 'cheap-module-eval-source-map' : 'source-map',
+	devtool: env.mode === 'development' ?
+	'cheap-module-eval-source-map' : 'source-map',
 	entry: './client/index.js',
 	output: {
 		path: '/',
