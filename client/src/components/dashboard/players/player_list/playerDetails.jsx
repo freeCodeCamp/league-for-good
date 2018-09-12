@@ -18,7 +18,7 @@ const Player = ({ player, history }) => {
 	return (
 		<div style={cssContent.body}>
 			<IconButton
-				onTouchTap={() => history.goBack()}
+				onClick={() => history.goBack()}
 				tooltip='Back to team roster'
 				>
 				<BackArrow />
@@ -26,18 +26,19 @@ const Player = ({ player, history }) => {
 			<h1 style={cssDashboard.title}>
 				{player.fullName}
 			</h1>
-			<h4>Email: {player.email}</h4>
-			<h4>Phone: {player.phoneNum}</h4>
+			<h4 style={cssDashboard.players.title}>Email: {player.email}</h4>
+			<h4 style={cssDashboard.players.title}>Phone: {player.phoneNum}</h4>
 
 			<hr/>
 			<h3 style={cssDashboard.players.title}>Teams:</h3>
 			{
 				player.teams.map(team => (
-					<div key={team.teamId}>
+					<div key={team.teamId} style={cssDashboard.players.details}>
 						<h4>Team Id: {team.teamId}</h4>
 						<h4>Season Id: {team.seasonId}</h4>
 						<h4>Jersey Number: {team.jerseyNum}</h4>
 						<h4>Positions: {team.position.join(', ')}</h4>
+						<hr/>
 					</div>
 					// TO DO
 					// * Populate teams in players teams on server so
