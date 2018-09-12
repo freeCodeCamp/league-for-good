@@ -34,13 +34,13 @@ export default class TableFooter extends Component {
 					<TableRowColumn style={{float: 'right'}}>
 						<IconButton
 							disabled={page === 0}
-							onTouchTap={()=> onClick(-1)}
+							onClick={()=> onClick(-1)}
 							>
 							<ChevronLeft/>
 						</IconButton>
 						<IconButton
 							disabled={(page + 1) * rowsPerPage >= total}
-							onTouchTap={()=> onClick(1)}
+							onClick={()=> onClick(1)}
 							>
 							<ChevronRight/>
 						</IconButton>

@@ -23,7 +23,7 @@ const FormButtons = props => {
 		<div style={btnContainerStyle}>
 			<RaisedButton
 				label='Reset'
-				onTouchTap={() => dispatch(reset(formName))}
+				onClick={() => dispatch(reset(formName))}
 				secondary={true}
 				style={{marginRight: 10}}
 			/>
@@ -45,4 +45,3 @@ FormButtons.propTypes = {
 };
 
 export default FormButtons;
-
