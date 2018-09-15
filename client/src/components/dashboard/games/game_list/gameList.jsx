@@ -28,11 +28,7 @@ const GameList = props => {
 				props.season.active &&
 				<RaisedButton
 					label='New Game'
-					// onTouchTap has been deprecated and replaced with onClick
-					// currently commented out bc don't know where in the app this happens
-					// and want to make sure it works before deleting it outright -Scott 9/9/18
-					// onTouchTap={() => props.history.push({pathname:route, state: {season}})}
-					onClick={() => props.history.push({pathname:route, state: {season}})}
+					onClick={() => props.history.push({pathname: route, state: {season}})}
 					primary={true}
 					style={{marginLeft: 15}}
 				/>

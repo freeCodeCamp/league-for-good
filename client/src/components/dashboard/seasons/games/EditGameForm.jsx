@@ -6,7 +6,6 @@ import FormTemplate from './formTemplate.jsx';
 import { getEditFormVals } from './formData';
 import { editGame, redirect } from '../../../../actions/index';
 
-
 const selector = getEditFormVals();
 
 function mapStateToProps(state, ownProps) {

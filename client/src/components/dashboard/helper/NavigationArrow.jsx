@@ -22,6 +22,7 @@ const TableNavigation = props => (
 	<div style={rootStyle}>
 		<div style={{width: '5%'}}>
 			<IconButton
+				onClick={() => props.history.goBack()}
 				onTouchTap={() => props.history.goBack()}
 				tooltip={props.tooltip}
 				>
