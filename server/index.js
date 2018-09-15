@@ -15,7 +15,6 @@ const MongoStore = require('connect-mongo')(session);
 
 const path = require('path');
 
-
 mongoose.Promise = global.Promise;
 
 mongoose.connect(MONGO_URI);
