@@ -47,21 +47,22 @@ let PlayerFormTemplate = props => {
 					<Field
 						component={TextField}
 						floatingLabelStyle={cssDashboard.formRequired}
-						floatingLabelText='Phone number'
-						hintText='Example: 1-323-339-3494'
+						floatingLabelText='Phone number*'
+						hintText='Example: 1-555-555-5555'
 						name='phoneNum'
 					/>
 				</div>
 				<div style={cssDashboard.formRow}>
 					<Field
 						component={TextField}
-						floatingLabelText='Address'
+						floatingLabelStyle={cssDashboard.formRequired}
+						floatingLabelText='Address*'
 						hintText='Address'
 						name='address.street'
 					/>
 					<Field
 						component={TextField}
-						floatingLabelText='City'
+						floatingLabelText='City*'
 						hintText='City'
 						name='address.city'
 					/>
@@ -69,13 +70,15 @@ let PlayerFormTemplate = props => {
 				<div style={cssDashboard.formRow}>
 					<Field
 						component={TextField}
-						floatingLabelText='State'
+
+						floatingLabelText='State*'
 						hintText='State'
 						name='address.state'
 					/>
 					<Field
 						component={TextField}
-						floatingLabelText='Country'
+
+						floatingLabelText='Country*'
 						hintText='Country'
 						name='address.country'
 					/>
