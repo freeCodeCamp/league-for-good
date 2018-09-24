@@ -110,7 +110,7 @@ const mappings = {
 	removeGame: {
 		title: 'Delete Upcoming Game?',
 		Children: DeleteGame,
-		onSubmit: 'deleteGame',
+		onSubmit: 'removeGame',
 		actionLabel: 'Delete'
 	}
 };
