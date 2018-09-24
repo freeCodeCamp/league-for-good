@@ -61,6 +61,7 @@ let PlayerFormTemplate = props => {
 					/>
 					<Field
 						component={TextField}
+						floatingLabelStyle={cssDashboard.formRequired}
 						floatingLabelText='City*'
 						hintText='City'
 						name='address.city'
@@ -69,14 +70,14 @@ let PlayerFormTemplate = props => {
 				<div style={cssDashboard.formRow}>
 					<Field
 						component={TextField}
-
+						floatingLabelStyle={cssDashboard.formRequired}
 						floatingLabelText='State*'
 						hintText='State'
 						name='address.state'
 					/>
 					<Field
 						component={TextField}
-
+            floatingLabelStyle={cssDashboard.formRequired}
 						floatingLabelText='Country*'
 						hintText='Country'
 						name='address.country'
