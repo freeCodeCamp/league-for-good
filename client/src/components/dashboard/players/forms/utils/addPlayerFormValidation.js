@@ -9,7 +9,7 @@ const streetRegex = /[a-z0-9\s]*$/i;
 // const addressRegex = /[a-z\s]*$/i;
 // prevent user from submitting incorrect player info
 export default function(val) {
-	const errors = { team: {}, address: {} };
+	const errors = { team: {} };
 	if (!val.firstName) {
 		errors.firstName = 'Please provide a first name';
 	} else if (!val.lastName) {
@@ -28,5 +28,7 @@ export default function(val) {
 		&& !jerseyRegex.test(val.team.jerseyNum)) {
 		errors.team.jerseyNum = 'A jersey number should be between 0 and 99';
 	}
+
+
 	return errors;
 }

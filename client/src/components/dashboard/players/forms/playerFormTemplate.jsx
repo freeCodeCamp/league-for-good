@@ -46,8 +46,7 @@ let PlayerFormTemplate = props => {
 					/>
 					<Field
 						component={TextField}
-						floatingLabelStyle={cssDashboard.formRequired}
-						floatingLabelText='Phone number*'
+						floatingLabelText='Phone number'
 						hintText='Example: 1-555-555-5555'
 						name='phoneNum'
 					/>
