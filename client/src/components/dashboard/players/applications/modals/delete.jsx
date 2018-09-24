@@ -5,7 +5,7 @@ const DeletePlayerRegModal = ({player}) => (
 	<div>
 		<h2>
 			Are you sure you want to permanently
-			delete { player.fullName }'s registration?
+			delete { player.fullName } registration?
 		</h2>
 	</div>
 );

@@ -16,8 +16,7 @@ const MongoStore = require('connect-mongo')(session);
 const path = require('path');
 
 mongoose.Promise = global.Promise;
-
-mongoose.connect(MONGO_URI);
+mongoose.connect(MONGO_URI, { useNewUrlParser: true });
 mongoose.connection
     .once('open', () => console.log('Connected to MongoDB'))
     .on('error', error => console.log('Error connecting to MongoDB:', error));
