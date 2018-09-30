@@ -29,7 +29,7 @@ const Bar = props => {
 			iconElementRight={ <ThemeIcon {...iconProps} />}
 			iconStyleLeft={css.text}
 			onLeftIconButtonClick={toggleMenu}
-			onLeftIconButtonTouchTap={toggleMenu}
+			onLeftIconButtonClick={toggleMenu}
 			style={css.main}
 			title='League For Good'
 			titleStyle={css.text}
