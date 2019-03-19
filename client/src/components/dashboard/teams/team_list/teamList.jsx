@@ -35,9 +35,9 @@ class TeamTable extends Component {
 			if (filterValue === 'all') {
 				filterFlag = true;
 			} else if (filterValue === 'active') {
-				filterFlag = team.currentlyActive;
-			} else {
 				filterFlag = !team.currentlyActive;
+			} else {
+				filterFlag = team.currentlyActive;
 			}
 
 			return filterFlag;
