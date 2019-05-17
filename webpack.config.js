@@ -2,8 +2,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 
-module.exports = {
-	devtool: 'source-map',
+module.exports = env =>({
+	mode: env.mode,
+	devtool: env.mode === 'development' ? 'cheap-module-eval-source-map' : 'source-map',
 	entry: './client/index.js',
 	output: {
 		path: '/',
@@ -40,4 +41,4 @@ module.exports = {
 			template: 'client/index.html'
 		})
 	]
-};
+});

@@ -40,7 +40,7 @@ const GameSchema = new Schema({
 		away: {
 			type: Number,
 			default: 0,
-			min: 0			
+			min: 0
 		}
 	},
 
@@ -54,7 +54,7 @@ const GameSchema = new Schema({
 		away: [
 			{
 				type: Schema.Types.ObjectId,
-				ref: 'player'			
+				ref: 'player'
 			}
 		]}
 	},
@@ -64,4 +64,3 @@ const GameSchema = new Schema({
 );
 
 module.exports = mongoose.model('game', GameSchema);
-

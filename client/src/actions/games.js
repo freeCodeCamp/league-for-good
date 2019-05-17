@@ -30,7 +30,8 @@ export function removeGame({ game, seasonId }) {
 	};
 }
 
-export function fetchGames(seasonId, games) {
+// export function fetchGames(seasonId, games) {
+export function fetchGames(seasonId) {
 	// if (games[seasonId]) {
 	// 	return {
 	// 		type: 'FETCH_GAMES',

@@ -83,5 +83,3 @@ export default connect(mapStateToProps)(reduxForm({
 	onSubmit: addStaffMember,
 	onSubmitSuccess: openSnackbar
 })( AddStaffForm ));
-
-

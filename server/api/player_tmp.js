@@ -1,11 +1,11 @@
-const express  	= require('express');
+const express = require('express');
 
-const Router   	= express.Router();
+const Router = express.Router();
 const mongoose 	= require('mongoose');
-const faker 		= require('faker');
+const faker = require('faker');
 
-const Player 	= mongoose.model('player');
-const Teams   	= mongoose.model('team');
+const Player = mongoose.model('player');
+const Teams = mongoose.model('team');
 const random = (min, max) => Math.floor(Math.random() * (max - min) + min);
 
 // TMP FILE - Seeding a league with players
