@@ -16,7 +16,7 @@ const LeagueArchiveForm = props => {
                     <Field
                         checked={props.initialValues.archived}
                         component={Checkbox}
-                        label='Check if team should be archived'
+                        label='Check if league should be archived'
                         labelPosition='left'
                         labelStyle={cssDashboard.settings.forms.archive.label}
                         name='archived'
