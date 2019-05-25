@@ -181,6 +181,14 @@ export const cssDashboard = {
 					textAlign: 'left',
 					float: 'right'
 				}
+			},
+			archive: {
+				label: {
+					width: '250px'
+				},
+				checkboxDiv: {
+					marginLeft: '20px'
+				}
 			}
 		}
 	}

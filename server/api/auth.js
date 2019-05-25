@@ -33,7 +33,7 @@ function fetchInitialData(req, res, next) {
 	const query = { 'staff.email': user.email };
 
 	return Leagues.find(query)
-		.select('name _id sportType')
+		.select('name _id sportType archived')
 		.exec()
 		.then(leagueInfo => {
 			res.send({

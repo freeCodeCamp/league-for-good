@@ -7,6 +7,7 @@ import * as Links from '../../routes';
 import AddStaffForm from './forms/addStaffForm.jsx';
 import StaffList from './staff_list/staffList.jsx';
 import EditLeagueNameForm from './forms/editLeageNameForm.jsx';
+import LeagueArchiveForm from './forms/LeagueArchiveForm.jsx';
 // SETTINGS_ADD_STAFF_FORM
 
 const SettingsRoutes = () => (
@@ -24,6 +25,11 @@ const SettingsRoutes = () => (
 			component={EditLeagueNameForm}
 			exact={true}
 			path={Links.SETTINGS_EDIT_LEAGUE_NAME}
+		/>
+		<Route
+			component={LeagueArchiveForm}
+			exact={true}
+			path={Links.SETTINGS_EDIT_ARCHIVE_LEAGUE}
 		/>
 	</div>
 );

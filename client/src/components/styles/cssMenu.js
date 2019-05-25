@@ -7,5 +7,11 @@ export const cssMenu = {
 	},
 	avatar: {
 		backgroundColor: 'none'
+	},
+	icons: {
+		fill: '#555'
+	},
+	archive: {
+		color: '#555'
 	}
 };

@@ -7,50 +7,66 @@ import Divider from 'material-ui/Divider';
 import {List, ListItem} from 'material-ui/List';
 import AddCircle from 'material-ui/svg-icons/content/add-circle';
 import Help from 'material-ui/svg-icons/action/help';
+import ArchiveIcon from 'material-ui/svg-icons/content/archive';
 import LogOutIcon from 'material-ui/svg-icons/action/exit-to-app';
-import * as Links from '../routes';
 
-import Avatar from 'material-ui/Avatar';
+import MenuLeagueItem from './MenuLeagueItem.jsx';
 
-import {SportsIcons} from '../sports';
 import { cssMenu } from '../styles';
 
-const Menu = props => {
+const Menu = (props) => {
 	const { open, leagues, selectLeague, openModal } = props;
-
+	const activeLeagues = leagues.filter(league => league.archived === false);
+	const archivedLeagues = leagues.filter(league => league.archived === true);
 	return (
 		<Drawer open={open} width={'15%'}>
 			<List style={cssMenu.drawer.list}>
-				{
-					leagues.map((league, i) => (
-						<ListItem
-							containerElement={<Link to={Links.TEAM_LIST}/>}
-							key={i}
-							leftIcon={
-								<Avatar
-									backgroundColor={cssMenu.avatar.backgroundColor}
-									src={SportsIcons[league.sportType]}
-								/>
-							}
-							onClick={() => selectLeague(league)}
-							primaryText={league.name}
-						/>
-						)
-					)
+				{activeLeagues.length > 0 ? (
+					<div>
+						{activeLeagues.map((league, i) => (
+							<MenuLeagueItem
+								key={i}
+								league={league}
+								selectLeague={selectLeague}
+							/>
+							)
+						)}
+						< Divider />
+					</div>) : <noScript />
 				}
-				{ leagues.length > 0 ? <Divider /> : <noScript /> }
+				{archivedLeagues.length > 0 ? (
+					<div>
+						<ListItem
+							leftIcon={<ArchiveIcon style={cssMenu.icons} />}
+							nestedItems={[
+								archivedLeagues.map((league, i) => (
+									<MenuLeagueItem
+										key={i}
+										league={league}
+										selectLeague={selectLeague}
+									/>
+								)
+								)
+							]}
+							primaryText='Archive'
+							primaryTogglesNestedList={true}
+							style={cssMenu.archive}
+						/>
+						< Divider />
+					</div>) : <noScript />
+				}
 				<ListItem
 					containerElement={<Link to='/create' />}
-					leftIcon={<AddCircle />}
+					leftIcon={<AddCircle style={cssMenu.icons} />}
 					primaryText='Create League'
 				/>
 				<ListItem
 					containerElement={<Link to='/help' />}
-					leftIcon={<Help />}
+					leftIcon={<Help style={cssMenu.icons} />}
 					primaryText='Help'
 				/>
 				<ListItem
-					leftIcon={<LogOutIcon/>}
+					leftIcon={<LogOutIcon style={cssMenu.icons} />}
 					onClick={()=> openModal('logout')}
 					primaryText='Log out'
 				/>
