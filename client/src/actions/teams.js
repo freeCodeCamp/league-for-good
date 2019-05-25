@@ -31,8 +31,6 @@ export function createTeam( formVals, dispatch, { location } ) {
 
 // Edit a team's name and active status
 export function updateTeam(formVals, dispatch) {
-
-	console.log('update team action', arguments);
 	const { _id, currentlyActive, name } = formVals;
 	const body = { name, currentlyActive };
 	dispatch({ type: CLOSE_MODAL });
